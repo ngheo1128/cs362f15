@@ -1,205 +1,230 @@
-/* -----------------------------------------------------------------------
- * Demonstration of how to write unit tests for dominion-base
- * Include the following lines in your makefile:
- *
- * testUpdateCoins: testUpdateCoins.c dominion.o rngs.o
- *      gcc -o testUpdateCoins -g  testUpdateCoins.c dominion.o rngs.o $(CFLAGS)
- * -----------------------------------------------------------------------
- */
+/* Unit tests for the drawCard()
+	Testing for...
+      - If player's deck is empty shuffle discard pile into deck pile.
+	  - If deck shuffled, discard pile should be 0.
+	  - Player's hand should gain 1 card.
+	  - Player's deck count should decrease by 1.
+*/
 
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include "rngs.h"
-#include <stdlib.h>
-#include <time.h>
 
-// set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
+/*drawCard unit tests*/
+void testdrawCard()
+{
+	int seed = 1000; /*Used for initializeGame parameter for setting up random # generator*/
+    int numPlayer = 2; /*number of players in game. Maximum # of players is 4*/
+    int p = 0; /*holds the value of the player, example player 0, player 1.*/
+	int handCount = 5; /*Number of cards player starts with*/
+	
+	/*Kingdom cards used in this game*/
+    int k[10] = {adventurer, council_room, feast, gardens, mine
+               , remodel, smithy, village, baron, great_hall};
+			   
+    struct gameState G; /*start a new game*/
+	
+	/*create a custom hand to give to player */
+    int custom_hand[handCount];
+	
+	custom_hand[0] = copper;
+    custom_hand[1] = silver;
+	custom_hand[2] = village;
+	custom_hand[3] = gold;
+	custom_hand[4] = smithy;
+    
+	int handCount_b = 0;/*number of cards in players hand before drawCard()*/
+	int handCount_a = 0;/*number of cards in players hand after drawCard()*/
+	int discardCount_b = 0;/*number of cards in discard pile before drawCard()*/
+	int discardCount_a = 0;/*number of cards in discard pile after drawCard()*/
+	int deckCount_b = 0;/*number of cards in deck before drawCard()*/
+	int deckCount_a = 0;/*number of cards in deck after drawCard()*/
+	
+    printf ("\nTESTING drawCard():");
 
-int getValue(int card, int num, int total){
+	initializeGame(numPlayer, k, seed, &G); /*initialize a new game*/
+	G.handCount[p] = handCount;             /*set the number of cards in hand*/
+	memcpy(G.hand[p], custom_hand, sizeof(int) * handCount); /*Populate player 0 hand with cards*/
+	
+	
+	printf ("\nDraw card with cards left in deck.\n");
+	handCount_b = G.handCount[p];/*get number of cards in player's hand before drawCard() used*/
+	deckCount_b = G.deckCount[p];/*number of cards in deck before drawCard()*/
+	
+	drawCard(p, &G);
+	
+	handCount_a = G.handCount[p];/*get number of cards in player's hand after drawCard() used*/
+	deckCount_a = G.deckCount[p];/*number of cards in deck after drawCard()*/
+	
+	/*checks if card was added to played card pile*/
+	if(handCount_a == handCount_b + 1)
+	{
+		printf ("PASS - card added to player's hand.\n");
+	}
+	else
+	{
+		printf ("FAIL - card NOT added to player's hand.\n");
+	}
+	
+	/*checks if deck count decreased.*/
+	if(deckCount_a == deckCount_b - 1)
+	{
+		printf ("PASS - card removed from deck pile.\n");
+	}
+	else
+	{
+		printf ("FAIL - card NOT removed from deck pile.\n");
+	}
+	
+	if(deckCount_a <= 0)
+	{
+		printf ("FAIL - deck count is less than 0.\n");
+	}
+	else
+	{
+		printf ("PASS - deck count is NOT less than 0.\n");
+	}
+	
+	printf ("\nDraw card with 0 cards left in deck and 5 cards in discard pile.\n");
+	
+	memset(&G, 23, sizeof(struct gameState)); /*clear the game state*/
+	initializeGame(numPlayer, k, seed, &G); /*initialize a new game*/
+	G.handCount[p] = handCount;             /*set the number of cards in hand*/
+	
+	G.deckCount[p] = 0; /*Set deck count to 0*/
+	G.discardCount[p] = 5;/*set discard count to 10*/
+	
+	handCount_b = G.handCount[p];/*get number of cards in player's hand before drawCard() used*/
+	discardCount_b = G.discardCount[p];/*get number discarded cards before drawCard()*/
+	deckCount_b = G.deckCount[p];/*number of cards in deck before drawCard()*/
+	
+	
+	drawCard(p, &G);
+	handCount_a = G.handCount[p];/*get number of cards in player's hand after drawCard() used*/
+	discardCount_a = G.discardCount[p];/*get number discarded cards after drawCard()*/
+	deckCount_a = G.deckCount[p];/*number of cards in deck after drawCard()*/
+	
+	/*checks if deck count is same count as discard pile before drawCard() was used.*/
+	if(deckCount_a + 1 == discardCount_b || deckCount_a == discardCount_b)
+	{
+		printf ("PASS - discard pile added to deck pile.\n");
+	}
+	else
+	{
+		printf ("FAIL - discard pile NOT added to deck pile.\n");
+	}
+	
+	/*checks if discard count is same count as deck pile before drawCard() was used.*/
+	if(discardCount_a == deckCount_b)
+	{
+		printf ("PASS - discard pile is empty.\n");
+	}
+	else
+	{
+		printf ("FAIL - discard pile NOT empty.\n");
+	}
+	
+	/*checks if card was added to played card pile*/
+	if(handCount_a == handCount_b + 1)
+	{
+		printf ("PASS - card added to player's hand.\n");
+	}
+	else
+	{
+		printf ("FAIL - card NOT added to player's hand.\n");
+	}
+	
+	/*checks if deck count decreased.*/
+	if(deckCount_a == discardCount_b - 1)
+	{
+		printf ("PASS - card removed from deck pile.\n");
+	}
+	else
+	{
+		printf ("FAIL - card NOT removed from deck pile.\n");
+	}
+	
+	if(deckCount_a <= 0)
+	{
+		printf ("FAIL - deck count is less than 0.\n");
+	}
+	else
+	{
+		printf ("PASS - deck count is NOT less than 0.\n");
+	}
+	
+	printf ("\nDraw card with 0 cards left in deck but -1 discard pile.\n");
+	
+	memset(&G, 23, sizeof(struct gameState)); /*clear the game state*/
+	initializeGame(numPlayer, k, seed, &G); /*initialize a new game*/
+	G.handCount[p] = handCount;             /*set the number of cards in hand*/
 
-	if (card == 0){
-		return num * -1;
+	G.deckCount[p] = 0; /*Set deck count to 0*/
+	G.discardCount[p] = -1;/*set discard count to 10*/
+	
+	handCount_b = G.handCount[p];/*get number of cards in player's hand before drawCard() used*/
+	discardCount_b = G.discardCount[p];/*get number discarded cards before drawCard()*/
+	deckCount_b = G.deckCount[p];/*number of cards in deck before drawCard()*/
+	
+	drawCard(p, &G);
+	handCount_a = G.handCount[p];/*get number of cards in player's hand after drawCard() used*/
+	discardCount_a = G.discardCount[p];/*get number discarded cards after drawCard()*/
+	deckCount_a = G.deckCount[p];/*number of cards in deck after drawCard()*/
+	
+	/*checks if deck count is same count as discard pile before drawCard() was used.*/
+	if(deckCount_a + 1 == discardCount_b || deckCount_a == discardCount_b)
+	{
+		printf ("PASS - discard pile added to deck pile.\n");
 	}
-	else if (card == 1){
-		return num * 1;
+	else
+	{
+		printf ("FAIL - discard pile NOT added to deck pile.\n");
 	}
-	else if (card == 2){
-		return num * 3;
+	
+	/*checks if discard count is same count as deck pile before drawCard() was used.*/
+	if(discardCount_a == deckCount_b)
+	{
+		printf ("PASS - discard pile is empty.\n");
 	}
-	else if (card == 3){
-		return num * 6;
+	else
+	{
+		printf ("FAIL - discard pile NOT empty.\n");
 	}
-	else if (card == 4){
-		return num * 1;
+	
+	/*checks if card was added to played card pile*/
+	if(handCount_a == handCount_b + 1)
+	{
+		printf ("PASS - card added to player's hand.\n");
 	}
-	else if (card == 5){
-		return total / 10;
+	else
+	{
+		printf ("FAIL - card NOT added to player's hand.\n");
 	}
-	return -1000;
+	
+	/*checks if deck count decreased.*/
+	if(deckCount_a == discardCount_b - 1)
+	{
+		printf ("PASS - card removed from deck pile.\n");
+	}
+	else
+	{
+		printf ("FAIL - card NOT removed from deck pile.\n");
+	}
+	
+	/*checks if deck count is not less than 0*/
+	if(deckCount_a <= 0)
+	{
+		printf ("FAIL - deck count is less than 0.\n");
+	}
+	else
+	{
+		printf ("PASS - deck count is NOT less than 0.\n");
+	}
 }
 
 int main() {
-    int i;
-    time_t t;
-    int seed = 1000;
-    int numPlayer = 4;
-    int tests = 100;
-    int p, r, handCount, deckCount, discardCount, vh1, vh2, vh3, vh4,  vd1, vd2, vd3, vd4, vds1, vds2, vds3, vds4, score1, score2, score3, score4, winner, testWinner, highScore;
-    int k[10] = {adventurer, council_room, feast, gardens, mine
-               , remodel, smithy, village, baron, great_hall};
-    struct gameState G;
-    int maxHandCount = 5;
-    int maxDeckCount = 20;
-    int maxDiscardCount = 20;
-    // arrays of all victory cards
-    /*int curses[MAX_DECK];
-    int estates[MAX_DECK];
-    int duchys[MAX_DECK];
-    int provinces[MAX_DECK];
-    int great_halls[MAX_DECK];
-    int gardenss[MAX_DECK];*/
-    int victoryCards[6][MAX_DECK];
-    int players[numPlayer];
-    for (i = 0; i < MAX_DECK; i++)
-    {
-        victoryCards[0][i] = curse;
-        victoryCards[1][i] = estate;
-        victoryCards[2][i] = duchy;
-	victoryCards[3][i] = province;
-	victoryCards[4][i] = great_hall;
-	victoryCards[5][i] = gardens;
-    }
-    srand((unsigned) time(&t));
-
-    printf ("TESTING getWinners():\n");
-    for (i = 0; i < tests; i++){
-	handCount = rand() %maxHandCount;
-	deckCount = rand() %maxDeckCount;
-	discardCount = rand() %maxDiscardCount;
-	vh1 = rand() %6;
-	vh2 = rand() %6;
-	vh3 = rand() %6;
-	vh4 = rand() %6;
-	vd1 = rand() %6;
-	vd2 = rand() %6;
-	vd3 = rand() %6;
-	vd4 = rand() %6;
-	vds1 = rand() %6;
-	vds2 = rand() %6;
-	vds3 = rand() %6;
-	vds4 = rand() %6;
-	memset(&G, 23, sizeof(struct gameState));   //clear gameState
-	r = initializeGame(numPlayer, k, seed, &G);
-	for (p = 0; p < numPlayer; p++){
-		G.deckCount[p] = deckCount;
-		G.handCount[p] = handCount;
-		G.discardCount[p] = discardCount;
-	}
-	memcpy(G.hand[0], victoryCards[vh1], sizeof(int) * handCount);
-	memcpy(G.deck[0], victoryCards[vd1], sizeof(int) * deckCount);
-	memcpy(G.discard[0], victoryCards[vds1], sizeof(int) * discardCount);
-	memcpy(G.hand[1], victoryCards[vh2], sizeof(int) * handCount);
-	memcpy(G.deck[1], victoryCards[vd2], sizeof(int) * deckCount);
-	memcpy(G.discard[1], victoryCards[vds2], sizeof(int) * discardCount);
-	memcpy(G.hand[2], victoryCards[vh3], sizeof(int) * handCount);
-	memcpy(G.deck[2], victoryCards[vd3], sizeof(int) * deckCount);
-	memcpy(G.discard[2], victoryCards[vds3], sizeof(int) * discardCount);
-	memcpy(G.hand[3], victoryCards[vh4], sizeof(int) * handCount);
-	memcpy(G.deck[3], victoryCards[vd4], sizeof(int) * deckCount);
-	memcpy(G.discard[3], victoryCards[vds4], sizeof(int) * discardCount);
-	score1 = scoreFor(0, &G);
-	score2 = scoreFor(1, &G);
-	score3 = scoreFor(2, &G);
-	score4 = scoreFor(3, &G);
-	highScore = 0;
-	if (score1 >= highScore){
-		highScore = score1;
-		winner = 0;
-	}
-	if (score2 >= highScore){
-		highScore = score2;
-		winner = 1;
-	}
-	if (score3 >= highScore){
-		highScore = score3;
-		winner = 2;
-	}
-	if (score4 >= highScore){
-		highScore = score4;
-		winner = 3;
-	}
-	getWinners(players, &G);
-	for (p = 0; p < numPlayer; p++){
-		if (players[p] == 1){
-			testWinner = p;
-		}
-	}
-
-	printf("Test #%d:\n", i);
-	printf("Player 0: %d\n", score1);
-	printf("Player 1: %d\n", score2);
-	printf("Player 2: %d\n", score3);
-	printf("Player 3: %d\n", score4);
-	printf("Winner: %d, Expected: %d\n", testWinner, winner);
-	if (testWinner == winner){
-		printf("Success\n");
-	}
-	else{
-		printf("Failure<==============");
-	}
-    }
-
-    /*for (vh = 0; vh < 6; vh++){
-        for (handCount = 1; handCount <= maxHandCount; handCount++)
-        {
-	    for (vd = 0; vd < 6; vd++){
-            for (deckCount = 0; deckCount <= maxDeckCount; deckCount++)
-            {
-		for (vds = 0; vds < 6; vds++){
-		for (discardCount = 0; discardCount <= maxDiscardCount; discardCount++){
-		cards = handCount + deckCount + discardCount;
-#if (NOISY_TEST == 1)
-                printf("Test player %d with %d victory card(s).\n", p, cards);
-		printf("%d of card number %d in hand\n", handCount, vh);
-		printf("%d of card number %d in deck\n", deckCount, vd);
-		printf("%d of card number %d in discard\n", discardCount, vds);
-#endif
-		cards = handCount + deckCount + discardCount;
-		score = 0;				    // clear score
-                memset(&G, 23, sizeof(struct gameState));   // clear the game state
-                r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
-                G.handCount[p] = handCount;                 // set the number of cards on hand
-		G.deckCount[p] = deckCount;		    // set the number of cards in deck
-		G.discardCount[p] = discardCount;	    // set the number in discard
-                memcpy(G.hand[p], victoryCards[vh], sizeof(int) * handCount);
-		memcpy(G.deck[p], victoryCards[vd], sizeof(int) * deckCount);
-		memcpy(G.discard[p], victoryCards[vds], sizeof(int) * discardCount);
-		score = getValue(vh, handCount, cards) + getValue(vd, deckCount, cards) + getValue(vds, discardCount, cards);
-		testScore = scoreFor (p, &G);
-#if (NOISY_TEST == 1)
-		printf("Score calculated: %d, Expected: %d\n", testScore, score);
-		if (score == testScore){
-			printf("SUCCESS\n");
-		}
-		else {
-			printf("FAILURE<=============================\n");
-		}
-#endif
-		
-		}
-		}
-            }
-	    }
-	}
-     }
-*/
-#if (NOISY_TEST == 1)
-    printf("All tests ended in getWinners()\n");
-#endif
-
+    testdrawCard();
     return 0;
 }

@@ -1,117 +1,108 @@
-/* smithy test */
-#include <stdio.h>
-#include <string.h>
+/* Unit tests for the Smithy card
+	Testing for...
+      - 3 cards were added to players hand.
+      - Smithy card was discarded from players hand.
+*/
+
 #include "dominion.h"
+#include "dominion_helpers.h"
+#include <string.h>
+#include <stdio.h>
+#include "rngs.h"
+#include "interface.h"
 #include "cards.h"
 #include "card_handlers.h"
+ 
+/*Smithy card unit tests*/
+void testSmithyCard()
+{
+	int seed = 1000; /*Used for initializeGame parameter for setting up random # generator*/
+    int numPlayer = 2; /*number of players in game. Maximum # of players is 4*/
+    int p = 1; /*holds the value of the player, example player 0, player 1.*/
+	int handCount = 5; /*Number of cards player starts with*/
+	
+	/*Kingdom cards used in this game*/
+    int k[10] = {adventurer, council_room, feast, gardens, mine
+               , remodel, smithy, village, baron, great_hall};
+			   
+    struct gameState G; /*start a new game*/
+	
+	/*create a custom hand to give to player */
+    int custom_hand[handCount];
+	
+	custom_hand[0] = copper;
+    custom_hand[1] = village;
+	custom_hand[2] = silver;
+	custom_hand[3] = smithy;
+	custom_hand[4] = mine;
+    
+    char name[20]; /*Holds card name when converting card number to string*/
+	int inhand = 0; /*Determines if Smithy card is in player's hand or not.*/
 
-const int SEED = 17;
-const int NUM_PLAYERS = 4;
+    printf ("\nTESTING smithy_card():\n");
+	
+	printf("Test player %d with %d card(s) with 1 card being a Smithy card.\n", p, handCount);
 
-static void doTest(const char *testName, int condition) {
-  printf("TEST %s:  ", testName);
+	initializeGame(numPlayer, k, seed, &G); /*initialize a new game*/
+	G.handCount[p] = handCount;             /*set the number of cards in hand*/
+	memcpy(G.hand[p], custom_hand, sizeof(int) * handCount); /*Populate hand with cards*/
+	
+	/*Print the cards in player's hand*/
+	int i;
+	for(i = 0; i < G.handCount[p]; i++)
+	{
+		cardNumToName(G.hand[p][i], name); /*Convert card number to cards name*/
+		printf("%s%s", name, ", ");
+		if(strcmp(name, "Smithy") == 0)
+		{
+			inhand = 1; /*Smithy card is in player's hand*/
+		}
+	}
+	
+	if (inhand == 1)
+	{
+		printf ("\nPASS - Smithy card is in player's hand\n");
+	}
+	else
+	{
+		printf ("\nFAIL - Smithy card is NOT in player's hand\n");
+	}
+	
+	inhand = 0; /*reset value*/
+	printf ("Using Smithy card...\n");
+	smithyHandler(0, 0, 0, &G, 3, NULL);
 
-  if (condition) {
-    printf("PASS\n");
-  } else {
-    printf("FAIL\n");
-  }
+	/*checks if 3 cards added, 7 if card was discard and 8 if card was not discarded*/
+	if(G.handCount[p] == 7 || G.handCount[p] == 8)
+	{
+		printf ("PASS - Player %d has received 3 cards.\n", p);
+	}
+	else
+	{
+		printf ("FAIL - Player %d has not received the proper amount of cards.\n", p);
+	}
+	
+	for(i = 0; i < G.handCount[p]; i++)
+	{
+		cardNumToName(G.hand[p][i], name); /*Convert card number to cards name*/
+		printf("%s%s", name, ", ");
+		if(strcmp(name, "Smithy") == 0)
+		{
+			inhand = 0; /*Smithy card is not in player's hand*/
+		}
+	}
+
+	if (inhand == 0)
+	{
+		printf ("\nPASS - Smithy card was discarded from hand.\n");
+	}
+	else
+	{
+		printf ("\nFAIL - Smithy card was NOT discarded hand.\n");
+	}
 }
 
-/* count how many times the card given by cardNum is in hand */
-static int numCard(int player, const struct gameState *state, enum CARD cardNum) {
-  int i;
-  int count = 0;
-
-  for (i = 0; i < state->handCount[player]; i++)
-    if (state->hand[player][i] == cardNum)
-      count++;
-
-  return count;
-}
-
-char *printHand(int playerNum, const struct gameState *state) {
-  static const char *cardNames[] = {
-    "curse ",
-    "estate ",
-    "duchy ",
-    "province ",
-    "copper ",
-    "silver ",
-    "gold ",
-    "adventurer ",
-    "council_room ",
-    "feast ",
-    "gardens ",
-    "mine ",
-    "remodel ",
-    "smithy ",
-    "village ",
-    "baron ",
-    "great_hall ",
-    "minion ",
-    "steward ",
-    "tribute ",
-    "ambassador ",
-    "cutpurse ",
-    "embargo ",
-    "outpost ",
-    "salvager ",
-    "sea_hag ",
-    "treasure_map "
-  };
-
-  static char buf[MAX_HAND * 13] = {0};
-
-  int i;
-
-  for (i = 0; i < state->handCount[playerNum]; i++)
-    strcat(buf, cardNames[state->hand[playerNum][i]]);
-
-  return buf;
-}
-
-int main(int argc, char **argv) {
-  const int player = NUM_PLAYERS - 1;
-  int k[10] = {adventurer, council_room, feast,   gardens, mine,
-               remodel,    smithy,       village, baron,   great_hall};
-  struct gameState state;
-  int handCount;
-  int numSmithys, numSmithys2;
-
-  initializeGame(NUM_PLAYERS, k, SEED, &state);
-  state.whoseTurn = player;
-
-  printf("initial hand: %s\n", printHand(player, &state));
-
-  /* 
-  - init hand state with two smithys
-  - use one smithy
-    - make sure one smithy is left
-    - make sure hand has grown by three
-  */
-
-  /* put two smithys in hand */
-  state.hand[player][0] = smithy;
-  state.hand[player][1] = smithy;
-
-  printf("hand with smithys: %s\n", printHand(player, &state));
-
-  handCount = state.handCount[player];
-  printf("player hand count before: %d\n", handCount);
-
-  numSmithys = numCard(player, &state, smithy);
-  printf("smithys before: %d\n", numSmithys);
-
-  /* use a smithy */
-  smithyHandler(0, 0, 0, &state, 0, NULL);
-  numSmithys2 = numCard(player, &state, smithy);
-  printf("smithys after: %d\n", numSmithys2);
-
-  doTest("one smithy remains", numSmithys2 == numSmithys - 1);
-  doTest("correct hand count", state.handCount[player] == handCount + 2);
-  
-  printf("player hand count after: %d\n", state.handCount[player]);
-  printf("final hand: %s\n", printHand(player, &state));
-
+int main() {
+    testSmithyCard();
+    return 0;
 }
