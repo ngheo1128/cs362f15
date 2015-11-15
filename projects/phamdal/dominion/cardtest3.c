@@ -25,7 +25,7 @@ int main() {
 
  	printf("TESTING council_room_card()\nGame of 3 players\n"); 
 
- 	if(council_room_card(0, state, 0) != 0) {
+ 	if(cardEffect(council_room, 0, 0, 0, state, 0, 0) != 0) {
  		printf("coucil_room_card has not returned successfully\n"); 
  		fail = 1; 
  	}

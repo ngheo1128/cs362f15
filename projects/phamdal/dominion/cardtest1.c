@@ -26,7 +26,7 @@
 
  	state->hand[0][0] = smithy; 
 
- 	if (smithy_card(0, state, 0) != 0) {
+ 	if (cardEffect(smithy, 0, 0, 0, state, 0, 0) != 0) {
  		printf("smithy_card failture to run\n"); 
  		fail = 1; 
  	}
