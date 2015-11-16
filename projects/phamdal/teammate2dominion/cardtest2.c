@@ -71,7 +71,8 @@ int main() {
 
 	printf("Testing case where only 1 treasure card in deck\n"); 
  	state = newGame(); 
-	initializeGame(numPlayer, k, seed, state); 
+	initializeGame(numPlayer, k, seed, state);
+	state->deckCount[0] = 5;  
  	state->deck[0][4] = smithy; 
  	state->deck[0][3] = estate; 
  	state->deck[0][2] = duchy; 

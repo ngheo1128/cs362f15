@@ -30,7 +30,7 @@ int main() {
  		fail = 1; 
  	}
 
- 	if(state->handCount[0] != 9) {
+ 	if(state->handCount[0] != 8) {
  		printf("council_room_card draws inccorrect number of cards\n"); 
  		fail = 1; 
  	}
@@ -45,12 +45,12 @@ int main() {
  		fail = 1; 
  	}
 
- 	if(state->handCount[1] != 6 || state->handCount[2] != 6) {
+ 	if(state->handCount[1] != 1 || state->handCount[2] != 1) {
  		printf("council_room_card does not draw 1 card to each other player\n"); 
  		fail = 1; 
  	}
 
- 	if(state->deckCount[1] != 4 || state->deckCount[2] != 4) {
+ 	if(state->deckCount[1] != 9 || state->deckCount[2] != 9) {
  		printf("council_room_card deckCount failure in opponent decks\n"); 
  		fail = 1; 
  	}
