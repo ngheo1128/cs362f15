@@ -1,133 +1,220 @@
+/***********************************************************************
+* Author : Allan Chan
+* ONID: chanal
+* Class: CS362
+* Filename: unittest4.c
+*
+* Description:
+*   Unit Test 4 for drawCard() function. Tests whether if a player's
+*	deck is empty and it would shuffle the discard to deck pile and that
+*	the discard pile is zero. Tests whether the player's hand increases
+*	one card after draw and deck is decremented by one for the card drawn.
+*	
+*
+************************************************************************/
+
 #include "dominion.h"
-#include <string.h>
+#include "dominion_helpers.h"
+#include "rngs.h"
 #include <stdio.h>
-#include <assert.h>
+#include <math.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 #include <time.h>
 
-/* Testing of getWinners() funciton
-    -gardens causes errors due to passing numHandsCards 0 for a card and only finding curses
-
-*/
+//set NOISY_TEST to 0 to remove printfs from output
+#define NOISY_TEST 1
 
 int main() {
+	srand(time(NULL));
+	int gameSeed = rand() % 1000 + 1;
+	int p = 0; //player 1
+	int numPlayer = 2;
+	int handCount = 5;
+	int k[10] = {adventurer, council_room, feast, gardens, mine,
+				 remodel, smithy, village, baron, great_hall};
 
-    printf("\nTesting getWinners() function:\n");
+	/*Load hand with cards*/
+	int testHand1[5] = {adventurer, province, feast, copper, gold};
+	int preHandCount, postHandCount, preDiscardCount, postDiscardCount, preDeckCount, postDeckCount = 0;
 
-    int randomSeed = 100;
-    int maxPlayers = 4;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int officialPlayersScore[maxPlayers];
-    int testPlayersScore[maxPlayers];
-    int i, x;
-    struct gameState state;
-    int handCount = 5;
-    int discardCount = 5;
-    int deckCount = 5;
+	struct gameState G;
+
+	/*Clear the game state*/
+	memset(&G, 23, sizeof(struct gameState));
+
+	/*Initialize the game*/
+	initializeGame(numPlayer, k, gameSeed, &G);
+
+	/*Set cards to testHand1, player 1 = [p]*/
+	memcpy(G.hand[p], testHand1, sizeof(int)*handCount);
+	G.handCount[p] = handCount;
+
+/***** TEST #1 ******/
+#if(NOISY_TEST == 1) 
+	printf("Testing drawCard() for Player 0 with non-empty deck\n");
+#endif
+
+	preHandCount = G.handCount[p];	//Hand count of player before draw
+	preDeckCount = G.deckCount[p];	//Deck count of player before draw
+	
+	//assert(drawCard(p, &G) == 0);	//Determines that drawCard executed
+	drawCard(p, &G);
+
+	postHandCount = G.handCount[p];	//Hand count of player after draw
+	postDeckCount = G.deckCount[p];	//Deck count of player after draw
+
+#if(NOISY_TEST == 1)
+	/*Check post hand count with pre hand count*/
+	if(postHandCount == preHandCount + 1){
+		printf( "Test PASSED, card added to player's hand after draw\n");
+	} else {
+		printf( "Test FAILED, card NOT added to player's hand after draw\n");
+	}
+
+	/*Check deck count*/
+	if(postDeckCount == preDeckCount - 1){
+		printf( "Test PASSED, deck decremented after draw\n");
+	} else {
+		printf( "Test FAILED, deck NOT decremented after draw\n");
+	}
+
+	/*Check deck count*/
+	if(postDeckCount > 0){
+		printf( "Test PASSED, deck was NOT empty\n\n");
+	} else {
+		printf( "Test FAILED, card drawn from empty deck\n\n");
+	}
+#endif
 
 
-    int curPlayers = 4;
+/******* TEST #2 ********/
+#if(NOISY_TEST == 1) 
+	printf("Testing drawCard() for Player 0 with empty deck and non-empty discard pile\n");
+#endif
 
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(curPlayers, kingCards, randomSeed, &state);
-    for (i = 0; i < curPlayers; ++i) {
-        state.handCount[i] = handCount;
-        state.discardCount[i] = discardCount;
-        state.deckCount[i] = deckCount;
-    }
+	/*Clear the game state*/
+	memset(&G, 23, sizeof(struct gameState));
 
-    //player 1
-    int p1 = 0;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p1][i] = curse;
-        state.discard[p1][i] = curse;
-        state.deck[p1][i] = curse;
-    }
-    //scoreFor function
-    officialPlayersScore[p1] = scoreFor(p1, &state);
+	/*Initialize the game*/
+	initializeGame(numPlayer, k, gameSeed, &G);
 
-    //player 2
-    int p2 = 1;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p2][i]    = gardens;
-        state.discard[p2][i] = great_hall;
-        state.deck[p2][i]    = province;
-    }
-    //scoreFor function
-    officialPlayersScore[p2] = scoreFor(p2, &state);
+	G.handCount[p] = handCount;
+	G.deckCount[p] = 0; //Empty deck pile
+	G.discardCount[p] = 5; //Non-empty discard pile
 
-    //player 3
-    int p3 = 2;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p3][i]    = great_hall;
-        state.discard[p3][i] = gardens;
-        state.deck[p3][i]    = province;
-    }
-    //scoreFor function
-    officialPlayersScore[p3] = scoreFor(p3, &state);
+	preHandCount = G.handCount[p];	//Hand count of player before draw
+	preDeckCount = G.deckCount[p];	//Deck count of player before draw
+	preDiscardCount = G.discardCount[p];	//Discard pile count of player before draw
 
-    //player 4
-    int p4 = 3;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p4][i]    = estate;
-        state.discard[p4][i] = duchy;
-        state.deck[p4][i]    = gardens;
-    }
-    //math based on card values
-    officialPlayersScore[p4] = scoreFor(p4, &state);
-    memcpy(testPlayersScore, officialPlayersScore, sizeof(int) * curPlayers);
+	//assert(drawCard(p, &G) == 0);	//Determines that drawCard executed
+	drawCard(p, &G);
 
-    //loop through players with different ending turns
-    int temp;
-    int counter = 0;
-    for (x = 0; x < curPlayers; ++x) {
-        state.whoseTurn = x;
-        temp = getWinners(officialPlayersScore, &state);
-        if (temp == 0) {
-            if (officialPlayersScore[0] == 0 &&
-                    officialPlayersScore[1] == 1 &&
-                    officialPlayersScore[2] == 1 &&
-                    officialPlayersScore[3] == 0)
-            {
-                printf("Player %d turn test Passed\n", x + 1);
-            }
-            //increment of whoseTurn should make player 3 win
-            else if (officialPlayersScore[0] == 0 &&
-                    officialPlayersScore[1] == 0 &&
-                    officialPlayersScore[2] == 1 &&
-                    officialPlayersScore[3] == 0)
-            {
-                printf("Player %d turn test Passed\n", x + 1);
-            }
-            else if (officialPlayersScore[0] == 0 &&
-                officialPlayersScore[1] == 1 &&
-                officialPlayersScore[2] == 1 &&
-                officialPlayersScore[3] == 0)
-            {
-                printf("Player %d turn test Passed\n", x + 1);
-            }
-            else if (officialPlayersScore[0] == 0 &&
-                officialPlayersScore[1] == 1 &&
-                officialPlayersScore[2] == 1 &&
-                officialPlayersScore[3] == 0)
-            {
-                printf("Player %d turn test Passed\n", x + 1);
-            }
-            else {
-                counter++;
-            }
-        }
-        if (temp != 0 || counter > 0) {
-            printf("Player %d turn test Failed\n", x + 1);
-        }
-    }
+	postHandCount = G.handCount[p];	//Hand count of player after draw
+	postDeckCount = G.deckCount[p];	//Deck count of player after draw
+	postDiscardCount = G.discardCount[p];	//Discard pile count of player after draw
 
-    if (counter <= 0) {
-        printf("All tests passed getWinners()\n");
-    }
-    else {
-        printf("%d tests failed on getWinners()\n\n", counter);
-    }
+#if(NOISY_TEST == 1)
+	/*Check whether the discard pile is shuffled with deck pile*/
+	if(postDeckCount + 1 == preDiscardCount || postDeckCount == preDiscardCount){
+		printf( "Test PASSED, discard pile shuffled with deck\n");
+	} else {
+		printf( "Test FAILED, discard pile NOT shuffled with deck\n");
+	}
 
-    return 0;
+	/*Check post hand count with pre hand count*/
+	if(postHandCount == preHandCount + 1){
+		printf( "Test PASSED, card added to player's hand after draw\n");
+	} else {
+		printf( "Test FAILED, card NOT added to player's hand after draw\n");
+	}
+
+	/*Check if discard pile is empty*/
+	if(preDeckCount == postDiscardCount){
+		printf( "Test PASSED, discard pile was empty\n");
+	} else {
+		printf( "Test FAILED, discard pile was NOT empty\n");
+	}
+
+	/*Check deck count*/
+	if(postDeckCount == preDiscardCount - 1){
+		printf( "Test PASSED, deck decremented after draw\n");
+	} else {
+		printf( "Test FAILED, deck NOT decremented after draw\n");
+	}
+
+	/*Check deck count*/
+	if(postDeckCount > 0){
+		printf( "Test PASSED, deck was NOT empty\n\n");
+	} else {
+		printf( "Test FAILED, card drawn from empty deck\n\n");
+	}
+#endif
+
+
+
+/******* TEST #3 ********/
+#if(NOISY_TEST == 1) 
+	printf("Testing drawCard() for Player 0 with empty deck and empty discard pile\n");
+#endif
+
+	/*Clear the game state*/
+	memset(&G, 23, sizeof(struct gameState));
+
+	/*Initialize the game*/
+	initializeGame(numPlayer, k, gameSeed, &G);
+
+	G.handCount[p] = handCount;
+	G.deckCount[p] = 0; //Empty deck pile
+	G.discardCount[p] = 0; //Non-empty discard pile
+
+	preHandCount = G.handCount[p];	//Hand count of player before draw
+	preDeckCount = G.deckCount[p];	//Deck count of player before draw
+	preDiscardCount = G.discardCount[p];	//Discard pile count of player before draw
+
+	drawCard(p, &G);	
+
+	postHandCount = G.handCount[p];	//Hand count of player after draw
+	postDeckCount = G.deckCount[p];	//Deck count of player after draw
+	postDiscardCount = G.discardCount[p];	//Discard pile count of player after draw
+
+#if(NOISY_TEST == 1)
+	/*Check whether the discard pile is shuffled with deck pile*/
+	if(postDeckCount + 1 == preDiscardCount || postDeckCount == preDiscardCount){
+		printf( "Test PASSED, discard pile shuffled with deck\n");
+	} else {
+		printf( "Test FAILED, discard pile NOT shuffled with deck\n");
+	}
+
+	/*Check post hand count with pre hand count*/
+	if(postHandCount == preHandCount + 1){
+		printf( "Test PASSED, card added to player's hand after draw\n");
+	} else {
+		printf( "Test FAILED, card NOT added to player's hand after draw\n");
+	}
+
+	/*Check if discard pile is empty*/
+	if(preDeckCount == postDiscardCount){
+		printf( "Test PASSED, discard pile was empty\n");
+	} else {
+		printf( "Test FAILED, discard pile was NOT empty\n");
+	}
+
+	/*Check deck count*/
+	if(postDeckCount == preDiscardCount - 1){
+		printf( "Test PASSED, deck decremented after draw\n");
+	} else {
+		printf( "Test FAILED, deck NOT decremented after draw\n");
+	}
+
+	/*Check deck count*/
+	if(postDeckCount > 0){
+		printf( "Test PASSED, deck was NOT empty\n\n");
+	} else {
+		printf( "Test FAILED, card drawn from empty deck\n\n");
+	}
+#endif
+
+	return 0;
 }

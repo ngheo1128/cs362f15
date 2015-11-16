@@ -1,161 +1,131 @@
+/***********************************************************************
+* Author : Allan Chan
+* ONID: chanal
+* Class: CS362
+* Filename: unittest2.c
+*
+* Description:
+*   Unit Test 2 that tests the isGameOver() function.
+*	Testing different game over situations where supply pile is 
+*	empty and three piles are empty.
+*	
+*
+************************************************************************/
+
 #include "dominion.h"
-#include <string.h>
+#include "dominion_helpers.h"
+#include "rngs.h"
 #include <stdio.h>
-#include <assert.h>
+#include <math.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 #include <time.h>
 
+//set NOISY_TEST to 0 to remove printfs from output
+#define NOISY_TEST 1
 
-int main() {
+int main(){
+	srand(time(NULL));
+	int gameSeed = rand() % 1000 + 1;
+	int p = 0; //player 1
+	int numPlayer = 2;
+	int handCount = 5;
+	int status;
+	int k[10] = {adventurer, council_room, feast, gardens, mine,
+				 remodel, smithy, village, baron, great_hall};
 
-    printf("\nTesting discardCard() function:\n");
+	int testHand[5] = {copper, copper, silver, silver, gold};
 
-    struct gameState state;
-    int randomSeed = 100;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int maxPlayers = 4;
-    int i;
-    int handCount = 3;
-    int flag = 1;
-    int player = 0;
-    int testCounter = 0;
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(maxPlayers, kingCards, randomSeed, &state);
-    state.handCount[0] = handCount;
+	struct gameState G;
 
-    for (i = 0; i < handCount; ++i) {
-        state.hand[player][i] = i;
-    }
+	/*Clear the game state*/
+	memset(&G, 23, sizeof(struct gameState));
 
-    printf("\nTesting removal of first card in hand\n");
-    //remove first with flag = 1
-    flag = 1;
-    int prevBackCard = state.hand[player][handCount -1];
-    int prevHandCount = state.handCount[player];
-    int test = discardCard(0, player, &state, flag);
-    if (test == 0) {
-        //hand count--
-        //printf("%d vs %d\n", state.handCount[player], prevHandCount - 1);
-        if (state.handCount[player] == prevHandCount - 1) {
-            printf("Test passed: s1, t1\n");
-        }
-        else {
-            printf("Test failed: s1, t1\n");
-            testCounter++;
-        }
+	/*Initialize the game*/
+	initializeGame(numPlayer, k, gameSeed, &G);
 
-        //first == former last
-        //printf("%d vs %d\n", state.hand[player][0], prevBackCard);
-        if (state.hand[player][0] == prevBackCard) {
-            printf("Test passed: s1, t2\n");
-        }
-        else {
-            printf("Test failed: s1, t2\n");
-            testCounter++;
-        }
+	/*Set cards to testHand*/
+	memcpy(G.hand[p], testHand, sizeof(int)*handCount);
 
-        //former last index == -1
-        //printf("%d vs %d\n", state.hand[player][prevHandCount -1], -1);
-        if (state.hand[player][prevHandCount -1] == -1) {
-            printf("Test passed: s1, t3\n");
-        }
-        else {
-            printf("Test failed: s1, t3\n");
-            testCounter++;
-        }
 
-        //card not trashed
-        if (state.playedCardCount == 0) {
-            printf("Test passed: s1, t4\n");
-        }
-        else {
-            printf("Test failed: s1, t4\n");
-            testCounter++;
-        }
-    }
+	/******** Test 1 ********/
+#if (NOISY_TEST == 1)
+	printf("Test #1, Province supply = 0\n");
+#endif
 
-    printf("\nTesting removal of last card in hand\n");
-    //remove last with flag = 0
-    flag = 0;
-    prevBackCard = state.hand[player][handCount -1];
-    prevHandCount = state.handCount[player];
-    test = discardCard(state.handCount[player] - 1, player, &state, flag);
-    if (test == 0) {
-        //hand count--
-        //printf("%d vs %d\n", state.handCount[player], prevHandCount - 1);
-        if (state.handCount[player] == prevHandCount - 1) {
-            printf("Test passed: s2, t1\n");
-        }
-        else {
-            printf("Test failed: s2, t1\n");
-            testCounter++;
-        }
+	G.supplyCount[province] = 0;
+	status = isGameOver(&G);
 
-        //former last index == -1
-        //printf("%d vs %d\n", state.hand[player][prevHandCount -1], -1);
-        if(state.hand[player][prevHandCount -1] == -1) {
-            printf("Test passed: s2, t2\n");
-        }
-        else {
-            printf("Test failed: s2, t2\n");
-            testCounter++;
-        }
+#if (NOISY_TEST == 1)
+	printf( "Expected game state=%d, Actual game state=%d \n", 1, isGameOver(&G));
+	
+	if(status == 1){
+		printf( "Test #1 PASSED, Game is over\n\n");
+	} else {
+		printf( "Test #1 FAILED\n\n");
+	}
+#endif
 
-        //card trashed
-        if (state.playedCardCount == 1) {
-            printf("Test passed: s2, t3\n");
-        }
-        else {
-            printf("Test failed: s2, t3\n");
-            testCounter++;
-        }
-    }
 
-    printf("\nTesting removal of last remaining card in hand\n");
-    //remove final with flag = 1
-    flag = 1;
-    prevBackCard = state.hand[player][handCount -1];
-    prevHandCount = state.handCount[player];
-    test = discardCard(state.handCount[player] - 1, player, &state, flag);
-    if (test == 0) {
-        //hand count--
-        //printf("%d vs %d\n", state.handCount[player], prevHandCount - 1);
-        if (state.handCount[player] == prevHandCount - 1) {
-            printf("Test passed: s3, t1\n");
-        }
-        else {
-            printf("Test failed: s3, t1\n");
-            testCounter++;
-        }
+	/******** Test 2 ********/
+#if (NOISY_TEST == 1)
+	printf("Test #2, Province supply = 1\n");
+#endif
 
-        //former last index == -1
-        //printf("%d vs %d\n", state.hand[player][prevHandCount -1], -1);
-        if (state.hand[player][prevHandCount -1] == -1) {
-            printf("Test passed: s3, t2\n");
-        }
-        else {
-            printf("Test failed: s3, t2\n");
-            testCounter++;
-        }
+	G.supplyCount[province] = 1;
+	status = isGameOver(&G);
 
-        //card not trashed, playedCardCount stays the same as previous (1)
-        if (state.playedCardCount == 1) {
-            printf("Test passed: s3, t3\n");
-        }
-        else {
-            printf("Test failed: s3, t3\n");
-            testCounter++;
-        }
-    }
-    if (testCounter <= 0) {
-        printf("All Tests Passed discardCard()\n");
-    }
-    else {
-        printf("%d tests failed on discardCard()\n\n", testCounter);
-    }
+#if (NOISY_TEST == 1)
+	printf( "Expected game state=%d, Actual game state=%d \n", 0, isGameOver(&G));
+	if(status == 0){
+		printf( "Test #2 PASSED, Game continues\n\n");
+	} else {
+		printf( "Test #2 FAILED\n\n");
+	}
+#endif
 
-    return 0;
+
+	/******** Test 3 ********/
+#if (NOISY_TEST == 1)
+	printf("Test #3, Three supply piles empty\n");
+#endif
+
+	G.supplyCount[silver] = 0;
+	G.supplyCount[adventurer] = 0;
+	G.supplyCount[duchy] = 0;
+	status = isGameOver(&G);
+
+#if (NOISY_TEST == 1)
+	printf( "Expected game state=%d, Actual game state=%d \n", 1, isGameOver(&G));
+	if(status == 1) {
+		printf( "Test #3 PASSED, Game is over\n\n");
+	} else {
+		printf( "Test #3 FAILED\n\n");
+	}
+#endif
+
+
+
+	/******** Test 4 ********/
+#if (NOISY_TEST == 1)
+	printf("Test #4, Two supply piles empty\n");
+#endif
+
+	G.supplyCount[silver] = 0;
+	G.supplyCount[adventurer] = 0;
+	G.supplyCount[duchy] = 5;
+
+	status = isGameOver(&G);
+
+#if (NOISY_TEST == 1)
+	printf( "Expected game state=%d, Actual game state=%d \n", 0, isGameOver(&G));
+	if(status == 0) {
+		printf( "Test #4 PASSED, Game continues\n\n");
+	} else {
+		printf( "Test #4 FAILED\n\n");
+	}
+#endif
+
+	return 0;
 }
-
-
-

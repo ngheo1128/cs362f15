@@ -1,118 +1,109 @@
+/***********************************************************************
+* Author : Allan Chan
+* ONID: chanal
+* Class: CS362
+* Filename: cardtest1.c
+*
+* Description:
+*	Tests the smithy card card effect
+*	
+*	Smithy card effect should draw 3 cards and place it in player's hand
+*	when played
+*
+*	A bug was introduced in the code for smithyCard and should fail a test here
+************************************************************************/
+
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include <string.h>
+#include "rngs.h"
+#include "interface.c"
 #include <stdio.h>
-#include <assert.h>
+#include <math.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 #include <time.h>
 
 
+int main(){
 
-int main() {
+	srand(time(NULL));
+	int gameSeed = rand() % 1000 + 1;
+	int p = 0; //player 1
+	int numPlayer = 2;
+	int handCount = 5;
+	int k[10] = {adventurer, council_room, feast, gardens, mine,
+				 remodel, smithy, village, baron, great_hall};
 
-    printf("\nTesting Adventurer Card:\n");
+	/*Load hand with cards*/
+	int testHand1[5];
 
-    int randomSeed = 100;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int i, x, p;
-    int curPlayers = 4;
-    struct gameState state;
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(curPlayers, kingCards, randomSeed, &state);
-    //set current player
-    state.whoseTurn = 0;
-    int curPlayer = 0;
-    int failCounter = 0;
-    //hand == 0 when
-        //p == 0, x == 0, 1
-        //p == 1, x == 0
-        //p == 2, x == 0, 1
+	testHand1[0] = adventurer;
+	testHand1[1] = copper;
+	testHand1[2] = silver;
+	testHand1[3] = gold;
+	testHand1[4] = smithy;
 
+	struct gameState G;
 
-    //controls combination of arrays that have cards at any time.
-    for (p = 0; p < 3; ++p) {
+	/*Clear the game state*/
+	memset(&G, 23, sizeof(struct gameState));
 
-        //controls which combination of cards get added.
-        for (x = 0; x < 3; ++x) {
+	/*Initialize the game*/
+	initializeGame(numPlayer, k, gameSeed, &G);
 
+	/*Set cards to testHand1, player 1 = [p]*/
+	G.handCount[p] = handCount;
+	memcpy(G.hand[p], testHand1, sizeof(int)*handCount);
 
-            //fill deck
-            if (p == 0 || p ==1 ) {
-                for (i = 0; i < 4; ++i) {
-                    state.deck[curPlayer][i] = i + x; //fill deck with cards 0-3 + x
-                }
-                state.deckCount[curPlayer] = 4;
-            }
-            else {
-                for (i = 0; i < 4; ++i) {
-                    state.deck[curPlayer][i] = -1; //empty deck
-                }
-                state.deckCount[curPlayer] = 0;
-            }
+	int i, cardStatus;
+	char c[25]; /*Used to assign int to char*/
 
-            //fill discard
-            if (p ==1 || p == 2) {
-                for (i = 0; i < 4; ++i) {
-                    state.discard[curPlayer][i] = i + x; //fill discard with cards 0-3 + x
-                }
-                state.discardCount[curPlayer] = 4;
-            }
-            else {
-                for (i = 0; i < 4; ++i) {
-                    state.discard[curPlayer][i] = -1; //empty deck
-                }
-                state.discardCount[curPlayer] = 0;
-            }
+	printf("Checking if Smithy card is present in player %d's hand...\n", p);
 
-            //zero hand count
-            state.handCount[curPlayer] = 3;
-            for (i = 0; i < state.handCount[curPlayer]; ++i) {
-                state.hand[curPlayer][i] = -1;
-                //printf("card = %d\n", state.hand[curPlayer][i]);
-            }
-            state.handCount[curPlayer] = 0;
+	/*Display the player's cards in hand and determine if smithy is present*/
+	for(i = 0; i < G.handCount[p]; i++){
+		cardNumToName(G.hand[p][i], c);	//Converts card number to string
+		printf( "%s, ", c);
+		if(strcmp(c, "Smithy") == 0){
+			cardStatus = 1;	//Card is present in hand
+		}
+	}
 
-            playAdventurer(&state);
+	if(cardStatus == 1){
+		printf("\nTest PASSED, card is present in player %d's hand\n\n", p);
+	} else {
+		printf("\nTest FAILED, card is not present in player %d's hand\n\n", p);
+	}
 
+	cardStatus = 0;	/*Reset status to 0*/
 
-//            printf("x=%d, p=%d, count: %d \n", x, p, state.handCount[curPlayer]);
-//                for (i = 0; i < state.handCount[curPlayer]; ++i) {
-//                printf("card %d", state.hand[curPlayer][i]);
-//            }
+	printf("Playing Smithy card and testing...\n");
+	smithyCard(p, &G, 4);	//Play smithy card from 4th hand pos
 
-//            printf("\n");
+	/*Check if hand count is +3 after play of Smithy*/
+	if(G.handCount[p] == 7){
+		printf("Test PASSED, player %d's hand received +3 cards\n\n", p);
+	} else {
+		printf("Test FAILED, player %d's hand DID NOT receive +3 cards\n\n", p);
+	}
 
-            if (p == 0 || p == 2) {
-                if (state.handCount[curPlayer] == x && x <= 2) {
-                    printf("Test Passed\n");
-                }
-                else {
-                    printf("Test Failed\n");
-                    failCounter++;
-                }
-            }
-            else if (p == 1) {
-                if (x == 0 && state.handCount[curPlayer] == 0) {
-                    printf("Test Passed\n");
-                }
-                else if (x > 0 && state.handCount[curPlayer] == 2) {
-                    printf("Test Passed\n");
-                }
-                else {
-                    printf("Test Failed\n");
-                    failCounter++;
-                }
-            }
-        }
-    }
-    if (failCounter <= 0) {
-        printf("All tests passed the Adventure Card\n");
-    }
-    else  {
-        printf("%d tests failed on the adventure card\n\n", failCounter);
-    }
+	/*Check if smithy card has been discarded from hand after card effects*/
+	for(i = 0; i < G.handCount[p]; i++){
+		cardNumToName(G.hand[p][i], c);	//Converts card number to string
+		printf( "%s, ", c);
+		if(strcmp(c, "Smithy") != 0){
+			cardStatus = 0;	//Card is NOT present in hand
+		}
+	}
 
-    return 0;
+	printf("\nTesting if card is discarded from hand...\n");
+	if(cardStatus == 0){
+		printf("Test PASSED, Smithy is discarded from player %d's hand after use\n\n", p);
+	} else {
+		printf("Test FAILED, Smithy card is NOT discarded from player %d's hand after use\n\n", p);
+	}
+
+	return 0;
+
 }
-
-
