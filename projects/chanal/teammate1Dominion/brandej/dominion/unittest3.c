@@ -1,108 +1,104 @@
+/***********************************************************************
+* Author : Allan Chan
+* ONID: chanal
+* Class: CS362
+* Filename: unittest3.c
+*
+* Description:
+*   Unit Test 3 that tests the shuffle() function.
+*	Testing two decks of 5 for player 1 and player 2.
+*	Player 1's deck should shuffle and not Player 2's deck.
+*	
+*
+************************************************************************/
+
 #include "dominion.h"
-#include <string.h>
+#include "dominion_helpers.h"
+#include "rngs.h"
 #include <stdio.h>
-#include <assert.h>
+#include <math.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 #include <time.h>
 
-/* Testing of scoreFor() funciton
-    -gardens causes errors due to passing numHandsCards 0 for a card and only finding curses
+//set NOISY_TEST to 0 to remove printfs from output
+#define NOISY_TEST 1
 
-*/
-int main() {
+int main(){
+	srand(time(NULL));
+	int gameSeed = rand() % 1000 + 1;
+	int i;
+	int numPlayer = 2;
+	int handCount = 5;
+	int deck1Shuffle = 0;
+	int deck2Shuffle = 0;
+	int k[10] = {adventurer, council_room, feast, gardens, mine,
+				 remodel, smithy, village, baron, great_hall};
 
-    printf("\nTesting scoreFor() function:\n");
+	/*Load deck with cards*/
+	int deck1[5] = {adventurer, province, feast, copper, gold};
+	int deck2[5] = {smithy, silver, copper, gold, adventurer};
+	int deck1Copy[5];
+	int deck2Copy[5];
+	struct gameState G;
 
-    int randomSeed = 100;
-    int maxPlayers = 4;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int officialPlayersScore[maxPlayers];
-    int testPlayersScore[maxPlayers];
-    int i;
-    struct gameState state;
-    int handCount = 5;
-    int discardCount = 5;
-    int deckCount = 5;
+	/*Clear the game state*/
+	memset(&G, 23, sizeof(struct gameState));
+
+	/*Initialize the game*/
+	initializeGame(numPlayer, k, gameSeed, &G);
+
+	/*Set cards to , player 1 = [0], player 2 = [1]*/
+	memcpy(G.deck[0], deck1, sizeof(int)*handCount);
+	memcpy(G.deck[1], deck2, sizeof(int)*handCount);
+	G.handCount[0] = G.handCount[1] = handCount;
+
+	/*Copy both decks*/
+	for(i = 0; i < handCount; i++) {
+		deck1Copy[i] = G.deck[0][i];
+		deck2Copy[i] = G.deck[1][i];
+	}
 
 
-    int curPlayers = 4;
+#if (NOISY_TEST == 1)
+	printf("Test, Deck 1 shuffle\n");
+#endif
 
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(curPlayers, kingCards, randomSeed, &state);
-    for (i = 0; i < curPlayers; ++i) {
-        state.handCount[i] = handCount;
-        state.discardCount[i] = discardCount;
-        state.deckCount[i] = deckCount;
-    }
+	//Before shuffle
+	printf("Player 0's deck before shuffle: %d, %d, %d, %d, %d \n", G.deck[0][0], G.deck[0][1], G.deck[0][2], G.deck[0][3], G.deck[0][4]);
+	printf("Player 1's deck before shuffle: %d, %d, %d, %d, %d \n", G.deck[1][0], G.deck[1][1], G.deck[1][2], G.deck[1][3], G.deck[1][4]);
+
+	//Shuffle Player 1's deck [0]
+	//assert(shuffle(0, &G) == 0);	//commented out assertions
+	shuffle(0, &G);
+
+	//After shuffle
+	printf("Player 0's deck after shuffle: %d, %d, %d, %d, %d \n", G.deck[0][0], G.deck[0][1], G.deck[0][2], G.deck[0][3], G.deck[0][4]);
+	printf("Player 1's deck after shuffle: %d, %d, %d, %d, %d \n", G.deck[1][0], G.deck[1][1], G.deck[1][2], G.deck[1][3], G.deck[1][4]);
 
 
-    //player 1
-    int p1 = 0;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p1][i] = curse;
-        state.discard[p1][i] = curse;
-        state.deck[p1][i] = curse;
-    }
-    //math based on card values
-    testPlayersScore[p1] = -1 * (3 * handCount);
-    //scoreFor function
-    officialPlayersScore[p1] = scoreFor(p1, &state);
+	for(i = 0; i < handCount; i++){
+		if(G.deck[0][i] == deck1Copy[i]){
+			deck1Shuffle++;	//Increment if card same position
+		}
+		if(G.deck[1][i] != deck2Copy[i]){
+			deck2Shuffle++;	//Should not increment since Player 2's deck should not have shuffled
+		}
+	}
 
-    //player 2
-    int p2 = 1;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p2][i]    = gardens;
-        state.discard[p2][i] = great_hall;
-        state.deck[p2][i]    = province;
-    }
-    //math based on card values
-    testPlayersScore[p2] = ((handCount * 3) / 10) + (1 * handCount) + (6 * handCount);
-    //scoreFor function
-    officialPlayersScore[p2] = scoreFor(p2, &state);
+	assert(deck1Shuffle <= 4); //Shuffled cards can be in the same position for a deck of 5 cards
+	assert(deck2Shuffle == 0); //Deck 2 should not have shuffled and should have cards in same position
 
-    //player 3
-    int p3 = 2;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p3][i]    = great_hall;
-        state.discard[p3][i] = gardens;
-        state.deck[p3][i]    = curse;
-    }
-    //math based on card values
-    testPlayersScore[p3] = (1 * handCount) + ((handCount * 3) / 10) + (-1 * handCount);
-    //scoreFor function
-    officialPlayersScore[p3] = scoreFor(p3, &state);
+#if (NOISY_TEST == 1)
+	printf( "Deck 1 has %d cards in same position after shuffle, can be <= 4\n", deck1Shuffle);
+	printf( "Deck 2 has %d cards in a different position, should not have shuffled\n", deck2Shuffle);
+	if(deck1Shuffle <= 4 && deck2Shuffle == 0) {
+		printf( "Test PASSED\n\n");
+	} else {
+		printf( "Test FAILED\n\n");
+	}
+#endif
 
-    //player 4
-    int p4 = 3;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p4][i]    = estate;
-        state.discard[p4][i] = duchy;
-        state.deck[p4][i]    = gardens;
-    }
-    //math based on card values
-    testPlayersScore[p4] = (1 * handCount) + (3 * handCount) + ((handCount * 3) / 10);
-    //scoreFor function
-    officialPlayersScore[p4] = scoreFor(p4, &state);
-
-    //test score is calculated by hand, offical score is via the functions
-    int counter = 0;
-    for (i = 0; i < curPlayers; ++i) {
-        if(testPlayersScore[i] != officialPlayersScore[i]) {
-            //printf("test score: %d, \"offical score\" %d\n", testPlayersScore[i], officialPlayersScore[i]);
-            printf("Test failed on player %d\n", i);
-            counter++;
-            //assert(testPlayersScore[i] == officialPlayersScore[i]);
-        }
-        else {
-            printf("Test passed on player %d\n", i);
-        }
-    }
-    if (counter <= 0) {
-        printf("All tests passed scoreFor()");
-    }
-    else {
-        printf("%d tests failed on scoreFor()\n\n", counter);
-    }
-
-    return 0;
+	return 0;
 }
