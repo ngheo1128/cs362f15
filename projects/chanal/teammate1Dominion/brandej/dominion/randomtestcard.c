@@ -1,148 +1,118 @@
+/***********************************************
+ * Author: Allan Chan
+ * ONID: chanal
+ * class: CS362
+ * Filename: randomtestcard.c
+ * Description:
+ *  Random testing for smithy card effects
+ *  Smithy when played allows plays +3 cards
+ * **********************************************/
+
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include <string.h>
+#include "rngs.h"
+#include "interface.c"
 #include <stdio.h>
-#include <assert.h>
+#include <math.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 #include <time.h>
 
-int main() {
-
-    printf("\nTesting Village Card function:\n");
-
-    int randomSeed = 100;
-    int maxPlayers = 4;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int x, k, z;
-    struct gameState state;
-    int prevHandCount, prevNumActions, handPos, curPlayer, curPlayers;
-    int failCounter = 0;
-    int passCounter = 0;
-    int trials = 1000; //number of tests to be run
-    int maxCards = 500;
-
+int main(){
     srand(time(NULL));
-    int tempHand[maxPlayers][maxCards];
-    int tempHandCount[maxPlayers];
-    int tempDeck[maxPlayers][maxCards];
-    int tempDeckCount[maxPlayers];
-    int tempDiscard[maxPlayers][maxCards];
-    int tempDiscardCount[maxPlayers];
-    int villageHandPos[maxPlayers];
-    while (trials > 0) {
+    int gameSeed = rand();
+    int p;
+    int numPlayer = 4;
+    int i = 0, n;
+    int error1 = 0, error2 = 0;
+    int randomIt = (rand() % 10000) + 20001;  
+    int k[10] = {adventurer, council_room, feast, gardens, mine,
+                remodel, smithy, village, baron, great_hall};
+    int iteration = 0;
 
-        //randomize number of players
-        curPlayers = (rand() % 3) + 2;
-        memset(&state, 'z', sizeof(struct gameState));
-        initializeGame(curPlayers, kingCards, randomSeed, &state);
+    struct gameState G;
+    
+    printf("\nStarting random testing for Smithy card effects...\n");
 
-        //reset gameState & test state
-        //set all cards = -1, count = 0
-        for (z = 0; z < maxPlayers; ++z) {
-            for (k = 0; k < maxCards; ++k) {
-                tempHand[z][k] = -1;
-                tempDeck[z][k] = -1;
-                tempDiscard[z][k] = -1;
-            }
-            tempHandCount[z] = 0;
-            tempDeckCount[z] = 0;
-            tempDiscardCount[z] = 0;
+    for(n = 0; n < randomIt; n++){
+        int randNum = rand() %3;
+        p = floor(Random() * 4);
+
+        memset(&G, 23, sizeof(struct gameState));   //clear game state
+        initializeGame(numPlayer, k, gameSeed, &G); //initialize game
+
+        /*Randomly choose a deckcount from 0, -1, to MAX_DECK to induce shuffling*/
+        if(randNum == 0){
+            G.deckCount[p] = 0;
+        } else if(randNum == 1) {
+            G.deckCount[p] = -1;
+        } else {
+            G.deckCount[p] = floor(Random() * MAX_DECK);
+        }
+        G.discardCount[p] = floor(Random() * MAX_DECK);
+        G.playedCardCount = floor(Random() * MAX_DECK);
+
+
+        /*Set up deck, hand, discard*/
+        for(i = 0; i < G.deckCount[p]; i++){
+            G.deck[p][i] = floor(Random() * 5);
+        }
+        for(i = 0; i < G.discardCount[p]; i++){
+            G.discard[p][i] = floor(Random() * 5);
         }
 
-        //init Counts, each character deck is not influenced from others.
-        for (z = 0; z < curPlayers; ++z) {
-            tempHandCount[z] = (rand() % maxCards); // always have space for at least 1 adventurer card
-            if (tempHandCount[z] == 0) {
-                tempHandCount[z] = 1;
-            }
-            state.handCount[z] = tempHandCount[z];
-            tempDeckCount[z] = rand() % (maxCards - tempHandCount[z]);
-            state.deckCount[z] = tempHandCount[z];
-            tempDiscardCount[z] = rand() % (maxCards - (tempHandCount[z] + tempDeckCount[z]));
-            state.discardCount[z] = tempHandCount[z];
+        G.handCount[p] = 1; //set player handcount to 1
+        G.hand[p][0] = smithy;    //set player's only card in hand to council room for testing purposes
+
+        struct gameState pre;
+        struct gameState post = G;
+
+
+        pre.handCount[p] = G.handCount[p];   //handcount before smithy
+    
+        //smithyCard(p, &G, 0);   //play smithy from hand pos 0
+        //Commented smithyCard to implement teammate's playSmithy
+        playSmithy(&G, 0);
+
+        post.handCount[p] = G.handCount[p];  //handcount after smithy
+        post.hand[p][0] = G.hand[p][0];   //post hand card at hand pos 0
+
+        printf("\nTesting iteration: %d...\n", iteration++);
+
+
+        /*Check hand count after smithy played, +2 since smithy should be discarded*/
+        if(pre.handCount[p] + 2 == post.handCount[p]){
+            printf("TEST PASSED - obtained correct number of cards\n");
+        } else {
+            printf("TEST FAILED - did not obtain correct number of cards %d\n", post.handCount[p]);
+            error1++;
         }
 
-        for (z = 0; z < curPlayers; ++z) {
-            villageHandPos[z] = rand() % tempHandCount[z];
-            for (k = 0; k < tempHandCount[z]; ++k) {
-                tempHand[z][k] = rand() % 27;
-            }
-            //set pos to village card
-            tempHand[z][villageHandPos[z]] = village;
-
-            for (k = 0; k < tempDeckCount[z]; ++k) {
-                tempDeck[z][k] = rand() % 27;
-            }
-            for (k = 0; k < tempDiscardCount[z]; ++k) {
-                    tempDiscard[z][k] = rand() % 27;
-            }
+        /*Check hand if smithy is still there*/
+        if(post.hand[p][0] == smithy){
+            printf("TEST FAILED - smithy was not discarded\n");
+            error2++;
+        } else {
+            printf("TEST PASSED - smithy is discarded from hand\n");
         }
 
-        memcpy(&state.hand, &tempHand, sizeof(int) * maxPlayers * maxCards);
-        memcpy(state.handCount, tempHandCount, sizeof(int) * maxPlayers);
-
-        memcpy(&state.deck, &tempDeck, sizeof(int) * maxPlayers * maxCards);
-        memcpy(state.deckCount, tempDeckCount, sizeof(int) * maxPlayers);
-
-        memcpy(&state.discard, &tempDiscard, sizeof(int) * maxPlayers * maxCards);
-        memcpy(&state.discardCount, &tempDiscardCount, sizeof(int) * maxPlayers);
-
-        for (x = 0; x < curPlayers; ++x) {
-            curPlayer = x;
-            state.whoseTurn = x;
-            handPos = villageHandPos[curPlayer];
-
-            prevNumActions = state.numActions;
-            prevHandCount = state.handCount[curPlayer];
-
-            playVillage(&state, handPos);
-
-            //test 3 cards added and 1 removed
-            //printf("3 cards added test:\n");
-            if (prevHandCount == state.handCount[curPlayer]) {   //1 cards added which discounts 1 lost
-                passCounter++;
-            }
-            else {
-                failCounter++;
-            }
-            if (state.discardCount[curPlayer] == tempDiscardCount[curPlayer] + 1 ) {
-                passCounter++;
-            }
-            else {
-                failCounter++;
-            }
-
-            //printf("prevActions: %d, numActions %d", prevNumActions, state.numActions);
-            if (prevNumActions + 2 == state.numActions) {   //2 actions added
-                passCounter++;
-            }
-            else {
-                failCounter++;
-            }
-
-        }
-        --trials;
     }
-    printf("Tests Passed: %d, Test Failed %d\n", passCounter, failCounter);
+
+    /*Print summary of random test results*/
+    if(error1 == 0){
+        printf("\nAll %d test1 passed, player obtained correct number of cards\n", randomIt);
+    } else {
+        printf("\nTest1 error count: incorrect number of cards drawn %d of %d tests\n", error1, randomIt);
+    }
+
+    if(error2 == 0){
+        printf("All %d test2 passed, smithy was discarded from hand\n\n", randomIt);
+    } else {
+        printf("Test2 error count: smithy not discarded from hand %d of %d tests\n\n", error2, randomIt);
+    }
+
     return 0;
+
 }
 
-
-/**********
-Function: playVillage
-Purpose: The Council Room card draws 1 extra cards and gives 2 extra buys
-Inputs: gameState, handPos
-**********/
-//int playVillage(struct gameState *state, int handPos) {
-//
-//    int currentPlayer = whoseTurn(state);
-//      //+1 Card
-//      drawCard(currentPlayer, state);
-//
-//      //+2 Actions
-//      state->numActions = state->numActions + 2;
-//
-//      //discard played card from hand
-//      discardCard(handPos, currentPlayer, state, 9);
-//      return 0;
-//}

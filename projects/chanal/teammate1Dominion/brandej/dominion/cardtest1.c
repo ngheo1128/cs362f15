@@ -79,7 +79,9 @@ int main(){
 	cardStatus = 0;	/*Reset status to 0*/
 
 	printf("Playing Smithy card and testing...\n");
-	smithyCard(p, &G, 4);	//Play smithy card from 4th hand pos
+	//smithyCard(p, &G, 4);	//Play smithy card from 4th hand pos
+    //Commented out smithyCard to implement teammate's smithy function call
+    playSmithy(&G, 4);
 
 	/*Check if hand count is +3 after play of Smithy*/
 	if(G.handCount[p] == 7){

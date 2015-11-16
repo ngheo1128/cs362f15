@@ -60,7 +60,8 @@ int main() {
 		printf("\nTest FAILED, card is NOT present in player %d's hand\n\n", p);
 	}
 
-	councilRoomCard(p, GS, 4);	//Play council room card
+	//councilRoomCard(p, GS, 4);	//Play council room card, commented out my own code to be able to match teammate's function
+    playCouncil_Room(GS, 4);
 
 	cardStatus = 0; //Reset to zero
 

@@ -84,7 +84,9 @@ int main() {
 	printf("Playing and testing adventurer card...\n");
 
 	/*Play Adventurer card from hand*/
-	adventurerCard(drawntreasure, &G, p, cardDrawn, temphand, z);
+	//adventurerCard(drawntreasure, &G, p, cardDrawn, temphand, z); 
+    //Commented out to match teammate's playAdventurer function
+    playAdventurer(&G);
 
 	/*Display the player's cards in hand and determine if Adventurer is present*/
 	for(i = 0; i < G.handCount[p]; i++){

@@ -1,136 +1,118 @@
-//Woo Choi
-//randomtestadventurer.c
-//Random Adventurer Test
+/***********************************************
+ * Author: Allan Chan
+ * ONID: chanal
+ * class: CS362
+ * Filename: randomtestadventurer.c
+ * Description:
+ *  Random test for adventurer card effects
+ *  Tests if adventurer card is still in hand
+ *  and if drawntreasure is correct
+ *
+ * **********************************************/
 
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include <string.h>
-#include <stdio.h>
-#include <assert.h>
 #include "rngs.h"
-#include <time.h>
+#include "interface.c"
+#include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
-
-/*Testing Adventurer
-int adventurerRefactor(int currentPlayer, struct gameState *state)
-{
-	//copied paste from original cardEffect
-
-	  int temphand[MAX_HAND];// moved above the if statement
-	  int drawntreasure=10;
-	  int cardDrawn=0;
-	  int z = 0;// this is the counter for the temp hand
-
-	
-	// Actual implementation
-    while(drawntreasure<2){
-		if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
-			shuffle(currentPlayer, state);
-		}
-	
-		drawCard(currentPlayer, state);
-		cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	
-		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-		drawntreasure++;
-		else{
-			temphand[z]=cardDrawn;
-			state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-			z++;
-		}
-    }
-    
-	while(z-1>=0){
-		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-		z=z-1;
-    }
-      return 0;	
-}
-
-From refactor.c :
-1. Adventurer:
-	drawntreasure's initial value changed from 0 to 10.
-	the first while loop will not run
-*/
-
+#include <assert.h>
+#include <string.h>
+#include <time.h>
 
 int main(){
-	int numTestRun = 2000;  //number of tests run. Change to change the # of runs
-	srand(time(NULL));
-	int i, j;
-    int seed = 1000;
-    int numPlayer = 2;
-    int r;	
-    int k[10] = {adventurer, council_room, feast, gardens, mine
-               , remodel, smithy, village, baron, great_hall};
+    srand(time(NULL));
+    int gameSeed = rand();
+    int p;
+    int numPlayer = 4;
+    int i = 0, n;
+    int error1 = 0, error2 = 0;
+    int randomIt = (rand() % 10000) + 20001;  
+    int k[10] = {adventurer, council_room, feast, gardens, mine,
+                remodel, smithy, village, baron, great_hall};
+
     struct gameState G;
-	int currentPlayer = whoseTurn(&G);
-	int currentCardNum;	// number of cards before the adventurer card is played.
-	int numFailedTest = 0; // failed test runs
-	int numSuccessfulTest = 0; // successful test runs
-	int playCount =0;  // used to play adventurer once per test run
-	int refreshGame =3; // used to refresh game
-	//Begin Adventurer testing
-	printf("******************\n");
-	printf("randomtestadventurer.c\n");
-	printf("Adventurer Random Card Test:\n");	
-	printf("Number of test runs: %d\n", numTestRun);
+    int drawntreasure = 0;
+    int cardDrawn = 0;
+    int z = 0;
+    int iteration = 0;
 
+    printf("\nStarting random testing for adventurer card effects...\n");
 
-	// initialize game state
-	memset(&G, 23, sizeof(struct gameState));   // clear the game state
-	r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
-	
-	// loooooooooop
-	for (j = 0; j < numTestRun; j++) {
-		// to only test 1 adventurer card per test run
-		playCount = 0;
-		
-		// fresh new game every 3 runs
-		if (refreshGame ==3) {
-			// initialize game state
-			memset(&G, 23, sizeof(struct gameState));   // clear the game state
-			r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
-			refreshGame = 0;
-		}
-		
-		// gain adventurer for currentPlayer and add to hand
-		// giving random factor here to see how it reacts to different number of cards in hand
-		if ( rand() % 2 == 1) {
-			gainCard(adventurer, &G, 2, currentPlayer);		
-			refreshGame++;
-		} else {
-			refreshGame++;
-		}
-		// go through hand to look for the adventurer card
-		// numbHandCards: How many cards current player has in hand 
-		for (i = 0; i < numHandCards(&G); i++) {
+    for(n = 0; n < randomIt; n++){
+        int temphand[MAX_HAND];
+        int randNum = rand()% 3;
 
-			// handCard: enum value of indexed card in player's hand
-			if(handCard(i, &G) == adventurer && playCount == 0){
-				playCount = 1;				
-				//give the random factor to play adventurer card
-				//realized this wasn't necessary
-				//if ( rand() % 2 == 1) {
-					// Play card with index handPos from current player's hand
-					currentCardNum = G.handCount[0];
-					printf("**Playing adventurer card: \n");
-					playCard(i,-1,-1,-1,&G);	
-					printf("  Expected card count: %d\n  Actual card count: %d\n",currentCardNum+2,G.handCount[0]);
-					if (currentCardNum+1 != G.handCount[0]) {
-						printf("  Expected and Actual card count do not match!!***\n");				
-						numFailedTest++;
-					} else {
-						printf("  Adventurer card worked as intended!\n");
-						numSuccessfulTest++;
-					}
-				//}
-			}
-		}	
-	}
-	printf("Adventurer Card Test is now over\n\n");
-	printf("Number of successful runs: %d\n", numSuccessfulTest);
-	printf("Number of failed runs: %d\n", numFailedTest);
-	printf("Number of times adventurer was not used: %d\n\n", numTestRun - numSuccessfulTest - numFailedTest);
-	return 0;
+        p = floor(Random() * 4);
+       
+        initializeGame(numPlayer, k, gameSeed, &G); //initialize game
+    
+        /*Randomizing deck count to induce shuffling if deck <=0*/
+        if(randNum == 0){
+            G.deckCount[p] = 0;
+        } else if(randNum == 1) {
+            G.deckCount[p] = -1;
+        } else{
+            G.deckCount[p] = floor(Random() * MAX_DECK);
+        }
+
+       
+        G.discardCount[p] = floor(Random() * MAX_DECK);   
+        G.playedCardCount = floor(Random() * MAX_DECK);
+
+        /*Set up deck, hand, discard*/
+        for(i = 0; i < G.deckCount[p]; i++){
+            G.deck[p][i] = floor(Random() * 5);
+        }
+        
+        for(i = 0; i < G.discardCount[p]; i++){
+            G.discard[p][i] = floor(Random() * 5);
+        }
+
+        G.handCount[p] = 1; //set players hand count to 1
+        G.hand[p][0] = adventurer;  //set players only card in hand to adventurer for testing purposes
+    
+        /*Play adventurer card with G gameState*/
+        //adventurerCard(drawntreasure, &G, p, cardDrawn, temphand, z);   
+        //Commented out adventurerCard to implement teammate's adventurer code
+        adventurerRefactor(p, &G);
+
+        drawntreasure = 0;
+
+        /*Loop through hand and find all treasure cards, player's '*/
+        for(i = 0; i < G.handCount[p]; i++){
+             if(G.hand[p][i] == copper || G.hand[p][i] == silver || G.hand[p][i] == gold){
+                drawntreasure++;
+            }            
+        
+       }
+
+        printf("\nTesting iteration: %d...\n", iteration++);
+        /*Check if adventurer is still in hand, if so error*/
+        if(G.hand[p][0] == adventurer){
+            printf("TEST FAILED - Adventurer card is not discarded from hand\n");
+            error1++;
+        }
+        /*Check if drawntreasure is not 2, if so error*/
+        if(drawntreasure != 2){
+            printf("TEST FAILED - drawntreasure count is inccorect\n");
+            error2++;
+        }
+
+        memset(&G, 23, sizeof(struct gameState));   //clear game state
+    }
+
+    /*Print summary of error counts of both tests after testing finishes*/
+    if(error1 != 0){
+        printf("\nError count for adventurer card in hand and not discarded: %d of %d tests", error1, randomIt);
+    }
+    if(error2 != 0){
+        printf("\nError count for incorrect drawntreasure in hand: %d of %d tests\n\n", error2, randomIt);
+    }
+
+    return 0;
 }
+
+
+
