@@ -31,12 +31,12 @@
  		fail = 1; 
  	}
 
- 	if(state->handCount[0] != 6) {
+ 	if(state->handCount[0] != 7) {
  		printf("smithy_card discard/draw error\n"); 
  		fail = 1; 
  	}
 
- 	if(state->deckCount[0] != 8) {
+ 	if(state->deckCount[0] != 7) {
  		printf("smithy_card does not draw from deck\n"); 
  		fail = 1; 
  	}
