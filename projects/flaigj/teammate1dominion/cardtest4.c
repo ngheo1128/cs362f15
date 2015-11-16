@@ -1,9 +1,11 @@
-/*
-This program tests the mineCard function.
-The parameters for this function are:
-int currentPlayer, struct gameState *state, int handPos, int choice2, int choice1
-
-*/
+/* -----------------------------------------------------------------------
+ * Unit test to check whether discarding works correctly
+ *
+ * cardtest4: cardtest4.c dominion.o rngs.o
+ * gcc -o cardtest4 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
+ *
+ *-----------------------------------------------------------------------
+ */
 
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -11,138 +13,118 @@ int currentPlayer, struct gameState *state, int handPos, int choice2, int choice
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-#include "interface.h"
-#include <stdlib.h>
 
-// set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
+int main() 
+{
+   int seed = 1000;
+   int numPlayer = 3;
+   int k[10] = {adventurer, council_room, curse, feast, gardens, mine, sea_hag, 
+      baron, smithy, great_hall, };
+   struct gameState G;
 
-int main() {
+   printf("Testing the sea_hag card for correctness.\n\n");
 
-    int mineCardLoc;
-    int i;
+   memset(&G, 23, sizeof(struct gameState));   // clear the game state
+   initializeGame(numPlayer, k, seed, &G); 	// initialize a new game
 
-    //initialize the game
-    struct gameState G;
-    struct gameState D;
+   int cost = getCost(sea_hag);
+   printf("Test 1: How many coins is a sea_hag card?\n");
+   if (cost == 4)
+      printf("Passed: It costs 4 coins.\n\n");
+   else
+      printf("Failed: It costs %d\n\n", cost);
 
-    int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, 
-    sea_hag, tribute, smithy};
+   // add sea_hag card to hand
+   G.hand[0][4] = sea_hag;
+   G.hand[1][4] = province;
+   G.hand[2][4] = province;
 
-    initializeGame(2, k, 2, &G);
+   printf("Test 2: Is sea_hag in hand?\n");
+   int i;
+   int isSeaHag = 0;
+   for (i = 0; i < G.handCount[0]; i++)
+   {
+      if (G.hand[0][i] == sea_hag)
+      {
+	 isSeaHag = 1;
+	 i = G.handCount[0];
+      }
+   }
 
-    //copper, silver, gold, estate (to check bounds), and minecard to hand.
-    G.hand[0][0] = copper;
-    G.hand[0][1] = silver;
-    G.hand[0][2] = gold;
-    G.hand[0][3] = estate;
-    G.hand[0][4] = mine;
+   if (isSeaHag)
+      printf("Passed: SeaHag in hand.\n\n");
+   else 
+      printf("Failed: No sea_hag in hand.\n\n");
 
-    //save default
-    D = G;
+   // play a sea_hag card
+   cardEffect(sea_hag, 0, 0, 0, &G, 4, 0);
 
-    // check state of game before calling function
-    // printState(&G);
-    //  printSupply(&G);
-    // // printScores(&G);
-    // printHand(0, &G);
-    // // printPlayed(0, &G);
-    // printDeck(0, &G);
-    // printf ("Number of cards in hand %i \n", numHandCards(&G));
+   smithyCard(0, &G, 4);
+   //int oldHand = G.deckCount[0]+G.deckCount[0];
 
+   printf("Test 3: Checking quantity in player 1's discard pile.\n");
+   
+   if (G.discardCount[0] > 0)
+      printf("Passed: At least 1 card was discarded.\n\n");
+   else
+      printf("Failed: There are no cards in the discard pile.\n\n");
 
-    printf("* * * * * * * * * * * * * * * * Testing mineCard card* * * * * * * * * * * * * * * * \n");
+   printf("Test 4: Checking if player 1 has a curse card in hand.\n");
 
-    //keeps track of the mine card's location.
-    mineCardLoc = 4;
-    // loop through each type of coin and swap it for each available coin.
-    int coin;
-    char name[32];
+   int isCurse = 0;
+   for (i = 0; i < G.handCount[0]; i++)
+   {
+      if (G.hand[0][i] == sea_hag)
+      {
+	 isCurse = 1;
+	 i = G.handCount[0];
+      }
+   }
 
-    for (i = 0; i < 3; i++)
-    {
-        for (coin = copper; coin < gold + 1; coin++)
-        {
-            //reset
-            G = D;
-            cardNumToName(coin, name);
-            //get cost of coin to be swapped
+   if (isCurse)
+      printf("Failed: Curse card in player 1's hand.\n\n");
+   else
+      printf("Passed: Curse card not in player 1's hand\n\n");
 
+   printf("Test 5: Checking if other players have curse cards at top of deck.\n");
 
+   int isCurseP2 = 0;
+   int isCurseP3 = 0;
 
-            printf ("Testing swapping position %i for %s \n", i, name);
-            printf ("code returned: %i \n", playCard(mineCardLoc, i, coin, -1, &G));
-            printf ("cost of choice1 is %i \n", getCardCost(G.hand[0][i]));
+   if (G.deck[1][G.deckCount[1]-1] == curse)
+      isCurseP2 = 1;
 
-            //verify that you can only play swap affordable cards
-            if (getCardCost(G.hand[0][i]) + 3 > getCardCost(coin))
-            {
-                int playedIndex;
-                int foundMine = 0;
-                int foundCoin = 0;
-                printf ("affordable \n");
-                //assert (G.hand[0][i] == coin);
-                printf ("################################################### \n Error: Expected coin in hand location %i. \n ################################################### \n", i);
+   if (G.deck[2][G.deckCount[2]-1] == curse)
+      isCurseP3 = 1;
 
-                //verify that mine card is out of hand
-                //assert (G.hand[0][mineCardLoc] != mine);
-                printf ("################################################### \n Error: expected non-mine card in hand location %i. \n ################################################### \n", mineCardLoc);
+   if (isCurseP2 && isCurseP3)
+      printf("Passed: Curse cards in top of deck of other players hands.\n\n");
+   else
+      printf("Failed: Curse card not int top of deck of other player hands.\n\n");
 
-                //verify that the minecard is in the played
-                for (playedIndex = 0; playedIndex < G.playedCardCount; playedIndex++)
-                {
-                    if (G.playedCards[playedIndex] == mine)
-                    foundMine = 1;
-                    if (G.playedCards[playedIndex] == mine)
-                    foundCoin = 1;
-                }
-                // assert (foundMine == 1);
-                printf ("################################################### \n Error: expected mine card in played area. \n ################################################### \n");
+   printf("Test 6: Total number of cards should be 10 for player 1.\n");
+   int totals = G.handCount[0] + G.deckCount[0] + G.discardCount[0];
 
-                //assert (foundCoin == 1);
-                printf ("################################################### \n Error: expected a coin card in played area. \n ################################################### \n");
+   if (totals == 10)
+      printf("Passed: Total cards correct.\n\n");
+   else
+      printf("Failed: Total cards are %d.\n\n", totals);
 
+   isSeaHag = 0;
+   for (i = 0; i < G.handCount[0]; i++)
+   {
+      if (G.hand[0][i] == sea_hag || G.deck[0][i] == sea_hag)
+      {
+	 isSeaHag = 1;
+	 i = G.handCount[0];
+      }
+   }
 
-            }
-            else
-            {
-                int playedIndex;
-                int foundMine = 0;
-                int foundCoin = 0;
+   printf("Test 7: Is sea_hag anywhere in player 1's piles?\n");
+   if (isSeaHag)
+      printf("Passed: SeaHag in hand\n\n");
+   else
+      printf("Failed: SeaHag not in hand.\n\n");
 
-                printf ("unaffordable \n");
-                assert (G.hand[0][i] != coin);
-                //verify that mine card is still in hand
-                assert (G.hand[0][mineCardLoc] == mine);
-
-                //verify that the minecard hasn't been played
-                for (playedIndex = 0; playedIndex < G.playedCardCount; playedIndex++)
-                {
-                    if (G.playedCards[playedIndex] == mine)
-                    foundMine = 1;
-                    if (G.playedCards[playedIndex] == mine)
-                    foundCoin = 1;
-                }
-                assert (foundMine == 0);
-                assert (foundCoin == 0);
-
-            }
-        }
-    }
-
-    //Try playing illegal choice1 for coin
-    G = D;
-    cardNumToName(copper, name);
-    assert (playCard(mineCardLoc, 3, coin, -1, &G) == -1);
-
-    G = D;
-    //Try playing illegal choice2 for treasure
-    // assert (playCard(mineCardLoc, 0, estate, -1, &G) == -1);
-    printf ("################################################### \n Error: allows user to choose a non treasure card to buy. \n ################################################### \n");
-
-    printf("All tests passed!\n");
-
-    
-    
-    return 0;
+   return 0;
 }

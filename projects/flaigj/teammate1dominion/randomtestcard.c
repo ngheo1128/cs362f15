@@ -1,166 +1,192 @@
-// This tester tests the function smithy();
+/*
+ * Author: Jason Flaig
+ * asrandomtestcard.c
+ * Date: 11/7/2015
+ * Modified: 11/8/2015
+ * Purpose: Use random number of cards in hand to determine whether cutpurse succeeds 
+ *  in adding 2 coins for player and testing whether played and discards are correct
+ */
 
+#include <stdlib.h>
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
+#include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-#include "interface.h"
-#include <time.h> 
-#include <stdio.h>   
-#include <stdlib.h> 
+#include <math.h>
+#include <time.h>
 
-//number of tests the user wants to run
-const int numTestRuns = 50;
-const int Max_Deck_Size = 500;
-
-int main ()
+/* Checks current gamestate to old gamestate when verifying tests */
+int cutpurseTest(struct gameState *post, int player)
 {
-	printf("* * * * * * * * * * * * * * * * randomtestcard * * * * * * * * * * * * * * * * \n");
+	int failCount = 0;
+	int copperTest = 1;
+	int discardTest = 1;
+	int discardPlayedCardTest = 1;
+	int coinTest = 1;
+	int preCopperCount[4] = {0, 0, 0, 0};		// counts for each players copper
+	int postCopperCount[4] = {0, 0, 0, 0};
+	struct gameState pre;
+	int temphand[MAX_HAND];
+	memcpy(&pre, post, sizeof(struct gameState));
+	int handPos = -1;
+	int myPlayers[] = {0, 1, 2, 3};		// initialized positions, uneeded each val is -1
 
 	int i;
-    int j;
-    int peekIndex;
-    struct gameState G;
-    char name[30];
-
-    int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, 
-    sea_hag, tribute, smithy};
-    initializeGame(2, k, 2, &G);
-
-    //default gamestate.
-    struct gameState D;
-    srand(time(NULL));
-    int card;
-    G.deckCount[0] = 0;
-    int deckCounter;
-
-    //expected gamestates.
-    int cardsDrawn[27];
-    int cardsDrawnCount;
-    int actualcardsDrawn[27];
-    int expectedDiscardCount;
-    int expectedHandSize;
-
-
-    int deckSize = rand() % MAX_DECK + 1;
-    int handPlayed;
-
-    //initialize cardDrawn
-    for (i = 0; i < 27; i++)
+	// find hand position of cutpurse
+	for (i = 0; i < post->handCount[player]; i++)
 	{
-    		cardsDrawn[i]=0;
-    		actualcardsDrawn[i] = 0;
+		if (post->hand[player][i] == cutpurse)
+			handPos = i;
 	}
 
-    //fill deck with random cards
-    for (i = 0; i < deckSize; i++)
-    {
-    	deckCounter = G.deckCount[0];
-    	card = rand() % 27; 
-    	G.deck[0][deckCounter] = card;
-    	G.deckCount[0]++;
-    }
+	cardEffect(cutpurse, 0, 0, 0, post, handPos, 0);
 
-    //fill hand with smithy cards - We're not testing the playcard function so we're not checking to 
-    //see if it's played or not
-    for (i = 0; i < numHandCards(&G); i++)
-    {
-    	G.hand[0][i] = smithy;
-    }
-
-    shuffle(0, &G);
-
-    //store default state
-    D = G;
-
-    for (i = 0; i < numTestRuns; i++)
-    {
-    	printf("Run number %i \n", i);
-    	G = D;
-    	shuffle(0, &G);
-    	cardsDrawnCount = 0;
-    	expectedHandSize = numHandCards(&G) + 2; // + 3 cards drawn - 1 smithy card discarded
-    	expectedDiscardCount = 1;
-
-    	for (j = 0; j < 27; j++)
+	/* Check all oponents of player to determine if player had a copper card 
+	was it removed */
+	// provide exclusion for current player
+	// check pre gamestate of all players against post gamestate
+	// check for difference of 1 in copper
+	int p;
+	for (p = 0; p < 4; p++)
+	{
+		if (p != player)		// exclusion of current player
 		{
-    		cardsDrawn[j]=0;
-    		actualcardsDrawn[j] = 0;
+			for (i = 0; i < pre.handCount[p]; i++)
+			{
+				if (pre.hand[p][i] == copper)
+				{
+					myPlayers[p] = -1;		// if copper in hand include player for fail checking
+					preCopperCount[p]++;
+				}
+			}
+
+			for (i = 0; i < post->handCount[p]; i++)
+			{
+				if (post->hand[p][i] == copper)
+					postCopperCount[p]++;
+			}
+		}	
+	}
+	
+	for (p = 0; p < 4; p++)
+	{
+		if (p != player)		// exclusion of current player
+		{
+			if (p != myPlayers[p])		// exclude other players in test if never had coppers
+			{
+				if ((preCopperCount[p] - postCopperCount[p]) != 1)
+				{
+					copperTest = 0;
+					failCount++;
+				}
+
+				/*if ((post->discardCount[p] - pre.discardCount[p]) == 0)
+				{
+					discardTest = 0;
+					failCount++;
+				}*/
+			}
+		}
+	}
+
+	// if coin difference 2 then 2 coins added  
+	if ((post->coins - pre.coins) != 2)
+	{
+		coinTest = 0;
+		failCount++;
+	}
+
+	/*if ((post->discardCount[player] - pre.discardCount[player]) == 0)
+	{
+		discardPlayedCardTest = 0;
+		failCount++;
+	}*/
+
+	if (failCount > 0)
+	{
+		if (copperTest == 0)
+		{
+			printf("Coppers removed test failed.\n");
 		}
 
-		peekIndex = G.deckCount[0] - 1;
-    	//peeks at the deck to see what the next 3 cards are
-    	for (j = 0; j < 3; j++)
-    	{
+		if (discardTest == 0)
+		{
+			printf("Player discard of coppers test failed.\n");
+		}
+		
+		if (discardPlayedCardTest == 0)
+		{
+			printf("Player discard played card failed.\n");
+		}
 
-    		card = G.deck[0][peekIndex];
-    		cardNumToName(card, name);
-    		//printf("deck card %i: %s\n", card, name);
-    		cardsDrawn[card] = cardsDrawn[card] + 1;
-    		cardsDrawnCount++;
-    		peekIndex--;
-            if (peekIndex < 0)
-            {
-                break;
-            }
-    	}
+		if (coinTest == 0)
+		{
+			printf("2 coins added to player hand failed.\n");
+		}
 
-    	//add the other 4 smithy cards not played
-    	for (j = 0; j < 4; j++)
-    	{
-    		cardsDrawn[smithy] = cardsDrawn[smithy] + 1;
-    		cardsDrawnCount++;
-    	}
+		printf("Before Cutpurse: player = %d, hand = %d, deck = %d, discard = %d\n",
+			player, pre.handCount[player], pre.deckCount[player],
+			pre.discardCount[player]);
 
-    	//printf("before drawing\n");
-    	//printHand(0, &G);
+		printf("After Cutpurse: player = %d, hand = %d, deck = %d, discard = %d\n",
+			player, post->handCount[player], post->deckCount[player],
+			post->discardCount[player]);
+	}
 
+	return failCount;
+}
 
-    	handPlayed = rand() % numHandCards(&G);
-    	playCard(handPlayed, -1, -1, -1, &G);
+/* Driver of cutpurseTest */
+int main()
+{
+	int numFailedTests = 0;
+	int numOfTests = 2000;		// base number of tests
+	int myCount = 0;
 
-    	//printf("After drawing\n");
-    	//printHand(0, &G);
+   	printf("Random Test of Cutpurse.\n\n");
 
-    	//count actual cards in hand
-    	for (j = 0; j < numHandCards(&G); j++)
-    	{
-    		card = G.hand[0][j];
-    		actualcardsDrawn[card] = actualcardsDrawn[card] + 1;
-    	}
+   	int i;
+   	for (i = 0; i < numOfTests; i++)
+   	{
+	   	int k[10] = {adventurer, council_room, feast, gardens, mine
+	      , remodel, smithy, village, baron, great_hall};
+	   	struct gameState G;
+	   	   		int player;
+   		player = floor(Random() * 4);		// chose random player
 
+   		initializeGame(4, k, rand(), &G); 	// initialize a new game
+	   	
+	   	/* 1 in 4 chance give 0 cards for high probability of testing shuffle */ 
+	   	int makeInt = floor(Random() * 4);
+	   	if (makeInt == 0)
+	   	{
+	   		G.deckCount[player] = 0;
+	   		myCount++;
+	   	}
+	   	
+	   	else
+	   	{
+	   		makeInt = floor(Random() * MAX_DECK);		// make random deckCount
+	   		G.deckCount[player] = makeInt;
+	   	}
 
-    	//make sure all cards in hand are accounted for
-    	for (j = 0; j < 27; j++)
-    	{
-    		cardNumToName(j, name);
-    		
-    		if  (actualcardsDrawn[j] != cardsDrawn[j])
-            {
-                printf("card %s actual: %i expected: %i\n", name, actualcardsDrawn[j], cardsDrawn[j]);
-            }            }
-    	}
+	   	makeInt = floor(Random() * 5);					
+	   	G.discardCount[player] = makeInt;
+	   	
+	   	makeInt = floor(Random() * MAX_HAND);
+	   	G.handCount[player] = makeInt;
 
-    	//make sure that the card in discard is 1 and it's smithy
-    	//printDiscard(0, &G);
-    	if (expectedDiscardCount != G.playedCardCount)
-        {
-            printf("************** Error: expected discard count and played count different ***************\n");
-        }
-    	if (expectedDiscardCount == G.discardCount[0])
-        {
-            printf ("************** Error: expected played and played count different. ************** \n");
+	   	// put cutpurse in hand
+	   	makeInt = floor(Random() * G.handCount[player]);
+	   	G.hand[player][makeInt] = cutpurse;
 
-        }
+	   	numFailedTests += cutpurseTest(&G, player);
+	   	memset(&G, 23, sizeof(struct gameState));  // clear the game state
+   	}
 
-    	if (numHandCards(&G) != expectedHandSize)
-        {
-            printf("************** Error: expected hand size does not match actual hand size **************\n");
-        }
+   		printf("Ran %d tests and %d failed.\n", 4 * numOfTests, numFailedTests);
 
-    }
-
-
-	return 0;
+   		return 0;
 }

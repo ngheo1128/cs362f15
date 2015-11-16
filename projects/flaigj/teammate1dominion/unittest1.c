@@ -1,9 +1,11 @@
-/*
-This program tests the gainCard function.
-The parameters for this function are:
-int supplyPos, struct gameState *state, int toFlag, int player
-
-*/
+/* -----------------------------------------------------------------------
+ * Unit test to check whether isGameOver ends game properly
+ *
+ * unittest1: unittest1.c dominion.o rngs.o
+ *      gcc -o unittest1 -g  unittest1.c dominion.o rngs.o $(CFLAGS)
+ *
+ * -----------------------------------------------------------------------
+ */
 
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -11,115 +13,91 @@ int supplyPos, struct gameState *state, int toFlag, int player
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-#include "interface.h"
-
-// set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
 
 int main() {
-
-    int numPlayer = 2;
-    int p, flag, card;
+    int seed = 1000;
+	int numPlayer = 2;
+    int k[10] = {adventurer, council_room, feast, gardens, mine
+               , remodel, smithy, village, baron, great_hall};
     struct gameState G;
+	
+	printf("Testing number of certain cards to see when game is over.\n");
+	
+    memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    initializeGame(numPlayer, k, seed, &G); 	// initialize a new game
+	
+	
+	// check if game over for province counts
+	printf("Test 1: Determine how many province cards it takes to end game.\n");
+	
+	G.supplyCount[province] = 1;
+	
+	if(isGameOver(&G))
+		printf("Failed: 1 province card left ends game.\n");
+	
+	else
+		printf("Passed: 1 province card left doesn't end game.\n");
+	
+	G.supplyCount[province]--;
+	
+	if(isGameOver(&G))
+		printf("Passed: 0 province cards left ends game.\n\n");
+	
+	else
+		printf("Failed: 0 province cards left doesn't end game.\n\n");
 
-
-
-
-    //printSupply(&G);
-    //testing to see if all the cards can be added. 
-
-    char name[32];
-
-    printf ("* * * * * * * * * * * * * * * * TESTING unittest1 gainCard():* * * * * * * * * * * * * * * * \n");
-    for (p = 0; p < numPlayer; p++)
-    {
-        //test to see if you can gain a card without supply
-        for (flag = 1; flag <= 3; flag++)
-        {
-            for (card = adventurer; card <= great_hall; card++)
-            {
-                
-                cardNumToName(card, name);  
-
-                printf("Test: Card %s added with no supply with flag %i for player %i \n", name, flag, p);
-                assert ( gainCard(card, &G, flag, p) == -1);
-    
-            }
-        }
-        //test to see if you can gain the card desired to deck.
-        for (card = adventurer; card <= great_hall; card++)
-        {
-            cardNumToName(card, name); 
-            
-            //add a card to deck
-            G.supplyCount[card] = 1;
-            printf("Test: Card %s was added to deck for player %i \n", name, p);
-            gainCard(card, &G, 1, p);
-
-            int foundCard = 0;
-            int deckIndex;
-            int deckCount = G.deckCount[p];
-
-            for ( deckIndex = 0; deckIndex < deckCount; deckIndex++)
-            {
-                int deckCard = G.deck[p][deckIndex];
-                if (card == deckCard)
-                    foundCard = 1;
-            } 
-            assert (foundCard == 1);
-           
-        }
-
-        //test to see if you can gain the card desired to hand.
-        for (card = adventurer; card <= great_hall; card++)
-        {
-            cardNumToName(card, name); 
-            
-            //add a card to hand
-            G.supplyCount[card] = 1;
-            printf("Test: Card %s was added to hand for player %i \n", name, p);
-            gainCard(card, &G, 2, p);
-
-            int foundCard = 0;
-            int handIndex;
-            int handCount = G.handCount[p];
-
-            //search hand fo card added
-            for ( handIndex = 0; handIndex < handCount; handIndex++)
-            {
-                int deckCard = G.hand[p][handIndex];
-                if (card == deckCard)
-                    foundCard = 1;
-            } 
-            assert (foundCard == 1);        
-        }
-
-        //test to see if you can gain the card desired to discard. 
-                for (card = adventurer; card <= great_hall; card++)
-        {
-            cardNumToName(card, name); 
-            
-            //add a card to hand
-            G.supplyCount[card] = 1;
-            printf("Test: Card %s was added to discard for player %i \n", name, p);
-            gainCard(card, &G, 0, p);
-
-            int foundCard = 0;
-            int discardIndex;
-            int discardCount = G.discardCount[p];
-
-            //search hand fo card added
-            for ( discardIndex = 0; discardIndex < discardCount; discardIndex++)
-            {
-                int discardedCard = G.hand[p][discardIndex];
-                if (card == discardedCard)
-                    foundCard = 1;
-            } 
-            assert (foundCard == 1);        
-        }
-    }
-   // printf ("deck count: %i", fullDeckCount(p, adventurer, &G));
-    printf("All tests passed!\n");
+	
+	// check if game over for kingdom card counts
+	printf("Test 2: Determine what sets of kingdom cards gone ends the game.\n");
+	memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    initializeGame(numPlayer, k, seed, &G); 	// initialize a new game
+	
+	G.supplyCount[adventurer] = 0;
+	if(isGameOver(&G))
+		printf("Failed: 1 set of kingdom cards gone ends game.\n");
+	
+	else
+		printf("Passed: 1 set of kingdom cards gone doesn't end game.\n");
+	
+	G.supplyCount[council_room] = 0;
+	if(isGameOver(&G))
+		printf("Failed: 2 sets of kingdom cards gone ends game.\n");
+	
+	else
+		printf("Passed: 2 sets of kingdom cards gone doesn't end game.\n");
+	
+	G.supplyCount[feast] = 0;
+	if(isGameOver(&G))
+		printf("Passed: 3 sets of kingdom cards gone ends game.\n\n");
+	
+	else
+		printf("Failed: 3 sets of kingdom cards gone doesn't end game.\n\n");
+	
+	// check if game over for coin card counts
+	printf("Test 3: Determine how many sets of treasure cards gone ends the game.\n");
+	memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    initializeGame(numPlayer, k, seed, &G); 	// initialize a new game
+	
+	G.supplyCount[gold] = 0;
+	if(isGameOver(&G))
+		printf("Failed: 1 set of treasure cards gone ends game.\n");
+	
+	else
+		printf("Passed: 1 set of treasure cards doesn't end game.\n");
+	
+	G.supplyCount[silver] = 0;
+	if(isGameOver(&G))
+		printf("Failed: 2 sets of treasure cards gone ends game.\n");
+	
+	else
+		printf("Passed: 2 sets of treasure cards gone doesn't end game.\n");
+	
+	G.supplyCount[copper] = 0;
+	if(isGameOver(&G))
+		printf("Passed: 3 sets of treasure cards gone ends game.\n\n");
+	
+	else
+		printf("Failed: 3 sets of treasure cards doesn't end game.\n\n");
 
     return 0;
 }
