@@ -1,16 +1,11 @@
 /* -----------------------------------------------------------------------
-* Programmed by: Kelvin Watson
-* Filename: unittest2.c
-* Created: 10 Oct 2015
-* Last modified: 14 Oct 2015
-* Description: Unit tests for dominion.c 's discardCard() function
-
-* ***NOTE: Some of these unit tests fail. Professor Christi is aware of this.
-* Please see Piazza post where I notify Professor Christi that I may have
-* discovered a possible bug with this unit test:
-* https://piazza.com/class/iespjuw0jz7jg?cid=47 ***
-* -----------------------------------------------------------------------
-*/
+ * Unit test to check whether discarding works correctly
+ *
+ * unittest2: unittest2.c dominion.o rngs.o
+ *      gcc -o unittest2 -g  unittest2.c dominion.o rngs.o $(CFLAGS)
+ *
+ * -----------------------------------------------------------------------
+ */
 
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -19,137 +14,88 @@
 #include <assert.h>
 #include "rngs.h"
 
-// set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
-
-int supplyCheck(struct gameState *S, int cardType, const char* cardName, int expectedCount){
-	int err=0;
-	if(S->supplyCount[cardType] != expectedCount){
-		#if (NOISY_TEST==1)
-		printf("      FAIL: number of %s cards=%d, expected=%d\n",cardName,S->supplyCount[cardType],expectedCount);
-		#endif 
-		err++;
-	} else{
-		#if (NOISY_TEST==1)
-		printf("      PASS: number of %s=%d, expected=%d\n",cardName,S->supplyCount[cardType],expectedCount);
-		#endif 
-	}
-	return err;
-}
-
-int checkDiscardCard(int handPos, int player, struct gameState* state,int handCount, int discardedCard){
-	int errFlag=0; //used in place of assertion failure: test passed=0; assertion failure=1
-	int r = discardCard(handPos,player,state,0);
-	if(r != 0){
-#if (NOISY_TEST==1)
-		printf("  FAIL, return value=%d, expected=%d\n", r, 0);
-#endif 
-	} else{
-#if (NOISY_TEST==1)
-		printf("  PASS, return value=%d, expected=%d\n", r, 0);
-#endif 
-	}
-	//assert(r==0);
-	//check handCount
-	if(state->handCount[player] != (handCount-1)){
-#if (NOISY_TEST==1)
-		printf("  FAIL, handCount=%d, expected=%d\n", state->handCount[player], (handCount-1));
-#endif    
-		errFlag=1; //set error flag
-	} else {
-#if (NOISY_TEST==1)
-		printf("  PASS handCount=%d, expected=%d\n", state->handCount[player], (handCount-1));
-#endif
-	}
-	//assert(state->handCount[player] == (handCount-1));
-	//check discard pile for the card discarded
-	if(state->discardCount[player] != 1){
-#if (NOISY_TEST==1)
-		printf("  FAIL, discardCount=%d, expected=%d\n", state->discardCount[player], 1);
-#endif    
-		errFlag=1; //set error flag
-	} else {
-#if (NOISY_TEST==1)
-		printf("  PASS discardCount=%d, expected=%d\n", state->discardCount[player], 1);
-#endif
-	}
-
-	if(state->discard[player][(state->discardCount[player])-1] != discardedCard){
-#if (NOISY_TEST==1)
-		printf("  FAIL, discardedCard=%d, expected=%d\n", state->discard[player][(state->discardCount[player])-1], discardedCard);
-#endif    
-		errFlag=1; //set error flag
-	} else {
-#if (NOISY_TEST==1)
-		printf("  PASS, discardedCard=%d, expected=%d\n",state->discard[player][(state->discardCount[player])-1] , discardedCard);
-#endif
-	}
-	//assert(state->discard[player][(state->discardCount[player])-1] == discardedCard);
-
-	/*Check for unexpected transactions*/
-	printf("  Testing for unexpected transactions. Checking supply counts...\n");
-	errFlag += supplyCheck(state,curse,"curse",10);
-	printf("    Checking Victory cards in supply:\n");
-	errFlag += supplyCheck(state,estate,"estate",8);
-	errFlag += supplyCheck(state,duchy,"duchy",8);
-	errFlag += supplyCheck(state,province,"province",8);
-	printf("    Checking Treasure cards in supply:\n");	
-	errFlag += supplyCheck(state,copper,"copper",60-(7*2));
-	errFlag += supplyCheck(state,silver,"silver",40);
-	errFlag += supplyCheck(state,gold,"gold",30);
-	
-	return errFlag;
-}
-
-
 int main() {
-	int i,p,r;
-	int seed = 1000;
-	int numPlayers = 2;
-	int k[10] = {adventurer, sea_hag, council_room, feast, gardens, mine
-		, remodel, smithy, baron, salvager};
-	struct gameState G;
-	int handPos,handCount;
-	int maxHandCount = 5;
-	int estates[MAX_HAND];
-	int golds[MAX_HAND];
-	int err=0;
+   int seed = 1000;
+   int numPlayer = 2;
+   int k[10] = {adventurer, council_room, feast, gardens, mine
+      , remodel, smithy, village, baron, great_hall};
+   struct gameState G;
 
-	for (i = 0; i < MAX_HAND; i++){
-		estates[i] = estate;
-	}
+   printf("Testing discardCard function to see if it works properly.\n\n");
 
-	for (i = 0; i < MAX_HAND; i++){
-		golds[i] = gold;
-	}
+   memset(&G, 23, sizeof(struct gameState));   // clear the game state
+   initializeGame(numPlayer, k, seed, &G); 	// initialize a new game
 
-	printf ("TESTING discardCard():\n");
 
-	for (p = 0; p < numPlayers; p++){
-		for(handCount=0; handCount<=maxHandCount; handCount++){
-			for(handPos = 0; handPos < handCount; handPos++){
-				printf("Testing player %d and discard card position of %d:\n", p, handPos);
-				memset(&G, 23, sizeof(struct gameState));   // clear game state
-				r=initializeGame(numPlayers, k, seed, &G);  // initialize new game
-				G.handCount[p] = handCount;                 // set the number of cards on hand
-				if(handCount>0){
-					memcpy(G.hand[p], estates, sizeof(int) * handCount); //set all cards in hand to estate
-					//printf("setting handPos=%d to be gold\n",handPos);
-					if(handCount) G.hand[p][handPos]=gold; //set one card to be gold
-				}
-				//printf("G.hand[p][gold]=%d\n",G.hand[p][handPos]);
-				if(checkDiscardCard(handPos,p,&G,handCount,gold) == 1){ //attempt to remove the single gold card
-					err++;
-				}
-			}
-		}
-	}
+   // test if both players get starting hands
+   printf("Test 1: Check if all players receive cards from an initialized game.\n");
 
-	if(err != 0){
-		printf("Some tests failed. See bug1.c for details.\n");
-	} else {
-		printf("All tests passed!\n");
-	}
+   if ((G.handCount[0] > 0) && (G.handCount[1] > 0))
+      printf("Passed: Both players have cards in their hands.\n\n");
+   else
+      printf("Failed: Both players don't have cards in their hands.\n\n");
 
-	return 0;
+
+   // test if player 1 gets a starting hand
+   printf("Test 2: Checks if initialize game gives Player 1 a starting hand.\n");
+
+   if (G.handCount[0] > 0)
+      printf("Passed: Player 1 has a starting hand.\n\n");
+   else
+      printf("Failed: Player 1 doesn't have a starting hand.\n\n");
+
+
+   // test if player 2 has starting hand 
+   printf("Test 3: Checks if Player 2 has a starting hand.\n");
+
+   if (G.handCount[1] > 0)
+      printf("Passed: Player 2 has a starting hand.\n\n");
+   else
+      printf("Failed: Player 2 doesn't have a starting hand.\n\n");
+
+
+   // test if player 1's discard removes card from hand
+   int oldHandCount = G.handCount[0];
+   printf("Test 4: Checks if a card was removed from Player 1's hand.\n");
+   discardCard(4, 0, &G, 0);
+
+   if (G.handCount[0] < oldHandCount)
+      printf("Passed: A card was removed from player 1's hand.\n\n");
+   else
+      printf("Failed: A card wasn't removed from player 1's hand.\n\n");
+
+
+   // test if discard card is actually discarding into discard pile
+   printf("Test 5: Checks if a card was added to Player 1's discard pile.\n");
+
+   if (G.discardCount[0] > 0)
+      printf("Passed: A card was added to player 1's discard pile.\n\n");
+   else
+      printf("Failed: A card wasn't added to player 1's discard pile.\n\n");
+
+
+   int handCountP2 = G.handCount[1];
+   endTurn(&G);
+
+   printf("Running endTurn function.\n");
+   printf("Test 6: Rechecking if a card was added to Player 1's discard pile.\n");
+   if (G.discardCount[0] > 0)
+      printf("Passed: A card was added to player 1's discard pile.\n\n");
+   else
+      printf("Failed: A card wasn't added to player 1's discard pile.\n\n");
+
+
+   // test if discarded cards don't increase or decrease other players cards
+   printf("Test 7: Checks if Player 2 received any cards into discard pile from player 1.\n");
+
+   if (G.discardCount[1] > 0)
+      printf("Failed: Player 2 shouldn't have a discard pile but does.\n\n");
+   else
+      printf("Passed: Player 2 doesn't have a discard pile.\n\n");
+
+   printf("What is the handcount of player 2? Answer = %d\n", G.handCount[1]);
+   printf("What is the handcount of player 1? Expected = 5, Actual = %d\n", G.handCount[0]);
+   printf("What is player 2's count before endTurn()? Expected 0, Actual = %d\n", handCountP2);
+   printf("What is player 1's discard count? Expected = 1, Actual = %d\n", G.discardCount[0]);
+   return 0;
 }

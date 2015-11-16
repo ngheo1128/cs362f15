@@ -1,190 +1,192 @@
-/* -----------------------------------------------------------------------
-* Programmed by: Kelvin Watson
-* Filename: randomtestcard.c
-* Created: 27 Oct 2015
-* Last modified: 2 Nov 2015
-* Description: Random tests for embargo case in cardEffect() method
-* -----------------------------------------------------------------------
-*/
+/*
+ * Author: Jason Flaig
+ * asrandomtestcard.c
+ * Date: 11/7/2015
+ * Modified: 11/8/2015
+ * Purpose: Use random number of cards in hand to determine whether cutpurse succeeds 
+ *  in adding 2 coins for player and testing whether played and discards are correct
+ */
 
+#include <stdlib.h>
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
+#include <math.h>
+#include <time.h>
 
-#define DEBUG 0
-#define NOISY_TEST 1
+/* Checks current gamestate to old gamestate when verifying tests */
+int cutpurseTest(struct gameState *post, int player)
+{
+	int failCount = 0;
+	int copperTest = 1;
+	int discardTest = 1;
+	int discardPlayedCardTest = 1;
+	int coinTest = 1;
+	int preCopperCount[4] = {0, 0, 0, 0};		// counts for each players copper
+	int postCopperCount[4] = {0, 0, 0, 0};
+	struct gameState pre;
+	int temphand[MAX_HAND];
+	memcpy(&pre, post, sizeof(struct gameState));
+	int handPos = -1;
+	int myPlayers[] = {0, 1, 2, 3};		// initialized positions, uneeded each val is -1
 
-int checkEmbargo(struct gameState *post, int choice1, int opponent) {
-	int errCount=0;
-	int actualEmbargoTokenCount, oracleEmbargoTokenCount;
-	int actualCoinCount, oracleCoinCount;
-	
-	int actualOpponentHandCount, oracleOpponentHandCount;
-	int actualOpponentDiscardCount, oracleOpponentDiscardCount;
-	int actualOpponentDeckCount, oracleOpponentDeckCount;
-	
-	int c = choice1;
-	int bonus=0;
-	int r;
-	
-	//Generate an oracle to compare results
-	struct gameState oracle;
-	memcpy (&oracle, post, sizeof(struct gameState));
-	
-	r = cardEffect(embargo, choice1, 0, 0, post, 0, &bonus);
-	
-	if(c==7 || c==8 || c==9 || c==10 || c==12 || c==13 || c==14
-		|| c==16 || c==21 || c==26){
-		if(r != 0){
-			printf("  FAIL, return value=%d, expected=%d\n", r, 0);
-			errCount++;
-		}else{
-			printf("  PASS, return value=%d, expected=%d\n", r, 0);
-		}
-		actualEmbargoTokenCount=post->embargoTokens[c];
-		oracleEmbargoTokenCount=++oracle.embargoTokens[c];	
-		if(actualEmbargoTokenCount != oracleEmbargoTokenCount){
-			printf("  FAIL, embargoTokens=%d, expected=%d\n", actualEmbargoTokenCount, oracleEmbargoTokenCount);
-			errCount++;
-		} else{
-			printf("  PASS, embargoTokens=%d, expected=%d\n", actualEmbargoTokenCount, oracleEmbargoTokenCount);
-		}
-	
-	}else{
-		if(r != -1){
-			printf("  FAIL, r=%d, expected=%d\n", r, -1);
-			errCount++;
-		}else{
-			printf("  PASS, r=%d, expected=%d\n", r, -1);
-		}
+	int i;
+	// find hand position of cutpurse
+	for (i = 0; i < post->handCount[player]; i++)
+	{
+		if (post->hand[player][i] == cutpurse)
+			handPos = i;
+	}
+
+	cardEffect(cutpurse, 0, 0, 0, post, handPos, 0);
+
+	/* Check all oponents of player to determine if player had a copper card 
+	was it removed */
+	// provide exclusion for current player
+	// check pre gamestate of all players against post gamestate
+	// check for difference of 1 in copper
+	int p;
+	for (p = 0; p < 4; p++)
+	{
+		if (p != player)		// exclusion of current player
+		{
+			for (i = 0; i < pre.handCount[p]; i++)
+			{
+				if (pre.hand[p][i] == copper)
+				{
+					myPlayers[p] = -1;		// if copper in hand include player for fail checking
+					preCopperCount[p]++;
+				}
+			}
+
+			for (i = 0; i < post->handCount[p]; i++)
+			{
+				if (post->hand[p][i] == copper)
+					postCopperCount[p]++;
+			}
+		}	
 	}
 	
-	actualCoinCount = post->coins;
-	oracleCoinCount = oracle.coins+2;
-	if(actualCoinCount != oracleCoinCount){
-		printf("  FAIL, coins=%d, expected=%d\n", actualCoinCount, oracleCoinCount);
-		errCount++;
-	}else{
-		printf("  PASS, coins=%d, expected=%d\n", actualCoinCount, oracleCoinCount);
-	}
-	
-	//Check for unexpected transactions:
-	printf("Checking for unexpected transactions in opponent's deck, hand, and discard piles");
-	actualOpponentHandCount = post->handCount[opponent];
-	oracleOpponentHandCount = oracle.handCount[opponent];
-	if(actualOpponentHandCount != oracleOpponentHandCount){
-		printf("  FAIL, opponent hand count=%d, expected=%d\n", actualOpponentHandCount, oracleOpponentHandCount);
-		errCount++;
-	}else{
-		printf("  PASS, opponent hand count=%d, expected=%d\n", actualOpponentHandCount, oracleOpponentHandCount);
-	}
-	
-	actualOpponentDiscardCount = post->discardCount[opponent];
-	oracleOpponentDiscardCount = oracle.discardCount[opponent];
-	if(actualOpponentDiscardCount != oracleOpponentDiscardCount){
-		printf("  FAIL, opponent discard count=%d, expected=%d\n", actualOpponentDiscardCount, oracleOpponentDiscardCount);
-		errCount++;
-	}else{
-		printf("  PASS, opponent discard count=%d, expected=%d\n", actualOpponentDiscardCount, oracleOpponentDiscardCount);
-	}	
-	
-	actualOpponentDeckCount = post->deckCount[opponent];
-	oracleOpponentDeckCount = oracle.deckCount[opponent];
-	if(actualOpponentDeckCount != oracleOpponentDeckCount){
-		printf("  FAIL, opponent deck count=%d, expected=%d\n", actualOpponentDeckCount, oracleOpponentDeckCount);
-		errCount++;
-	}else{
-		printf("  PASS, opponent deck count=%d, expected=%d\n", actualOpponentDeckCount, oracleOpponentDeckCount);
-	}	
-	
-	return errCount;
-}
+	for (p = 0; p < 4; p++)
+	{
+		if (p != player)		// exclusion of current player
+		{
+			if (p != myPlayers[p])		// exclude other players in test if never had coppers
+			{
+				if ((preCopperCount[p] - postCopperCount[p]) != 1)
+				{
+					copperTest = 0;
+					failCount++;
+				}
 
-int main () {
-
-	int i, n, p, j, op, handPos;
-	int randDeckCount, randDiscardCount, randHandCount;
-	int choice1;
-	int errFlag=0;
-	//int k[10] = {adventurer, council_room, feast, gardens, cutpurse,
-	//	remodel, smithy, village, treasure_map, great_hall};
-	//7,8,9,10,12,13,14,16,21,26
-	struct gameState G;
-
-	printf ("Testing embargo case in cardEffect().\n");
-	printf ("RANDOM TESTS.\n");
-
-	SelectStream(2);
-	PutSeed(3);
-
-	for (n = 0; n < 2000; n++) {
-		for (i = 0; i < sizeof(struct gameState); i++) {
-			((char*)&G)[i] = (int)(Random() * 256);
-		}
-		
-		p = (int)(Random() * 2);
-		op = p==0? 1:0; //assign opponent
-
-		//randomize player's deck, discard and hand counts
-		randDeckCount = G.deckCount[p] = (int)(Random() * MAX_DECK);
-		randDiscardCount = G.discardCount[p] = (int)(Random() * MAX_DECK);
-		randHandCount = G.handCount[p] = (int)(Random() * MAX_HAND);
-
-		//randomize opponent's deck, discard and hand counts
-		randDeckCount = G.deckCount[op] = (int)(Random() * MAX_DECK);
-		randDiscardCount = G.discardCount[op] = (int)(Random() * MAX_DECK);
-		randHandCount = G.handCount[op] = (int)(Random() * MAX_HAND);
-
-		G.playedCardCount = (int)(Random() * (MAX_DECK-10));
-		G.whoseTurn = p;
-		G.numPlayers = 2;
-		
-		//randomize coin count
-		G.coins = (int)(Random() * 1000);
-		
-		//randomize hand position
-		handPos = (int)(Random()* 5);
-		
-		//randomize counts of supply cards based on kingdom card k array
-		for(j=0; j<treasure_map; j++){	
-			if(j==7 || j==8 || j==9 || j==10 || j==12 || j==13 || j==14
-			|| j==16 || j==21 || j==26){
-				G.supplyCount[j]=(int)(Random()*100);			
-			} else {
-				G.supplyCount[j]=-1;
+				/*if ((post->discardCount[p] - pre.discardCount[p]) == 0)
+				{
+					discardTest = 0;
+					failCount++;
+				}*/
 			}
 		}
-		
-		//randomize cards in hand for player and opponent
-		for(j=0;j<randHandCount;j++){
-			G.hand[p][j]=(int)(Random()*26);
-			G.hand[op][j]=(int)(Random()*26);
-		}
-		//randomize discard piles for player and opponent
-		for(j=0;j<randDiscardCount;j++){
-			G.discard[p][j]=(int)(Random()*26);
-			G.discard[op][j]=(int)(Random()*26);
-		}
-		//randomize cards in deck for player and opponent
-		for(j=0;j<randDeckCount;j++){
-			G.deck[p][j]=(int)(Random()*26);
-			G.deck[op][j]=(int)(Random()*26);
-		}
-		
-		//randomize kingdom card choice
-		choice1=((int)(Random()*19))+7;
-		
-		//check embargo case in cardEffect()
-		errFlag = checkEmbargo(&G,choice1,op);
 	}
 
-	if(errFlag != 0){
-		printf("Some tests failed.\n");
-	} else {
-		printf("ALL TESTS PASSED!\n");
+	// if coin difference 2 then 2 coins added  
+	if ((post->coins - pre.coins) != 2)
+	{
+		coinTest = 0;
+		failCount++;
 	}
-	return 0;
+
+	/*if ((post->discardCount[player] - pre.discardCount[player]) == 0)
+	{
+		discardPlayedCardTest = 0;
+		failCount++;
+	}*/
+
+	if (failCount > 0)
+	{
+		if (copperTest == 0)
+		{
+			printf("Coppers removed test failed.\n");
+		}
+
+		if (discardTest == 0)
+		{
+			printf("Player discard of coppers test failed.\n");
+		}
+		
+		if (discardPlayedCardTest == 0)
+		{
+			printf("Player discard played card failed.\n");
+		}
+
+		if (coinTest == 0)
+		{
+			printf("2 coins added to player hand failed.\n");
+		}
+
+		printf("Before Cutpurse: player = %d, hand = %d, deck = %d, discard = %d\n",
+			player, pre.handCount[player], pre.deckCount[player],
+			pre.discardCount[player]);
+
+		printf("After Cutpurse: player = %d, hand = %d, deck = %d, discard = %d\n",
+			player, post->handCount[player], post->deckCount[player],
+			post->discardCount[player]);
+	}
+
+	return failCount;
+}
+
+/* Driver of cutpurseTest */
+int main()
+{
+	int numFailedTests = 0;
+	int numOfTests = 2000;		// base number of tests
+	int myCount = 0;
+
+   	printf("Random Test of Cutpurse.\n\n");
+
+   	int i;
+   	for (i = 0; i < numOfTests; i++)
+   	{
+	   	int k[10] = {adventurer, council_room, feast, gardens, mine
+	      , remodel, smithy, village, baron, great_hall};
+	   	struct gameState G;
+	   	   		int player;
+   		player = floor(Random() * 4);		// chose random player
+
+   		initializeGame(4, k, rand(), &G); 	// initialize a new game
+	   	
+	   	/* 1 in 4 chance give 0 cards for high probability of testing shuffle */ 
+	   	int makeInt = floor(Random() * 4);
+	   	if (makeInt == 0)
+	   	{
+	   		G.deckCount[player] = 0;
+	   		myCount++;
+	   	}
+	   	
+	   	else
+	   	{
+	   		makeInt = floor(Random() * MAX_DECK);		// make random deckCount
+	   		G.deckCount[player] = makeInt;
+	   	}
+
+	   	makeInt = floor(Random() * 5);					
+	   	G.discardCount[player] = makeInt;
+	   	
+	   	makeInt = floor(Random() * MAX_HAND);
+	   	G.handCount[player] = makeInt;
+
+	   	// put cutpurse in hand
+	   	makeInt = floor(Random() * G.handCount[player]);
+	   	G.hand[player][makeInt] = cutpurse;
+
+	   	numFailedTests += cutpurseTest(&G, player);
+	   	memset(&G, 23, sizeof(struct gameState));  // clear the game state
+   	}
+
+   		printf("Ran %d tests and %d failed.\n", 4 * numOfTests, numFailedTests);
+
+   		return 0;
 }
