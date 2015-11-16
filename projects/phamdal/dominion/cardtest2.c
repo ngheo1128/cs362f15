@@ -38,7 +38,7 @@ int main() {
 	state->deck[0][7] = curse;  
 
 
- 	if(adventurer_card(0, state, 0, 0, 0, tempHand) != 0) {
+ 	if(cardEffect(adventurer, 0, 0, 0, state, 0, 0) != 0) {
  		printf("adventurer_card failed to run\n"); 
  		fail1 = 1; 
  	}
@@ -71,14 +71,15 @@ int main() {
 
 	printf("Testing case where only 1 treasure card in deck\n"); 
  	state = newGame(); 
-	initializeGame(numPlayer, k, seed, state); 
+	initializeGame(numPlayer, k, seed, state);
+	state->deckCount[0] = 5;  
  	state->deck[0][4] = smithy; 
  	state->deck[0][3] = estate; 
  	state->deck[0][2] = duchy; 
  	state->deck[0][1] = adventurer; 
  	state->deck[0][0] = silver; 
 	
-	adventurer_card(0, state, 0, 0, 0, tempHand); 
+	cardEffect(adventurer, 0, 0, 0, state, 0, 0); 
  	if(state->handCount[0] != 6) {
  		printf("adventurer_card has drawn incorrect number of cards\n");
  		fail2 = 1; 
@@ -106,7 +107,7 @@ int main() {
 	state->discard[0][5] = curse; 
 	state->discard[0][6] = gold; 
 
-	adventurer_card(0, state, 0, 0, 0, tempHand); 
+	cardEffect(adventurer, 0, 0, 0, state, 0, 0);  
 
 	if(state->hand[0][5] != gold && state->hand[0][6] != gold) {
 		printf("adventurer_card does shuffle discard pile back into deck as stated\n");
