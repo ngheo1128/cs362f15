@@ -185,9 +185,37 @@ Project Folder: henningb
 		
 		
 	CARD TEST 1 - SMITHY
+		Adapting the test to this function was as simple as renaming the function call from playSmithy() to smithyCardEffect()
 	
+		RESULTS:
+		The results of the adapted test revealed an issue with the smithy card function.  I came
+		across the following issues:
+		* It appears the smithy card is not properly discarded at the end of the function.
+		* It appears that an extra card is drawn because handCount is +1 and discardCount is -1
+		
+		The first problem was actually a problem I had found in my own tests.  It's actually a
+		problem with a the function discardCard() which doesn't actually properly do as its supposed
+		to.
+		
+		The second problem however, is a problem with the following line:
+			for (i = 0; i <= 3; i++)
+		This line iterates the next command 4 times, not the intended 3 times.  To fix:
+			for (i = 0; i < 3; i++)	
 	
-	CARD TEST 2 - ADVENTURER
 
-Conclusions
-===========
+	CARD TEST 2 - ADVENTURER
+		Adapting the test to this function was as simple as renaming the function call from playAdventurer() to adventurerCardEffect()
+		
+		The results of the test revealed failures in trial 3 and 4.  Additionally, the random test for adventurer showed far more cards
+		in the hand at the end then expected.  The best explanation for this is that the cards were not discarded from the hand.
+		Because the discard and deck piles were as expected, this most likely reveals an issue in that handCount was not subtracted
+		(thus effectively discarding the card).
+		
+		Review of the code revealed exactly this.  To fix this problem, the following line should be modified:
+			state->handCount[currentPlayer]++; //this should just remove the top card (the most recently drawn one).
+		should be changed to
+			state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+			
+		The other bug in this function has to do when there are less than 2 treasure cards available in the deck/discard.
+		When this occurs, the end result is a negative deckCount and phantom cards.  A check in the while loop for
+		and empty deck/discard would correct this.
