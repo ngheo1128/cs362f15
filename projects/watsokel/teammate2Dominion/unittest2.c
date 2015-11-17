@@ -1,8 +1,15 @@
-/*
-This program tests the fullDeckCount function.
-The parameters for this function are:
-int player, int card, struct gameState *state
+/* -----------------------------------------------------------------------
+* Programmed by: Kelvin Watson
+* Filename: unittest2.c
+* Created: 10 Oct 2015
+* Last modified: 14 Oct 2015
+* Description: Unit tests for dominion.c 's discardCard() function
 
+* ***NOTE: Some of these unit tests fail. Professor Christi is aware of this.
+* Please see Piazza post where I notify Professor Christi that I may have
+* discovered a possible bug with this unit test:
+* https://piazza.com/class/iespjuw0jz7jg?cid=47 ***
+* -----------------------------------------------------------------------
 */
 
 #include "dominion.h"
@@ -11,64 +18,138 @@ int player, int card, struct gameState *state
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-#include "interface.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
 #define NOISY_TEST 1
 
+int supplyCheck(struct gameState *S, int cardType, const char* cardName, int expectedCount){
+	int err=0;
+	if(S->supplyCount[cardType] != expectedCount){
+		#if (NOISY_TEST==1)
+		printf("      FAIL: number of %s cards=%d, expected=%d\n",cardName,S->supplyCount[cardType],expectedCount);
+		#endif 
+		err++;
+	} else{
+		#if (NOISY_TEST==1)
+		printf("      PASS: number of %s=%d, expected=%d\n",cardName,S->supplyCount[cardType],expectedCount);
+		#endif 
+	}
+	return err;
+}
+
+int checkDiscardCard(int handPos, int player, struct gameState* state,int handCount, int discardedCard){
+	int errFlag=0; //used in place of assertion failure: test passed=0; assertion failure=1
+	int r = discardCard(handPos,player,state,0);
+	if(r != 0){
+#if (NOISY_TEST==1)
+		printf("  FAIL, return value=%d, expected=%d\n", r, 0);
+#endif 
+	} else{
+#if (NOISY_TEST==1)
+		printf("  PASS, return value=%d, expected=%d\n", r, 0);
+#endif 
+	}
+	//assert(r==0);
+	//check handCount
+	if(state->handCount[player] != (handCount-1)){
+#if (NOISY_TEST==1)
+		printf("  FAIL, handCount=%d, expected=%d\n", state->handCount[player], (handCount-1));
+#endif    
+		errFlag=1; //set error flag
+	} else {
+#if (NOISY_TEST==1)
+		printf("  PASS handCount=%d, expected=%d\n", state->handCount[player], (handCount-1));
+#endif
+	}
+	//assert(state->handCount[player] == (handCount-1));
+	//check discard pile for the card discarded
+	if(state->discardCount[player] != 1){
+#if (NOISY_TEST==1)
+		printf("  FAIL, discardCount=%d, expected=%d\n", state->discardCount[player], 1);
+#endif    
+		errFlag=1; //set error flag
+	} else {
+#if (NOISY_TEST==1)
+		printf("  PASS discardCount=%d, expected=%d\n", state->discardCount[player], 1);
+#endif
+	}
+
+	if(state->discard[player][(state->discardCount[player])-1] != discardedCard){
+#if (NOISY_TEST==1)
+		printf("  FAIL, discardedCard=%d, expected=%d\n", state->discard[player][(state->discardCount[player])-1], discardedCard);
+#endif    
+		errFlag=1; //set error flag
+	} else {
+#if (NOISY_TEST==1)
+		printf("  PASS, discardedCard=%d, expected=%d\n",state->discard[player][(state->discardCount[player])-1] , discardedCard);
+#endif
+	}
+	//assert(state->discard[player][(state->discardCount[player])-1] == discardedCard);
+
+	/*Check for unexpected transactions*/
+	printf("  Testing for unexpected transactions. Checking supply counts...\n");
+	errFlag += supplyCheck(state,curse,"curse",10);
+	printf("    Checking Victory cards in supply:\n");
+	errFlag += supplyCheck(state,estate,"estate",8);
+	errFlag += supplyCheck(state,duchy,"duchy",8);
+	errFlag += supplyCheck(state,province,"province",8);
+	printf("    Checking Treasure cards in supply:\n");	
+	errFlag += supplyCheck(state,copper,"copper",60-(7*2));
+	errFlag += supplyCheck(state,silver,"silver",40);
+	errFlag += supplyCheck(state,gold,"gold",30);
+	
+	return errFlag;
+}
+
+
 int main() {
-    int i;
-    int numPlayer = 2;
-    int p;
-    int k[10] = {adventurer, council_room, feast, gardens, mine
-               , remodel, smithy, village, baron, great_hall};
-    struct gameState G;
-    char name[32];
+	int i,p,r;
+	int seed = 1000;
+	int numPlayers = 2;
+	int k[10] = {adventurer, sea_hag, council_room, feast, gardens, mine
+		, remodel, smithy, baron, salvager};
+	struct gameState G;
+	int handPos,handCount;
+	int maxHandCount = 5;
+	int estates[MAX_HAND];
+	int golds[MAX_HAND];
+	int err=0;
 
-    initializeGame(2, k, 2, &G);
+	for (i = 0; i < MAX_HAND; i++){
+		estates[i] = estate;
+	}
 
-    //printSupply(&G);
-    //testing to see if all cards can be accounted for. 
+	for (i = 0; i < MAX_HAND; i++){
+		golds[i] = gold;
+	}
 
-    printf ("* * * * * * * * * * * * * * * * TESTING unittest2 fullDeckCount():* * * * * * * * * * * * * * * * \n");
+	printf ("TESTING discardCard():\n");
 
-    int arraySize = sizeof(k)/sizeof(k[0]);
-    for (i = 0; i < arraySize; i++)
-    {
-        cardNumToName(k[i], name); 
-    
+	for (p = 0; p < numPlayers; p++){
+		for(handCount=0; handCount<=maxHandCount; handCount++){
+			for(handPos = 0; handPos < handCount; handPos++){
+				printf("Testing player %d and discard card position of %d:\n", p, handPos);
+				memset(&G, 23, sizeof(struct gameState));   // clear game state
+				r=initializeGame(numPlayers, k, seed, &G);  // initialize new game
+				G.handCount[p] = handCount;                 // set the number of cards on hand
+				if(handCount>0){
+					memcpy(G.hand[p], estates, sizeof(int) * handCount); //set all cards in hand to estate
+					//printf("setting handPos=%d to be gold\n",handPos);
+					if(handCount) G.hand[p][handPos]=gold; //set one card to be gold
+				}
+				//printf("G.hand[p][gold]=%d\n",G.hand[p][handPos]);
+				if(checkDiscardCard(handPos,p,&G,handCount,gold) == 1){ //attempt to remove the single gold card
+					err++;
+				}
+			}
+		}
+	}
 
-        for (p = 0; p < numPlayer; p++)
-        {
-           //test to see if the deck count is correct for 0 cards
-            printf ("Test: No %s's in for player %i \n", name, p);
-            assert (fullDeckCount(0, 60, &G) == 0);
+	if(err != 0){
+		printf("Some tests failed. See bug1.c for details.\n");
+	} else {
+		printf("All tests passed!\n");
+	}
 
-           //test to see if the deck count is correct for 1 card in deck
-            G.deck[p][0] = k[i];
-            G.deckCount[p] = 1;
-
-            printf ("Test: One %s in deck for player %i \n", name, p);
-            // assert (fullDeckCount(p, k[i], &G) == 1);
-
-            //test to see if the deck count is correct for a card in both hand and deck. 
-            G.hand[p][0] = k[i];
-            G.handCount[p] = 1;
-
-            printf ("Test: One %s in hand and deck for player %i \n", name, p);
-            // assert (fullDeckCount(p, k[i], &G) == 2); 
-
-            //test to see if the deck count is correct for a card in hand, discard and deck. 
-            G.discard[p][0] = k[i];
-            G.discardCount[p] = 1;
-
-            printf ("Test: One %s in discard, hand and deck for player %i \n", name, p);
-            // assert (fullDeckCount(p, k[i], &G) == 3); 
-        }
-    }
-
-
-    printf("All tests passed!\n");
-
-    return 0;
+	return 0;
 }

@@ -1,8 +1,10 @@
-/*
-This program tests the scoreFor function.
-The parameters for this function are:
-struct gameState *state
-
+/* -----------------------------------------------------------------------
+* Programmed by: Kelvin Watson
+* Filename: unittest4.c
+* Created: 10 Oct 2015
+* Last modified: 21 Oct 2015
+* Description: Unit tests for dominion.c 's gainCard() function
+* -----------------------------------------------------------------------
 */
 
 #include "dominion.h"
@@ -11,98 +13,66 @@ struct gameState *state
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-#include "interface.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
 #define NOISY_TEST 1
 
+int checkDiscardCard(int handPos, int player, struct gameState* state,int handCount, int discardedCard){
+  int errFlag=0; //used in place of assertion failure: test passed=0; assertion failure=1
+  return errFlag;
+}
+
+
 int main() {
-
-    int score;
-    int card;
-    struct gameState G;
-    struct gameState D;
-
-    printf("* * * * * * * * * * * * * * * * Testint unittest4 scoreFor * * * * * * * * * * * * * * * * \n");
-    
-    int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, 
-    sea_hag, tribute, smithy};
-    initializeGameNoPoints(2, k, 2, &G);
-
-    printf ("Test: Empty Game \n");
-    score = scoreFor(0, &G);
-    //printf ("Score is %i \n", score);
-
-
-    assert (score == 0);
-
-    printf("Test: one score card found in hand\n");
-    for (card = curse; card <= great_hall; card++)
-    {
-        G.supplyCount[card] = 1;
+  int p,r;
+  int seed = 1000;
+  int numPlayers = 2;
+  int k[10] = {adventurer, council_room, feast, gardens, mine
+    , remodel, smithy, outpost, salvager, sea_hag};
+  struct gameState G;
+  int errFlag=0;
+  int supplyPos, toFlag, gain;
+  
+  printf ("TESTING gainCard():\n");
+	
+	for (p = 0; p < numPlayers; p++){
+		for(supplyPos = curse; supplyPos <= treasure_map; supplyPos++){
+      for(toFlag = 0; toFlag <= 2; toFlag++){
+        printf("Testing player %d, supply card %d with gain card flag of %d:\n", p, supplyPos, toFlag);
+        memset(&G, 23, sizeof(struct gameState));   // clear game state
+        r=initializeGame(numPlayers, k, seed, &G);  // initialize new game
+        gain = gainCard(supplyPos,&G,toFlag,p);
+        if(supplyPos != curse && supplyPos != estate && supplyPos != duchy &&  supplyPos != province 
+          && supplyPos != copper && supplyPos !=silver && supplyPos != gold && supplyPos != adventurer 
+          && supplyPos != council_room && supplyPos != feast && supplyPos != gardens && supplyPos != mine 
+          && supplyPos != remodel && supplyPos != smithy && supplyPos != outpost && supplyPos != salvager
+          && supplyPos != sea_hag){
+          //if card is not in the game, then player should not be able to gain that card
+            printf("  Attempt to gain a card that is not in the game\n");
+			if(gain != -1){
+              printf("    FAIL, gain=%d, expected=%d\n", gain, -1);
+              errFlag++;
+            }else{
+              printf("    PASS, gain=%d, expected=%d\n", gain, -1);
+            }
+        //if card is in the game, then player should be able to gain that card
+        } else{
+          if(gain != 0){
+            printf("    FAIL, gain=%d, expected=%d\n", gain, 0);
+            errFlag++;
+          }else{
+            printf("    PASS, gain=%d, expected=%d\n", gain, 0);
+          }
+        }
+      }
     }
-
-    gainCard(curse, &G, 2, 0); // -1 pt
-    gainCard(estate, &G, 2, 0); // 1 pt
-    gainCard(duchy, &G, 2, 0); // 3 pts
-    gainCard(province, &G, 2, 0); // 6 pts
-    gainCard(great_hall, &G, 2, 0); //1 pt
-    gainCard(gardens, &G, 2, 0); // 0pt
-    //printHand(0, &G);
-
-    score = scoreFor(0, &G);
-    assert (score == 10);
-
-    G = D;
-
-    for (card = curse; card <= great_hall; card++)
-    {
-        G.supplyCount[card] = 1;
-    }   
-
-    printf("Test: One of each in deck \n");
-    gainCard(curse, &G, 1, 0); // -1 pt
-    gainCard(estate, &G, 1, 0); // 1 pt
-    gainCard(duchy, &G, 1, 0); // 3 pts
-    gainCard(province, &G, 1, 0); // 6 pts
-    gainCard(great_hall, &G, 1, 0); //1 pt
-    gainCard(gardens, &G, 1, 0); // 1pt
-    //printDeck(0, &G);
-
-    score = scoreFor(0, &G);
-    //printf("score: %i \n", score);
-    printf ("################################################### \n Error: iterator for deck count cycles through i = discardCount istead of deckCount \n ################################################### \n");
-
-
-
-    G = D; 
-
-    for (card = curse; card <= great_hall; card++)
-    {
-        G.supplyCount[card] = 1;
-    }
-
-    printf("Test: One of each in discard\n");
-    gainCard(curse, &G, 0, 0); // -1 pt
-    gainCard(estate, &G, 0, 0); // 1 pt
-    gainCard(duchy, &G, 0, 0); // 3 pts
-    gainCard(province, &G, 0, 0); // 6 pts
-    gainCard(great_hall, &G, 0, 0); //1 pt
-    gainCard(gardens, &G, 0, 0); // 1pt
-    
-    //printDeck(0, &G);
-    //printDiscard(0, &G);
-    //printHand(0, &G);
-
-    score = scoreFor(0, &G);
-    //printf ("score: %i disardcount: %i \n", score, discardCount);
-    printf ("################################################### \n Error: iterator for deck count cycles through i = discardCount istead of deckCount \n ################################################### \n");
-
-
-    
+  }
+  
+  if(errFlag != 0){
+    printf("Some tests failed. See bug1.c for details.\n");
+  } else {
     printf("All tests passed!\n");
+  }
 
-    
-    
-    return 0;
+  return 0;
 }

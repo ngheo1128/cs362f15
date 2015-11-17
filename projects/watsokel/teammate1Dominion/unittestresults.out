@@ -1,15 +1,17 @@
+Unit test results:
+cardtest1.c
 TESTING smithyEffect():
 Testing player 0
   BEFORE smithyEffect() call: PASS, handCount=5, expected=5
   BEFORE smithyEffect() call: PASS, deckCount=10, expected=10
   BEFORE smithyEffect() call: PASS, discardCount=0, expected=0
     PASS: hand contains number of smithys=5, expected=5
-  AFTER smithyEffect() call: PASS, return value=0, expected=0
-    FAIL, handCount=5, expected=7
-    PASS, deckCount=7, expected=7
+  AFTER smithyEffect() call: FAIL, return value=1, expected=0
+    FAIL, handCount=8, expected=7
+    FAIL, deckCount=6, expected=7
     FAIL, discardCount=0, expected=1
     PASS: hand contains number of smithys=4, expected=4
-    FAIL: hand contains number of golds=1, expected=3
+    FAIL: hand contains number of golds=4, expected=3
     PASS, otherPlayerHandCount=5, expected=5
     PASS, otherPlayerDeckCount=10, expected=10
     PASS: other player's hand contains number of mines=5, expected=5
@@ -29,12 +31,12 @@ Testing player 1
   BEFORE smithyEffect() call: PASS, deckCount=10, expected=10
   BEFORE smithyEffect() call: PASS, discardCount=0, expected=0
     PASS: hand contains number of smithys=5, expected=5
-  AFTER smithyEffect() call: PASS, return value=0, expected=0
-    FAIL, handCount=5, expected=7
-    PASS, deckCount=7, expected=7
+  AFTER smithyEffect() call: FAIL, return value=2, expected=0
+    FAIL, handCount=8, expected=7
+    FAIL, deckCount=6, expected=7
     FAIL, discardCount=0, expected=1
     PASS: hand contains number of smithys=4, expected=4
-    FAIL: hand contains number of golds=1, expected=3
+    FAIL: hand contains number of golds=4, expected=3
     PASS, otherPlayerHandCount=5, expected=5
     PASS, otherPlayerDeckCount=10, expected=10
     PASS: other player's hand contains number of mines=5, expected=5
@@ -51,16 +53,16 @@ Testing player 1
       PASS: number of gold=30, expected=30
 Some tests failed. See bug1.c for details.
 File 'dominion.c'
-Lines executed:16.59% of 639
-Branches executed:15.98% of 463
-Taken at least once:12.74% of 463
-Calls executed:8.65% of 104
+Lines executed:18.28% of 580
+Branches executed:17.83% of 415
+Taken at least once:14.22% of 415
+Calls executed:9.57% of 94
 dominion.c:creating 'dominion.c.gcov'
 
+cardtest2.c
 TESTING adventurerEffect():
 Testing player 0, and treasure card 4
   PASS, return value=0, expected=0
-  FAIL, discardCount=6, expected=5
   PASS, treasureCount=2, expected=2
   Testing for unexpected transactions. Checking supply counts...
       PASS: number of curse=10, expected=10
@@ -74,7 +76,6 @@ Testing player 0, and treasure card 4
       PASS: number of gold=30, expected=30
 Testing player 0, and treasure card 5
   PASS, return value=0, expected=0
-  FAIL, discardCount=6, expected=5
   PASS, treasureCount=2, expected=2
   Testing for unexpected transactions. Checking supply counts...
       PASS: number of curse=10, expected=10
@@ -88,8 +89,8 @@ Testing player 0, and treasure card 5
       PASS: number of gold=30, expected=30
 Testing player 0, and treasure card 6
   PASS, return value=0, expected=0
-  FAIL, discardCount=6, expected=5
-  PASS, treasureCount=2, expected=2
+  FAIL, treasureCount=0, expected=2
+  NOTE: If treasure is 4 (copper), failed unit test is expected due to bug introduced in assignment 1.
   Testing for unexpected transactions. Checking supply counts...
       PASS: number of curse=10, expected=10
     Checking Victory cards in supply:
@@ -102,8 +103,8 @@ Testing player 0, and treasure card 6
       PASS: number of gold=30, expected=30
 Testing player 1, and treasure card 4
   PASS, return value=0, expected=0
-  FAIL, discardCount=6, expected=5
-  PASS, treasureCount=2, expected=2
+  FAIL, treasureCount=0, expected=2
+  NOTE: If treasure is 4 (copper), failed unit test is expected due to bug introduced in assignment 1.
   Testing for unexpected transactions. Checking supply counts...
       PASS: number of curse=10, expected=10
     Checking Victory cards in supply:
@@ -116,8 +117,8 @@ Testing player 1, and treasure card 4
       PASS: number of gold=30, expected=30
 Testing player 1, and treasure card 5
   PASS, return value=0, expected=0
-  FAIL, discardCount=6, expected=5
-  PASS, treasureCount=2, expected=2
+  FAIL, treasureCount=0, expected=2
+  NOTE: If treasure is 4 (copper), failed unit test is expected due to bug introduced in assignment 1.
   Testing for unexpected transactions. Checking supply counts...
       PASS: number of curse=10, expected=10
     Checking Victory cards in supply:
@@ -130,8 +131,8 @@ Testing player 1, and treasure card 5
       PASS: number of gold=30, expected=30
 Testing player 1, and treasure card 6
   PASS, return value=0, expected=0
-  FAIL, discardCount=6, expected=5
-  PASS, treasureCount=2, expected=2
+  FAIL, treasureCount=0, expected=2
+  NOTE: If treasure is 4 (copper), failed unit test is expected due to bug introduced in assignment 1.
   Testing for unexpected transactions. Checking supply counts...
       PASS: number of curse=10, expected=10
     Checking Victory cards in supply:
@@ -145,12 +146,13 @@ Testing player 1, and treasure card 6
 Some tests failed.
 NOTE: Some tests may have failed due to bugs introduced in assignment 1. These tests have detected those bugs. See above results for explanation.
 File 'dominion.c'
-Lines executed:18.62% of 639
-Branches executed:18.57% of 463
-Taken at least once:14.90% of 463
-Calls executed:9.62% of 104
+Lines executed:23.10% of 580
+Branches executed:24.82% of 415
+Taken at least once:17.35% of 415
+Calls executed:12.77% of 94
 dominion.c:creating 'dominion.c.gcov'
 
+cardtest3.c
 TESTING sea_hag case in cardEffect():
 Testing player 0
   --Testing oracle against state before call to cardEffect(sea_hag) for player number 0, opponent number 1--
@@ -195,12 +197,13 @@ Testing player 1
 Some tests failed. See bug1.c for details.
 NOTE: I am quite confident that the sea_hag case in cardEffect() has several bugs.
 File 'dominion.c'
-Lines executed:20.81% of 639
-Branches executed:24.41% of 463
-Taken at least once:16.20% of 463
-Calls executed:10.58% of 104
+Lines executed:18.28% of 580
+Branches executed:22.41% of 415
+Taken at least once:14.46% of 415
+Calls executed:8.51% of 94
 dominion.c:creating 'dominion.c.gcov'
 
+cardtest4.c
 TESTING steward case in cardEffect():
 Testing player 0
     PASS: choice1 != 1, != 2; Discard count after =0,expected=0
@@ -294,29 +297,13 @@ Testing player 1
       PASS: number of gold=30, expected=30
 All tests passed!
 File 'dominion.c'
-Lines executed:22.38% of 639
-Branches executed:25.27% of 463
-Taken at least once:17.71% of 463
-Calls executed:15.38% of 104
+Lines executed:20.86% of 580
+Branches executed:23.86% of 415
+Taken at least once:15.66% of 415
+Calls executed:13.83% of 94
 dominion.c:creating 'dominion.c.gcov'
 
-* * * * * * * * * * * * * * * * Testing minionCard * * * * * * * * * * * * * * * *
-Testing minion card choice 1
-################################################### 
- Error: bonus coins not updated to + 2. 
-################################################### 
-Testing minion card choice 2
-################################################### 
- Error: expected 10 discard cards played between player 1 and 2 received 5. 
- ################################################### 
-All tests passed!
-File 'dominion.c'
-Lines executed:27.23% of 639
-Branches executed:30.45% of 463
-Taken at least once:21.81% of 463
-Calls executed:25.00% of 104
-dominion.c:creating 'dominion.c.gcov'
-
+unittest1.c
 TESTING fullDeckCount():
 Testing player 0 with hand count of 0, deck count of 0 and discardCount of 0:
   fullDeckCount(): PASS, Estate: fullDeckCount=0, expected=0
@@ -5504,12 +5491,13 @@ Testing player 1 with hand count of 5, deck count of 5 and discardCount of 5:
       PASS: number of gold=30, expected=30
 All tests passed!
 File 'dominion.c'
-Lines executed:28.64% of 639
-Branches executed:33.05% of 463
-Taken at least once:24.41% of 463
-Calls executed:25.00% of 104
+Lines executed:17.07% of 580
+Branches executed:18.80% of 415
+Taken at least once:15.66% of 415
+Calls executed:7.45% of 94
 dominion.c:creating 'dominion.c.gcov'
 
+unittest2.c
 TESTING discardCard():
 Testing player 0 and discard card position of 0:
   PASS, return value=0, expected=0
@@ -5963,12 +5951,13 @@ Testing player 1 and discard card position of 4:
       PASS: number of gold=30, expected=30
 Some tests failed. See bug1.c for details.
 File 'dominion.c'
-Lines executed:28.64% of 639
-Branches executed:33.05% of 463
-Taken at least once:24.41% of 463
-Calls executed:25.00% of 104
+Lines executed:17.59% of 580
+Branches executed:17.35% of 415
+Taken at least once:13.73% of 415
+Calls executed:7.45% of 94
 dominion.c:creating 'dominion.c.gcov'
 
+unittest3.c
 TESTING isGameOver():
   Testing province count=7
     isGameOver(): PASS, gameOver=0, expected=0
@@ -5993,12 +5982,13 @@ TESTING isGameOver():
   Testing depletion of 3 supply counts    isGameOver(): PASS, gameOver=1, expected=1
 All tests passed!
 File 'dominion.c'
-Lines executed:30.20% of 639
-Branches executed:34.77% of 463
-Taken at least once:26.13% of 463
-Calls executed:25.00% of 104
+Lines executed:17.24% of 580
+Branches executed:17.83% of 415
+Taken at least once:14.94% of 415
+Calls executed:7.45% of 94
 dominion.c:creating 'dominion.c.gcov'
 
+unittest4.c
 TESTING gainCard():
 Testing player 0, supply card 0 with gain card flag of 0:
     PASS, gain=0, expected=0
@@ -6386,9 +6376,9 @@ Testing player 1, supply card 26 with gain card flag of 2:
     PASS, gain=-1, expected=-1
 All tests passed!
 File 'dominion.c'
-Lines executed:32.55% of 639
-Branches executed:36.07% of 463
-Taken at least once:27.43% of 463
-Calls executed:25.96% of 104
+Lines executed:18.10% of 580
+Branches executed:17.35% of 415
+Taken at least once:14.22% of 415
+Calls executed:8.51% of 94
 dominion.c:creating 'dominion.c.gcov'
 

@@ -1,8 +1,10 @@
-/*
-This program tests the gainCard function.
-The parameters for this function are:
-int supplyPos, struct gameState *state, int toFlag, int player
-
+/* -----------------------------------------------------------------------
+* Programmed by: Kelvin Watson
+* Filename: unittest1.c
+* Created: 10 Oct 2015
+* Last modified: 14 Oct 2015
+* Description: Unit tests for dominion.c 's fullDeckCount() function
+* -----------------------------------------------------------------------
 */
 
 #include "dominion.h"
@@ -11,115 +13,137 @@ int supplyPos, struct gameState *state, int toFlag, int player
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-#include "interface.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
 #define NOISY_TEST 1
 
+
+int supplyCheck(struct gameState *S, int cardType, const char* cardName, int expectedCount){
+	int err=0;
+	if(S->supplyCount[cardType] != expectedCount){
+		#if (NOISY_TEST==1)
+		printf("      FAIL: number of %s cards=%d, expected=%d\n",cardName,S->supplyCount[cardType],expectedCount);
+		#endif 
+		err++;
+	} else{
+		#if (NOISY_TEST==1)
+		printf("      PASS: number of %s=%d, expected=%d\n",cardName,S->supplyCount[cardType],expectedCount);
+		#endif 
+	}
+	return err;
+}
+
+
 int main() {
+	int i,p,r;
+	int seed = 1000;
+	int numPlayers = 2;
+	int k[10] = {adventurer, minion, council_room, feast, gardens, mine
+		, remodel, smithy, baron, salvager};
+	struct gameState G;
+	int handCount, deckCount, discardCount; //use as oracle
+	int maxHandCount = 5;
+	int maxDeckCount = 5;
+	int maxDiscardCount = 5;
+	int fullDeck;
+	int estatesInHand, estatesInDeck, estatesInDiscard;
+	//int coppersInHand, coppersInDeck, coppersInDiscard;
+	//int estatesOnStart = 3;
+	//int coppersOnStart = 7;
+	int estates[MAX_HAND];
+	int curses[MAX_HAND];
+	int errFlag = 0;
+	for (i = 0; i < MAX_HAND; i++){
+		estates[i] = estate;
+		curses[i] = curse;
+	}
+	/*for (i = 0; i < MAX_HAND; i++){
+		coppers[i] = copper;
+	}*/
+	
+	printf ("TESTING fullDeckCount():\n");
 
-    int numPlayer = 2;
-    int p, flag, card;
-    struct gameState G;
+	for (p = 0; p < numPlayers; p++){
+		for (handCount = 0; handCount <= maxHandCount; handCount++){
+			for(deckCount = 0; deckCount <= maxDeckCount; deckCount++){
+				for(discardCount=0; discardCount <=maxDiscardCount; discardCount++){
+					printf("Testing player %d with hand count of %d, deck count of %d and discardCount of %d:\n", p, handCount, deckCount, discardCount);
+					memset(&G, 23, sizeof(struct gameState));   // clear game state
+					r=initializeGame(numPlayers, k, seed, &G);  // initialize new game
+					/* standardize hand and deck counts */
+					G.handCount[p] = maxHandCount;
+					G.deckCount[p] = maxDeckCount;
+					G.discardCount[p] = maxDiscardCount;
+					
+					memcpy(G.hand[p], curses, sizeof(int) * maxHandCount); //set handCount to estate
+					memcpy(G.deck[p], curses, sizeof(int) * maxDeckCount); //set deckCount to estate
+					memcpy(G.discard[p], curses, sizeof(int) * maxDeckCount); //set discardCount to estate
+					
+					//introduce estates into hand, deck and discard
+					
+					memcpy(G.hand[p], estates, sizeof(int) * handCount); //set handCount to estate
+					memcpy(G.deck[p], estates, sizeof(int) * deckCount); //set handCount to estate
+					memcpy(G.discard[p], estates, sizeof(int) * discardCount); //set handCount to estate
+					
+					estatesInHand = handCount;
+					estatesInDeck = deckCount;
+					estatesInDiscard = discardCount; 
+					
+					/* test the function */
+					fullDeck = fullDeckCount(p, estate, &G);
+					if(fullDeck != estatesInHand+estatesInDeck+estatesInDiscard){
+						errFlag++;
+						#if (NOISY_TEST==1)
+						printf("  fullDeckCount(): FAIL, Estate: fullDeckCount=%d, expected=%d\n",fullDeck, estatesInHand+estatesInDeck+estatesInDiscard);
+						#endif
+					} else{
+						#if (NOISY_TEST==1)
+						printf("  fullDeckCount(): PASS, Estate: fullDeckCount=%d, expected=%d\n",fullDeck, estatesInHand+estatesInDeck+estatesInDiscard);  
+						#endif
+					}
+					//assert(fullDeck == (estatesInHand+estatesInDeck+estatesInDiscard));
+					/*memcpy(G.hand[p], coppers, sizeof(int) * handCount); //set all cards to copper
+					memcpy(G.deck[p], coppers, sizeof(int) * deckCount+coppersOnStart); //set all cards to copper
+					memcpy(G.discard[p], coppers, sizeof(int) * discardCount); //set all cards to copper
+					coppersInHand = handCount;
+					coppersInDeck = deckCount+coppersOnStart;
+					coppersInDiscard = discardCount; 
+					fullDeck = fullDeckCount(p, copper, &G);
+					if(fullDeck != (coppersInHand+coppersInDeck+coppersInDiscard)){
+						errFlag++;  
+						#if (NOISY_TEST==1)
+						printf("  fullDeckCount(): FAIL, Copper: fullDeckCount=%d, expected=%d\n",fullDeck, coppersInHand+coppersInDeck+coppersInDiscard);
+						#endif
+					} else{
+						#if (NOISY_TEST==1)
+						printf("  fullDeckCount(): PASS, Copper: fullDeckCount=%d, expected=%d\n",fullDeck, coppersInHand+coppersInDeck+coppersInDiscard);    
+						#endif
+					}*/
+					//assert(fullDeck == (coppersInHand+coppersInDeck+coppersInDiscard));
+					
+					/*Check for unexpected transactions*/
+					printf("  Testing for unexpected transactions. Checking supply counts...\n");
+					errFlag += supplyCheck(&G,curse,"curse",10);
+					printf("    Checking Victory cards in supply:\n");
+					errFlag += supplyCheck(&G,estate,"estate",8);
+					errFlag += supplyCheck(&G,duchy,"duchy",8);
+					errFlag += supplyCheck(&G,province,"province",8);
+					printf("    Checking Treasure cards in supply:\n");	
+					errFlag += supplyCheck(&G,copper,"copper",60-(7*2));
+					errFlag += supplyCheck(&G,silver,"silver",40);
+					errFlag += supplyCheck(&G,gold,"gold",30);
+				}
+			}
+		}    
+	}      
+
+	if(errFlag != 0){
+		printf("Some tests failed. See bug1.c for details.\n");  
+	}else{
+		printf("All tests passed!\n");
+	}
 
 
 
-
-    //printSupply(&G);
-    //testing to see if all the cards can be added. 
-
-    char name[32];
-
-    printf ("* * * * * * * * * * * * * * * * TESTING unittest1 gainCard():* * * * * * * * * * * * * * * * \n");
-    for (p = 0; p < numPlayer; p++)
-    {
-        //test to see if you can gain a card without supply
-        for (flag = 1; flag <= 3; flag++)
-        {
-            for (card = adventurer; card <= great_hall; card++)
-            {
-                
-                cardNumToName(card, name);  
-
-                printf("Test: Card %s added with no supply with flag %i for player %i \n", name, flag, p);
-                assert ( gainCard(card, &G, flag, p) == -1);
-    
-            }
-        }
-        //test to see if you can gain the card desired to deck.
-        for (card = adventurer; card <= great_hall; card++)
-        {
-            cardNumToName(card, name); 
-            
-            //add a card to deck
-            G.supplyCount[card] = 1;
-            printf("Test: Card %s was added to deck for player %i \n", name, p);
-            gainCard(card, &G, 1, p);
-
-            int foundCard = 0;
-            int deckIndex;
-            int deckCount = G.deckCount[p];
-
-            for ( deckIndex = 0; deckIndex < deckCount; deckIndex++)
-            {
-                int deckCard = G.deck[p][deckIndex];
-                if (card == deckCard)
-                    foundCard = 1;
-            } 
-            assert (foundCard == 1);
-           
-        }
-
-        //test to see if you can gain the card desired to hand.
-        for (card = adventurer; card <= great_hall; card++)
-        {
-            cardNumToName(card, name); 
-            
-            //add a card to hand
-            G.supplyCount[card] = 1;
-            printf("Test: Card %s was added to hand for player %i \n", name, p);
-            gainCard(card, &G, 2, p);
-
-            int foundCard = 0;
-            int handIndex;
-            int handCount = G.handCount[p];
-
-            //search hand fo card added
-            for ( handIndex = 0; handIndex < handCount; handIndex++)
-            {
-                int deckCard = G.hand[p][handIndex];
-                if (card == deckCard)
-                    foundCard = 1;
-            } 
-            assert (foundCard == 1);        
-        }
-
-        //test to see if you can gain the card desired to discard. 
-                for (card = adventurer; card <= great_hall; card++)
-        {
-            cardNumToName(card, name); 
-            
-            //add a card to hand
-            G.supplyCount[card] = 1;
-            printf("Test: Card %s was added to discard for player %i \n", name, p);
-            gainCard(card, &G, 0, p);
-
-            int foundCard = 0;
-            int discardIndex;
-            int discardCount = G.discardCount[p];
-
-            //search hand fo card added
-            for ( discardIndex = 0; discardIndex < discardCount; discardIndex++)
-            {
-                int discardedCard = G.hand[p][discardIndex];
-                if (card == discardedCard)
-                    foundCard = 1;
-            } 
-            assert (foundCard == 1);        
-        }
-    }
-   // printf ("deck count: %i", fullDeckCount(p, adventurer, &G));
-    printf("All tests passed!\n");
-
-    return 0;
+	return 0;
 }

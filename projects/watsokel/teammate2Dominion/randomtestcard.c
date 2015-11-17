@@ -1,166 +1,190 @@
-// This tester tests the function smithy();
+/* -----------------------------------------------------------------------
+* Programmed by: Kelvin Watson
+* Filename: randomtestcard.c
+* Created: 27 Oct 2015
+* Last modified: 2 Nov 2015
+* Description: Random tests for embargo case in cardEffect() method
+* -----------------------------------------------------------------------
+*/
 
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
+#include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-#include "interface.h"
-#include <time.h> 
-#include <stdio.h>   
-#include <stdlib.h> 
 
-//number of tests the user wants to run
-const int numTestRuns = 50;
-const int Max_Deck_Size = 500;
+#define DEBUG 0
+#define NOISY_TEST 1
 
-int main ()
-{
-	printf("* * * * * * * * * * * * * * * * randomtestcard * * * * * * * * * * * * * * * * \n");
+int checkEmbargo(struct gameState *post, int choice1, int opponent) {
+	int errCount=0;
+	int actualEmbargoTokenCount, oracleEmbargoTokenCount;
+	int actualCoinCount, oracleCoinCount;
+	
+	int actualOpponentHandCount, oracleOpponentHandCount;
+	int actualOpponentDiscardCount, oracleOpponentDiscardCount;
+	int actualOpponentDeckCount, oracleOpponentDeckCount;
+	
+	int c = choice1;
+	int bonus=0;
+	int r;
+	
+	//Generate an oracle to compare results
+	struct gameState oracle;
+	memcpy (&oracle, post, sizeof(struct gameState));
+	
+	r = cardEffect(embargo, choice1, 0, 0, post, 0, &bonus);
+	
+	if(c==7 || c==8 || c==9 || c==10 || c==12 || c==13 || c==14
+		|| c==16 || c==21 || c==26){
+		if(r != 0){
+			printf("  FAIL, return value=%d, expected=%d\n", r, 0);
+			errCount++;
+		}else{
+			printf("  PASS, return value=%d, expected=%d\n", r, 0);
+		}
+		actualEmbargoTokenCount=post->embargoTokens[c];
+		oracleEmbargoTokenCount=++oracle.embargoTokens[c];	
+		if(actualEmbargoTokenCount != oracleEmbargoTokenCount){
+			printf("  FAIL, embargoTokens=%d, expected=%d\n", actualEmbargoTokenCount, oracleEmbargoTokenCount);
+			errCount++;
+		} else{
+			printf("  PASS, embargoTokens=%d, expected=%d\n", actualEmbargoTokenCount, oracleEmbargoTokenCount);
+		}
+	
+	}else{
+		if(r != -1){
+			printf("  FAIL, r=%d, expected=%d\n", r, -1);
+			errCount++;
+		}else{
+			printf("  PASS, r=%d, expected=%d\n", r, -1);
+		}
+	}
+	
+	actualCoinCount = post->coins;
+	oracleCoinCount = oracle.coins+2;
+	if(actualCoinCount != oracleCoinCount){
+		printf("  FAIL, coins=%d, expected=%d\n", actualCoinCount, oracleCoinCount);
+		errCount++;
+	}else{
+		printf("  PASS, coins=%d, expected=%d\n", actualCoinCount, oracleCoinCount);
+	}
+	
+	//Check for unexpected transactions:
+	printf("Checking for unexpected transactions in opponent's deck, hand, and discard piles");
+	actualOpponentHandCount = post->handCount[opponent];
+	oracleOpponentHandCount = oracle.handCount[opponent];
+	if(actualOpponentHandCount != oracleOpponentHandCount){
+		printf("  FAIL, opponent hand count=%d, expected=%d\n", actualOpponentHandCount, oracleOpponentHandCount);
+		errCount++;
+	}else{
+		printf("  PASS, opponent hand count=%d, expected=%d\n", actualOpponentHandCount, oracleOpponentHandCount);
+	}
+	
+	actualOpponentDiscardCount = post->discardCount[opponent];
+	oracleOpponentDiscardCount = oracle.discardCount[opponent];
+	if(actualOpponentDiscardCount != oracleOpponentDiscardCount){
+		printf("  FAIL, opponent discard count=%d, expected=%d\n", actualOpponentDiscardCount, oracleOpponentDiscardCount);
+		errCount++;
+	}else{
+		printf("  PASS, opponent discard count=%d, expected=%d\n", actualOpponentDiscardCount, oracleOpponentDiscardCount);
+	}	
+	
+	actualOpponentDeckCount = post->deckCount[opponent];
+	oracleOpponentDeckCount = oracle.deckCount[opponent];
+	if(actualOpponentDeckCount != oracleOpponentDeckCount){
+		printf("  FAIL, opponent deck count=%d, expected=%d\n", actualOpponentDeckCount, oracleOpponentDeckCount);
+		errCount++;
+	}else{
+		printf("  PASS, opponent deck count=%d, expected=%d\n", actualOpponentDeckCount, oracleOpponentDeckCount);
+	}	
+	
+	return errCount;
+}
 
-	int i;
-    int j;
-    int peekIndex;
-    struct gameState G;
-    char name[30];
+int main () {
 
-    int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, 
-    sea_hag, tribute, smithy};
-    initializeGame(2, k, 2, &G);
+	int i, n, p, j, op, handPos;
+	int randDeckCount, randDiscardCount, randHandCount;
+	int choice1;
+	int errFlag=0;
+	//int k[10] = {adventurer, council_room, feast, gardens, cutpurse,
+	//	remodel, smithy, village, treasure_map, great_hall};
+	//7,8,9,10,12,13,14,16,21,26
+	struct gameState G;
 
-    //default gamestate.
-    struct gameState D;
-    srand(time(NULL));
-    int card;
-    G.deckCount[0] = 0;
-    int deckCounter;
+	printf ("Testing embargo case in cardEffect().\n");
+	printf ("RANDOM TESTS.\n");
 
-    //expected gamestates.
-    int cardsDrawn[27];
-    int cardsDrawnCount;
-    int actualcardsDrawn[27];
-    int expectedDiscardCount;
-    int expectedHandSize;
+	SelectStream(2);
+	PutSeed(3);
 
+	for (n = 0; n < 2000; n++) {
+		for (i = 0; i < sizeof(struct gameState); i++) {
+			((char*)&G)[i] = (int)(Random() * 256);
+		}
+		
+		p = (int)(Random() * 2);
+		op = p==0? 1:0; //assign opponent
 
-    int deckSize = rand() % MAX_DECK + 1;
-    int handPlayed;
+		//randomize player's deck, discard and hand counts
+		randDeckCount = G.deckCount[p] = (int)(Random() * MAX_DECK);
+		randDiscardCount = G.discardCount[p] = (int)(Random() * MAX_DECK);
+		randHandCount = G.handCount[p] = (int)(Random() * MAX_HAND);
 
-    //initialize cardDrawn
-    for (i = 0; i < 27; i++)
-	{
-    		cardsDrawn[i]=0;
-    		actualcardsDrawn[i] = 0;
+		//randomize opponent's deck, discard and hand counts
+		randDeckCount = G.deckCount[op] = (int)(Random() * MAX_DECK);
+		randDiscardCount = G.discardCount[op] = (int)(Random() * MAX_DECK);
+		randHandCount = G.handCount[op] = (int)(Random() * MAX_HAND);
+
+		G.playedCardCount = (int)(Random() * (MAX_DECK-10));
+		G.whoseTurn = p;
+		G.numPlayers = 2;
+		
+		//randomize coin count
+		G.coins = (int)(Random() * 1000);
+		
+		//randomize hand position
+		handPos = (int)(Random()* 5);
+		
+		//randomize counts of supply cards based on kingdom card k array
+		for(j=0; j<treasure_map; j++){	
+			if(j==7 || j==8 || j==9 || j==10 || j==12 || j==13 || j==14
+			|| j==16 || j==21 || j==26){
+				G.supplyCount[j]=(int)(Random()*100);			
+			} else {
+				G.supplyCount[j]=-1;
+			}
+		}
+		
+		//randomize cards in hand for player and opponent
+		for(j=0;j<randHandCount;j++){
+			G.hand[p][j]=(int)(Random()*26);
+			G.hand[op][j]=(int)(Random()*26);
+		}
+		//randomize discard piles for player and opponent
+		for(j=0;j<randDiscardCount;j++){
+			G.discard[p][j]=(int)(Random()*26);
+			G.discard[op][j]=(int)(Random()*26);
+		}
+		//randomize cards in deck for player and opponent
+		for(j=0;j<randDeckCount;j++){
+			G.deck[p][j]=(int)(Random()*26);
+			G.deck[op][j]=(int)(Random()*26);
+		}
+		
+		//randomize kingdom card choice
+		choice1=((int)(Random()*19))+7;
+		
+		//check embargo case in cardEffect()
+		errFlag = checkEmbargo(&G,choice1,op);
 	}
 
-    //fill deck with random cards
-    for (i = 0; i < deckSize; i++)
-    {
-    	deckCounter = G.deckCount[0];
-    	card = rand() % 27; 
-    	G.deck[0][deckCounter] = card;
-    	G.deckCount[0]++;
-    }
-
-    //fill hand with smithy cards - We're not testing the playcard function so we're not checking to 
-    //see if it's played or not
-    for (i = 0; i < numHandCards(&G); i++)
-    {
-    	G.hand[0][i] = smithy;
-    }
-
-    shuffle(0, &G);
-
-    //store default state
-    D = G;
-
-    for (i = 0; i < numTestRuns; i++)
-    {
-    	printf("Run number %i \n", i);
-    	G = D;
-    	shuffle(0, &G);
-    	cardsDrawnCount = 0;
-    	expectedHandSize = numHandCards(&G) + 2; // + 3 cards drawn - 1 smithy card discarded
-    	expectedDiscardCount = 1;
-
-    	for (j = 0; j < 27; j++)
-		{
-    		cardsDrawn[j]=0;
-    		actualcardsDrawn[j] = 0;
-		}
-
-		peekIndex = G.deckCount[0] - 1;
-    	//peeks at the deck to see what the next 3 cards are
-    	for (j = 0; j < 3; j++)
-    	{
-
-    		card = G.deck[0][peekIndex];
-    		cardNumToName(card, name);
-    		//printf("deck card %i: %s\n", card, name);
-    		cardsDrawn[card] = cardsDrawn[card] + 1;
-    		cardsDrawnCount++;
-    		peekIndex--;
-            if (peekIndex < 0)
-            {
-                break;
-            }
-    	}
-
-    	//add the other 4 smithy cards not played
-    	for (j = 0; j < 4; j++)
-    	{
-    		cardsDrawn[smithy] = cardsDrawn[smithy] + 1;
-    		cardsDrawnCount++;
-    	}
-
-    	//printf("before drawing\n");
-    	//printHand(0, &G);
-
-
-    	handPlayed = rand() % numHandCards(&G);
-    	playCard(handPlayed, -1, -1, -1, &G);
-
-    	//printf("After drawing\n");
-    	//printHand(0, &G);
-
-    	//count actual cards in hand
-    	for (j = 0; j < numHandCards(&G); j++)
-    	{
-    		card = G.hand[0][j];
-    		actualcardsDrawn[card] = actualcardsDrawn[card] + 1;
-    	}
-
-
-    	//make sure all cards in hand are accounted for
-    	for (j = 0; j < 27; j++)
-    	{
-    		cardNumToName(j, name);
-    		
-    		if  (actualcardsDrawn[j] != cardsDrawn[j])
-            {
-                printf("card %s actual: %i expected: %i\n", name, actualcardsDrawn[j], cardsDrawn[j]);
-            }            }
-    	}
-
-    	//make sure that the card in discard is 1 and it's smithy
-    	//printDiscard(0, &G);
-    	if (expectedDiscardCount != G.playedCardCount)
-        {
-            printf("************** Error: expected discard count and played count different ***************\n");
-        }
-    	if (expectedDiscardCount == G.discardCount[0])
-        {
-            printf ("************** Error: expected played and played count different. ************** \n");
-
-        }
-
-    	if (numHandCards(&G) != expectedHandSize)
-        {
-            printf("************** Error: expected hand size does not match actual hand size **************\n");
-        }
-
-    }
-
-
+	if(errFlag != 0){
+		printf("Some tests failed.\n");
+	} else {
+		printf("ALL TESTS PASSED!\n");
+	}
 	return 0;
 }

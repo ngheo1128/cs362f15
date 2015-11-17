@@ -1,71 +1,112 @@
-/*
-This program tests the isGameOver function.
-The parameters for this function are:
-struct gameState *state
-
+/* -----------------------------------------------------------------------
+* Programmed by: Kelvin Watson
+* Filename: unittest3.c
+* Created: 10 Oct 2015
+* Last modified: 21 Oct 2015
+* Description: Unit tests for dominion.c 's isGameOver() function
+* -----------------------------------------------------------------------
 */
-
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-#include "interface.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
 #define NOISY_TEST 1
 
+int checkIsGameOver(struct gameState *state){
+	return isGameOver(state);
+}
+
 int main() {
+	int i,r;
+	int seed = 1000;
+	int numPlayer = 2;
+	int k[10] = {adventurer, council_room, feast, gardens, mine
+		, remodel, smithy, village, baron, great_hall};
+	struct gameState G;
+	// arrays of all coppers, silvers, and golds
+	int coppers[MAX_HAND];
+	int silvers[MAX_HAND];
+	int golds[MAX_HAND];
+	for (i = 0; i < MAX_HAND; i++)
+	{
+		coppers[i] = copper;
+		silvers[i] = silver;
+		golds[i] = gold;
+	}
+	int errFlag=0;
+	int gameOver;
+	
+	printf ("TESTING isGameOver():\n");
 
-    int i;
-    struct gameState G;
-    //default gamestate.
-    struct gameState D;
+	//printf("Test player %d with %d treasure card(s) and %d bonus.\n", p, handCount, bonus);
+	memset(&G, 23, sizeof(struct gameState));   // clear the game state
+	r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
+	for(i=7; i>=-1; i--){
+		G.supplyCount[province]--;
+		printf("  Testing province count=%d\n",G.supplyCount[province]);
+		gameOver = isGameOver(&G);
+		if(i!=0){
+			if(gameOver != 0){
+				printf("    isGameOver(): FAIL, gameOver=%d, expected=%d\n",isGameOver(&G),0);
+				errFlag++;
+			} else{
+				printf("    isGameOver(): PASS, gameOver=%d, expected=%d\n",isGameOver(&G),0);   
+			}
+		}else{
+			if(gameOver != 1){
+				printf("    isGameOver(): FAIL, gameOver=%d, expected=%d\n",isGameOver(&G),1);
+				errFlag++;
+			} else{
+				printf("    isGameOver(): PASS, gameOver=%d, expected=%d\n",isGameOver(&G),1);   
+			}            
+		}     
+	}
+	
 
-    //create a default game where all supply has one each
-    for (i = 0; i < 27; i++)
-    {
-        D.supplyCount[i] = 1;
-    }
+	memset(&G, 23, sizeof(struct gameState));   // clear the game state
+	r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
+	/* Deplete supply one at a time and test gameOver status */
+	for(i=0; i<3; i++){
+		printf("  Testing depletion of %d supply counts",i+1);
+		if(i==0){
+			G.supplyCount[copper]=0;
+			gameOver = isGameOver(&G);
+			if(gameOver==1){
+				printf("    isGameOver(): FAIL, gameOver=%d, expected=%d\n",isGameOver(&G),0);
+				errFlag++;
+			} else{
+				printf("    isGameOver(): PASS, gameOver=%d, expected=%d\n",isGameOver(&G),0);   	
+			}
+		}
+		else if(i==1){
+			G.supplyCount[silver]=0;  
+			gameOver = isGameOver(&G);
+			if(gameOver==1){
+				printf("    isGameOver(): FAIL, gameOver=%d, expected=%d\n",isGameOver(&G),0);
+				errFlag++;
+			} else{
+				printf("    isGameOver(): PASS, gameOver=%d, expected=%d\n",isGameOver(&G),0);   	
+			}
+		}else{
+			G.supplyCount[gold]=0;
+			gameOver = isGameOver(&G);
+			if(gameOver==0){
+				printf("    isGameOver(): FAIL, gameOver=%d, expected=%d\n",isGameOver(&G),1);
+				errFlag++;
+			} else{
+				printf("    isGameOver(): PASS, gameOver=%d, expected=%d\n",isGameOver(&G),1);   	
+			}
+		}
+	}     
 
-    char card[32];
-    //printSupply(&G);
-
-    cardNumToName(26, card);
-    printf ("* * * * * * * * * * * * * * * * TESTING unittest3 isGameOver():* * * * * * * * * * * * * * * * \n");
-    printf ("Testing with all supply gone \n");
-    assert (isGameOver(&G) == 1);
-
-    printf ("Testing with two supply gone \n");
-    G = D;
-    G.supplyCount[0] = 0;
-    G.supplyCount[1] = 0;
-    assert (isGameOver(&G) == 0);
-
-    for (i = 2; i < 27; i++)
-    {
-        cardNumToName(i, card);
-        printf("Test: remove %s + Curse + Estate triggers end. \n", card);
-        G.supplyCount[0] = 0;
-        G.supplyCount[1] = 0;
-        G.supplyCount[i] = 0;
-        //printSupply(&G);
-        //assert (isGameOver(&G) == 1);
-
-        //Found bug, removed assertion
-        if (i == 25 || i == 26)
-            printf ("**********************************************************  \n Removing Seahag or Treasuremap in addition 2 other cards does not trigger end of game \n ********************************************************** \n");
-
-        //reset for next round
-        //printf("Resetting \n");
-        G = D;
-        assert (isGameOver(&G) == 0);
-    }
-    
-    printf("All tests passed!\n");
-
-    
-    
-    return 0;
+	if(errFlag != 0){
+		printf("Some tests failed. See bug1.c for details.\n");  
+	}else{
+		printf("All tests passed!\n");
+	}
+	return 0;
 }

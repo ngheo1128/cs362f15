@@ -53,27 +53,21 @@ int checkAdventurerEffect(struct gameState *state, int player, int treasureCard)
 		#endif 
 	}
 	int expectedTreasureCount=2;
-	int silverOrGoldCount=0;
+	int copperSilverOrGoldCount=0;
 	//int copperCount=0;
 	//count the treasures in the hand
 	int h;
 	for(h=0; h<state->handCount[player]; h++){
-		if(treasureCard != copper){ //bug introduced will cause infinite loop if coppers are counted
-			if(state->hand[player][h]==treasureCard){
-				silverOrGoldCount++;
-			}
-		} /*else { 
 		if(state->hand[player][h]==treasureCard){
-			copperCount++;
+			copperSilverOrGoldCount++;
 		}
-	}	*/
 	}
-	if(silverOrGoldCount != expectedTreasureCount){
-		printf("  FAIL, treasureCount=%d, expected=%d\n", silverOrGoldCount, expectedTreasureCount);
+	if(copperSilverOrGoldCount != expectedTreasureCount){
+		printf("  FAIL, treasureCount=%d, expected=%d\n", copperSilverOrGoldCount, expectedTreasureCount);
 		printf("  NOTE: If treasure is 4 (copper), failed unit test is expected due to bug introduced in assignment 1.\n");
 		err++;
 	}else{
-		printf("  PASS, treasureCount=%d, expected=%d\n", silverOrGoldCount, expectedTreasureCount);	  
+		printf("  PASS, treasureCount=%d, expected=%d\n", copperSilverOrGoldCount, expectedTreasureCount);	  
 	}
 
 	/*Check for unexpected transactions*/
