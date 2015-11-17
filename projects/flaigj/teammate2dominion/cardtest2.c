@@ -48,9 +48,8 @@ int main()
       printf("Failed: Adventurer costs %d coins.\n\n", cost);
 
    // adventurer in hand
-   printf("Test 2: Is Adventurer in hand?\n");
-
    int isAdventurer = 0;
+   printf("Test 2: Is Adventurer in hand?\n");
    for (i = 0; i < G.handCount[0]; i++)
    {
       //printf("Where\n");
@@ -67,7 +66,9 @@ int main()
       printf("Failed: Adventurer is not in hand.\n\n");
 
    // use adventurer
-   adventurerCard(0, &G, myDrawnTrs, z, myTempHand, myDrawnCrd);
+   //adventurerCard(0, &G, myDrawnTrs, z, myTempHand, myDrawnCrd);
+   //G.deckCount[0] = 0;
+   cardEffect(adventurer, 0, 0, 0, &G, 0, 0);
 
    isAdventurer = 0;
    for (i = 0; i < G.handCount[0]; i++)
@@ -95,9 +96,10 @@ int main()
 
    int last = G.handCount[0] - 1;
    int nextLast = last - 1;
-   if (G.hand[0][last] == copper)
+   if (G.hand[0][last] == copper || G.hand[0][last] == gold || G.hand[0][last] == silver)
    {
-      if(G.hand[0][nextLast] == copper)
+      if(G.hand[0][nextLast] == copper ||
+	    G.hand[0][nextLast] == silver || G.hand[0][nextLast] == gold)
       {
 	 flag = 1;
       } 

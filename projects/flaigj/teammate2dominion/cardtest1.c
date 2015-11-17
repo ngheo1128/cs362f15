@@ -188,7 +188,7 @@ int main()
 
    int handBeforePlay = G.handCount[0];
    // play a smithy card
-   smithyCard(0, &G, 4);
+   smithyEffect(0, &G, 4);
 
    int cardsDrawnCnt = G.handCount[0] - handBeforePlay;
    printf("Test 3: Checking if 3 cards drawn and one discarded.\n");
