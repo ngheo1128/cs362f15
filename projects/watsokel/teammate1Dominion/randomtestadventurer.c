@@ -1,140 +1,216 @@
-/*
- * Author: Jason Flaig
- * randomtestadventurer.c
- * Date: 11/6/2015
- * Modified: 11/8/2015
- * Purpose: Use random number of cards in hand to determine whether adventurer succeeds 
- *  in providing two treasure cards and if shuffling happens when cards in hand <= 1
- */
+/* -----------------------------------------------------------------------
+* Programmed by: Kelvin Watson
+* Filename: randomtestadventurer.c
+* Created: 27 Oct 2015
+* Last modified: 2 Nov 2015
+* Description: Assignment 4: Random tests for adventurerEffect2() method
+* I needed to create a different buggy version of adventurerEffect() since
+* my original version from assignment 2 introduced an infinite loop
+* -----------------------------------------------------------------------
+*/
 
-#include <stdlib.h>
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-#include <math.h>
-#include <time.h>
 
-/* Checks current gamestate to old gamestate to check if shuffling happened and counts treasure cards */
-int checkAdventurer(struct gameState *post, int player)
-{
-	int failCount = 0;
-	int treasureTest = 1;
-	int shuffleTest = 1;
-	int drawntreasurePre = 0;
-	int drawntreasurePost = 0;
-	struct gameState pre;
-	int temphand[MAX_HAND];
-	memcpy(&pre, post, sizeof(struct gameState));
+#define DEBUG 0
+#define NOISY_TEST 1
 
-	adventurerCard(player, post, 0, 0, temphand, 0);
-
-	/* Cases where shuffling must happen, 0 or 1 cards in deck */
-	if (pre.deckCount[player] < 2)
-	{
-		if (post->deckCount[player] == pre.deckCount[player])
-		{
-			shuffleTest = 0;
-			failCount++;
+int checkAdventurerEffect(struct gameState *post, int player, int opponent) {
+	struct gameState oracle;
+	memcpy (&oracle, post, sizeof(struct gameState));
+	int errCount=0;
+	
+	int actualPostTreasureCount, actualOpponentPostTreasureCount, actualHandCount;
+	int actualOpponentHandCount, actualOpponentDiscardCount, actualOpponentDeckCount;
+	
+	int oracleHandCount, oraclePreTreasureCount, oraclePostTreasureCount;
+	int oracleOpponentPreTreasureCount, oracleOpponentPostTreasureCount;
+	int oracleOpponentHandCount, oracleOpponentDiscardCount, oracleOpponentDeckCount;
+	int h;
+		
+	oraclePreTreasureCount=0;
+	
+	//count treasure cards in hand prior to call
+	for(h=0; h<oracle.handCount[player]; h++){
+		if(	oracle.hand[player][h] == copper ||
+			oracle.hand[player][h] == silver ||
+			oracle.hand[player][h] == gold){
+				++oraclePreTreasureCount;
+			}
+	}
+	
+	oracleOpponentPreTreasureCount=0; //count all treasure cards in opponent's hand prior to call
+	for(h=0; h<oracle.handCount[opponent]; h++){
+		if(	oracle.hand[opponent][h] == copper ||
+			oracle.hand[opponent][h] == silver ||
+			oracle.hand[opponent][h] == gold){
+				++oracleOpponentPreTreasureCount; 
 		}
 	}
+	int temphand[500];
+	int drawntreasure=0;
+	int cardDrawn;
+	int z = 0; // this is the counter for the temp hand
+	
+	int r = adventurerCard(player, post, drawntreasure, z, temphand, cardDrawn);
 
-	/* Check if drawn treasure was 2 */
-	// cycle through cards in pre hand and count treasures
-	// cycle through cards in post hand and count treasures
-	// if difference 2 then drawn treasure success
-	int i;
-	for (i = 0; i < pre.handCount[player]; i++)
-	{
-		if (pre.hand[player][i] == gold ||
-			pre.hand[player][i] == silver ||
-			pre.hand[player][i] == copper)
-				drawntreasurePre++;
+	//int bonus=0;
+	//int r = adventurerCard(adventurer,0,0,0,post,0,&bonus);
+			
+	if(r != 0){
+		printf("  FAIL, return value=%d, expected=%d\n", r, 0);
+		errCount++;
+	}else{
+		printf("  PASS, return value=%d, expected=%d\n", r, 0);
+	}
+	
+	oraclePostTreasureCount = oraclePreTreasureCount+2;
+
+	actualPostTreasureCount=0;
+	for(h=0; h<post->handCount[player]; h++){
+		if(	post->hand[player][h] == copper ||
+			post->hand[player][h] == silver ||
+			post->hand[player][h] == gold){
+				++actualPostTreasureCount;
+			}
 	}
 
-	for (i = 0; i < post->handCount[player]; i++)
-	{
-		if (post->hand[player][i] == gold ||
-			post->hand[player][i] == silver ||
-			post->hand[player][i] == copper)
-				drawntreasurePost++;
+	if(actualPostTreasureCount != oraclePostTreasureCount){
+		printf("  FAIL, treasure count=%d, expected=%d\n", actualPostTreasureCount, oraclePostTreasureCount);
+		errCount++;
+	}else{
+		printf("  PASS, treasure count=%d, expected=%d\n", actualPostTreasureCount, oraclePostTreasureCount);
 	}
 
-	if ((drawntreasurePost - drawntreasurePre) != 2)
-	{
-		treasureTest = 0;
-		failCount++;
+	actualHandCount = post->handCount[player];
+	oracleHandCount = oracle.handCount[player]+2;
+	if(actualHandCount != oracleHandCount){
+		printf("  FAIL, hand count=%d, expected=%d\n", actualHandCount, oracleHandCount);
+		errCount++;
+	}else{
+		printf("  PASS, hand count=%d, expected=%d\n", actualHandCount, oracleHandCount);
+	}
+	
+	//Check for unwanted transactions in opponent's hand and treasureCount
+	printf("Checking for unwanted transactions in opponent's hand and treasure count:");
+
+	oracleOpponentPostTreasureCount = oracleOpponentPreTreasureCount;
+	actualOpponentPostTreasureCount=0;
+	for(h=0; h<post->handCount[opponent]; h++){
+		if(	post->hand[opponent][h] == copper ||
+			post->hand[opponent][h] == silver ||
+			post->hand[opponent][h] == gold){
+				++actualOpponentPostTreasureCount;
+			}
+	}
+	if(actualOpponentPostTreasureCount != oracleOpponentPostTreasureCount){
+		printf("  FAIL, opponent treasure count=%d, expected=%d\n", actualOpponentPostTreasureCount, oracleOpponentPostTreasureCount);
+		errCount++;
+	}else{
+		printf("  PASS, opponent treasure count=%d, expected=%d\n", actualOpponentPostTreasureCount, oracleOpponentPostTreasureCount);
 	}
 
-	if (failCount > 0)
-	{
-		if (treasureTest == 0)
-		{
-			printf("Treasure test failed.\n");
-		}
-
-		if (shuffleTest == 0)
-		{
-			printf("Shuffle test failed.\n");
-		}
-
-		printf("Before Adventurer: player = %d, hand = %d, deck = %d, discard = %d\n",
-			player, pre.handCount[player], pre.deckCount[player],
-			pre.discardCount[player]);
-
-		printf("After Adventurer: player = %d, hand = %d, deck = %d, discard = %d\n",
-			player, post->handCount[player], post->deckCount[player],
-			post->discardCount[player]);
+	actualOpponentHandCount = post->handCount[opponent];
+	oracleOpponentHandCount = oracle.handCount[opponent];
+	if(actualOpponentHandCount != oracleOpponentHandCount){
+		printf("  FAIL, opponent hand count=%d, expected=%d\n", actualOpponentHandCount, oracleOpponentHandCount);
+		errCount++;
+	}else{
+		printf("  PASS, opponent hand count=%d, expected=%d\n", actualOpponentHandCount, oracleOpponentHandCount);
 	}
-
-	return failCount;
+	
+	actualOpponentDiscardCount = post->discardCount[opponent];
+	oracleOpponentDiscardCount = oracle.discardCount[opponent];
+	if(actualOpponentDiscardCount != oracleOpponentDiscardCount){
+		printf("  FAIL, opponent discard count=%d, expected=%d\n", actualOpponentDiscardCount, oracleOpponentDiscardCount);
+		errCount++;
+	}else{
+		printf("  PASS, opponent discard count=%d, expected=%d\n", actualOpponentDiscardCount, oracleOpponentDiscardCount);
+	}	
+	
+	actualOpponentDeckCount = post->deckCount[opponent];
+	oracleOpponentDeckCount = oracle.deckCount[opponent];
+	if(actualOpponentDeckCount != oracleOpponentDeckCount){
+		printf("  FAIL, opponent deck count=%d, expected=%d\n", actualOpponentDeckCount, oracleOpponentDeckCount);
+		errCount++;
+	}else{
+		printf("  PASS, opponent deck count=%d, expected=%d\n", actualOpponentDeckCount, oracleOpponentDeckCount);
+	}	
+	return errCount;
 }
 
-/* Driver of checkAdventurer */
-int main()
-{
-	int numFailedTests = 0;
-	int numOfTests = 2000;
-	int myCount = 0;
+int main () {
 
-   	printf("Random Test of Adventurer.\n\n");
+	int i, n, p, j, op;	
+	int randDeckCount, randDiscardCount, randHandCount;
+	int opRandDeckCount, opRandDiscardCount, opRandHandCount;
+	int errFlag=0;
+	//int k[10] = {adventurer, council_room, feast, gardens, mine,
+	//	remodel, smithy, village, baron, great_hall};
 
-   	int i;
-   	for (i = 0; i < numOfTests; i++)
-   	{
-	   	int k[10] = {adventurer, council_room, feast, gardens, mine
-	      , remodel, smithy, village, baron, great_hall};
-	   	struct gameState G;
-	   	   		int player;
-   		player = floor(Random() * 2);
-   		//printf("r = %d\n", player);
-   		initializeGame(2, k, rand(), &G); 	// initialize a new game
-	   	
-	   	/* 1 in 4 chance give 0 cards for high probability of testing shuffle */ 
-	   	int makeInt = floor(Random() * 4);
-	   	if (makeInt == 0)
-	   	{
-	   		G.deckCount[player] = 0;
-	   		myCount++;
-	   	}
-	   	
-	   	else
-	   	{
-	   		makeInt = floor(Random() * MAX_DECK);
-	   		G.deckCount[player] = makeInt;
-	   	}
+	int adventurers[MAX_HAND];
+	int estates[MAX_HAND];
+	int silvers[MAX_HAND];
+	int golds[MAX_HAND];
+	for (i = 0; i < MAX_HAND; i++){
+		adventurers[i] = adventurer;
+		estates[i] = estate;
+		silvers[i] = silver;
+		golds[i] = gold;
+	}
+	
+	struct gameState G;
 
-	   	makeInt = floor(Random() * 5);
-	   	G.discardCount[player] = makeInt;
-	   	makeInt = floor(Random() * MAX_HAND);
-	   	G.handCount[player] = makeInt;
-	   	numFailedTests += checkAdventurer(&G, player);
-	   	memset(&G, 23, sizeof(struct gameState));  // clear the game state
-   	}
+	printf ("Testing adventurer.\n");
 
-   		printf("Ran %d tests and %d failed.\n", 2 * numOfTests, numFailedTests);
+	printf ("RANDOM TESTS.\n");
 
-   		return 0;
+	SelectStream(2);
+	PutSeed(3);
+
+	for (n = 0; n < 2000; n++) {
+		for (i = 0; i < sizeof(struct gameState); i++) {
+			((char*)&G)[i] = (int)(Random() * 256);
+		}
+		
+		p = (int)(Random() * 2);
+		op = p==0? 1:0; //assign opponent
+		
+		//randomize player's deck, discard and hand counts
+		randDeckCount = G.deckCount[p] = (int)(Random() * MAX_DECK);
+		randDiscardCount = G.discardCount[p] = (int)(Random() * MAX_DECK);
+		randHandCount = G.handCount[p] = (int)(Random() * MAX_HAND);
+
+		//randomize opponent's deck, discard and hand counts
+		opRandDeckCount = G.deckCount[op] = (int)(Random() * MAX_DECK);
+		opRandDiscardCount = G.discardCount[op] = (int)(Random() * MAX_DECK);
+		opRandHandCount = G.handCount[op] = (int)(Random() * MAX_HAND);
+		
+		//Randomly generate an assortment of all cards for player and opponent
+		for(j=0;j<randHandCount;j++){
+			G.hand[p][j]=(int)(Random()*26);
+			G.hand[op][j]=(int)(Random()*26);
+		}
+		for(j=0;j<randDiscardCount;j++){
+			G.discard[p][j]=(int)(Random()*26);
+			G.discard[op][j]=(int)(Random()*26);
+		}
+		for(j=0;j<randDeckCount;j++){
+			G.deck[p][j]=(int)(Random()*26);
+			G.deck[op][j]=(int)(Random()*26);
+		}
+
+		errFlag = checkAdventurerEffect(&G,p,op);
+	}
+
+	if(errFlag != 0){
+		printf("Some tests failed.\n");
+	} else {
+		printf("ALL TESTS PASSED!\n");
+	}
+	return 0;
 }
