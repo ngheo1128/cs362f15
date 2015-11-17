@@ -1,232 +1,194 @@
 /*
- * Tests smithy card.
- *
- */
+* Card Test 1: Smithy
+*
+* In this unit test, we will be testing the function playSmithy().
+* Smithy is a card that when played, allows the player to draw three cards.
+*
+* Input: handpos (index where smithy is located), currentPlayer, and state.
+* Output: The top three cards from deck should be moved to hand, and smithy should be discarded
+* 
+* To test that the function does as we ask it to, we will construct random tests that tests for a
+* number of hand, deck, and discard piles.  The random number will be constrained to 1/2 the MAX set
+* values (500) because there really can only be around 300 cards in play at a time (thus we are not
+* concerned with overflowing our hand or deck or discard by testing the extremes in terms of count.
+* Obviously this would over run and overwrite values in our struct causing major problems in the game)
+*
+*/
+
 #include "dominion.h"
-#include "dominion_helpers.h"
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
-#include <assert.h>
-#include "rngs.h"
 
-//Store all the variables that will be randomized in one big struct, to make it easier to pass to functions
-struct randomValues{
-    int numPlayers;             //Randomized number of players in game (2-4)
-    int curPlayer;              //Randomized current player
-    int totalCards;             //Total number of cards in current player's hand, deck, and discard (4 to max_hand)
-    int handCount;              //Randomized player hand count
-    int deckCount;              //Randomized player deck count
-    int discardCount;           //Randomized player discard count
-    int handSmithyCount;        //Keep track of smithy cards in hand (to check discard)
-    int smithyPos;               //Randomized position of adventurer card in hand
-    int gameSeed;               //Random value for seeding game
-};
+void fuzzState(struct gameState *);
+int randomNumber(int, int);
+int percentChanceIsOne(int);
+int totalCardCount(int, struct gameState *);
 
-//Initializes game state, sets random variables and stores them in vars. Modifies gamestate with values from vars
-void randomize(struct gameState * post, struct randomValues * vars, int k[]);
-//Runs checks on the random set-up
-int checkResults(struct gameState * pre, struct gameState * post, struct randomValues * vars);
+int main(int argc, char * argv[]) {
+	int test_trials = 10000;
+	
+	if (argc > 1) {
+		test_trials = atoi(argv[1]);
+		if (test_trials < 1) {
+			printf("Usage: cardtest1 <trials>\r\n");
+			exit(1);
+		}
+	}
+	
+	srand(time(NULL));
+	
+	//new gameState
+	struct gameState * gs = malloc(sizeof(struct gameState));
+	struct gameState * stateCopy = malloc(sizeof(struct gameState));
+	
+	int trial;
+	int returnValue;
+	int numberOfErrors = 0;
+	int playerNum;
+	
+	int emptyHand;
+	int emptyDiscard;
+	int emptyDeck;
+	int emptyThree;	//not enough cards?
+	int handPos;
+	int drawCards;
+	
+	printf("Card Test 1\r\n");
+	printf("Conducting %d random trials.\r\n", test_trials);
+	
+	for (trial = 0; trial < test_trials; trial++) {
+		
+		printf("TRIAL %d\r\n", trial);
+		
+		
+		fuzzState(gs);
 
-int main (){
-    srand(time(NULL));
-    int i, r;
-    int casesFailed = 0;        //Number of test cases with failed checks
-    int checksFailed = 0;       //Number of individual checks failed
-    int numTests = 20000;        //Number of random tests to run
+		//semi-randomize inputs (within reason)
+		playerNum = randomNumber(2, MAX_PLAYERS) - 2;
+		emptyDeck = percentChanceIsOne(5);
+		emptyDiscard = percentChanceIsOne(5);
+		emptyHand = percentChanceIsOne(5);
+		emptyThree = percentChanceIsOne(1);
+		
+		if (emptyDeck == 1 || emptyThree == 1) {
+			gs->deckCount[playerNum] = 0;
+		} else { 
+			gs->deckCount[playerNum] = randomNumber(1, 300);
+		}
+		
+		if (emptyHand == 1 || emptyThree == 1) {
+			gs->handCount[playerNum] = 1;					//leave room for Smithy card
+		} else { 
+			gs->handCount[playerNum] = randomNumber(2, 300);
+		}
+		
+		if (emptyDiscard == 1 || emptyThree == 1) {
+			gs->discardCount[playerNum] = 0;
+		} else {
+			gs->discardCount[playerNum] = randomNumber(1, 300);
+		}
+		
+		gs->playedCardCount = randomNumber(0,gs->handCount[playerNum]);
+		
+		/*gs->deckCount[playerNum] = randomNumber(5, 300);
+		gs->discardCount[playerNum] = randomNumber(5, 300);
+		gs->handCount[playerNum] = randomNumber(5, 300);
+		*/
+		
+		
+		//set smithy card
+		handPos = randomNumber(0, gs->handCount[playerNum]-1);
+		gs->hand[playerNum][handPos] = smithy;
+		
+		//create copy for comparison later
+		memcpy(stateCopy, gs, sizeof(struct gameState));
+		
+		//RUN FUNCTION
+		returnValue = playSmithy(handPos, playerNum, gs);
+		
+		//Check state
+		if (stateCopy->deckCount[playerNum] < 3) {
+			if (gs->discardCount[playerNum] != 1) {
+				printf("discardCount is not as expected.  Expected: 1, Actual: %d\r\n", gs->discardCount[playerNum]);
+				numberOfErrors++;
+			}
+		} else {
+			if (gs->discardCount[playerNum] != stateCopy->discardCount[playerNum] + 1) {
+				printf("discardCount is not as expected.  Expected: %d, Actual: %d\r\n",stateCopy->discardCount[playerNum] + 1, gs->discardCount[playerNum]);
+				numberOfErrors++;
+			}			
+		}
+		
+		//check top of discard for smithy
+		if (gs->discard[playerNum][ gs->discardCount[playerNum] - 1 ] != smithy){
+			printf("top of discard mismatch. Expected: %d, Actual %d\r\n", smithy, gs->discard[playerNum][ gs->discardCount[playerNum] - 1 ]);
+			numberOfErrors++;
+		}
+		
+		
+		if (stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum] >= 3) {
+			drawCards = 3;
+		} else {
+			drawCards = stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum];
+		}
+		
+		//drawCards should be drawCards less pluss smithy
+		if (gs->discardCount[playerNum] + gs->deckCount[playerNum] - drawCards + 1 != stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum]) {
+			printf("deck + discard count is not as expected.  Expected: %d, Actual: %d\r\n",stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum] - drawCards + 1, gs->discardCount[playerNum] + gs->deckCount[playerNum]);
+			numberOfErrors++;
+		}
+		
+		//Hand Should have drawCards extra cards minus smithy
+		if (gs->handCount[playerNum] != stateCopy->handCount[playerNum] + drawCards - 1) {
+			printf("handCount is not as expected.  Expected: %d, Actual: %d\r\n",stateCopy->handCount[playerNum] + drawCards - 1, gs->handCount[playerNum]);
+			numberOfErrors++;
+		}
 
 
-    int k[10] = {adventurer, council_room, feast, gardens, mine,
-	       remodel, smithy, village, baron, great_hall};
+	}	
+	
+	printf("Card Test 1 Complete\r\n");
+	printf("Number of errors found: %d\r\n", numberOfErrors);
+	
 
-    //Allocate memory for pre and post function game states, and struct for random variables
-    struct gameState * post = malloc(sizeof(struct gameState));
-    struct gameState * pre = malloc(sizeof(struct gameState));
-    struct randomValues * vars = malloc(sizeof(struct randomValues));
-
-    for(i = 0; i < numTests; i++){
-
-        //Pass the gamestate to function for generating random values
-        randomize(post, vars, k);
-
-        //Make copy of gamestate
-        memcpy(pre, post, sizeof(struct gameState));
-
-        //Print test variables
-        printf("\nTEST CASE %d:\nPlayers: %d, Current Player: %d, HandCount: %d, DeckCount: %d, DiscardCount: %d\n",
-               i+1, vars->numPlayers, vars->curPlayer, vars->handCount, vars->deckCount, vars->discardCount);
-        printf("Hand Smithy Count: %d, Smithy Hand Pos: %d, GameSeed Value: %d\n",
-               vars->handSmithyCount, vars->smithyPos, vars->gameSeed);
-
-        //Call smithyCardEddrect
-        smithyCardEffect(vars->smithyPos, vars->curPlayer, post);
-
-        //Call function to test pre and post state. Returns 0 if no errors, 1 if errors.
-        r = checkResults(pre, post, vars);
-
-        //Print success or number of failures
-        if(r == 0){
-            printf("Test case %d passed all checks.\n", i);
-        }
-        else{
-            printf("%d of 5 checks failed.\n", r);
-            casesFailed++;  //Increment number of test cases with errors
-            checksFailed += r;  //Keep running total of failed checks
-        }
-
-    }//END RANDOM TEST LOOP
-
-
-   //Print number of tests and number of failed tests
-   printf("\nTest cases run: %d\n", numTests);
-   printf("Test cases with errors: %d\n", casesFailed);
-   printf("Total checks failed: %d of %d\n", checksFailed, numTests * 5);
-
-    return 0;
+	free(gs);
+	free(stateCopy);
+	return 0;
 }
 
-void randomize(struct gameState * post, struct randomValues * vars, int k[]){
-
-    int r, j;
-    //Randomize numPlayers, curPlayer, and gameSeed
-    vars->numPlayers = floor(Random() * 3) + 2;           //Min: 2, Max: 4
-    vars->curPlayer = floor(Random() * vars->numPlayers);       //Min: 0, Max: curPlayer
-    vars->gameSeed = rand();
-
-    /*//DEBUG
-    printf("NumPlayers\tcurPlayer\tgameSeed\n");
-    printf("%d\t\t%d\t\t%d\n", numPlayers, curPlayer, gameSeed);
-    */
-
-    //Initialize game
-    r = initializeGame(vars->numPlayers, k, vars->gameSeed, post);
-
-    //Set the random variables for current player
-    //Need controlled randomization of deckCount, discardCount, handCount, deck, discard, and hand
-    //Also need to make sure there are at least 3 discard+deck, and at least 1 smithy in hand
-
-    //Set total number of cards in hand+deck+discard
-    vars->totalCards = floor(Random() * (MAX_DECK - 2)) + 4;        //Needs to be at least 4 (Smithy, 3 cards to draw)
-
-    //Since max_hand == max_deck, just use totalCards - 3 as ceiling for hand (need at least 3 left for drawing)
-    vars->handCount = floor(Random() * (vars->totalCards - 3));
-    if(vars->handCount == 0){
-        vars->handCount++;
-        vars->totalCards++;
-    }
-    vars->deckCount = floor(Random() * (vars->totalCards - vars->handCount + 1));
-    vars->discardCount = vars->totalCards - (vars->handCount + vars->deckCount);
-    post->deckCount[vars->curPlayer] = vars->deckCount;
-    post->handCount[vars->curPlayer] = vars->handCount;
-    post->discardCount[vars->curPlayer] = vars->discardCount;
-
-    //Fill hand with random cards
-    for(j = 0; j < vars->handCount; j++){
-        post->hand[vars->curPlayer][j] = floor(Random() * 26);
-    }
-    //Place a smithy card in a random hand pos
-    vars->smithyPos = floor(Random() * vars->handCount);
-    post->hand[vars->curPlayer][vars->smithyPos] = smithy;
-    //Count the number of smithy cards in hand
-    vars->handSmithyCount = 0;
-    for(j = 0; j < vars->handCount; j++){
-        if(post->hand[vars->curPlayer][j] == smithy){
-            vars->handSmithyCount++;
-        }
-    }
-
-    //Debug (make sure random numbers are being generated properly)
-    //printf("Total\tHand\tDeck\tDiscard\tTotal\n");
-    //printf("%d\t%d\t%d\t%d\t%d\n", vars->totalCards, vars->handCount, vars->deckCount, vars->discardCount, (vars->handCount+vars->deckCount+vars->discardCount));
-
-    //Debug
-    //printf("Smithy cards in hand: %d\n", vars->handSmithyCount);
-
-    //Fill deck with random cards
-    //Do not allow smithies in deck or discard because it could throw off discard check
-    for(j = 0; j < vars->deckCount; j++){
-        do{
-            post->deck[vars->curPlayer][j] = floor(Random() * 26);
-        }while(post->deck[vars->curPlayer][j] == smithy);
-    }
-
-    //Fill discard with random cards
-    //Don't allow smithies because it could throw off discard check
-    for(j = 0; j < vars->discardCount; j++){
-        do{
-            post->discard[vars->curPlayer][j] = floor(Random() * 26);
-        }while(post->discard[vars->curPlayer][j] == smithy);
-    }
-
-    return;
+void fuzzState(struct gameState * state) {
+	int i;
+	
+	unsigned char * ptr = (unsigned char *)state;
+	
+	for (i = 0; i < sizeof(struct gameState); i++) {
+		ptr[i] = (unsigned char)(rand()%256);
+	}
 }
 
-
-int checkResults(struct gameState * pre, struct gameState * post, struct randomValues * vars){
-    /*
-    Checks to run each time:
-    -Hand should have net gain of 2 cards (3 drawn, 1 discarded)
-    -Hand should have 1 less smithy card than before
-    -PlayedCardsCount should be increased by 1
-    -Top of playedCards should be smithy
-    -Nothing else in gameState should change
-    */
-
-    int comparison;
-    int failures = 0;
-    int i;
-    int smithyCardsPost = 0;    //How many smithy cards are in hand after card played
-
-    //Test that hand has net gain of 2 cards (3 drawn, 1 discarded)
-    comparison = post->handCount[vars->curPlayer] - pre->handCount[vars->curPlayer];
-    if(comparison != 2){
-        printf("FAILED CHECK: net gain to player's hand count is %d. Expected 2.\n", comparison);
-        failures++;
-    }
-
-    //Test that player hand contains one less smithy
-    for(i = 0; i < post->handCount[vars->curPlayer]; i++){
-        if(post->hand[vars->curPlayer][i] == smithy){
-            smithyCardsPost++;
-        }
-    }
-    comparison = vars->handSmithyCount - smithyCardsPost;
-    if(comparison != 1){
-        printf("FAILED CHECK: Number of smithies in player hand decreased by %d. Expected 1.\n", comparison);
-        failures++;
-    }
-
-    //Test that playedCards in incremented
-    comparison = post->playedCardCount - pre->playedCardCount;
-    if(comparison != 1){
-        printf("FAILED CHECK: gameState's playedCardCount increased by %d. Expected 1.\n", comparison);
-        failures++;
-    }
-
-    //Test that top of playedCards contains smithy
-    if(post->playedCards[post->playedCardCount - 1] != smithy){
-        printf("FAILED CHECK: top of playedCard pile is NOT smithy.\n");
-        failures++;
-    }
-
-    //Test that no other changes to state occurred
-    pre->handCount[vars->curPlayer] = post->handCount[vars->curPlayer];
-    memcpy(pre->hand[vars->curPlayer], post->hand[vars->curPlayer], sizeof(int) * MAX_HAND);
-    pre->playedCardCount = post->playedCardCount;
-    memcpy(pre->playedCards, post->playedCards, sizeof(int) * MAX_DECK);
-    pre->discardCount[vars->curPlayer] = post->discardCount[vars->curPlayer];
-    memcpy(pre->discard[vars->curPlayer], post->discard[vars->curPlayer], sizeof(int) * MAX_DECK);
-    pre->deckCount[vars->curPlayer] = post->deckCount[vars->curPlayer];
-    memcpy(pre->deck[vars->curPlayer], post->deck[vars->curPlayer], sizeof(int) * MAX_DECK);
-    comparison = memcmp(pre, post, sizeof(struct gameState));
-    if(comparison != 0){
-        printf("FAILED CHECK: Other areas of game state altered.\n");
-        failures++;
-    }
-
-
-    return failures;
+int randomNumber(int from, int to) {
+	int a, b;
+	if (from < to) {
+		a = from;
+		b = to;
+	} else {
+		a = to;
+		b = from;
+	}
+	
+	return rand() % ((b - a) + 1) + a;
 }
 
+int percentChanceIsOne(int probability) {
+	if ( probability > (rand() % 100)) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+int totalCardCount(int playerNum, struct gameState * gs) {
+	return (gs->deckCount[playerNum] + gs->discardCount[playerNum] + gs->handCount[playerNum]);
+}

@@ -1,206 +1,146 @@
-/*************************************************************************************************
- * Author:                 Drew Machowicz
- * Date Created:           October 19, 2015
- * Last Modification Date: October 23, 2015
- * File Name:              unittest3.c
- * Overview:
- *   Unit tests for gain card function
- ************************************************************************************************/
+/*
+* Unit Test 3
+* ------------
+* This unit test tests for isGameOver().  According to the rules, the game is over when
+* 1. Province cards have been eliminated from game OR
+* 2. Three supply cards have been exhausted
+*
+* INPUT: A random game state will be introduced.  Upon occasion, one of the two criteria will
+* be introduced intentionally.
+* 
+* OUTPUT: The game state should not change.  Instead, 1 will be returned for when the criteria are met.
+* If a 1 is returned and the criteria is not met, an error will be recorded.
+*/
+
 #include "dominion.h"
-#include "interface.h"
-#include "dominion_helpers.h"
+#include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <stdio.h>
-#include <assert.h>
-#include "rngs.h"
 
-int testGainCard() {
-	//intialization steps below borrowed from unittest2
-    //seed for initialize game
-    int seed = 12345;
-    //here you can choose number of players, between 2 and 4
-    int numPlayers = 2;
-    //here you can choose player number, starting at 0, up to # of players -1
-    int player = 0;
-    //players start with 5 cards
-    int handNum = 5;
-    //this one should pass
-    //array to hold current cards
-	int currHand[handNum];
-    currHand[0] = copper;  //worth 1
-    currHand[1] = silver;  //worth 3
-    currHand[2] = estate;    //
-    currHand[3] = remodel; //can trash a card
-    currHand[4] = curse; //don't want it
+void fuzzState(struct gameState *);
+int randomNumber(int, int);
+int percentChanceIsOne(int);
+int depletedSupplies(struct gameState *);
 
-    struct gameState newGame;
-    memcpy(newGame.hand[player], currHand, sizeof(int)*handNum);
+int main(int argc, char * argv[]) {
+	int unit3_test_trials = 10000;
+	
+	if (argc > 1) {
+		unit3_test_trials = atoi(argv[1]);
+		if (unit3_test_trials < 1) {
+			printf("Usage: unittest3 <trials>\r\n");
+			exit(1);
+		}
+	}
+	
+	srand(time(NULL));
+	
+	//new gameState
+	struct gameState * gs = malloc(sizeof(struct gameState));
+	struct gameState * stateCopy = malloc(sizeof(struct gameState));
+	
+	int i;
+	int trial;
+	int returnValue;
+	int numberOfErrors = 0;
 
+	printf("Unit test 3\r\n");
+	printf("Conducting %d random trials.\r\n", unit3_test_trials);	
 
-    //kingdom cards uses for tets
-    int k[10] = {adventurer, ambassador, embargo, smithy, village, feast, mine, gardens, baron, council_room};
+	for (trial = 0; trial < unit3_test_trials; trial++) {
+		fuzzState(gs);
 
-    //itnialzieGame supplies all the supplyCounts of cards
-    printf("Testing GainCard Fuction with toFlag at 0...\n");
-    printf("Intializing Game...\n");
-    initializeGame(numPlayers, k, seed, &newGame);
-    printf("Testing toFlag 0\n");
+		//semi-randomize inputs (within reason)
+		int zeroSupplyProvince = percentChanceIsOne(5);
+		int zeroSuppliesInThree = percentChanceIsOne(5);
 
+		if (zeroSupplyProvince == 1){
+			gs->supplyCount[province] = 0;
+		}
+		
+		if (zeroSuppliesInThree == 1){
+			for (i = 0; i < 3; i++) {
+				gs->supplyCount[rand()%(treasure_map+1)] = 0;
+			}
+		}
+		
+		//for later comparison
+		memcpy(stateCopy, gs, sizeof(struct gameState));
+		
+		//perform function
+		returnValue = isGameOver(gs);
 
-    int i = 0;
-    int handCardsBefore = 0;
-    int discardCardsBefore = 0;
-    int deckCountBefore = 0;
-    int supplyCountBefore = 0;
-    int toFlag = 0;
-    //this tests for toFlag to 0 for all cards in current hand
-    for (i = 0; i <= handNum; i++) {
-    	//check cards in hand before
-    	handCardsBefore = newGame.handCount[player];
-    	discardCardsBefore = newGame.discardCount[player];
-    	deckCountBefore = newGame.deckCount[player];
-    	supplyCountBefore = newGame.supplyCount[newGame.hand[player][i]];
+		//compare states
+		if (memcmp( gs, stateCopy, sizeof(struct gameState)) != 0) {
+			printf("Modification detected in state!\r\n");
+			numberOfErrors++;
+		} else {
+			if ((returnValue != 1) && ((depletedSupplies(gs) >= 3) || (gs->supplyCount[province] == 0))) {
+				printf("State meets criteria for game over, but game over not declared!\r\n");
+				printf("returnValue = %d, depletedSupplies = %d, supplyCount[province] = %d\r\n", returnValue, depletedSupplies(gs), gs->supplyCount[province] );
+				numberOfErrors++;
+			}
+			if ((returnValue == 1) && ((depletedSupplies(gs) < 3) && (gs->supplyCount[province] != 0))) {
+				printf("Game over declared, but state does not meet criteria!\r\n");
+				printf("returnValue = %d, depletedSupplies = %d, supplyCount[province] = %d\r\n", returnValue, depletedSupplies(gs), gs->supplyCount[province] );
+				numberOfErrors++;
+			}
+		
+		}
+		
 
-    	gainCard(newGame.hand[player][i], &newGame, toFlag, player);
+	}	
+	printf("Unit Test 3 Complete\r\n");
+	printf("Number of errors found: %d\r\n", numberOfErrors);
+	
 
-    	//handcount the same
-    	if (handCardsBefore == newGame.handCount) {
-    		//discardcount one more
-    		if (discardCardsBefore++ == newGame.discardCount[player]) {
-    			//deckcountthe same
-    			if (deckCountBefore == newGame.deckCount[player]) {
-    				//supplypos one less
-    				if ((supplyCountBefore--) == newGame.supplyCount[newGame.hand[player][i]]) {
-    					printf("Passed! Card counts correct!\n");
-    				} else {
-    					printf("Supply count off\n");
-    				}
-    			} else {
-    				printf("Deck count off\n");
-    			}
-    		} else {
-    			printf("Discard count off\n");
-    		}
-    		
-    	} else {
-    		printf("hand count off\n");
-    	}
-    }
-
- 
-    currHand[0] = copper;  //worth 1
-    currHand[1] = silver;  //worth 3
-    currHand[2] = estate;    //
-    currHand[3] = remodel; //can trash a card
-    currHand[4] = curse; //don't want it
-
-    struct gameState newGame2;
-    memcpy(newGame2.hand[player], currHand, sizeof(int)*handNum);
-
-
-    //itnialzieGame supplies all the supplyCounts of cards
-    printf("Testing UpdateCoins Fuction...\n");
-    printf("Intializing Game...\n");
-    initializeGame(numPlayers, k, seed, &newGame2);
-    printf("Testing toFlag 0\n");
-
-    handCardsBefore = 0;
-    discardCardsBefore = 0;
-    deckCountBefore = 0;
-    toFlag = 1;
-    supplyCountBefore = 0;
-    //this tests for toFlag to 0 for all cards in current hand
-    for (i = 0; i <= handNum; i++) {
-    	//check cards in hand before
-    	handCardsBefore = newGame2.handCount[player];
-    	discardCardsBefore = newGame2.discardCount[player];
-    	deckCountBefore = newGame2.deckCount[player];
-    	supplyCountBefore = newGame2.supplyCount[newGame2.hand[player][i]];
-
-
-    	gainCard(newGame2.hand[player][i], &newGame2, toFlag, player);
-
-    	//handcount the same
-    	if (handCardsBefore == newGame2.handCount) {
-    		//discardcount the same
-    		if (discardCardsBefore == newGame2.discardCount[player]) {
-    			//deckcount one more
-    			if (deckCountBefore++ == newGame2.deckCount[player]) {
-    				//supplypos one less
-    				if (supplyCountBefore-- == newGame2.supplyCount[newGame2.hand[player][i]]) {
-    					                       printf("Passed! Card counts correct!\n");
-                    } else {
-                        printf("Supply count off\n");
-                    }
-                } else {
-                    printf("Deck count off\n");
-                }
-            } else {
-                printf("Discard count off\n");
-            }
-            
-        } else {
-            printf("hand count off\n");
-        }
-    }
-    currHand[0] = copper;  //worth 1
-    currHand[1] = silver;  //worth 2
-    currHand[2] = estate;    //
-    currHand[3] = remodel; //can trash a card
-    currHand[4] = curse; //don't want it
-
-    struct gameState newGame3;
-    memcpy(newGame3.hand[player], currHand, sizeof(int)*handNum);
-
-
-    //itnialzieGame supplies all the supplyCounts of cards
-    printf("Testing UpdateCoins Fuction...\n");
-    printf("Intializing Game...\n");
-    initializeGame(numPlayers, k, seed, &newGame3);
-    printf("Testing toFlag 0\n");
-
-    handCardsBefore = 0;
-    discardCardsBefore = 0;
-    deckCountBefore = 0;
-    supplyCountBefore = 0;
-    toFlag = 2;
-    //this tests for toFlag to 0 for all cards in current hand
-    for (i = 0; i <= handNum; i++) {
-    	//check cards in hand before
-    	handCardsBefore = newGame3.handCount[player];
-    	discardCardsBefore = newGame3.discardCount[player];
-    	deckCountBefore = newGame3.deckCount[player];
-    	supplyCountBefore = newGame3.supplyCount[newGame3.hand[player][i]];
-
-    	gainCard(newGame3.hand[player][i], &newGame3, toFlag, player);
-
-    	//handcount one more
-    	if (handCardsBefore++ == newGame3.handCount) {
-    		//discardcount the same
-    		if (discardCardsBefore == newGame3.discardCount[player]) {
-    			//deckcount the same
-    			if (deckCountBefore == newGame3.deckCount[player]) {
-    				//supplypos one less
-    				if (supplyCountBefore-- == newGame3.supplyCount[newGame3.hand[player][i]]) {
-                        printf("Passed! Card counts correct!\n");
-                    } else {
-                        printf("Supply count off\n");
-                    }
-                } else {
-                    printf("Deck count off\n");
-                }
-            } else {
-                printf("Discard count off\n");
-            }
-            
-        } else {
-            printf("hand count off\n");
-        }
-    }
+	free(gs);
+	free(stateCopy);
 	return 0;
 }
 
- int main() {
-    testGainCard();
-    return 0;
+
+
+void fuzzState(struct gameState * state) {
+	int i;
+	
+	unsigned char * ptr = (unsigned char *)state;
+	
+	for (i = 0; i < sizeof(struct gameState); i++) {
+		ptr[i] = (unsigned char)(rand()%256);
+	}
+}
+
+int randomNumber(int from, int to) {
+	int a, b;
+	if (from < to) {
+		a = from;
+		b = to;
+	} else {
+		a = to;
+		b = from;
+	}
+	
+	return rand() % ((b - a) + 1) + a;
+}
+
+int percentChanceIsOne(int probability) {
+	if ( probability > (rand() % 100)) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+int depletedSupplies(struct gameState * gs) {
+	int i;
+	int count = 0;
+	for (i = 0; i <= treasure_map; i++) {
+		if (gs->supplyCount[i] == 0) {
+			count++;
+		}
+	}
+	
+	return count;
 }

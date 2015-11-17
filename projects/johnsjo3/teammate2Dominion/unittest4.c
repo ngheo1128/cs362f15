@@ -1,239 +1,172 @@
 /*
- * Tests buyCard function
- */
+* UNIT TEST 4
+* -----------
+* This unit test tests the functionality of the scoreFor() function in
+* dominion.c.
+*
+* scoreFor() calculates a player's score given the player's number and a gameState.
+*
+* INPUTS: The gameState and player number.  The player number will be randomized from 2 to
+* MAX_PLAYERS.  The gameState will be fuzzed, then assigned more specific randomized numbers to
+* for its cards (within the range of selectable cards).
+*
+* OUTPUT: The gameState will be compared before and after the function to assert that
+* no changes were made to the state.  The scores will also be compared to a calculation to make
+* sure the function matches the desired outcome.
+*/
+
 #include "dominion.h"
-#include "dominion_helpers.h"
+#include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <stdio.h>
-#include <assert.h>
-#include "rngs.h"
 
-int main (){
+void fuzzState(struct gameState *);
+int randomNumber(int, int);
+int percentChanceIsOne(int);
+int calcScore(int playerNum, struct gameState * gs);
+int getCardScore(int c, int cardsInDeck);
 
-    int r, player;
-    int failures = 0;   //Number of checks failed
-    int comparison;
+int main(int argc, char * argv[]) {
+	int unit4_test_trials = 10000;
+	
+	if (argc > 1) {
+		unit4_test_trials = atoi(argv[1]);
+		if (unit4_test_trials < 1) {
+			printf("Usage: unittest4 <trials>\r\n");
+			exit(1);
+		}
+	}
+	
+	srand(time(NULL));
+	
+	//new gameState
+	struct gameState * gs = malloc(sizeof(struct gameState));
+	struct gameState * stateCopy = malloc(sizeof(struct gameState));
+	
+	int i;
+	int trial;
+	int returnValue;
+	int numberOfErrors = 0;
+	int playerNum;
+	
+	printf("Unit test 4\r\n");
+	printf("Conducting %d random trials.\r\n", unit4_test_trials);
+	
+	for (trial = 0; trial < unit4_test_trials; trial++) {
+		fuzzState(gs);
 
-    int k[10] = {adventurer, council_room, feast, gardens, mine,
-	       remodel, smithy, village, baron, great_hall};
+		//semi-randomize inputs (within reason)
+		playerNum = randomNumber(2,MAX_PLAYERS);
+		gs->deckCount[playerNum] = randomNumber(0,MAX_DECK);
+		gs->handCount[playerNum] = randomNumber(0,MAX_HAND);
+		gs->discardCount[playerNum] = randomNumber(0,MAX_DECK);
+		
+		for (i = 0; i < gs->deckCount[playerNum]; i++) {
+			gs->deck[playerNum][i] = randomNumber(0, treasure_map);
+		}
+		
+		for (i = 0; i < gs->handCount[playerNum]; i++) {
+			gs->hand[playerNum][i] = randomNumber(0, treasure_map);
+		}
+		
+		for (i = 0; i < gs->discardCount[playerNum]; i++) {
+			gs->discard[playerNum][i] = randomNumber(0, treasure_map);
+		}
+		
+		
+		//for later comparison
+		memcpy(stateCopy, gs, sizeof(struct gameState));
+		
+		//perform function
+		returnValue = scoreFor(playerNum, gs);
 
-    //Initialize game
-    struct gameState post;
+		//compare states
+		if (memcmp( gs, stateCopy, sizeof(struct gameState)) != 0) {
+			printf("Modification detected in state!\r\n");
+			numberOfErrors++;
+		} else if (returnValue != -9999) {
+		// Run check
+			if (calcScore(playerNum, gs) != returnValue) {
+				printf("Mismatch in score calculations.  scoreFor(): %d, Expected: %d\r\n", returnValue, calcScore(playerNum, gs));
+				numberOfErrors++;
+			}
+		}
+	}	
+	
+	printf("Unit Test 4 Complete\r\n");
+	printf("Number of errors found: %d\r\n", numberOfErrors);
+	
 
-    player = 1;
+	free(gs);
+	free(stateCopy);
+	return 0;
+}
 
-    printf("Testing function buyCard\n\n");
+void fuzzState(struct gameState * state) {
+	int i;
+	
+	unsigned char * ptr = (unsigned char *)state;
+	
+	for (i = 0; i < sizeof(struct gameState); i++) {
+		ptr[i] = (unsigned char)(rand()%256);
+	}
+}
 
-/**********************************************************
-    Case 1: Attempt to buy card with no buys
-************************************************************/
-    printf("Case 1: Attempt to buy card with no buys\n");
-    r = initializeGame(2, k, 1, &post);
-    post.whoseTurn = 1; //Player 1's turn
-    post.coins = 100;   //Coins should not be an issue here
-    post.supplyCount[7] = 1;   //Player will attempt to buy adventurer. Should be in stock.
-    post.numBuys = 0;      //Player should have no buys
+int randomNumber(int from, int to) {
+	int a, b;
+	if (from < to) {
+		a = from;
+		b = to;
+	} else {
+		a = to;
+		b = from;
+	}
+	
+	return rand() % ((b - a) + 1) + a;
+}
 
-    struct gameState pre;
-    memcpy(&pre, &post, sizeof(struct gameState));
+int percentChanceIsOne(int probability) {
+	if ( probability > (rand() % 100)) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
 
-    //Try to buy adventurer
-    r = buyCard(7, &post);
+int calcScore(int p, struct gameState * gs) {
+	int i;
+	int totalScore = 0;		//total score
+	int cardsInDeck = gs->deckCount[p] + gs->handCount[p] + gs->discardCount[p]; 
+	
+	//Deck
+	for (i = 0; i < gs->deckCount[p]; i++) {
+		totalScore += getCardScore(gs->deck[p][i], cardsInDeck);
+	}
+	
+	//Hand
+	for (i = 0; i < gs->handCount[p]; i++) {
+		totalScore += getCardScore(gs->hand[p][i], cardsInDeck);
+	}
+	
+	//Discard
+	for (i = 0; i < gs->discardCount[p]; i++) {
+		totalScore += getCardScore(gs->discard[p][i], cardsInDeck);
+	}
+	
+	return totalScore;
+}
 
-    //Return value should be -1
-    printf("Testing return value. Expecting -1. ");
-    if(r == -1){
-        printf("Returned -1 ... PASS\n");
-    }
-    else{
-        printf("Returned %d ... FAIL\n", r);
-        failures++;
-    }
-
-    //Game state should be unchanged
-    printf("Testing that game state is unchanged ... ");
-    comparison = memcmp(&pre, &post, sizeof(struct gameState));
-    if(comparison == 0){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-/**********************************************************
-    Case 2: Attempt to buy card that is out of stock
-************************************************************/
-    printf("\nCase 2: Attempt to buy sold-out card\n");
-    r = initializeGame(2, k, 1, &post);
-    post.whoseTurn = 1; //Player 1's turn
-    post.coins = 100;   //Coins should not be an issue here
-    post.supplyCount[7] = 0;   //Player will attempt to buy adventurer. Make sure none left.
-    post.numBuys = 1;      //Player should have buys
-
-    memcpy(&pre, &post, sizeof(struct gameState));
-
-    //Try to buy adventurer
-    r = buyCard(7, &post);
-
-    //Return value should be -1
-    printf("Testing return value. Expecting -1. ");
-    if(r == -1){
-        printf("Returned -1 ... PASS\n");
-    }
-    else{
-        printf("Returned %d ... FAIL\n", r);
-        failures++;
-    }
-
-    //Game state should be unchanged
-    printf("Testing that game state is unchanged ... ");
-    comparison = memcmp(&pre, &post, sizeof(struct gameState));
-    if(comparison == 0){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-/**********************************************************
-    Case 3: Attempt to buy card with insufficient coins
-************************************************************/
-    printf("\nCase 3: Attempt to buy card with insufficient coins\n");
-    r = initializeGame(2, k, 1, &post);
-    post.whoseTurn = 1; //Player 1's turn
-    post.coins = 1;   //Not enough coins for adventurer
-    post.supplyCount[7] = 1;   //Player will attempt to buy adventurer.
-    post.numBuys = 1;      //Player should have buys
-
-    memcpy(&pre, &post, sizeof(struct gameState));
-
-    //Try to buy adventurer
-    r = buyCard(7, &post);
-
-    //Return value should be -1
-    printf("Testing return value. Expecting -1. ");
-    if(r == -1){
-        printf("Returned -1 ... PASS\n");
-    }
-    else{
-        printf("Returned %d ... FAIL\n", r);
-        failures++;
-    }
-
-    //Game state should be unchanged
-    printf("Testing that game state is unchanged ... ");
-    comparison = memcmp(&pre, &post, sizeof(struct gameState));
-    if(comparison == 0){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-/**********************************************************
-    Case 4: Attempt to buy card with just enough coins
-************************************************************/
-    printf("\nCase 4: Attempt to buy card just enough coins\n");
-    r = initializeGame(2, k, 1, &post);
-    post.whoseTurn = 1; //Player 1's turn
-    post.coins = 6;   //Just enough coins for adventurer
-    post.supplyCount[7] = 1;   //Make sure adventurer is in stock
-    post.numBuys = 1;      //Player should have buys
-
-    memcpy(&pre, &post, sizeof(struct gameState));
-
-    //Try to buy adventurer
-    r = buyCard(7, &post);
-
-    //Return value should be 0
-    printf("Testing return value. Expecting 0. ");
-    if(r == 0){
-        printf("Returned 0 ... PASS\n");
-    }
-    else{
-        printf("Returned %d ... FAIL\n", r);
-        failures++;
-    }
-
-    //Test that coins were used. Should now be 0
-    printf("Testing number of coins after purchase. Expecting 0. ");
-    if(post.coins == 0){
-        printf("Returned 0 ... PASS\n");
-    }
-    else{
-        printf("Returned %d ... FAIL\n", post.coins);
-        failures++;
-    }
-
-    //Test that supply of purchased card is decremented
-    printf("Testing that adventurer supply is decremented. Should now be 0 ... ");
-    if(post.supplyCount[7] == 0){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-    //Test that player's discard pile is incremented (purchased card goes in discard pile)
-    printf("Testing that player's discard pile is incremented ... ");
-    if(post.discardCount[player] == pre.discardCount[player] + 1){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-    //Test that numBuys is decremented
-    printf("Testing that player's numBuys was decremented ... ");
-    if(post.numBuys == 0){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-    //Test that last card in player's discard pile is adventurer
-    printf("Testing that new card in player's discard pile is adventurer ... ");
-    if(post.discard[player][post.discardCount[player]-1] == adventurer){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-
-    //Nothing else in game state should be unchanged
-    printf("Testing that rest of game state is unchanged ... ");
-    //Update game state pre to match the tested parts above
-    pre.coins = pre.coins - 6;
-    pre.supplyCount[7]--;
-    pre.discardCount[player]++;
-    pre.numBuys--;
-    pre.discard[player][post.discardCount[player]-1] = adventurer;
-
-    comparison = memcmp(&pre, &post, sizeof(struct gameState));
-    if(comparison == 0){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-
-   if(failures == 0){
-        printf("All tests passed\n");
-   }
-   else{
-        printf("%d failures occurred\n", failures);
-   }
-
-    return 0;
+int getCardScore(int c, int cardsInDeck) {
+	switch(c) {
+		case curse: return -1; break;
+		case estate: return 1; break;
+		case duchy: return 3; break;
+		case province: return 6; break;
+		case great_hall: return 1; break;
+		case gardens: return cardsInDeck / 10;
+	}
+	
+	//no score
+	return 0;
 }

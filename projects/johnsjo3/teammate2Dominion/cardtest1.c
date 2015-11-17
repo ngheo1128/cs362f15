@@ -1,168 +1,194 @@
 /*
- * Tests smithy card.
- * Smithy should draw 3 cards from player's deck
- * into player's hand, then discard itself.
- * For testing purposes, player's hand is all copper with 1 smithy.
- * Deck is all silver. Played cards are all gold.
- */
+* Card Test 1: Smithy
+*
+* In this unit test, we will be testing the function playSmithy().
+* Smithy is a card that when played, allows the player to draw three cards.
+*
+* Input: handpos (index where smithy is located), currentPlayer, and state.
+* Output: The top three cards from deck should be moved to hand, and smithy should be discarded
+* 
+* To test that the function does as we ask it to, we will construct random tests that tests for a
+* number of hand, deck, and discard piles.  The random number will be constrained to 1/2 the MAX set
+* values (500) because there really can only be around 300 cards in play at a time (thus we are not
+* concerned with overflowing our hand or deck or discard by testing the extremes in terms of count.
+* Obviously this would over run and overwrite values in our struct causing major problems in the game)
+*
+*/
+
 #include "dominion.h"
-#include "dominion_helpers.h"
+#include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <stdio.h>
-#include <assert.h>
-#include "rngs.h"
 
-int main (){
+void fuzzState(struct gameState *);
+int randomNumber(int, int);
+int percentChanceIsOne(int);
+int totalCardCount(int, struct gameState *);
 
-    int i, r, player;
-    int failures = 0;   //Number of checks failed
-    int comparison;
+int main(int argc, char * argv[]) {
+	int test_trials = 10000;
+	
+	if (argc > 1) {
+		test_trials = atoi(argv[1]);
+		if (test_trials < 1) {
+			printf("Usage: cardtest1 <trials>\r\n");
+			exit(1);
+		}
+	}
+	
+	srand(time(NULL));
+	
+	//new gameState
+	struct gameState * gs = malloc(sizeof(struct gameState));
+	struct gameState * stateCopy = malloc(sizeof(struct gameState));
+	
+	int trial;
+	int returnValue;
+	int numberOfErrors = 0;
+	int playerNum;
+	
+	int emptyHand;
+	int emptyDiscard;
+	int emptyDeck;
+	int emptyThree;	//not enough cards?
+	int handPos;
+	int drawCards;
+	
+	printf("Card Test 1\r\n");
+	printf("Conducting %d random trials.\r\n", test_trials);
+	
+	for (trial = 0; trial < test_trials; trial++) {
+		
+		printf("TRIAL %d\r\n", trial);
+		
+		
+		fuzzState(gs);
 
-    int k[10] = {adventurer, council_room, feast, gardens, mine,
-	       remodel, smithy, village, baron, great_hall};
-
-
-    struct gameState post;
-
-    player = 1;
-
-    printf("Testing smithy card\n Hand is all copper with one smithy at pos 4\n");
-    printf("Deck initialized to all silver. Played cards initialized to all gold.\n\n");
-
-    //Initialize game
-    r = initializeGame(2, k, 1, &post);
-
-    //Set player 1's hand to one smithy and 4 copper, to make testing easier
-    post.handCount[player] = 5;
-    post.hand[player][0] = copper;
-    post.hand[player][1] = copper;
-    post.hand[player][2] = copper;
-    post.hand[player][3] = copper;
-    post.hand[player][4] = smithy;
-
-    //Fill player's deck with silver cards to make it easy to keep track of
-    for(i = 0; i < post.deckCount[player]; i++){
-        post.deck[player][i] = silver;
-    }
-
-    //Set played card pile to all gold cards
-    for(i = 0; i < post.playedCardCount; i++){
-        post.playedCards[i] = gold;
-    }
-
-    //Make a copy of game state
-    struct gameState pre;
-    memcpy(&pre, &post, sizeof(struct gameState));
-
-    //play smithy card
-    //Since we are not testing playCard or cardEffect, just call smithy card function
-    smithyCardEffect(4, player, &post);
-
-    //Played card pile should be incremented
-    printf("Testing that played card pile was increased by 1. ");
-    comparison = post.playedCardCount - pre.playedCardCount;
-    if(comparison == 1){
-        printf("Increased by 1. PASS\n");
-    }
-    else{
-        printf("Increased by %d. FAIL\n", comparison);
-        failures++;
-    }
-
-    //Test that top of played cards is smithy
-    printf("Testing that top of played card pile is smithy. ");
-    if(post.playedCards[post.playedCardCount - 1] == smithy){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-    //Test that player's hand received 3 cards (net gain of 2 with discarded smithy)
-    printf("Testing that player hand has net gain of 2 cards ... ");
-    comparison = post.handCount[player] - pre.handCount[player];
-    if(comparison == 2){
-        printf("PASS\n");
-    }
-    else{
-        printf("Net gain of %d. FAIL\n", comparison);
-        failures++;
-    }
-
-    //Test that any new cards in player's hand came from deck (silver)
-    printf("Testing that all new cards came from deck (should all be silver) ... ");
-    r = 0;
-    for(i = 0; i < comparison; i++){
-        int index = post.handCount[player] - (i+1);
-        if(post.hand[player][index] != silver){
-            r = -1;
-        }
-    }
-    if(r == 0){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
-
-    //Test that deck count properly decremented
-    printf("Testing that players deck count was decreased by 3 ... ");
-    comparison = pre.deckCount[player] - post.deckCount[player];
-    if(comparison == 3){
-        printf("PASS\n");
-    }
-    else{
-        printf("decreased by %d. FAIL\n", comparison);
-        failures++;
-    }
-
-    //Test that smithy not present in hand (verify that it discarded properly)
-    printf("Verifying smithy no longer in player hand ... ");
-    r = 0;
-    int index;
-    for(i = 0; i < post.handCount[player]; i++){
-        if(post.hand[player][i] == smithy){
-            r = -1;
-            index = i;
-        }
-    }
-    if(r == 0){
-        printf("PASS\n");
-    }
-    else{
-        printf("Smithy at pos %d. FAIL\n", index);
-        failures++;
-    }
-
-
-    //Nothing else in game state should be unchanged
-    printf("Testing that rest of game state is unchanged ... ");
-    //Update game state pre to match the tested parts above
-    pre.playedCardCount = post.playedCardCount;
-    memcpy(&pre.playedCards, &post.playedCards, sizeof(int) * MAX_DECK);
-    pre.handCount[player] = post.handCount[player];
-    memcpy(&pre.hand[player], &post.hand[player], sizeof(int) * MAX_HAND);
-    post.deckCount[player] = pre.deckCount[player];
-    memcpy(&post.deck[player], &pre.deck[player], sizeof(int) * MAX_DECK);
-
-    comparison = memcmp(&pre, &post, sizeof(struct gameState));
-    if(comparison == 0){
-        printf("PASS\n");
-    }
-    else{
-        printf("FAIL\n");
-        failures++;
-    }
+		//semi-randomize inputs (within reason)
+		playerNum = randomNumber(2, MAX_PLAYERS) - 2;
+		emptyDeck = percentChanceIsOne(5);
+		emptyDiscard = percentChanceIsOne(5);
+		emptyHand = percentChanceIsOne(5);
+		emptyThree = percentChanceIsOne(1);
+		
+		if (emptyDeck == 1 || emptyThree == 1) {
+			gs->deckCount[playerNum] = 0;
+		} else { 
+			gs->deckCount[playerNum] = randomNumber(1, 300);
+		}
+		
+		if (emptyHand == 1 || emptyThree == 1) {
+			gs->handCount[playerNum] = 1;					//leave room for Smithy card
+		} else { 
+			gs->handCount[playerNum] = randomNumber(2, 300);
+		}
+		
+		if (emptyDiscard == 1 || emptyThree == 1) {
+			gs->discardCount[playerNum] = 0;
+		} else {
+			gs->discardCount[playerNum] = randomNumber(1, 300);
+		}
+		
+		gs->playedCardCount = randomNumber(0,gs->handCount[playerNum]);
+		
+		/*gs->deckCount[playerNum] = randomNumber(5, 300);
+		gs->discardCount[playerNum] = randomNumber(5, 300);
+		gs->handCount[playerNum] = randomNumber(5, 300);
+		*/
+		
+		
+		//set smithy card
+		handPos = randomNumber(0, gs->handCount[playerNum]-1);
+		gs->hand[playerNum][handPos] = smithy;
+		
+		//create copy for comparison later
+		memcpy(stateCopy, gs, sizeof(struct gameState));
+		
+		//RUN FUNCTION
+		returnValue = playSmithy(handPos, playerNum, gs);
+		
+		//Check state
+		if (stateCopy->deckCount[playerNum] < 3) {
+			if (gs->discardCount[playerNum] != 1) {
+				printf("discardCount is not as expected.  Expected: 1, Actual: %d\r\n", gs->discardCount[playerNum]);
+				numberOfErrors++;
+			}
+		} else {
+			if (gs->discardCount[playerNum] != stateCopy->discardCount[playerNum] + 1) {
+				printf("discardCount is not as expected.  Expected: %d, Actual: %d\r\n",stateCopy->discardCount[playerNum] + 1, gs->discardCount[playerNum]);
+				numberOfErrors++;
+			}			
+		}
+		
+		//check top of discard for smithy
+		if (gs->discard[playerNum][ gs->discardCount[playerNum] - 1 ] != smithy){
+			printf("top of discard mismatch. Expected: %d, Actual %d\r\n", smithy, gs->discard[playerNum][ gs->discardCount[playerNum] - 1 ]);
+			numberOfErrors++;
+		}
+		
+		
+		if (stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum] >= 3) {
+			drawCards = 3;
+		} else {
+			drawCards = stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum];
+		}
+		
+		//drawCards should be drawCards less pluss smithy
+		if (gs->discardCount[playerNum] + gs->deckCount[playerNum] - drawCards + 1 != stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum]) {
+			printf("deck + discard count is not as expected.  Expected: %d, Actual: %d\r\n",stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum] - drawCards + 1, gs->discardCount[playerNum] + gs->deckCount[playerNum]);
+			numberOfErrors++;
+		}
+		
+		//Hand Should have drawCards extra cards minus smithy
+		if (gs->handCount[playerNum] != stateCopy->handCount[playerNum] + drawCards - 1) {
+			printf("handCount is not as expected.  Expected: %d, Actual: %d\r\n",stateCopy->handCount[playerNum] + drawCards - 1, gs->handCount[playerNum]);
+			numberOfErrors++;
+		}
 
 
-   if(failures == 0){
-        printf("\nAll tests passed\n");
-   }
-   else{
-        printf("\n%d failures occurred\n", failures);
-   }
+	}	
+	
+	printf("Card Test 1 Complete\r\n");
+	printf("Number of errors found: %d\r\n", numberOfErrors);
+	
 
-    return 0;
+	free(gs);
+	free(stateCopy);
+	return 0;
+}
+
+void fuzzState(struct gameState * state) {
+	int i;
+	
+	unsigned char * ptr = (unsigned char *)state;
+	
+	for (i = 0; i < sizeof(struct gameState); i++) {
+		ptr[i] = (unsigned char)(rand()%256);
+	}
+}
+
+int randomNumber(int from, int to) {
+	int a, b;
+	if (from < to) {
+		a = from;
+		b = to;
+	} else {
+		a = to;
+		b = from;
+	}
+	
+	return rand() % ((b - a) + 1) + a;
+}
+
+int percentChanceIsOne(int probability) {
+	if ( probability > (rand() % 100)) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+int totalCardCount(int playerNum, struct gameState * gs) {
+	return (gs->deckCount[playerNum] + gs->discardCount[playerNum] + gs->handCount[playerNum]);
 }
