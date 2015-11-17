@@ -139,6 +139,8 @@ int mineCard(int currentPlayer, struct gameState *state, int handPos, int choice
 
 int minionCard(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2);
 
+int villageCard(int currentPlayer, struct gameState *state, int handPos);
+
 
 #endif
 

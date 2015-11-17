@@ -1,12 +1,12 @@
 /* -----------------------------------------------------------------------
- * Unit test to check whether discarding works correctly
- *
- * cardtest4: cardtest4.c dominion.o rngs.o
- * gcc -o cardtest4 -g  cardtest4.c dominion.o rngs.o $(CFLAGS)
- *
- *-----------------------------------------------------------------------
- */
-
+* Programmed by: Kelvin Watson
+* Filename: cardtest4.c
+* Created: 15 Oct 2015
+* Last modified: 17 Oct 2015
+* Description: Unit tests for dominion.c's steward case in the cardEffect() 
+* function.
+* -----------------------------------------------------------------------
+*/
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
@@ -14,117 +14,140 @@
 #include <assert.h>
 #include "rngs.h"
 
-int main() 
-{
-   int seed = 1000;
-   int numPlayer = 3;
-   int k[10] = {adventurer, council_room, curse, feast, gardens, mine, sea_hag, 
-      baron, smithy, great_hall, };
-   struct gameState G;
+// set NOISY_TEST to 0 to remove printfs from output
+#define NOISY_TEST 1
 
-   printf("Testing the sea_hag card for correctness.\n\n");
+int supplyCheck(struct gameState *S, int cardType, const char* cardName, int expectedCount){
+	int err=0;
+	if(S->supplyCount[cardType] != expectedCount){
+		#if (NOISY_TEST==1)
+		printf("      FAIL: number of %s cards=%d, expected=%d\n",cardName,S->supplyCount[cardType],expectedCount);
+		#endif 
+		err++;
+	} else{
+		#if (NOISY_TEST==1)
+		printf("      PASS: number of %s=%d, expected=%d\n",cardName,S->supplyCount[cardType],expectedCount);
+		#endif 
+	}
+	return err;
+}
 
-   memset(&G, 23, sizeof(struct gameState));   // clear the game state
-   initializeGame(numPlayer, k, seed, &G); 	// initialize a new game
+int checkSteward(struct gameState *state, int player, int choice1, int choice2, int choice3){
+	/*Check for unexpected transactions*/
+	int err=0;
+	int bonus=0;
+	int k;
+	struct gameState oracle;
+	memcpy(&oracle,state,sizeof(struct gameState)); //create a reference to compare the steward case to
+	int oracleHandCount, oracleCoinCount, oracleDiscardCount;
+	int actualHandCount, actualCoinCount, actualDiscardCount;
+	/* Replicate game state using oracle, then test against game state */
+	cardEffect(steward,choice1,choice2,choice3,state,0,&bonus);
+	actualHandCount=state->handCount[player];
+	actualCoinCount=state->coins;
+	actualDiscardCount=state->discardCount[player];
+	if(choice1==1){
+		//2 cards will be drawn from deck
+		//place two cards from deck into hand in oracle
+		for(k=0; k<2; k++){	
+			oracle.hand[player][oracle.handCount[player]]=oracle.deck[player][oracle.deckCount[player]];
+			++oracle.handCount[player];
+			--oracle.deckCount[player];
+		}
+		--oracle.handCount[player]; //discard played steward
+		oracleHandCount=oracle.handCount[player];
+		//test against game state
+		if(actualHandCount != oracleHandCount){
+			printf("    FAIL: choice1==1 Hand count after adding two cards(and discarding played steward)=%d,expected=%d\n",actualHandCount,oracleHandCount);
+		} else{
+			printf("    PASS: choice1==1 Hand count after adding two cards=%d,expected=%d\n",actualHandCount,oracleHandCount);
+		}
+	} else if(choice1==2){
+		oracle.coins+=2;
+		oracleCoinCount=oracle.coins;
+		if(actualCoinCount != oracleCoinCount){
+			printf("    FAIL: choice1==2 Coins after adding two coins=%d,expected=%d\n",actualCoinCount,oracleCoinCount);
+		} else{
+			printf("    PASS: choice1==2 Coins after adding two coins=%d,expected=%d\n",actualCoinCount,oracleCoinCount);
+		}
+	} else{
+		discardCard(choice2,player,&oracle,1); //trashed, not added to any pile
+		discardCard(choice3,player,&oracle,1);
+		oracleDiscardCount=oracle.discardCount[player];
+		if(actualDiscardCount != oracleDiscardCount){
+			printf("    FAIL: choice1 != 1, != 2; Discard count=%d,expected=%d\n",actualDiscardCount,oracleDiscardCount);
+		} else{
+			printf("    PASS: choice1 != 1, != 2; Discard count after =%d,expected=%d\n",actualDiscardCount,oracleDiscardCount);
+		}		
+	}
 
-   int cost = getCost(sea_hag);
-   printf("Test 1: How many coins is a sea_hag card?\n");
-   if (cost == 4)
-      printf("Passed: It costs 4 coins.\n\n");
-   else
-      printf("Failed: It costs %d\n\n", cost);
+	printf("  Testing for unexpected transactions against oracle. Checking supply counts...\n");
+	err += supplyCheck(state,curse,"curse",oracle.supplyCount[curse]);
+	printf("    Checking Victory cards in supply:\n");
+	err += supplyCheck(state,estate,"estate",oracle.supplyCount[estate]);
+	err += supplyCheck(state,duchy,"duchy",oracle.supplyCount[duchy]);
+	err += supplyCheck(state,province,"province",oracle.supplyCount[province]);
+	printf("    Checking Treasure cards in supply:\n");	
+	err += supplyCheck(state,copper,"copper",oracle.supplyCount[copper]);
+	err += supplyCheck(state,silver,"silver",oracle.supplyCount[silver]);
+	err += supplyCheck(state,gold,"gold",oracle.supplyCount[gold]);
+	
+	return err; 
+}
 
-   // add sea_hag card to hand
-   G.hand[0][4] = sea_hag;
-   G.hand[1][4] = province;
-   G.hand[2][4] = province;
+int main() {
+	int i,p,r;
+	int seed = 1000;
+	int numPlayer = 2;
+	int k[10] = {adventurer, council_room, feast, gardens, mine
+		, remodel, smithy, village, baron, great_hall};
+	struct gameState G;
+	// arrays of all coppers, silvers, and golds
+	int golds[MAX_HAND];
+	int stewards[MAX_HAND];
 
-   printf("Test 2: Is sea_hag in hand?\n");
-   int i;
-   int isSeaHag = 0;
-   for (i = 0; i < G.handCount[0]; i++)
-   {
-      if (G.hand[0][i] == sea_hag)
-      {
-	 isSeaHag = 1;
-	 i = G.handCount[0];
-      }
-   }
-
-   if (isSeaHag)
-      printf("Passed: SeaHag in hand.\n\n");
-   else 
-      printf("Failed: No sea_hag in hand.\n\n");
-
-   // play a sea_hag card
-   cardEffect(sea_hag, 0, 0, 0, &G, 4, 0);
-
-   smithyCard(0, &G, 4);
-   //int oldHand = G.deckCount[0]+G.deckCount[0];
-
-   printf("Test 3: Checking quantity in player 1's discard pile.\n");
-   
-   if (G.discardCount[0] > 0)
-      printf("Passed: At least 1 card was discarded.\n\n");
-   else
-      printf("Failed: There are no cards in the discard pile.\n\n");
-
-   printf("Test 4: Checking if player 1 has a curse card in hand.\n");
-
-   int isCurse = 0;
-   for (i = 0; i < G.handCount[0]; i++)
-   {
-      if (G.hand[0][i] == sea_hag)
-      {
-	 isCurse = 1;
-	 i = G.handCount[0];
-      }
-   }
-
-   if (isCurse)
-      printf("Failed: Curse card in player 1's hand.\n\n");
-   else
-      printf("Passed: Curse card not in player 1's hand\n\n");
-
-   printf("Test 5: Checking if other players have curse cards at top of deck.\n");
-
-   int isCurseP2 = 0;
-   int isCurseP3 = 0;
-
-   if (G.deck[1][G.deckCount[1]-1] == curse)
-      isCurseP2 = 1;
-
-   if (G.deck[2][G.deckCount[2]-1] == curse)
-      isCurseP3 = 1;
-
-   if (isCurseP2 && isCurseP3)
-      printf("Passed: Curse cards in top of deck of other players hands.\n\n");
-   else
-      printf("Failed: Curse card not int top of deck of other player hands.\n\n");
-
-   printf("Test 6: Total number of cards should be 10 for player 1.\n");
-   int totals = G.handCount[0] + G.deckCount[0] + G.discardCount[0];
-
-   if (totals == 10)
-      printf("Passed: Total cards correct.\n\n");
-   else
-      printf("Failed: Total cards are %d.\n\n", totals);
-
-   isSeaHag = 0;
-   for (i = 0; i < G.handCount[0]; i++)
-   {
-      if (G.hand[0][i] == sea_hag || G.deck[0][i] == sea_hag)
-      {
-	 isSeaHag = 1;
-	 i = G.handCount[0];
-      }
-   }
-
-   printf("Test 7: Is sea_hag anywhere in player 1's piles?\n");
-   if (isSeaHag)
-      printf("Passed: SeaHag in hand\n\n");
-   else
-      printf("Failed: SeaHag not in hand.\n\n");
-
-   return 0;
+	for (i = 0; i < MAX_HAND; i++){
+		golds[i] = gold;
+		stewards[i] = steward;
+	}
+	int errFlag=0;
+	int maxHandCount = 5;
+	int maxDeckCount = 10;
+	int opponent;
+	int choice1,choice2,choice3;
+	int choices = 4; //choices rante from 1-3 in steward, so testing 0 and 4 as boundary/edge cases
+	printf ("TESTING steward case in cardEffect():\n");
+	
+	for(p = 0; p<numPlayer; p++){
+		printf("Testing player %d\n", p);
+		for(choice1 = 0; choice1<choices; choice1++){
+			memset(&G, 23, sizeof(struct gameState));   // clear the game state
+			r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
+			G.whoseTurn=p;
+			/*Since player 0 always draws 5 cards on initialization, we must equalize the players' hands and decks*/
+			G.deckCount[p] = maxDeckCount;
+			opponent = p==0? 1:0;
+			
+			/* Initialize player's decks */
+			G.deckCount[p] = maxDeckCount;
+			G.handCount[p] = maxHandCount;                 // set the number of cards on hand
+			memcpy(G.hand[p], stewards, sizeof(int) * maxHandCount); //set all cards in current player's hand to steward
+			memcpy(G.deck[p], golds, sizeof(int) * maxDeckCount); //set all cards in deck to gold to enable detection of cards drawn			
+			
+			G.coins = 0; //standardize coin count to enable detection of coin draws
+			choice2 = G.hand[p][0]; 
+			choice3 = G.hand[p][1];
+			//printf("choice2=%d\t choice3=%d\n",choice2,choice3);
+			if(checkSteward(&G,p,choice1,choice2,choice3)>0){
+				errFlag++;
+			}
+		}
+	}
+	
+	if(errFlag != 0){
+		printf("Some tests failed. See bug1.c for details.\n");  
+	}else{
+		printf("All tests passed!\n");
+	}
+	return 0;
 }
