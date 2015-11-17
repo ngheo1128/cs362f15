@@ -99,7 +99,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 1\r\n");
 	memcpy(stateCopy, gs1, sizeof(struct gameState));
 	//playerNum = 0;
-	playAdventurer(playerNum, gs1);
+	adventurerCardEffect(playerNum, gs1);
 	if (gs1->deckCount[playerNum] != stateCopy->deckCount[playerNum] - 2) {
 		printf("Mismatched deckCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] - 2,gs1->deckCount[playerNum] );
 	}
@@ -114,7 +114,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 2\r\n");
 	memcpy(stateCopy, gs2, sizeof(struct gameState));
 	//playerNum = 1;
-	playAdventurer(playerNum, gs2);
+	adventurerCardEffect(playerNum, gs2);
 	if (gs2->deckCount[playerNum] != stateCopy->deckCount[playerNum] - 2) {
 		printf("Mismatched deckCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] - 2,gs2->deckCount[playerNum] );
 	}
@@ -130,7 +130,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 3\r\n");
 	memcpy(stateCopy, gs3, sizeof(struct gameState));
 	//playerNum = 2;
-	playAdventurer(playerNum, gs3);
+	adventurerCardEffect(playerNum, gs3);
 	if (gs3->deckCount[playerNum] != stateCopy->deckCount[playerNum] - treasure_map) {
 		printf("Mismatched deckCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] - treasure_map,gs3->deckCount[playerNum] );
 	}
@@ -145,7 +145,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 4\r\n");
 	memcpy(stateCopy, gs4, sizeof(struct gameState));
 	//playerNum = 3;
-	playAdventurer(playerNum, gs4);
+	adventurerCardEffect(playerNum, gs4);
 	if (gs4->deckCount[playerNum] + gs4->discardCount[playerNum] != stateCopy->deckCount[playerNum] + stateCopy->discardCount[playerNum] - 2) {
 		printf("Mismatched deckCount + discardCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] + stateCopy->discardCount[playerNum] - 2,gs4->deckCount[playerNum] + gs4->discardCount[playerNum] );
 	}
@@ -158,7 +158,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 5\r\n");
 	memcpy(stateCopy, gs5, sizeof(struct gameState));
 	//playerNum = 3;
-	playAdventurer(playerNum, gs5);
+	adventurerCardEffect(playerNum, gs5);
 	if (gs5->deckCount[playerNum] + gs5->discardCount[playerNum] != stateCopy->deckCount[playerNum] + stateCopy->discardCount[playerNum]) {
 		printf("Mismatched deckCount + discardCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] + stateCopy->discardCount[playerNum],gs5->deckCount[playerNum] + gs5->discardCount[playerNum] );
 	}

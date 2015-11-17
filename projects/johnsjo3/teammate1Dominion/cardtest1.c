@@ -44,7 +44,7 @@ int main(int argc, char * argv[]) {
 	struct gameState * stateCopy = malloc(sizeof(struct gameState));
 	
 	int trial;
-	int returnValue;
+	//int returnValue;
 	int numberOfErrors = 0;
 	int playerNum;
 	
@@ -66,7 +66,8 @@ int main(int argc, char * argv[]) {
 		fuzzState(gs);
 
 		//semi-randomize inputs (within reason)
-		playerNum = randomNumber(2, MAX_PLAYERS) - 2;
+		playerNum = randomNumber(1, MAX_PLAYERS) - 1;
+		gs->whoseTurn = playerNum;
 		emptyDeck = percentChanceIsOne(5);
 		emptyDiscard = percentChanceIsOne(5);
 		emptyHand = percentChanceIsOne(5);
@@ -106,7 +107,7 @@ int main(int argc, char * argv[]) {
 		memcpy(stateCopy, gs, sizeof(struct gameState));
 		
 		//RUN FUNCTION
-		returnValue = playSmithy(handPos, playerNum, gs);
+		playSmithy(gs, handPos);
 		
 		//Check state
 		if (stateCopy->deckCount[playerNum] < 3) {

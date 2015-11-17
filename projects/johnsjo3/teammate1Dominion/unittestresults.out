@@ -1,0 +1,785 @@
+Unit test 1
+Conducting 10000 random trials.
+
+ The implementation of rngs.c is correct.
+
+Unit Test 1 Complete.  I found 0 errors
+Unit test 2
+Conducting 1000 random trials.
+Unit Test 2 Complete
+Number of errors found: 0
+Unit test 3
+Conducting 10000 random trials.
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 976597420
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1997961401
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -382473705
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -84477662
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1028438188
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -67170888
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1768927580
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 694936577
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1937928756
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1542767236
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 499751000
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 388195041
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1407549290
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1812238535
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -269776062
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1623556658
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -764674305
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 841535879
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -919869110
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1591896653
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 2042246325
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1982234873
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -609357224
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 944377674
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1984931665
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -80347534
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 936571793
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -565239023
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 614316702
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1946968586
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 630466031
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1848625546
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 674950250
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1974686657
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -487027201
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 431931643
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -990765468
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1184930742
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1629489629
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 381940538
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1014802598
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -777195303
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 208732676
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 116787776
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1950973676
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1783452738
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 863398553
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 191290346
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -291472261
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 782087164
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1354985608
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -606266355
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 17732351
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1824728973
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1319436301
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1927107604
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -851349858
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1898259915
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1411841284
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -418818460
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -2131019243
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 365577466
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -142600813
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 236520673
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -316805064
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 703876048
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 412932710
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1935783385
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1003597369
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -171029660
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1263239532
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1711604307
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -919489603
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1104069436
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 487868108
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1841067756
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1613760200
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = -1210783472
+State meets criteria for game over, but game over not declared!
+returnValue = 0, depletedSupplies = 3, supplyCount[province] = 1501975352
+Unit Test 3 Complete
+Number of errors found: 79
+Unit test 4
+Conducting 100 random trials.
+Mismatch in score calculations.  scoreFor(): 329, Expected: 4095
+Mismatch in score calculations.  scoreFor(): 402, Expected: 2882
+Mismatch in score calculations.  scoreFor(): 23, Expected: 33
+Mismatch in score calculations.  scoreFor(): 5, Expected: 9
+Mismatch in score calculations.  scoreFor(): 418, Expected: 3239
+Mismatch in score calculations.  scoreFor(): 489, Expected: 4466
+Mismatch in score calculations.  scoreFor(): 206, Expected: 2086
+Mismatch in score calculations.  scoreFor(): 378, Expected: 2376
+Mismatch in score calculations.  scoreFor(): 388, Expected: 2744
+Mismatch in score calculations.  scoreFor(): 108, Expected: 318
+Mismatch in score calculations.  scoreFor(): 297, Expected: 1909
+Mismatch in score calculations.  scoreFor(): 545, Expected: 4974
+Mismatch in score calculations.  scoreFor(): 19, Expected: 31
+Mismatch in score calculations.  scoreFor(): 11, Expected: 13
+Mismatch in score calculations.  scoreFor(): 301, Expected: 1855
+Mismatch in score calculations.  scoreFor(): 440, Expected: 3670
+Mismatch in score calculations.  scoreFor(): 142, Expected: 1439
+Mismatch in score calculations.  scoreFor(): 200, Expected: 1026
+Mismatch in score calculations.  scoreFor(): 329, Expected: 2204
+Mismatch in score calculations.  scoreFor(): 30, Expected: 42
+Mismatch in score calculations.  scoreFor(): 13, Expected: 19
+Mismatch in score calculations.  scoreFor(): 12, Expected: 21
+Mismatch in score calculations.  scoreFor(): 537, Expected: 4515
+Mismatch in score calculations.  scoreFor(): 339, Expected: 2133
+Mismatch in score calculations.  scoreFor(): 596, Expected: 6818
+Mismatch in score calculations.  scoreFor(): 5, Expected: 13
+Mismatch in score calculations.  scoreFor(): 12, Expected: 22
+Mismatch in score calculations.  scoreFor(): 212, Expected: 1076
+Mismatch in score calculations.  scoreFor(): 11, Expected: 14
+Mismatch in score calculations.  scoreFor(): 333, Expected: 3232
+Mismatch in score calculations.  scoreFor(): 432, Expected: 3408
+Mismatch in score calculations.  scoreFor(): 12, Expected: 18
+Mismatch in score calculations.  scoreFor(): 467, Expected: 4043
+Mismatch in score calculations.  scoreFor(): 229, Expected: 2612
+Mismatch in score calculations.  scoreFor(): 191, Expected: 1504
+Mismatch in score calculations.  scoreFor(): 245, Expected: 1421
+Mismatch in score calculations.  scoreFor(): 300, Expected: 1836
+Mismatch in score calculations.  scoreFor(): 189, Expected: 621
+Mismatch in score calculations.  scoreFor(): 11, Expected: 7
+Mismatch in score calculations.  scoreFor(): 200, Expected: 876
+Mismatch in score calculations.  scoreFor(): 467, Expected: 3862
+Mismatch in score calculations.  scoreFor(): 233, Expected: 961
+Mismatch in score calculations.  scoreFor(): 1, Expected: 9
+Mismatch in score calculations.  scoreFor(): 477, Expected: 5008
+Mismatch in score calculations.  scoreFor(): 28, Expected: 36
+Mismatch in score calculations.  scoreFor(): 243, Expected: 1478
+Mismatch in score calculations.  scoreFor(): 691, Expected: 6441
+Mismatch in score calculations.  scoreFor(): 63, Expected: 538
+Mismatch in score calculations.  scoreFor(): 420, Expected: 2422
+Mismatch in score calculations.  scoreFor(): 228, Expected: 606
+Mismatch in score calculations.  scoreFor(): 27, Expected: 30
+Mismatch in score calculations.  scoreFor(): 1, Expected: 2
+Mismatch in score calculations.  scoreFor(): 241, Expected: 1144
+Mismatch in score calculations.  scoreFor(): 340, Expected: 3425
+Mismatch in score calculations.  scoreFor(): 10, Expected: 11
+Mismatch in score calculations.  scoreFor(): 227, Expected: 932
+Mismatch in score calculations.  scoreFor(): 296, Expected: 1576
+Mismatch in score calculations.  scoreFor(): 242, Expected: 1706
+Mismatch in score calculations.  scoreFor(): 291, Expected: 2116
+Mismatch in score calculations.  scoreFor(): 379, Expected: 3118
+Mismatch in score calculations.  scoreFor(): 98, Expected: 564
+Mismatch in score calculations.  scoreFor(): 26, Expected: 37
+Mismatch in score calculations.  scoreFor(): 3, Expected: 22
+Mismatch in score calculations.  scoreFor(): 220, Expected: 1718
+Mismatch in score calculations.  scoreFor(): 376, Expected: 3422
+Mismatch in score calculations.  scoreFor(): 3, Expected: 11
+Mismatch in score calculations.  scoreFor(): 8, Expected: 14
+Mismatch in score calculations.  scoreFor(): 380, Expected: 4469
+Mismatch in score calculations.  scoreFor(): 411, Expected: 3150
+Mismatch in score calculations.  scoreFor(): 21, Expected: 37
+Mismatch in score calculations.  scoreFor(): 413, Expected: 2903
+Mismatch in score calculations.  scoreFor(): 421, Expected: 2829
+Mismatch in score calculations.  scoreFor(): 234, Expected: 924
+Mismatch in score calculations.  scoreFor(): 460, Expected: 3276
+Mismatch in score calculations.  scoreFor(): 256, Expected: 2016
+Mismatch in score calculations.  scoreFor(): 236, Expected: 1734
+Mismatch in score calculations.  scoreFor(): 517, Expected: 3784
+Mismatch in score calculations.  scoreFor(): 15, Expected: 18
+Mismatch in score calculations.  scoreFor(): 358, Expected: 2308
+Mismatch in score calculations.  scoreFor(): 37, Expected: 1131
+Mismatch in score calculations.  scoreFor(): 18, Expected: 24
+Mismatch in score calculations.  scoreFor(): 9, Expected: 8
+Mismatch in score calculations.  scoreFor(): 11, Expected: 730
+Mismatch in score calculations.  scoreFor(): 4, Expected: 8
+Mismatch in score calculations.  scoreFor(): 356, Expected: 4176
+Mismatch in score calculations.  scoreFor(): 469, Expected: 4085
+Mismatch in score calculations.  scoreFor(): 23, Expected: 53
+Mismatch in score calculations.  scoreFor(): 143, Expected: 1379
+Mismatch in score calculations.  scoreFor(): 413, Expected: 3453
+Mismatch in score calculations.  scoreFor(): 28, Expected: 40
+Mismatch in score calculations.  scoreFor(): 153, Expected: 2618
+Mismatch in score calculations.  scoreFor(): 190, Expected: 1988
+Mismatch in score calculations.  scoreFor(): 220, Expected: 1468
+Unit Test 4 Complete
+Number of errors found: 93
+Card Test 1
+Conducting 100 random trials.
+TRIAL 0
+discardCount is not as expected.  Expected: 253, Actual: 252
+top of discard mismatch. Expected: 13, Actual 350445730
+deck + discard count is not as expected.  Expected: 267, Actual: 265
+handCount is not as expected.  Expected: 80, Actual: 81
+TRIAL 1
+discardCount is not as expected.  Expected: 52, Actual: 51
+top of discard mismatch. Expected: 13, Actual 350620797
+deck + discard count is not as expected.  Expected: 327, Actual: 325
+handCount is not as expected.  Expected: 152, Actual: 153
+TRIAL 2
+discardCount is not as expected.  Expected: 1, Actual: 0
+top of discard mismatch. Expected: 13, Actual -558394729
+deck + discard count is not as expected.  Expected: 1, Actual: 0
+TRIAL 3
+discardCount is not as expected.  Expected: 160, Actual: 159
+top of discard mismatch. Expected: 13, Actual -542789378
+deck + discard count is not as expected.  Expected: 283, Actual: 281
+handCount is not as expected.  Expected: 24, Actual: 25
+TRIAL 4
+discardCount is not as expected.  Expected: 210, Actual: 209
+top of discard mismatch. Expected: 13, Actual -617506197
+deck + discard count is not as expected.  Expected: 427, Actual: 425
+handCount is not as expected.  Expected: 248, Actual: 249
+TRIAL 5
+discardCount is not as expected.  Expected: 23, Actual: 22
+top of discard mismatch. Expected: 13, Actual -1827342443
+deck + discard count is not as expected.  Expected: 173, Actual: 171
+handCount is not as expected.  Expected: 294, Actual: 295
+TRIAL 6
+discardCount is not as expected.  Expected: 148, Actual: 147
+top of discard mismatch. Expected: 13, Actual 756858279
+deck + discard count is not as expected.  Expected: 238, Actual: 236
+handCount is not as expected.  Expected: 275, Actual: 276
+TRIAL 7
+discardCount is not as expected.  Expected: 1, Actual: 0
+top of discard mismatch. Expected: 13, Actual 98930441
+deck + discard count is not as expected.  Expected: 1, Actual: 0
+TRIAL 8
+discardCount is not as expected.  Expected: 154, Actual: 153
+top of discard mismatch. Expected: 13, Actual -828800321
+deck + discard count is not as expected.  Expected: 423, Actual: 421
+handCount is not as expected.  Expected: 299, Actual: 300
+TRIAL 9
+discardCount is not as expected.  Expected: 96, Actual: 95
+top of discard mismatch. Expected: 13, Actual 1585514365
+deck + discard count is not as expected.  Expected: 132, Actual: 130
+handCount is not as expected.  Expected: 41, Actual: 42
+TRIAL 10
+discardCount is not as expected.  Expected: 187, Actual: 186
+top of discard mismatch. Expected: 13, Actual 238460777
+deck + discard count is not as expected.  Expected: 226, Actual: 224
+handCount is not as expected.  Expected: 35, Actual: 36
+TRIAL 11
+discardCount is not as expected.  Expected: 72, Actual: 71
+top of discard mismatch. Expected: 13, Actual -1737884278
+deck + discard count is not as expected.  Expected: 323, Actual: 321
+handCount is not as expected.  Expected: 233, Actual: 234
+TRIAL 12
+discardCount is not as expected.  Expected: 160, Actual: 159
+top of discard mismatch. Expected: 13, Actual -1169694578
+deck + discard count is not as expected.  Expected: 364, Actual: 362
+handCount is not as expected.  Expected: 17, Actual: 18
+TRIAL 13
+discardCount is not as expected.  Expected: 279, Actual: 278
+top of discard mismatch. Expected: 13, Actual 749208737
+deck + discard count is not as expected.  Expected: 467, Actual: 465
+handCount is not as expected.  Expected: 150, Actual: 151
+TRIAL 14
+discardCount is not as expected.  Expected: 199, Actual: 198
+top of discard mismatch. Expected: 13, Actual 1569397591
+deck + discard count is not as expected.  Expected: 250, Actual: 248
+handCount is not as expected.  Expected: 178, Actual: 179
+TRIAL 15
+discardCount is not as expected.  Expected: 274, Actual: 273
+top of discard mismatch. Expected: 13, Actual 1936723051
+deck + discard count is not as expected.  Expected: 298, Actual: 296
+handCount is not as expected.  Expected: 194, Actual: 195
+TRIAL 16
+discardCount is not as expected.  Expected: 189, Actual: 188
+top of discard mismatch. Expected: 13, Actual -1337703806
+deck + discard count is not as expected.  Expected: 378, Actual: 376
+handCount is not as expected.  Expected: 24, Actual: 25
+TRIAL 17
+discardCount is not as expected.  Expected: 7, Actual: 6
+top of discard mismatch. Expected: 13, Actual 1923902962
+deck + discard count is not as expected.  Expected: 130, Actual: 128
+handCount is not as expected.  Expected: 209, Actual: 210
+TRIAL 18
+discardCount is not as expected.  Expected: 266, Actual: 265
+top of discard mismatch. Expected: 13, Actual -462514396
+deck + discard count is not as expected.  Expected: 390, Actual: 388
+handCount is not as expected.  Expected: 179, Actual: 180
+TRIAL 19
+discardCount is not as expected.  Expected: 24, Actual: 23
+top of discard mismatch. Expected: 13, Actual 1534395601
+deck + discard count is not as expected.  Expected: 304, Actual: 302
+handCount is not as expected.  Expected: 3, Actual: 4
+TRIAL 20
+discardCount is not as expected.  Expected: 132, Actual: 131
+top of discard mismatch. Expected: 13, Actual 2043432444
+deck + discard count is not as expected.  Expected: 216, Actual: 214
+handCount is not as expected.  Expected: 17, Actual: 18
+TRIAL 21
+discardCount is not as expected.  Expected: 80, Actual: 79
+top of discard mismatch. Expected: 13, Actual 1080903399
+deck + discard count is not as expected.  Expected: 368, Actual: 366
+handCount is not as expected.  Expected: 197, Actual: 198
+TRIAL 22
+discardCount is not as expected.  Expected: 109, Actual: 108
+top of discard mismatch. Expected: 13, Actual 663547011
+deck + discard count is not as expected.  Expected: 136, Actual: 134
+handCount is not as expected.  Expected: 131, Actual: 132
+TRIAL 23
+discardCount is not as expected.  Expected: 258, Actual: 257
+top of discard mismatch. Expected: 13, Actual -85600639
+deck + discard count is not as expected.  Expected: 545, Actual: 543
+handCount is not as expected.  Expected: 225, Actual: 226
+TRIAL 24
+discardCount is not as expected.  Expected: 116, Actual: 115
+top of discard mismatch. Expected: 13, Actual -926672512
+deck + discard count is not as expected.  Expected: 234, Actual: 232
+handCount is not as expected.  Expected: 282, Actual: 283
+TRIAL 25
+discardCount is not as expected.  Expected: 25, Actual: 24
+top of discard mismatch. Expected: 13, Actual 386213691
+deck + discard count is not as expected.  Expected: 247, Actual: 245
+handCount is not as expected.  Expected: 95, Actual: 96
+TRIAL 26
+discardCount is not as expected.  Expected: 160, Actual: 159
+top of discard mismatch. Expected: 13, Actual -404835488
+deck + discard count is not as expected.  Expected: 363, Actual: 361
+handCount is not as expected.  Expected: 171, Actual: 172
+TRIAL 27
+discardCount is not as expected.  Expected: 74, Actual: 73
+top of discard mismatch. Expected: 13, Actual 2139903840
+deck + discard count is not as expected.  Expected: 352, Actual: 350
+handCount is not as expected.  Expected: 208, Actual: 209
+TRIAL 28
+discardCount is not as expected.  Expected: 256, Actual: 255
+top of discard mismatch. Expected: 13, Actual 1356700774
+deck + discard count is not as expected.  Expected: 352, Actual: 350
+handCount is not as expected.  Expected: 157, Actual: 158
+TRIAL 29
+discardCount is not as expected.  Expected: 79, Actual: 78
+top of discard mismatch. Expected: 13, Actual -303009127
+deck + discard count is not as expected.  Expected: 91, Actual: 89
+handCount is not as expected.  Expected: 194, Actual: 195
+TRIAL 30
+discardCount is not as expected.  Expected: 1, Actual: 0
+top of discard mismatch. Expected: 13, Actual -1942270381
+deck + discard count is not as expected.  Expected: 79, Actual: 77
+handCount is not as expected.  Expected: 102, Actual: 103
+TRIAL 31
+discardCount is not as expected.  Expected: 274, Actual: 273
+top of discard mismatch. Expected: 13, Actual 1291600794
+deck + discard count is not as expected.  Expected: 494, Actual: 492
+handCount is not as expected.  Expected: 206, Actual: 207
+TRIAL 32
+discardCount is not as expected.  Expected: 270, Actual: 269
+top of discard mismatch. Expected: 13, Actual -1449352573
+deck + discard count is not as expected.  Expected: 416, Actual: 414
+handCount is not as expected.  Expected: 128, Actual: 129
+TRIAL 33
+discardCount is not as expected.  Expected: 284, Actual: 283
+top of discard mismatch. Expected: 13, Actual -778040934
+deck + discard count is not as expected.  Expected: 387, Actual: 385
+handCount is not as expected.  Expected: 76, Actual: 77
+TRIAL 34
+discardCount is not as expected.  Expected: 83, Actual: 82
+top of discard mismatch. Expected: 13, Actual 929409710
+deck + discard count is not as expected.  Expected: 245, Actual: 243
+handCount is not as expected.  Expected: 202, Actual: 203
+TRIAL 35
+discardCount is not as expected.  Expected: 170, Actual: 169
+top of discard mismatch. Expected: 13, Actual -2097057330
+deck + discard count is not as expected.  Expected: 460, Actual: 458
+handCount is not as expected.  Expected: 3, Actual: 4
+TRIAL 36
+discardCount is not as expected.  Expected: 218, Actual: 217
+top of discard mismatch. Expected: 13, Actual 1273292530
+deck + discard count is not as expected.  Expected: 398, Actual: 396
+handCount is not as expected.  Expected: 170, Actual: 171
+TRIAL 37
+discardCount is not as expected.  Expected: 293, Actual: 292
+top of discard mismatch. Expected: 13, Actual -766277343
+deck + discard count is not as expected.  Expected: 569, Actual: 567
+handCount is not as expected.  Expected: 32, Actual: 33
+TRIAL 38
+discardCount is not as expected.  Expected: 54, Actual: 53
+top of discard mismatch. Expected: 13, Actual -1731129336
+deck + discard count is not as expected.  Expected: 118, Actual: 116
+handCount is not as expected.  Expected: 100, Actual: 101
+TRIAL 39
+discardCount is not as expected.  Expected: 234, Actual: 233
+top of discard mismatch. Expected: 13, Actual 463153137
+deck + discard count is not as expected.  Expected: 351, Actual: 349
+handCount is not as expected.  Expected: 3, Actual: 4
+TRIAL 40
+discardCount is not as expected.  Expected: 174, Actual: 173
+top of discard mismatch. Expected: 13, Actual 955075257
+deck + discard count is not as expected.  Expected: 241, Actual: 239
+handCount is not as expected.  Expected: 28, Actual: 29
+TRIAL 41
+discardCount is not as expected.  Expected: 77, Actual: 76
+top of discard mismatch. Expected: 13, Actual 1276516544
+deck + discard count is not as expected.  Expected: 351, Actual: 349
+handCount is not as expected.  Expected: 83, Actual: 84
+TRIAL 42
+discardCount is not as expected.  Expected: 10, Actual: 9
+top of discard mismatch. Expected: 13, Actual -1905865509
+deck + discard count is not as expected.  Expected: 20, Actual: 18
+handCount is not as expected.  Expected: 120, Actual: 121
+TRIAL 43
+discardCount is not as expected.  Expected: 146, Actual: 145
+top of discard mismatch. Expected: 13, Actual 710651977
+deck + discard count is not as expected.  Expected: 428, Actual: 426
+handCount is not as expected.  Expected: 219, Actual: 220
+TRIAL 44
+discardCount is not as expected.  Expected: 190, Actual: 189
+top of discard mismatch. Expected: 13, Actual -437293276
+deck + discard count is not as expected.  Expected: 357, Actual: 355
+handCount is not as expected.  Expected: 52, Actual: 53
+TRIAL 45
+discardCount is not as expected.  Expected: 37, Actual: 36
+top of discard mismatch. Expected: 13, Actual 110407937
+deck + discard count is not as expected.  Expected: 171, Actual: 169
+handCount is not as expected.  Expected: 235, Actual: 236
+TRIAL 46
+discardCount is not as expected.  Expected: 199, Actual: 198
+top of discard mismatch. Expected: 13, Actual -1530870893
+deck + discard count is not as expected.  Expected: 435, Actual: 433
+handCount is not as expected.  Expected: 298, Actual: 299
+TRIAL 47
+discardCount is not as expected.  Expected: 279, Actual: 278
+top of discard mismatch. Expected: 13, Actual -2096241382
+deck + discard count is not as expected.  Expected: 439, Actual: 437
+handCount is not as expected.  Expected: 152, Actual: 153
+TRIAL 48
+discardCount is not as expected.  Expected: 259, Actual: 258
+top of discard mismatch. Expected: 13, Actual -1075983837
+deck + discard count is not as expected.  Expected: 420, Actual: 418
+handCount is not as expected.  Expected: 3, Actual: 4
+TRIAL 49
+discardCount is not as expected.  Expected: 268, Actual: 267
+top of discard mismatch. Expected: 13, Actual 1801912445
+deck + discard count is not as expected.  Expected: 269, Actual: 267
+handCount is not as expected.  Expected: 184, Actual: 185
+TRIAL 50
+discardCount is not as expected.  Expected: 95, Actual: 94
+top of discard mismatch. Expected: 13, Actual 2113774605
+deck + discard count is not as expected.  Expected: 240, Actual: 238
+handCount is not as expected.  Expected: 43, Actual: 44
+TRIAL 51
+discardCount is not as expected.  Expected: 275, Actual: 274
+top of discard mismatch. Expected: 13, Actual 1124529417
+deck + discard count is not as expected.  Expected: 294, Actual: 292
+handCount is not as expected.  Expected: 128, Actual: 129
+TRIAL 52
+discardCount is not as expected.  Expected: 197, Actual: 196
+top of discard mismatch. Expected: 13, Actual -1548947140
+deck + discard count is not as expected.  Expected: 200, Actual: 198
+handCount is not as expected.  Expected: 264, Actual: 265
+TRIAL 53
+discardCount is not as expected.  Expected: 189, Actual: 188
+top of discard mismatch. Expected: 13, Actual -747399041
+deck + discard count is not as expected.  Expected: 468, Actual: 466
+handCount is not as expected.  Expected: 242, Actual: 243
+TRIAL 54
+discardCount is not as expected.  Expected: 33, Actual: 32
+top of discard mismatch. Expected: 13, Actual 1936878311
+deck + discard count is not as expected.  Expected: 136, Actual: 134
+handCount is not as expected.  Expected: 82, Actual: 83
+TRIAL 55
+discardCount is not as expected.  Expected: 201, Actual: 200
+top of discard mismatch. Expected: 13, Actual -1222797045
+deck + discard count is not as expected.  Expected: 241, Actual: 239
+handCount is not as expected.  Expected: 100, Actual: 101
+TRIAL 56
+discardCount is not as expected.  Expected: 263, Actual: 262
+top of discard mismatch. Expected: 13, Actual -996795314
+deck + discard count is not as expected.  Expected: 322, Actual: 320
+handCount is not as expected.  Expected: 215, Actual: 216
+TRIAL 57
+discardCount is not as expected.  Expected: 154, Actual: 153
+top of discard mismatch. Expected: 13, Actual -1029067005
+deck + discard count is not as expected.  Expected: 397, Actual: 395
+handCount is not as expected.  Expected: 48, Actual: 49
+TRIAL 58
+discardCount is not as expected.  Expected: 144, Actual: 143
+top of discard mismatch. Expected: 13, Actual 1897648547
+deck + discard count is not as expected.  Expected: 168, Actual: 166
+handCount is not as expected.  Expected: 165, Actual: 166
+TRIAL 59
+discardCount is not as expected.  Expected: 1, Actual: 0
+top of discard mismatch. Expected: 13, Actual -1941106798
+deck + discard count is not as expected.  Expected: 103, Actual: 101
+handCount is not as expected.  Expected: 242, Actual: 243
+TRIAL 60
+discardCount is not as expected.  Expected: 11, Actual: 10
+top of discard mismatch. Expected: 13, Actual 1384399534
+deck + discard count is not as expected.  Expected: 305, Actual: 303
+handCount is not as expected.  Expected: 234, Actual: 235
+TRIAL 61
+discardCount is not as expected.  Expected: 274, Actual: 273
+top of discard mismatch. Expected: 13, Actual 1518444119
+deck + discard count is not as expected.  Expected: 373, Actual: 371
+handCount is not as expected.  Expected: 167, Actual: 168
+TRIAL 62
+discardCount is not as expected.  Expected: 261, Actual: 260
+top of discard mismatch. Expected: 13, Actual -37351575
+deck + discard count is not as expected.  Expected: 348, Actual: 346
+handCount is not as expected.  Expected: 297, Actual: 298
+TRIAL 63
+discardCount is not as expected.  Expected: 114, Actual: 113
+top of discard mismatch. Expected: 13, Actual -1707896297
+deck + discard count is not as expected.  Expected: 119, Actual: 117
+handCount is not as expected.  Expected: 3, Actual: 4
+TRIAL 64
+discardCount is not as expected.  Expected: 278, Actual: 277
+top of discard mismatch. Expected: 13, Actual 612010823
+deck + discard count is not as expected.  Expected: 319, Actual: 317
+handCount is not as expected.  Expected: 55, Actual: 56
+TRIAL 65
+discardCount is not as expected.  Expected: 145, Actual: 144
+top of discard mismatch. Expected: 13, Actual 518004227
+deck + discard count is not as expected.  Expected: 175, Actual: 173
+handCount is not as expected.  Expected: 125, Actual: 126
+TRIAL 66
+discardCount is not as expected.  Expected: 64, Actual: 63
+top of discard mismatch. Expected: 13, Actual 1817895735
+deck + discard count is not as expected.  Expected: 230, Actual: 228
+handCount is not as expected.  Expected: 132, Actual: 133
+TRIAL 67
+discardCount is not as expected.  Expected: 149, Actual: 148
+top of discard mismatch. Expected: 13, Actual 2039272479
+deck + discard count is not as expected.  Expected: 283, Actual: 281
+handCount is not as expected.  Expected: 209, Actual: 210
+TRIAL 68
+discardCount is not as expected.  Expected: 277, Actual: 276
+top of discard mismatch. Expected: 13, Actual 121152519
+deck + discard count is not as expected.  Expected: 460, Actual: 458
+handCount is not as expected.  Expected: 19, Actual: 20
+TRIAL 69
+discardCount is not as expected.  Expected: 34, Actual: 33
+top of discard mismatch. Expected: 13, Actual 1203159908
+deck + discard count is not as expected.  Expected: 271, Actual: 269
+handCount is not as expected.  Expected: 59, Actual: 60
+TRIAL 70
+discardCount is not as expected.  Expected: 301, Actual: 300
+top of discard mismatch. Expected: 13, Actual -1824678003
+deck + discard count is not as expected.  Expected: 376, Actual: 374
+handCount is not as expected.  Expected: 278, Actual: 279
+TRIAL 71
+discardCount is not as expected.  Expected: 257, Actual: 256
+top of discard mismatch. Expected: 13, Actual -489256621
+deck + discard count is not as expected.  Expected: 281, Actual: 279
+handCount is not as expected.  Expected: 169, Actual: 170
+TRIAL 72
+discardCount is not as expected.  Expected: 229, Actual: 228
+top of discard mismatch. Expected: 13, Actual -38600160
+deck + discard count is not as expected.  Expected: 306, Actual: 304
+handCount is not as expected.  Expected: 283, Actual: 284
+TRIAL 73
+discardCount is not as expected.  Expected: 93, Actual: 92
+top of discard mismatch. Expected: 13, Actual 66462344
+deck + discard count is not as expected.  Expected: 317, Actual: 315
+handCount is not as expected.  Expected: 197, Actual: 198
+TRIAL 74
+discardCount is not as expected.  Expected: 190, Actual: 189
+top of discard mismatch. Expected: 13, Actual -1083196321
+deck + discard count is not as expected.  Expected: 256, Actual: 254
+handCount is not as expected.  Expected: 206, Actual: 207
+TRIAL 75
+discardCount is not as expected.  Expected: 48, Actual: 47
+top of discard mismatch. Expected: 13, Actual -1046735974
+deck + discard count is not as expected.  Expected: 93, Actual: 91
+handCount is not as expected.  Expected: 23, Actual: 24
+TRIAL 76
+discardCount is not as expected.  Expected: 1, Actual: 0
+top of discard mismatch. Expected: 13, Actual -837259383
+deck + discard count is not as expected.  Expected: 1, Actual: 0
+TRIAL 77
+discardCount is not as expected.  Expected: 112, Actual: 111
+top of discard mismatch. Expected: 13, Actual -591068973
+deck + discard count is not as expected.  Expected: 350, Actual: 348
+handCount is not as expected.  Expected: 223, Actual: 224
+TRIAL 78
+discardCount is not as expected.  Expected: 277, Actual: 276
+top of discard mismatch. Expected: 13, Actual -1547862521
+deck + discard count is not as expected.  Expected: 460, Actual: 458
+handCount is not as expected.  Expected: 199, Actual: 200
+TRIAL 79
+discardCount is not as expected.  Expected: 106, Actual: 105
+top of discard mismatch. Expected: 13, Actual 1323180009
+deck + discard count is not as expected.  Expected: 347, Actual: 345
+handCount is not as expected.  Expected: 14, Actual: 15
+TRIAL 80
+discardCount is not as expected.  Expected: 36, Actual: 35
+top of discard mismatch. Expected: 13, Actual 21565221
+deck + discard count is not as expected.  Expected: 167, Actual: 165
+handCount is not as expected.  Expected: 205, Actual: 206
+TRIAL 81
+discardCount is not as expected.  Expected: 1, Actual: 0
+top of discard mismatch. Expected: 13, Actual 1122986685
+deck + discard count is not as expected.  Expected: 18, Actual: 16
+handCount is not as expected.  Expected: 280, Actual: 281
+TRIAL 82
+discardCount is not as expected.  Expected: 205, Actual: 204
+top of discard mismatch. Expected: 13, Actual 1134154347
+deck + discard count is not as expected.  Expected: 228, Actual: 226
+handCount is not as expected.  Expected: 93, Actual: 94
+TRIAL 83
+discardCount is not as expected.  Expected: 122, Actual: 121
+top of discard mismatch. Expected: 13, Actual 1891911670
+deck + discard count is not as expected.  Expected: 205, Actual: 203
+handCount is not as expected.  Expected: 75, Actual: 76
+TRIAL 84
+discardCount is not as expected.  Expected: 115, Actual: 114
+top of discard mismatch. Expected: 13, Actual -30068857
+deck + discard count is not as expected.  Expected: 125, Actual: 123
+handCount is not as expected.  Expected: 256, Actual: 257
+TRIAL 85
+discardCount is not as expected.  Expected: 253, Actual: 252
+top of discard mismatch. Expected: 13, Actual -1151291992
+deck + discard count is not as expected.  Expected: 423, Actual: 421
+handCount is not as expected.  Expected: 198, Actual: 199
+TRIAL 86
+discardCount is not as expected.  Expected: 63, Actual: 62
+top of discard mismatch. Expected: 13, Actual 1325118146
+deck + discard count is not as expected.  Expected: 186, Actual: 184
+handCount is not as expected.  Expected: 259, Actual: 260
+TRIAL 87
+discardCount is not as expected.  Expected: 165, Actual: 164
+top of discard mismatch. Expected: 13, Actual -1843993479
+deck + discard count is not as expected.  Expected: 241, Actual: 239
+handCount is not as expected.  Expected: 29, Actual: 30
+TRIAL 88
+discardCount is not as expected.  Expected: 232, Actual: 231
+top of discard mismatch. Expected: 13, Actual -833601821
+deck + discard count is not as expected.  Expected: 462, Actual: 460
+handCount is not as expected.  Expected: 96, Actual: 97
+TRIAL 89
+discardCount is not as expected.  Expected: 131, Actual: 130
+top of discard mismatch. Expected: 13, Actual 1609170882
+deck + discard count is not as expected.  Expected: 160, Actual: 158
+handCount is not as expected.  Expected: 161, Actual: 162
+TRIAL 90
+discardCount is not as expected.  Expected: 142, Actual: 141
+top of discard mismatch. Expected: 13, Actual -1361963027
+deck + discard count is not as expected.  Expected: 201, Actual: 199
+handCount is not as expected.  Expected: 174, Actual: 175
+TRIAL 91
+discardCount is not as expected.  Expected: 45, Actual: 44
+top of discard mismatch. Expected: 13, Actual 2108063277
+deck + discard count is not as expected.  Expected: 61, Actual: 59
+handCount is not as expected.  Expected: 3, Actual: 4
+TRIAL 92
+discardCount is not as expected.  Expected: 1, Actual: 0
+top of discard mismatch. Expected: 13, Actual 591973015
+deck + discard count is not as expected.  Expected: 267, Actual: 265
+handCount is not as expected.  Expected: 173, Actual: 174
+TRIAL 93
+discardCount is not as expected.  Expected: 50, Actual: 49
+top of discard mismatch. Expected: 13, Actual -314842611
+deck + discard count is not as expected.  Expected: 294, Actual: 292
+handCount is not as expected.  Expected: 15, Actual: 16
+TRIAL 94
+discardCount is not as expected.  Expected: 163, Actual: 162
+top of discard mismatch. Expected: 13, Actual 1831260528
+deck + discard count is not as expected.  Expected: 417, Actual: 415
+handCount is not as expected.  Expected: 257, Actual: 258
+TRIAL 95
+discardCount is not as expected.  Expected: 86, Actual: 85
+top of discard mismatch. Expected: 13, Actual 513141640
+deck + discard count is not as expected.  Expected: 218, Actual: 216
+handCount is not as expected.  Expected: 14, Actual: 15
+TRIAL 96
+discardCount is not as expected.  Expected: 69, Actual: 68
+top of discard mismatch. Expected: 13, Actual 95912557
+deck + discard count is not as expected.  Expected: 72, Actual: 70
+handCount is not as expected.  Expected: 203, Actual: 204
+TRIAL 97
+discardCount is not as expected.  Expected: 83, Actual: 82
+top of discard mismatch. Expected: 13, Actual -2040344648
+deck + discard count is not as expected.  Expected: 247, Actual: 245
+handCount is not as expected.  Expected: 97, Actual: 98
+TRIAL 98
+discardCount is not as expected.  Expected: 160, Actual: 159
+top of discard mismatch. Expected: 13, Actual -2146221048
+deck + discard count is not as expected.  Expected: 295, Actual: 293
+handCount is not as expected.  Expected: 117, Actual: 118
+TRIAL 99
+discardCount is not as expected.  Expected: 174, Actual: 173
+top of discard mismatch. Expected: 13, Actual -969966338
+deck + discard count is not as expected.  Expected: 224, Actual: 222
+handCount is not as expected.  Expected: 290, Actual: 291
+Card Test 1 Complete
+Number of errors found: 397
+Card Test 2
+Trial 1
+Mismatched discardCount. Expected: 10, Actual: 11
+Trial 2
+Mismatched discardCount. Expected: 10, Actual: 11
+Trial 3
+Mismatched deckCount. Expected: 0, Actual: 24
+Mismatched discardCount. Expected: 12, Actual: 11
+Trial 4
+Mismatched deckCount + discardCount. Expected: 13, Actual: 14
+Card Test 2 Complete
+File 'dominion.c'
+Lines executed:32.88% of 587
+dominion.c:creating 'dominion.c.gcov'
+

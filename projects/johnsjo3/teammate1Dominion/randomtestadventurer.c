@@ -57,6 +57,7 @@ int main(int argc, char * argv[]) {
 
 		//semi-randomize inputs (within reason)
           playerNum = randomNumber(0, MAX_PLAYERS-1);
+		  gs->whoseTurn = playerNum;
 		emptyDeck = percentChanceIsOne(5);
 		emptyDiscard = percentChanceIsOne(5);
 		emptyHand = percentChanceIsOne(5);
@@ -102,7 +103,7 @@ int main(int argc, char * argv[]) {
           
           //copy the previous state and play card
           memcpy(stateCopy, gs, sizeof(struct gameState));
-          playAdventurer(playerNum, gs);
+          playAdventurer(gs);
           
           
           //Analyse state

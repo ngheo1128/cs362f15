@@ -22,6 +22,11 @@ int main(int argc, char * argv[]) {
 	struct gameState * gs = NULL;
 	
 	int playerNum = 0;
+	gs1->whoseTurn = playerNum;
+	gs2->whoseTurn = playerNum;
+	gs3->whoseTurn = playerNum;
+	gs4->whoseTurn = playerNum;
+	gs5->whoseTurn = playerNum;
 	int i;
 	
 	//Setup gamestate 1 - Test for identification of treasure cards (copper and silver)
@@ -99,7 +104,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 1\r\n");
 	memcpy(stateCopy, gs1, sizeof(struct gameState));
 	//playerNum = 0;
-	playAdventurer(playerNum, gs1);
+	playAdventurer(gs1);
 	if (gs1->deckCount[playerNum] != stateCopy->deckCount[playerNum] - 2) {
 		printf("Mismatched deckCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] - 2,gs1->deckCount[playerNum] );
 	}
@@ -114,7 +119,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 2\r\n");
 	memcpy(stateCopy, gs2, sizeof(struct gameState));
 	//playerNum = 1;
-	playAdventurer(playerNum, gs2);
+	playAdventurer(gs2);
 	if (gs2->deckCount[playerNum] != stateCopy->deckCount[playerNum] - 2) {
 		printf("Mismatched deckCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] - 2,gs2->deckCount[playerNum] );
 	}
@@ -130,7 +135,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 3\r\n");
 	memcpy(stateCopy, gs3, sizeof(struct gameState));
 	//playerNum = 2;
-	playAdventurer(playerNum, gs3);
+	playAdventurer(gs3);
 	if (gs3->deckCount[playerNum] != stateCopy->deckCount[playerNum] - treasure_map) {
 		printf("Mismatched deckCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] - treasure_map,gs3->deckCount[playerNum] );
 	}
@@ -145,7 +150,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 4\r\n");
 	memcpy(stateCopy, gs4, sizeof(struct gameState));
 	//playerNum = 3;
-	playAdventurer(playerNum, gs4);
+	playAdventurer(gs4);
 	if (gs4->deckCount[playerNum] + gs4->discardCount[playerNum] != stateCopy->deckCount[playerNum] + stateCopy->discardCount[playerNum] - 2) {
 		printf("Mismatched deckCount + discardCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] + stateCopy->discardCount[playerNum] - 2,gs4->deckCount[playerNum] + gs4->discardCount[playerNum] );
 	}
@@ -158,7 +163,7 @@ int main(int argc, char * argv[]) {
 	printf("Trial 5\r\n");
 	memcpy(stateCopy, gs5, sizeof(struct gameState));
 	//playerNum = 3;
-	playAdventurer(playerNum, gs5);
+	playAdventurer(gs5);
 	if (gs5->deckCount[playerNum] + gs5->discardCount[playerNum] != stateCopy->deckCount[playerNum] + stateCopy->discardCount[playerNum]) {
 		printf("Mismatched deckCount + discardCount. Expected: %d, Actual: %d\r\n",stateCopy->deckCount[playerNum] + stateCopy->discardCount[playerNum],gs5->deckCount[playerNum] + gs5->discardCount[playerNum] );
 	}
