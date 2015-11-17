@@ -2,8 +2,8 @@
 // *****************************************************************************
 // 
 // Author:    Erik Ratcliffe
-// Date:      November 8, 2015
-// Project:   Assignment 4 - Random Tests
+// Date:      November 22, 2015
+// Project:   Assignment 5 - Random Tests (teammates)
 // Filename:  randomtestcard.c
 // Class:     CS 362 (Fall 2015)
 //
@@ -53,7 +53,7 @@ int testTreasureMapCard(struct gameState *state, int handPos)
 
     // Run the treasure map card function
     //
-    treasureMapCard(state, handPos);
+    cardEffect(treasure_map, 0, 0, 0, state, handPos, 0);
 
     // Determine original number of treasure map cards in hand
     //

@@ -2,8 +2,8 @@
 // *****************************************************************************
 // 
 // Author:    Erik Ratcliffe
-// Date:      October 25, 2015
-// Project:   Assignment 3 - Unit Tests
+// Date:      November 22, 2015
+// Project:   Assignment 5 - Unit Tests (teammates)
 // Filename:  cardtest2.c
 // Class:     CS 362 (Fall 2015)
 //
@@ -59,14 +59,13 @@ int testAdventurerCard(struct gameState *state)
 
     // Run the adventurer card function
     //
-    //adventurerCard(state);
     adventurerAction(currentPlayer, state, temphand);
 
     // See if handCount increased by two cards
     //
     if(state->handCount[currentPlayer] == origState->handCount[currentPlayer]+2)
     {
-        printf("adventurerCard: PASS two new cards added to hand\n");
+        printf("adventurerAction: PASS two new cards added to hand\n");
 
         // See if last two cards in hand are treasure cards (enum 4-6)
         //
@@ -80,16 +79,16 @@ int testAdventurerCard(struct gameState *state)
         }
         if(passFlag == 1)
         {
-            printf("adventurerCard: PASS last two cards in hand are treasure cards\n");
+            printf("adventurerAction: PASS last two cards in hand are treasure cards\n");
         }
         else 
         {
-            printf("adventurerCard: FAIL at least one of the last two cards in hand is not a treasure card\n");
+            printf("adventurerAction: FAIL at least one of the last two cards in hand is not a treasure card\n");
         }
     }
     else 
     {
-        printf("adventurerCard: FAIL two new cards not added to hand\n");
+        printf("adventurerAction: FAIL two new cards not added to hand\n");
     }
 
     // See if the number of discarded cards is correct
@@ -98,11 +97,11 @@ int testAdventurerCard(struct gameState *state)
     diffDiscardCount = origState->discardCount[currentPlayer] - state->discardCount[currentPlayer];
     if(diffDiscardCount + 2 == diffDeckCount)
     {
-        printf("adventurerCard: PASS correct number of cards discarded\n");
+        printf("adventurerAction: PASS correct number of cards discarded\n");
     }
     else 
     {
-        printf("adventurerCard: FAIL incorrect number of cards discarded\n");
+        printf("adventurerAction: FAIL incorrect number of cards discarded\n");
     }
 
     // Report what, if anything, changed in the game state

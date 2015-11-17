@@ -2,8 +2,8 @@
 // *****************************************************************************
 // 
 // Author:    Erik Ratcliffe
-// Date:      October 25, 2015
-// Project:   Assignment 3 - Unit Tests
+// Date:      November 22, 2015
+// Project:   Assignment 5 - Unit Tests (teammates)
 // Filename:  cardtest1.c
 // Class:     CS 362 (Fall 2015)
 //
@@ -37,18 +37,17 @@ int testSmithyCard(int currentPlayer, struct gameState *state, int handPos)
 
     // Run the smithy card function
     //
-    //smithyCard(state, handPos);
     smithyAction(currentPlayer, state, handPos);
 
     // Have three cards been drawn from the deck?
     //
     if(state->deckCount[currentPlayer] == origState->deckCount[currentPlayer]-3)
     {
-        printf("smithyCard: PASS three cards removed from deck\n");
+        printf("smithyAction: PASS three cards removed from deck\n");
     }
     else
     {
-        printf("smithyCard: FAIL three cards not removed from deck\n");
+        printf("smithyAction: FAIL three cards not removed from deck\n");
     }
 
     // Have three cards been added to the hand? (If 3 were added and 1
@@ -57,11 +56,11 @@ int testSmithyCard(int currentPlayer, struct gameState *state, int handPos)
     //
     if(state->handCount[currentPlayer] == origState->handCount[currentPlayer]+2)
     {
-        printf("smithyCard: PASS three cards added to hand (and one discarded)\n");
+        printf("smithyAction: PASS three cards added to hand (and one discarded)\n");
     }
     else
     {
-        printf("smithyCard: FAIL three cards not added to hand\n");
+        printf("smithyAction: FAIL three cards not added to hand\n");
     }
 
     // Did the smithy card end up on the played pile? The only test we can
@@ -71,11 +70,11 @@ int testSmithyCard(int currentPlayer, struct gameState *state, int handPos)
     //
     if(state->playedCardCount == origState->playedCardCount+1)
     {
-        printf("smithyCard: PASS discarded card added to played pile (count incremented)\n");
+        printf("smithyAction: PASS discarded card added to played pile (count incremented)\n");
     }
     else 
     {
-        printf("smithyCard: FAIL discarded card did not end up on played pile (not incremented)\n");
+        printf("smithyAction: FAIL discarded card did not end up on played pile (not incremented)\n");
     }
     
     // Report what, if anything, changed in the game state

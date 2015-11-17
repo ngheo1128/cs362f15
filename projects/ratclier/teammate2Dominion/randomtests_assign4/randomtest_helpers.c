@@ -1,3 +1,15 @@
+//
+// *****************************************************************************
+// 
+// Author:    Erik Ratcliffe
+// Date:      November 22, 2015
+// Project:   Assignment 5 - Random Tests (teammates)
+// Filename:  randomtest_helpers.c
+// Class:     CS 362 (Fall 2015)
+//
+// *****************************************************************************
+//
+
 #include <stdlib.h>
 
 // Influenced by code from the following webpage:

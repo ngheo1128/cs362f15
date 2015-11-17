@@ -2,8 +2,8 @@
 // *****************************************************************************
 // 
 // Author:    Erik Ratcliffe
-// Date:      October 25, 2015
-// Project:   Assignment 3 - Unit Tests
+// Date:      November 22, 2015
+// Project:   Assignment 5 - Unit Tests (teammates)
 // Filename:  unittest4.c
 // Class:     CS 362 (Fall 2015)
 //
