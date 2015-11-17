@@ -53,7 +53,8 @@ int testTreasureMapCard(struct gameState *state, int handPos)
 
     // Run the treasure map card function
     //
-    treasureMapCard(state, handPos);
+    //treasureMapCard(state, handPos);
+    cardEffect(treasure_map, 0, 0, 0, state, handPos, 0);
 
     // Determine original number of treasure map cards in hand
     //

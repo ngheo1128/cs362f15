@@ -41,7 +41,13 @@ int testFeastCard(struct gameState *state, int currentPlayer, int choice)
 
     // Run the feast card function
     //
-    feastCard(choice, state);
+    // EDIT: Change this to a cardEffect() function. Feast code was
+    // not split into a separate function.
+    //
+    //feastCard(choice, state);
+    //cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus);
+    cardEffect(feast, choice, 0, 0, state, 0, 0);
+
 
     // Is the gained card valued at <= 5 coins?
     //

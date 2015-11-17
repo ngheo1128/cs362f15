@@ -54,6 +54,7 @@ int testAdventurerCard(struct gameState *state)
     int diffDiscardCount;         // difference between orig and new discard count
     int passFlag = 1;             // signals whether or not a test passed (default: true)
     int currentPlayer = state->whoseTurn;
+    int temphand[MAX_HAND];       // Added for teammate1Dominion random test
 
     // Make a copy of the original game state
     //
@@ -61,7 +62,8 @@ int testAdventurerCard(struct gameState *state)
 
     // Run the adventurer card function
     //
-    adventurerCard(state);
+    //adventurerCard(state);
+    adventurerAction(currentPlayer, state, temphand);
 
     // See if handCount increased by two cards
     //
