@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
+#include <stdlib.h>
 
 int printEnums(int cardNum)
 {
@@ -188,7 +189,8 @@ int main()
 
    int handBeforePlay = G.handCount[0];
    // play a smithy card
-   smithyCard(0, &G, 4);
+   //smithyCard(0, &G, 4);
+   cardEffect(smithy, 0, 0, 0, &G, 4, 0);
 
    int cardsDrawnCnt = G.handCount[0] - handBeforePlay;
    printf("Test 3: Checking if 3 cards drawn and one discarded.\n");
@@ -215,6 +217,10 @@ int main()
       printf("Passed: Total cards correct.\n\n");
    else
       printf("Failed: Total cards are %d.\n\n", totals);
+
+   printf("Cards in hand = %d, expected = 7\n", G.handCount[0]);
+   printf("Cards in deck = %d, expected = 2\n", G.deckCount[0]);
+   printf("Cards in discard = %d, expected = 1\n\n", G.discardCount[0]);
 
    isSmithy = 0;
    for (i = 0; i < G.handCount[0]; i++)
