@@ -25,7 +25,7 @@ void checkGreat_hall(int handPos, int player, struct gameState *post, int *fail)
 
  	int ret;
     	
-  	ret = useGreat_hall(handPos, player, post);
+  	ret = cardEffect(great_hall, 0, 0 ,0, post, handPos, 0);
 
 	//Check that function returns correctly
 	assert (ret == 0);
@@ -61,7 +61,14 @@ void checkGreat_hall(int handPos, int player, struct gameState *post, int *fail)
 			//Check hand count for each other player
 			assert(pre.handCount[i] == post->handCount[i]);
 			//Check deckCount for each other player
-			assert(pre.deckCount[i] == post->deckCount[i]);
+		//	assert(pre.deckCount[i] == post->deckCount[i]);
+			//The above assertion failed, that is a player's deck count is changed
+			//This assert failed, the following if statement verifies
+			if (pre.deckCount[i] != post->deckCount[i]) {
+				printf("FAIL: Deckcount changed for player %d\n", i);
+				*fail = 1;
+			}
+			
 			//Check discardCount for each other player
 			assert(pre.discardCount[i] == post->discardCount[i]);
 	
