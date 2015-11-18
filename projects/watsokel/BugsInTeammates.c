@@ -132,7 +132,7 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
     card in this test. This                                                     are ever returned to    bug, pass in a valid
     bug was detected using                                                      the player's discard    hand position.
     unit tests from unittest2.c.                                                pile to allow correct 
-                                                                                recirculation into into
+                                                                                recirculation into 
                                                                                 the player's hand for 
                                                                                 game play.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -276,7 +276,7 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
     card in this test. This                                                     are ever returned to    bug, pass in a valid
     bug was detected using                                                      the player's discard    hand position.
     unit tests from unittest2.c.                                                pile to allow correct 
-                                                                                recirculation into into
+                                                                                recirculation into 
                                                                                 the player's hand for 
                                                                                 game play.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
