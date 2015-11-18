@@ -1,0 +1,33 @@
+gcc -c rngs.c -g  -Wall -fpic -coverage -lm
+gcc -c dominion.c -g  -Wall -fpic -coverage -lm
+dominion.c: In function ‘adventurerCard’:
+dominion.c:236: warning: suggest parentheses around assignment used as truth value
+dominion.c: In function ‘cardEffect’:
+dominion.c:778: warning: ‘cardDrawn’ may be used uninitialized in this function
+dominion.c:781: warning: ‘i’ may be used uninitialized in this function
+dominion.c:1244: warning: ‘index’ may be used uninitialized in this function
+echo "Result for running unit tests:" > unittestresults.out
+echo "unittest1.c:">> unittestresults.out
+gcc -o unittest1 -g unittest1.c dominion.o rngs.o -Wall -fpic -coverage -lm
+unittest1 >> unittestresults.out
+gcov -b dominion.c >> unittestresults.out
+echo "unittest2.c:">> unittestresults.out
+gcc -o unittest2 -g unittest2.c dominion.o rngs.o -Wall -fpic -coverage -lm
+unittest2 >> unittestresults.out
+gcov -b dominion.c >> unittestresults.out
+echo "unittest3.c:">> unittestresults.out
+gcc -o unittest3 -g unittest3.c dominion.o rngs.o -Wall -fpic -coverage -lm
+unittest3 >> unittestresults.out
+gcov -b dominion.c >> unittestresults.out
+echo "unittest4.c:">> unittestresults.out
+gcc -o unittest4 -g unittest4.c dominion.o rngs.o -Wall -fpic -coverage -lm
+unittest4 >> unittestresults.out
+gcov -b dominion.c >> unittestresults.out
+echo "cardtest1.c:">> unittestresults.out
+gcc -o cardtest1 -g cardtest1.c dominion.o rngs.o -Wall -fpic -coverage -lm
+cardtest1.c: In function ‘testuseSmithy’:
+cardtest1.c:112: warning: implicit declaration of function ‘useSmithy’
+/tmp/cchOAcIq.o: In function `testuseSmithy':
+/nfs/stak/students/m/mossjef/cs362/cs362f15/projects/mossjef/chanwiDominion/cardtest1.c:112: undefined reference to `useSmithy'
+collect2: ld returned 1 exit status
+make: *** [unittestresults.out] Error 1
