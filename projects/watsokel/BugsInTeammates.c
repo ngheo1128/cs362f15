@@ -43,7 +43,7 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
 3   After a call to             expected=6              top of deck=387389207   High      Urgent        Call the sea_hag case           
     cardEffect()'s sea_hag      (enum CARD gold)                                                        in cardEffect() using 
     case, the card at the                                                       The top of the deck     the sea_hag enumerated
-    top of opponent's discard                                                   deck is uninitalized    CARD type. Since the
+    top of opponent's discard                                                   is uninitalized         CARD type. Since the
     pile is not the card that                                                   (junk) data, and could  choice1, choice2 and
     was at the top of his/her                                                   result in unpredictable choice3 parameters are
     deck. This bug was detected                                                 behavior should this    not used by the sea_hag 
@@ -92,7 +92,7 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
                                                                                                         specific bug.
 ----------------------------------------------------------------------------------------------------------------------------
 6.  The deck count after        deckCount=10            deckCount=7             High        High        Call the sea_hag case
-    discarded the top of the                                                                            in cardEffect() using
+    discarding the top of the                                                                           in cardEffect() using
     opponents' deck is                                                          The deck count is       the sea_hag enumerate
     erroneously decremented                                                     used to decide when a   CARD type. Since the
     three times, when the                                                       shuffle is necessary.   choice1, choice2, and 
@@ -144,12 +144,12 @@ BUG REPORT FOR TEAMMATE 2 (Dustin Dinh; onid: dinhd)
 8 bugs were detected using tests in cardtest1.c and cardtest2.c
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           SEVERITY  PRIORITY  	HOW TO REPRODUCE            
+ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           SEVERITY  PRIORITY      HOW TO REPRODUCE            
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-1   Number of cards in hand     pre-call handCount=5    pre-call handCount=5    High      Urgent    	Call smithyCard()
-    is two less than expected   post-call handCount=7   post-call handCount=5                       	using valid game
-    after call to smithyCard().                                                                     	state, player and
-    Note that cardtest1.c                                                                           	hand position.
+1   Number of cards in hand     pre-call handCount=5    pre-call handCount=5    High      Urgent        Call smithyCard()
+    is two less than expected   post-call handCount=7   post-call handCount=5                           using valid game
+    after call to smithyCard().                                                                         state, player and
+    Note that cardtest1.c                                                                               hand position.
     forces the user to draw 
     from a deck containing only 
     gold treasure cards as a 
@@ -169,13 +169,13 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
     Bug detected using unit tests 
     in cardtest1.c.
 ----------------------------------------------------------------------------------------------------------------------------
-2   The player's discard card   discardCount=5          discardCount=6      High        Urgent      	Call adventurerCard()
-    count is consistently one                                                                       	using valid game
-    more than the expected                                                  If left unfixed,        	state, player, and hand
-    discard card count. This is                                             subsequent attempts     	position. Check discard
-    due to a bug causing an extra                                           to use discard pile     	count against a oracle  
-    card (actually uninitialized                                            may result in invalid   	after card draws and 
-    junk data) from the temphand                                            (junk data) being       	discard of temphand.
+2   The player's discard card   discardCount=5          discardCount=6      High        Urgent          Call adventurerCard()
+    count is consistently one                                                                           using valid game
+    more than the expected                                                  If left unfixed,            state, player, and hand
+    discard card count. This is                                             subsequent attempts         position. Check discard
+    due to a bug causing an extra                                           to use discard pile         count against a oracle  
+    card (actually uninitialized                                            may result in invalid       after card draws and 
+    junk data) from the temphand                                            (junk data) being           discard of temphand.
     being added to the discard                                              accessed.
     pile due to accessing data                          
     outside of the temphand
@@ -187,7 +187,7 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
 3   After a call to             expected=6              top of deck=387389207   High      Urgent        Call the sea_hag case           
     cardEffect()'s sea_hag      (enum CARD gold)                                                        in cardEffect() using 
     case, the card at the                                                       The top of the deck     the sea_hag enumerated
-    top of opponent's discard                                                   deck is uninitalized    CARD type. Since the
+    top of opponent's discard                                                   is uninitalized         CARD type. Since the
     pile is not the card that                                                   (junk) data, and could  choice1, choice2 and
     was at the top of his/her                                                   result in unpredictable choice3 parameters are
     deck. This bug was detected                                                 behavior should this    not used by the sea_hag 
@@ -236,7 +236,7 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
                                                                                                         specific bug.
 ----------------------------------------------------------------------------------------------------------------------------
 6.  The deck count after        deckCount=10            deckCount=7             High        High        Call the sea_hag case
-    discarded the top of the                                                                            in cardEffect() using
+    discarding the top of the                                                                           in cardEffect() using
     opponents' deck is                                                          The deck count is       the sea_hag enumerate
     erroneously decremented                                                     used to decide when a   CARD type. Since the
     three times, when the                                                       shuffle is necessary.   choice1, choice2, and 
