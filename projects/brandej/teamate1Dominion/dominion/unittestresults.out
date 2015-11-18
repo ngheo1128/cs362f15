@@ -1,0 +1,326 @@
+Test Results:
+unittest1.c
+
+Testing isGameOver() function:
+
+Testing three cards = 0 calcuation
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+
+Testing Province calcuation
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+Test Passed
+All tests passed isGameOver()
+File 'dominion.c'
+No executable lines
+Removing 'dominion.c.gcov'
+
+unittest2.c
+
+Testing discardCard() function:
+
+Testing removal of first card in hand
+Test passed: s1, t1
+Test passed: s1, t2
+Test passed: s1, t3
+Test passed: s1, t4
+
+Testing removal of last card in hand
+Test passed: s2, t1
+Test passed: s2, t2
+Test passed: s2, t3
+
+Testing removal of last remaining card in hand
+Test passed: s3, t1
+Test passed: s3, t2
+Test passed: s3, t3
+All Tests Passed discardCard()
+File 'dominion.c'
+No executable lines
+Removing 'dominion.c.gcov'
+
+unittest3.c
+
+Testing scoreFor() function:
+Test passed on player 0
+Test failed on player 1
+Test failed on player 2
+Test failed on player 3
+3 tests failed on scoreFor()
+
+File 'dominion.c'
+No executable lines
+Removing 'dominion.c.gcov'
+
+unittest4.c
+
+Testing getWinners() function:
+Player 1 turn test Passed
+Player 2 turn test Passed
+Player 3 turn test Passed
+Player 4 turn test Passed
+All tests passed getWinners()
+File 'dominion.c'
+No executable lines
+Removing 'dominion.c.gcov'
+
+cardtest1.c
+
+Testing Adventurer Card:
+x=0, p=0, count: 0 
+
+Test Passed
+x=1, p=0, count: 0 
+
+Test Failed
+x=2, p=0, count: 0 
+
+Test Failed
+x=0, p=1, count: 0 
+
+Test Passed
+x=1, p=1, count: 0 
+
+Test Failed
+x=2, p=1, count: 0 
+
+Test Failed
+x=0, p=2, count: 0 
+
+Test Passed
+x=1, p=2, count: 0 
+
+Test Failed
+x=2, p=2, count: 0 
+
+Test Failed
+6 tests failed on the adventure card
+
+File 'dominion.c'
+No executable lines
+Removing 'dominion.c.gcov'
+
+cardtest2.c
+
+Testing Smithy Card function:
+Test Failed
+expected: 3, received: 2Test Failed
+Test Failed
+Test Failed
+expected: 4, received: 3Test Failed
+Test Failed
+Test Failed
+expected: 5, received: 4Test Failed
+Test Failed
+Test Failed
+expected: 6, received: 5Test Failed
+Test Failed
+Test Failed
+expected: 7, received: 6Test Failed
+Test Failed
+Test Failed
+expected: 3, received: 2Test Failed
+Test Failed
+Test Failed
+expected: 4, received: 3Test Failed
+Test Failed
+Test Failed
+expected: 5, received: 4Test Failed
+Test Failed
+Test Failed
+expected: 6, received: 5Test Failed
+Test Failed
+Test Failed
+expected: 7, received: 6Test Failed
+Test Failed
+Test Failed
+expected: 3, received: 2Test Failed
+Test Failed
+Test Failed
+expected: 4, received: 3Test Failed
+Test Failed
+Test Failed
+expected: 5, received: 4Test Failed
+Test Failed
+Test Failed
+expected: 6, received: 5Test Failed
+Test Failed
+Test Failed
+expected: 7, received: 6Test Failed
+Test Failed
+Test Failed
+expected: 3, received: 2Test Failed
+Test Failed
+Test Failed
+expected: 4, received: 3Test Failed
+Test Failed
+Test Failed
+expected: 5, received: 4Test Failed
+Test Failed
+Test Failed
+expected: 6, received: 5Test Failed
+Test Failed
+Test Failed
+expected: 7, received: 6Test Failed
+Test Failed
+60 tests failed on the Smithy Card
+
+File 'dominion.c'
+No executable lines
+Removing 'dominion.c.gcov'
+
+cardtest3.c
+
+Testing Village Card function:
+Test Passed
+Test Passed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Passed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Passed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Passed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+Test Passed
+Test Failed
+16 tests failed on the Village Card
+
+File 'dominion.c'
+No executable lines
+Removing 'dominion.c.gcov'
+
+randomtestcard.c results
+
+Testing Village Card function:
+Tests Passed: 3003, Test Failed 6054
+File 'dominion.c'
+Lines executed:22.82% of 561
+Branches executed:18.71% of 417
+Taken at least once:16.55% of 417
+Calls executed:10.53% of 95
+Creating 'dominion.c.gcov'
+
+randomtestadventurer.c results
+
+Testing Adventurer Card:
+pass: 3, fail: 299865
+File 'dominion.c'
+Lines executed:18.36% of 561
+Branches executed:17.27% of 417
+Taken at least once:14.63% of 417
+Calls executed:7.37% of 95
+Creating 'dominion.c.gcov'
+
