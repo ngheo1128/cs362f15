@@ -121,7 +121,7 @@ void testuseVillage() {
 	printf("Testing that the return value is correct and a card is drawn\n");
 #endif
 	int villageRet;
-	villageRet = useVillage(0, player, &G);
+	villageRet = villageCard(player, 0, &G);
 
 	//Test return value	
 	if (villageRet == 0) {
