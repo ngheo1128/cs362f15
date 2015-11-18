@@ -109,8 +109,10 @@ void testuseGreat_hall () {
 	printf("Testing return value and that a card is drawn\n");
 #endif
 	int Great_hallRet;
-	Great_hallRet = useGreat_hall(0, 0, &G);
 
+	Great_hallRet = cardEffect(great_hall, 0, 0, 0, &G, 0, 0);
+	/*Great_hallRet = useGreat_hall(0, 0, &G);
+	*/
 	//Test return value	
 	if (Great_hallRet == 0) {
 		printf("useGreat_hall(): PASS return value correct\n");

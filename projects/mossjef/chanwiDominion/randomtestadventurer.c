@@ -24,8 +24,12 @@ void checkAdventurer(int player, struct gameState *post, int *fail) {
 	memcpy (&pre, post, sizeof(struct gameState));
 
  	int ret;
-    	
-  	ret = useAdventurer(player, post);
+	int drawntreasure = 0;
+	int cardDrawn = 0;
+	int z = 0;
+	int temphand[MAX_HAND];
+
+	ret = adventurerCard(drawntreasure, cardDrawn, player, z, temphand, post);
 
 	//Check that function returns correctly
 	assert (ret == 0);
@@ -89,7 +93,13 @@ void checkAdventurer(int player, struct gameState *post, int *fail) {
 	//Now check the state of the player with the adventurer card
 	
 	//Two more cards must be entered into the hand
-	assert(pre.handCount[player]+2 == post->handCount[player]);
+	//assert(pre.handCount[player]+2 == post->handCount[player]);
+	//The above assertion failed, the following if test verifies
+
+	if(pre.handCount[player]+2 != post->handCount[player]) { 
+		printf("FAIL: Pre hand count +2 Does not match post hand count.\n");
+		*fail = 1;
+	}
 
 	//Check that the two cards added are treasure cards
 	for(i = pre.handCount[player]-1; i < post->handCount[player]; i++) {

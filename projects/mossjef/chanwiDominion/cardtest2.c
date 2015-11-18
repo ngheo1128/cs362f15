@@ -133,7 +133,12 @@ void testuseAdventurer () {
 	printf("Testing that the hand draw logic is correct\n");
 #endif
 	int adventurerRet;
-	adventurerRet = useAdventurer(player, &G);
+	int drawntreasure = 0;
+	int cardDrawn = 0;
+	int z = 0;
+	int temphand[MAX_HAND];
+
+	adventurerRet = adventurerCard(drawntreasure, cardDrawn, player, z, temphand, &G);
 
 	//Test return value	
 	if (adventurerRet == 0) {
