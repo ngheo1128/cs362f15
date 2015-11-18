@@ -1,189 +1,118 @@
+/***********************************************
+ * Author: Allan Chan
+ * ONID: chanal
+ * class: CS362
+ * Filename: randomtestadventurer.c
+ * Description:
+ *  Random test for adventurer card effects
+ *  Tests if adventurer card is still in hand
+ *  and if drawntreasure is correct
+ *
+ * **********************************************/
+
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include <string.h>
+#include "rngs.h"
+#include "interface.c"
 #include <stdio.h>
-#include <assert.h>
+#include <math.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <string.h>
 #include <time.h>
 
-
-int main() {
-
-    printf("\nTesting Adventurer Card:\n");
-
-    //initial variables
-    int randomSeed = 100;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int i, x, p, k, z;
-    int maxPlayers = 4;
-    int curPlayer, curPlayers;
-    int maxCards = 500;
-    int failCounter = 0;
-    int passCounter = 0;
-    int trials = 100000; //number of tests to be run
-
-    struct gameState state;
-
+int main(){
     srand(time(NULL));
-    int tempTreasureCount[maxPlayers][4]; //0 is hand, 1 is deck, 3 is discard, 4 is total
-    int tempHand[maxPlayers][maxCards];
-    int tempHandCount[maxPlayers];
-    int tempDeck[maxPlayers][maxCards];
-    int tempDeckCount[maxPlayers];
-    int tempDiscard[maxPlayers][maxCards];
-    int tempDiscardCount[maxPlayers];
+    int gameSeed = rand();
+    int p;
+    int numPlayer = 4;
+    int i = 0, n;
+    int error1 = 0, error2 = 0;
+    int randomIt = (rand() % 10000) + 20001;  
+    int k[10] = {adventurer, council_room, feast, gardens, mine,
+                remodel, smithy, village, baron, great_hall};
 
-    while (trials > 0) {
+    struct gameState G;
+    int drawntreasure = 0;
+    int cardDrawn = 0;
+    int z = 0;
+    int iteration = 0;
 
-        //randomize number of players
-        curPlayers = (rand() % 3) + 2;
-        memset(&state, 'z', sizeof(struct gameState));
-        initializeGame(curPlayers, kingCards, randomSeed, &state);
+    printf("\nStarting random testing for adventurer card effects...\n");
 
-        //reset gameState & test state
-        //set all cards = -1, count = 0
-        for (z = 0; z < maxPlayers; ++z) {
-            for (k = 0; k < maxCards; ++k) {
-                tempHand[z][k] = -1;
-                tempDeck[z][k] = -1;
-                tempDiscard[z][k] = -1;
-            }
-            tempHandCount[z] = 0;
-            tempDeckCount[z] = 0;
-            tempDiscardCount[z] = 0;
-            tempTreasureCount[z][0] = 0;
-            tempTreasureCount[z][1] = 0;
-            tempTreasureCount[z][2] = 0;
-            tempTreasureCount[z][3] = 0;
+    for(n = 0; n < randomIt; n++){
+        int temphand[MAX_HAND];
+        int randNum = rand()% 3;
+
+        p = floor(Random() * 4);
+       
+        initializeGame(numPlayer, k, gameSeed, &G); //initialize game
+    
+        /*Randomizing deck count to induce shuffling if deck <=0*/
+        if(randNum == 0){
+            G.deckCount[p] = 0;
+        } else if(randNum == 1) {
+            G.deckCount[p] = -1;
+        } else{
+            G.deckCount[p] = floor(Random() * MAX_DECK);
         }
 
-        //init Counts, each character deck is not influenced from others.
-        for (z = 0; z < curPlayers; ++z) {
-            tempHandCount[z] = rand() % maxCards;
-            state.handCount[z] = tempHandCount[z];
-            tempDeckCount[z] = rand() % (maxCards - tempHandCount[z]);
-            state.deckCount[z] = tempHandCount[z];
-            tempDiscardCount[z] = rand() % (maxCards - (tempHandCount[z] + tempDeckCount[z]));
-            state.discardCount[z] = tempHandCount[z];
+       
+        G.discardCount[p] = floor(Random() * MAX_DECK);   
+        G.playedCardCount = floor(Random() * MAX_DECK);
+
+        /*Set up deck, hand, discard*/
+        for(i = 0; i < G.deckCount[p]; i++){
+            G.deck[p][i] = floor(Random() * 5);
+        }
+        
+        for(i = 0; i < G.discardCount[p]; i++){
+            G.discard[p][i] = floor(Random() * 5);
         }
 
-        for (z = 0; z < curPlayers; ++z) {
-            for (k = 0; k < tempHandCount[z]; ++k) {
-                tempHand[z][k] = rand() % 27;
-                if (tempHand[z][k] == 4 || tempHand[z][k] == 5 || tempHand[z][k] == 6) {
-                    tempTreasureCount[z][0]++;
-                    tempTreasureCount[z][3]++;
-                }
-            }
-            for (k = 0; k < tempDeckCount[z]; ++k) {
-                tempDeck[z][k] = rand() % 27;
-                if (tempDeck[z][k] == 4 || tempDeck[z][k] == 5 || tempDeck[z][k] == 6) {
-                    tempTreasureCount[z][1]++;
-                    tempTreasureCount[z][3]++;
-                }
-            }
-            for (k = 0; k < tempDiscardCount[z]; ++k) {
-                    tempDiscard[z][k] = rand() % 27;
-                if (tempDiscard[z][k] == 4 || tempDiscard[z][k] == 5 || tempDiscard[z][k] == 6) {
-                    tempTreasureCount[z][2]++;
-                    tempTreasureCount[z][3]++;
-                }
-            }
+        G.handCount[p] = 1; //set players hand count to 1
+        G.hand[p][0] = adventurer;  //set players only card in hand to adventurer for testing purposes
+    
+        /*Play adventurer card with G gameState*/
+        //adventurerCard(drawntreasure, &G, p, cardDrawn, temphand, z);
+        //Commented out to match teammate's function call
+        playAdventurer(&G);
+
+        drawntreasure = 0;
+
+        /*Loop through hand and find all treasure cards, player's '*/
+        for(i = 0; i < G.handCount[p]; i++){
+             if(G.hand[p][i] == copper || G.hand[p][i] == silver || G.hand[p][i] == gold){
+                drawntreasure++;
+            }            
+        
+       }
+
+        printf("\nTesting iteration: %d...\n", iteration++);
+        /*Check if adventurer is still in hand, if so error*/
+        if(G.hand[p][0] == adventurer){
+            printf("TEST FAILED - Adventurer card is not discarded from hand\n");
+            error1++;
+        }
+        /*Check if drawntreasure is not 2, if so error*/
+        if(drawntreasure != 2){
+            printf("TEST FAILED - drawntreasure count is inccorect\n");
+            error2++;
         }
 
-       memcpy(&state.hand, &tempHand, sizeof(int) * maxPlayers * maxCards);
-       memcpy(state.handCount, tempHandCount, sizeof(int) * maxPlayers);
-
-       memcpy(&state.deck, &tempDeck, sizeof(int) * maxPlayers * maxCards);
-       memcpy(state.deckCount, tempDeckCount, sizeof(int) * maxPlayers);
-
-       memcpy(&state.discard, &tempDiscard, sizeof(int) * maxPlayers * maxCards);
-       memcpy(&state.discardCount, &tempDiscardCount, sizeof(int) * maxPlayers);
-
-
-//print tests
-//        for (i = 0; i < curPlayers; ++i) {
-//            printf("tmpHandCount: %d, handCount: %d\n", tempHandCount[i], state.handCount[i]);
-//            printf("Player: %d\ttempHand\tstateHand\n", i);
-//            for (x = 0; x < tempHandCount[i]; ++x) {
-//                printf("%d\t%d\n", tempHand[i][x], state.hand[i][x]);
-//            }
-//
-//            printf("tmpDeckCount: %d, deckCount: %d\n", tempDeckCount[i], state.deckCount[i]);
-//            printf("Player: %d\ttempDeck\tstateDeck\n", i);
-//            for (x = 0; x < tempDeckCount[i]; ++x) {
-//                printf("%d\t%d\n", tempDeck[i][x], state.deck[i][x]);
-//            }
-//
-//            printf("tmpDiscardCount: %d, discardCount: %d\n", tempDiscardCount[i], state.discardCount[i]);
-//            printf("Player: %d\ttempDiscard\tstateDiscard\n", i);
-//            for (x = 0; x < tempDiscardCount[i]; ++x) {
-//                printf("%d\t%d\n", tempDiscard[i][x], state.discard[i][x]);
-//            }
-//
-//        }
-
-        for (p = 0; p < curPlayers; ++p) {
-            int preTreasureCardCount = tempTreasureCount[p][0]; //# of treasure cards in hand before
-            int postTreasureCardCount = 0;
-            state.whoseTurn = p;
-            playAdventurer(&state);
-
-            //compare # of treasure cards
-
-
-            for (x = 0; x < state.handCount[p]; ++x) {
-                if (state.hand[p][x] == 4 || state.hand[p][x] == 5 || state.hand[p][x] == 6) {
-                    postTreasureCardCount++;
-                }
-            }
-
-            if (postTreasureCardCount == preTreasureCardCount + 2) {
-                if ((tempTreasureCount[p][1] + tempTreasureCount[p][2]) >= 2) { //if original deck + discard >= 2 treasure
-                    passCounter++;
-                }
-                else {
-                    failCounter++;
-                }
-            }
-            else if (postTreasureCardCount == preTreasureCardCount +1) {
-                //check for 1 treasure card i temp deck/hand
-                if ((tempTreasureCount[p][1] + tempTreasureCount[p][2]) == 1) { //if original deck + discard == 1 treasure
-                    passCounter++;
-                }
-                else {
-                    failCounter++;
-                }
-            }
-            else if (postTreasureCardCount == preTreasureCardCount) {
-                //check for 0 treasure cards in temp deck/hand
-                if ((tempTreasureCount[p][1] + tempTreasureCount[p][2]) == 0) { //if original deck + discard == 0 treasures
-                    passCounter++;
-                }
-                else {
-                    failCounter++;
-                }
-            }
-            else if (postTreasureCardCount > preTreasureCardCount + 2){  //
-                failCounter++;
-            }
-            else {
-                failCounter++;
-            }
-            //printf("pre %d, post %d\n", preTreasureCardCount, postTreasureCardCount);
-        }
-        --trials;
+        memset(&G, 23, sizeof(struct gameState));   //clear game state
     }
 
-
-
-    if (failCounter <= 0) {
-        printf("All tests passed the Adventure Card\n");
+    /*Print summary of error counts of both tests after testing finishes*/
+    if(error1 != 0){
+        printf("\nError count for adventurer card in hand and not discarded: %d of %d tests", error1, randomIt);
     }
-    else  {
-        printf("pass: %d, fail: %d\n", passCounter, failCounter);
+    if(error2 != 0){
+        printf("\nError count for incorrect drawntreasure in hand: %d of %d tests\n\n", error2, randomIt);
     }
 
     return 0;
 }
+
+
 

@@ -1,93 +1,125 @@
-//Woo Choi
-//cardtest2.c
-//Adventurer Test
+/***********************************************************************
+* Author : Allan Chan
+* ONID: chanal
+* Class: CS362
+* Filename: cardtest2.c
+*
+* Description:
+*	Tests the adventurer card card effect
+*	
+*	The adventurer card is an action card that costs 6 coins and when played has the effect of 
+*	revealing cards from your deck until two Treasure cards are drawn. Those two Treasure cards 
+*	will then be placed in your hand and the other non-Treasure cards revealed are discarded.
+*	
+*	A bug was introduced to adventurerCard and should fail those tests here
+*
+************************************************************************/
 
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include <string.h>
-#include <stdio.h>
-#include <assert.h>
 #include "rngs.h"
+#include "interface.c"
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+#include <time.h>
 
-/*Testing Adventurer
-int adventurerRefactor(int currentPlayer, struct gameState *state)
-{
-	//copied paste from original cardEffect
+int main() {
 
-	  int temphand[MAX_HAND];// moved above the if statement
-	  int drawntreasure=10;
-	  int cardDrawn=0;
-	  int z = 0;// this is the counter for the temp hand
-
-	
-	// Actual implementation
-    while(drawntreasure<2){
-		if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
-			shuffle(currentPlayer, state);
-		}
-	
-		drawCard(currentPlayer, state);
-		cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	
-		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-		drawntreasure++;
-		else{
-			temphand[z]=cardDrawn;
-			state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-			z++;
-		}
-    }
-    
-	while(z-1>=0){
-		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-		z=z-1;
-    }
-      return 0;	
-}
-
-From refactor.c :
-1. Adventurer:
-	drawntreasure's initial value changed from 0 to 10.
-	the first while loop will not run
-*/
-
-int main(){
-
+	srand(time(NULL));
+	int gameSeed = rand() % 1000 + 1;
+	int p = 1; //player 2
 	int i;
-    int seed = 1000;
-    int numPlayer = 2;
-    int r;	
-    int k[10] = {adventurer, council_room, feast, gardens, mine
-               , remodel, smithy, village, baron, great_hall};
-    struct gameState G;
-	int currentPlayer = whoseTurn(&G);
-	int currentCardNum;	// number of cards before the adventurer card is played.
+	int handCount = 5;
+	int cardStatus = 0;
+	int numPlayer = 2;
+	int k[10] = {adventurer, council_room, feast, gardens, mine,
+				 remodel, smithy, village, baron, great_hall};
 
-    // initialize game state
-    memset(&G, 23, sizeof(struct gameState));   // clear the game state
-    r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
+	struct gameState G;
 
-	//Begin Adventurer testing
-	printf("******************\n");
-	printf("cardtest2.c\n");
-	printf("Adventurer Card Test:\n");
+	/*Clear the game state*/
+	memset(&G, 23, sizeof(struct gameState));
 
-	// gain adventurer for currentPlayer and add to hand
-	gainCard(adventurer, &G, 2, currentPlayer);	
-	currentCardNum = G.handCount[0];
-	
-	// go through hand to look for the adventurer card
-	// numbHandCards: How many cards current player has in hand 
-	for (i = 0; i < numHandCards(&G); i++) {
-		// handCard: enum value of indexed card in player's hand
-		if(handCard(i, &G) == adventurer){
-			// Play card with index handPos from current player's hand
-			playCard(i,-1,-1,-1,&G);	
-			// + 1 because discardCard was not used (so adventurer wasn't accounted for)
-			printf("  Expected card count: %d\n  Actual card count: %d\n",currentCardNum+1,G.handCount[0]);		
+	/*Initialize the game*/
+	initializeGame(numPlayer, k, gameSeed, &G);
+
+	/*Load hand with adventurer cards*/
+	int testhand1[handCount];
+	testhand1[0] = smithy;
+	testhand1[1] = estate;
+	testhand1[2] = estate;
+	testhand1[3] = estate;	
+	testhand1[4] = adventurer;
+
+	G.handCount[p] = handCount;
+	memcpy(G.hand[p], testhand1, sizeof(int)*handCount);
+
+	int drawntreasure = 0;
+	int cardDrawn = 0;
+	int z = 0;
+	int temphand[MAX_HAND];
+	char c[25];
+
+	printf("Printing hand before playing adventurer card...\n");
+
+	/*Display the player's cards in hand and determine if Adventurer is present*/
+	printHand(p, &G);
+
+	for(i = 0; i < G.handCount[p]; i++){
+		cardNumToName(G.hand[p][i], c);	//Converts card number to string
+		if(strcmp(c, "Adventurer") == 0){
+			cardStatus = 1;	//Card is present in hand
 		}
-	}	
-	
-	printf("Adventurer Card Test is now over\n\n");
+	}
+
+	if(cardStatus == 1){
+		printf("Test PASSED, card is present in player %d's hand\n\n", p);
+	} else {
+		printf("Test FAILED, card is not present in player %d's hand\n\n", p);
+	}
+
+	printf("Playing and testing adventurer card...\n");
+
+	/*Play Adventurer card from hand*/
+	//adventurerCard(drawntreasure, &G, p, cardDrawn, temphand, z);
+    //Commented out adventurerCard to implement teammate's adventurer code
+    adventurerRefactor(p, &G);
+
+	/*Display the player's cards in hand and determine if Adventurer is present*/
+	for(i = 0; i < G.handCount[p]; i++){
+		cardNumToName(G.hand[p][i], c);	//Converts card number to string
+		if(strcmp(c, "Adventurer") == 0){
+			cardStatus = 1;	//Card is present in hand
+		}
+	}
+
+	/*****ERROR, Adventurer card is not discarded and is still in hand after adventurerCard()*******/
+	printPlayed(p, &G);	//Print the played card --empty--
+	printHand(p, &G);	//Shows adventurer is still in hand
+	//assert(G.playedCards[0] == adventurer);	/*This failed and is commented out*/
+
+	if(cardStatus == 1){
+		printf("Test FAILED, card is still present in player %d's hand\n", p);
+	} else {
+		printf("Test PASSED, card is NOT present in player %d's hand\n", p);
+	}
+
+	/*Check if two treasure cards are drawn and added to hand*/
+	for(i = 0; i < G.handCount[p]; i++){
+		if(G.hand[p][i] == copper || G.hand[p][i] == silver || G.hand[p][i] == gold){
+			drawntreasure++;
+		}
+	}
+
+	if(drawntreasure == 2){
+		printf("Test PASSED, two treasure cards are added to player %d's hand\n\n", p);
+	} else {
+		printf("Test FAILED, %d (NOT 2) treasure cards are added to player %d's hand\n\n", drawntreasure, p);
+	}
+
 	return 0;
+
 }

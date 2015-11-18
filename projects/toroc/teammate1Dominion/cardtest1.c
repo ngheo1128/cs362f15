@@ -1,248 +1,431 @@
-//############################################################
-// Filename: cardtest1.c
-// Unit Test Objective: Tests the executeSmithyCard method
-//                      in dominion.c. This validates the
-//                      behavior for the smithy card.
-//############################################################
+/*
+*	CS362 - Assignment 3 - cardtest1.c
+*	Card Test #1: This program runs the following 7 tests 
+*		to ensure the Smithy card implementation is correct:
+*		1. Player only receives 3 cards
+*		2. Smithy card is discarded & replaced by correct card
+*		3. Cards drawn belong to player's deck
+*		4. Smithy doesn't affect other player's deck
+*		5. Smithy doesn't affect other player's hand
+*		6. Player doesn't receive additional action(s)
+*		7. Player doesn't receive additional buy(s)
+*
+*	Author: Carol D. Toro
+*	Date: 10/19/2015
+*/
 
 #include "dominion.h"
 #include "dominion_helpers.h"
+#include "rngs.h"
+#include <assert.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
+#include <time.h>
 
-#define DEBUG 0
+
+// set NOISY_TEST to 0 to remove printfs from output
 #define NOISY_TEST 1
+int main()
+{
+	/*initialize variables needed*/
+	int	i;
+	int k[10] = { adventurer, council_room, feast, gardens, mine,
+		remodel, smithy, village, baron, great_hall };
+	int gameSeed;
+	int numPlayer = 2;
+	struct gameState Game;
+	int currentActions, expectedActions, currentBuys, expectedBuys;
+	int result, currentCards[10], cardsAfter[10], currentNumCards, numCardsAfter, cardType;
+	const char* cardNames[] = { "curse", "estate", "duchy", "province", "copper", "silver", "gold", "adventurer", "council_room", "feast", "gardens", "mine", "remodel", "smithy", "village", "baron", "great_hall", "minion", "steward", "tribute", "ambassador", "cutpurse", "embargo", "outpost", "salvager", "sea_hag", "treasure_map" };
+	
+	/*Keep track of P0s deck & hand before & after*/
+	int p_0_deckBeforSmithy[MAX_DECK];
+	//int p_0_deckAfterSmithy[MAX_DECK];
+	//int p_0_handBeforeSmithy[MAX_HAND];
+	int p_0_handAfterSmithy[MAX_HAND];
 
-void TestThatPlayerHas3MoreCardsInTheirHand();
-void TestThatPlayerGot3CardsFromTheirDeck();
-void TestThatPlayerGot3CardsAddedToTheirHandOnly();
-void TestAmountOfCoinsInSupplyDidNotChange();
-void TestAmountOfVictoryCardsInSupplyDidNotChange();
-void initializeStartGameDeck(struct gameState *state);
+	/*Keep track of P1s deck before & after*/
+	int p_1_deckBeforeSmithy[MAX_DECK];
+	int p_1_deckAfterSmithy[MAX_DECK];
+	int p_1_handBeforeSmithy[MAX_HAND];
+	int p_1_handAfterSmithy[MAX_HAND];
 
-int main () {
-	printf ("Card Testing: executeSmithyCard().\n");
+	/*initialize array of gold filled hands, starting with smithy*/
+	int goldHand[MAX_HAND];
+	for (i = 0; i < MAX_HAND; i++)
+	{
+		if (i == 0)
+			goldHand[i] = smithy;
+		else
+			goldHand[i] = gold;
+	}
 
-	// Check that player 0 has 3 more cards in his hands now
-	TestThatPlayerHas3MoreCardsInTheirHand();
+	/*initialize array of copper filled hands*/
+	int copperHand[MAX_HAND];
+	for (i = 0; i < MAX_HAND; i++)
+	{
+		if (i == 0)
+			copperHand[i] = smithy;
+		else
+			copperHand[i] = copper;
+	}
 
-	// Check that the cards drawn from the smithy action were drawn
-	//  from the player's own deck
-	TestThatPlayerGot3CardsFromTheirDeck();
 
-	// Check that the cards were added the current players hand only
-	TestThatPlayerGot3CardsAddedToTheirHandOnly();
+	/*Starting Test #1*/
+#if (NOISY_TEST==1)
+	printf("Starting cardtest1.c which checks smithyCard() \n");
+	printf("\n Starting Test #1 - player only receives 3 cards after playing smithy \n");
+#endif
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
 
-	// Check that the coin supply did not change
-	TestAmountOfCoinsInSupplyDidNotChange();
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with goldHand array & player 1 with copper*/
+	memcpy(Game.hand[0], goldHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.hand[1], copperHand, sizeof(int) * MAX_HAND);
+
+	updateCoins(0, &Game, 0);
+
+	currentNumCards = (numHandCards(&Game));
+
+
+	for (i = 0; i < currentNumCards; i++)
+	{
+		currentCards[i] = handCard(i, &Game);
+		//printf(" %s ", cardNames[currentCards[i]]);
+	}
+
+	cardType = handCard(0, &Game);
+
+	/*play the smithy card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	numCardsAfter = (numHandCards(&Game));
+
+
+	for (i = 0; i < numCardsAfter; i++)
+	{
+		cardsAfter[i] = handCard(i, &Game);
+		//printf(" %s ", cardNames[cardsAfter[i]]);
+	}
+
+#if (NOISY_TEST==1)
+	if ((numCardsAfter - currentNumCards +1) == 3)
+	{
+		printf("\t Current cards = %d, Expected cards = %d\n", numCardsAfter, 7);
+		printf(" Test #1 passed. Player only received 3 cards\n");
+	}
+	else
+	{
+		printf("\t \nGame state = %d, Expected state = %d\n", numCardsAfter, 7);
+		printf(" Test #1 FAILED! Player did not receive 3 cards. \n");
+	}
+
+#endif
+	
+	/*Starting Test #2*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #2 - smithy card is discarded & replaced by correct card \n");
+#endif
+
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with goldHand array & player's 1 deck with copper*/
+	memcpy(Game.hand[0], goldHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.deck[1], copperHand, sizeof(int) * MAX_HAND);
+
+	/*Save player 0's deck*/
+	for (i = 0; i < 10; i++)
+	{
+		p_0_deckBeforSmithy[i] = Game.deck[0][i];
+	}
+
+	/*save player 1's deck*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_deckBeforeSmithy[i] = Game.deck[1][i];
+	}
+	
+	/*play the smithy card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	numCardsAfter = (numHandCards(&Game));
+
+	/*Copy the hand after the Smithy was played*/
+	for (i = 0; i < numCardsAfter; i++)
+	{
+		p_0_handAfterSmithy[i] = Game.hand[0][i];
+	}
+
+	if (p_0_deckBeforSmithy[2] == p_0_handAfterSmithy[0])
+	{
+		printf("\t Received card: %s, Expected card: %s \n", cardNames[p_0_handAfterSmithy[0]], cardNames[p_0_deckBeforSmithy[2]]);
+		printf(" Test #2 passed and smithy was replaced by correct card! \n");
+	}
+	else
+	{
+		printf("\t Received card: %s, Expected card: %s \n", cardNames[p_0_handAfterSmithy[0]], cardNames[p_0_deckBeforSmithy[2]]);
+		printf(" Test #2 FAILED! Smithy was not replaced by correct card! \n");
+	}
+
+	/*Starting Test #3*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #3 - player draws cards from own deck \n");
+#endif
+
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with goldHand array & player's 1 deck with copper*/
+	memcpy(Game.hand[0], goldHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.deck[1], copperHand, sizeof(int) * MAX_HAND);
+
+	/*Save player 0's deck*/
+	for (i = 0; i < 10; i++)
+	{
+		p_0_deckBeforSmithy[i] = Game.deck[0][i];
+	}
+
+	/*save player 1's deck*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_deckBeforeSmithy[i] = Game.deck[1][i];
+	}
+
+	/*play the smithy card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	numCardsAfter = (numHandCards(&Game));
+
+	/*Copy the hand after the Smithy was played*/
+	for (i = 0; i < numCardsAfter; i++)
+	{
+		p_0_handAfterSmithy[i] = Game.hand[0][i];
+	}
+#if (NOISY_TEST==1)
+	if (p_0_deckBeforSmithy[2] == p_0_handAfterSmithy[0] && p_0_deckBeforSmithy[3] == p_0_handAfterSmithy[6] && p_0_deckBeforSmithy[4] == p_0_handAfterSmithy[5])
+	{
+		printf("\t Received card: %s, Expected card: %s \n", cardNames[p_0_handAfterSmithy[0]], cardNames[p_0_deckBeforSmithy[2]]);
+		printf("\t Received card: %s, Expected card: %s \n", cardNames[p_0_handAfterSmithy[6]], cardNames[p_0_deckBeforSmithy[3]]);
+		printf("\t Received card: %s, Expected card: %s \n", cardNames[p_0_handAfterSmithy[5]], cardNames[p_0_deckBeforSmithy[4]]);
+		printf(" Test #3 passed and cards were drawn from player's deck! \n");
+	}
+	else
+	{
+		printf("\t Received card: %s, Expected card: %s \n", cardNames[p_0_handAfterSmithy[0]], cardNames[p_0_deckBeforSmithy[2]]);
+		printf("\t Received card: %s, Expected card: %s \n", cardNames[p_0_handAfterSmithy[6]], cardNames[p_0_deckBeforSmithy[3]]);
+		printf("\t Received card: %s, Expected card: %s \n", cardNames[p_0_handAfterSmithy[5]], cardNames[p_0_deckBeforSmithy[4]]);
+		printf(" Test #3 FAILED! Cards not drawn from player's deck! \n");
+	}
+#endif
+
+
+	/*Starting Test #4*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #4 - smithy doesn't affect other player's deck \n");
+#endif
+
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with goldHand array & player's 1 deck with copper*/
+	memcpy(Game.hand[0], goldHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.deck[1], copperHand, sizeof(int) * MAX_HAND);
+
+
+	/*save player 1's deck*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_deckBeforeSmithy[i] = Game.deck[1][i];
+	}
+
+	/* P0 plays the smithy card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	numCardsAfter = (numHandCards(&Game));
+
+	/*Copy p1's deck after the Smithy was played*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_deckAfterSmithy[i] = Game.deck[1][i];
+	}
+
+#if (NOISY_TEST==1)
+	if (memcmp(p_1_deckBeforeSmithy, p_1_deckAfterSmithy, 10)== 0)
+	{
+		printf("Test #4 passed and other player's deck was not affected! \n");
+	}
+	else
+	{
+		printf("Test #4 FAILED! Other player's deck was affected by Smithy! \n");
+	}
+#endif
+
+	/*Starting Test #5*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #5 - smithy doesn't affect other player's hand \n");
+#endif
+
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with goldHand array & player's 1 deck with copper*/
+	memcpy(Game.hand[0], goldHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.deck[1], copperHand, sizeof(int) * MAX_HAND);
+
+	/*save player 1's hand*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_handBeforeSmithy[i] = Game.hand[1][i];
+	}
+
+	/*P0 plays the smithy card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	numCardsAfter = (numHandCards(&Game));
+
+	/*Copy p1's hand after the Smithy was played*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_handAfterSmithy[i] = Game.hand[1][i];
+	}
+
+#if (NOISY_TEST==1)
+	if (memcmp(p_1_handBeforeSmithy, p_1_handAfterSmithy, 10) == 0)
+	{
+		printf("Test #5 passed and other player's hand was not affected! \n");
+	}
+	else
+	{
+		printf("Test #5 FAILED! Other player's hand was affected by Smithy! \n");
+	}
+#endif
+
+
+	/*Starting Test #6*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #6 - ensure player doesn't receive additional actions \n");
+#endif
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with goldHand array & player 1 with copper*/
+	memcpy(Game.hand[0], goldHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.hand[1], copperHand, sizeof(int) * MAX_HAND);
+
+	/*load player's deck with gold*/
+	memcpy(Game.deck[0], goldHand, sizeof(int) * MAX_DECK);
+
+	updateCoins(0, &Game, 0);
+
+	currentNumCards = (numHandCards(&Game));
+
+	cardType = handCard(0, &Game);
+
+	/*play the smithy card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	expectedActions = 0;
+	currentActions = Game.numActions;
+
+#if (NOISY_TEST==1)
+	if (expectedActions == currentActions)
+	{
+		printf("\t Current actions = %d, Expected actions = %d\n", currentActions, expectedActions);
+		printf("Test #6 passed. \n");
+	}
+	else
+	{
+		printf("\t Current actions = %d, Expected actions = %d\n", currentActions, expectedActions);
+		printf("Test #6 FAILED! Player had additional actions. \n");
+	}
+
+#endif
+
+	/*Starting Test #7*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #7 - ensure player doesn't receive additional buys \n");
+#endif
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with goldHand array & player 1 with copper*/
+	memcpy(Game.hand[0], goldHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.hand[1], copperHand, sizeof(int) * MAX_HAND);
+
+	/*load player's deck with gold*/
+	memcpy(Game.deck[0], goldHand, sizeof(int) * MAX_DECK);
+
+	updateCoins(0, &Game, 0);
+
+	currentNumCards = (numHandCards(&Game));
+
+	cardType = handCard(0, &Game);
+
+	/*play the smithy card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	expectedBuys = 1;
+	currentBuys = Game.numBuys;
+
+#if (NOISY_TEST==1)
+	if (expectedBuys == currentBuys)
+	{
+		printf("\t Current buys = %d, Expected buys = %d\n", currentBuys, expectedBuys);
+		printf("Test #7 passed.  Player did not have additional buys.\n");
+	}
+	else
+	{
+		printf("\t Current buys = %d, Expected buys = %d\n", currentBuys, expectedBuys);
+		printf("Test #7 FAILED! Player had additional buys. \n");
+	}
+
+#endif
 
 	return 0;
-}
-
-void TestThatPlayerHas3MoreCardsInTheirHand()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int player1 = 0;
-
-	// Check that player 1 has 3 more cards in his hands now
-	printf("Testing...Player 1 has 3 more cards in his hand after smithy is played.\n");
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-	int preHandCount = G.handCount[player1];
-	int handpos = 0;
-	executeSmithyCard(player1, &G, handpos);
-	int postHandCount = G.handCount[player1];
-	if (postHandCount != preHandCount + 3)
-	{
-		printf("Test Failed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 3, postHandCount);
-	}
-	else
-	{
-		printf("Test Passed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 3, postHandCount);
-	}
-}
-
-void TestThatPlayerGot3CardsFromTheirDeck()
-{
-	printf("Testing...Player 1 got three cards from his deck.\n");
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-	struct gameState G;
-	int handpos = 0;
-	int player1 = 0;
-	int player2 = 1;
-
-	// Check that the cards drawn from the smithy action were drawn
-	//  from the player 1's own deck
-	initializeGame(2, k, 1, &G);
-	initializeStartGameDeck(&G);
-	int preDeckCount = G.deckCount[player1];
-	int preHandCount = G.handCount[player1];
-	int firstCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 1];
-	int secondCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 2];
-	int thirdCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 3];
-	int prePlayer2DeckCount = G.deckCount[player2];
-
-	executeSmithyCard(player1, &G, handpos);
-
-	int firstCardToBeAddedToHand = G.hand[player1][preHandCount];
-	int secondCardToBeAddedToHand = G.hand[player1][preHandCount + 1];
-	int thirdCardToBeAddedToHand = G.hand[player1][preHandCount + 2];
-	int postPlayer2DeckCount = G.deckCount[player2];
-
-	// Check player 1's deck counts
-	int postDeckCount = G.deckCount[player1];
-	if (postDeckCount != preDeckCount - 3)
-	{
-		printf("Test Failed: Expected deckCount was %d. Actual deckCount was %d.\n", preDeckCount - 3, postDeckCount);
-	}
-	else
-	{
-		printf("Test Passed: Expected deckCount was %d. Actual deckCount was %d.\n", preDeckCount - 3, postDeckCount);
-	}
-
-	// Check the types of card added to player 1's hand
-	if ((firstCardToBeRemovedFromDeck != firstCardToBeAddedToHand)
-	        || (secondCardToBeRemovedFromDeck != secondCardToBeAddedToHand)
-	        || (thirdCardToBeRemovedFromDeck != thirdCardToBeAddedToHand))
-	{
-		printf("Test Failed: Cards removed from deck did not match card added to hand.\n");
-	}
-	else
-	{
-		printf("Test Passed: Cards removed from deck did matched card added to hand.\n");
-	}
-
-	// Check that no cards were taken from player 2's deck
-	if (prePlayer2DeckCount != postPlayer2DeckCount)
-	{
-		printf("Test Failed: Cards were removed from player 2's deck.\n");
-	}
-	else
-	{
-		printf("Test Passed: Cards were not removed from player 2's deck.\n");
-	}
-}
-
-void TestThatPlayerGot3CardsAddedToTheirHandOnly()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int player1 = 0; 
-	int player2 = 1; 
-
-	// We are executing the smithy card for player 1. We already validated that they 
-	// got the 3 extra cards in their in a previous test. This test is to test that 
-	// player 2's hand was not affected.
-	printf("Testing...Player 2 did not have their hand affected if player 1 played the smithy card.\n");
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-	int prePlayer2HandCount = G.handCount[player2];
-	int handpos = 0;
-	executeSmithyCard(player1, &G, handpos);
-
-	int postPlayer2HandCount = G.handCount[player2];
-	if (postPlayer2HandCount != prePlayer2HandCount)
-	{
-		printf("Test Failed: Player 2's hand was affected by player 1's smithy card.\n");
-	}
-	else
-	{
-		printf("Test Passed: Player 2's hand was not affected by player 1's smithy card.\n");
-	}
-}
-
-void TestAmountOfCoinsInSupplyDidNotChange()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int handpos = 0;
-	int player1 = 0;
-
-	printf("Testing...The amount of coins in the coin supply did not change.\n");
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-
-	int preCopper = G.supplyCount[copper];
-	int preSilver = G.supplyCount[silver];
-	int preGold = G.supplyCount[gold];
-	executeSmithyCard(player1, &G, handpos);
-	int postCopper = G.supplyCount[copper];
-	int postSilver = G.supplyCount[silver];
-	int postGold = G.supplyCount[gold];
-	if ((postCopper != preCopper) 
-		|| (postSilver != preSilver) 
-		|| (postGold != preGold))
-	{
-		printf("Test Failed: The amount of coins in the supply changed.\n");
-	}
-	else
-	{
-		printf("Test Passed: The amount of coins in the supply is unchanged.\n");
-	}
-}
-
-void TestAmountOfVictoryCardsInSupplyDidNotChange()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int handpos = 0;
-	int player1 = 0;
-
-	printf("Testing...The amount of victory cards supply did not change.\n");
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-
-	int preEstate = G.supplyCount[estate];
-	int preDuchy = G.supplyCount[duchy];
-	int preProvince = G.supplyCount[province];
-	executeSmithyCard(player1, &G, handpos);
-
-	int postEstate = G.supplyCount[estate];
-	int postDuchy = G.supplyCount[duchy];
-	int postProvince = G.supplyCount[province];
-	if ((postEstate != preEstate) 
-		|| (postDuchy != preDuchy) 
-		|| (postProvince != preProvince))
-	{
-		printf("Test Failed: The amount of victory cards in the supply changed.\n");
-	}
-	else
-	{
-		printf("Test Passed: The amount of victory cards in the supply is unchanged.\n");
-	}
-}
-
-void initializeStartGameDeck(struct gameState *state)
-{
-	int i, j;
-	for (i = 0; i < 2; ++i)
-	{
-		state->deckCount[i] = 0;
-		for (j = 0; j < 3; j++)
-		{
-			state->deck[i][j] = estate;
-			state->deckCount[i]++;
-		}
-		for (j = 3; j < 10; j++)
-		{
-			state->deck[i][j] = copper;
-			state->deckCount[i]++;
-		}
-	}
 
 }

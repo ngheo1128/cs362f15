@@ -1,106 +1,118 @@
-//Woo Choi
-//randomtestcards.c
-//Random Smithy Test
+/***********************************************
+ * Author: Allan Chan
+ * ONID: chanal
+ * class: CS362
+ * Filename: randomtestcard.c
+ * Description:
+ *  Random testing for smithy card effects
+ *  Smithy when played allows plays +3 cards
+ * **********************************************/
 
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include <string.h>
-#include <stdio.h>
-#include <assert.h>
 #include "rngs.h"
-#include <time.h>
+#include "interface.c"
+#include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
-
-/*Testing smithy
-
-int smithyRefactor(int currentPlayer, int handPos, struct gameState *state)
-{
-	int i=0;
-    //+3 Cards
-    for (i = 1; i < 3; i++)
-	{
-	  drawCard(currentPlayer, state);
-	}
-	
-	//discard card from hand
-    discardCard(handPos, currentPlayer, state, 0);
-    return 0;
-}
-
-Comment from refactor.c
-2. Smithy:
-	in for loop, initial i's value is now 1 instead of 0
-	player will only get +2 cards
-*/
-
+#include <assert.h>
+#include <string.h>
+#include <time.h>
 
 int main(){
-	srand(time(NULL));
-	int numTestRun = 2000; // number of tests run. CHANGE it for your liking
-	int i, j;
-    int seed = 1000;
-    int numPlayer = 2;
-    int r;	
-    int k[10] = {adventurer, council_room, feast, gardens, mine
-               , remodel, smithy, village, baron, great_hall};
-    struct gameState G;
-	int currentPlayer = whoseTurn(&G);
-	int currentCardNum;	// number of cards before the smithy card is played.
-	
-	int numFailedTest = 0; // failed test runs
-	int numSuccessfulTest = 0; // successful test runs
-	int playCount =0; // used to play smithy once per test run
-	int refreshGame =3; // used to refresh game
-	//Begin smithy testing
-	printf("******************\n");
-	printf("randomtestcard.c\n");
-	printf("Smithy Random Card Test:\n");
-	printf("Number of test runs: %d\n", numTestRun);
-	
-	// initialize game state
+    srand(time(NULL));
+    int gameSeed = rand();
+    int p;
+    int numPlayer = 4;
+    int i = 0, n;
+    int error1 = 0, error2 = 0;
+    int randomIt = (rand() % 10000) + 20001;  
+    int k[10] = {adventurer, council_room, feast, gardens, mine,
+                remodel, smithy, village, baron, great_hall};
+    int iteration = 0;
 
-	
-	// loooooop
-	for (j = 0; j < numTestRun; j++) {
-		playCount = 0;
-		
-		if (refreshGame == 3) {
-			memset(&G, 23, sizeof(struct gameState));   // clear the game state
-			r = initializeGame(numPlayer, k, seed, &G); // initialize a new game	
-			refreshGame = 0;
-		}
-		// gain smithy for currentPlayer and add to hand
-		if ( rand() % 2 == 1) {
-			gainCard(smithy, &G, 2, currentPlayer);
-			refreshGame++;
-		} else {
-			refreshGame++;
-		}
-		// go through hand to look for the smithy card
-		// numbHandCards: How many cards current player has in hand 
-		for (i = 0; i < numHandCards(&G); i++) {
-			// handCard: enum value of indexed card in player's hand
-			if(handCard(i, &G) == smithy && playCount == 0){
-				playCount = 1;
-				// Play card with index handPos from current player's hand
-				currentCardNum = G.handCount[0];		
-				printf("**Playing smithy card\n");
-				playCard(i,-1,-1,-1,&G);	
-				printf("  Expected card count: %d\n  Actual card count: %d\n",currentCardNum+2,G.handCount[0]);	
-				if (currentCardNum+2 != G.handCount[0]) {
-					printf("  Expected and Actual card count do not match!!***\n");
-					numFailedTest++;
-				} else {
-					printf("  Smithy card worked as intended!\n");
-					numSuccessfulTest++;
-				}
-	
-			}
-		}	
-	}
-	printf("Smithy Card Test is now over\n\n");
-	printf("Number of successful runs: %d\n", numSuccessfulTest);
-	printf("Number of failed runs: %d\n", numFailedTest);
-	printf("Number of times smithy was not used: %d\n\n", numTestRun - numSuccessfulTest - numFailedTest);
-	return 0;
+    struct gameState G;
+    
+    printf("\nStarting random testing for Smithy card effects...\n");
+
+    for(n = 0; n < randomIt; n++){
+        int randNum = rand() %3;
+        p = floor(Random() * 4);
+
+        memset(&G, 23, sizeof(struct gameState));   //clear game state
+        initializeGame(numPlayer, k, gameSeed, &G); //initialize game
+
+        /*Randomly choose a deckcount from 0, -1, to MAX_DECK to induce shuffling*/
+        if(randNum == 0){
+            G.deckCount[p] = 0;
+        } else if(randNum == 1) {
+            G.deckCount[p] = -1;
+        } else {
+            G.deckCount[p] = floor(Random() * MAX_DECK);
+        }
+        G.discardCount[p] = floor(Random() * MAX_DECK);
+        G.playedCardCount = floor(Random() * MAX_DECK);
+
+
+        /*Set up deck, hand, discard*/
+        for(i = 0; i < G.deckCount[p]; i++){
+            G.deck[p][i] = floor(Random() * 5);
+        }
+        for(i = 0; i < G.discardCount[p]; i++){
+            G.discard[p][i] = floor(Random() * 5);
+        }
+
+        G.handCount[p] = 1; //set player handcount to 1
+        G.hand[p][0] = smithy;    //set player's only card in hand to council room for testing purposes
+
+        struct gameState pre;
+        struct gameState post = G;
+
+
+        pre.handCount[p] = G.handCount[p];   //handcount before smithy
+    
+        //smithyCard(p, &G, 0);   //play smithy from hand pos 0
+        //Commented out smithyCard to implement teammate's smithy code
+        smithyRefactor(p, 0, &G);
+
+        post.handCount[p] = G.handCount[p];  //handcount after smithy
+        post.hand[p][0] = G.hand[p][0];   //post hand card at hand pos 0
+
+        printf("\nTesting iteration: %d...\n", iteration++);
+
+
+        /*Check hand count after smithy played, +2 since smithy should be discarded*/
+        if(pre.handCount[p] + 2 == post.handCount[p]){
+            printf("TEST PASSED - obtained correct number of cards\n");
+        } else {
+            printf("TEST FAILED - did not obtain correct number of cards %d\n", post.handCount[p]);
+            error1++;
+        }
+
+        /*Check hand if smithy is still there*/
+        if(post.hand[p][0] == smithy){
+            printf("TEST FAILED - smithy was not discarded\n");
+            error2++;
+        } else {
+            printf("TEST PASSED - smithy is discarded from hand\n");
+        }
+
+    }
+
+    /*Print summary of random test results*/
+    if(error1 == 0){
+        printf("\nAll %d test1 passed, player obtained correct number of cards\n", randomIt);
+    } else {
+        printf("\nTest1 error count: incorrect number of cards drawn %d of %d tests\n", error1, randomIt);
+    }
+
+    if(error2 == 0){
+        printf("All %d test2 passed, smithy was discarded from hand\n\n", randomIt);
+    } else {
+        printf("Test2 error count: smithy not discarded from hand %d of %d tests\n\n", error2, randomIt);
+    }
+
+    return 0;
+
 }
+
