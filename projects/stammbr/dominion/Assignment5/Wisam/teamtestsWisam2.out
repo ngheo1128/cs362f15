@@ -1,0 +1,4547 @@
+Result for running tests for Wisam:
+cardTest1.c:
+This is the tests the Smithy card - smithy_refactor().
+smithy_refactor() Test 1a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Test 1b:  FAIL, handCount amounts NOT equal.
+	Test:  3	Saved:  2
+Test 1c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+Random Testing to Start
+
+smithy_refactor() Random Test 1a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 1b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 1c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 2a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 2b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 2c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 3a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 3b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 3c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 4a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 4b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 4c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 5a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 5b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 5c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 6a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 6b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 6c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 7a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 7b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 7c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 8a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 8b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 8c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 9a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 9b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 9c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 10a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 10b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 10c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 11a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 11b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 11c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 12a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 12b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 12c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 13a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 13b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 13c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 14a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 14b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 14c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 15a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 15b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 15c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 16a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 16b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 16c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 17a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 17b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 17c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 18a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 18b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 18c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 19a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 19b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 19c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 20a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 20b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 20c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 21a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 21b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 21c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 22a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 22b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 22c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 23a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 23b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 23c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 24a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 24b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 24c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 25a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 25b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 25c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 26a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 26b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 26c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 27a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 27b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 27c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 28a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 28b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 28c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 29a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 29b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 29c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 30a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 30b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 30c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 31a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 31b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 31c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 32a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 32b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 32c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 33a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 33b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 33c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 34a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 34b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 34c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 35a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 35b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 35c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 36a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 36b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 36c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 37a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 37b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 37c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 38a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 38b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 38c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 39a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 39b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 39c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 40a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 40b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 40c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 41a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 41b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 41c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 42a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 42b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 42c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 43a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 43b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 43c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 44a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 44b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 44c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 45a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 45b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 45c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 46a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 46b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 46c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 47a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 47b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 47c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 48a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 48b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 48c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 49a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 49b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 49c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 50a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 50b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 50c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 51a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 51b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 51c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 52a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 52b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 52c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 53a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 53b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 53c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 54a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 54b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 54c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 55a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 55b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 55c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 56a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 56b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 56c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 57a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 57b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 57c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 58a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 58b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 58c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 59a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 59b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 59c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 60a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 60b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 60c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 61a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 61b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 61c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 62a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 62b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 62c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 63a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 63b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 63c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 64a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 64b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 64c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 65a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 65b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 65c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 66a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 66b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 66c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 67a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 67b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 67c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 68a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 68b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 68c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 69a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 69b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 69c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 70a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 70b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 70c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 71a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 71b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 71c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 72a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 72b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 72c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 73a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 73b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 73c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 74a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 74b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 74c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 75a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 75b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 75c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 76a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 76b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 76c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 77a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 77b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 77c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 78a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 78b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 78c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 79a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 79b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 79c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 80a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 80b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 80c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 81a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 81b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 81c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 82a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 82b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 82c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 83a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 83b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 83c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 84a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 84b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 84c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 85a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 85b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 85c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 86a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 86b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 86c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 87a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 87b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 87c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 88a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 88b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 88c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 89a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 89b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 89c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 90a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 90b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 90c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 91a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 91b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 91c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 92a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 92b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 92c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 93a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 93b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 93c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 94a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 94b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 94c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 95a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 95b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 95c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 96a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 96b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 96c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 97a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 97b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 97c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 98a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 98b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 98c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 99a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 99b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 99c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 100a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 100b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 100c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 101a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 101b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 101c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 102a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 102b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 102c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 103a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 103b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 103c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 104a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 104b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 104c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 105a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 105b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 105c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 106a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 106b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 106c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 107a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 107b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 107c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 108a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 108b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 108c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 109a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 109b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 109c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 110a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 110b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 110c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 111a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 111b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 111c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 112a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 112b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 112c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 113a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 113b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 113c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 114a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 114b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 114c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 115a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 115b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 115c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 116a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 116b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 116c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 117a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 117b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 117c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 118a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 118b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 118c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 119a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 119b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 119c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 120a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 120b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 120c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 121a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 121b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 121c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 122a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 122b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 122c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 123a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 123b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 123c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 124a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 124b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 124c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 125a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 125b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 125c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 126a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 126b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 126c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 127a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 127b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 127c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 128a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 128b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 128c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 129a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 129b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 129c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 130a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 130b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 130c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 131a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 131b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 131c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 132a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 132b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 132c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 133a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 133b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 133c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 134a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 134b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 134c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 135a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 135b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 135c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 136a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 136b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 136c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 137a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 137b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 137c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 138a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 138b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 138c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 139a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 139b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 139c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 140a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 140b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 140c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 141a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 141b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 141c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 142a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 142b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 142c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 143a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 143b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 143c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 144a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 144b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 144c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 145a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 145b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 145c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 146a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 146b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 146c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 147a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 147b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 147c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 148a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 148b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 148c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 149a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 149b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 149c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 150a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 150b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 150c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 151a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 151b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 151c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 152a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 152b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 152c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 153a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 153b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 153c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 154a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 154b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 154c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 155a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 155b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 155c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 156a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 156b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 156c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 157a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 157b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 157c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 158a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 158b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 158c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 159a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 159b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 159c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 160a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 160b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 160c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 161a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 161b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 161c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 162a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 162b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 162c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 163a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 163b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 163c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 164a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 164b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 164c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 165a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 165b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 165c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 166a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 166b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 166c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 167a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 167b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 167c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 168a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 168b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 168c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 169a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 169b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 169c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 170a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 170b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 170c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 171a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 171b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 171c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 172a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 172b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 172c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 173a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 173b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 173c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 174a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 174b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 174c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 175a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 175b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 175c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 176a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 176b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 176c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 177a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 177b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 177c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 178a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 178b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 178c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 179a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 179b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 179c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 180a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 180b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 180c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 181a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 181b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 181c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 182a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 182b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 182c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 183a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 183b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 183c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 184a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 184b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 184c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 185a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 185b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 185c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 186a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 186b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 186c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 187a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 187b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 187c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 188a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 188b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 188c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 189a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 189b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 189c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 190a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 190b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 190c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 191a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 191b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 191c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 192a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 192b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 192c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 193a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 193b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 193c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 194a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 194b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 194c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 195a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 195b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 195c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 196a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 196b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 196c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 197a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 197b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 197c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 198a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 198b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 198c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 199a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 199b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 199c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 200a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 200b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 200c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 201a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 201b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 201c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 202a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 202b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 202c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 203a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 203b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 203c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 204a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 204b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 204c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 205a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 205b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 205c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 206a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 206b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 206c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 207a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 207b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 207c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 208a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 208b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 208c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 209a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 209b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 209c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 210a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 210b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 210c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 211a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 211b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 211c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 212a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 212b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 212c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 213a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 213b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 213c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 214a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 214b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 214c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 215a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 215b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 215c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 216a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 216b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 216c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 217a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 217b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 217c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 218a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 218b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 218c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 219a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 219b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 219c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 220a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 220b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 220c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 221a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 221b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 221c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 222a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 222b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 222c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 223a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 223b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 223c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 224a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 224b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 224c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 225a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 225b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 225c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 226a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 226b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 226c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 227a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 227b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 227c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 228a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 228b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 228c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 229a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 229b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 229c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 230a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 230b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 230c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 231a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 231b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 231c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 232a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 232b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 232c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 233a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 233b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 233c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 234a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 234b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 234c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 235a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 235b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 235c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 236a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 236b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 236c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 237a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 237b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 237c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 238a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 238b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 238c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 239a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 239b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 239c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 240a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 240b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 240c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 241a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 241b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 241c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 242a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 242b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 242c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 243a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 243b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 243c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 244a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 244b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 244c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 245a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 245b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 245c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 246a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 246b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 246c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 247a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 247b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 247c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 248a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 248b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 248c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 249a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 249b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 249c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 250a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 250b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 250c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 251a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 251b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 251c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 252a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 252b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 252c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 253a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 253b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 253c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 254a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 254b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 254c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 255a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 255b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 255c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 256a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 256b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 256c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 257a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 257b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 257c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 258a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 258b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 258c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 259a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 259b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 259c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 260a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 260b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 260c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 261a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 261b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 261c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 262a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 262b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 262c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 263a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 263b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 263c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 264a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 264b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 264c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 265a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 265b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 265c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 266a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 266b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 266c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 267a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 267b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 267c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 268a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 268b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 268c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 269a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 269b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 269c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 270a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 270b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 270c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 271a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 271b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 271c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 272a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 272b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 272c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 273a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 273b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 273c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 274a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 274b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 274c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 275a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 275b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 275c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 276a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 276b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 276c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 277a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 277b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 277c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 278a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 278b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 278c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 279a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 279b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 279c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 280a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 280b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 280c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 281a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 281b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 281c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 282a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 282b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 282c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 283a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 283b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 283c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 284a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 284b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 284c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 285a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 285b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 285c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 286a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 286b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 286c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 287a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 287b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 287c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 288a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 288b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 288c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 289a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 289b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 289c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 290a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 290b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 290c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 291a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 291b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 291c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 292a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 292b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 292c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 293a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 293b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 293c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 294a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 294b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 294c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 295a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 295b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 295c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 296a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 296b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 296c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 297a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 297b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 297c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 298a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 298b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 298c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 299a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 299b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 299c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 300a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 300b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 300c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 301a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 301b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 301c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 302a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 302b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 302c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 303a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 303b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 303c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 304a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 304b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 304c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 305a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 305b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 305c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 306a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 306b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 306c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 307a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 307b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 307c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 308a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 308b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 308c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 309a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 309b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 309c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 310a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 310b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 310c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 311a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 311b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 311c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 312a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 312b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 312c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 313a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 313b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 313c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 314a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 314b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 314c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 315a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 315b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 315c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 316a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 316b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 316c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 317a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 317b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 317c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 318a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 318b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 318c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 319a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 319b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 319c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 320a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 320b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 320c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 321a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 321b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 321c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 322a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 322b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 322c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 323a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 323b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 323c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 324a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 324b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 324c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 325a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 325b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 325c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 326a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 326b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 326c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 327a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 327b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 327c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 328a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 328b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 328c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 329a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 329b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 329c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 330a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 330b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 330c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 331a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 331b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 331c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 332a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 332b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 332c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 333a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 333b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 333c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 334a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 334b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 334c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 335a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 335b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 335c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 336a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 336b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 336c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 337a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 337b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 337c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 338a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 338b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 338c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 339a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 339b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 339c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 340a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 340b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 340c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 341a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 341b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 341c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 342a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 342b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 342c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 343a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 343b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 343c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 344a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 344b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 344c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 345a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 345b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 345c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 346a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 346b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 346c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 347a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 347b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 347c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 348a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 348b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 348c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 349a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 349b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 349c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 350a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 350b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 350c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 351a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 351b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 351c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 352a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 352b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 352c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 353a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 353b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 353c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 354a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 354b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 354c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 355a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 355b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 355c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 356a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 356b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 356c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 357a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 357b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 357c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 358a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 358b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 358c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 359a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 359b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 359c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 360a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 360b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 360c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 361a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 361b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 361c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 362a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 362b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 362c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 363a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 363b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 363c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 364a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 364b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 364c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 365a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 365b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 365c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 366a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 366b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 366c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 367a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 367b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 367c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 368a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 368b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 368c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 369a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 369b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 369c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 370a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 370b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 370c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 371a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 371b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 371c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 372a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 372b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 372c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 373a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 373b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 373c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 374a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 374b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 374c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 375a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 375b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 375c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 376a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 376b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 376c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 377a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 377b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 377c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 378a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 378b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 378c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 379a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 379b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 379c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 380a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 380b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 380c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 381a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 381b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 381c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 382a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 382b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 382c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 383a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 383b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 383c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 384a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 384b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 384c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 385a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 385b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 385c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 386a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 386b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 386c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 387a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 387b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 387c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 388a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 388b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 388c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 389a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 389b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 389c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 390a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 390b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 390c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 391a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 391b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 391c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 392a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 392b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 392c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 393a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 393b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 393c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 394a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 394b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 394c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 395a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 395b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 395c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 396a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 396b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 396c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 397a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 397b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 397c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 398a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 398b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 398c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 399a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 399b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 399c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 400a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 400b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 400c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 401a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 401b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 401c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 402a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 402b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 402c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 403a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 403b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 403c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 404a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 404b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 404c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 405a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 405b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 405c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 406a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 406b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 406c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 407a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 407b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 407c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 408a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 408b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 408c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 409a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 409b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 409c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 410a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 410b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 410c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 411a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 411b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 411c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 412a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 412b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 412c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 413a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 413b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 413c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 414a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 414b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 414c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 415a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 415b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 415c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 416a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 416b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 416c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 417a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 417b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 417c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 418a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 418b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 418c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 419a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 419b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 419c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 420a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 420b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 420c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 421a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 421b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 421c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 422a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 422b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 422c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 423a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 423b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 423c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 424a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 424b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 424c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 425a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 425b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 425c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 426a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 426b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 426c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 427a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 427b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 427c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 428a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 428b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 428c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 429a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 429b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 429c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 430a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 430b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 430c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 431a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 431b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 431c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 432a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 432b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 432c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 433a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 433b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 433c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 434a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 434b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 434c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 435a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 435b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 435c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 436a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 436b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 436c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 437a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 437b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 437c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 438a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 438b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 438c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 439a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 439b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 439c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 440a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 440b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 440c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 441a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 441b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 441c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 442a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 442b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 442c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 443a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 443b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 443c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 444a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 444b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 444c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 445a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 445b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 445c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 446a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 446b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 446c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 447a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 447b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 447c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 448a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 448b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 448c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 449a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 449b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 449c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 450a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 450b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 450c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 451a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 451b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 451c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 452a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 452b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 452c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 453a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 453b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 453c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 454a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 454b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 454c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 455a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 455b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 455c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 456a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 456b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 456c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 457a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 457b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 457c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 458a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 458b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 458c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 459a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 459b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 459c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 460a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 460b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 460c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 461a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 461b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 461c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 462a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 462b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 462c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 463a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 463b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 463c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 464a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 464b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 464c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 465a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 465b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 465c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 466a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 466b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 466c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 467a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 467b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 467c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 468a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 468b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 468c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 469a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 469b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 469c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 470a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 470b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 470c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 471a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 471b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 471c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 472a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 472b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 472c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 473a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 473b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 473c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 474a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 474b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 474c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 475a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 475b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 475c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 476a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 476b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 476c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 477a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 477b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 477c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 478a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 478b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 478c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 479a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 479b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 479c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 480a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 480b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 480c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 481a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 481b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 481c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 482a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 482b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 482c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 483a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 483b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 483c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 484a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 484b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 484c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 485a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 485b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 485c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 486a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 486b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 486c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 487a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 487b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 487c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 488a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 488b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 488c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 489a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 489b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 489c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 490a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 490b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 490c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 491a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 491b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 491c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 492a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 492b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 492c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 493a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 493b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 493c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 494a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 494b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 494c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 495a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 495b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 495c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 496a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 496b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 496c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 497a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 497b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 497c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 498a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 498b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 498c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 499a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 499b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 499c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test 500a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+Random Test 500b:  FAIL, handCount amounts NOT equal.
+	Test:  459	Saved:  458
+Test 500c:  FAIL, deckCount amounts NOT equal.
+	Test:  9	Saved:  7
+
+smithy_refactor() Random Test fail number:  1500
+
+ ***************************** 
+
+cardTest2.c:
+This is the tests for the Adventurer card, adventurer_refactor().
+1:  adventurer_refactor():  PASSED initial.
+2:  adventurer_refactor():  PASSED large deck.
+3:  adventurer_refactor():  PASSED random.
+4:  adventurer_refactor():  PASSED no treasure?.
+
+ ***************************** 
+
+cardTest3.c:
+This is the tests for the Council card, in council_room_refactor().
+This is first initial test for council_room_refactor.
+council_room_refactor() Test 1:  PASS, played card amounts equal.
+council_room_refactor() Test 1:  FAIL, handCount amounts NOT equal.
+	Test:  4	Saved:  3
+council_room_refactor() Test 1:  PASS, deckCount amounts equal.
+Council Test :  PASSED - buy number correct
+This is random testing.
+Random Testing to Start
+council_room_refactor() Test 1:  FAIL, handCount amounts NOT equal.
+	Test:  410	Saved:  409
+council_room_refactor() Test 2:  FAIL, handCount amounts NOT equal.
+	Test:  257	Saved:  256
+council_room_refactor() Test 3:  FAIL, handCount amounts NOT equal.
+	Test:  402	Saved:  401
+council_room_refactor() Test 4:  FAIL, handCount amounts NOT equal.
+	Test:  109	Saved:  108
+council_room_refactor() Test 5:  FAIL, handCount amounts NOT equal.
+	Test:  339	Saved:  338
+council_room_refactor() Test 6:  FAIL, handCount amounts NOT equal.
+	Test:  170	Saved:  169
+council_room_refactor() Test 7:  FAIL, handCount amounts NOT equal.
+	Test:  49	Saved:  48
+council_room_refactor() Test 8:  FAIL, handCount amounts NOT equal.
+	Test:  65	Saved:  64
+council_room_refactor() Test 9:  FAIL, handCount amounts NOT equal.
+	Test:  497	Saved:  496
+council_room_refactor() Test 10:  FAIL, handCount amounts NOT equal.
+	Test:  433	Saved:  432
+council_room_refactor() Test 11:  FAIL, handCount amounts NOT equal.
+	Test:  390	Saved:  389
+council_room_refactor() Test 12:  FAIL, handCount amounts NOT equal.
+	Test:  303	Saved:  302
+council_room_refactor() Test 13:  FAIL, handCount amounts NOT equal.
+	Test:  150	Saved:  149
+council_room_refactor() Test 14:  FAIL, handCount amounts NOT equal.
+	Test:  256	Saved:  255
+council_room_refactor() Test 15:  FAIL, handCount amounts NOT equal.
+	Test:  136	Saved:  135
+council_room_refactor() Test 16:  FAIL, handCount amounts NOT equal.
+	Test:  109	Saved:  108
+council_room_refactor() Test 17:  FAIL, handCount amounts NOT equal.
+	Test:  59	Saved:  58
+council_room_refactor() Test 18:  FAIL, handCount amounts NOT equal.
+	Test:  311	Saved:  310
+council_room_refactor() Test 19:  FAIL, handCount amounts NOT equal.
+	Test:  124	Saved:  123
+council_room_refactor() Test 20:  FAIL, handCount amounts NOT equal.
+	Test:  183	Saved:  182
+council_room_refactor() Test 21:  FAIL, handCount amounts NOT equal.
+	Test:  139	Saved:  138
+council_room_refactor() Test 22:  FAIL, handCount amounts NOT equal.
+	Test:  428	Saved:  427
+council_room_refactor() Test 23:  FAIL, handCount amounts NOT equal.
+	Test:  441	Saved:  440
+council_room_refactor() Test 24:  FAIL, handCount amounts NOT equal.
+	Test:  299	Saved:  298
+council_room_refactor() Test 25:  FAIL, handCount amounts NOT equal.
+	Test:  316	Saved:  315
+council_room_refactor() Test 26:  FAIL, handCount amounts NOT equal.
+	Test:  448	Saved:  447
+council_room_refactor() Test 27:  FAIL, handCount amounts NOT equal.
+	Test:  209	Saved:  208
+council_room_refactor() Test 28:  FAIL, handCount amounts NOT equal.
+	Test:  7	Saved:  6
+council_room_refactor() Test 29:  FAIL, handCount amounts NOT equal.
+	Test:  78	Saved:  77
+council_room_refactor() Test 30:  FAIL, handCount amounts NOT equal.
+	Test:  425	Saved:  424
+council_room_refactor() Test 31:  FAIL, handCount amounts NOT equal.
+	Test:  274	Saved:  273
+council_room_refactor() Test 32:  FAIL, handCount amounts NOT equal.
+	Test:  484	Saved:  483
+council_room_refactor() Test 33:  FAIL, handCount amounts NOT equal.
+	Test:  152	Saved:  151
+council_room_refactor() Test 34:  FAIL, handCount amounts NOT equal.
+	Test:  104	Saved:  103
+council_room_refactor() Test 35:  FAIL, handCount amounts NOT equal.
+	Test:  326	Saved:  325
+council_room_refactor() Test 36:  FAIL, handCount amounts NOT equal.
+	Test:  66	Saved:  65
+council_room_refactor() Test 37:  FAIL, handCount amounts NOT equal.
+	Test:  200	Saved:  199
+council_room_refactor() Test 38:  FAIL, handCount amounts NOT equal.
+	Test:  285	Saved:  284
+council_room_refactor() Test 39:  FAIL, handCount amounts NOT equal.
+	Test:  492	Saved:  491
+council_room_refactor() Test 40:  FAIL, handCount amounts NOT equal.
+	Test:  103	Saved:  102
+council_room_refactor() Test 41:  FAIL, handCount amounts NOT equal.
+	Test:  456	Saved:  455
+council_room_refactor() Test 42:  FAIL, handCount amounts NOT equal.
+	Test:  326	Saved:  325
+council_room_refactor() Test 43:  FAIL, handCount amounts NOT equal.
+	Test:  176	Saved:  175
+council_room_refactor() Test 44:  FAIL, handCount amounts NOT equal.
+	Test:  43	Saved:  42
+council_room_refactor() Test 45:  FAIL, handCount amounts NOT equal.
+	Test:  458	Saved:  457
+council_room_refactor() Test 46:  FAIL, handCount amounts NOT equal.
+	Test:  313	Saved:  312
+council_room_refactor() Test 47:  FAIL, handCount amounts NOT equal.
+	Test:  281	Saved:  280
+council_room_refactor() Test 48:  FAIL, handCount amounts NOT equal.
+	Test:  222	Saved:  221
+council_room_refactor() Test 49:  FAIL, handCount amounts NOT equal.
+	Test:  296	Saved:  295
+council_room_refactor() Test 50:  FAIL, handCount amounts NOT equal.
+	Test:  144	Saved:  143
+council_room_refactor() Test 51:  FAIL, handCount amounts NOT equal.
+	Test:  79	Saved:  78
+council_room_refactor() Test 52:  FAIL, handCount amounts NOT equal.
+	Test:  500	Saved:  499
+council_room_refactor() Test 53:  FAIL, handCount amounts NOT equal.
+	Test:  306	Saved:  305
+council_room_refactor() Test 54:  FAIL, handCount amounts NOT equal.
+	Test:  144	Saved:  143
+council_room_refactor() Test 55:  FAIL, handCount amounts NOT equal.
+	Test:  345	Saved:  344
+council_room_refactor() Test 56:  FAIL, handCount amounts NOT equal.
+	Test:  265	Saved:  264
+council_room_refactor() Test 57:  FAIL, handCount amounts NOT equal.
+	Test:  132	Saved:  131
+council_room_refactor() Test 58:  FAIL, handCount amounts NOT equal.
+	Test:  40	Saved:  39
+council_room_refactor() Test 59:  FAIL, handCount amounts NOT equal.
+	Test:  152	Saved:  151
+council_room_refactor() Test 60:  FAIL, handCount amounts NOT equal.
+	Test:  249	Saved:  248
+council_room_refactor() Test 61:  FAIL, handCount amounts NOT equal.
+	Test:  271	Saved:  270
+council_room_refactor() Test 62:  FAIL, handCount amounts NOT equal.
+	Test:  151	Saved:  150
+council_room_refactor() Test 63:  FAIL, handCount amounts NOT equal.
+	Test:  453	Saved:  452
+council_room_refactor() Test 64:  FAIL, handCount amounts NOT equal.
+	Test:  441	Saved:  440
+council_room_refactor() Test 65:  FAIL, handCount amounts NOT equal.
+	Test:  188	Saved:  187
+council_room_refactor() Test 66:  FAIL, handCount amounts NOT equal.
+	Test:  234	Saved:  233
+council_room_refactor() Test 67:  FAIL, handCount amounts NOT equal.
+	Test:  117	Saved:  116
+council_room_refactor() Test 68:  FAIL, handCount amounts NOT equal.
+	Test:  29	Saved:  28
+council_room_refactor() Test 69:  FAIL, handCount amounts NOT equal.
+	Test:  466	Saved:  465
+council_room_refactor() Test 70:  FAIL, handCount amounts NOT equal.
+	Test:  196	Saved:  195
+council_room_refactor() Test 71:  FAIL, handCount amounts NOT equal.
+	Test:  103	Saved:  102
+council_room_refactor() Test 72:  FAIL, handCount amounts NOT equal.
+	Test:  436	Saved:  435
+council_room_refactor() Test 73:  FAIL, handCount amounts NOT equal.
+	Test:  382	Saved:  381
+council_room_refactor() Test 74:  FAIL, handCount amounts NOT equal.
+	Test:  29	Saved:  28
+council_room_refactor() Test 75:  FAIL, handCount amounts NOT equal.
+	Test:  33	Saved:  32
+council_room_refactor() Test 76:  FAIL, handCount amounts NOT equal.
+	Test:  221	Saved:  220
+council_room_refactor() Test 77:  FAIL, handCount amounts NOT equal.
+	Test:  346	Saved:  345
+council_room_refactor() Test 78:  FAIL, handCount amounts NOT equal.
+	Test:  241	Saved:  240
+council_room_refactor() Test 79:  FAIL, handCount amounts NOT equal.
+	Test:  43	Saved:  42
+council_room_refactor() Test 80:  FAIL, handCount amounts NOT equal.
+	Test:  141	Saved:  140
+council_room_refactor() Test 81:  FAIL, handCount amounts NOT equal.
+	Test:  481	Saved:  480
+council_room_refactor() Test 82:  FAIL, handCount amounts NOT equal.
+	Test:  258	Saved:  257
+council_room_refactor() Test 83:  FAIL, handCount amounts NOT equal.
+	Test:  439	Saved:  438
+council_room_refactor() Test 84:  FAIL, handCount amounts NOT equal.
+	Test:  270	Saved:  269
+council_room_refactor() Test 85:  FAIL, handCount amounts NOT equal.
+	Test:  224	Saved:  223
+council_room_refactor() Test 86:  FAIL, handCount amounts NOT equal.
+	Test:  477	Saved:  476
+council_room_refactor() Test 87:  FAIL, handCount amounts NOT equal.
+	Test:  293	Saved:  292
+council_room_refactor() Test 88:  FAIL, handCount amounts NOT equal.
+	Test:  74	Saved:  73
+council_room_refactor() Test 89:  FAIL, handCount amounts NOT equal.
+	Test:  208	Saved:  207
+council_room_refactor() Test 90:  FAIL, handCount amounts NOT equal.
+	Test:  337	Saved:  336
+council_room_refactor() Test 91:  FAIL, handCount amounts NOT equal.
+	Test:  83	Saved:  82
+council_room_refactor() Test 92:  FAIL, handCount amounts NOT equal.
+	Test:  202	Saved:  201
+council_room_refactor() Test 93:  FAIL, handCount amounts NOT equal.
+	Test:  37	Saved:  36
+council_room_refactor() Test 94:  FAIL, handCount amounts NOT equal.
+	Test:  321	Saved:  320
+council_room_refactor() Test 95:  FAIL, handCount amounts NOT equal.
+	Test:  108	Saved:  107
+council_room_refactor() Test 96:  FAIL, handCount amounts NOT equal.
+	Test:  165	Saved:  164
+council_room_refactor() Test 97:  FAIL, handCount amounts NOT equal.
+	Test:  463	Saved:  462
+council_room_refactor() Test 98:  FAIL, handCount amounts NOT equal.
+	Test:  205	Saved:  204
+council_room_refactor() Test 99:  FAIL, handCount amounts NOT equal.
+	Test:  171	Saved:  170
+council_room_refactor() Test 100:  FAIL, handCount amounts NOT equal.
+	Test:  134	Saved:  133
+council_room_refactor() Test 101:  FAIL, handCount amounts NOT equal.
+	Test:  281	Saved:  280
+council_room_refactor() Test 102:  FAIL, handCount amounts NOT equal.
+	Test:  296	Saved:  295
+council_room_refactor() Test 103:  FAIL, handCount amounts NOT equal.
+	Test:  271	Saved:  270
+council_room_refactor() Test 104:  FAIL, handCount amounts NOT equal.
+	Test:  270	Saved:  269
+council_room_refactor() Test 105:  FAIL, handCount amounts NOT equal.
+	Test:  36	Saved:  35
+council_room_refactor() Test 106:  FAIL, handCount amounts NOT equal.
+	Test:  176	Saved:  175
+council_room_refactor() Test 107:  FAIL, handCount amounts NOT equal.
+	Test:  106	Saved:  105
+council_room_refactor() Test 108:  FAIL, handCount amounts NOT equal.
+	Test:  92	Saved:  91
+council_room_refactor() Test 109:  FAIL, handCount amounts NOT equal.
+	Test:  102	Saved:  101
+council_room_refactor() Test 110:  FAIL, handCount amounts NOT equal.
+	Test:  224	Saved:  223
+council_room_refactor() Test 111:  FAIL, handCount amounts NOT equal.
+	Test:  478	Saved:  477
+council_room_refactor() Test 112:  FAIL, handCount amounts NOT equal.
+	Test:  281	Saved:  280
+council_room_refactor() Test 113:  FAIL, handCount amounts NOT equal.
+	Test:  455	Saved:  454
+council_room_refactor() Test 114:  FAIL, handCount amounts NOT equal.
+	Test:  290	Saved:  289
+council_room_refactor() Test 115:  FAIL, handCount amounts NOT equal.
+	Test:  121	Saved:  120
+council_room_refactor() Test 116:  FAIL, handCount amounts NOT equal.
+	Test:  246	Saved:  245
+council_room_refactor() Test 117:  FAIL, handCount amounts NOT equal.
+	Test:  276	Saved:  275
+council_room_refactor() Test 118:  FAIL, handCount amounts NOT equal.
+	Test:  418	Saved:  417
+council_room_refactor() Test 119:  FAIL, handCount amounts NOT equal.
+	Test:  495	Saved:  494
+council_room_refactor() Test 120:  FAIL, handCount amounts NOT equal.
+	Test:  126	Saved:  125
+council_room_refactor() Test 121:  FAIL, handCount amounts NOT equal.
+	Test:  51	Saved:  50
+council_room_refactor() Test 122:  FAIL, handCount amounts NOT equal.
+	Test:  196	Saved:  195
+council_room_refactor() Test 123:  FAIL, handCount amounts NOT equal.
+	Test:  428	Saved:  427
+council_room_refactor() Test 124:  FAIL, handCount amounts NOT equal.
+	Test:  211	Saved:  210
+council_room_refactor() Test 125:  FAIL, handCount amounts NOT equal.
+	Test:  94	Saved:  93
+council_room_refactor() Test 126:  FAIL, handCount amounts NOT equal.
+	Test:  452	Saved:  451
+council_room_refactor() Test 127:  FAIL, handCount amounts NOT equal.
+	Test:  51	Saved:  50
+council_room_refactor() Test 128:  FAIL, handCount amounts NOT equal.
+	Test:  398	Saved:  397
+council_room_refactor() Test 129:  FAIL, handCount amounts NOT equal.
+	Test:  41	Saved:  40
+council_room_refactor() Test 130:  FAIL, handCount amounts NOT equal.
+	Test:  47	Saved:  46
+council_room_refactor() Test 131:  FAIL, handCount amounts NOT equal.
+	Test:  157	Saved:  156
+council_room_refactor() Test 132:  FAIL, handCount amounts NOT equal.
+	Test:  129	Saved:  128
+council_room_refactor() Test 133:  FAIL, handCount amounts NOT equal.
+	Test:  51	Saved:  50
+council_room_refactor() Test 134:  FAIL, handCount amounts NOT equal.
+	Test:  293	Saved:  292
+council_room_refactor() Test 135:  FAIL, handCount amounts NOT equal.
+	Test:  58	Saved:  57
+council_room_refactor() Test 136:  FAIL, handCount amounts NOT equal.
+	Test:  452	Saved:  451
+council_room_refactor() Test 137:  FAIL, handCount amounts NOT equal.
+	Test:  122	Saved:  121
+council_room_refactor() Test 138:  FAIL, handCount amounts NOT equal.
+	Test:  199	Saved:  198
+council_room_refactor() Test 139:  FAIL, handCount amounts NOT equal.
+	Test:  322	Saved:  321
+council_room_refactor() Test 140:  FAIL, handCount amounts NOT equal.
+	Test:  416	Saved:  415
+council_room_refactor() Test 141:  FAIL, handCount amounts NOT equal.
+	Test:  174	Saved:  173
+council_room_refactor() Test 142:  FAIL, handCount amounts NOT equal.
+	Test:  90	Saved:  89
+council_room_refactor() Test 143:  FAIL, handCount amounts NOT equal.
+	Test:  100	Saved:  99
+council_room_refactor() Test 144:  FAIL, handCount amounts NOT equal.
+	Test:  191	Saved:  190
+council_room_refactor() Test 145:  FAIL, handCount amounts NOT equal.
+	Test:  415	Saved:  414
+council_room_refactor() Test 146:  FAIL, handCount amounts NOT equal.
+	Test:  326	Saved:  325
+council_room_refactor() Test 147:  FAIL, handCount amounts NOT equal.
+	Test:  336	Saved:  335
+council_room_refactor() Test 148:  FAIL, handCount amounts NOT equal.
+	Test:  296	Saved:  295
+council_room_refactor() Test 149:  FAIL, handCount amounts NOT equal.
+	Test:  121	Saved:  120
+council_room_refactor() Test 150:  FAIL, handCount amounts NOT equal.
+	Test:  10	Saved:  9
+council_room_refactor() Test 151:  FAIL, handCount amounts NOT equal.
+	Test:  396	Saved:  395
+council_room_refactor() Test 152:  FAIL, handCount amounts NOT equal.
+	Test:  262	Saved:  261
+council_room_refactor() Test 153:  FAIL, handCount amounts NOT equal.
+	Test:  294	Saved:  293
+council_room_refactor() Test 154:  FAIL, handCount amounts NOT equal.
+	Test:  299	Saved:  298
+council_room_refactor() Test 155:  FAIL, handCount amounts NOT equal.
+	Test:  42	Saved:  41
+council_room_refactor() Test 156:  FAIL, handCount amounts NOT equal.
+	Test:  435	Saved:  434
+council_room_refactor() Test 157:  FAIL, handCount amounts NOT equal.
+	Test:  144	Saved:  143
+council_room_refactor() Test 158:  FAIL, handCount amounts NOT equal.
+	Test:  210	Saved:  209
+council_room_refactor() Test 159:  FAIL, handCount amounts NOT equal.
+	Test:  402	Saved:  401
+council_room_refactor() Test 160:  FAIL, handCount amounts NOT equal.
+	Test:  390	Saved:  389
+council_room_refactor() Test 161:  FAIL, handCount amounts NOT equal.
+	Test:  389	Saved:  388
+council_room_refactor() Test 162:  FAIL, handCount amounts NOT equal.
+	Test:  144	Saved:  143
+council_room_refactor() Test 163:  FAIL, handCount amounts NOT equal.
+	Test:  343	Saved:  342
+council_room_refactor() Test 164:  FAIL, handCount amounts NOT equal.
+	Test:  462	Saved:  461
+council_room_refactor() Test 165:  FAIL, handCount amounts NOT equal.
+	Test:  95	Saved:  94
+council_room_refactor() Test 166:  FAIL, handCount amounts NOT equal.
+	Test:  68	Saved:  67
+council_room_refactor() Test 167:  FAIL, handCount amounts NOT equal.
+	Test:  440	Saved:  439
+council_room_refactor() Test 168:  FAIL, handCount amounts NOT equal.
+	Test:  197	Saved:  196
+council_room_refactor() Test 169:  FAIL, handCount amounts NOT equal.
+	Test:  137	Saved:  136
+council_room_refactor() Test 170:  FAIL, handCount amounts NOT equal.
+	Test:  267	Saved:  266
+council_room_refactor() Test 171:  FAIL, handCount amounts NOT equal.
+	Test:  188	Saved:  187
+council_room_refactor() Test 172:  FAIL, handCount amounts NOT equal.
+	Test:  49	Saved:  48
+council_room_refactor() Test 173:  FAIL, handCount amounts NOT equal.
+	Test:  257	Saved:  256
+council_room_refactor() Test 174:  FAIL, handCount amounts NOT equal.
+	Test:  83	Saved:  82
+council_room_refactor() Test 175:  FAIL, handCount amounts NOT equal.
+	Test:  238	Saved:  237
+council_room_refactor() Test 176:  FAIL, handCount amounts NOT equal.
+	Test:  407	Saved:  406
+council_room_refactor() Test 177:  FAIL, handCount amounts NOT equal.
+	Test:  296	Saved:  295
+council_room_refactor() Test 178:  FAIL, handCount amounts NOT equal.
+	Test:  404	Saved:  403
+council_room_refactor() Test 179:  FAIL, handCount amounts NOT equal.
+	Test:  474	Saved:  473
+council_room_refactor() Test 180:  FAIL, handCount amounts NOT equal.
+	Test:  110	Saved:  109
+council_room_refactor() Test 181:  FAIL, handCount amounts NOT equal.
+	Test:  475	Saved:  474
+council_room_refactor() Test 182:  FAIL, handCount amounts NOT equal.
+	Test:  415	Saved:  414
+council_room_refactor() Test 183:  FAIL, handCount amounts NOT equal.
+	Test:  87	Saved:  86
+council_room_refactor() Test 184:  FAIL, handCount amounts NOT equal.
+	Test:  248	Saved:  247
+council_room_refactor() Test 185:  FAIL, handCount amounts NOT equal.
+	Test:  407	Saved:  406
+council_room_refactor() Test 186:  FAIL, handCount amounts NOT equal.
+	Test:  319	Saved:  318
+council_room_refactor() Test 187:  FAIL, handCount amounts NOT equal.
+	Test:  181	Saved:  180
+council_room_refactor() Test 188:  FAIL, handCount amounts NOT equal.
+	Test:  86	Saved:  85
+council_room_refactor() Test 189:  FAIL, handCount amounts NOT equal.
+	Test:  17	Saved:  16
+council_room_refactor() Test 190:  FAIL, handCount amounts NOT equal.
+	Test:  95	Saved:  94
+council_room_refactor() Test 191:  FAIL, handCount amounts NOT equal.
+	Test:  153	Saved:  152
+council_room_refactor() Test 192:  FAIL, handCount amounts NOT equal.
+	Test:  249	Saved:  248
+council_room_refactor() Test 193:  FAIL, handCount amounts NOT equal.
+	Test:  294	Saved:  293
+council_room_refactor() Test 194:  FAIL, handCount amounts NOT equal.
+	Test:  147	Saved:  146
+council_room_refactor() Test 195:  FAIL, handCount amounts NOT equal.
+	Test:  167	Saved:  166
+council_room_refactor() Test 196:  FAIL, handCount amounts NOT equal.
+	Test:  415	Saved:  414
+council_room_refactor() Test 197:  FAIL, handCount amounts NOT equal.
+	Test:  424	Saved:  423
+council_room_refactor() Test 198:  FAIL, handCount amounts NOT equal.
+	Test:  177	Saved:  176
+council_room_refactor() Test 199:  FAIL, handCount amounts NOT equal.
+	Test:  445	Saved:  444
+council_room_refactor() Test 200:  FAIL, handCount amounts NOT equal.
+	Test:  119	Saved:  118
+council_room_refactor() Test 201:  FAIL, handCount amounts NOT equal.
+	Test:  298	Saved:  297
+council_room_refactor() Test 202:  FAIL, handCount amounts NOT equal.
+	Test:  97	Saved:  96
+council_room_refactor() Test 203:  FAIL, handCount amounts NOT equal.
+	Test:  390	Saved:  389
+council_room_refactor() Test 204:  FAIL, handCount amounts NOT equal.
+	Test:  481	Saved:  480
+council_room_refactor() Test 205:  FAIL, handCount amounts NOT equal.
+	Test:  343	Saved:  342
+council_room_refactor() Test 206:  FAIL, handCount amounts NOT equal.
+	Test:  388	Saved:  387
+council_room_refactor() Test 207:  FAIL, handCount amounts NOT equal.
+	Test:  128	Saved:  127
+council_room_refactor() Test 208:  FAIL, handCount amounts NOT equal.
+	Test:  438	Saved:  437
+council_room_refactor() Test 209:  FAIL, handCount amounts NOT equal.
+	Test:  393	Saved:  392
+council_room_refactor() Test 210:  FAIL, handCount amounts NOT equal.
+	Test:  116	Saved:  115
+council_room_refactor() Test 211:  FAIL, handCount amounts NOT equal.
+	Test:  232	Saved:  231
+council_room_refactor() Test 212:  FAIL, handCount amounts NOT equal.
+	Test:  495	Saved:  494
+council_room_refactor() Test 213:  FAIL, handCount amounts NOT equal.
+	Test:  280	Saved:  279
+council_room_refactor() Test 214:  FAIL, handCount amounts NOT equal.
+	Test:  27	Saved:  26
+council_room_refactor() Test 215:  FAIL, handCount amounts NOT equal.
+	Test:  463	Saved:  462
+council_room_refactor() Test 216:  FAIL, handCount amounts NOT equal.
+	Test:  14	Saved:  13
+council_room_refactor() Test 217:  FAIL, handCount amounts NOT equal.
+	Test:  438	Saved:  437
+council_room_refactor() Test 218:  FAIL, handCount amounts NOT equal.
+	Test:  139	Saved:  138
+council_room_refactor() Test 219:  FAIL, handCount amounts NOT equal.
+	Test:  333	Saved:  332
+council_room_refactor() Test 220:  FAIL, handCount amounts NOT equal.
+	Test:  335	Saved:  334
+council_room_refactor() Test 221:  FAIL, handCount amounts NOT equal.
+	Test:  22	Saved:  21
+council_room_refactor() Test 222:  FAIL, handCount amounts NOT equal.
+	Test:  224	Saved:  223
+council_room_refactor() Test 223:  FAIL, handCount amounts NOT equal.
+	Test:  347	Saved:  346
+council_room_refactor() Test 224:  FAIL, handCount amounts NOT equal.
+	Test:  234	Saved:  233
+council_room_refactor() Test 225:  FAIL, handCount amounts NOT equal.
+	Test:  219	Saved:  218
+council_room_refactor() Test 226:  FAIL, handCount amounts NOT equal.
+	Test:  164	Saved:  163
+council_room_refactor() Test 227:  FAIL, handCount amounts NOT equal.
+	Test:  289	Saved:  288
+council_room_refactor() Test 228:  FAIL, handCount amounts NOT equal.
+	Test:  361	Saved:  360
+council_room_refactor() Test 229:  FAIL, handCount amounts NOT equal.
+	Test:  203	Saved:  202
+council_room_refactor() Test 230:  FAIL, handCount amounts NOT equal.
+	Test:  455	Saved:  454
+council_room_refactor() Test 231:  FAIL, handCount amounts NOT equal.
+	Test:  485	Saved:  484
+council_room_refactor() Test 232:  FAIL, handCount amounts NOT equal.
+	Test:  161	Saved:  160
+council_room_refactor() Test 233:  FAIL, handCount amounts NOT equal.
+	Test:  476	Saved:  475
+council_room_refactor() Test 234:  FAIL, handCount amounts NOT equal.
+	Test:  455	Saved:  454
+council_room_refactor() Test 235:  FAIL, handCount amounts NOT equal.
+	Test:  179	Saved:  178
+council_room_refactor() Test 236:  FAIL, handCount amounts NOT equal.
+	Test:  265	Saved:  264
+council_room_refactor() Test 237:  FAIL, handCount amounts NOT equal.
+	Test:  244	Saved:  243
+council_room_refactor() Test 238:  FAIL, handCount amounts NOT equal.
+	Test:  24	Saved:  23
+council_room_refactor() Test 239:  FAIL, handCount amounts NOT equal.
+	Test:  449	Saved:  448
+council_room_refactor() Test 240:  FAIL, handCount amounts NOT equal.
+	Test:  256	Saved:  255
+council_room_refactor() Test 241:  FAIL, handCount amounts NOT equal.
+	Test:  309	Saved:  308
+council_room_refactor() Test 242:  FAIL, handCount amounts NOT equal.
+	Test:  77	Saved:  76
+council_room_refactor() Test 243:  FAIL, handCount amounts NOT equal.
+	Test:  323	Saved:  322
+council_room_refactor() Test 244:  FAIL, handCount amounts NOT equal.
+	Test:  13	Saved:  12
+council_room_refactor() Test 245:  FAIL, handCount amounts NOT equal.
+	Test:  365	Saved:  364
+council_room_refactor() Test 246:  FAIL, handCount amounts NOT equal.
+	Test:  170	Saved:  169
+council_room_refactor() Test 247:  FAIL, handCount amounts NOT equal.
+	Test:  247	Saved:  246
+council_room_refactor() Test 248:  FAIL, handCount amounts NOT equal.
+	Test:  211	Saved:  210
+council_room_refactor() Test 249:  FAIL, handCount amounts NOT equal.
+	Test:  372	Saved:  371
+council_room_refactor() Test 250:  FAIL, handCount amounts NOT equal.
+	Test:  344	Saved:  343
+council_room_refactor() Test 251:  FAIL, handCount amounts NOT equal.
+	Test:  482	Saved:  481
+council_room_refactor() Test 252:  FAIL, handCount amounts NOT equal.
+	Test:  275	Saved:  274
+council_room_refactor() Test 253:  FAIL, handCount amounts NOT equal.
+	Test:  121	Saved:  120
+council_room_refactor() Test 254:  FAIL, handCount amounts NOT equal.
+	Test:  94	Saved:  93
+council_room_refactor() Test 255:  FAIL, handCount amounts NOT equal.
+	Test:  368	Saved:  367
+council_room_refactor() Test 256:  FAIL, handCount amounts NOT equal.
+	Test:  65	Saved:  64
+council_room_refactor() Test 257:  FAIL, handCount amounts NOT equal.
+	Test:  59	Saved:  58
+council_room_refactor() Test 258:  FAIL, handCount amounts NOT equal.
+	Test:  456	Saved:  455
+council_room_refactor() Test 259:  FAIL, handCount amounts NOT equal.
+	Test:  427	Saved:  426
+council_room_refactor() Test 260:  FAIL, handCount amounts NOT equal.
+	Test:  44	Saved:  43
+council_room_refactor() Test 261:  FAIL, handCount amounts NOT equal.
+	Test:  164	Saved:  163
+council_room_refactor() Test 262:  FAIL, handCount amounts NOT equal.
+	Test:  478	Saved:  477
+council_room_refactor() Test 263:  FAIL, handCount amounts NOT equal.
+	Test:  403	Saved:  402
+council_room_refactor() Test 264:  FAIL, handCount amounts NOT equal.
+	Test:  247	Saved:  246
+council_room_refactor() Test 265:  FAIL, handCount amounts NOT equal.
+	Test:  103	Saved:  102
+council_room_refactor() Test 266:  FAIL, handCount amounts NOT equal.
+	Test:  332	Saved:  331
+council_room_refactor() Test 267:  FAIL, handCount amounts NOT equal.
+	Test:  111	Saved:  110
+council_room_refactor() Test 268:  FAIL, handCount amounts NOT equal.
+	Test:  487	Saved:  486
+council_room_refactor() Test 269:  FAIL, handCount amounts NOT equal.
+	Test:  211	Saved:  210
+council_room_refactor() Test 270:  FAIL, handCount amounts NOT equal.
+	Test:  134	Saved:  133
+council_room_refactor() Test 271:  FAIL, handCount amounts NOT equal.
+	Test:  472	Saved:  471
+council_room_refactor() Test 272:  FAIL, handCount amounts NOT equal.
+	Test:  480	Saved:  479
+council_room_refactor() Test 273:  FAIL, handCount amounts NOT equal.
+	Test:  15	Saved:  14
+council_room_refactor() Test 274:  FAIL, handCount amounts NOT equal.
+	Test:  465	Saved:  464
+council_room_refactor() Test 275:  FAIL, handCount amounts NOT equal.
+	Test:  10	Saved:  9
+council_room_refactor() Test 276:  FAIL, handCount amounts NOT equal.
+	Test:  406	Saved:  405
+council_room_refactor() Test 277:  FAIL, handCount amounts NOT equal.
+	Test:  206	Saved:  205
+council_room_refactor() Test 278:  FAIL, handCount amounts NOT equal.
+	Test:  258	Saved:  257
+council_room_refactor() Test 279:  FAIL, handCount amounts NOT equal.
+	Test:  70	Saved:  69
+council_room_refactor() Test 280:  FAIL, handCount amounts NOT equal.
+	Test:  478	Saved:  477
+council_room_refactor() Test 281:  FAIL, handCount amounts NOT equal.
+	Test:  325	Saved:  324
+council_room_refactor() Test 282:  FAIL, handCount amounts NOT equal.
+	Test:  454	Saved:  453
+council_room_refactor() Test 283:  FAIL, handCount amounts NOT equal.
+	Test:  316	Saved:  315
+council_room_refactor() Test 284:  FAIL, handCount amounts NOT equal.
+	Test:  265	Saved:  264
+council_room_refactor() Test 285:  FAIL, handCount amounts NOT equal.
+	Test:  96	Saved:  95
+council_room_refactor() Test 286:  FAIL, handCount amounts NOT equal.
+	Test:  272	Saved:  271
+council_room_refactor() Test 287:  FAIL, handCount amounts NOT equal.
+	Test:  215	Saved:  214
+council_room_refactor() Test 288:  FAIL, handCount amounts NOT equal.
+	Test:  393	Saved:  392
+council_room_refactor() Test 289:  FAIL, handCount amounts NOT equal.
+	Test:  121	Saved:  120
+council_room_refactor() Test 290:  FAIL, handCount amounts NOT equal.
+	Test:  303	Saved:  302
+council_room_refactor() Test 291:  FAIL, handCount amounts NOT equal.
+	Test:  138	Saved:  137
+council_room_refactor() Test 292:  FAIL, handCount amounts NOT equal.
+	Test:  488	Saved:  487
+council_room_refactor() Test 293:  FAIL, handCount amounts NOT equal.
+	Test:  34	Saved:  33
+council_room_refactor() Test 294:  FAIL, handCount amounts NOT equal.
+	Test:  61	Saved:  60
+council_room_refactor() Test 295:  FAIL, handCount amounts NOT equal.
+	Test:  258	Saved:  257
+council_room_refactor() Test 296:  FAIL, handCount amounts NOT equal.
+	Test:  98	Saved:  97
+council_room_refactor() Test 297:  FAIL, handCount amounts NOT equal.
+	Test:  50	Saved:  49
+council_room_refactor() Test 298:  FAIL, handCount amounts NOT equal.
+	Test:  330	Saved:  329
+council_room_refactor() Test 299:  FAIL, handCount amounts NOT equal.
+	Test:  503	Saved:  502
+council_room_refactor() Test 300:  FAIL, handCount amounts NOT equal.
+	Test:  98	Saved:  97
+council_room_refactor() Test 301:  FAIL, handCount amounts NOT equal.
+	Test:  115	Saved:  114
+council_room_refactor() Test 302:  FAIL, handCount amounts NOT equal.
+	Test:  192	Saved:  191
+council_room_refactor() Test 303:  FAIL, handCount amounts NOT equal.
+	Test:  458	Saved:  457
+council_room_refactor() Test 304:  FAIL, handCount amounts NOT equal.
+	Test:  176	Saved:  175
+council_room_refactor() Test 305:  FAIL, handCount amounts NOT equal.
+	Test:  169	Saved:  168
+council_room_refactor() Test 306:  FAIL, handCount amounts NOT equal.
+	Test:  422	Saved:  421
+council_room_refactor() Test 307:  FAIL, handCount amounts NOT equal.
+	Test:  388	Saved:  387
+council_room_refactor() Test 308:  FAIL, handCount amounts NOT equal.
+	Test:  428	Saved:  427
+council_room_refactor() Test 309:  FAIL, handCount amounts NOT equal.
+	Test:  427	Saved:  426
+council_room_refactor() Test 310:  FAIL, handCount amounts NOT equal.
+	Test:  259	Saved:  258
+council_room_refactor() Test 311:  FAIL, handCount amounts NOT equal.
+	Test:  304	Saved:  303
+council_room_refactor() Test 312:  FAIL, handCount amounts NOT equal.
+	Test:  262	Saved:  261
+council_room_refactor() Test 313:  FAIL, handCount amounts NOT equal.
+	Test:  157	Saved:  156
+council_room_refactor() Test 314:  FAIL, handCount amounts NOT equal.
+	Test:  416	Saved:  415
+council_room_refactor() Test 315:  FAIL, handCount amounts NOT equal.
+	Test:  469	Saved:  468
+council_room_refactor() Test 316:  FAIL, handCount amounts NOT equal.
+	Test:  338	Saved:  337
+council_room_refactor() Test 317:  FAIL, handCount amounts NOT equal.
+	Test:  300	Saved:  299
+council_room_refactor() Test 318:  FAIL, handCount amounts NOT equal.
+	Test:  189	Saved:  188
+council_room_refactor() Test 319:  FAIL, handCount amounts NOT equal.
+	Test:  185	Saved:  184
+council_room_refactor() Test 320:  FAIL, handCount amounts NOT equal.
+	Test:  294	Saved:  293
+council_room_refactor() Test 321:  FAIL, handCount amounts NOT equal.
+	Test:  113	Saved:  112
+council_room_refactor() Test 322:  FAIL, handCount amounts NOT equal.
+	Test:  439	Saved:  438
+council_room_refactor() Test 323:  FAIL, handCount amounts NOT equal.
+	Test:  269	Saved:  268
+council_room_refactor() Test 324:  FAIL, handCount amounts NOT equal.
+	Test:  71	Saved:  70
+council_room_refactor() Test 325:  FAIL, handCount amounts NOT equal.
+	Test:  112	Saved:  111
+council_room_refactor() Test 326:  FAIL, handCount amounts NOT equal.
+	Test:  110	Saved:  109
+council_room_refactor() Test 327:  FAIL, handCount amounts NOT equal.
+	Test:  412	Saved:  411
+council_room_refactor() Test 328:  FAIL, handCount amounts NOT equal.
+	Test:  120	Saved:  119
+council_room_refactor() Test 329:  FAIL, handCount amounts NOT equal.
+	Test:  451	Saved:  450
+council_room_refactor() Test 330:  FAIL, handCount amounts NOT equal.
+	Test:  439	Saved:  438
+council_room_refactor() Test 331:  FAIL, handCount amounts NOT equal.
+	Test:  200	Saved:  199
+council_room_refactor() Test 332:  FAIL, handCount amounts NOT equal.
+	Test:  246	Saved:  245
+council_room_refactor() Test 333:  FAIL, handCount amounts NOT equal.
+	Test:  420	Saved:  419
+council_room_refactor() Test 334:  FAIL, handCount amounts NOT equal.
+	Test:  423	Saved:  422
+council_room_refactor() Test 335:  FAIL, handCount amounts NOT equal.
+	Test:  47	Saved:  46
+council_room_refactor() Test 336:  FAIL, handCount amounts NOT equal.
+	Test:  75	Saved:  74
+council_room_refactor() Test 337:  FAIL, handCount amounts NOT equal.
+	Test:  486	Saved:  485
+council_room_refactor() Test 338:  FAIL, handCount amounts NOT equal.
+	Test:  435	Saved:  434
+council_room_refactor() Test 339:  FAIL, handCount amounts NOT equal.
+	Test:  65	Saved:  64
+council_room_refactor() Test 340:  FAIL, handCount amounts NOT equal.
+	Test:  24	Saved:  23
+council_room_refactor() Test 341:  FAIL, handCount amounts NOT equal.
+	Test:  438	Saved:  437
+council_room_refactor() Test 342:  FAIL, handCount amounts NOT equal.
+	Test:  31	Saved:  30
+council_room_refactor() Test 343:  FAIL, handCount amounts NOT equal.
+	Test:  413	Saved:  412
+council_room_refactor() Test 344:  FAIL, handCount amounts NOT equal.
+	Test:  225	Saved:  224
+council_room_refactor() Test 345:  FAIL, handCount amounts NOT equal.
+	Test:  428	Saved:  427
+council_room_refactor() Test 346:  FAIL, handCount amounts NOT equal.
+	Test:  201	Saved:  200
+council_room_refactor() Test 347:  FAIL, handCount amounts NOT equal.
+	Test:  173	Saved:  172
+council_room_refactor() Test 348:  FAIL, handCount amounts NOT equal.
+	Test:  29	Saved:  28
+council_room_refactor() Test 349:  FAIL, handCount amounts NOT equal.
+	Test:  237	Saved:  236
+council_room_refactor() Test 350:  FAIL, handCount amounts NOT equal.
+	Test:  136	Saved:  135
+council_room_refactor() Test 351:  FAIL, handCount amounts NOT equal.
+	Test:  358	Saved:  357
+council_room_refactor() Test 352:  FAIL, handCount amounts NOT equal.
+	Test:  198	Saved:  197
+council_room_refactor() Test 353:  FAIL, handCount amounts NOT equal.
+	Test:  7	Saved:  6
+council_room_refactor() Test 354:  FAIL, handCount amounts NOT equal.
+	Test:  354	Saved:  353
+council_room_refactor() Test 355:  FAIL, handCount amounts NOT equal.
+	Test:  380	Saved:  379
+council_room_refactor() Test 356:  FAIL, handCount amounts NOT equal.
+	Test:  103	Saved:  102
+council_room_refactor() Test 357:  FAIL, handCount amounts NOT equal.
+	Test:  26	Saved:  25
+council_room_refactor() Test 358:  FAIL, handCount amounts NOT equal.
+	Test:  17	Saved:  16
+council_room_refactor() Test 359:  FAIL, handCount amounts NOT equal.
+	Test:  180	Saved:  179
+council_room_refactor() Test 360:  FAIL, handCount amounts NOT equal.
+	Test:  181	Saved:  180
+council_room_refactor() Test 361:  FAIL, handCount amounts NOT equal.
+	Test:  310	Saved:  309
+council_room_refactor() Test 362:  FAIL, handCount amounts NOT equal.
+	Test:  49	Saved:  48
+council_room_refactor() Test 363:  FAIL, handCount amounts NOT equal.
+	Test:  406	Saved:  405
+council_room_refactor() Test 364:  FAIL, handCount amounts NOT equal.
+	Test:  394	Saved:  393
+council_room_refactor() Test 365:  FAIL, handCount amounts NOT equal.
+	Test:  194	Saved:  193
+council_room_refactor() Test 366:  FAIL, handCount amounts NOT equal.
+	Test:  85	Saved:  84
+council_room_refactor() Test 367:  FAIL, handCount amounts NOT equal.
+	Test:  306	Saved:  305
+council_room_refactor() Test 368:  FAIL, handCount amounts NOT equal.
+	Test:  428	Saved:  427
+council_room_refactor() Test 369:  FAIL, handCount amounts NOT equal.
+	Test:  300	Saved:  299
+council_room_refactor() Test 370:  FAIL, handCount amounts NOT equal.
+	Test:  120	Saved:  119
+council_room_refactor() Test 371:  FAIL, handCount amounts NOT equal.
+	Test:  64	Saved:  63
+council_room_refactor() Test 372:  FAIL, handCount amounts NOT equal.
+	Test:  308	Saved:  307
+council_room_refactor() Test 373:  FAIL, handCount amounts NOT equal.
+	Test:  109	Saved:  108
+council_room_refactor() Test 374:  FAIL, handCount amounts NOT equal.
+	Test:  168	Saved:  167
+council_room_refactor() Test 375:  FAIL, handCount amounts NOT equal.
+	Test:  5	Saved:  4
+council_room_refactor() Test 376:  FAIL, handCount amounts NOT equal.
+	Test:  190	Saved:  189
+council_room_refactor() Test 377:  FAIL, handCount amounts NOT equal.
+	Test:  35	Saved:  34
+council_room_refactor() Test 378:  FAIL, handCount amounts NOT equal.
+	Test:  239	Saved:  238
+council_room_refactor() Test 379:  FAIL, handCount amounts NOT equal.
+	Test:  488	Saved:  487
+council_room_refactor() Test 380:  FAIL, handCount amounts NOT equal.
+	Test:  316	Saved:  315
+council_room_refactor() Test 381:  FAIL, handCount amounts NOT equal.
+	Test:  311	Saved:  310
+council_room_refactor() Test 382:  FAIL, handCount amounts NOT equal.
+	Test:  207	Saved:  206
+council_room_refactor() Test 383:  FAIL, handCount amounts NOT equal.
+	Test:  300	Saved:  299
+council_room_refactor() Test 384:  FAIL, handCount amounts NOT equal.
+	Test:  300	Saved:  299
+council_room_refactor() Test 385:  FAIL, handCount amounts NOT equal.
+	Test:  262	Saved:  261
+council_room_refactor() Test 386:  FAIL, handCount amounts NOT equal.
+	Test:  10	Saved:  9
+council_room_refactor() Test 387:  FAIL, handCount amounts NOT equal.
+	Test:  287	Saved:  286
+council_room_refactor() Test 388:  FAIL, handCount amounts NOT equal.
+	Test:  57	Saved:  56
+council_room_refactor() Test 389:  FAIL, handCount amounts NOT equal.
+	Test:  63	Saved:  62
+council_room_refactor() Test 390:  FAIL, handCount amounts NOT equal.
+	Test:  320	Saved:  319
+council_room_refactor() Test 391:  FAIL, handCount amounts NOT equal.
+	Test:  15	Saved:  14
+council_room_refactor() Test 392:  FAIL, handCount amounts NOT equal.
+	Test:  333	Saved:  332
+council_room_refactor() Test 393:  FAIL, handCount amounts NOT equal.
+	Test:  166	Saved:  165
+council_room_refactor() Test 394:  FAIL, handCount amounts NOT equal.
+	Test:  270	Saved:  269
+council_room_refactor() Test 395:  FAIL, handCount amounts NOT equal.
+	Test:  97	Saved:  96
+council_room_refactor() Test 396:  FAIL, handCount amounts NOT equal.
+	Test:  15	Saved:  14
+council_room_refactor() Test 397:  FAIL, handCount amounts NOT equal.
+	Test:  223	Saved:  222
+council_room_refactor() Test 398:  FAIL, handCount amounts NOT equal.
+	Test:  351	Saved:  350
+council_room_refactor() Test 399:  FAIL, handCount amounts NOT equal.
+	Test:  404	Saved:  403
+council_room_refactor() Test 400:  FAIL, handCount amounts NOT equal.
+	Test:  28	Saved:  27
+council_room_refactor() Test 401:  FAIL, handCount amounts NOT equal.
+	Test:  210	Saved:  209
+council_room_refactor() Test 402:  FAIL, handCount amounts NOT equal.
+	Test:  307	Saved:  306
+council_room_refactor() Test 403:  FAIL, handCount amounts NOT equal.
+	Test:  257	Saved:  256
+council_room_refactor() Test 404:  FAIL, handCount amounts NOT equal.
+	Test:  479	Saved:  478
+council_room_refactor() Test 405:  FAIL, handCount amounts NOT equal.
+	Test:  144	Saved:  143
+council_room_refactor() Test 406:  FAIL, handCount amounts NOT equal.
+	Test:  172	Saved:  171
+council_room_refactor() Test 407:  FAIL, handCount amounts NOT equal.
+	Test:  129	Saved:  128
+council_room_refactor() Test 408:  FAIL, handCount amounts NOT equal.
+	Test:  93	Saved:  92
+council_room_refactor() Test 409:  FAIL, handCount amounts NOT equal.
+	Test:  357	Saved:  356
+council_room_refactor() Test 410:  FAIL, handCount amounts NOT equal.
+	Test:  67	Saved:  66
+council_room_refactor() Test 411:  FAIL, handCount amounts NOT equal.
+	Test:  214	Saved:  213
+council_room_refactor() Test 412:  FAIL, handCount amounts NOT equal.
+	Test:  40	Saved:  39
+council_room_refactor() Test 413:  FAIL, handCount amounts NOT equal.
+	Test:  270	Saved:  269
+council_room_refactor() Test 414:  FAIL, handCount amounts NOT equal.
+	Test:  52	Saved:  51
+council_room_refactor() Test 415:  FAIL, handCount amounts NOT equal.
+	Test:  393	Saved:  392
+council_room_refactor() Test 416:  FAIL, handCount amounts NOT equal.
+	Test:  454	Saved:  453
+council_room_refactor() Test 417:  FAIL, handCount amounts NOT equal.
+	Test:  433	Saved:  432
+council_room_refactor() Test 418:  FAIL, handCount amounts NOT equal.
+	Test:  140	Saved:  139
+council_room_refactor() Test 419:  FAIL, handCount amounts NOT equal.
+	Test:  77	Saved:  76
+council_room_refactor() Test 420:  FAIL, handCount amounts NOT equal.
+	Test:  334	Saved:  333
+council_room_refactor() Test 421:  FAIL, handCount amounts NOT equal.
+	Test:  490	Saved:  489
+council_room_refactor() Test 422:  FAIL, handCount amounts NOT equal.
+	Test:  238	Saved:  237
+council_room_refactor() Test 423:  FAIL, handCount amounts NOT equal.
+	Test:  92	Saved:  91
+council_room_refactor() Test 424:  FAIL, handCount amounts NOT equal.
+	Test:  338	Saved:  337
+council_room_refactor() Test 425:  FAIL, handCount amounts NOT equal.
+	Test:  316	Saved:  315
+council_room_refactor() Test 426:  FAIL, handCount amounts NOT equal.
+	Test:  448	Saved:  447
+council_room_refactor() Test 427:  FAIL, handCount amounts NOT equal.
+	Test:  156	Saved:  155
+council_room_refactor() Test 428:  FAIL, handCount amounts NOT equal.
+	Test:  229	Saved:  228
+council_room_refactor() Test 429:  FAIL, handCount amounts NOT equal.
+	Test:  462	Saved:  461
+council_room_refactor() Test 430:  FAIL, handCount amounts NOT equal.
+	Test:  221	Saved:  220
+council_room_refactor() Test 431:  FAIL, handCount amounts NOT equal.
+	Test:  160	Saved:  159
+council_room_refactor() Test 432:  FAIL, handCount amounts NOT equal.
+	Test:  342	Saved:  341
+council_room_refactor() Test 433:  FAIL, handCount amounts NOT equal.
+	Test:  137	Saved:  136
+council_room_refactor() Test 434:  FAIL, handCount amounts NOT equal.
+	Test:  28	Saved:  27
+council_room_refactor() Test 435:  FAIL, handCount amounts NOT equal.
+	Test:  6	Saved:  5
+council_room_refactor() Test 436:  FAIL, handCount amounts NOT equal.
+	Test:  231	Saved:  230
+council_room_refactor() Test 437:  FAIL, handCount amounts NOT equal.
+	Test:  181	Saved:  180
+council_room_refactor() Test 438:  FAIL, handCount amounts NOT equal.
+	Test:  248	Saved:  247
+council_room_refactor() Test 439:  FAIL, handCount amounts NOT equal.
+	Test:  212	Saved:  211
+council_room_refactor() Test 440:  FAIL, handCount amounts NOT equal.
+	Test:  98	Saved:  97
+council_room_refactor() Test 441:  FAIL, handCount amounts NOT equal.
+	Test:  54	Saved:  53
+council_room_refactor() Test 442:  FAIL, handCount amounts NOT equal.
+	Test:  195	Saved:  194
+council_room_refactor() Test 443:  FAIL, handCount amounts NOT equal.
+	Test:  47	Saved:  46
+council_room_refactor() Test 444:  FAIL, handCount amounts NOT equal.
+	Test:  470	Saved:  469
+council_room_refactor() Test 445:  FAIL, handCount amounts NOT equal.
+	Test:  392	Saved:  391
+council_room_refactor() Test 446:  FAIL, handCount amounts NOT equal.
+	Test:  153	Saved:  152
+council_room_refactor() Test 447:  FAIL, handCount amounts NOT equal.
+	Test:  24	Saved:  23
+council_room_refactor() Test 448:  FAIL, handCount amounts NOT equal.
+	Test:  293	Saved:  292
+council_room_refactor() Test 449:  FAIL, handCount amounts NOT equal.
+	Test:  15	Saved:  14
+council_room_refactor() Test 450:  FAIL, handCount amounts NOT equal.
+	Test:  483	Saved:  482
+council_room_refactor() Test 451:  FAIL, handCount amounts NOT equal.
+	Test:  466	Saved:  465
+council_room_refactor() Test 452:  FAIL, handCount amounts NOT equal.
+	Test:  401	Saved:  400
+council_room_refactor() Test 453:  FAIL, handCount amounts NOT equal.
+	Test:  477	Saved:  476
+council_room_refactor() Test 454:  FAIL, handCount amounts NOT equal.
+	Test:  290	Saved:  289
+council_room_refactor() Test 455:  FAIL, handCount amounts NOT equal.
+	Test:  115	Saved:  114
+council_room_refactor() Test 456:  FAIL, handCount amounts NOT equal.
+	Test:  236	Saved:  235
+council_room_refactor() Test 457:  FAIL, handCount amounts NOT equal.
+	Test:  100	Saved:  99
+council_room_refactor() Test 458:  FAIL, handCount amounts NOT equal.
+	Test:  400	Saved:  399
+council_room_refactor() Test 459:  FAIL, handCount amounts NOT equal.
+	Test:  34	Saved:  33
+council_room_refactor() Test 460:  FAIL, handCount amounts NOT equal.
+	Test:  351	Saved:  350
+council_room_refactor() Test 461:  FAIL, handCount amounts NOT equal.
+	Test:  241	Saved:  240
+council_room_refactor() Test 462:  FAIL, handCount amounts NOT equal.
+	Test:  160	Saved:  159
+council_room_refactor() Test 463:  FAIL, handCount amounts NOT equal.
+	Test:  289	Saved:  288
+council_room_refactor() Test 464:  FAIL, handCount amounts NOT equal.
+	Test:  476	Saved:  475
+council_room_refactor() Test 465:  FAIL, handCount amounts NOT equal.
+	Test:  113	Saved:  112
+council_room_refactor() Test 466:  FAIL, handCount amounts NOT equal.
+	Test:  321	Saved:  320
+council_room_refactor() Test 467:  FAIL, handCount amounts NOT equal.
+	Test:  71	Saved:  70
+council_room_refactor() Test 468:  FAIL, handCount amounts NOT equal.
+	Test:  69	Saved:  68
+council_room_refactor() Test 469:  FAIL, handCount amounts NOT equal.
+	Test:  250	Saved:  249
+council_room_refactor() Test 470:  FAIL, handCount amounts NOT equal.
+	Test:  65	Saved:  64
+council_room_refactor() Test 471:  FAIL, handCount amounts NOT equal.
+	Test:  127	Saved:  126
+council_room_refactor() Test 472:  FAIL, handCount amounts NOT equal.
+	Test:  285	Saved:  284
+council_room_refactor() Test 473:  FAIL, handCount amounts NOT equal.
+	Test:  194	Saved:  193
+council_room_refactor() Test 474:  FAIL, handCount amounts NOT equal.
+	Test:  503	Saved:  502
+council_room_refactor() Test 475:  FAIL, handCount amounts NOT equal.
+	Test:  74	Saved:  73
+council_room_refactor() Test 476:  FAIL, handCount amounts NOT equal.
+	Test:  240	Saved:  239
+council_room_refactor() Test 477:  FAIL, handCount amounts NOT equal.
+	Test:  118	Saved:  117
+council_room_refactor() Test 478:  FAIL, handCount amounts NOT equal.
+	Test:  430	Saved:  429
+council_room_refactor() Test 479:  FAIL, handCount amounts NOT equal.
+	Test:  346	Saved:  345
+council_room_refactor() Test 480:  FAIL, handCount amounts NOT equal.
+	Test:  201	Saved:  200
+council_room_refactor() Test 481:  FAIL, handCount amounts NOT equal.
+	Test:  183	Saved:  182
+council_room_refactor() Test 482:  FAIL, handCount amounts NOT equal.
+	Test:  50	Saved:  49
+council_room_refactor() Test 483:  FAIL, handCount amounts NOT equal.
+	Test:  110	Saved:  109
+council_room_refactor() Test 484:  FAIL, handCount amounts NOT equal.
+	Test:  463	Saved:  462
+council_room_refactor() Test 485:  FAIL, handCount amounts NOT equal.
+	Test:  377	Saved:  376
+council_room_refactor() Test 486:  FAIL, handCount amounts NOT equal.
+	Test:  352	Saved:  351
+council_room_refactor() Test 487:  FAIL, handCount amounts NOT equal.
+	Test:  292	Saved:  291
+council_room_refactor() Test 488:  FAIL, handCount amounts NOT equal.
+	Test:  411	Saved:  410
+council_room_refactor() Test 489:  FAIL, handCount amounts NOT equal.
+	Test:  45	Saved:  44
+council_room_refactor() Test 490:  FAIL, handCount amounts NOT equal.
+	Test:  481	Saved:  480
+council_room_refactor() Test 491:  FAIL, handCount amounts NOT equal.
+	Test:  334	Saved:  333
+council_room_refactor() Test 492:  FAIL, handCount amounts NOT equal.
+	Test:  176	Saved:  175
+council_room_refactor() Test 493:  FAIL, handCount amounts NOT equal.
+	Test:  115	Saved:  114
+council_room_refactor() Test 494:  FAIL, handCount amounts NOT equal.
+	Test:  472	Saved:  471
+council_room_refactor() Test 495:  FAIL, handCount amounts NOT equal.
+	Test:  29	Saved:  28
+council_room_refactor() Test 496:  FAIL, handCount amounts NOT equal.
+	Test:  51	Saved:  50
+council_room_refactor() Test 497:  FAIL, handCount amounts NOT equal.
+	Test:  431	Saved:  430
+council_room_refactor() Test 498:  FAIL, handCount amounts NOT equal.
+	Test:  356	Saved:  355
+council_room_refactor() Test 499:  FAIL, handCount amounts NOT equal.
+	Test:  348	Saved:  347
+council_room_refactor() Random Test 500:  FAIL, discard amounts NOT equal.
+	Test:  501	Saved:  10
+council_room_refactor() Test 500:  FAIL, handCount amounts NOT equal.
+	Test:  378	Saved:  377
+smithyMethod() Random Test fail number:  501
+
+ ***************************** 
+
+Result for running random tests: 
+This is the tests for the Adventurer card, adventurerMethod().
+------------Final-------------
+Total tests:  100000
+Total errors in random:  0
+Unknow errors in random:  0
