@@ -102,7 +102,7 @@ int main(int argc, char * argv[]) {
           
           //copy the previous state and play card
           memcpy(stateCopy, gs, sizeof(struct gameState));
-          playAdventurer(playerNum, gs);
+          adventurerCardEffect(playerNum, gs);
           
           
           //Analyse state

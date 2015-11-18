@@ -159,7 +159,7 @@ int main(int argc, char * argv[]) {
 	}
 	
 	//TRIAL 5 - NOT ENOUGH TREASURES
-	/* Test disabled.  Bug creates problems.  Uncommon.
+	// Test disabled.  Bug creates problems.  Uncommon.
 	printf("Trial 5\r\n");
 	memcpy(stateCopy, gs5, sizeof(struct gameState));
 	//playerNum = 3;
@@ -170,7 +170,7 @@ int main(int argc, char * argv[]) {
 	if (gs5->handCount[playerNum] != stateCopy->handCount[playerNum]) {
 		printf("Mismatched handCount. Expected: %d, Actual: %d\r\n", stateCopy->handCount[playerNum], gs5->handCount[playerNum]);
 	}
-	*/
+	
 	
 	printf("Card Test 2 Complete\r\n");
 	
