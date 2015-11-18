@@ -1,176 +1,447 @@
 Billy Kerns
+BugsInTeammates.c
 
-Daniel Bonnin Bugs:
+Teammate 1-Daniel Bonnin
 
-Noverse Bug Reporting Template
-==============================
+ID:
+	1
 
-	Title: 
-		Smithy Card Failure
+Description:
+	Calling the scoreFor function does not always return the correct score for a player.
 
-	Class:
-		Card bug
+Expected Output:
+	Correct score 
 
-	Date:   
-		11/13/2015 
+Actual Output:
+	Incorrect score
 
-	Reported By:  
-		Billy Kerns 
+Severity:
+	High-Does not break game but could lead to the wrong player winning or losing
 
-	Email:      
-		kernsbi@oregonstate.edu
+Priority:
+	Medium-Game is still playable but with incorrect results
 
-	Product:  
-		Dominion Game    
+How to Reproduce:
+	Call scorefor function making sure the player''s discard count is different than the player''s hand count
 
-	Platform:   
-		linux  
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	Is it reproducible:
-		Yes
+ID:
+	2
 
-	Description: 
-		The Smithy card only adds two cards to the player''s hand instead of three.
+Description:
+	Calling the discardCard function does not increment the gameState''s discard count
 
-	Steps to Produce/Reproduce:
-		Play the Smithy card.
+Expected Output:
+	discardCount: 296        
 
-	Expected Results:
-		handCount should go up by three assuming no shuffle has taken place.
+Actual Output:
+	Iteration #0    Test 5 failed.
+	Actual discardCount: 295	
 
-	Actual Results:
-		handCount only goes up by two and deckCount only goes down by two.
+Severity:
+	Low-Does not seem to have much of an effect on playing the game
 
-	Workarounds:
-		None
+Priority:
+	Low-Needs to be fixed as it may effect the game in unforeseen ways that haven''t been found yet
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+How to Reproduce:
+	Call the discardCard function
 
-	Title: 
-		Village Card Failure 1
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	Class:
-		Card bug
+ID:
+	3
 
-	Date:   
-		11/13/2015 
+Description:
+	The smithy card does not add three card to the player''s hand
 
-	Reported By:  
-		Billy Kerns 
+Expected Output:
+	handCount = 332
 
-	Email:      
-		kernsbi@oregonstate.edu
+Actual Output:
+	Iteration # 0 Test 1 failed. 
+	Actual: deckCount = 331
 
-	Product:  
-		Dominion Game    
+Severity:
+	High-Could change outcome of the game
 
-	Platform:   
-		linux  
+Priority:
+	High-Not game breaking but still a large problem
 
-	Is it reproducible:
-		Yes
+How to Reproduce:
+	Play the smithy card
 
-	Description: 
-		Played the Village card noting the amount of numActions in the gameState.  After playing the Village card the amount
-		of numActions was greater than the original amount + 2
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	Steps to Produce/Reproduce:
-		Play Village card
+ID:
+	4
 
-	Expected Results:
-		The gameState''s numActions to be incremented by two.
+Description:
+	The smithy card does not remove three card from player''s deck
 
-	Actual Results:
-		The gameState''s numActions is incremented by more than two.
+Expected Output:
+	deckCount = 301
 
-	Workarounds:
-		None
+Actual Output:
+	Iteration # 0 Test 2 failed.
+	Actual: deckCount = 302
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Severity:
+	High-Could change outcome of the game
 
-Victor Hernandez Bugs: 
-Noverse Bug Reporting Template
-==============================
+Priority:
+	High-Not game breaking but still a large problem
 
-	Title: 
-		Smithy Card Failure
+How to Reproduce:
+	Play the smithy card
 
-	Class:
-		Card bug
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	Date:   
-		11/16/2015 
+ID:
+	5
 
-	Reported By:  
-		Billy Kerns 
+Description:
+	The adventurer card does not add two treasure cards to the player''s hand when two treasure are available
 
-	Email:      
-		kernsbi@oregonstate.edu
+Expected Output:
+	treasure in hand = 51
 
-	Product:  
-		Dominion Game    
+Actual Output:
+	Iteration #: 0  Test 6 failed
+	treasure in hand = 49
 
-	Platform:   
-		linux  
+Severity:
+	High-Could change outcome of the game
 
-	Is it reproducible:
-		Yes
+Priority:
+	High-Not game breaking but still a large problem
 
-	Description: 
-		Played the Smithy card noting the amount of played cards in the gameState.  After playing the Smithy card the 
-		amount of played cards was not increased to account for the played card.
+How to Reproduce:
+	Play the adventurer card
 
-	Steps to Produce/Reproduce:
-		Play Smithy card keeping track of played card count
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	Expected Results:
-		The gameState''s played card count to be incremented by one.
+ID:
+	6
 
-	Actual Results:
-		The gameState''s played card count is not incremented at all.
+Description:
+	The village card does not add the correct amount of actions to the gameState
 
-	Workarounds:
-		None
+Expected Output:
+	numActions = 3
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Actual Output:
+	Iteration #:0   Test 2 failed
+	numActionst = 4
 
-	Title: 
-		Great Hall Card Failure 
+Severity:
+	High-Could change outcome of the game
 
-	Class:
-		Card bug
+Priority:
+	High-Not game breaking but still a large problem
 
-	Date:   
-		11/16/2015 
+How to Reproduce:
+	Play the village card
 
-	Reported By:  
-		Billy Kerns 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	Email:      
-		kernsbi@oregonstate.edu
+ID:
+	7
 
-	Product:  
-		Dominion Game    
+Description:
+	The discardCount is not incremented when the village card is played
 
-	Platform:   
-		linux  
+Expected Output:
+	discardCount = 373
 
-	Is it reproducible:
-		Yes
+Actual Output:
+	Iteration #: 0  Test 3 failed
+	discardCount = 372
 
-	Description: 
-		Played the Great Hall card noting the amount of cards in the player''s hand.  After playing the Great Hall card 
-		the amount of cards in the player''s hand has one more than it should.
+Severity:
+	High-Could change outcome of the game
 
-	Steps to Produce/Reproduce:
-		Play Great Hall card keeping track of player''s hand count
+Priority:
+	High-Not game breaking but still a large problem
 
-	Expected Results:
-		The player''s hand count to be the same as it was before the card was played.
+How to Reproduce:
+	Play the village card
 
-	Actual Results:
-		The player''s hand count has one more than the hand count before the card is played.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	Workarounds:
-		None
+ID:
+	8
+
+Description:
+	The great hall card does not always add a card to the player''s hand
+
+Expected Output:
+	cardCount = 477
+
+Actual Output:
+	Iteration #:0   Test 1 failed
+	cardCount = 476
+
+Severity:
+	High-Could change outcome of the game
+
+Priority:
+	High-Not game breaking but still a large problem
+
+How to Reproduce:
+	Play the great hall card
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ID:
+	9
+
+Description:
+	The great hall card does not increment the discarded card count
+
+Expected Output:
+	discardCount = 373
+
+Actual Output:
+	Iteration #: 0  Test 4 failed
+	Actual: discardCount = 372
+
+Severity:
+	High-Could change outcome of the game
+
+Priority:
+	High-Not game breaking but still a large problem
+
+How to Reproduce:
+	Play the great hall card
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ID:
+	10
+
+Description:
+	The great hall card does will sometimes effect other players
+
+Expected Output:
+	Player 0(not the player who played the card) handCount = 340
+
+Actual Output:
+	Iteration #: 0  Test 5 failed
+	Player 0 handCount = 341
+
+Severity:
+	High-Could change outcome of the game
+
+Priority:
+	High-Not game breaking but still a large problem
+
+How to Reproduce:
+	Create a gameState with multiple players and play the great hall card a few times and the error will show up
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ID:
+	11
+
+Description:
+	The great hall card does will sometimes effect other players
+
+Expected Output:
+	Player 0(not the player who played the card) handCount = 340
+
+Actual Output:
+	Iteration #: 0  Test 5 failed
+	Player 0 handCount = 341
+
+Severity:
+	High-Could change outcome of the game
+
+Priority:
+	High-Not game breaking but still a large problem
+
+How to Reproduce:
+	Create a gameState with multiple players and play the great hall card a few times and the error will show up
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+The random tests on the adventurer card brought up the same bugs as the unit tests so I will not be repeating
+them here.
+
+The random tests on the village card brought up the same bug as the unit tests so I will not be repeating them
+here.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Teammate 2-Victor Hernandez
+
+ID:
+	1
+
+Description:
+	Calling the scoreFor function does not always return the correct score for a player.
+
+Expected Output:
+	Correct score 
+
+Actual Output:
+	Incorrect score
+
+Severity:
+	High-Does not break game but could lead to the wrong player winning or losing
+
+Priority:
+	Medium-Game is still playable but with incorrect results
+
+How to Reproduce:
+	Call scorefor function making sure the player''s discard count is different than the player''s hand count
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ID:
+	2
+
+Description:
+	Calling the discardCard function does not increment the gameState''s discard count
+
+Expected Output:
+	discardCount: 296        
+
+Actual Output:
+	Iteration #0    Test 5 failed.
+	Actual discardCount: 295	
+
+Severity:
+	Low-Does not seem to have much of an effect on playing the game
+
+Priority:
+	Low-Needs to be fixed as it may effect the game in unforeseen ways that haven''t been found yet
+
+How to Reproduce:
+	Call the discardCard function
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ID:
+	3
+
+Description:
+	The smithy card is no added to the played card count
+
+Expected Output:
+	playedCardCount = 297
+
+Actual Output:
+	Iteration # 0 Test 9 failed. Card was not added to played card count
+	playedCardCount = 296
+
+Severity:
+	Low-Does not seem to have much of an effect on playing the game
+
+Priority:
+	Low-Needs to be fixed as it may effect the game in unforeseen ways that haven''t been found yet
+
+How to Reproduce:
+	Call the discardCard function
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ID:
+	4
+
+Description:
+	The village card does not add the correct amount of actions to the gameState
+
+Expected Output:
+	numActions = 3
+
+Actual Output:
+	Iteration #:0   Test 2 failed
+	numActionst = 4
+
+Severity:
+	High-Could change outcome of the game
+
+Priority:
+	High-Not game breaking but still a large problem
+
+How to Reproduce:
+	Play the village card
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ID:
+	5
+
+Description:
+	The discardCount is not incremented when the village card is played
+
+Expected Output:
+	discardCount = 311
+
+Actual Output:
+	Iteration #: 0  Test 3 failed
+	discardCount = 310
+
+Severity:
+	High-Could change outcome of the game
+
+Priority:
+	High-Not game breaking but still a large problem
+
+How to Reproduce:
+	Play the village card
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ID:
+	6
+
+Description:
+	The great hall card adds an extra card to the players hand
+
+Expected Output:
+	cardCount = 46
+
+Actual Output:
+	Iteration #:0   Test 1 failed
+	Actual: cardCount = 47
+
+Severity:
+	High-Could change outcome of the game
+
+Priority:
+	High-Not game breaking but still a large problem
+
+How to Reproduce:
+	Play the great hall card
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ID:
+	7(random adventurer testing)
+
+Description:
+	The player''s hand count is not decremented to account for the adventurer card being played
+
+Expected Output:
+	Post handCount = 164 
+
+Actual Output:
+	Iteration #: 0  Test 10 failed
+	Post handCount = 165
+
+Severity:
+	High-Could change outcome of the game
+
+Priority:
+	High-Not game breaking but still a large problem
+
+How to Reproduce:
+	Play the great hall card
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+The random tests on the village card brought up the same bug as the unit tests so I will not be repeating them
+here.
