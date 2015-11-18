@@ -100,7 +100,7 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
     not have changed. Note that                                                 potentially limit       not used by the sea_hag
     the deck count should have                                                  a player's access to    case, they can be passed
     only been decremented once                                                  his/her cards by        as arguments with any 
-    when the top of the deck                                                    recording the an        value, although it is 
+    when the top of the deck                                                    recording an            value, although it is 
     was discarded, then                                                         erroneously low         preferable to pass in
     incremented once when the                                                   deck count.             arguments of valid CARD
     curse card as added to the                                                                          enumeration to prevent
@@ -144,12 +144,12 @@ BUG REPORT FOR TEAMMATE 2 (Dustin Dinh; onid: dinhd)
 8 bugs were detected using tests in cardtest1.c and cardtest2.c
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           SEVERITY  PRIORITY  HOW TO REPRODUCE            
+ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           SEVERITY  PRIORITY  	HOW TO REPRODUCE            
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-1   Number of cards in hand     pre-call handCount=5    pre-call handCount=5    High      Urgent    Call smithyCard()
-    is two less than expected   post-call handCount=7   post-call handCount=5                       using valid game
-    after call to smithyCard().                                                                     state, player and
-    Note that cardtest1.c                                                                           hand position.
+1   Number of cards in hand     pre-call handCount=5    pre-call handCount=5    High      Urgent    	Call smithyCard()
+    is two less than expected   post-call handCount=7   post-call handCount=5                       	using valid game
+    after call to smithyCard().                                                                     	state, player and
+    Note that cardtest1.c                                                                           	hand position.
     forces the user to draw 
     from a deck containing only 
     gold treasure cards as a 
@@ -169,13 +169,13 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
     Bug detected using unit tests 
     in cardtest1.c.
 ----------------------------------------------------------------------------------------------------------------------------
-2   The player's discard card   discardCount=5          discardCount=6      High        Urgent      Call adventurerCard()
-    count is consistently one                                                                       using valid game
-    more than the expected                                                  If left unfixed,        state, player, and hand
-    discard card count. This is                                             subsequent attempts     position. Check discard
-    due to a bug causing an extra                                           to use discard pile     count against a oracle  
-    card (actually uninitialized                                            may result in invalid   after card draws and 
-    junk data) from the temphand                                            (junk data) being       discard of temphand.
+2   The player's discard card   discardCount=5          discardCount=6      High        Urgent      	Call adventurerCard()
+    count is consistently one                                                                       	using valid game
+    more than the expected                                                  If left unfixed,        	state, player, and hand
+    discard card count. This is                                             subsequent attempts     	position. Check discard
+    due to a bug causing an extra                                           to use discard pile     	count against a oracle  
+    card (actually uninitialized                                            may result in invalid   	after card draws and 
+    junk data) from the temphand                                            (junk data) being       	discard of temphand.
     being added to the discard                                              accessed.
     pile due to accessing data                          
     outside of the temphand
@@ -244,7 +244,7 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
     not have changed. Note that                                                 potentially limit       not used by the sea_hag
     the deck count should have                                                  a player's access to    case, they can be passed
     only been decremented once                                                  his/her cards by        as arguments with any 
-    when the top of the deck                                                    recording the an        value, although it is 
+    when the top of the deck                                                    recording an            value, although it is 
     was discarded, then                                                         erroneously low         preferable to pass in
     incremented once when the                                                   deck count.             arguments of valid CARD
     curse card as added to the                                                                          enumeration to prevent
@@ -258,8 +258,8 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
     count remains the same,                                                     If the discard count    position, player and
     i.e. the discard count                                                      does not increase on    state. To avoid input
     does not incremented as                                                     discarding of a card,   validity issues while
-    expected. This bug was                                                      then methods that       fixing this bug, 
     detected using unit tests                                                   manipulate the          pass in a valid hand 
+    expected. This bug was                                                      then methods that       fixing this bug, 
     from unittest2.c.                                                           discard pile and count  position.
                                                                                 could run into issue 
                                                                                 such as array 
