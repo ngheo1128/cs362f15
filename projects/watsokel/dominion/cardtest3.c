@@ -177,7 +177,9 @@ int main() {
 
 		/*Since player 0 always draws 5 cards on initialization, we must equalize the players' hands and decks*/
 		G.deckCount[p] = maxDeckCount;
+		G.whoseTurn=p;
 		opponent = p==0? 1:0;
+		
 		
 		/* Initialize player's decks */
 		G.deckCount[p] = maxDeckCount;
