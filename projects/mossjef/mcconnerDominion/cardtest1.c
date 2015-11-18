@@ -109,7 +109,7 @@ void testuseSmithy () {
 	printf("Testing that 3 more cards are drawn\n");
 #endif
 	int smithyRet;
-	smithyRet = useSmithy(0, 0, &G);
+	smithyRet = smithyCard(0, &G, 0);
 
 	//Test return value	
 	if (smithyRet == 0) {
