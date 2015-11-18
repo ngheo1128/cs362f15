@@ -124,17 +124,17 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
                                                                                 or accessing junk data.
 ----------------------------------------------------------------------------------------------------------------------------
 8.  After a call to             discardedCard=6         discardedCard=387389207 High        High        Call discardCard()
-    discardCard(). the top of                                                       					using a valid hand
-    the discard pile is a                                                       If cards are not 		position, player and
-    garbage value, even                                                         discarded 				state. To avoid input
-    though the discarded card                                                   appropriately, it is 	validity issues while
-    should have been a gold                                                     uncertain if cards 		fixing this particular
-    card in this test. This                                                     are ever returned to	bug, pass in a valid
-    bug was detected using                                                      the player's discard  	hand position.
+    discardCard(). the top of                                                                           using a valid hand
+    the discard pile is a                                                       If cards are not        position, player and
+    garbage value, even                                                         discarded               state. To avoid input
+    though the discarded card                                                   appropriately, it is    validity issues while
+    should have been a gold                                                     uncertain if cards      fixing this particular
+    card in this test. This                                                     are ever returned to    bug, pass in a valid
+    bug was detected using                                                      the player's discard    hand position.
     unit tests from unittest2.c.                                                pile to allow correct 
-																				recirculation into into
-																				the player's hand for 
-																				game play.
+                                                                                recirculation into into
+                                                                                the player's hand for 
+                                                                                game play.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -268,15 +268,15 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
                                                                                 or accessing junk data.
 ----------------------------------------------------------------------------------------------------------------------------
 8.  After a call to             discardedCard=6         discardedCard=387389207 High        High        Call discardCard()
-    discardCard(). the top of                                                       					using a valid hand
-    the discard pile is a                                                       If cards are not 		position, player and
-    garbage value, even                                                         discarded 				state. To avoid input
-    though the discarded card                                                   appropriately, it is 	validity issues while
-    should have been a gold                                                     uncertain if cards 		fixing this particular
-    card in this test. This                                                     are ever returned to	bug, pass in a valid
-    bug was detected using                                                      the player's discard  	hand position.
+    discardCard(). the top of                                                                           using a valid hand
+    the discard pile is a                                                       If cards are not        position, player and
+    garbage value, even                                                         discarded               state. To avoid input
+    though the discarded card                                                   appropriately, it is    validity issues while
+    should have been a gold                                                     uncertain if cards      fixing this particular
+    card in this test. This                                                     are ever returned to    bug, pass in a valid
+    bug was detected using                                                      the player's discard    hand position.
     unit tests from unittest2.c.                                                pile to allow correct 
-																				recirculation into into
-																				the player's hand for 
-																				game play.
+                                                                                recirculation into into
+                                                                                the player's hand for 
+                                                                                game play.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
