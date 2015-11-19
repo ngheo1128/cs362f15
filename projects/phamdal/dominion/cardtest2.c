@@ -43,16 +43,20 @@ int main() {
  		fail1 = 1; 
  	}
  
- 	if(state->handCount[0] != 7) {
+	// original handCount = 5
+	// + 2 treasure cards
+	// - 1 discard adventurer card
+ 	if(state->handCount[0] != 6) {
  		printf("adventurer_card did not draw correct number of cards\n"); 
  		fail1 = 1; 
  	}
 
- 	if(state->hand[0][5] != silver && state->hand[0][6] != gold) {
+ 	if(state->hand[0][5] != silver && state->hand[0][0] != gold) {
  		printf("adventurer_card did not draw correct cards\n"); 
  		fail1 = 1; 
  	}
 
+	// 3 non-treasure cards discard
  	if(state->discardCount[0] != 3) {
  		printf("adventurer_card did not discard correct number of cards\n"); 
  		fail1 = 1; 
@@ -63,7 +67,7 @@ int main() {
  		fail1 = 1; 
  	}
 
-	if(state->playedCards[0] != adventurer) {
+	if(state->playedCardCount != 1) {
 		printf("adventurer_card was not placed in played pile\n"); 
 		fail1 = 1; 
 
@@ -77,15 +81,15 @@ int main() {
  	state->deck[0][3] = estate; 
  	state->deck[0][2] = duchy; 
  	state->deck[0][1] = adventurer; 
- 	state->deck[0][0] = silver; 
-	
+ 	state->deck[0][0] = silver;	
+
 	cardEffect(adventurer, 0, 0, 0, state, 0, 0); 
- 	if(state->handCount[0] != 6) {
+ 	if(state->handCount[0] != 5) {
  		printf("adventurer_card has drawn incorrect number of cards\n");
  		fail2 = 1; 
  	}
 
- 	if(state->hand[0][5] != silver) {
+ 	if(state->hand[0][0] != silver) {
  		printf("adventurer_card has drawn incorrect card\n");
  		fail2 = 1; 
  	}
@@ -109,8 +113,8 @@ int main() {
 
 	cardEffect(adventurer, 0, 0, 0, state, 0, 0);  
 
-	if(state->hand[0][5] != gold && state->hand[0][6] != gold) {
-		printf("adventurer_card does shuffle discard pile back into deck as stated\n");
+	if(state->hand[0][5] != gold && state->hand[0][0] != gold) {
+		printf("adventurer_card doesn't shuffle discard pile back into deck as stated\n");
 		fail3 = 1;  
 	}
 
