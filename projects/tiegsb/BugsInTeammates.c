@@ -43,7 +43,7 @@ Bug 4
 	Bug:
 		Deck did not lose 2 cards with full deck of coin cards
 		Hand did not gain 2 cards with full deck of coin cards
-	Conditions to produce:
+	Conditions to produce bug:
 		Deck is made up of all coin cards
 		deckCount >= 2
 
@@ -117,7 +117,7 @@ Bug 5:
 	Bug:
 		Treasure cards were not added to player's hand
 		Discarded cards from deck were not moved to discard pile
-	Conditions to produce bugs:
+	Conditions to produce bug:
 		Discard pile contains 0 treasure cards
 		Deck contains 0 treasure cards
 */
