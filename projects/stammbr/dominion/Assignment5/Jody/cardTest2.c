@@ -1,9 +1,9 @@
 /*****************
  * Author:  Brian Stamm
  * Title:  cardTest2.c
- * Assignment:  3
- * Date:  10.25.15
- * Notes:  Unit tests for the Adventurer card, callAdventurer().
+ * Assignment:  5
+ * Date:  11.22.15
+ * Notes:  Unit tests for the Adventurer card, callAdventurer()- Jody dominion.c.
  * ****************/
 
 #include "dominion.h"

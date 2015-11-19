@@ -70,7 +70,10 @@ int main() {
 	}
 
 	printf("Playing salvager card now with no choice...\n");
-	salvagerCard(GS, 0, p, 4);	//Play salvager card, no choice
+	//salvagerCard(GS, 0, p, 4);	//Play salvager card, no choice
+    //
+    cardEffect(24, 0, -1, -1, GS, 5, 0);
+
 	cardStatus = 0; //Reset to zero
 
 	/*Checking handcount and cards in hand after playing Salvager*/
@@ -154,7 +157,10 @@ int main() {
 	}
 
 	printf("Playing salvager card now with choice == 3 to discard smithy for coin bonus...\n");
-	salvagerCard(state, 3, p, 4);	//Play salvager card, no choice
+	//salvagerCard(state, 3, p, 4);	//Play salvager card, no choice
+    //
+    cardEffect(24, 0, -1, -1, GS, 5, 0);
+
 	cardStatus = 0; //Reset to zero
 
 	/*Checking handcount and cards in hand after playing Salvager*/
