@@ -2,8 +2,8 @@ Result for running dominion tests:
 -----------------------------------
 cardtest1.c:
 Card Testing: Smithy Card.
-Testing...Player 1 has 3 more cards in his hand after smithy is played.
-Test Failed: Expected handcount was 8. Actual handcount was 6.
+Testing...Player 1 has 2 more cards in his hand after smithy is played. (3 new cards minus 1 discarded smithy card)
+Test Failed: Expected handcount was 7. Actual handcount was 6.
 Testing...Player 1 got three cards from his deck.
 Test Failed: Expected deckCount was 7. Actual deckCount was 8.
 Test Failed: Cards removed from deck did not match card added to hand.

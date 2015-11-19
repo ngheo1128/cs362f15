@@ -1,21 +1,21 @@
 Result for running dominion tests:
 -----------------------------------
 cardtest1.c:
-Card Testing: smithy card.
-Testing...Player 1 has 3 more cards in his hand after smithy is played.
-Test Failed: Expected handcount was 8. Actual handcount was 7.
+Card Testing: executeSmithyCard().
+Testing...Player 1 has 2 more cards in his hand after smithy is played. (3 new cards minus 1 discarded smithy card)
+Test Passed: Expected handcount was 7. Actual handcount was 7.
 Testing...Player 1 got three cards from his deck.
 Test Passed: Expected deckCount was 7. Actual deckCount was 7.
-Test Failed: Cards removed from deck did not match card added to hand.
+Test Passed: Cards removed from deck did matched card added to hand.
 Test Passed: Cards were not removed from player 2's deck.
 Testing...Player 2 did not have their hand affected if player 1 played the smithy card.
 Test Passed: Player 2's hand was not affected by player 1's smithy card.
 Testing...The amount of coins in the coin supply did not change.
 Test Passed: The amount of coins in the supply is unchanged.
 Testing...The amount of victory cards supply did not change.
-Test Passed: The amount of victory cards in the supply is unchanged.
+Test Failed: Expected number of actions is 1. Actual is 2.
 File 'dominion.c'
-Lines executed:18.18% of 594
+Lines executed:18.35% of 594
 dominion.c:creating 'dominion.c.gcov'
 
 -----------------------------------
@@ -41,7 +41,7 @@ Test Passed: Correct cards were discarded.
 Testing...The amount of coins in the coin supply did not change.
 Test Passed: The amount of coins in the supply is unchanged.
 File 'dominion.c'
-Lines executed:24.07% of 594
+Lines executed:24.24% of 594
 dominion.c:creating 'dominion.c.gcov'
 
 -----------------------------------
@@ -63,7 +63,7 @@ Test Passed: Other player's deckCount was not affected.
 Testing...The amount of coins in the coin supply did not change.
 Test Passed: The amount of coins in the supply is unchanged.
 File 'dominion.c'
-Lines executed:25.08% of 594
+Lines executed:25.25% of 594
 dominion.c:creating 'dominion.c.gcov'
 
 -----------------------------------
@@ -87,7 +87,7 @@ Test Passed: The amount of coins in the supply is unchanged.
 Testing...The amount of Great Halls in the coin supply did not change.
 Test Passed: The amount of Great Halls in the supply is unchanged.
 File 'dominion.c'
-Lines executed:26.09% of 594
+Lines executed:26.26% of 594
 dominion.c:creating 'dominion.c.gcov'
 
 -----------------------------------
@@ -105,7 +105,7 @@ Test Passed: Expected player was 1. Actual player was 1
 Test Passed: Expected player was 2. Actual player was 2
 Test Passed: Expected player was 3. Actual player was 3
 File 'dominion.c'
-Lines executed:26.43% of 594
+Lines executed:26.60% of 594
 dominion.c:creating 'dominion.c.gcov'
 
 -----------------------------------
@@ -158,7 +158,7 @@ Test Passed: Expected card count was 2. Actual card count was 2
 Test Passed: Expected card count was 1. Actual card count was 1
 Test Passed: Expected card count was 1. Actual card count was 1
 File 'dominion.c'
-Lines executed:28.96% of 594
+Lines executed:29.12% of 594
 dominion.c:creating 'dominion.c.gcov'
 
 -----------------------------------
@@ -221,7 +221,7 @@ Test Failed: Expected game over result was 1. Actual result was 0.
 Testing...Empty supply in supply array positions: 24, 25, 26
 Test Failed: Expected game over result was 1. Actual result was 0.
 File 'dominion.c'
-Lines executed:30.64% of 594
+Lines executed:30.81% of 594
 dominion.c:creating 'dominion.c.gcov'
 
 -----------------------------------
@@ -260,7 +260,7 @@ Test Passed: Expected cost was 4. Actual cost was 4 for card 24
 Test Passed: Expected cost was 4. Actual cost was 4 for card 25
 Test Passed: Expected cost was 4. Actual cost was 4 for card 26
 File 'dominion.c'
-Lines executed:35.69% of 594
+Lines executed:35.86% of 594
 dominion.c:creating 'dominion.c.gcov'
 
 -----------------------------------
@@ -299,6 +299,6 @@ Test Passed: Expected cost was 4. Actual cost was 4 for card 24
 Test Passed: Expected cost was 4. Actual cost was 4 for card 25
 Test Passed: Expected cost was 4. Actual cost was 4 for card 26
 File 'dominion.c'
-Lines executed:35.69% of 594
+Lines executed:35.86% of 594
 dominion.c:creating 'dominion.c.gcov'
 
