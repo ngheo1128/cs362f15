@@ -1,133 +1,80 @@
+//Woo Choi
+//unittest4.c
+//Updated version of testUpdateCoins.c
+//Provided from class.
+//tests updateCoins()
+
 #include "dominion.h"
+#include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include <stdlib.h>
-#include <time.h>
+#include "rngs.h"
 
-/* Testing of getWinners() funciton
-    -gardens causes errors due to passing numHandsCards 0 for a card and only finding curses
-
-*/
+// set NOISY_TEST to 0 to remove printfs from output
+#define NOISY_TEST 1
 
 int main() {
-
-    printf("\nTesting getWinners() function:\n");
-
-    int randomSeed = 100;
-    int maxPlayers = 4;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int officialPlayersScore[maxPlayers];
-    int testPlayersScore[maxPlayers];
-    int i, x;
-    struct gameState state;
-    int handCount = 5;
-    int discardCount = 5;
-    int deckCount = 5;
-
-
-    int curPlayers = 4;
-
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(curPlayers, kingCards, randomSeed, &state);
-    for (i = 0; i < curPlayers; ++i) {
-        state.handCount[i] = handCount;
-        state.discardCount[i] = discardCount;
-        state.deckCount[i] = deckCount;
+    int i;
+    int seed = 1000;
+    int numPlayer = 2;
+    int maxBonus = 10;
+    int p, r, handCount;
+    int bonus;
+    int k[10] = {adventurer, council_room, feast, gardens, mine
+               , remodel, smithy, village, baron, great_hall};
+    struct gameState G;
+    int maxHandCount = 5;
+    // arrays of all coppers, silvers, and golds
+    int coppers[MAX_HAND];
+    int silvers[MAX_HAND];
+    int golds[MAX_HAND];
+    for (i = 0; i < MAX_HAND; i++)
+    {
+        coppers[i] = copper;
+        silvers[i] = silver;
+        golds[i] = gold;
     }
-
-    //player 1
-    int p1 = 0;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p1][i] = curse;
-        state.discard[p1][i] = curse;
-        state.deck[p1][i] = curse;
-    }
-    //scoreFor function
-    officialPlayersScore[p1] = scoreFor(p1, &state);
-
-    //player 2
-    int p2 = 1;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p2][i]    = gardens;
-        state.discard[p2][i] = great_hall;
-        state.deck[p2][i]    = province;
-    }
-    //scoreFor function
-    officialPlayersScore[p2] = scoreFor(p2, &state);
-
-    //player 3
-    int p3 = 2;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p3][i]    = great_hall;
-        state.discard[p3][i] = gardens;
-        state.deck[p3][i]    = province;
-    }
-    //scoreFor function
-    officialPlayersScore[p3] = scoreFor(p3, &state);
-
-    //player 4
-    int p4 = 3;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p4][i]    = estate;
-        state.discard[p4][i] = duchy;
-        state.deck[p4][i]    = gardens;
-    }
-    //math based on card values
-    officialPlayersScore[p4] = scoreFor(p4, &state);
-    memcpy(testPlayersScore, officialPlayersScore, sizeof(int) * curPlayers);
-
-    //loop through players with different ending turns
-    int temp;
-    int counter = 0;
-    for (x = 0; x < curPlayers; ++x) {
-        state.whoseTurn = x;
-        temp = getWinners(officialPlayersScore, &state);
-        if (temp == 0) {
-            if (officialPlayersScore[0] == 0 &&
-                    officialPlayersScore[1] == 1 &&
-                    officialPlayersScore[2] == 1 &&
-                    officialPlayersScore[3] == 0)
+	printf("******************\n");
+	printf("unittest4.c\n");
+    printf ("TESTING updateCoins():\n");
+    for (p = 0; p < numPlayer; p++)
+    {
+        for (handCount = 1; handCount <= maxHandCount; handCount++)
+        {
+            for (bonus = 0; bonus <= maxBonus; bonus++)
             {
-                printf("Player %d turn test Passed\n", x + 1);
+#if (NOISY_TEST == 1)
+                printf("  Test player %d with %d treasure card(s) and %d bonus.\n", p, handCount, bonus);
+#endif
+                memset(&G, 23, sizeof(struct gameState));   // clear the game state
+                r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
+                G.handCount[p] = handCount;                 // set the number of cards on hand
+                memcpy(G.hand[p], coppers, sizeof(int) * handCount); // set all the cards to copper
+                updateCoins(p, &G, bonus);
+#if (NOISY_TEST == 1)
+                printf("  G.coins = %d, expected = %d\n", G.coins, handCount * 1 + bonus);
+#endif
+                assert(G.coins == handCount * 1 + bonus); // check if the number of coins is correct
+
+                memcpy(G.hand[p], silvers, sizeof(int) * handCount); // set all the cards to silver
+                updateCoins(p, &G, bonus);
+#if (NOISY_TEST == 1)
+                printf("  G.coins = %d, expected = %d\n", G.coins, handCount * 2 + bonus);
+#endif
+                assert(G.coins == handCount * 2 + bonus); // check if the number of coins is correct
+
+                memcpy(G.hand[p], golds, sizeof(int) * handCount); // set all the cards to gold
+                updateCoins(p, &G, bonus);
+#if (NOISY_TEST == 1)
+                printf("  G.coins = %d, expected = %d\n", G.coins, handCount * 3 + bonus);
+#endif
+                assert(G.coins == handCount * 3 + bonus); // check if the number of coins is correct
             }
-            //increment of whoseTurn should make player 3 win
-            else if (officialPlayersScore[0] == 0 &&
-                    officialPlayersScore[1] == 0 &&
-                    officialPlayersScore[2] == 1 &&
-                    officialPlayersScore[3] == 0)
-            {
-                printf("Player %d turn test Passed\n", x + 1);
-            }
-            else if (officialPlayersScore[0] == 0 &&
-                officialPlayersScore[1] == 1 &&
-                officialPlayersScore[2] == 1 &&
-                officialPlayersScore[3] == 0)
-            {
-                printf("Player %d turn test Passed\n", x + 1);
-            }
-            else if (officialPlayersScore[0] == 0 &&
-                officialPlayersScore[1] == 1 &&
-                officialPlayersScore[2] == 1 &&
-                officialPlayersScore[3] == 0)
-            {
-                printf("Player %d turn test Passed\n", x + 1);
-            }
-            else {
-                counter++;
-            }
-        }
-        if (temp != 0 || counter > 0) {
-            printf("Player %d turn test Failed\n", x + 1);
         }
     }
 
-    if (counter <= 0) {
-        printf("All tests passed getWinners()\n");
-    }
-    else {
-        printf("%d tests failed on getWinners()\n\n", counter);
-    }
+    printf("All tests passed!\n");
 
     return 0;
 }
