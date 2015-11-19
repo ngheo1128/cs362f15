@@ -444,7 +444,7 @@ int scoreFor (int player, struct gameState *state) {
   }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
   {
     if (state->deck[player][i] == curse) { score = score - 1; };
     if (state->deck[player][i] == estate) { score = score + 1; };
@@ -673,7 +673,7 @@ int adventurerEffect(struct gameState *state, int currentPlayer)
     }
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-    if (cardDrawn == silver || cardDrawn == gold)
+    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
       drawntreasure++;
     else{
       temphand[z]=cardDrawn;
@@ -699,7 +699,7 @@ int adventurerEffect2(struct gameState *state, int currentPlayer)
   int z = 0;// this is the counter for the temp hand
   
   while(drawntreasure<2){
-    if (state->deckCount[currentPlayer] <2){//if the deck is empty we need to shuffle discard and add to deck
+    if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
     drawCard(currentPlayer, state);
@@ -1243,10 +1243,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   case sea_hag:
     for (i = 0; i < state->numPlayers; i++){
       if (i != currentPlayer){
-        state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];			    state->deckCount[i]--;
-        state->discardCount[i]++;
-        state->deck[i][state->deckCount[i]--] = curse;//Top card now a curse
-      }
+		state->discard[i][state->discardCount[i]++]=state->deck[i][state->deckCount[i]-1]; //discard top of deck
+		state->deck[i][state->deckCount[i]-1]=curse;
+		--state->supplyCount[curse];
+	  }
     }
     return 0;
     
@@ -1286,13 +1286,17 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
 int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
 {
+
+  // toFlag = 0 : add to discard
+  // toFlag = 1 : add to deck
+  // toFlag = 2 : add to hand
+
   
   //if card is not trashed, added to Played pile 
   if (trashFlag < 1)
   {
     //add card to played pile
-    state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
-    state->playedCardCount++;
+ 	state->discard[currentPlayer][state->discardCount[currentPlayer]++] = state->hand[currentPlayer][handPos];
   }
   
   //set played card to -1
