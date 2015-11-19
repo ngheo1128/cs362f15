@@ -29,9 +29,9 @@ void test(){
   initializeGame(2, k, r, game);
 
   testTrialCard = game->hand[player][0];
-  testHandCount = game->handCount[player] + 3;
+  testHandCount = game->handCount[player] + 2;
   testDiscardCount = game->discardCount[player] + 1;
-  testDeckCount = game->deckCount[player] - 1;
+  testDeckCount = game->deckCount[player] - 3;
 
   if(smithy_refactor(player, game, 0) == 0){
     if(testDiscardCount == game->discardCount[player]){
@@ -86,9 +86,9 @@ void test(){
     game->handCount[player] = total;
 
     testTrialCard = game->hand[player][0];
-    testHandCount = game->handCount[player] + 3;
+    testHandCount = game->handCount[player] + 2;
     testDiscardCount = game->discardCount[player] + 1;
-    testDeckCount = game->deckCount[player] - 1;
+    testDeckCount = game->deckCount[player] - 3;
     printf("\n");
     if(smithy_refactor(player, game, 0) == 0){
       if(testDiscardCount != game->discardCount[player]){
