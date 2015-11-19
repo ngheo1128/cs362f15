@@ -1,0 +1,304 @@
+Result for running dominion tests:
+-----------------------------------
+cardtest1.c:
+Card Testing: smithy card.
+Testing...Player 1 has 3 more cards in his hand after smithy is played.
+Test Failed: Expected handcount was 8. Actual handcount was 7.
+Testing...Player 1 got three cards from his deck.
+Test Passed: Expected deckCount was 7. Actual deckCount was 7.
+Test Failed: Cards removed from deck did not match card added to hand.
+Test Passed: Cards were not removed from player 2's deck.
+Testing...Player 2 did not have their hand affected if player 1 played the smithy card.
+Test Passed: Player 2's hand was not affected by player 1's smithy card.
+Testing...The amount of coins in the coin supply did not change.
+Test Passed: The amount of coins in the supply is unchanged.
+Testing...The amount of victory cards supply did not change.
+Test Passed: The amount of victory cards in the supply is unchanged.
+File 'dominion.c'
+Lines executed:18.18% of 594
+dominion.c:creating 'dominion.c.gcov'
+
+-----------------------------------
+cardtest2.c:
+Card Testing: Adventurer Card.
+Testing...Player 1 has 2 more treasure cards in their hand after adventurer is played.
+Test Passed: Expected handcount was 7. Actual handcount was 7.
+Testing...Treasure cards were taken in order from the deck.
+Test Passed: Expected handcount was 7. Actual handcount was 7.
+Test Passed: Expected deckCount was 8. Actual deckCount was 8.
+Test Passed: Treasures were added in order from deck to hand.
+Test Passed: Card(s) added to the hand were treasure cards.
+Testing...Action did not affect another player's handCount or deckCount.
+Test Passed: Other player's handCount was not affected.
+Test Passed: Other player's deckCount was not affected.
+Testing...Cards can be drawn from an empty deck.
+Test Passed: Discard pile is empty.
+Test Passed: Deck was not empty.
+Test Passed: Card(s) added to hand were treasures.
+Testing...Non-treasure cards are discarded.
+Test Passed: Discard pile is not empty.
+Test Passed: Correct cards were discarded.
+Testing...The amount of coins in the coin supply did not change.
+Test Passed: The amount of coins in the supply is unchanged.
+File 'dominion.c'
+Lines executed:24.07% of 594
+dominion.c:creating 'dominion.c.gcov'
+
+-----------------------------------
+cardtest3.c:
+Card Testing: Village Card.
+Testing...Player 1 has 1 card added to their hand after village is played.
+Test Passed: Correct number of cards were added.
+Test Passed: Correct number of cards were removed from deck.
+Test Passed: Card was taken from the top of the deck.
+Testing...Player 1 has two actions added.
+Test Passed: Expected action count 3. Actual action count 3.
+Testing...Player 1 has their village card put in the played pile.
+Test Passed: Village was removed from hand correctly.
+Test Passed: Discard count is correct.
+Test Passed: Village added to the played pile correctly.
+Testing...Action did not affect another player's handCount or deckCount.
+Test Passed: Other player's handCount was not affected.
+Test Passed: Other player's deckCount was not affected.
+Testing...The amount of coins in the coin supply did not change.
+Test Passed: The amount of coins in the supply is unchanged.
+File 'dominion.c'
+Lines executed:25.08% of 594
+dominion.c:creating 'dominion.c.gcov'
+
+-----------------------------------
+cardtest4.c:
+Card Testing: GreatHall Card.
+Testing...Player 1 has 1 card added to their hand after Great Hall is played.
+Test Passed: Expected hand count: 5. Actual hand count 5.
+Test Passed: Expected deck count: 9. Actual deck count 9.
+Test Passed: Card was taken from the top of the deck.
+Testing...Player 1 has one action added.
+Test Passed: Expected action count 2. Actual action count 2.
+Testing...Player 1 has their Great Hall card put in the played pile.
+Test Passed: Great Hall was removed from hand correctly.
+Test Passed: Discard count is correct.
+Test Passed: Great Hall added to the played pile correctly.
+Testing...Action did not affect another player's handCount or deckCount.
+Test Passed: Other player's handCount was not affected.
+Test Passed: Other player's deckCount was not affected.
+Testing...The amount of coins in the coin supply did not change.
+Test Passed: The amount of coins in the supply is unchanged.
+Testing...The amount of Great Halls in the coin supply did not change.
+Test Passed: The amount of Great Halls in the supply is unchanged.
+File 'dominion.c'
+Lines executed:26.09% of 594
+dominion.c:creating 'dominion.c.gcov'
+
+-----------------------------------
+unittest1.c:
+Unit Testing: whoseTurn().
+Check whoseTurn() when starting a 2 player game
+Test Passed: Expected player was 0. Actual player was 0
+Check whoseTurn() when starting a 3 player game
+Test Passed: Expected player was 0. Actual player was 0
+Check whoseTurn() when starting a 4 player game
+Test Passed: Expected player was 0. Actual player was 0
+Check whoseTurn() returns the correct player when the game state is set
+Test Passed: Expected player was 0. Actual player was 0
+Test Passed: Expected player was 1. Actual player was 1
+Test Passed: Expected player was 2. Actual player was 2
+Test Passed: Expected player was 3. Actual player was 3
+File 'dominion.c'
+Lines executed:26.43% of 594
+dominion.c:creating 'dominion.c.gcov'
+
+-----------------------------------
+unittest2.c:
+Unit Testing: fullDeckCount().
+Test for a single card type in the deck...
+Test Passed: Expected card count was 5. Actual card count was 5
+Tests for a multiple card types in the deck for player 0...
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 4. Actual card count was 4
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 1. Actual card count was 1
+Test Passed: Expected card count was 1. Actual card count was 1
+Tests for a multiple card types in the deck for player 1...
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 4. Actual card count was 4
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 1. Actual card count was 1
+Test Passed: Expected card count was 1. Actual card count was 1
+Tests for a multiple card types in the deck for player 2...
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 4. Actual card count was 4
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 1. Actual card count was 1
+Test Passed: Expected card count was 1. Actual card count was 1
+Tests for a multiple card types in the deck for player 3...
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 4. Actual card count was 4
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 2. Actual card count was 2
+Test Passed: Expected card count was 1. Actual card count was 1
+Test Passed: Expected card count was 1. Actual card count was 1
+File 'dominion.c'
+Lines executed:28.96% of 594
+dominion.c:creating 'dominion.c.gcov'
+
+-----------------------------------
+unittest3.c:
+Unit Testing: isGameOver().
+Testing...Setting all supply to -1 amount.
+Test Passed: Expected game over result was 0. Actual result was 0.
+Testing...Setting all supply to 1 amount.
+Test Passed: Expected game over result was 0. Actual result was 0.
+Testing...Setting the province card supply to zero.
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 0, 1, 2
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 1, 2, 3
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 2, 3, 4
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 3, 4, 5
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 4, 5, 6
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 5, 6, 7
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 6, 7, 8
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 7, 8, 9
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 8, 9, 10
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 9, 10, 11
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 10, 11, 12
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 11, 12, 13
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 12, 13, 14
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 13, 14, 15
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 14, 15, 16
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 15, 16, 17
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 16, 17, 18
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 17, 18, 19
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 18, 19, 20
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 19, 20, 21
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 20, 21, 22
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 21, 22, 23
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 22, 23, 24
+Test Passed: Expected game over result was 1. Actual result was 1.
+Testing...Empty supply in supply array positions: 23, 24, 25
+Test Failed: Expected game over result was 1. Actual result was 0.
+Testing...Empty supply in supply array positions: 24, 25, 26
+Test Failed: Expected game over result was 1. Actual result was 0.
+File 'dominion.c'
+Lines executed:30.64% of 594
+dominion.c:creating 'dominion.c.gcov'
+
+-----------------------------------
+unittest4.c:
+Unit Testing: getCost().
+Testing...Getting cost of a non-existant negative number card
+Test Passed: Expected cost was -1. Actual cost was -1 for card -1
+Testing...Getting cost of a card that does not exist and has a positive card number
+Test Passed: Expected cost was -1. Actual cost was -1 for card 100
+Testing...The cost of all the available cards
+Test Passed: Expected cost was 0. Actual cost was 0 for card 0
+Test Passed: Expected cost was 2. Actual cost was 2 for card 1
+Test Passed: Expected cost was 5. Actual cost was 5 for card 2
+Test Passed: Expected cost was 8. Actual cost was 8 for card 3
+Test Passed: Expected cost was 0. Actual cost was 0 for card 4
+Test Passed: Expected cost was 3. Actual cost was 3 for card 5
+Test Passed: Expected cost was 6. Actual cost was 6 for card 6
+Test Passed: Expected cost was 6. Actual cost was 6 for card 7
+Test Passed: Expected cost was 5. Actual cost was 5 for card 8
+Test Passed: Expected cost was 4. Actual cost was 4 for card 9
+Test Passed: Expected cost was 4. Actual cost was 4 for card 10
+Test Passed: Expected cost was 5. Actual cost was 5 for card 11
+Test Passed: Expected cost was 4. Actual cost was 4 for card 12
+Test Passed: Expected cost was 4. Actual cost was 4 for card 13
+Test Passed: Expected cost was 3. Actual cost was 3 for card 14
+Test Passed: Expected cost was 4. Actual cost was 4 for card 15
+Test Passed: Expected cost was 3. Actual cost was 3 for card 16
+Test Passed: Expected cost was 5. Actual cost was 5 for card 17
+Test Passed: Expected cost was 3. Actual cost was 3 for card 18
+Test Passed: Expected cost was 5. Actual cost was 5 for card 19
+Test Passed: Expected cost was 3. Actual cost was 3 for card 20
+Test Passed: Expected cost was 4. Actual cost was 4 for card 21
+Test Passed: Expected cost was 2. Actual cost was 2 for card 22
+Test Passed: Expected cost was 5. Actual cost was 5 for card 23
+Test Passed: Expected cost was 4. Actual cost was 4 for card 24
+Test Passed: Expected cost was 4. Actual cost was 4 for card 25
+Test Passed: Expected cost was 4. Actual cost was 4 for card 26
+File 'dominion.c'
+Lines executed:35.69% of 594
+dominion.c:creating 'dominion.c.gcov'
+
+-----------------------------------
+unittest4.c:
+Unit Testing: getCost().
+Testing...Getting cost of a non-existant negative number card
+Test Passed: Expected cost was -1. Actual cost was -1 for card -1
+Testing...Getting cost of a card that does not exist and has a positive card number
+Test Passed: Expected cost was -1. Actual cost was -1 for card 100
+Testing...The cost of all the available cards
+Test Passed: Expected cost was 0. Actual cost was 0 for card 0
+Test Passed: Expected cost was 2. Actual cost was 2 for card 1
+Test Passed: Expected cost was 5. Actual cost was 5 for card 2
+Test Passed: Expected cost was 8. Actual cost was 8 for card 3
+Test Passed: Expected cost was 0. Actual cost was 0 for card 4
+Test Passed: Expected cost was 3. Actual cost was 3 for card 5
+Test Passed: Expected cost was 6. Actual cost was 6 for card 6
+Test Passed: Expected cost was 6. Actual cost was 6 for card 7
+Test Passed: Expected cost was 5. Actual cost was 5 for card 8
+Test Passed: Expected cost was 4. Actual cost was 4 for card 9
+Test Passed: Expected cost was 4. Actual cost was 4 for card 10
+Test Passed: Expected cost was 5. Actual cost was 5 for card 11
+Test Passed: Expected cost was 4. Actual cost was 4 for card 12
+Test Passed: Expected cost was 4. Actual cost was 4 for card 13
+Test Passed: Expected cost was 3. Actual cost was 3 for card 14
+Test Passed: Expected cost was 4. Actual cost was 4 for card 15
+Test Passed: Expected cost was 3. Actual cost was 3 for card 16
+Test Passed: Expected cost was 5. Actual cost was 5 for card 17
+Test Passed: Expected cost was 3. Actual cost was 3 for card 18
+Test Passed: Expected cost was 5. Actual cost was 5 for card 19
+Test Passed: Expected cost was 3. Actual cost was 3 for card 20
+Test Passed: Expected cost was 4. Actual cost was 4 for card 21
+Test Passed: Expected cost was 2. Actual cost was 2 for card 22
+Test Passed: Expected cost was 5. Actual cost was 5 for card 23
+Test Passed: Expected cost was 4. Actual cost was 4 for card 24
+Test Passed: Expected cost was 4. Actual cost was 4 for card 25
+Test Passed: Expected cost was 4. Actual cost was 4 for card 26
+File 'dominion.c'
+Lines executed:35.69% of 594
+dominion.c:creating 'dominion.c.gcov'
+
