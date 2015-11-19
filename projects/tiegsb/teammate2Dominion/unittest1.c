@@ -96,11 +96,11 @@ int main(){
 
 						//check if calculated score is correct
 						if(calcScore == actualScore){
-							printf("PASS - Score calculated correctly - Expected Result: score: %d - Actual Result: score: %d player: %d handCount: %d discardCount: %d deckCount: %d card: %s\n", calcScore, actualScore, player, state.handCount[player], state.discardCount[player], state.deckCount[player], cardName);
+							printf("PASS - Score calculated correctly - Expected Result: score: %d - Actual Result: score: %d player: %d handCount: %d discardCount: %d deckCount: %d card: %s\n", actualScore, calcScore, player, state.handCount[player], state.discardCount[player], state.deckCount[player], cardName);
 							passCount++;
 						}
 						else{
-							printf("FAIL - Score not calculated correctly - Expected Result: score: %d - Actual Result: score: %d player: %d handCount: %d discardCount: %d deckCount: %d card: %s\n", calcScore, actualScore, player, state.handCount[player], state.discardCount[player], state.deckCount[player], cardName);
+							printf("FAIL - Score not calculated correctly - Expected Result: score: %d - Actual Result: score: %d player: %d handCount: %d discardCount: %d deckCount: %d card: %s\n", actualScore, calcScore, player, state.handCount[player], state.discardCount[player], state.deckCount[player], cardName);
 							failCount++;
 						}
 						testCount++;
