@@ -47,3 +47,11 @@ In dominion.c:
   put the gained card in the player's hand instead of the discard pile.
   (So there's still a BUG)
 
+
+11/19/2015:
+
+In randomtestcard.c (for my code tree as well as teammate tests):
+
+- Fixed a bug where discarded treasure map cards was not detected correctly.
+- Changed if/if statements to if/else/if statements for checking top gold 
+  cards (forgot the else).
