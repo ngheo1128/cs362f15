@@ -56,7 +56,7 @@ Bug 5
 	Conditions to produce bug:
 		No special condtitions needed
 
-Bug 6:
+Bug 6
 	Test: cardtest4.c and randomtestcard.c
 	Location: treasure map
 	Bug:
@@ -100,7 +100,7 @@ Bug 3
 		3 card piles are empty
 		At least 1 card pile is the Sea Hag card or Treasure Map card
 
-Bug 4:
+Bug 4
 	Test: cardtest4.c and randomtestcard.c
 	Location: treasure map
 	Bug:
@@ -111,7 +111,7 @@ Bug 4:
 		index = 9
 		handCount = 10
 
-Bug 5:
+Bug 5
 	Test: randomtestadventurer.c
 	Location: adventurer card
 	Bug:
