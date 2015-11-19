@@ -2,112 +2,112 @@ Results for tests:\n
 Starting tests for "scoreFor"...
 
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: -250 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: -500 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -250 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -500 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -500 - Actual Result: score: -500 player: 0 handCount: 0 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -500 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -1000 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1000 player: 0 handCount: 0 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -250 - Actual Result: score: -250 player: 0 handCount: 250 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -500 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -750 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -250 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -250 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -750 - Actual Result: score: -750 player: 0 handCount: 250 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -750 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1000 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1250 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1250 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1250 player: 0 handCount: 250 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -500 - Actual Result: score: -500 player: 0 handCount: 500 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -1000 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -500 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1000 player: 0 handCount: 500 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1250 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1000 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1250 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1000 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1500 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1500 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1500 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 250 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 0 handCount: 0 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 250 - Actual Result: score: 250 player: 0 handCount: 250 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 250 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1250 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1250 player: 0 handCount: 250 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 0 handCount: 500 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1250 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1500 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1500 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 750 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 1500 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 750 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1500 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 0 handCount: 0 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 0 handCount: 0 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1500 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 2250 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 2250 - Actual Result: score: 2250 player: 0 handCount: 250 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 2250 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3000 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3750 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3750 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3750 player: 0 handCount: 250 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 0 handCount: 500 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 0 handCount: 500 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3750 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3750 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3000 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 4500 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 4500 - Actual Result: score: 4500 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 1500 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 3000 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 0 handCount: 0 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 3000 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 6000 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 6000 - Actual Result: score: 6000 player: 0 handCount: 0 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 0 handCount: 250 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 4500 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 1500 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 4500 - Actual Result: score: 4500 player: 0 handCount: 250 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 4500 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 6000 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 7500 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 7500 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 7500 - Actual Result: score: 7500 player: 0 handCount: 250 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 0 handCount: 500 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 6000 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 3000 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 6000 - Actual Result: score: 6000 player: 0 handCount: 500 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 7500 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 9000 - Actual Result: score: 6000 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 9000 - Actual Result: score: 7500 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 6000 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 9000 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 9000 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 9000 - Actual Result: score: 9000 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 0 card: Copper
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Copper
@@ -272,32 +272,32 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Feast
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Feast
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 0 handCount: 0 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 0 handCount: 0 discardCount: 500 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 0 handCount: 250 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 0 handCount: 250 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 0 handCount: 250 discardCount: 500 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 0 handCount: 500 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 0 handCount: 500 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 225000 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 0 handCount: 250 discardCount: 0 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 0 handCount: 250 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 0 handCount: 250 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 0 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 225000 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Gardens
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 0 card: Mine
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Mine
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Mine
@@ -434,31 +434,31 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Baron
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Baron
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 250 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 0 handCount: 0 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 0 handCount: 0 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 0 handCount: 0 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 0 handCount: 0 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 250 - Actual Result: score: 250 player: 0 handCount: 250 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 0 handCount: 250 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 250 player: 0 handCount: 250 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 0 handCount: 250 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1250 player: 0 handCount: 250 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 0 handCount: 250 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1250 player: 0 handCount: 250 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 0 handCount: 500 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 0 handCount: 500 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 0 handCount: 500 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1250 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 0 handCount: 500 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1500 player: 0 handCount: 500 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1500 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 0 card: Minion
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 0 discardCount: 0 deckCount: 250 card: Minion
@@ -731,112 +731,112 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 500 deckCount: 250 card: Treasure Map
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 0 handCount: 500 discardCount: 500 deckCount: 500 card: Treasure Map
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: -250 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: -500 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -250 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -500 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -500 - Actual Result: score: -500 player: 1 handCount: 0 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -500 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -1000 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1000 player: 1 handCount: 0 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -250 - Actual Result: score: -250 player: 1 handCount: 250 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -500 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -750 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -250 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -250 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -750 - Actual Result: score: -750 player: 1 handCount: 250 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -750 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1000 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1250 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1250 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1250 player: 1 handCount: 250 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -500 - Actual Result: score: -500 player: 1 handCount: 500 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -1000 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -500 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1000 player: 1 handCount: 500 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1250 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1000 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1250 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1000 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1500 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1500 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1500 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 250 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 1 handCount: 0 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 250 - Actual Result: score: 250 player: 1 handCount: 250 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 250 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1250 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1250 player: 1 handCount: 250 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 1 handCount: 500 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1250 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1500 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1500 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 750 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 1500 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 750 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1500 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 1 handCount: 0 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 1 handCount: 0 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1500 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 2250 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 2250 - Actual Result: score: 2250 player: 1 handCount: 250 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 2250 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3000 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3750 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3750 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3750 player: 1 handCount: 250 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 1 handCount: 500 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 1 handCount: 500 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3750 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3750 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3000 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 4500 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 4500 - Actual Result: score: 4500 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 1500 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 3000 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 1 handCount: 0 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 3000 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 6000 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 6000 - Actual Result: score: 6000 player: 1 handCount: 0 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 1 handCount: 250 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 4500 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 1500 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 4500 - Actual Result: score: 4500 player: 1 handCount: 250 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 4500 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 6000 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 7500 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 7500 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 7500 - Actual Result: score: 7500 player: 1 handCount: 250 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 1 handCount: 500 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 6000 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 3000 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 6000 - Actual Result: score: 6000 player: 1 handCount: 500 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 7500 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 9000 - Actual Result: score: 6000 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 9000 - Actual Result: score: 7500 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 6000 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 9000 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 9000 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 9000 - Actual Result: score: 9000 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 0 card: Copper
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Copper
@@ -1001,32 +1001,32 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Feast
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Feast
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 1 handCount: 0 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 1 handCount: 0 discardCount: 500 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 1 handCount: 250 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 1 handCount: 250 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 1 handCount: 250 discardCount: 500 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 1 handCount: 500 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 1 handCount: 500 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 225000 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 1 handCount: 250 discardCount: 0 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 1 handCount: 250 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 1 handCount: 250 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 0 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 225000 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Gardens
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 0 card: Mine
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Mine
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Mine
@@ -1163,31 +1163,31 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Baron
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Baron
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 250 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 1 handCount: 0 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 1 handCount: 0 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 1 handCount: 0 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 1 handCount: 0 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 250 - Actual Result: score: 250 player: 1 handCount: 250 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 1 handCount: 250 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 250 player: 1 handCount: 250 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 1 handCount: 250 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1250 player: 1 handCount: 250 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 1 handCount: 250 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1250 player: 1 handCount: 250 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 1 handCount: 500 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 1 handCount: 500 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 1 handCount: 500 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1250 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 1 handCount: 500 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1500 player: 1 handCount: 500 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1500 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 0 card: Minion
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 0 discardCount: 0 deckCount: 250 card: Minion
@@ -1460,112 +1460,112 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 500 deckCount: 250 card: Treasure Map
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 1 handCount: 500 discardCount: 500 deckCount: 500 card: Treasure Map
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: -250 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: -500 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -250 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -500 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -500 - Actual Result: score: -500 player: 2 handCount: 0 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -500 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -1000 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1000 player: 2 handCount: 0 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -250 - Actual Result: score: -250 player: 2 handCount: 250 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -500 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -750 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -250 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -250 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -750 - Actual Result: score: -750 player: 2 handCount: 250 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -750 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1000 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1250 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1250 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1250 player: 2 handCount: 250 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -500 - Actual Result: score: -500 player: 2 handCount: 500 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -1000 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -500 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1000 player: 2 handCount: 500 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1250 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1000 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1250 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1000 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1500 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1500 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1500 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 250 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 2 handCount: 0 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 250 - Actual Result: score: 250 player: 2 handCount: 250 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 250 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1250 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1250 player: 2 handCount: 250 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 2 handCount: 500 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1250 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1500 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1500 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 750 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 1500 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 750 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1500 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 2 handCount: 0 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 2 handCount: 0 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1500 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 2250 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 2250 - Actual Result: score: 2250 player: 2 handCount: 250 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 2250 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3000 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3750 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3750 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3750 player: 2 handCount: 250 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 2 handCount: 500 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 2 handCount: 500 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3750 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3750 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3000 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 4500 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 4500 - Actual Result: score: 4500 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 1500 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 3000 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 2 handCount: 0 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 3000 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 6000 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 6000 - Actual Result: score: 6000 player: 2 handCount: 0 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 2 handCount: 250 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 4500 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 1500 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 4500 - Actual Result: score: 4500 player: 2 handCount: 250 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 4500 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 6000 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 7500 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 7500 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 7500 - Actual Result: score: 7500 player: 2 handCount: 250 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 2 handCount: 500 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 6000 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 3000 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 6000 - Actual Result: score: 6000 player: 2 handCount: 500 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 7500 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 9000 - Actual Result: score: 6000 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 9000 - Actual Result: score: 7500 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 6000 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 9000 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 9000 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 9000 - Actual Result: score: 9000 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 0 card: Copper
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Copper
@@ -1730,32 +1730,32 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Feast
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Feast
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 2 handCount: 0 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 2 handCount: 0 discardCount: 500 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 2 handCount: 250 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 2 handCount: 250 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 2 handCount: 250 discardCount: 500 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 2 handCount: 500 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 2 handCount: 500 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 225000 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 2 handCount: 250 discardCount: 0 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 2 handCount: 250 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 2 handCount: 250 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 0 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 225000 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Gardens
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 0 card: Mine
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Mine
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Mine
@@ -1892,31 +1892,31 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Baron
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Baron
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 250 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 2 handCount: 0 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 2 handCount: 0 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 2 handCount: 0 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 2 handCount: 0 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 250 - Actual Result: score: 250 player: 2 handCount: 250 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 2 handCount: 250 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 250 player: 2 handCount: 250 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 2 handCount: 250 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1250 player: 2 handCount: 250 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 2 handCount: 250 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1250 player: 2 handCount: 250 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 2 handCount: 500 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 2 handCount: 500 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 2 handCount: 500 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1250 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 2 handCount: 500 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1500 player: 2 handCount: 500 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1500 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 0 card: Minion
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 0 discardCount: 0 deckCount: 250 card: Minion
@@ -2189,112 +2189,112 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 500 deckCount: 250 card: Treasure Map
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 2 handCount: 500 discardCount: 500 deckCount: 500 card: Treasure Map
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: -250 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: -500 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -250 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -500 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -500 - Actual Result: score: -500 player: 3 handCount: 0 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -500 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -1000 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1000 player: 3 handCount: 0 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -250 - Actual Result: score: -250 player: 3 handCount: 250 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -500 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -250 - Actual Result: score: -750 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -250 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -250 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -750 - Actual Result: score: -750 player: 3 handCount: 250 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -750 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1000 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1250 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1250 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1250 player: 3 handCount: 250 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -500 - Actual Result: score: -500 player: 3 handCount: 500 discardCount: 0 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -750 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -500 - Actual Result: score: -1000 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -750 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -500 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -500 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -750 - Actual Result: score: -1000 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1000 player: 3 handCount: 500 discardCount: 250 deckCount: 250 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1250 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1000 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Curse
-FAIL - Score not calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1250 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1000 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1000 - Actual Result: score: -1500 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Curse
+FAIL - Score not calculated correctly - Expected Result: score: -1250 - Actual Result: score: -1500 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Curse
 PASS - Score calculated correctly - Expected Result: score: -1500 - Actual Result: score: -1500 player: 3 handCount: 500 discardCount: 500 deckCount: 500 card: Curse
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 250 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 3 handCount: 0 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 250 - Actual Result: score: 250 player: 3 handCount: 250 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 250 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1250 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1250 player: 3 handCount: 250 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 3 handCount: 500 discardCount: 0 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 250 deckCount: 250 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Estate
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1250 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1500 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Estate
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1500 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 3 handCount: 500 discardCount: 500 deckCount: 500 card: Estate
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 750 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 1500 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 750 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1500 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 3 handCount: 0 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 3 handCount: 0 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1500 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 2250 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 2250 - Actual Result: score: 2250 player: 3 handCount: 250 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 2250 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3000 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3750 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3750 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3750 player: 3 handCount: 250 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 3 handCount: 500 discardCount: 0 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 2250 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 2250 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 1500 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 2250 - Actual Result: score: 3000 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 3 handCount: 500 discardCount: 250 deckCount: 250 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3750 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Duchy
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3750 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 3000 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Duchy
+FAIL - Score not calculated correctly - Expected Result: score: 3750 - Actual Result: score: 4500 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 4500 - Actual Result: score: 4500 player: 3 handCount: 500 discardCount: 500 deckCount: 500 card: Duchy
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 1500 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 3000 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 3 handCount: 0 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 3000 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 6000 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 6000 - Actual Result: score: 6000 player: 3 handCount: 0 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 3 handCount: 250 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 3000 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 4500 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 1500 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 1500 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 4500 - Actual Result: score: 4500 player: 3 handCount: 250 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 4500 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 6000 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 7500 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 7500 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 7500 - Actual Result: score: 7500 player: 3 handCount: 250 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 3000 - Actual Result: score: 3000 player: 3 handCount: 500 discardCount: 0 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 4500 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 3000 - Actual Result: score: 6000 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 4500 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 3000 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 3000 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 4500 - Actual Result: score: 6000 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Province
 PASS - Score calculated correctly - Expected Result: score: 6000 - Actual Result: score: 6000 player: 3 handCount: 500 discardCount: 250 deckCount: 250 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 7500 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 9000 - Actual Result: score: 6000 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Province
-FAIL - Score not calculated correctly - Expected Result: score: 9000 - Actual Result: score: 7500 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 6000 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 6000 - Actual Result: score: 9000 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Province
+FAIL - Score not calculated correctly - Expected Result: score: 7500 - Actual Result: score: 9000 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Province
 PASS - Score calculated correctly - Expected Result: score: 9000 - Actual Result: score: 9000 player: 3 handCount: 500 discardCount: 500 deckCount: 500 card: Province
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 0 card: Copper
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Copper
@@ -2459,32 +2459,32 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Feast
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 500 deckCount: 500 card: Feast
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 3 handCount: 0 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 3 handCount: 0 discardCount: 500 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 6250 player: 3 handCount: 250 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 3 handCount: 250 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 3 handCount: 250 discardCount: 500 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 25000 player: 3 handCount: 500 discardCount: 0 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 56250 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 3 handCount: 500 discardCount: 250 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 100000 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 156250 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Gardens
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 225000 player: 3 handCount: 500 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 6250 - Actual Result: score: 0 player: 3 handCount: 250 discardCount: 0 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 3 handCount: 250 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 3 handCount: 250 discardCount: 500 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 25000 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 0 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 56250 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 250 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 100000 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 156250 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Gardens
+FAIL - Score not calculated correctly - Expected Result: score: 225000 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 500 deckCount: 500 card: Gardens
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 0 card: Mine
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Mine
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Mine
@@ -2621,31 +2621,31 @@ PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: s
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Baron
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 500 discardCount: 500 deckCount: 500 card: Baron
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 250 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 0 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 3 handCount: 0 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 3 handCount: 0 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 3 handCount: 0 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 3 handCount: 0 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 250 - Actual Result: score: 250 player: 3 handCount: 250 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 500 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 250 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 250 player: 3 handCount: 250 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 250 player: 3 handCount: 250 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 750 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 3 handCount: 250 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1250 player: 3 handCount: 250 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 3 handCount: 250 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1250 player: 3 handCount: 250 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 500 - Actual Result: score: 500 player: 3 handCount: 500 discardCount: 0 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 750 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 500 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 750 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 500 player: 3 handCount: 500 discardCount: 0 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 500 player: 3 handCount: 500 discardCount: 0 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 750 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 250 deckCount: 0 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 250 deckCount: 250 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1250 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Great Hall
-FAIL - Score not calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1250 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1000 player: 3 handCount: 500 discardCount: 250 deckCount: 500 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1000 - Actual Result: score: 1500 player: 3 handCount: 500 discardCount: 500 deckCount: 0 card: Great Hall
+FAIL - Score not calculated correctly - Expected Result: score: 1250 - Actual Result: score: 1500 player: 3 handCount: 500 discardCount: 500 deckCount: 250 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 1500 - Actual Result: score: 1500 player: 3 handCount: 500 discardCount: 500 deckCount: 500 card: Great Hall
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 0 card: Minion
 PASS - Score calculated correctly - Expected Result: score: 0 - Actual Result: score: 0 player: 3 handCount: 0 discardCount: 0 deckCount: 250 card: Minion
