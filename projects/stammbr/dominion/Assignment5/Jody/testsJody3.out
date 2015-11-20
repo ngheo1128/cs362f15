@@ -1,0 +1,30 @@
+Result for running tests for Wisam:
+cardTest1.c:
+This is the tests the Smithy card - callSmithy().
+smithy_refactor() Test 1a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+
+ ***************************** 
+
+cardTest2.c:
+This is the tests for the Adventurer card, callAdventurer().
+1:  adventureMethod():  FAIL, error initial, tcount - 3.
+2:  adventureMethod():  FAIL, large deck, last are copper, tcount - 3.
+3:  adventureMethod():  FAIL, random deck.  tcount - 3.
+
+ ***************************** 
+
+cardTest3.c:
+This is the tests for the Council card, in callCouncilRoom().
+This is first initial test for callCouncilRoom.
+Council Test :  FAILED - buy number NOT correct
+	Test:  2	Saved:  1
+
+ ***************************** 
+
+Result for running random tests: 
+This is the tests for the Adventurer card, adventurerMethod().
+------------Final-------------
+Total tests:  100000
+Total errors in random:  100000
+Unknow errors in random:  0
