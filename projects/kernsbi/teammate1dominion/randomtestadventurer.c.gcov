@@ -1,0 +1,187 @@
+        -:    0:Source:randomtestadventurer.c
+        -:    0:Graph:randomtestadventurer.gcno
+        -:    0:Data:randomtestadventurer.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// Name: Billy Kerns
+        -:    2:// File: randomtestadventurer.c
+        -:    3:// adventurer
+        -:    4:
+        -:    5:#include "dominion.h"
+        -:    6:#include "dominion_helpers.h"
+        -:    7:#include <string.h>
+        -:    8:#include <stdio.h>
+        -:    9:#include <assert.h>
+        -:   10:#include "rngs.h"
+        -:   11:#include <time.h>
+        -:   12:#include <stdlib.h>
+        -:   13:
+        -:   14:#define NOISY_TEST 1
+        -:   15:
+        -:   16:int checkAdventureRandom(struct gameState *pre, int currentPlayer, int z, int cardDrawn, int n);
+        -:   17:
+        1:   18:int main(){
+        -:   19:	struct gameState G;
+        -:   20:	int n;
+        -:   21:	int p;
+        -:   22:	int r;
+        -:   23:	int t;
+        -:   24:	int cardDrawn;
+        -:   25:	int u;
+        -:   26:	int turn;
+        -:   27:	int addTreasure;
+        1:   28:	int errorCount = 0;
+        1:   29:	cardDrawn = -1;
+        1:   30:	srand(time(NULL));
+        -:   31:	enum CARD randomCard[27] = {curse, estate, duchy, province, copper, silver, gold, adventurer, council_room, feast, gardens,
+        -:   32:							mine, remodel, smithy, village, baron, great_hall, minion, steward, tribute, ambassador, cutpurse,
+        1:   33:							embargo, outpost, salvager, sea_hag, treasure_map};
+        -:   34:	int k[10] = {adventurer, council_room, feast, gardens, mine
+        1:   35:               , remodel, smithy, village, baron, great_hall};
+        1:   36:	printf("-------------------------Testing Card: Adventurer-------------------------\n\n");
+     5001:   37:	for(n = 0; n < 5000; n++){
+     5000:   38:		p = (rand() % (MAX_PLAYERS-1));
+     5000:   39:		initializeGame(p+1, k, 1000, &G);
+131505000:   40:		for(t = 0; t < sizeof(struct gameState); t++){//fill gameState with junk
+131500000:   41:			((char*)&G)[t] = (rand() % (256));
+        -:   42:		}
+    15073:   43:		for(u = 0; u <= p; u++){
+    10073:   44:			addTreasure = 0;
+    10073:   45:			G.deckCount[u] = (rand() % (MAX_DECK));//player deckCount = between 0 and MAX_DECK
+    10073:   46:			G.discardCount[u] = (rand() % (MAX_DECK));//player discardCount = between 0 and MAX_DECK
+    10073:   47:			G.handCount[u] = (rand() % (MAX_HAND));//player handCount = between 0 and MAX_hand
+        -:   48:
+  2518903:   49:			for(r = 0; r < G.deckCount[u]; r++){
+  2508830:   50:				int randomInt = (rand() % (26));
+  2508830:   51:				G.deck[u][r] = randomCard[randomInt];//player deck at r = random card
+        -:   52:			}
+  2518250:   53:			for(r = 0; r < G.discardCount[u]; r++){
+  2508177:   54:				int randomInt = (rand() % (26));
+  2508177:   55:				G.discard[u][r] = randomCard[randomInt];//player discard at r = random card
+        -:   56:			}
+  2529041:   57:			for(r = 0; r < G.handCount[u]; r++){
+  2518968:   58:				int randomInt = (rand() % (26));
+  2518968:   59:				G.hand[u][r] = randomCard[randomInt];//player hand at r = random card
+        -:   60:			}
+        -:   61:		}
+     5000:   62:		G.numPlayers = p + 1;
+     5000:   63:		turn = (rand() % (p+1));
+     5000:   64:		G.whoseTurn = turn;//random turn
+     5000:   65:		errorCount += checkAdventureRandom(&G, turn, 0, cardDrawn, n);
+        -:   66:	}
+        1:   67:	if(errorCount != 0){
+        -:   68:		#if(NOISY_TEST != 1)
+        -:   69:		printf("At least 1 test failed.  Define NOISY_TEST to 1 for more information\n");
+        -:   70:		#endif
+        -:   71:	}
+        -:   72:	else {
+    #####:   73:		printf("All tests passed\n");
+        -:   74:	}
+        1:   75:	return 0;
+        -:   76:}
+     5000:   77:int checkAdventureRandom(struct gameState *pre, int currentPlayer, int z, int cardDrawn, int n){	
+        -:   78:	struct gameState post;
+     5000:   79:	memcpy (&post, pre, sizeof(struct gameState));
+        -:   80:	int i;
+        -:   81:	int tempHand[MAX_HAND];
+        -:   82:	int t;
+     5000:   83:	int funErrors = 0;
+     5000:   84:	int treasure = 0;
+     5000:   85:	int postTreasure = 0;
+     5000:   86:	int deckPreTreasure = 0;
+     5000:   87:	adventurerCard(&post, currentPlayer);	
+        -:   88:
+  1251813:   89:	for(i = 0; i < pre->handCount[currentPlayer]; i++){
+  1246813:   90:		if(pre->hand[currentPlayer][i]==copper || pre->hand[currentPlayer][i]==gold || pre->hand[currentPlayer][i]==silver){
+   143854:   91:			treasure++;//get orriginal amount of treasure in hand
+        -:   92:		}
+        -:   93:	}
+        -:   94:
+  1261813:   95:	for(i = 0; i < post.handCount[currentPlayer]; i++){
+  1256813:   96:		if(post.hand[currentPlayer][i]==copper || post.hand[currentPlayer][i]==gold || post.hand[currentPlayer][i]==silver){
+   145014:   97:			postTreasure++;//get amount of treasure after adventure card has been played
+        -:   98:		}
+        -:   99:	}
+        -:  100:	
+    15073:  101:	for (t=0; t < pre->numPlayers; t++){//check other players' stats to make sure they haven't changed
+    10073:  102:		if(pre->handCount[t] != post.handCount[t]){
+     5000:  103:			if(t != currentPlayer){//if it's current player their stuff is probably different
+        -:  104:				#if(NOISY_TEST == 1)
+    #####:  105:				printf("Iteration #: %d	Test 1 failed\n", n);
+    #####:  106:				printf("Expected: Player %d handCount = %d	Actual: Player %d handCount = %d\n\n", t, pre->handCount[t], t, post.handCount[t]);
+        -:  107:				#endif
+    #####:  108:				funErrors++;
+        -:  109:			}
+        -:  110:		}
+    10073:  111:		if(pre->discardCount[t] != post.discardCount[t]){
+       25:  112:			if(t != currentPlayer){//check other players discardCount to make sure it wasn't changed
+        -:  113:				#if(NOISY_TEST == 1)
+    #####:  114:				printf("Iteration #: %d	Test 3 failed\n", n);
+    #####:  115:				printf("Expected: Player %d discardCount = %d	Actual: Player %d discardCount = %d\n\n", t, pre->discardCount[t], t, post.discardCount[t]);
+        -:  116:				#endif
+    #####:  117:				funErrors++;
+        -:  118:			}
+        -:  119:		}
+    10073:  120:		if(pre->deckCount[t] != post.deckCount[t]){
+     4999:  121:			if(t != currentPlayer){//check other players deckCounts to make sure it wasn't changed
+        -:  122:				#if(NOISY_TEST == 1)
+    #####:  123:				printf("Iteration #: %d	Test 4 failed\n", n);
+    #####:  124:				printf("Expected: Player %d deckCount = %d	Actual: Player %d deckCount = %d\n\n", t, pre->deckCount[t], t, post.deckCount[t]);
+        -:  125:				#endif
+    #####:  126:				funErrors++;
+        -:  127:			}
+        -:  128:		}
+        -:  129:	}
+     5000:  130:	if(treasure+2 != postTreasure){//possibly not 2 treasure cards in player's deck or discard||||||Won't happen.  I force add two treasure card to deck to prevent very small chance of user having 1 or less treasure cards which causes adverture card to segfault
+  1237630:  131:		for(i=0; i < pre->deckCount[currentPlayer]; i++){
+  1232714:  132:			if(pre->deck[currentPlayer][i]==copper || pre->deck[currentPlayer][i]==silver || pre->deck[currentPlayer][i]==gold){
+   142278:  133:				deckPreTreasure++;//check to see how many treasure cards are in deck
+        -:  134:			}
+        -:  135:		}
+  1226322:  136:		for(i=0; i < pre->discardCount[currentPlayer]; i++){
+  1221406:  137:			if(pre->discard[currentPlayer][i]==copper || pre->discard[currentPlayer][i]==silver || pre->discard[currentPlayer][i]==gold){
+   140864:  138:				deckPreTreasure++;//check to see how many treasure cards are in discard
+        -:  139:			}
+        -:  140:		}
+     4916:  141:		if(deckPreTreasure >= 2){//if we found more than two treasure then the fuction did not add two cards to hand even though they were avaiable
+        -:  142:			#if(NOISY_TEST == 1)
+     4904:  143:			printf("Iteration #: %d	Test 6 failed\n", n);
+     4904:  144:			printf("Expected: treasure in hand = %d	Actual: treasure in hand = %d\n\n", treasure + 2, postTreasure);
+        -:  145:			#endif
+     4904:  146:			funErrors++;
+        -:  147:		}
+       12:  148:		else if(deckPreTreasure == 1){//if only one treasure is found then player hand count should go up by zero 
+        8:  149:			if(post.handCount[currentPlayer] != pre->handCount[currentPlayer]){
+        -:  150:				#if(NOISY_TEST == 1)
+        8:  151:				printf("Iteration #: %d	Test 7 failed\n", n);
+        8:  152:				printf("Expected: handCount = %d	Actual: handCount = %d\n\n", pre->handCount[currentPlayer], post.handCount[currentPlayer]);
+        -:  153:				#endif
+        8:  154:				funErrors++;
+        -:  155:			}
+        -:  156:		}
+        4:  157:		else if(deckPreTreasure == 0){//No treasure in deck or discard
+        4:  158:			if(treasure != postTreasure){//No treasure to add so they should be the same as postTreasure was not incremented
+        -:  159:				#if(NOISY_TEST == 1)
+    #####:  160:				printf("Iteration #: %d	Test 8 failed\n", n);
+    #####:  161:				printf("Expected: Post treasure = %d	Actual: Post treasure = %d\n\n", treasure, postTreasure);
+        -:  162:				#endif
+    #####:  163:				funErrors++;
+        -:  164:			}
+        -:  165:		}
+        -:  166:	}
+     5000:  167:	if(pre->deckCount[currentPlayer] == 0 && post.deckCount[currentPlayer] == 0 && deckPreTreasure > 1){//if pre deckCount is zero the then the function should
+        -:  168:		#if(NOISY_TEST == 1)									    //add to discard from deck increasing post deckCount if
+    #####:  169:		printf("Iteration #: %d	Test 9 failed\n", n);						    //two treasure cards are available
+    #####:  170:		printf("Discard was not add to deck when deckCount = 0\n");
+        -:  171:		#endif
+    #####:  172:		funErrors++;
+        -:  173:	}
+     5000:  174:	if(pre->handCount[currentPlayer]+1 != post.handCount[currentPlayer] && treasure + 2 == postTreasure){//check that card was discarded
+        -:  175:		#if(NOISY_TEST == 1)
+       84:  176:		printf("Iteration #: %d	Test 10 failed\n", n);
+       84:  177:		printf("Expected: Post handCount = %d	Actual: Post handCount = %d\n\n", pre->handCount[currentPlayer] + 1, post.handCount[currentPlayer]);
+        -:  178:		#endif
+       84:  179:		funErrors++;
+        -:  180:	}
+     5000:  181:	return funErrors;
+        -:  182:}

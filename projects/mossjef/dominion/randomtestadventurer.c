@@ -25,7 +25,7 @@ void checkAdventurer(int player, struct gameState *post, int *fail) {
 
  	int ret;
     	
-  	ret = useAdventurer(player, post);
+  	ret = useAdventurer(0, player, post);
 
 	//Check that function returns correctly
 	assert (ret == 0);
@@ -89,7 +89,7 @@ void checkAdventurer(int player, struct gameState *post, int *fail) {
 	//Now check the state of the player with the adventurer card
 	
 	//Two more cards must be entered into the hand
-	assert(pre.handCount[player]+2 == post->handCount[player]);
+	assert(pre.handCount[player]+1 == post->handCount[player]);
 
 	//Check that the two cards added are treasure cards
 	for(i = pre.handCount[player]-1; i < post->handCount[player]; i++) {
@@ -101,7 +101,7 @@ void checkAdventurer(int player, struct gameState *post, int *fail) {
 	//For a given player their cards are either in the deck, discard or hand
 	//We've already tested two additional cards will go to the hand
 	
-	int deckChange = 2 + post->discardCount[player] - pre.discardCount[player];
+	int deckChange = 1 + post->discardCount[player] - pre.discardCount[player];
 	int postdeckcount = pre.deckCount[player] - deckChange;	
 	
 	//assert(post->deckCount[player] == postdeckcount);

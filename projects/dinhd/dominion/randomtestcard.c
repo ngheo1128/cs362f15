@@ -139,7 +139,7 @@ int main ()
     		if  (actualcardsDrawn[j] != cardsDrawn[j])
             {
                 printf("card %s actual: %i expected: %i\n", name, actualcardsDrawn[j], cardsDrawn[j]);
-            }            }
+            }          
     	}
 
     	//make sure that the card in discard is 1 and it's smithy

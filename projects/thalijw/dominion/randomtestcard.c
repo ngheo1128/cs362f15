@@ -19,7 +19,8 @@ end.
 #include "rngs.h"
 #include <stdlib.h>
 
-void RandBaronTest(struct gameState *post, int player, int * FirstPlayerNumCoins, int Choice, int * NumOfMatchGame, int * NumOfNotMatchGame) {
+void RandBaronTest(struct gameState *post, int player, int * FirstPlayerNumCoins, int Choice, int * NumOfMatchGame, int * NumOfNotMatchGame) 
+{
 
 // Create a temp game state to store the pre state of the game 
 struct gameState PreGame;
@@ -104,7 +105,7 @@ if (Choice == 1) {
 		printf("Did not discard one Estate card from the player's hand, FAILED!\n");
 	}
 
-} else if (Choice == 0) {
+ } else if (Choice == 0) {
 
 	// Call the card effect on the card
 	int statusEFFECT = cardEffect(baron, Choice, -1, -1, post, 1, 0);
@@ -159,9 +160,9 @@ if (Choice == 1) {
 PreGame.numBuys +=1;
 if (Choice == 1) 
 {
-	int s;
+	int s = 0;
 	int CardNotDiscarded = 1;
-	while(CardNotDiscarded)
+	while(CardNotDiscarded ==1 )
 	{
 		// If we found estate card in hand
 		if (PreGame.hand[Firstplayer][s] == estate)
@@ -176,7 +177,7 @@ if (Choice == 1)
 	    	}
 	    	PreGame.hand[Firstplayer][PreGame.handCount[Firstplayer]] = -1;
 	    	PreGame.handCount[Firstplayer]--;
-	    	CardNotDiscarded = 0;
+	     	CardNotDiscarded = 0;
 	  	} else if (s > PreGame.handCount[Firstplayer])
 	  	{
 	    	if (supplyCount(estate, &PreGame) > 0)

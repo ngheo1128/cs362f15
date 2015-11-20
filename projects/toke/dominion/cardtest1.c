@@ -49,20 +49,21 @@ void TestThatPlayerHas3MoreCardsInTheirHand()
 	int player1 = 0;
 
 	// Check that player 1 has 3 more cards in his hands now
-	printf("Testing...Player 1 has 3 more cards in his hand after smithy is played.\n");
+	printf("Testing...Player 1 has 2 more cards in his hand after smithy is played. (3 new cards minus 1 discarded smithy card)\n");
 	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
 	initializeGame(2, k, 1, &G);
 	int preHandCount = G.handCount[player1];
 	int handpos = 0;
+	G.hand[player1][handpos] = smithy;
 	executeSmithyCard(player1, &G, handpos);
 	int postHandCount = G.handCount[player1];
-	if (postHandCount != preHandCount + 3)
+	if (postHandCount != preHandCount + 2)
 	{
-		printf("Test Failed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 3, postHandCount);
+		printf("Test Failed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
 	}
 	else
 	{
-		printf("Test Passed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 3, postHandCount);
+		printf("Test Passed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
 	}
 }
 
@@ -86,13 +87,27 @@ void TestThatPlayerGot3CardsFromTheirDeck()
 	int firstCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 1];
 	int secondCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 2];
 	int thirdCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 3];
+	// printf("first card removed from deck: %d\n", firstCardToBeRemovedFromDeck);
+	// printf("second card removed from deck: %d\n", secondCardToBeRemovedFromDeck);
+	// printf("third card removed from deck: %d\n", thirdCardToBeRemovedFromDeck);
 	int prePlayer2DeckCount = G.deckCount[player2];
 
 	executeSmithyCard(player1, &G, handpos);
 
-	int firstCardToBeAddedToHand = G.hand[player1][preHandCount];
-	int secondCardToBeAddedToHand = G.hand[player1][preHandCount + 1];
-	int thirdCardToBeAddedToHand = G.hand[player1][preHandCount + 2];
+	int postHandCount = G.handCount[player1];
+	int firstCardToBeAddedToHand = G.hand[player1][postHandCount - 2];
+	int secondCardToBeAddedToHand = G.hand[player1][postHandCount - 1];
+	int thirdCardToBeAddedToHand = G.hand[player1][0]; // Card is added to the beginning because the smithy card is discarded
+
+	// printf("postHandCount: %d\n", postHandCount); 
+	// int i;
+	// for (i = 0; i < postHandCount; ++i)
+	// {
+	// 	printf("post hand: %d\n", G.hand[player1][i]);
+	// }
+	// printf("firstCardToBeAddedToHand: %d\n", firstCardToBeAddedToHand);
+	// printf("secondCardToBeAddedToHand: %d\n", secondCardToBeAddedToHand);
+	// printf("thirdCardToBeAddedToHand: %d\n", thirdCardToBeAddedToHand);
 	int postPlayer2DeckCount = G.deckCount[player2];
 
 	// Check player 1's deck counts

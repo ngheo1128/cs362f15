@@ -39,6 +39,10 @@ int testFeastCard(struct gameState *state, int currentPlayer, int choice)
     //
     origState = copyState(state);
 
+    // Set the current player
+    //
+    state->whoseTurn = currentPlayer;
+
     // Run the feast card function
     //
     feastCard(choice, state);

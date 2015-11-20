@@ -132,7 +132,7 @@ int useSmithy (int handPos, int currentPlayer, struct gameState *state);
 /* Use the smithy card */
 
 
-int useAdventurer(int currentPlayer, struct gameState *state);
+int useAdventurer(int handpos, int currentPlayer, struct gameState *state);
 /* use the Adventurer card */
 
 int useSteward(int handPos, int currentPlayer, struct gameState *state, int choice1, int choice2, int choice3);

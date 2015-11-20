@@ -33,6 +33,9 @@ unittest1: unittest1.c
 	gcc -o unittest1 unittest1.c -g dominion.o rngs.o $(CFLAGS)
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 
 unittest2: unittest2.c
 	gcc -o unittest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
@@ -73,9 +76,13 @@ rununittests: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardte
 	gov cardtest3.c -p -b >> unittestresults.out	
 	gov cardtest4.c -p -b >> unittestresults.out	
 =======
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> b8fed9de43626a0f5914fb324808d499ca8a59c8
 =======
 >>>>>>> 94eed62ad3efd70d35cc28d7a33db35dbc5fe612
+>>>>>>> origin/master
 
 unittest2: unittest2.c
 	gcc -o unittest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
