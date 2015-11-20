@@ -132,7 +132,7 @@ int testSmithyEffect(int playerNumber, struct gameState *post, int handPos)
     memcpy (&pre, post, sizeof(struct gameState));
 
     // call smithyEffect function
-    retVal = smithyEffect(playerNumber, post, handPos);
+    retVal = smithyEffect(playerNumber, handPos, post);
 
     // make changes to pre based on what smithyEffect should do
 

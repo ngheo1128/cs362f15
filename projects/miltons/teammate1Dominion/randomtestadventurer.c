@@ -126,17 +126,17 @@ int testAdventurerEffect(int playerNumber, struct gameState *post)
 
     int retVal = 0;
     int cardsAvailable;
-    int drawnTreasure = 0;
-    int tempHand[MAX_HAND];
-    int cardDrawn = 0; 
-    int z = 0;
+    // int drawnTreasure = 0;
+    // int tempHand[MAX_HAND];
+    // int cardDrawn = 0; 
+    // int z = 0;
 
     // create duplicate of game state for before and after comparison
     struct gameState pre;
     memcpy (&pre, post, sizeof(struct gameState));
 
     // call adventurerEffect function
-    retVal = adventurerEffect(playerNumber, drawnTreasure, tempHand, post, cardDrawn, z);
+    retVal = adventurerEffect(playerNumber, post);
 
     // make changes to pre based on what adventurerEffect should do
 
