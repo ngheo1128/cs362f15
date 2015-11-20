@@ -1302,18 +1302,17 @@ int callSmithyCard(int currentPlayer, struct gameState* state, int handPos){
 }
 
 int callVillageCard(int currentPlayer, struct gameState* state, int handPos){
-	
-    
+
+
       drawCard(currentPlayer, state);
-			
-     
+
+
       state->numActions = state->numActions + 2;
-	  drawCard(currentPlayer, state);
-			
+
       //discard played card from hand
       discardCard(handPos, currentPlayer, state, 0);
       return 0;
-		
+
 }
 
 int callCouncilRoom(int currentPlayer, struct gameState* state, int handPos){
