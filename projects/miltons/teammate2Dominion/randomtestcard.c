@@ -40,7 +40,7 @@ int randInt(int min, int max);
  **                   the game state from smithyEffect() are compared to the 
  **                   expected results to see if the function is working
  **                   properly.
- ** Parameters:       two int values: playerNumber, handPos
+ ** Parameters:       one int value: handPos
  **                   a pointer to a struct of type gameState: testState
  ** Pre-Conditions:   playerNumber and handPos are of type int with values
  **                   within valid ranges for the game. testState is a
@@ -51,7 +51,7 @@ int randInt(int min, int max);
  **                   results have been output to the console.
  **
  *****************************************************************************/
-int testSmithyEffect(int playerNumber, struct gameState *testState, int handPos);
+int testSmithyEffect(struct gameState *testState, int handPos);
 
 
 
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 
         // generate sensible random values for important preconditions:
         // select a random player
-        playerNumber = randInt(1, 2); // can this go to 4 players?
+//        playerNumber = randInt(1, 2); // can this go to 4 players?
         // random number of cards in current player's deck
         testState.deckCount[playerNumber] = randInt(0, MAX_DECK);
         // random number of cards in current player's discard pile
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
         handPos = randInt(0, handPos);
 
         // call test oracle function and pass it these parameters
-        int retVal = testSmithyEffect(playerNumber, &testState, handPos);
+        int retVal = testSmithyEffect(&testState, handPos);
 
         // check return value for failure / crash
         if (retVal < 0)
@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
 
 
 
-int testSmithyEffect(int playerNumber, struct gameState *post, int handPos)
+int testSmithyEffect(struct gameState *post, int handPos)
 {
 
     int retVal;
@@ -132,7 +132,7 @@ int testSmithyEffect(int playerNumber, struct gameState *post, int handPos)
     memcpy (&pre, post, sizeof(struct gameState));
 
     // call smithyEffect function
-    retVal = smithyEffect(playerNumber, post, handPos);
+    smithyEffect(post, handPos);
 
     // make changes to pre based on what smithyEffect should do
 
@@ -151,14 +151,16 @@ int testSmithyEffect(int playerNumber, struct gameState *post, int handPos)
     // discard pile will either have 1 more card in post than in pre
     // or will have 1 card (in case of empty deck during draw)
 
+    // Andrew Shen's function do not return a value 
+    // so the following code is not used:
 
     // make sure smithyEffect did not crash
-    if (retVal < 0)
-    {
-        printf("smithyEffect returned a nonzero value\n");
-    }
-    else
-    {
+    // if (retVal < 0)
+    // {
+    //     printf("smithyEffect returned a nonzero value\n");
+    // }
+    // else
+    // {
         // compare actual result to expected result (post to pre)
         // to make sure smithyEffect is working properly
         if (pre.handCount[playerNumber] != post->handCount[playerNumber])
@@ -166,9 +168,9 @@ int testSmithyEffect(int playerNumber, struct gameState *post, int handPos)
             printf("smithyEffect did not add the expected number of cards to the player's hand.\n");
             retVal = -1;
         }
-    }
+    // }
 
-    // returns zero if smithyEffect did not crash
+    // returns zero if smithyEffect passed
     return retVal;
 }
 
