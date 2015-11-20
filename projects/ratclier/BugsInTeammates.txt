@@ -10,17 +10,9 @@ Teammate 1 (Susan) bugs:
 -----------------------------------------------------------------------
 
 
-Unit Test 2: gainCard()
-
->>> TESTING: gainCard(), sufficient supply deck...
-gainCard: FAIL exited in spite of having sufficient cards and the card being 
-used in the game
-
-----------------------------------------------------
-
 Card Test 1: smithyAction()
 
->>> TESTING: smithy card, player 0...
+>>> TESTING: smithy card, player 0 & 1...
 smithyAction: FAIL three cards not removed from deck
 smithyAction: FAIL three cards not added to hand
 
@@ -46,14 +38,6 @@ FAIL incorrect number of cards discarded
 Teammate 2 (Brian) bugs:
 -----------------------------------------------------------------------
 
-
-Unit Test 2: gainCard()
-
->>> TESTING: gainCard(), sufficient supply deck...
-gainCard: FAIL exited in spite of having sufficient cards and the card being
-used in the game
-
-----------------------------------------------------
 
 Card Test 1: playSmithyCard()
 
@@ -87,21 +71,6 @@ FAIL incorrect number of cards discarded
 Supplemental information for Teammate 1 bugs:
 -----------------------------------------------------------------------
 
-
-Unit Test 2 : gainCard()
-
->>> TESTING: gainCard(), sufficient supply deck...
-gainCard: FAIL exited in spite of having sufficient cards and the card being
-used in the game
-
->>> STATE CHANGES: for all players:
-supplyCount[9] changed! Orig: 2, New: 1
-
->>> STATE CHANGES: specific to player 0:
-deckCount[0] changed! Orig: 5, New: 6
-deck[0][5] changed! Orig: 4, New: 9
-
-----------------------------------------------------
 
 Card Test 1 : smithyAction()
 
@@ -187,12 +156,12 @@ supplyCount[6] changed! Orig: 30, New: 26
 
 >>> STATE CHANGES: specific to player 0:
 handCount[0] changed! Orig: 6, New: 4
-deckCount[0] changed! Orig: 366, New: 370
+deckCount[0] changed! Orig: 130, New: 134
 hand[0][4] changed! Orig: 4, New: -1
-deck[0][366] changed! Orig: 0, New: 6
-deck[0][367] changed! Orig: 0, New: 6
-deck[0][368] changed! Orig: 0, New: 6
-deck[0][369] changed! Orig: 0, New: 6
+deck[0][130] changed! Orig: 0, New: 6
+deck[0][131] changed! Orig: 0, New: 6
+deck[0][132] changed! Orig: 0, New: 6
+deck[0][133] changed! Orig: 0, New: 6
 
 ----------------------------------------------------
 
@@ -226,20 +195,6 @@ FAIL incorrect number of cards discarded
 Supplemental information for Teammate 2 bugs:
 -----------------------------------------------------------------------
 
-
-Unit Test 2: gainCard()
-
->>> TESTING: gainCard(), sufficient supply deck...
-gainCard: FAIL exited in spite of having sufficient cards and the card being used in the game
-
->>> STATE CHANGES: for all players:
-supplyCount[9] changed! Orig: 2, New: 1
-
->>> STATE CHANGES: specific to player 0:
-deckCount[0] changed! Orig: 5, New: 6
-deck[0][5] changed! Orig: 4, New: 9
-
-----------------------------------------------------
 
 Card Test 1: playSmithyCard()
 
@@ -321,15 +276,13 @@ treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck
 supplyCount[6] changed! Orig: 30, New: 26
 
 >>> STATE CHANGES: specific to player 0:
-handCount[0] changed! Orig: 7, New: 5
-deckCount[0] changed! Orig: 5, New: 9
-hand[0][4] changed! Orig: 4, New: 26
-hand[0][5] changed! Orig: 26, New: -1
-hand[0][6] changed! Orig: 26, New: -1
-deck[0][5] changed! Orig: 4, New: 6
-deck[0][6] changed! Orig: 4, New: 6
-deck[0][7] changed! Orig: 1, New: 6
-deck[0][8] changed! Orig: 4, New: 6
+handCount[0] changed! Orig: 6, New: 4
+deckCount[0] changed! Orig: 327, New: 331
+hand[0][4] changed! Orig: 4, New: -1
+deck[0][327] changed! Orig: 0, New: 6
+deck[0][328] changed! Orig: 0, New: 6
+deck[0][329] changed! Orig: 0, New: 6
+deck[0][330] changed! Orig: 0, New: 6
 
 ----------------------------------------------------
 
