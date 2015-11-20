@@ -13,3 +13,8 @@ dominion.c:
 
 - Changed cardDrawn assignment in adventurerCard() to add cards to the end of
   the hand. Was previously set to add cards past the end of the hand.
+
+- Changed discardCard() to add card to discard pile, not just the played card
+  pile (what does the played card pile even do?). Cards were not registering
+  as being discarded before, but now they are (assuming the card code calls
+  discardCard() in some way, that is).

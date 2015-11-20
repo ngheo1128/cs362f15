@@ -48,7 +48,7 @@ In dominion.c:
   (So there's still a BUG)
 
 
-11/19/2015 (unit/card/random test refactors):
+11/19/2015:
 
 In randomtestcard.c:
 
@@ -72,3 +72,10 @@ In unittest2.c:
   the requested card instead of the return value of gainCard(). I am not sure
   why I checked gainCard()'s return value in the first place, it does not reveal
   anything about card supplies. 
+
+In dominion.c:
+
+- Changed discardCard() to add card to discard pile and increment discardCount 
+  for the current user. Previously the function only added to the (seemingly 
+  useless) playedCards[] array. When a card is discarded, it's supposed to go
+  to the discard pile at a minimum.
