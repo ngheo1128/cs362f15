@@ -66,9 +66,10 @@ int checkAdventurerEffect(struct gameState *state, int player, int treasureCard)
 		oracle.discard[player][oracle.discardCount[player]++]=temphand[z-1]; // discard all cards in play that have been drawn
 		z--;
 	  }
+
+	discardCard(0,player,state,0);
 	
-	
-	int r = adventurerEffect(state,player);
+	int r = adventurerEffect(state,player,0);
 	
 	if(r != 0){
 		#if (NOISY_TEST==1)
@@ -80,16 +81,7 @@ int checkAdventurerEffect(struct gameState *state, int player, int treasureCard)
 		printf("  PASS, return value=%d, expected=%d\n", r, 0);
 		#endif 
 	}
-	
-	int expectedDiscardCount=oracle.discardCount[player];
-	int actualDiscardCount=state->discardCount[player];
-	if(actualDiscardCount != expectedDiscardCount){
-		printf("  FAIL, discardCount=%d, expected=%d\n", actualDiscardCount, expectedDiscardCount);
-		err++;
-	}else{
-		printf("  PASS, discardCount=%d, expected=%d\n", actualDiscardCount, expectedDiscardCount);	  
-	}
-	
+		
 	int expectedTreasureCount=2;
 	int copperSilverOrGoldCount=0;
 	//count the treasures in the hand
