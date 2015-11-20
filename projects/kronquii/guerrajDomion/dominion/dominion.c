@@ -1293,7 +1293,7 @@ int callAdventureCard(int hand[], struct gameState* state, int z, int cardDrawn,
 int callSmithyCard(int currentPlayer, struct gameState* state, int handPos){
 	//+3 Cards
 	int i =0;
-      for (i = 1; i < 3; i++)
+      for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
