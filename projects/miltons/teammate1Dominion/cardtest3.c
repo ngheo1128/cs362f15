@@ -1,5 +1,5 @@
 // tests Council Room card
-// int councilRoomEffect(int currentPlayer, struct gameState *state, int handPos)
+// int councilEffect(int player, int handPos, struct gameState *state)
 
 #include<stdio.h>
 #include "dominion.h"
@@ -9,7 +9,7 @@
 int main(int argc, char *argv[])
 {
     struct gameState testState;
-    int retVal = councilRoomEffect(0, &testState, 0);
+    int retVal = councilRoomEffect(0, 0, &testState);
     if (retVal == 0)
     {
         printf("Council Room card: PASS\n");

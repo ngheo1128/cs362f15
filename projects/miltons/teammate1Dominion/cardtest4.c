@@ -8,15 +8,18 @@
 
 int main(int argc, char *argv[])
 {
-    struct gameState testState;
-    int retVal = mineEffect(0, &testState, 0, 0, 0);
-    if (retVal == 0)
-    {
-        printf("Mine card: PASS\n");
-    }
-    else
-    {
-        printf("Mine card: FAIL\n");
-    }
+
+    // Ashok Nayar did not choose the mine card for his assignment.
+
+    // struct gameState testState;
+    // int retVal = mineEffect(0, &testState, 0, 0, 0);
+    // if (retVal == 0)
+    // {
+    //     printf("Mine card: PASS\n");
+    // }
+    // else
+    // {
+    //     printf("Mine card: FAIL\n");
+    // }
     return 0;
 }
