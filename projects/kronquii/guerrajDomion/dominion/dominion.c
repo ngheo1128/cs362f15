@@ -1347,8 +1347,9 @@ int callCouncilRoom(int currentPlayer, struct gameState* state, int handPos){
 int callGreatHall(int currentPlayer, struct gameState* state, int handPos){
 	//+1 Card
       drawCard(currentPlayer, state);
-			
-			
+
+      state->numActions++;
+
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
       return 0;
