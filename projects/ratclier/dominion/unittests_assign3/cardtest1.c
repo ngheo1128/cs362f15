@@ -35,6 +35,10 @@ int testSmithyCard(int currentPlayer, struct gameState *state, int handPos)
     //
     origState = copyState(state);
 
+    // Set the current player
+    //
+    state->whoseTurn = currentPlayer;
+
     // Run the smithy card function
     //
     smithyCard(state, handPos);

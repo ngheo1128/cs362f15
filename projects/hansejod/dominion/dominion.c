@@ -1222,7 +1222,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 int callSmithy(int currentPlayer_, int handPos_, struct gameState *state_){
     //+3 Cards
     int i;
-    for (i = 0; i < 3; ++i)
+    for (i = 0; i < 3; i++)
     {
         drawCard(currentPlayer_, state_);
     }
@@ -1240,7 +1240,7 @@ int callAdventurer(int currentPlayer_, struct gameState *state){
     int temphand[MAX_HAND];
     int cardDrawn_;
     
-    while(drawntreasure<=2){
+    while(drawntreasure<2){ 
         if (state->deckCount[currentPlayer_] <1){//if the deck is empty we need to shuffle discard and add to deck
         shuffle(currentPlayer_, state);
         }
@@ -1250,7 +1250,7 @@ int callAdventurer(int currentPlayer_, struct gameState *state){
             drawntreasure++;
         else{
             temphand[z]=cardDrawn_;
-            state->deckCount[currentPlayer_]--; //this should just remove the top card (the most recently drawn one).
+            state->handCount[currentPlayer_]--; //this should just remove the top card (the most recently drawn one).
             z++;
         }
     }
@@ -1272,7 +1272,7 @@ int callCouncilRoom(int currentPlayer_, int handPos_, struct gameState *state){
     }
     
     //+1 Buy
-    state->numBuys;
+    state->numBuys++;
     
     //Each other player draws a card
     for (i = 0; i < state->numPlayers; i++)
@@ -1314,7 +1314,7 @@ int callAmbassador(int currentPlayer_, int handPos_, int choice1_, int choice2_,
     }
     if (j < choice2_)
     {
-        return 0;
+        return -1;
     }
     
     if (DEBUG)
@@ -1343,6 +1343,7 @@ int callAmbassador(int currentPlayer_, int handPos_, int choice1_, int choice2_,
             if (state->hand[currentPlayer_][i] == state->hand[currentPlayer_][choice1_])
             {
                 discardCard(i, currentPlayer_, state, 1);
+                break;
             }
         }
     }			

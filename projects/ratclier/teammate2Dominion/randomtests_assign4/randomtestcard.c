@@ -108,16 +108,19 @@ int testTreasureMapCard(struct gameState *state, int handPos)
                 passFlag = 0;
             }
         }
-        // We did not discard two treasure map cards. Check golds.
-        //
-        if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+        else
         {
-            printf("treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck\n");
-            passFlag = 0;
-        }
-        else 
-        {
-            printf("treasureMapCard: PASS did not discard two TMs, golds not added to top of deck\n");
+            // We did not discard two treasure map cards. Check golds.
+            //
+            if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+            {
+                printf("treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck\n");
+                passFlag = 0;
+            }
+            else 
+            {
+                printf("treasureMapCard: PASS did not discard two TMs, golds not added to top of deck\n");
+            }
         }
     }
     else 

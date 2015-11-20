@@ -1,9 +1,9 @@
 /*****************
  * Author:  Brian Stamm
- * Title:  cardTest4.c
- * Assignment:  3
- * Date:  10.25.15
- * Notes:  Tests the Council card, in the council_room_refactor.
+ * Title:  cardTest3.c
+ * Assignment:  5
+ * Date:  11.22.15
+ * Notes:  Tests the Council card, in the council_room_refactor - for Wisam's dominion.c
  * ****************/
 
 #include "dominion.h"
@@ -29,53 +29,55 @@ void test(){
 
   initializeGame(4, k, r, game);
 
+  //to hold each player's hand amounts.
+  int groupHand[4];
 
   //same tests as smithy card
   //Also, every player beside current player gets card, need to check them too
   //Max players is 4
   testBuys = game->numBuys + 1;
-  testHandCount = game->handCount[player] + 4;
+  testHandCount = game->handCount[player] + 3;
   testPlayedCardCount = game->playedCardCount + 1;
   testDeckCount = game->deckCount[player] - 4;
+  for(i=0; i<4;i++){
+    groupHand[i] = game->handCount[i] + 1;
+  }
 
   printf("This is first initial test for council_room_refactor.\n");
 
   if(council_room_refactor(player, game, 0) == 0){
-    if(testPlayedCardCount == game->playedCardCount){
-      printf("council_room_refactor() Test 1:  PASS, played card amounts equal.\n");
-    }
-    else{
+    if(testPlayedCardCount != game->playedCardCount){
       printf("council_room_refactor() Test 1:  FAIL, played card amounts NOT equal.\n");
       printf("\tTest:  %d\tSaved:  %d\n", testPlayedCardCount, game->playedCardCount);
     }
 
-    if((testHandCount) == game->handCount[player]){
-      printf("council_room_refactor() Test 1:  PASS, handCount amounts equal.\n");
-    }
-    else{
+    if((testHandCount) != game->handCount[player]){
       printf("council_room_refactor() Test 1:  FAIL, handCount amounts NOT equal.\n");
       printf("\tTest:  %d\tSaved:  %d\n", testHandCount, game->handCount[player]);
     }
 
-    if(testDeckCount == game->deckCount[player]){
-      printf("council_room_refactor() Test 1:  PASS, deckCount amounts equal.\n");
-    }
-    else{
+    if(testDeckCount != game->deckCount[player]){
       printf("council_room_refactor() Test 1:  FAIL, deckCount amounts NOT equal.\n");
       printf("\tTest:  %d\tSaved:  %d\n", testDeckCount, game->deckCount[player]);
     }
-    if(game->numBuys == testBuys){
-      printf("Council Test :  PASSED - buy number correct\n");
-    }
-    else{
+    if(game->numBuys != testBuys){
       printf("Council Test :  FAILED - buy number NOT correct\n");
       printf("\tTest:  %d\tSaved:  %d\n", testBuys, game->numBuys);
+    }
+    for(i=0; i<4; i++){
+      if(i != player){
+        if(groupHand[i] != game->handCount[i]){
+          printf("council_room_refactor Test 1:  FAIL, other players' hand not increased\n");
+          printf("\tTest:  %d\tSaved:  %d\n", groupHand[i], game->handCount[i]);
+        }
+      }
     }
   }
   else{
     printf("council_room_refactor() Test 1:  FAIL.  Unknown error, danger, danger Will Robinson.\n");
   }
 
+  /*
   printf("This is random testing.\n");
   printf("Random Testing to Start\n");
   counter = 1;
@@ -141,6 +143,7 @@ void test(){
     counter++;
   }
   printf("smithyMethod() Random Test fail number:  %d\n", failNum);
+  */
 }
 
 
