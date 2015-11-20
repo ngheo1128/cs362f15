@@ -1353,6 +1353,7 @@ int remodelEffect(int currentPlayer, struct gameState *state, int handPos, int c
 	      break;
 	    }
 	}
+    return 0;
 }
 //end of dominion.c
 
