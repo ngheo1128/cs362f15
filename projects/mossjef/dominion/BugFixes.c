@@ -41,6 +41,10 @@ useGreat_hall()
 Bug: Number of actions not incrementing correctly.
 Fix: Changed decrementor to incrementor in useGreat_hall() function
 
+useSteward()
+Bug: Choice 1 is never executed
+Fix: Fixed logic so that choice 1 is a part of the if then else chain.
+
 isGameOver()
 Bug: The isGameOver function fails on the last three cards
 Fix: isGameOver only checks from 0 to 24. The function should check from 0 to 27. This 

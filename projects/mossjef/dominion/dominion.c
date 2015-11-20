@@ -1340,7 +1340,7 @@ int useAdventurer(int handPos, int currentPlayer, struct gameState *state) {
 */
 int useSteward(int handPos, int currentPlayer, struct gameState *state, int choice1, int choice2, int choice3) {
 
-      if (choice1 == 2)
+      if (choice1 == 1)
 	{
 	  //+2 cards
 	  drawCard(currentPlayer, state);
