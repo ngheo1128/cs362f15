@@ -94,7 +94,7 @@ int testTreasureMapCard(struct gameState *state, int handPos)
         // We started with two treasure map cards. See how many were
         // discarded.
         //
-        if(origNumTreasureMap - newNumTreasureMap == 0)
+        if(origNumTreasureMap - newNumTreasureMap == 2)
         {
             // We discarded two treasure map cards. Check golds.
             //

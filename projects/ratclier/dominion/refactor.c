@@ -48,9 +48,9 @@ In dominion.c:
   (So there's still a BUG)
 
 
-11/19/2015:
+11/19/2015 (unit/card/random test refactors):
 
-In randomtestcard.c (for my code tree as well as teammate tests):
+In randomtestcard.c:
 
 - Fixed a bug where discarded treasure map cards was not detected correctly.
 - Changed if/if statements to if/else/if statements for checking top gold 
@@ -61,4 +61,14 @@ In cardtest1.c, cardtest3.c, and cardtest4.c (unit tests):
 - Correctly set the current player (was not done at all before) by setting 
   state->whoseTurn to currentPlayer in the card test function.
 
+In cardtest3.c:
 
+- Added code to force ONLY one treasure map card or ONLY two treasure map 
+  cards. Code to do this was lifted from randomtestcard.c.
+
+In unittest2.c:
+
+- Changed if statement after running gainCard() to read the supply count of
+  the requested card instead of the return value of gainCard(). I am not sure
+  why I checked gainCard()'s return value in the first place, it does not reveal
+  anything about card supplies. 
