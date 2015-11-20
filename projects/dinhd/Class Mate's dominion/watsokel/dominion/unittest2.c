@@ -42,28 +42,40 @@ int main() {
         {
            //test to see if the deck count is correct for 0 cards
             printf ("Test: No %s's in for player %i \n", name, p);
-            assert (fullDeckCount(0, 60, &G) == 0);
+            if (fullDeckCount(0, 60, &G) != 0)
+            {
+                printf("Error: expected 0 deck cards, got %i \n", fullDeckCount(0, 60, &G));
+            }
 
            //test to see if the deck count is correct for 1 card in deck
             G.deck[p][0] = k[i];
             G.deckCount[p] = 1;
 
             printf ("Test: One %s in deck for player %i \n", name, p);
-            // assert (fullDeckCount(p, k[i], &G) == 1);
+            if (fullDeckCount(p, k[i], &G) != 1)
+            {
+                printf("Error: expected 1 deck cards, got %i \n", fullDeckCount(0, 60, &G));
+            }
 
             //test to see if the deck count is correct for a card in both hand and deck. 
             G.hand[p][0] = k[i];
             G.handCount[p] = 1;
 
-            printf ("Test: One %s in hand and deck for player %i \n", name, p);
-            // assert (fullDeckCount(p, k[i], &G) == 2); 
+            // printf ("Test: One %s in hand and deck for player %i \n", name, p);
+            if (fullDeckCount(p, k[i], &G) != 2)
+            {
+                printf("Error: expected 2 deck cards, got %i \n", fullDeckCount(0, 60, &G));
+            }
 
             //test to see if the deck count is correct for a card in hand, discard and deck. 
             G.discard[p][0] = k[i];
             G.discardCount[p] = 1;
 
             printf ("Test: One %s in discard, hand and deck for player %i \n", name, p);
-            // assert (fullDeckCount(p, k[i], &G) == 3); 
+            if (fullDeckCount(p, k[i], &G) != 3)
+            {
+                printf("Error: expected 2 deck cards, got %i \n", fullDeckCount(0, 60, &G));
+            } 
         }
     }
 

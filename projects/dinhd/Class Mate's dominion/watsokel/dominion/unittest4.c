@@ -74,7 +74,11 @@ int main() {
 
     score = scoreFor(0, &G);
     //printf("score: %i \n", score);
-    printf ("################################################### \n Error: iterator for deck count cycles through i = discardCount istead of deckCount \n ################################################### \n");
+    if (score != 10)
+    {
+      printf("Error: deck points not totalled correctly. score is %i not 10\n", score);
+    }
+        // printf ("################################################### \n Error: iterator for deck count cycles through i = discardCount istead of deckCount \n ################################################### \n");
 
 
 
@@ -98,8 +102,13 @@ int main() {
     //printHand(0, &G);
 
     score = scoreFor(0, &G);
-    //printf ("score: %i disardcount: %i \n", score, discardCount);
-    printf ("################################################### \n Error: iterator for deck count cycles through i = discardCount istead of deckCount \n ################################################### \n");
+
+    if (score != 10)
+    {
+      printf("Error: discard points not totalled correctly. score is %i not 10\n", score);
+    }
+    // printf ("score: %i disardcount: %i \n", score, discardCount);
+    // printf ("################################################### \n Error: iterator for deck count cycles through i = discardCount istead of deckCount \n ################################################### \n");
 
 
     

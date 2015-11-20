@@ -47,7 +47,7 @@ int main() {
     // printDeck(0, &G);
     //printf ("Number of cards in hand %i \n", numHandCards(&G));
 
-
+    char name[32];
     printf("played card \n");
 
     //keeps track of played cards
@@ -60,11 +60,22 @@ int main() {
         //check to see if village card goes into discard
         //printPlayed(0, &G);
 
-        assert (G.playedCards[playedCards] == village);
+        if(G.playedCards[playedCards] != village)
+        {
+            cardNumToName(G.playedCards[playedCards], name);  
+            printf("Error: The card played is %s not village \n", name);
+        }
         //check to see if number of actions increased by 2
-        assert (numActions + 1 == G.numActions);
+        if (numActions + 1 != G.numActions)
+        {
+            int actions = numActions +1;
+            printf("Error: Number of actions expected was %i not %i \n",actions, G.numActions);
+        }
         //check to see if the is replaced by a drawn card form the deck
-        assert (G.hand[0][i] != village);
+        if (G.hand[0][i] == village)
+        {
+            printf("Error: Village remained in hand\n");
+        }
         // printState(&G);
         // printHand(0, &G);
         // printPlayed(0, &G);

@@ -60,14 +60,23 @@ int main() {
     //printPlayed(0, &G);
     //printHand(0, &G);
     //make sure card is discarded
-    assert (G.hand[4][i] != smithy);
+    if (G.hand[4][i] == smithy)
+    {
+        printf("Smithy card in last spot in hand was not discarded\n");
+    }
     
     //make sure there are + 2 cards in hand 
-    printf ("################################################### \n Error: incorrect number of cards in hand left after Smithy played. \n ################################################### \n");
-    // assert (numHandCards(&G) == cardsInHand + 2);
+    if (numHandCards(&G) != cardsInHand + 2)
+    {
+        int cardsHand = cardsInHand + 2;
+        printf("Error: Expected %i, got %i instead \n", cardsHand, numHandCards(&G));
+    }
     
     //make sure that smithy was discarded. 
-    assert (G.playedCards[playedCards] == smithy);
+    if  (G.playedCards[playedCards] != smithy)
+    {
+        printf("Smithy card was not discarded\n");
+    }
     playedCards++;
 
     // printState(&G);

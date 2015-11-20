@@ -57,8 +57,10 @@ int main() {
         //check to see if adventurer card goes into discard
         //printPlayed(0, &G);
        // printHand(0, &G);
-        // assert (G.playedCards[playedCards] == adventurer);
-        printf ("################################################### \n Error: played card (adventurer) was not discarded after use. \n ################################################### \n");
+        if (G.playedCards[playedCards] != adventurer)
+        {
+            printf("Error: adventurer card did not go into discard\n");
+        }
 
         //check to see if 2 coins are added.
         int treasurePresent = 0;
@@ -68,7 +70,10 @@ int main() {
             treasurePresent++;
         
 //assertion commented out because previous error affects this assertion.        
-        //assert (treasurePresent == 2);
+        if (treasurePresent != 2)
+        {
+            printf("Error: Did not gain 2 treasure cards, gained %i treasure instead \n", treasurePresent);
+        }
 
 
         // printState(&G);

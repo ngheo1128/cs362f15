@@ -81,12 +81,21 @@ int main() {
                 int foundMine = 0;
                 int foundCoin = 0;
                 printf ("affordable \n");
-                //assert (G.hand[0][i] == coin);
-                printf ("################################################### \n Error: Expected coin in hand location %i. \n ################################################### \n", i);
+
+                if (G.hand[0][i] != coin)
+                {
+                    printf("Error: expected %i coins in hand at location %i\n",  coin, i);
+                }
+
+                // printf ("################################################### \n Error: Expected coin in hand location %i. \n ################################################### \n", i);
 
                 //verify that mine card is out of hand
-                //assert (G.hand[0][mineCardLoc] != mine);
-                printf ("################################################### \n Error: expected non-mine card in hand location %i. \n ################################################### \n", mineCardLoc);
+                if (G.hand[0][mineCardLoc] == mine)
+                {
+                    printf("Error: Expected non mine card in hand.\n");
+                }
+
+                // printf ("################################################### \n Error: expected non-mine card in hand location %i. \n ################################################### \n", mineCardLoc);
 
                 //verify that the minecard is in the played
                 for (playedIndex = 0; playedIndex < G.playedCardCount; playedIndex++)
@@ -96,11 +105,17 @@ int main() {
                     if (G.playedCards[playedIndex] == mine)
                     foundCoin = 1;
                 }
-                // assert (foundMine == 1);
-                printf ("################################################### \n Error: expected mine card in played area. \n ################################################### \n");
+                if (foundMine != 1)
+                {
+                    printf("Error: Expected mine card in the played area\n");
+                }
+                // printf ("################################################### \n Error: expected mine card in played area. \n ################################################### \n");
 
-                //assert (foundCoin == 1);
-                printf ("################################################### \n Error: expected a coin card in played area. \n ################################################### \n");
+                if (foundCoin != 1)
+                {
+                    printf("Error: Expected coin card in the played area\n");
+                }
+                // printf ("################################################### \n Error: expected a coin card in played area. \n ################################################### \n");
 
 
             }
@@ -111,9 +126,16 @@ int main() {
                 int foundCoin = 0;
 
                 printf ("unaffordable \n");
-                assert (G.hand[0][i] != coin);
+                if (G.hand[0][i] == coin);
+                {
+                    printf("Error: Gained a coin card even though it was unaffordable\n");
+                }
+
                 //verify that mine card is still in hand
-                assert (G.hand[0][mineCardLoc] == mine);
+                if (G.hand[0][mineCardLoc] != mine)
+                {
+                    printf("Error: Mine card has left hand\n");
+                }
 
                 //verify that the minecard hasn't been played
                 for (playedIndex = 0; playedIndex < G.playedCardCount; playedIndex++)
@@ -123,8 +145,15 @@ int main() {
                     if (G.playedCards[playedIndex] == mine)
                     foundCoin = 1;
                 }
-                assert (foundMine == 0);
-                assert (foundCoin == 0);
+                if (foundMine != 0)
+                {
+                    printf("Error: mine card has been played\n");
+                }
+
+                if (foundCoin != 0)
+                {
+                    printf("Error: coin card has been played\n");
+                }
 
             }
         }
@@ -133,12 +162,18 @@ int main() {
     //Try playing illegal choice1 for coin
     G = D;
     cardNumToName(copper, name);
-    assert (playCard(mineCardLoc, 3, coin, -1, &G) == -1);
+    if (playCard(mineCardLoc, 3, coin, -1, &G) != -1)
+    {
+        printf("Error: playcard occured even though player chose a non coin to trash\n");
+    }
 
     G = D;
     //Try playing illegal choice2 for treasure
-    // assert (playCard(mineCardLoc, 0, estate, -1, &G) == -1);
-    printf ("################################################### \n Error: allows user to choose a non treasure card to buy. \n ################################################### \n");
+    if (playCard(mineCardLoc, 0, estate, -1, &G) != -1)
+    {
+        printf("Error: playcard occured even though player chose an non treasure card to buy, which is illegal \n");
+    }
+    // printf ("################################################### \n Error: allows user to choose a non treasure card to buy. \n ################################################### \n");
 
     printf("All tests passed!\n");
 

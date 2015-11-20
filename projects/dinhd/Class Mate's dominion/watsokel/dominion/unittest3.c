@@ -51,11 +51,14 @@ int main() {
         G.supplyCount[1] = 0;
         G.supplyCount[i] = 0;
         //printSupply(&G);
-        //assert (isGameOver(&G) == 1);
+        //assert 
 
         //Found bug, removed assertion
-        if (i == 25 || i == 26)
-            printf ("**********************************************************  \n Removing Seahag or Treasuremap in addition 2 other cards does not trigger end of game \n ********************************************************** \n");
+        if (isGameOver(&G) != 1)
+        {
+            printf ("Error: removing card %s in addition 2 other cards does not trigger end of game \n", card);
+
+        }
 
         //reset for next round
         //printf("Resetting \n");

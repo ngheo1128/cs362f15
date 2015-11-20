@@ -65,11 +65,17 @@ int main() {
     playCard(4, 1, 0, -1, &G);
 
     //check to make sure that coins were added.
-    //assert (G.coins == OrigNumCoins + 2);
-    printf ("################################################### \n Error: bonus coins not updated to + 2. \n################################################### \n");
+    if (G.coins != OrigNumCoins + 2)
+    {
+        printf("Error: bonus coins not increased by 2, instead there are %i coins\n",G.coins );
+    }
+    // printf ("################################################### \n Error: bonus coins not updated to + 2. \n################################################### \n");
 
     //check to make sure that there are the user gained an action
-    assert (OrigNumActions == G.numActions);
+    if (OrigNumActions != G.numActions)
+    {
+        printf("Error: User supposed to have %i actions instead has %i \n",OrigNumActions, G.numActions);
+    }
 
 
     //check to make sure that cards is 4
@@ -80,7 +86,10 @@ int main() {
     }
 
     // printHand(0, &G);
-    assert (foundMinion == 4);
+    if (foundMinion != 4)
+    {
+        printf("Error: User supposed to have 4 cards in hand now\n");
+    }
     
   
 
@@ -93,7 +102,10 @@ int main() {
     }
 
 
-    assert (foundMinion == 1);
+    if (foundMinion != 1)
+    {
+        printf("Error:  minion card was not added to played pile. Instead %i minion cards were played \n", foundMinion );
+    }
 
 
 
@@ -114,7 +126,10 @@ int main() {
     playCard(0, 0, 1, -1, &G);
 
     //check to make sure that coins weren't added.
-    assert (countHandCoins(0, &G) == G.coins);
+    if (countHandCoins(0, &G) != G.coins)
+    {
+        printf("Error: Coins were added\n");
+    }
 
     //verify that the hand has been discarded for player 1
     foundMinion = 0;
@@ -124,8 +139,11 @@ int main() {
         foundMinion++;
     }
 
-    printf ("################################################### \n Error: expected 10 discard cards played between player 1 and 2 received %i. \n ################################################### \n", foundMinion);
-    // assert (foundMinion == 10);
+    // printf ("################################################### \n Error: expected 10 discard cards played between player 1 and 2 received %i. \n ################################################### \n", foundMinion);
+    if (foundMinion != 10)
+    {
+        printf("Error: There were not 10 discarded cards played between player 1 and player 2, instead there were %i\n", foundMinion);
+    }
 
     //verify that the other player discarded 5 cards
     

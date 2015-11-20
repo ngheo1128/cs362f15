@@ -42,7 +42,10 @@ int main() {
                 cardNumToName(card, name);  
 
                 printf("Test: Card %s added with no supply with flag %i for player %i \n", name, flag, p);
-                assert ( gainCard(card, &G, flag, p) == -1);
+                if ( gainCard(card, &G, flag, p) != -1)
+                {
+                    printf("Error: Card %s added with no supply with flag %i for player %i \n", name, flag, p);
+                }
     
             }
         }
@@ -66,7 +69,10 @@ int main() {
                 if (card == deckCard)
                     foundCard = 1;
             } 
-            assert (foundCard == 1);
+            if (foundCard != 1)
+            {
+                printf("Error:Expected to find only 1 card, found %i\n", foundCard);
+            }
            
         }
 
@@ -91,7 +97,11 @@ int main() {
                 if (card == deckCard)
                     foundCard = 1;
             } 
-            assert (foundCard == 1);        
+
+            if (foundCard != 1)
+            {
+                printf("Error: Did not gain one of the desired card, found instead %i \n", foundCard);
+            }      
         }
 
         //test to see if you can gain the card desired to discard. 
@@ -115,7 +125,10 @@ int main() {
                 if (card == discardedCard)
                     foundCard = 1;
             } 
-            assert (foundCard == 1);        
+            if (foundCard != 1)
+            {
+                printf("Error: Discard did not have one card of desired type, found instead %i \n", foundCard);
+            }       
         }
     }
    // printf ("deck count: %i", fullDeckCount(p, adventurer, &G));
