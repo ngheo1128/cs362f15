@@ -1288,7 +1288,7 @@ int smithyEffect(int currentPlayer, struct gameState *state, int handPos){
 int adventurerEffect(int currentPlayer, struct gameState *state){
   int drawntreasure=0;
   int cardDrawn;
-  int z;
+  int z = 0;
   int temphand[MAX_HAND];
   
       while(drawntreasure<2){
@@ -1297,7 +1297,7 @@ int adventurerEffect(int currentPlayer, struct gameState *state){
         }
         drawCard(currentPlayer, state);
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-        if (cardDrawn == silver || cardDrawn == gold)
+        if (cardDrawn == silver || cardDrawn == silver || cardDrawn == gold)
             drawntreasure++;
         else{
             temphand[z]=cardDrawn;
