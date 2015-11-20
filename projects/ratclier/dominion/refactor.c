@@ -55,3 +55,10 @@ In randomtestcard.c (for my code tree as well as teammate tests):
 - Fixed a bug where discarded treasure map cards was not detected correctly.
 - Changed if/if statements to if/else/if statements for checking top gold 
   cards (forgot the else).
+
+In cardtest1.c, cardtest3.c, and cardtest4.c (unit tests):
+
+- Correctly set the current player (was not done at all before) by setting 
+  state->whoseTurn to currentPlayer in the card test function.
+
+

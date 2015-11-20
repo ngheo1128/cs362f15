@@ -45,6 +45,10 @@ int testTreasureMapCard(struct gameState *state, int handPos, int currentPlayer)
     //
     origState = copyState(state);
 
+    // Set the current player
+    //
+    state->whoseTurn = currentPlayer;
+
     // Run the treasure map card function
     //
     cardEffect(treasure_map, 0, 0, 0, state, handPos, 0);
