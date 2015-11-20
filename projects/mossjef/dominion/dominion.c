@@ -1196,7 +1196,9 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       //reduce number of cards in hand
       state->handCount[currentPlayer]--;
     }
-	
+
+     //Increment discardCount
+     state->discardCount[currentPlayer]++;	
   return 0;
 }
 
@@ -1278,7 +1280,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 int useSmithy (int handPos, int currentPlayer, struct gameState *state) {
 	int i;
       //+3 Cards
-      for (i = 0; i <= 3; i++)
+      for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
