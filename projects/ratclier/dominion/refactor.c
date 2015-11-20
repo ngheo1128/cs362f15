@@ -91,3 +91,18 @@ In unittest1.c:
   in Dominion so it does not make sense to test against them.  Discarded
   card test results make a lot more sense now.
 
+In dominion.c:
+
+- Added code to the end of adventurerCard() to discard the card. 
+
+In cardtest2.c:
+
+- Changed the test for proper card addition and discard to more accurately
+  reflect correct addition and discarding. Also reworded some messaging to
+  be less specific (i.e. "2 cards added" -> "correct number of cards
+  added").
+
+- Changed the handPos handling. Originally thought it was a card enum, now
+  I understand it's a position in the hand (you would think I would get
+  that from the name "handPos," and you would be wrong).
+

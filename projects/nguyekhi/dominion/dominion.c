@@ -1274,7 +1274,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 void CEsmithy(int currentPlayer, struct gameState *state, int handPos)
 {
   int i;
-  for (i =0; i <= 3; i++)
+  for (i =0; i < 3; i++)
     drawCard(currentPlayer, state);
   discardCard(handPos, currentPlayer, state, 0);
 }
@@ -1285,12 +1285,12 @@ void CEadventurer(struct gameState *state, int currentPlayer, int handPos)
   int temphand[100];
   int cardDrawn;
   int z = 0;
-  while (drawntreasure <= 2)     // the bug is here, it should be drawntreasure < 2
+  while (drawntreasure < 2)     // the bug is here, it should be drawntreasure < 2
   {
-    if (state->deckCount[currentPlayer] == 0)
+    if (state->deckCount[currentPlayer] < 1)
       shuffle(currentPlayer, state);
     drawCard(currentPlayer, state);
-    cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]];    // bug is here, it should be: state->handCount[currentPlayer]-1]],
+    cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];    // bug is here, it should be: state->handCount[currentPlayer]-1]],
     //printf("card draw = %d\n", cardDrawn);
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
         drawntreasure++;
@@ -1313,10 +1313,10 @@ void CEadventurer(struct gameState *state, int currentPlayer, int handPos)
 void CEcouncil_room(int currentPlayer, struct gameState *state, int handPos)
 {
   int i;
-  for (i = 0; i < state->numPlayers; i++)  // I changed 4 into numPlayers
+  for (i = 0; i < 4; i++)  // I changed 4 into numPlayers
     drawCard(currentPlayer, state);
   state->numBuys++;
-  for (i = 0; i < 4; i++)     // I changed numPlayers into 4
+  for (i = 0; i < state->numPlayers; i++)     // I changed numPlayers into 4
   {
       if ( i != currentPlayer )
           drawCard(i, state);
@@ -1331,7 +1331,7 @@ void CEgreat_hall(int currentPlayer, struct gameState *state, int handPos)
   drawCard(currentPlayer, state);
 
       //+1 Actions
-    state->numBuys++;       // the bug is here, it suppose to increase numActions, but I increase numBuys
+    state->numActions++;       // the bug is here, it suppose to increase numActions, but I increase numBuys
 
       //discard card from hand
     discardCard(handPos, currentPlayer, state, 0);
@@ -1349,8 +1349,8 @@ void CEsteward(int currentPlayer, struct gameState *state, int choice1, int choi
     state->coins = state->coins + 2;
   else if (choice1 == 3)
   {
-      discardCard(choice2, currentPlayer, state, 0);  // the bug is trashflag should be 1 not 0
-      discardCard(choice3, currentPlayer, state, 0);
+      discardCard(choice2, currentPlayer, state, 1);  // the bug is trashflag should be 1 not 0
+      discardCard(choice3, currentPlayer, state, 1);
   }
   discardCard(handPos, currentPlayer, state, 0);
 
