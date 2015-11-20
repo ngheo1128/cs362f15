@@ -1257,26 +1257,31 @@ for these cards to be inside functions, and I called the apropriate fucntion in 
 
 int adventurer_refactor( int drawntreasure, struct gameState *state, int temphand[], int z, int cardDrawn, int currentPlayer ) {
 
- // while(drawntreasure<2){
-  while(drawntreasure<2){
-    if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+  while(drawntreasure<2)
+  {
+    if (state->deckCount[currentPlayer] <1)
+    {//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
       drawntreasure++;
-    else{
+    else
+    {
       temphand[z]=cardDrawn;
       state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
       z++;
     }
-        }
-        while(z-1>=0){
+  }
+
+  while(z-1>=0)
+  {
     state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
     z=z-1;
-        }
-      return 0;
+  }
+
+  return 0;
 }
 
 int smithy_refactor(int currentPlayer, struct gameState *state, int handPos) {
@@ -1288,8 +1293,7 @@ int smithy_refactor(int currentPlayer, struct gameState *state, int handPos) {
   }
       
   //discard card from hand
-  //discardCard(handPos, currentPlayer, state, 0);
-  discardCard(handPos, currentPlayer, state, 1);
+  discardCard(handPos, currentPlayer, state, 0);
   return 0;
 }
 
@@ -1303,8 +1307,7 @@ int steward_refactor(int currentPlayer, struct gameState *state, int handPos, in
   }
     else if (choice1 == 2)
   {
-    //-2 coins
-    //state->coins = state->coins - 2;
+    //+2 coins
     state->coins = state->coins + 2;
   }
     else
@@ -1333,7 +1336,7 @@ int council_room_refactor(int currentPlayer, struct gameState *state, int handPo
   //Each other player draws a card
   for (i = 0; i < state->numPlayers; i++)
   {
-    if ( i != currentPlayer ) //( i == currentPlayer )
+    if ( i != currentPlayer )
       {
         drawCard(i, state);
       }
@@ -1350,7 +1353,6 @@ int remodel_refactor(int currentPlayer, struct gameState *state, int choice1, in
   int j, i;
   j = state->hand[currentPlayer][choice1];  //store card we will trash
 
-  //if ( (getCost(state->hand[currentPlayer][choice1]) + 2) < getCost(choice2) )
   if ( (getCost(state->hand[currentPlayer][choice1]) + 2) > getCost(choice2) )
   {
     return -1;
