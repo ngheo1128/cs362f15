@@ -19,3 +19,13 @@ insidious.
 
 GuerraJ
 =======
+
+By running my tests against your code I was able to find a total of 6 bugs.
+
+1. callSmithyCard: The loop counter i was initialized to 1, not 0.
+2. callCouncilRoom: Condition was backwards, greater than sign should have been less than.
+3. callGreatHall: Remember to add one action.
+4. callAdventureCard: The amount of treasure drawn should be 2, not 4. If the deck is empty, the discard pile needs to be reshuffled.
+5. callVillageCard: Only draw one card.
+
+Setting to loop counter to 1 was a bit annoying.
