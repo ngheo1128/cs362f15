@@ -34,6 +34,7 @@ int main() {
     for (i = 0; i < numHandCards(&G); i++)
     {
         G.hand[0][i] = minion;
+        G.hand[1][i] = minion;
     }
 
     //fill hand of player 2 with adventurer cards.
@@ -122,14 +123,20 @@ int main() {
     //printHand(0, &G);
     //printHand(1, &G);
     //printf ("played \n");
+    printf("Before\n");
+    printState(&G);
+    printHand(0, &G);
 
     playCard(0, 0, 1, -1, &G);
-
+    printf("after\n");
+    printState(&G);
+    printHand(0, &G);
     //check to make sure that coins weren't added.
     if (countHandCoins(0, &G) != G.coins)
     {
-        printf("Error: Coins were added\n");
+        printf("Error: %i coins were added\n", countHandCoins(0, &G) );
     }
+
 
     //verify that the hand has been discarded for player 1
     foundMinion = 0;
@@ -143,6 +150,8 @@ int main() {
     if (foundMinion != 10)
     {
         printf("Error: There were not 10 discarded cards played between player 1 and player 2, instead there were %i\n", foundMinion);
+        printDiscard( 0, &G);
+        printDiscard( 1, &G);
     }
 
     //verify that the other player discarded 5 cards

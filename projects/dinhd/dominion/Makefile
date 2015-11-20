@@ -32,7 +32,7 @@ runtests: testDrawCard
 randomtestadventurer.o: randomtestadventurer.c
 	gcc -c randomtestadventurer.c -g $(CFLAGS)
 
-rdm1: interface.o dominion.o rngs.o
+rdm1: interface.o dominion.o rngs.o randomtestadventurer.c
 	gcc -o rdm1 randomtestadventurer.c dominion.o rngs.o interface.o $(CFLAGS)
 
 rdm2: randomtestcard.c interface.o dominion.o rngs.o

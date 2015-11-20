@@ -39,7 +39,7 @@ int main() {
     // printState(&G);
     //  printSupply(&G);
     // // printScores(&G);
-   // printHand(0, &G);
+    printHand(0, &G);
     // printPlayed(0, &G);
     //printDeck(0, &G);
     //printf ("Number of cards in hand %i \n", numHandCards(&G));
@@ -56,18 +56,20 @@ int main() {
 
         //check to see if adventurer card goes into discard
         //printPlayed(0, &G);
-       // printHand(0, &G);
+        printHand(0, &G);
         if (G.playedCards[playedCards] != adventurer)
         {
             printf("Error: adventurer card did not go into discard\n");
         }
 
+        int j;
         //check to see if 2 coins are added.
         int treasurePresent = 0;
-        if (G.hand[0][i] == copper || G.hand[0][i] == silver || G.hand[0][i] == gold )
+        for (j = 0; j < numHandCards(&G); j++)
+        {
+            if (G.hand[0][j] == copper || G.hand[0][j] == silver || G.hand[0][j] == gold )
             treasurePresent++;
-        if (G.hand[0][i+1] == copper || G.hand[0][i+1] == silver || G.hand[0][i+1] == gold )
-            treasurePresent++;
+        }
         
 //assertion commented out because previous error affects this assertion.        
         if (treasurePresent != 2)

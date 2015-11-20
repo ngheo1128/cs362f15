@@ -20,13 +20,14 @@ struct gameState *state
 int main() {
 
     int i;
+    int coin_bonus = 0;
 
     //initialize the game
     struct gameState G;
     int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, 
     sea_hag, tribute, smithy};
 
-    printf ("* * * * * * * * * * * * * * * *  Testing village card.* * * * * * * * * * * * * * * * \n");
+    printf ("* * * * * * * * * * * * * * * *  Testing Jason's village card.* * * * * * * * * * * * * * * * \n");
 
     initializeGame(2, k, 2, &G);
 
@@ -39,12 +40,12 @@ int main() {
 
 
     // check state of game before calling function
-    // printState(&G);
-    //  printSupply(&G);
-    // // printScores(&G);
-    // printHand(0, &G);
-    // printPlayed(0, &G);
-    // printDeck(0, &G);
+    printState(&G);
+     printSupply(&G);
+    printScores(&G);
+    printHand(0, &G);
+    printPlayed(0, &G);
+    printDeck(0, &G);
     //printf ("Number of cards in hand %i \n", numHandCards(&G));
 
     char name[32];
@@ -55,7 +56,7 @@ int main() {
     for (i = (numHandCards(&G) -1); i >= 0; i--)
     {
         int numActions = G.numActions;
-        playCard(i, -1, -1, -1, &G);
+        cardEffect(village, -1, -1, -1, &G, i, &coin_bonus);
 
         //check to see if village card goes into discard
         printPlayed(0, &G);

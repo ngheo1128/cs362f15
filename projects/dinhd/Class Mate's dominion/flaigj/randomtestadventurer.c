@@ -135,6 +135,8 @@ printf("* * * * * * * * * * * * * * * * randomtestadventurer * * * * * * * * * *
         //acount for the two treasure cards being kept and the adventurer card being discarded
     	expectedDiscardCount = cardsDrawnCount-1;
 
+        printHand(0, &G);
+        
         handPlayed = rand() % numHandCards(&G);
     	int status = playCard(handPlayed, -1, -1, -1, &G);
 
@@ -168,6 +170,7 @@ printf("* * * * * * * * * * * * * * * * randomtestadventurer * * * * * * * * * *
     	if (actualMoney != expectedMoney)
         {
             printf ("*************  Error: Total treasure (%i) did not match expected (%i). ************* \n", actualMoney, expectedMoney);
+            printHand(0, &G);
         }
 
 

@@ -1,7 +1,7 @@
 /*
-This program tests the villageCard function.
+This program tests the adventurerCard function.
 The parameters for this function are:
-struct gameState *state
+int currentPlayer, struct gameState *state, int handPos)
 
 */
 
@@ -26,58 +26,60 @@ int main() {
     int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, 
     sea_hag, tribute, smithy};
 
-    printf ("* * * * * * * * * * * * * * * *  Testing village card.* * * * * * * * * * * * * * * * \n");
-
     initializeGame(2, k, 2, &G);
 
-    //replace all cards in hand with a village card
+
+    //replace all cards in hand with a adventurer card
     for (i = 0; i < numHandCards(&G); i++)
     {
-        G.hand[0][i] = village;
+        G.hand[0][i] = adventurer;
     }
     
-
-
     // check state of game before calling function
     // printState(&G);
     //  printSupply(&G);
     // // printScores(&G);
-    // printHand(0, &G);
+    printHand(0, &G);
     // printPlayed(0, &G);
-    // printDeck(0, &G);
+    //printDeck(0, &G);
     //printf ("Number of cards in hand %i \n", numHandCards(&G));
 
-    char name[32];
-    printf("played card \n");
+
+    printf("* * * * * * * * * * * * * * * * Testing adventurer card * * * * * * * * * * * * * * * * \n");
 
     //keeps track of played cards
     int playedCards = 0;
     for (i = (numHandCards(&G) -1); i >= 0; i--)
     {
-        int numActions = G.numActions;
+
         playCard(i, -1, -1, -1, &G);
 
-        //check to see if village card goes into discard
+        //check to see if adventurer card goes into discard
         //printPlayed(0, &G);
+        printHand(0, &G);
+        if (G.playedCards[playedCards] != adventurer)
+        {
+            printf("Error: adventurer card did not go into discard\n");
+        }
 
-        if(G.playedCards[playedCards] != village)
+        int j;
+        //check to see if 2 coins are added.
+        int treasurePresent = 0;
+        for (j = 0; j < numHandCards(&G); j++)
         {
-            cardNumToName(G.playedCards[playedCards], name);  
-            printf("Error: The card played is %s not village \n", name);
+            if (G.hand[0][j] == copper || G.hand[0][j] == silver || G.hand[0][j] == gold )
+            treasurePresent++;
         }
-        //check to see if number of actions increased by 2
-        if (numActions + 1 != G.numActions)
+        
+//assertion commented out because previous error affects this assertion.        
+        if (treasurePresent != 2)
         {
-            int actions = numActions +1;
-            printf("Error: Number of actions expected was %i not %i \n",actions, G.numActions);
+            printf("Error: Did not gain 2 treasure cards, gained %i treasure instead \n", treasurePresent);
         }
-        //check to see if the is replaced by a drawn card form the deck
-        if (G.hand[0][i] == village)
-        {
-            printf("Error: Village remained in hand\n");
-        }
+
+
         // printState(&G);
-        // printHand(0, &G);
+        
         // printPlayed(0, &G);
         // printDeck(0, &G);
         playedCards++;

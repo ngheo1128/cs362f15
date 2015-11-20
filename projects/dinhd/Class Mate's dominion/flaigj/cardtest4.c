@@ -58,6 +58,7 @@ int main() {
     // loop through each type of coin and swap it for each available coin.
     int coin;
     char name[32];
+    char name2[32];
 
     for (i = 0; i < 3; i++)
     {
@@ -69,10 +70,10 @@ int main() {
             //get cost of coin to be swapped
 
 
-
-            printf ("Testing swapping position %i for %s \n", i, name);
+            cardNumToName(G.hand[0][i], name2);
+            printf ("Testing swapping position %s for %s \n", name2, name);
             printf ("code returned: %i \n", playCard(mineCardLoc, i, coin, -1, &G));
-            printf ("cost of choice1 is %i \n", getCardCost(G.hand[0][i]));
+            // printf ("cost of choice1 is %i \n", getCardCost(G.hand[0][i]));
 
             //verify that you can only play swap affordable cards
             if (getCardCost(G.hand[0][i]) + 3 > getCardCost(coin))
@@ -82,9 +83,11 @@ int main() {
                 int foundCoin = 0;
                 printf ("affordable \n");
 
+                cardNumToName(coin, name);
+                cardNumToName(G.hand[0][i], name2);
                 if (G.hand[0][i] != coin)
                 {
-                    printf("Error: expected %i coins in hand at location %i\n",  coin, i);
+                    printf("Error: expected %s instead of %s in hand at location\n",  name, name2);
                 }
 
                 // printf ("################################################### \n Error: Expected coin in hand location %i. \n ################################################### \n", i);
@@ -93,6 +96,7 @@ int main() {
                 if (G.hand[0][mineCardLoc] == mine)
                 {
                     printf("Error: Expected non mine card in hand.\n");
+                    printHand(0, &G);
                 }
 
                 // printf ("################################################### \n Error: expected non-mine card in hand location %i. \n ################################################### \n", mineCardLoc);
@@ -175,6 +179,7 @@ int main() {
     }
     // printf ("################################################### \n Error: allows user to choose a non treasure card to buy. \n ################################################### \n");
 
+    printHand(0, &G);
     printf("All tests passed!\n");
 
     
