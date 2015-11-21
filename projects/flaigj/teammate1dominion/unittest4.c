@@ -223,7 +223,7 @@ int main() {
    G.deck[2][3] = copper;
    G.deck[2][4] = copper;
   
-   G.discardCount[2] = 5; 
+  G.discardCount[2] = 5; 
    G.discard[2][0] = province;
    G.discard[2][1] = copper;
    G.discard[2][2] = copper;
