@@ -1364,10 +1364,6 @@ int great_hallCard(struct gameState* state, int currentPlayer, int handPos)
       //+1 Actions
       state->numActions++;
 	  
-	  if (state->deckCount[currentPlayer]<2)
-	{
-		state->numBuys++;
-	}
 			
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
