@@ -80,3 +80,21 @@ unittestresults.out: unittest1.c unittest2.c unittest3.c dominion.c rngs.c
 	gcc -o cardtest4 cardtest4.c dominion.c rngs.c $(CFLAGS)
 	cardtest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
+
+randomtestadventurer.out: randomtestadventurer.c dominion.c rngs.c
+	echo "Result for running randomtestadventurer tests:" > randomtestadventurer.out
+	
+	echo "randomtestadventurer.c:" >> unittestresults.out
+	gcc -o randomtestadventurer randomtestadventurer.c dominion.c rngs.c $(CFLAGS)
+	randomtestadventurer >> randomtestadventurer.out
+	gcov dominion.c >> randomtestadventurer.out
+
+randomtestcard.out: randomtestcard.c dominion.c rngs.c
+	echo "Result for running randomtestcard tests:" > randomtestcard.out
+	
+	echo "randomtestcard.c:" >> unittestresults.out
+	gcc -o randomtestcard randomtestcard.c dominion.c rngs.c $(CFLAGS)
+	randomtestcard >> randomtestcard.out
+	gcov dominion.c >> randomtestcard.out
+
+    
