@@ -56,7 +56,8 @@ Teammate2: Sean Harrington
 	not need to make any edits to my tests. However, while my card test for Adventurer was
 	able to run the first two tests, the third test kept encountering a segmentation fault.
 	To offset this problem, I also ran the randomtestadventurer test against the implementation,
-	which kept timing out.
+	which kept timing out. I used GDB to figure out if it was my test that was timing out but it
+	turns out that it was my teammate's dominion file line 661.
 	
 	For Sean's implementation of dominion.c, my tests were able to detect multiple bugs for the 
 	following cards: Smithy, Adventurer, Village, and Council Room.
