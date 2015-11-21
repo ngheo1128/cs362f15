@@ -6,6 +6,9 @@ issues:
 
 UNIT TESTS:
 
+unittest4.c (gainCard() function)
+    test fails, returns non-zero value
+    (note: this fails on my own code too, might be faulty test code)
 
 
 CARD TESTS:
@@ -19,7 +22,9 @@ unittests, cardtests, and randomtests give compiler warnings for
 
 
 RANDOM TESTS:
-    randomtestcard.c:143 (this is is my test function, not in teammate code)
-    error playerNumber undeclared (first use in this function)
+
+/bin/sh: line 1: 8676 Segmentation fault (core dumped)
+    randomtestadventurer >> randomtestadventurer.out
+    make: *** [randomtestadventurer.out] Error 139
 
 */

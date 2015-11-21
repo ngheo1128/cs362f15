@@ -22,5 +22,7 @@ int main(int argc, char *argv[])
     // {
     //     printf("Smithy card: FAIL\n");
     // }
+
+    smithyEffect(&testState, 0);
     return 0;
 }

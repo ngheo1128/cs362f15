@@ -22,5 +22,7 @@ int main(int argc, char *argv[])
     // {
     //     printf("Adventurer card: FAIL\n");
     // }
+
+    adventurerEffect(&testState);
     return 0;
 }
