@@ -83,7 +83,6 @@ void TestThatPlayerGot3CardsFromTheirDeck()
 	initializeGame(2, k, 1, &G);
 	initializeStartGameDeck(&G);
 	int preDeckCount = G.deckCount[player1];
-	int preHandCount = G.handCount[player1];
 	int firstCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 1];
 	int secondCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 2];
 	int thirdCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 3];
