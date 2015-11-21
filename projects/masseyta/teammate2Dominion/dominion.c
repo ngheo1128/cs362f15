@@ -5,16 +5,6 @@
 #include <math.h>
 #include <stdlib.h>
 
-/*
-Assignment 2: Function Prototypes for 5 cards:
-Smithy, Adventurer, Village, Great Hall, Council Room
-*/
-int smithyCard(struct gameState* state, int currentPlayer, int handPos);
-int adventurerCard(struct gameState* state, int currentPlayer);
-int villageCard(struct gameState* state, int currentPlayer, int handPos);
-int great_hallCard(struct gameState* state, int currentPlayer, int handPos);
-int council_roomCard(struct gameState* state, int currentPlayer, int handPos);
-
 int compare(const void* a, const void* b) {
   if (*(int*)a > *(int*)b)
     return 1;
@@ -677,12 +667,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-		adventurerCard(state, currentPlayer);
-      return 0;
+      return adventurerCard(currentPlayer, state, temphand);
 			
     case council_room:
-		council_roomCard(state, currentPlayer, handPos);
-		return 0;
+      return councilRoomCard(currentPlayer, state, handPos);
 			
     case feast:
       //gain card with cost up to 5
@@ -776,38 +764,13 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 			
     case remodel:
-      j = state->hand[currentPlayer][choice1];  //store card we will trash
-
-      if ( (getCost(state->hand[currentPlayer][choice1]) + 2) > getCost(choice2) )
-	{
-	  return -1;
-	}
-
-      gainCard(choice2, state, 0, currentPlayer);
-
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-
-      //discard trashed card
-      for (i = 0; i < state->handCount[currentPlayer]; i++)
-	{
-	  if (state->hand[currentPlayer][i] == j)
-	    {
-	      discardCard(i, currentPlayer, state, 0);			
-	      break;
-	    }
-	}
-
-
-      return 0;
+      return remodelCard(currentPlayer, state, handPos, choice1, choice2);
 		
     case smithy:
-      smithyCard(state, currentPlayer, handPos);
-      return 0;
+      return smithyCard(currentPlayer, state, handPos);
 		
     case village:
-	  villageCard(state, currentPlayer, handPos);
-      return 0;
+      return villageCard(currentPlayer, state, handPos);
 		
     case baron:
       state->numBuys++;//Increase buys by 1!
@@ -861,7 +824,14 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case great_hall:
-      great_hallCard(state, currentPlayer, handPos);
+      //+1 Card
+      drawCard(currentPlayer, state);
+			
+      //+1 Actions
+      state->numActions++;
+			
+      //discard card from hand
+      discardCard(handPos, currentPlayer, state, 0);
       return 0;
 		
     case minion:
@@ -1279,120 +1249,110 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
   return 0;
 }
-/*
-Assignment 2: Implementation of 5 cards
-Smithy, Adventurer, Village, Great Hall, Council Room
-*/
-int smithyCard(struct gameState* state, int currentPlayer, int handPos)
-{
-	int i;
-	  //+3 Cards
-      for (i = 0; i < 3; i++)
-	{
-	  drawCard(currentPlayer, state);
-	}
-		int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
-		
-		
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
-}
-int adventurerCard(struct gameState* state, int currentPlayer)
-{
-	int temphand[MAX_HAND];// moved above the if statement
-	int drawntreasure=0;
-	int cardDrawn;
-	int z = 0;// this is the counter for the temp hand
-	
-	while(drawntreasure<2)
-	{
-		if (state->deckCount[currentPlayer] <1)
-		{//if the deck is empty we need to shuffle discard and add to deck
-		  shuffle(currentPlayer, state);
-		}
-	
-		drawCard(currentPlayer, state);
-	
-		cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	
-		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-		{
-			drawntreasure++;
-		}
-		else
-		{
-		  temphand[z]=cardDrawn;
-		  state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-		  z++;
-		}
-    }
-      while(z-1>=0)
-	  {
-		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-		z=z-1;
-      }
-	  
-      return 0;		
-}
-int villageCard(struct gameState* state, int currentPlayer, int handPos)
-{
-	 //+1 Card
-      drawCard(currentPlayer, state);
-			
-      //+2 Actions
-      state->numActions = state->numActions + 2;
-			
-      //discard played card from hand
-		  discardCard(handPos, currentPlayer, state, 0);
-      
-      return 0;
-}
-int great_hallCard(struct gameState* state, int currentPlayer, int handPos)
-{
-	
-	//+1 Card
-      drawCard(currentPlayer, state);
-			
-      //+1 Actions
-      state->numActions++;
-	 
-			
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-	  
-      return 0;
-}
-int council_roomCard(struct gameState* state, int currentPlayer, int handPos)
-{
-	 
-	 int i;
-	 
-	 //+4 Cards
-      for ( i = 0; i < 4; i++)
-	{
-	  drawCard(currentPlayer, state);
-	}
-		
-	int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	//+1 Buy
-	
-      
-      state->numBuys++;
-			
-      //Each other player draws a card
-      for (i = 0; i < state->numPlayers; i++)
-	{
-	  if ( i != currentPlayer )
-	    {
-	      drawCard(i, state);
-	    }
-	}
-			
-      //put played card in played card pile
-      discardCard(handPos, currentPlayer, state, 0);
-			
-      return 0;
-}
-//end of dominion.c
 
+int smithyCard(int player, struct gameState* state, int handPos) {
+  int i;
+
+  // draw cards
+  for (i = 0; i < 3; ++i) {
+    drawCard(player, state);
+  }
+
+  // discard card
+  discardCard(handPos, player, state, 1);
+
+  return 0;
+}
+
+int adventurerCard(int player, struct gameState* state, int* tempHand) {
+  int drawnTreasure = 0;
+  int cardDrawn;
+  int z = 0;
+
+  // draw treasure cards
+  while (drawnTreasure <= 2) {
+    if (state->deckCount[player] < 1) {
+      // if the deck is empty, shuffle discard and add to deck
+      shuffle(player, state);
+    }
+    drawCard(player, state);
+    // top card of hand is most recently drawn card
+    cardDrawn = state->hand[player][state->handCount[player] - 1];
+    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+      drawnTreasure++;
+    else {
+      tempHand[z] = cardDrawn;
+      // remove top card (the most recently drawn one)
+      state->handCount[player]--;
+      z++;
+    }
+  }
+
+  //discard cards in play that have been drawn
+  while (z - 1 > 0) {
+    state->discard[player][state->discardCount[player]++] = tempHand[z - 1];
+    z--;
+  }
+
+  return 0;
+}
+
+int councilRoomCard(int currentPlayer, struct gameState* state, int handPos) {
+  int i;
+
+  // draw cards
+  for (i = 0; i < 4; i++) {
+    drawCard(currentPlayer, state);
+  }
+
+  // +1 buy
+  state->numBuys++;
+
+  // each other player draws a card
+  for (i = 0; i < state->numPlayers; i++) {
+    if (i != currentPlayer)
+      drawCard(i, state);
+  }
+
+  // put played card in played card pile
+  discardCard(handPos, currentPlayer, state, 0);
+
+  return 0;
+}
+
+int villageCard(int player, struct gameState* state, int handPos) {
+  // +1 card
+  drawCard(player, state);
+
+  // +2 actions
+  state->numActions = state->numActions + 2;
+
+  // discard played card from hand
+  discardCard(0, player, state, handPos);
+
+  return 0;
+}
+
+int remodelCard(int player, struct gameState* state, int handPos, int choice1,
+  int choice2) {
+  int i;
+  int j = state->hand[player][choice1]; // store card we will trash
+
+  if ((getCost(state->hand[player][choice1]) + 2) > getCost(choice2))
+    return -1;
+  gainCard(choice2, state, 0, player);
+
+  // discard card from hand
+  discardCard(0, player, state, handPos);
+
+  // discard trashed card
+  for (i = 0; i < state->handCount[player]; i++) {
+    if (state->hand[player][i] == j) {
+      discardCard(i, player, state, 0);
+    }
+  }
+
+  return 0;
+}
+
+//end of dominion.c
