@@ -1,108 +1,62 @@
+//Woo Choi
+//unitest3.c
 #include "dominion.h"
+#include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include <stdlib.h>
-#include <time.h>
+#include "rngs.h"
 
-/* Testing of scoreFor() funciton
-    -gardens causes errors due to passing numHandsCards 0 for a card and only finding curses
+//gainCard() function test
+//int gainCard(int supplyPos, struct gameState *state, int toFlag, int player)
 
-*/
-int main() {
+int main(){
 
-    printf("\nTesting scoreFor() function:\n");
+	int i;
+    int seed = 1000;
+    int numPlayer = 2;
+    int r;	
+    int k[10] = {adventurer, council_room, feast, gardens, mine
+               , remodel, smithy, village, baron, great_hall};
+    struct gameState G;
+	int currentPlayer = whoseTurn(&G);
+	int currentCardNum;	
 
-    int randomSeed = 100;
-    int maxPlayers = 4;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int officialPlayersScore[maxPlayers];
-    int testPlayersScore[maxPlayers];
-    int i;
-    struct gameState state;
-    int handCount = 5;
-    int discardCount = 5;
-    int deckCount = 5;
+    // initialize game state
+    memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
 
+	//Begin testing
+	printf("******************\n");
+	printf("unittest3.c\n");
+	printf("gainCard() Test:\n");
+	printf("  Testing flag set to 2:\n");
 
-    int curPlayers = 4;
+	// gain smithy card for testing gainCard()
+	// Setting flag to 2  (adds to hand)
+	gainCard(smithy, &G, 2, currentPlayer);	
+	currentCardNum = G.handCount[0];
+	
+	// go through hand to look for the smithy card
+	// numbHandCards: How many cards current player has in hand 
+	for (i = 0; i < numHandCards(&G); i++) {
+		// handCard: enum value of indexed card in player's hand
+		if(handCard(i, &G) == smithy){
+			// See if gainCard worked correctly.
+			printf("    Expected card count: %d\n  Actual card count: %d\n",currentCardNum,G.handCount[0]);		
+			printf("    gainCard() worked\n");		
+		}
+	}
 
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(curPlayers, kingCards, randomSeed, &state);
-    for (i = 0; i < curPlayers; ++i) {
-        state.handCount[i] = handCount;
-        state.discardCount[i] = discardCount;
-        state.deckCount[i] = deckCount;
-    }
-
-
-    //player 1
-    int p1 = 0;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p1][i] = curse;
-        state.discard[p1][i] = curse;
-        state.deck[p1][i] = curse;
-    }
-    //math based on card values
-    testPlayersScore[p1] = -1 * (3 * handCount);
-    //scoreFor function
-    officialPlayersScore[p1] = scoreFor(p1, &state);
-
-    //player 2
-    int p2 = 1;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p2][i]    = gardens;
-        state.discard[p2][i] = great_hall;
-        state.deck[p2][i]    = province;
-    }
-    //math based on card values
-    testPlayersScore[p2] = ((handCount * 3) / 10) + (1 * handCount) + (6 * handCount);
-    //scoreFor function
-    officialPlayersScore[p2] = scoreFor(p2, &state);
-
-    //player 3
-    int p3 = 2;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p3][i]    = great_hall;
-        state.discard[p3][i] = gardens;
-        state.deck[p3][i]    = curse;
-    }
-    //math based on card values
-    testPlayersScore[p3] = (1 * handCount) + ((handCount * 3) / 10) + (-1 * handCount);
-    //scoreFor function
-    officialPlayersScore[p3] = scoreFor(p3, &state);
-
-    //player 4
-    int p4 = 3;
-    for (i = 0; i < handCount; ++i) {
-        state.hand[p4][i]    = estate;
-        state.discard[p4][i] = duchy;
-        state.deck[p4][i]    = gardens;
-    }
-    //math based on card values
-    testPlayersScore[p4] = (1 * handCount) + (3 * handCount) + ((handCount * 3) / 10);
-    //scoreFor function
-    officialPlayersScore[p4] = scoreFor(p4, &state);
-
-    //test score is calculated by hand, offical score is via the functions
-    int counter = 0;
-    for (i = 0; i < curPlayers; ++i) {
-        if(testPlayersScore[i] != officialPlayersScore[i]) {
-            //printf("test score: %d, \"offical score\" %d\n", testPlayersScore[i], officialPlayersScore[i]);
-            printf("Test failed on player %d\n", i);
-            counter++;
-            //assert(testPlayersScore[i] == officialPlayersScore[i]);
-        }
-        else {
-            printf("Test passed on player %d\n", i);
-        }
-    }
-    if (counter <= 0) {
-        printf("All tests passed scoreFor()");
-    }
-    else {
-        printf("%d tests failed on scoreFor()\n\n", counter);
-    }
-
-    return 0;
+	// test flag set to 1 ( should gain card into deck)
+	int currentDeckCount;
+	currentDeckCount = G.deckCount[0];
+	printf("  Testing flag set to 1:\n");
+	printf("    deck count before gainCard() = %d\n", currentDeckCount);
+	gainCard(smithy, &G, 1, currentPlayer);
+	printf("    deck count after 1 card drawn = %d\n", G.deckCount[0]);
+	
+	
+	printf("gainCard() Test is now over\n\n");
+	return 0;
 }

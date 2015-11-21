@@ -1,0 +1,213 @@
+Test results:
+
+Testing scoreFor():
+Failed on iteration 1	Test 1 failed.	Expected: 471	Result:  387
+Failed on iteration 4	Test 1 failed.	Expected: 332	Result:  64
+Failed on iteration 5	Test 1 failed.	Expected: 382	Result:  247
+Failed on iteration 6	Test 1 failed.	Expected: 643	Result:  541
+Failed on iteration 7	Test 1 failed.	Expected: 125	Result:  116
+Failed on iteration 8	Test 1 failed.	Expected: 294	Result:  114
+File 'unittest1.c'
+Lines executed:93.98% of 83
+unittest1.c:creating 'unittest1.c.gcov'
+
+File 'dominion.c'
+Lines executed:5.68% of 581
+dominion.c:creating 'dominion.c.gcov'
+
+Testing fullDeckCount():
+All tests passed
+File 'unittest2.c'
+Lines executed:86.36% of 44
+unittest2.c:creating 'unittest2.c.gcov'
+
+File 'dominion.c'
+Lines executed:5.68% of 581
+dominion.c:creating 'dominion.c.gcov'
+
+Testing discardCard():
+Iteration #0	Test 5 failed.
+Expected discardCount: 395	Actual discardCount: 394
+Iteration #1	Test 5 failed.
+Expected discardCount: 259	Actual discardCount: 258
+Iteration #2	Test 5 failed.
+Expected discardCount: 59	Actual discardCount: 58
+Iteration #3	Test 5 failed.
+Expected discardCount: 197	Actual discardCount: 196
+Iteration #4	Test 5 failed.
+Expected discardCount: 51	Actual discardCount: 50
+Iteration #5	Test 5 failed.
+Expected discardCount: 478	Actual discardCount: 477
+Iteration #6	Test 5 failed.
+Expected discardCount: 424	Actual discardCount: 423
+Iteration #7	Test 5 failed.
+Expected discardCount: 279	Actual discardCount: 278
+Iteration #8	Test 5 failed.
+Expected discardCount: 223	Actual discardCount: 222
+Iteration #9	Test 5 failed.
+Expected discardCount: 268	Actual discardCount: 267
+File 'unittest3.c'
+Lines executed:73.44% of 64
+unittest3.c:creating 'unittest3.c.gcov'
+
+File 'dominion.c'
+Lines executed:7.75% of 581
+dominion.c:creating 'dominion.c.gcov'
+
+Testing updateCoins():
+All tests passed
+File 'unittest4.c'
+Lines executed:75.00% of 72
+unittest4.c:creating 'unittest4.c.gcov'
+
+File 'dominion.c'
+Lines executed:9.64% of 581
+dominion.c:creating 'dominion.c.gcov'
+
+Testing Smithy Card
+Iteration # 0 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 297	Actual: playedCardCount = 296
+
+Iteration # 1 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 400	Actual: playedCardCount = 399
+
+Iteration # 2 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 224	Actual: playedCardCount = 223
+
+Iteration # 3 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 178	Actual: playedCardCount = 177
+
+Iteration # 4 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 133	Actual: playedCardCount = 132
+
+Iteration # 5 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 109	Actual: playedCardCount = 108
+
+Iteration # 6 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 254	Actual: playedCardCount = 253
+
+Iteration # 7 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 73	Actual: playedCardCount = 72
+
+Iteration # 8 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 288	Actual: playedCardCount = 287
+
+Iteration # 9 Test 9 failed. Card was not added to played card count
+Expected: playedCardCount = 494	Actual: playedCardCount = 493
+
+File 'cardtest1.c'
+Lines executed:79.17% of 96
+cardtest1.c:creating 'cardtest1.c.gcov'
+
+File 'dominion.c'
+Lines executed:25.65% of 581
+dominion.c:creating 'dominion.c.gcov'
+
+Testing Adventurer Card
+All tests passed
+File 'cardtest2.c'
+Lines executed:65.96% of 94
+cardtest2.c:creating 'cardtest2.c.gcov'
+
+File 'dominion.c'
+Lines executed:31.15% of 581
+dominion.c:creating 'dominion.c.gcov'
+
+Testing Village Card
+Iteration #:0	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 0	Test 3 failed
+Expected: discardCount = 311	Actual: discardCount = 310
+Iteration #:1	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 1	Test 3 failed
+Expected: discardCount = 209	Actual: discardCount = 208
+Iteration #:2	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 2	Test 3 failed
+Expected: discardCount = 17	Actual: discardCount = 16
+Iteration #:3	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 3	Test 3 failed
+Expected: discardCount = 102	Actual: discardCount = 101
+Iteration #:4	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 4	Test 3 failed
+Expected: discardCount = 402	Actual: discardCount = 401
+Iteration #:5	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 5	Test 3 failed
+Expected: discardCount = 226	Actual: discardCount = 225
+Iteration #:6	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 6	Test 3 failed
+Expected: discardCount = 108	Actual: discardCount = 107
+Iteration #:7	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 7	Test 3 failed
+Expected: discardCount = 24	Actual: discardCount = 23
+Iteration #:8	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 8	Test 3 failed
+Expected: discardCount = 96	Actual: discardCount = 95
+Iteration #:9	Test 2 failed
+Expected: numActions = 3	Actual: numActionst = 4
+Iteration #: 9	Test 3 failed
+Expected: discardCount = 17	Actual: discardCount = 16
+File 'cardtest3.c'
+Lines executed:77.22% of 79
+cardtest3.c:creating 'cardtest3.c.gcov'
+
+File 'dominion.c'
+Lines executed:34.25% of 581
+dominion.c:creating 'dominion.c.gcov'
+
+Testing Great Hall Card
+Iteration #:0 	Test 1 failed
+Expected: cardCount = 46	Actual: cardCount = 47
+Iteration #: 0	Test 4 failed
+Expected: discardCount = 311	Actual: discardCount = 310
+Iteration #:1 	Test 1 failed
+Expected: cardCount = 422	Actual: cardCount = 423
+Iteration #: 1	Test 4 failed
+Expected: discardCount = 209	Actual: discardCount = 208
+Iteration #:2 	Test 1 failed
+Expected: cardCount = 130	Actual: cardCount = 131
+Iteration #: 2	Test 4 failed
+Expected: discardCount = 17	Actual: discardCount = 16
+Iteration #:3 	Test 1 failed
+Expected: cardCount = 309	Actual: cardCount = 310
+Iteration #: 3	Test 4 failed
+Expected: discardCount = 102	Actual: discardCount = 101
+Iteration #:4 	Test 1 failed
+Expected: cardCount = 392	Actual: cardCount = 393
+Iteration #: 4	Test 4 failed
+Expected: discardCount = 402	Actual: discardCount = 401
+Iteration #:5 	Test 1 failed
+Expected: cardCount = 63	Actual: cardCount = 64
+Iteration #: 5	Test 4 failed
+Expected: discardCount = 226	Actual: discardCount = 225
+Iteration #:6 	Test 1 failed
+Expected: cardCount = 478	Actual: cardCount = 479
+Iteration #: 6	Test 4 failed
+Expected: discardCount = 108	Actual: discardCount = 107
+Iteration #:7 	Test 1 failed
+Expected: cardCount = 284	Actual: cardCount = 285
+Iteration #: 7	Test 4 failed
+Expected: discardCount = 24	Actual: discardCount = 23
+Iteration #:8 	Test 1 failed
+Expected: cardCount = 376	Actual: cardCount = 377
+Iteration #: 8	Test 4 failed
+Expected: discardCount = 96	Actual: discardCount = 95
+Iteration #:9 	Test 1 failed
+Expected: cardCount = 122	Actual: cardCount = 123
+Iteration #: 9	Test 4 failed
+Expected: discardCount = 17	Actual: discardCount = 16
+File 'cardtest4.c'
+Lines executed:74.16% of 89
+cardtest4.c:creating 'cardtest4.c.gcov'
+
+File 'dominion.c'
+Lines executed:35.63% of 581
+dominion.c:creating 'dominion.c.gcov'
+

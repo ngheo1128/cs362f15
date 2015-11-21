@@ -1,109 +1,73 @@
-/***********************************************************************
-* Author : Allan Chan
-* ONID: chanal
-* Class: CS362
-* Filename: cardtest1.c
-*
-* Description:
-*	Tests the smithy card card effect
-*	
-*	Smithy card effect should draw 3 cards and place it in player's hand
-*	when played
-*
-*	A bug was introduced in the code for smithyCard and should fail a test here
-************************************************************************/
+//Woo Choi
+//cardtest1.c
+//Smithy Test
 
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include "rngs.h"
-#include "interface.c"
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
-#include <assert.h>
 #include <string.h>
-#include <time.h>
+#include <stdio.h>
+#include <assert.h>
+#include "rngs.h"
 
+/*Testing smithy
+
+int smithyRefactor(int currentPlayer, int handPos, struct gameState *state)
+{
+	int i=0;
+    //+3 Cards
+    for (i = 1; i < 3; i++)
+	{
+	  drawCard(currentPlayer, state);
+	}
+	
+	//discard card from hand
+    discardCard(handPos, currentPlayer, state, 0);
+    return 0;
+}
+
+Comment from refactor.c
+2. Smithy:
+	in for loop, initial i's value is now 1 instead of 0
+	player will only get +2 cards
+*/
 
 int main(){
 
-	srand(time(NULL));
-	int gameSeed = rand() % 1000 + 1;
-	int p = 0; //player 1
-	int numPlayer = 2;
-	int handCount = 5;
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-				 remodel, smithy, village, baron, great_hall};
+	int i;
+    int seed = 1000;
+    int numPlayer = 2;
+    int r;	
+    int k[10] = {adventurer, council_room, feast, gardens, mine
+               , remodel, smithy, village, baron, great_hall};
+    struct gameState G;
+	int currentPlayer = whoseTurn(&G);
+	int currentCardNum;	// number of cards before the smithy card is played.
 
-	/*Load hand with cards*/
-	int testHand1[5];
+    // initialize game state
+    memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
 
-	testHand1[0] = adventurer;
-	testHand1[1] = copper;
-	testHand1[2] = silver;
-	testHand1[3] = gold;
-	testHand1[4] = smithy;
+	//Begin smithy testing
+	printf("******************\n");
+	printf("cardtest1.c\n");
+	printf("Smithy Card Test:\n");
 
-	struct gameState G;
-
-	/*Clear the game state*/
-	memset(&G, 23, sizeof(struct gameState));
-
-	/*Initialize the game*/
-	initializeGame(numPlayer, k, gameSeed, &G);
-
-	/*Set cards to testHand1, player 1 = [p]*/
-	G.handCount[p] = handCount;
-	memcpy(G.hand[p], testHand1, sizeof(int)*handCount);
-
-	int i, cardStatus;
-	char c[25]; /*Used to assign int to char*/
-
-	printf("Checking if Smithy card is present in player %d's hand...\n", p);
-
-	/*Display the player's cards in hand and determine if smithy is present*/
-	for(i = 0; i < G.handCount[p]; i++){
-		cardNumToName(G.hand[p][i], c);	//Converts card number to string
-		printf( "%s, ", c);
-		if(strcmp(c, "Smithy") == 0){
-			cardStatus = 1;	//Card is present in hand
+	// gain smithy for currentPlayer and add to hand
+	gainCard(smithy, &G, 2, currentPlayer);	
+	currentCardNum = G.handCount[0];
+	
+	// go through hand to look for the smithy card
+	// numbHandCards: How many cards current player has in hand 
+	for (i = 0; i < numHandCards(&G); i++) {
+		// handCard: enum value of indexed card in player's hand
+		if(handCard(i, &G) == smithy){
+			// Play card with index handPos from current player's hand
+			playCard(i,-1,-1,-1,&G);	
+			// + 2 because discardCard was not used (so smithy wasn't accounted for)
+			printf("  Expected card count: %d\n  Actual card count: %d\n",currentCardNum+2,G.handCount[0]);		
 		}
-	}
-
-	if(cardStatus == 1){
-		printf("\nTest PASSED, card is present in player %d's hand\n\n", p);
-	} else {
-		printf("\nTest FAILED, card is not present in player %d's hand\n\n", p);
-	}
-
-	cardStatus = 0;	/*Reset status to 0*/
-
-	printf("Playing Smithy card and testing...\n");
-	smithyCard(p, &G, 4);	//Play smithy card from 4th hand pos
-
-	/*Check if hand count is +3 after play of Smithy*/
-	if(G.handCount[p] == 7){
-		printf("Test PASSED, player %d's hand received +3 cards\n\n", p);
-	} else {
-		printf("Test FAILED, player %d's hand DID NOT receive +3 cards\n\n", p);
-	}
-
-	/*Check if smithy card has been discarded from hand after card effects*/
-	for(i = 0; i < G.handCount[p]; i++){
-		cardNumToName(G.hand[p][i], c);	//Converts card number to string
-		printf( "%s, ", c);
-		if(strcmp(c, "Smithy") != 0){
-			cardStatus = 0;	//Card is NOT present in hand
-		}
-	}
-
-	printf("\nTesting if card is discarded from hand...\n");
-	if(cardStatus == 0){
-		printf("Test PASSED, Smithy is discarded from player %d's hand after use\n\n", p);
-	} else {
-		printf("Test FAILED, Smithy card is NOT discarded from player %d's hand after use\n\n", p);
-	}
-
+	}	
+	
+	printf("Smithy Card Test is now over\n\n");
 	return 0;
-
 }

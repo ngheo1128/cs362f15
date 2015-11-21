@@ -1,94 +1,124 @@
+//Woo Choi
+//cardtest3.c
+//Steward Test
+
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include <stdlib.h>
-#include <time.h>
+#include "rngs.h"
 
-int main() {
-
-    printf("\nTesting Village Card function:\n");
-
-    int randomSeed = 100;
-    int players = 4;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int i, x, h;
-    struct gameState state;
-    int maxHandCount = 5;
-    int testCounter, curPlayer, prevHandCount, prevNumActions, handPos;
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(players, kingCards, randomSeed, &state);
-    testCounter = 0;
-
-    for (x = 0; x < players; ++x) {
-        for (h = 0; h < maxHandCount; ++h) {
-            curPlayer = x;
-            state.whoseTurn = x;
-            handPos = h;
-
-            //setup testing state
-            for (i = 0; i <= h; ++i) {
-                state.hand[curPlayer][i] = smithy; //set whole hand = to smithy
-                state.deck[curPlayer][i] = curse; //set whole deck = to curse
-            }
-            state.deckCount[curPlayer] = h + 1;
-            state.numActions = h;
-            state.handCount[curPlayer] = handPos + 1;
-            state.hand[curPlayer][handPos] = village;   //set hand at handPos to village
+/*Testing steward
+    case steward:
+      if (choice1 == 1)
+	  {
+	    //+2 cards
+	    drawCard(currentPlayer, state);
+		drawCard(currentPlayer, state);
+	  }
+      else if (choice1 == 2)
+    	{
+			//+2 coins
+			state->coins = state->coins + 2;
+		}
+      else
+		{
+		//trash 2 cards in hand
+			discardCard(choice2, currentPlayer, state, 1);
+			discardCard(choice3, currentPlayer, state, 1);
+		}
+			
+      //discard card from hand
+      discardCard(handPos, currentPlayer, state, 0);
+      return 0;
 
 
-            prevNumActions = state.numActions;
-            prevHandCount = state.handCount[curPlayer];
+*/
 
-            playVillage(&state, handPos);
+int main(){
 
-            //test 3 cards added and 1 removed
-            //printf("3 cards added test:\n");
-            if (prevHandCount == state.handCount[curPlayer]) {   //1 cards added which discounts 1 lost
-                printf("Test Passed\n");
-            }
-            else {
-                printf("Test Failed\n");
-                testCounter++;
-            }
+	int i;
+    int seed = 1000;
+    int numPlayer = 2;
+    int r;
+    int k[10] = {adventurer, council_room, feast, gardens, mine
+               , remodel, steward, village, baron, great_hall};
+    struct gameState G;
+	int currentPlayer = whoseTurn(&G);
+	int currentCardNum;	// number of cards before the steward card is played.
+	//Begin steward testing
+	printf("******************\n");
+	printf("cardtest3.c\n");
+	printf("steward Card Test:\n");
+	printf("  choice1 == 1: \n");
+    // initialize game state
+    memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
 
-            //printf("prevActions: %d, numActions %d", prevNumActions, state.numActions);
-            if (prevNumActions + 2 == state.numActions) {   //2 actions added
-                printf("Test Passed\n");
-            }
-            else {
-                printf("Test Failed\n");
-                testCounter++;
-            }
+	// gain steward for currentPlayer
+	gainCard(steward, &G, 2, currentPlayer);	
+	currentCardNum = G.handCount[0];
+	
+	// go through hand to look for the steward card
+	// numbHandCards: How many cards current player has in hand 
+	for (i = 0; i < numHandCards(&G); i++) {
+		// handCard: enum value of indexed card in player's hand
+		if(handCard(i, &G) == steward){
+			// Play card with index handPos from current player's hand
+			// set choice1 to 1
+			playCard(i,1,-1,-1,&G);	
+			// + 1 because discardCard was not used (so steward wasn't accounted for)
+			printf("    Expected card count: %d\n    Actual card count: %d\n",currentCardNum+1,G.handCount[0]);		
+		}
+	}
+	
+	//Test for choice1 == 2
+	printf("  choice1 == 2: \n");
+	printf("    Tests for +2 coins, coins after should be +2 before\n");
+    // initialize game state
+    memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
 
-        }
-    }
-    if (testCounter <= 0) {
-        printf("All tests passed the Village Card\n");
-    }
-    else  {
-        printf("%d tests failed on the Village Card\n\n", testCounter);
-    }
-    return 0;
+	// gain steward for currentPlayer and add to hand
+	gainCard(steward, &G, 2, currentPlayer);	
+	currentCardNum = G.handCount[0];
+	printf("    coins before steward is : %d\n", G.coins); 	
+	// go through hand to look for the steward card
+	// numbHandCards: How many cards current player has in hand 
+	for (i = 0; i < numHandCards(&G); i++) {
+		// handCard: enum value of indexed card in player's hand
+		if(handCard(i, &G) == steward){
+			// Play card with index handPos from current player's hand
+			// set choice1 to 2
+			playCard(i,2,-1,-1,&G);	
+			// + 1 because discardCard was not used (so steward wasn't accounted for)
+			printf("    coins after steward is : %d\n", G.coins); 
+		}
+	}
+	
+	//Test for choice1 == 3
+	printf("  choice1 == 3: \n");
+	printf("    tests for 2 discarded cards\n");
+    // initialize game state
+    memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
+
+	// gain steward for currentPlayer
+	gainCard(steward, &G, 2, currentPlayer);	
+	currentCardNum = G.handCount[0];
+	// go through hand to look for the steward card
+	// numbHandCards: How many cards current player has in hand 
+	for (i = 0; i < numHandCards(&G); i++) {
+		// handCard: enum value of indexed card in player's hand
+		if(handCard(i, &G) == steward){
+			// Play card with index handPos from current player's hand
+			// set choice1 to 2
+			playCard(i,3,-1,-1,&G);	
+			// + 1 because discardCard was not used (so steward wasn't accounted for)
+			printf("    Expected card count: %d\n    Actual card count: %d\n",currentCardNum-3,G.handCount[0]);	
+		}
+	}		
+	printf("steward Card Test is now over\n\n");
+	return 0;
 }
-
-
-/**********
-Function: playVillage
-Purpose: The Council Room card draws 1 extra cards and gives 2 extra buys
-Inputs: gameState, handPos
-**********/
-//int playVillage(struct gameState *state, int handPos) {
-//
-//    int currentPlayer = whoseTurn(state);
-//      //+1 Card
-//      drawCard(currentPlayer, state);
-//
-//      //+2 Actions
-//      state->numActions = state->numActions + 2;
-//
-//      //discard played card from hand
-//      discardCard(handPos, currentPlayer, state, 9);
-//      return 0;
-//}
