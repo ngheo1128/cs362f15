@@ -1,184 +1,282 @@
 * * * * * * * * * * * * * * * *  Testing village card.* * * * * * * * * * * * * * * * 
 played card 
+Player 0's played cards: 
+#  Card
+0  Village       
+
+Player 0's played cards: 
+#  Card
+0  Village       
+1  Village       
+
+Player 0's played cards: 
+#  Card
+0  Village       
+1  Village       
+2  Village       
+
+Player 0's played cards: 
+#  Card
+0  Village       
+1  Village       
+2  Village       
+3  Village       
+
+Player 0's played cards: 
+#  Card
+0  Village       
+1  Village       
+2  Village       
+3  Village       
+4  Village       
+
 All tests passed!
 File 'dominion.c'
-Lines executed:40.03% of 577
-Branches executed:48.20% of 417
-Taken at least once:36.93% of 417
-Calls executed:31.31% of 99
+Lines executed:42.59% of 580
+Branches executed:57.59% of 415
+Taken at least once:40.72% of 415
+Calls executed:35.11% of 94
 dominion.c:creating 'dominion.c.gcov'
 
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Adventurer   
+3  Adventurer   
+4  Adventurer   
+
 * * * * * * * * * * * * * * * * Testing adventurer card * * * * * * * * * * * * * * * * 
-################################################### 
- Error: played card (adventurer) was not discarded after use. 
- ################################################### 
-################################################### 
- Error: played card (adventurer) was not discarded after use. 
- ################################################### 
-################################################### 
- Error: played card (adventurer) was not discarded after use. 
- ################################################### 
-################################################### 
- Error: played card (adventurer) was not discarded after use. 
- ################################################### 
-################################################### 
- Error: played card (adventurer) was not discarded after use. 
- ################################################### 
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Adventurer   
+3  Adventurer   
+4  Adventurer   
+5  Copper       
+6  Copper       
+
+Error: adventurer card did not go into discard
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Adventurer   
+3  Adventurer   
+4  Adventurer   
+5  Copper       
+6  Copper       
+
+Error: adventurer card did not go into discard
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Adventurer   
+3  Adventurer   
+4  Adventurer   
+5  Copper       
+6  Copper       
+
+Error: adventurer card did not go into discard
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Adventurer   
+3  Adventurer   
+4  Adventurer   
+5  Copper       
+6  Copper       
+
+Error: adventurer card did not go into discard
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Adventurer   
+3  Adventurer   
+4  Adventurer   
+5  Copper       
+6  Copper       
+
+Error: adventurer card did not go into discard
 All tests passed!
 File 'dominion.c'
-Lines executed:40.03% of 577
-Branches executed:48.20% of 417
-Taken at least once:36.93% of 417
-Calls executed:31.31% of 99
+Lines executed:42.59% of 580
+Branches executed:57.59% of 415
+Taken at least once:40.72% of 415
+Calls executed:35.11% of 94
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * Testing smithy card * * * * * * * * * * * * * * * * 
-################################################### 
- Error: incorrect number of cards in hand left after Smithy played. 
- ################################################### 
+Error: Expected 7, got 8 instead 
 All tests passed!
 File 'dominion.c'
-Lines executed:40.03% of 577
-Branches executed:48.20% of 417
-Taken at least once:36.93% of 417
-Calls executed:31.31% of 99
+Lines executed:42.59% of 580
+Branches executed:57.59% of 415
+Taken at least once:40.72% of 415
+Calls executed:35.11% of 94
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * Testing mineCard card* * * * * * * * * * * * * * * * 
-Testing swapping position 0 for Copper 
+Testing swapping position Copper for Copper 
 code returned: -1 
-cost of choice1 is 0 
 affordable 
-################################################### 
- Error: Expected coin in hand location 0. 
- ################################################### 
-################################################### 
- Error: expected non-mine card in hand location 4. 
- ################################################### 
-################################################### 
- Error: expected mine card in played area. 
- ################################################### 
-################################################### 
- Error: expected a coin card in played area. 
- ################################################### 
-Testing swapping position 0 for Silver 
-code returned: -1 
-cost of choice1 is 0 
-unaffordable 
-Testing swapping position 0 for Gold 
-code returned: -1 
-cost of choice1 is 0 
-unaffordable 
-Testing swapping position 1 for Copper 
-code returned: -1 
-cost of choice1 is 3 
+Error: Expected non mine card in hand.
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+4  Mine         
+
+Error: Expected mine card in the played area
+Error: Expected coin card in the played area
+Testing swapping position Copper for Silver 
+code returned: 0 
 affordable 
-################################################### 
- Error: Expected coin in hand location 1. 
- ################################################### 
-################################################### 
- Error: expected non-mine card in hand location 4. 
- ################################################### 
-################################################### 
- Error: expected mine card in played area. 
- ################################################### 
-################################################### 
- Error: expected a coin card in played area. 
- ################################################### 
-Testing swapping position 1 for Silver 
-code returned: -1 
-cost of choice1 is 3 
+Testing swapping position Copper for Gold 
+code returned: 0 
 affordable 
-################################################### 
- Error: Expected coin in hand location 1. 
- ################################################### 
-################################################### 
- Error: expected non-mine card in hand location 4. 
- ################################################### 
-################################################### 
- Error: expected mine card in played area. 
- ################################################### 
-################################################### 
- Error: expected a coin card in played area. 
- ################################################### 
-Testing swapping position 1 for Gold 
+Testing swapping position Silver for Copper 
 code returned: -1 
-cost of choice1 is 3 
-unaffordable 
-Testing swapping position 2 for Copper 
-code returned: -1 
-cost of choice1 is 6 
 affordable 
-################################################### 
- Error: Expected coin in hand location 2. 
- ################################################### 
-################################################### 
- Error: expected non-mine card in hand location 4. 
- ################################################### 
-################################################### 
- Error: expected mine card in played area. 
- ################################################### 
-################################################### 
- Error: expected a coin card in played area. 
- ################################################### 
-Testing swapping position 2 for Silver 
+Error: expected Copper instead of Silver in hand at location
+Error: Expected non mine card in hand.
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+4  Mine         
+
+Error: Expected mine card in the played area
+Error: Expected coin card in the played area
+Testing swapping position Silver for Silver 
 code returned: -1 
-cost of choice1 is 6 
 affordable 
-################################################### 
- Error: Expected coin in hand location 2. 
- ################################################### 
-################################################### 
- Error: expected non-mine card in hand location 4. 
- ################################################### 
-################################################### 
- Error: expected mine card in played area. 
- ################################################### 
-################################################### 
- Error: expected a coin card in played area. 
- ################################################### 
-Testing swapping position 2 for Gold 
+Error: Expected non mine card in hand.
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+4  Mine         
+
+Error: Expected mine card in the played area
+Error: Expected coin card in the played area
+Testing swapping position Silver for Gold 
+code returned: 0 
+affordable 
+Testing swapping position Gold for Copper 
 code returned: -1 
-cost of choice1 is 6 
 affordable 
-################################################### 
- Error: Expected coin in hand location 2. 
- ################################################### 
-################################################### 
- Error: expected non-mine card in hand location 4. 
- ################################################### 
-################################################### 
- Error: expected mine card in played area. 
- ################################################### 
-################################################### 
- Error: expected a coin card in played area. 
- ################################################### 
-################################################### 
- Error: allows user to choose a non treasure card to buy. 
- ################################################### 
+Error: expected Copper instead of Gold in hand at location
+Error: Expected non mine card in hand.
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+4  Mine         
+
+Error: Expected mine card in the played area
+Error: Expected coin card in the played area
+Testing swapping position Gold for Silver 
+code returned: -1 
+affordable 
+Error: expected Silver instead of Gold in hand at location
+Error: Expected non mine card in hand.
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+4  Mine         
+
+Error: Expected mine card in the played area
+Error: Expected coin card in the played area
+Testing swapping position Gold for Gold 
+code returned: -1 
+affordable 
+Error: Expected non mine card in hand.
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+4  Mine         
+
+Error: Expected mine card in the played area
+Error: Expected coin card in the played area
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+4  Mine         
+
 All tests passed!
 File 'dominion.c'
-Lines executed:40.03% of 577
-Branches executed:48.20% of 417
-Taken at least once:36.93% of 417
-Calls executed:31.31% of 99
+Lines executed:42.59% of 580
+Branches executed:57.59% of 415
+Taken at least once:40.72% of 415
+Calls executed:35.11% of 94
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * Testing minionCard * * * * * * * * * * * * * * * *
 Testing minion card choice 1
-################################################### 
- Error: bonus coins not updated to + 2. 
-################################################### 
+Error: bonus coins not increased by 2, instead there are 0 coins
 Testing minion card choice 2
-################################################### 
- Error: expected 10 discard cards played between player 1 and 2 received 5. 
- ################################################### 
+Before
+Player 0:
+Action phase
+1 actions
+4 coins
+1 buys
+
+Player 0's hand:
+#  Card
+0  Minion       
+1  Minion       
+2  Minion       
+3  Minion       
+4  Minion       
+
+after
+Player 0:
+Action phase
+1 actions
+3 coins
+1 buys
+
+Player 0's hand:
+#  Card
+0  Copper       
+1  Copper       
+2  Copper       
+3  Estate       
+
+Error: There were not 10 discarded cards played between player 1 and player 2, instead there were 5
+Player 0's discard: 
+
+Player 1's discard: 
+
 All tests passed!
 File 'dominion.c'
-Lines executed:40.03% of 577
-Branches executed:48.20% of 417
-Taken at least once:36.93% of 417
-Calls executed:31.31% of 99
+Lines executed:42.59% of 580
+Branches executed:57.59% of 415
+Taken at least once:40.72% of 415
+Calls executed:35.11% of 94
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * TESTING unittest1 gainCard():* * * * * * * * * * * * * * * * 
@@ -304,99 +402,79 @@ Test: Card Baron was added to discard for player 1
 Test: Card Great Hall was added to discard for player 1 
 All tests passed!
 File 'dominion.c'
-Lines executed:40.03% of 577
-Branches executed:48.20% of 417
-Taken at least once:36.93% of 417
-Calls executed:31.31% of 99
+Lines executed:42.59% of 580
+Branches executed:57.59% of 415
+Taken at least once:40.72% of 415
+Calls executed:35.11% of 94
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * TESTING unittest2 fullDeckCount():* * * * * * * * * * * * * * * * 
 Test: No Adventurer's in for player 0 
 Test: One Adventurer in deck for player 0 
-Test: One Adventurer in hand and deck for player 0 
 Test: One Adventurer in discard, hand and deck for player 0 
 Test: No Adventurer's in for player 1 
 Test: One Adventurer in deck for player 1 
-Test: One Adventurer in hand and deck for player 1 
 Test: One Adventurer in discard, hand and deck for player 1 
 Test: No Council Room's in for player 0 
 Test: One Council Room in deck for player 0 
-Test: One Council Room in hand and deck for player 0 
 Test: One Council Room in discard, hand and deck for player 0 
 Test: No Council Room's in for player 1 
 Test: One Council Room in deck for player 1 
-Test: One Council Room in hand and deck for player 1 
 Test: One Council Room in discard, hand and deck for player 1 
 Test: No Feast's in for player 0 
 Test: One Feast in deck for player 0 
-Test: One Feast in hand and deck for player 0 
 Test: One Feast in discard, hand and deck for player 0 
 Test: No Feast's in for player 1 
 Test: One Feast in deck for player 1 
-Test: One Feast in hand and deck for player 1 
 Test: One Feast in discard, hand and deck for player 1 
 Test: No Gardens's in for player 0 
 Test: One Gardens in deck for player 0 
-Test: One Gardens in hand and deck for player 0 
 Test: One Gardens in discard, hand and deck for player 0 
 Test: No Gardens's in for player 1 
 Test: One Gardens in deck for player 1 
-Test: One Gardens in hand and deck for player 1 
 Test: One Gardens in discard, hand and deck for player 1 
 Test: No Mine's in for player 0 
 Test: One Mine in deck for player 0 
-Test: One Mine in hand and deck for player 0 
 Test: One Mine in discard, hand and deck for player 0 
 Test: No Mine's in for player 1 
 Test: One Mine in deck for player 1 
-Test: One Mine in hand and deck for player 1 
 Test: One Mine in discard, hand and deck for player 1 
 Test: No Remodel's in for player 0 
 Test: One Remodel in deck for player 0 
-Test: One Remodel in hand and deck for player 0 
 Test: One Remodel in discard, hand and deck for player 0 
 Test: No Remodel's in for player 1 
 Test: One Remodel in deck for player 1 
-Test: One Remodel in hand and deck for player 1 
 Test: One Remodel in discard, hand and deck for player 1 
 Test: No Smithy's in for player 0 
 Test: One Smithy in deck for player 0 
-Test: One Smithy in hand and deck for player 0 
 Test: One Smithy in discard, hand and deck for player 0 
 Test: No Smithy's in for player 1 
 Test: One Smithy in deck for player 1 
-Test: One Smithy in hand and deck for player 1 
 Test: One Smithy in discard, hand and deck for player 1 
 Test: No Village's in for player 0 
 Test: One Village in deck for player 0 
-Test: One Village in hand and deck for player 0 
 Test: One Village in discard, hand and deck for player 0 
 Test: No Village's in for player 1 
 Test: One Village in deck for player 1 
-Test: One Village in hand and deck for player 1 
 Test: One Village in discard, hand and deck for player 1 
 Test: No Baron's in for player 0 
 Test: One Baron in deck for player 0 
-Test: One Baron in hand and deck for player 0 
 Test: One Baron in discard, hand and deck for player 0 
 Test: No Baron's in for player 1 
 Test: One Baron in deck for player 1 
-Test: One Baron in hand and deck for player 1 
 Test: One Baron in discard, hand and deck for player 1 
 Test: No Great Hall's in for player 0 
 Test: One Great Hall in deck for player 0 
-Test: One Great Hall in hand and deck for player 0 
 Test: One Great Hall in discard, hand and deck for player 0 
 Test: No Great Hall's in for player 1 
 Test: One Great Hall in deck for player 1 
-Test: One Great Hall in hand and deck for player 1 
 Test: One Great Hall in discard, hand and deck for player 1 
 All tests passed!
 File 'dominion.c'
-Lines executed:40.03% of 577
-Branches executed:48.20% of 417
-Taken at least once:36.93% of 417
-Calls executed:31.31% of 99
+Lines executed:42.59% of 580
+Branches executed:57.59% of 415
+Taken at least once:40.72% of 415
+Calls executed:35.11% of 94
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * TESTING unittest3 isGameOver():* * * * * * * * * * * * * * * * 
@@ -426,45 +504,29 @@ Test: remove Embargo + Curse + Estate triggers end.
 Test: remove Outpost + Curse + Estate triggers end. 
 Test: remove Salvager + Curse + Estate triggers end. 
 Test: remove Sea Hag + Curse + Estate triggers end. 
-**********************************************************  
- Removing Seahag or Treasuremap in addition 2 other cards does not trigger end of game 
- ********************************************************** 
+Error: removing card Sea Hag in addition 2 other cards does not trigger end of game 
 Test: remove Treasure Map + Curse + Estate triggers end. 
-**********************************************************  
- Removing Seahag or Treasuremap in addition 2 other cards does not trigger end of game 
- ********************************************************** 
+Error: removing card Treasure Map in addition 2 other cards does not trigger end of game 
 All tests passed!
 File 'dominion.c'
-Lines executed:40.03% of 577
-Branches executed:48.20% of 417
-Taken at least once:36.93% of 417
-Calls executed:31.31% of 99
+Lines executed:42.59% of 580
+Branches executed:57.59% of 415
+Taken at least once:40.72% of 415
+Calls executed:35.11% of 94
 dominion.c:creating 'dominion.c.gcov'
 
-TESTING scoreFor():
+* * * * * * * * * * * * * * * * Testint unittest4 scoreFor * * * * * * * * * * * * * * * * 
 Test: Empty Game 
-score after deck: 0 
- 
-* * * * * * * * * * * * * * * * Test: One of each in hand * * * * * * * * * * * * * * * * 
-score after deck: 10 
- 
+Test: one score card found in hand
 Test: One of each in deck 
-score after deck: 0 
- 
-################################################### 
- Error: iterator for deck count cycles through i = discardCount istead of deckCount 
- ################################################### 
+Error: deck points not totalled correctly. score is 0 not 10
 Test: One of each in discard
-score after deck: 4 
- 
-################################################### 
- Error: iterator for deck count cycles through i = discardCount istead of deckCount 
- ################################################### 
+Error: discard points not totalled correctly. score is 4 not 10
 All tests passed!
 File 'dominion.c'
-Lines executed:40.03% of 577
-Branches executed:48.20% of 417
-Taken at least once:36.93% of 417
-Calls executed:31.31% of 99
+Lines executed:42.59% of 580
+Branches executed:57.59% of 415
+Taken at least once:40.72% of 415
+Calls executed:35.11% of 94
 dominion.c:creating 'dominion.c.gcov'
 

@@ -37,7 +37,6 @@ Running test # 17
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 18 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 19 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 20 
@@ -65,21 +64,19 @@ Running test # 30
 Running test # 31 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 32 
-************* Error: played card (adventurer) was not discarded after use. ************* 
-*************  Error: Total treasure (3) did not match expected (0). ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 33 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 34 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 35 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 36 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 37 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 38 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 39 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 40 
@@ -119,14 +116,13 @@ Running test # 56
 Running test # 57 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 58 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 59 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 60 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 61 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 62 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 63 
@@ -143,8 +139,6 @@ Running test # 68
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 69 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
-*************  Error: Total treasure (6) did not match expected (3). ************* 
 Running test # 70 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 71 
@@ -156,7 +150,7 @@ Running test # 73
 Running test # 74 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 75 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 76 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 77 
@@ -165,7 +159,6 @@ Running test # 78
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 79 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 80 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 81 
@@ -244,7 +237,6 @@ Running test # 117
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 118 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 119 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 120 
@@ -254,7 +246,7 @@ Running test # 121
 Running test # 122 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 123 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 124 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 125 
@@ -281,8 +273,10 @@ Running test # 135
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 136 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 137 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 138 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 139 
@@ -307,12 +301,10 @@ Running test # 148
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 149 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 150 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 151 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 152 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 153 
@@ -333,7 +325,6 @@ Running test # 160
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 161 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 162 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 163 
@@ -356,8 +347,6 @@ Running test # 171
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 172 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
-*************  Error: Total treasure (5) did not match expected (2). ************* 
 Running test # 173 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 174 
@@ -373,11 +362,11 @@ Running test # 178
 Running test # 179 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 180 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 181 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 182 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 183 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 184 
@@ -413,7 +402,7 @@ Running test # 198
 Running test # 199 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 200 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 201 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 202 
@@ -423,7 +412,7 @@ Running test # 203
 Running test # 204 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 205 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 206 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 207 
@@ -530,6 +519,7 @@ Running test # 257
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 258 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 259 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 260 
@@ -541,7 +531,7 @@ Running test # 262
 Running test # 263 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 264 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 265 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 266 
@@ -572,7 +562,6 @@ Running test # 278
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 279 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 280 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 281 
@@ -607,7 +596,6 @@ Running test # 295
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 296 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 297 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 298 
@@ -703,7 +691,7 @@ Running test # 342
 Running test # 343 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 344 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 345 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 346 
@@ -739,7 +727,7 @@ Running test # 360
 Running test # 361 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 362 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 363 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 364 
@@ -755,7 +743,7 @@ Running test # 368
 Running test # 369 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 370 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 371 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 372 
@@ -802,9 +790,8 @@ Running test # 392
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 393 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 394 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 395 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 396 
@@ -821,7 +808,6 @@ Running test # 401
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 402 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 403 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 404 
@@ -833,7 +819,7 @@ Running test # 406
 Running test # 407 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 408 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 409 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 410 
@@ -879,7 +865,8 @@ Running test # 429
 Running test # 430 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 431 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
+*************  Error: Total treasure (2) did not match expected (0). ************* 
 Running test # 432 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 433 
@@ -932,6 +919,8 @@ Running test # 456
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 457 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
+*************  Error: Total treasure (5) did not match expected (3). ************* 
 Running test # 458 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 459 
@@ -1000,7 +989,6 @@ Running test # 490
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 491 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 492 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 493 
@@ -1023,6 +1011,8 @@ Running test # 501
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 502 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
+*************  Error: Total treasure (5) did not match expected (2). ************* 
 Running test # 503 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 504 
@@ -1031,6 +1021,8 @@ Running test # 505
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 506 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
+*************  Error: Total treasure (6) did not match expected (3). ************* 
 Running test # 507 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 508 
@@ -1080,14 +1072,13 @@ Running test # 529
 Running test # 530 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 531 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 532 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 533 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 534 
-************* Error: played card (adventurer) was not discarded after use. ************* 
-*************  Error: Total treasure (3) did not match expected (0). ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 535 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 536 
@@ -1151,7 +1142,7 @@ Running test # 564
 Running test # 565 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 566 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 567 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 568 
@@ -1209,7 +1200,7 @@ Running test # 593
 Running test # 594 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 595 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 596 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 597 
@@ -1246,7 +1237,6 @@ Running test # 612
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 613 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 614 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 615 
@@ -1254,7 +1244,7 @@ Running test # 615
 Running test # 616 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 617 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 618 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 619 
@@ -1289,6 +1279,7 @@ Running test # 633
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 634 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 635 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 636 
@@ -1301,8 +1292,6 @@ Running test # 639
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 640 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
-*************  Error: Total treasure (3) did not match expected (2). ************* 
 Running test # 641 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 642 
@@ -1347,6 +1336,7 @@ Running test # 661
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 662 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 663 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 664 
@@ -1419,12 +1409,10 @@ Running test # 697
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 698 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 699 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 700 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 701 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 702 
@@ -1441,6 +1429,7 @@ Running test # 707
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 708 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 709 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 710 
@@ -1483,7 +1472,6 @@ Running test # 728
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 729 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 730 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 731 
@@ -1581,7 +1569,7 @@ Running test # 776
 Running test # 777 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 778 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 779 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 780 
@@ -1616,10 +1604,12 @@ Running test # 794
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 795 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 796 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 797 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 798 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 799 
@@ -1635,7 +1625,7 @@ Running test # 803
 Running test # 804 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 805 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 806 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 807 
@@ -1737,7 +1727,7 @@ Running test # 854
 Running test # 855 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 856 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 857 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 858 
@@ -1806,7 +1796,6 @@ Running test # 889
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 890 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 891 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 892 
@@ -1831,6 +1820,7 @@ Running test # 901
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 902 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 903 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 904 
@@ -1862,7 +1852,7 @@ Running test # 916
 Running test # 917 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 918 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 919 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 920 
@@ -1888,7 +1878,7 @@ Running test # 929
 Running test # 930 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 931 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 932 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 933 
@@ -1948,7 +1938,7 @@ Running test # 959
 Running test # 960 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 961 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 962 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 963 
@@ -1972,7 +1962,7 @@ Running test # 971
 Running test # 972 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 973 
-************* Error: played card (adventurer) was not discarded after use. ************* 
+************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 974 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 975 
@@ -1993,7 +1983,6 @@ Running test # 982
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 983 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 984 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 985 
@@ -2011,7 +2000,7 @@ Running test # 990
 Running test # 991 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 992 
-************* Error: expected hand size is wrong because adventurer not discarded. ************* 
+************* Error: played card (adventurer) was not discarded after use. ************* 
 Running test # 993 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 994 
@@ -2026,11 +2015,10 @@ Running test # 998
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
 Running test # 999 
 ************* Error: expected hand size is wrong because adventurer not discarded. ************* 
-************* Error: played card (adventurer) was not discarded after use. ************* 
 File 'dominion.c'
-Lines executed:25.51% of 639
-Branches executed:26.57% of 463
-Taken at least once:18.36% of 463
-Calls executed:19.23% of 104
+Lines executed:44.89% of 577
+Branches executed:58.27% of 417
+Taken at least once:41.97% of 417
+Calls executed:38.38% of 99
 dominion.c:creating 'dominion.c.gcov'
 

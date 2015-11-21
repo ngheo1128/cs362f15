@@ -1,0 +1,158 @@
+* * * * * * * * * * * * * * * * randomtestcard * * * * * * * * * * * * * * * * 
+Run number 0 
+card Baron actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 1 
+card Village actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 2 
+card Steward actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 3 
+card Smithy actual: 5 expected: 4
+************** Error: expected hand size does not match actual hand size **************
+Run number 4 
+card Silver actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 5 
+card Remodel actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 6 
+card Province actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 7 
+card Gardens actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 8 
+card Duchy actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 9 
+card Curse actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 10 
+card Steward actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 11 
+card Gardens actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 12 
+card Village actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 13 
+card Curse actual: 2 expected: 1
+************** Error: expected hand size does not match actual hand size **************
+Run number 14 
+card Curse actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 15 
+card Duchy actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 16 
+card Copper actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 17 
+card Silver actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 18 
+card Copper actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 19 
+card Minion actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 20 
+card Gold actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 21 
+card Feast actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 22 
+card Silver actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 23 
+card Council Room actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 24 
+card Sea Hag actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 25 
+card Gold actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 26 
+card Silver actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 27 
+card Copper actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 28 
+card Steward actual: 2 expected: 1
+************** Error: expected hand size does not match actual hand size **************
+Run number 29 
+card Feast actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 30 
+card Baron actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 31 
+card Curse actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 32 
+card Province actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 33 
+card Remodel actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 34 
+card Steward actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 35 
+card Smithy actual: 5 expected: 4
+************** Error: expected hand size does not match actual hand size **************
+Run number 36 
+card Copper actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 37 
+card Gold actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 38 
+card Smithy actual: 5 expected: 4
+************** Error: expected hand size does not match actual hand size **************
+Run number 39 
+card Feast actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 40 
+card Council Room actual: 2 expected: 1
+************** Error: expected hand size does not match actual hand size **************
+Run number 41 
+card Silver actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 42 
+card Smithy actual: 5 expected: 4
+************** Error: expected hand size does not match actual hand size **************
+Run number 43 
+card Sea Hag actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 44 
+card Minion actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 45 
+card Province actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 46 
+card Minion actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 47 
+card Copper actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 48 
+card Sea Hag actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+Run number 49 
+card Minion actual: 1 expected: 0
+************** Error: expected hand size does not match actual hand size **************
+File 'dominion.c'
+Lines executed:46.55% of 580
+Branches executed:59.04% of 415
+Taken at least once:43.13% of 415
+Calls executed:37.23% of 94
+dominion.c:creating 'dominion.c.gcov'
+
