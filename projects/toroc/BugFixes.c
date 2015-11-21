@@ -46,3 +46,12 @@ Bug Fix:
 	To fix the bug I introduced, I got rid of the if statement that checked
 	whether the player had less than 2 cards left in their deck and granted
 	an additional buy.
+	
+	
+#############
+Council Room
+#############
+
+Bug Fix:
+	To fix the bug I introduced, I got rid of the if statement that checked
+	whether the card drawn was gold, then an additional action would be granted.
