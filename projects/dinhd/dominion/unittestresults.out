@@ -17,10 +17,10 @@ Player 0's played cards:
 
 All tests passed!
 File 'dominion.c'
-Lines executed:24.13% of 547
-Branches executed:25.38% of 394
-Taken at least once:15.99% of 394
-Calls executed:19.35% of 93
+Lines executed:22.72% of 581
+Branches executed:25.18% of 417
+Taken at least once:15.11% of 417
+Calls executed:17.65% of 102
 dominion.c:creating 'dominion.c.gcov'
 
 Player 0's hand:
@@ -106,21 +106,59 @@ Player 0's hand:
 
 All tests passed!
 File 'dominion.c'
-Lines executed:26.51% of 547
-Branches executed:27.41% of 394
-Taken at least once:17.51% of 394
-Calls executed:22.58% of 93
+Lines executed:24.96% of 581
+Branches executed:27.10% of 417
+Taken at least once:16.55% of 417
+Calls executed:20.59% of 102
 dominion.c:creating 'dominion.c.gcov'
 
-* * * * * * * * * * * * * * * * Testing smithy card * * * * * * * * * * * * * * * * 
-card being discarded is Smithy 
-Smithy card was not discarded
+TESTING sea_hag case in cardEffect():
+Testing player 0
+  --Testing oracle against state before call to cardEffect(sea_hag) for player number 0, opponent number 1--
+    PASS: Opponent's card to be discarded=6,expected=6
+    PASS: Deck count before discarding top of deck=10,expected=10
+    PASS: Hand count before discarding top of deck=10,expected=10
+    PASS: Discard count before discarding top of deck=0,expected=0
+  --Testing oracle against call to cardEffect(sea_hag) for player number 0, opponent number 1--
+    PASS: Card on top of opponent's discard pile after discarding top of deck=6,expected=6
+    PASS: Card on top of opponent's deck after distributing curse=0,expected=0
+    PASS: Deck count after discarding top of deck=10,expected=10
+  Testing for unexpected transactions against oracle. Checking supply counts...
+      PASS: number of curse=9, expected=9
+    Checking Victory cards in supply:
+      PASS: number of estate=8, expected=8
+      PASS: number of duchy=8, expected=8
+      PASS: number of province=8, expected=8
+    Checking Treasure cards in supply:
+      PASS: number of copper=46, expected=46
+      PASS: number of silver=40, expected=40
+      PASS: number of gold=30, expected=30
+Testing player 1
+  --Testing oracle against state before call to cardEffect(sea_hag) for player number 1, opponent number 0--
+    PASS: Opponent's card to be discarded=6,expected=6
+    PASS: Deck count before discarding top of deck=10,expected=10
+    PASS: Hand count before discarding top of deck=10,expected=10
+    PASS: Discard count before discarding top of deck=0,expected=0
+  --Testing oracle against call to cardEffect(sea_hag) for player number 1, opponent number 0--
+    PASS: Card on top of opponent's discard pile after discarding top of deck=6,expected=6
+    PASS: Card on top of opponent's deck after distributing curse=0,expected=0
+    PASS: Deck count after discarding top of deck=10,expected=10
+  Testing for unexpected transactions against oracle. Checking supply counts...
+      PASS: number of curse=9, expected=9
+    Checking Victory cards in supply:
+      PASS: number of estate=8, expected=8
+      PASS: number of duchy=8, expected=8
+      PASS: number of province=8, expected=8
+    Checking Treasure cards in supply:
+      PASS: number of copper=46, expected=46
+      PASS: number of silver=40, expected=40
+      PASS: number of gold=30, expected=30
 All tests passed!
 File 'dominion.c'
-Lines executed:27.61% of 547
-Branches executed:27.92% of 394
-Taken at least once:18.27% of 394
-Calls executed:25.81% of 93
+Lines executed:26.33% of 581
+Branches executed:28.06% of 417
+Taken at least once:18.23% of 417
+Calls executed:20.59% of 102
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * Testing mineCard card* * * * * * * * * * * * * * * * 
@@ -234,10 +272,10 @@ Player 0's hand:
 
 All tests passed!
 File 'dominion.c'
-Lines executed:34.00% of 547
-Branches executed:40.10% of 394
-Taken at least once:23.60% of 394
-Calls executed:36.56% of 93
+Lines executed:32.36% of 581
+Branches executed:39.57% of 417
+Taken at least once:23.26% of 417
+Calls executed:30.39% of 102
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * Testing minionCard * * * * * * * * * * * * * * * *
@@ -342,10 +380,10 @@ Player 1's discard:
 
 All tests passed!
 File 'dominion.c'
-Lines executed:37.66% of 547
-Branches executed:44.67% of 394
-Taken at least once:28.17% of 394
-Calls executed:44.09% of 93
+Lines executed:35.80% of 581
+Branches executed:43.88% of 417
+Taken at least once:27.58% of 417
+Calls executed:37.25% of 102
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * TESTING unittest1 gainCard():* * * * * * * * * * * * * * * * 
@@ -471,10 +509,10 @@ Test: Card Baron was added to discard for player 1
 Test: Card Great Hall was added to discard for player 1 
 All tests passed!
 File 'dominion.c'
-Lines executed:38.57% of 547
-Branches executed:44.67% of 394
-Taken at least once:28.93% of 394
-Calls executed:44.09% of 93
+Lines executed:36.66% of 581
+Branches executed:43.88% of 417
+Taken at least once:28.30% of 417
+Calls executed:37.25% of 102
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * TESTING unittest2 fullDeckCount():* * * * * * * * * * * * * * * * 
@@ -540,10 +578,10 @@ Test: One Great Hall in deck for player 1
 Test: One Great Hall in discard, hand and deck for player 1 
 All tests passed!
 File 'dominion.c'
-Lines executed:40.22% of 547
-Branches executed:47.72% of 394
-Taken at least once:32.23% of 394
-Calls executed:44.09% of 93
+Lines executed:38.21% of 581
+Branches executed:46.76% of 417
+Taken at least once:31.18% of 417
+Calls executed:37.25% of 102
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * TESTING unittest3 isGameOver():* * * * * * * * * * * * * * * * 
@@ -576,10 +614,10 @@ Test: remove Sea Hag + Curse + Estate triggers end.
 Test: remove Treasure Map + Curse + Estate triggers end. 
 All tests passed!
 File 'dominion.c'
-Lines executed:42.05% of 547
-Branches executed:49.75% of 394
-Taken at least once:34.26% of 394
-Calls executed:44.09% of 93
+Lines executed:39.93% of 581
+Branches executed:48.68% of 417
+Taken at least once:33.09% of 417
+Calls executed:37.25% of 102
 dominion.c:creating 'dominion.c.gcov'
 
 * * * * * * * * * * * * * * * * Testint unittest4 scoreFor * * * * * * * * * * * * * * * * 
@@ -597,9 +635,9 @@ score after deck: 10
  
 All tests passed!
 File 'dominion.c'
-Lines executed:46.80% of 547
-Branches executed:60.41% of 394
-Taken at least once:45.18% of 394
-Calls executed:48.39% of 93
+Lines executed:44.41% of 581
+Branches executed:58.75% of 417
+Taken at least once:43.41% of 417
+Calls executed:41.18% of 102
 dominion.c:creating 'dominion.c.gcov'
 

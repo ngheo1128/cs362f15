@@ -45,7 +45,7 @@ CS 362 Assignment 5
   while(z > 0)
 
 ***********************************  smithyCard ***********************************
-1) Changed line 727 Now only discards 1 card instead of 3
+1) Changed line 727 Now only discards 1 card instead of 3 and has the correct number of drawn cards
 
   for (i = 0; i < 3; i++)
   {
@@ -66,6 +66,29 @@ CS 362 Assignment 5
 
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
+
+***********************************  SeaHag ***********************************
+1)  Changed line 1269 Top card of deck was not being discarded, it was being trashed. 
+
+    state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];
+    state->discardCount[i]++;
+
+    To:
+
+    state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]-1];
+
+2)  Changed line 1270 curse was not being added correctly to top of pile.
+
+    state->deck[i][state->deckCount[i]--] = curse;//Top card now a curse
+
+    To:
+    
+    state->deck[i][state->deckCount[i]-1]=curse;
+
+3) Added line 1272 so that curse supply goes down when it is drawn.
+
+    state->supplyCount[curse] -= 1;
+
 
 ***********************************  mineCard ***********************************
 
