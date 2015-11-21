@@ -8,7 +8,7 @@ few different ".out" files in both, and this was due to the
 fact that I was working on my cardTests - while testing, I
 found that my original tests were poorly written.  So, I 
 updated them, commented out portions, and worked to improve
-the various tests first.  
+the various tests first.  (These details are explained in BugFix.c)  
 
 The highest .out was used in each teammates directory to report
 the bugs.  The unit tests for shuffle did "report" an error for
