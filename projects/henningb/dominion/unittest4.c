@@ -217,7 +217,7 @@ int main (){
     pre.discardCount[player]++;
     pre.numBuys--;
     pre.discard[player][post.discardCount[player]-1] = adventurer;
-
+    pre.phase = post.phase;
     comparison = memcmp(&pre, &post, sizeof(struct gameState));
     if(comparison == 0){
         printf("PASS\n");
