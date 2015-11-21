@@ -159,7 +159,7 @@ void setHand(struct gameState *G){
       case 1:
         G->handCount[p] = 15;
         for(j = 0; j < G->handCount[p]; j++){
-          if(j== 15) {
+          if(j== 14) {
             G->hand[p][j] = council_room;
           }else{
             G->hand[p][j] = silver;

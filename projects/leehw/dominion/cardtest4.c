@@ -202,6 +202,8 @@ int checkVillage(int p, struct gameState *post, int handPos) {
      //copy the game state to compare pre and post values
      memcpy(&pre, post, sizeof(struct gameState));  
 
+     post->whoseTurn = p;
+
      villageAction(p, post, handPos);
      
      //expected hand count
