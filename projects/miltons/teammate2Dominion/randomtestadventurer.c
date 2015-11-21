@@ -42,7 +42,8 @@ int randInt(int min, int max);
  **                   the game state from adventurerEffect() are compared to
  **                   the expected results to see if the function is working
  **                   properly.
- ** Parameters:       a pointer to a struct of type gameState: testState
+ ** Parameters:       one int: playerNumber,
+ **                   a pointer to a struct of type gameState: testState
  ** Pre-Conditions:   variables are initialized with values in valid ranges
  **                   within valid ranges for the game.
  ** Post-Conditions:  The adventurerEffect function has been tested. Errors
@@ -50,7 +51,7 @@ int randInt(int min, int max);
  **                   results have been output to the console.
  **
  *****************************************************************************/
-int testAdventurerEffect(struct gameState *post);
+int testAdventurerEffect(int playerNumber, struct gameState *post);
 
 
 
@@ -85,7 +86,7 @@ int main(int argc, char *argv[])
 
         // generate sensible random values for important preconditions:
         // select a random player
-//        playerNumber = randInt(1, 2); // can this go to 4 players?
+        playerNumber = randInt(1, 2); // can this go to 4 players?
         // random number of cards in current player's deck
         testState.deckCount[playerNumber] = randInt(0, MAX_DECK);
         // random number of cards in current player's discard pile
@@ -94,7 +95,7 @@ int main(int argc, char *argv[])
         testState.handCount[playerNumber] = randInt(0, MAX_HAND);
 
         // call test oracle function and pass it parameters
-        int retVal = testAdventurerEffect(&testState);
+        int retVal = testAdventurerEffect(playerNumber, &testState);
 
         // check return value for failure / crash
         if (retVal < 0)
@@ -110,7 +111,7 @@ int main(int argc, char *argv[])
 
 
 
-int testAdventurerEffect(struct gameState *post)
+int testAdventurerEffect(int playerNumber, struct gameState *post)
 {
 
 // hand should have 2 more cards in post than in pre AND
@@ -129,6 +130,9 @@ int testAdventurerEffect(struct gameState *post)
     // int tempHand[MAX_HAND];
     // int cardDrawn = 0; 
     // int z = 0;
+
+    // set the whoseTurn variable in the state to the current player
+    post->whoseTurn = playerNumber;
 
     // create duplicate of game state for before and after comparison
     struct gameState pre;
