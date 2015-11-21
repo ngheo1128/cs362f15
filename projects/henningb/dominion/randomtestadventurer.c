@@ -22,6 +22,7 @@ struct randomValues{
     int discardCount;           //Randomized player discard count
     int handTreasureCount;      //Keep track of treasure cards in hand
     int deckTreasureCount;      //Keep track of treasure cards in deck
+    int totalTreasure;          //Number of treasure cards in discard and deck
     int discardTreasureCount;   //Keep track of treasure cards in discard
     int handAdventurerCount;    //Keep track of adventurer cards in hand
     int adventurerPos;          //Randomized position of adventurer card in hand
@@ -65,7 +66,7 @@ int main (){
                vars->handAdventurerCount, vars->gameSeed);
 
         //Call adventurerCardEffect
-        adventurerCardEffect(vars->curPlayer, post);
+        adventurerCardEffect(vars->curPlayer, post, vars->adventurerPos);
 
         //Call function to test pre and post state. Returns 0 if no errors, 1 if errors.
         r = checkResults(pre, post, vars);
@@ -110,6 +111,7 @@ void randomize(struct gameState * post, struct randomValues * vars, int k[]){
     //Set the random variables for current player
     //Need controlled randomization of deckCount, discardCount, handCount, deck, discard, and hand
     //Also need to make sure there are at least 2 treasure cards in discard+deck, and at least 1 adventurer in hand
+    //EDIT: Now allows for there for be less than 2 treasure cards and performs appropriate checks
 
     //Set total number of cards in hand+deck+discard
     vars->totalCards = floor(Random() * (MAX_DECK - 2)) + 3;        //Needs to be at least 3 (adventurer and 2 treasure)
@@ -178,55 +180,7 @@ void randomize(struct gameState * post, struct randomValues * vars, int k[]){
             vars->discardTreasureCount++;
         }
     }
-    //printf("Deck treasure = %d\n", vars->deckTreasureCount);
-    //printf("Discard treasure = %d\n", vars->discardTreasureCount);
-
-    //If there are not 2 treasure cards in deck+discard, add them
-    if((vars->discardTreasureCount + vars->deckTreasureCount) < 2){
-        //Determine size of deck+discard
-        int count = vars->deckCount + vars->discardCount;
-        //Pick two different random positions throughout the combined deck and discard pile
-        int pos1 = floor(Random() * count);
-        int pos2;
-        do{
-            pos2 = floor(Random() * count);
-        }while(pos2 == pos1);
-        //Now place treasure cards in the two random positions
-        if(pos1 < vars->deckCount){
-            post->deck[vars->curPlayer][pos1] = copper;
-            vars->deckTreasureCount++;
-        }
-        else{
-            post->discard[vars->curPlayer][(pos1 - vars->deckCount)] = copper;
-            vars->discardTreasureCount++;
-        }
-        if(pos2 < vars->deckCount){
-            post->deck[vars->curPlayer][pos2] = copper;
-            vars->deckTreasureCount++;
-        }
-        else{
-            post->discard[vars->curPlayer][(pos2 - vars->deckCount)] = copper;
-            vars->handTreasureCount++;
-        }
-
-        //Debug
-        //printf("Pos1 = %d\t pos2 = %d\n", pos1, pos2);
-
-        //Debug -- count treasure in both and print total
-        /*int treasure = 0;
-        for(j = 0; j < vars->deckCount; j++){
-            if(post->deck[vars->curPlayer][j] == copper){
-                treasure++;
-            }
-        }
-        for(j = 0; j < vars->discardCount; j++){
-            if(post->discard[vars->curPlayer][j] == copper){
-                treasure++;
-            }
-        }*/
-        //printf("There is now %d copper in both deck and discard\n", treasure);
-
-    }
+    vars->totalTreasure = vars->deckTreasureCount + vars->discardTreasureCount;
     return;
 }
 
@@ -255,16 +209,32 @@ int checkResults(struct gameState * pre, struct gameState * post, struct randomV
         }
     }
     comparison = treasureCardsPost - vars->handTreasureCount;
-    if(comparison != 2){
+    if(comparison != 2 && vars->totalTreasure >= 2){
         printf("FAILED CHECK: Player hand gained %d treasure cards. Expected 2.\n", comparison);
+        failures++;
+    }
+    else if(comparison != 1 && vars->totalTreasure == 1){
+        printf("FAILED CHECK: Player hand gained %d treasure cards. Expected 1.\n", comparison);
+        failures++;
+    }
+    else if(comparison != 0 && vars->totalTreasure == 0){
+        printf("FAILED CHECK: Player hand gained %d treasure cards. Expected 0.\n", comparison);
         failures++;
     }
 
     //TEST DISCARD STUFF AND ARRAY SIZE CHANGES
     //Test that hand has net gain of 1 card (2 drawn, 1 discarded)
     comparison = post->handCount[vars->curPlayer] - pre->handCount[vars->curPlayer];
-    if(comparison != 1){
+    if(comparison != 1 && vars->totalTreasure >= 2){
         printf("FAILED CHECK: net gain to player's hand count is %d. Expected 1.\n", comparison);
+        failures++;
+    }
+    else if(comparison != 0 && vars->totalTreasure == 1){
+        printf("FAILED CHECK: net gain to player's hand count is %d. Expected 0.\n", comparison);
+        failures++;
+    }
+    else if(comparison != -1 && vars->totalTreasure == 0){
+        printf("FAILED CHECK: net gain to player's hand count is %d. Expected -1.\n", comparison);
         failures++;
     }
 
@@ -292,6 +262,11 @@ int checkResults(struct gameState * pre, struct gameState * post, struct randomV
     if(post->playedCards[post->playedCardCount - 1] != adventurer){
         printf("FAILED CHECK: top of playedCard pile is NOT adventurer.\n");
         failures++;
+    }
+
+    //Added verification that deckCount is not negative
+    if(post->deckCount[vars->curPlayer] < 0){
+        printf("FAILED CHECK: Negative deckCount value: %d\n", post->deckCount[vars->curPlayer]);
     }
 
     //Test that no other changes to state occurred
