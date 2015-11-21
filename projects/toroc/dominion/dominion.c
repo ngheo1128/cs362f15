@@ -1344,14 +1344,7 @@ int villageCard(struct gameState* state, int currentPlayer, int handPos)
       state->numActions = state->numActions + 2;
 			
       //discard played card from hand
-	  if (state->deckCount[currentPlayer] >2)
-	  {
 		  discardCard(handPos, currentPlayer, state, 0);
-	  }
-	else
-	{
-		drawCard(currentPlayer, state);
-	}		
       
       return 0;
 }
