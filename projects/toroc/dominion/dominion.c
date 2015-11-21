@@ -1319,8 +1319,6 @@ int adventurerCard(struct gameState* state, int currentPlayer)
 		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 		{
 			drawntreasure++;
-			if (drawntreasure == 2 && cardDrawn == gold)
-				state->numBuys--;
 		}
 		else
 		{
