@@ -55,3 +55,13 @@ Council Room
 Bug Fix:
 	To fix the bug I introduced, I got rid of the if statement that checked
 	whether the card drawn was gold, then an additional action would be granted.
+	
+	
+########
+Village
+########
+
+Bug Fix:
+	To fix the bug I introduced, I got rid of the if/else statement that ensured
+	a majority of the time the Village card would be discarded and on a rare 
+	occasion an additional card would be drawn.
