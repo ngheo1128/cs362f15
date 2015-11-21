@@ -60,11 +60,6 @@ int main() {
         //check to see if village card goes into discard
         printPlayed(0, &G);
 
-        if(G.playedCards[playedCards] != village)
-        {
-            cardNumToName(G.playedCards[playedCards], name);  
-            printf("Error: The card played is %s not village \n", name);
-        }
         //check to see if number of actions increased by 2
         if (numActions + 1 != G.numActions)
         {
