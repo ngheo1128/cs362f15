@@ -16,6 +16,11 @@ description
 The adventurer card does not cause hand size to increase by 1 as it should
 
 
+Bug Fix:
+	To fix the bug I introduced, I got rid of the if statement that checked
+	if the treasure count was 2 and the drawn treasure was gold, then the 
+	number of buys the player has gets decremented.
+
 
 #######
 Smithy
@@ -28,9 +33,16 @@ Bug Description:
 	but the actual action count is 2. This means the smithy card is adding 
 	actions when it isn't supposed to.
 
-BUG Fix:
+Bug Fix:
 	To fix the bug I introduced, I got rid of the if statement that checked
 	if the card drawn was gold, then the number of actions for the player
 	would be increased by 1.
 	
-#########
+##########
+Great Hall
+##########
+
+Bug Fix:
+	To fix the bug I introduced, I got rid of the if statement that checked
+	whether the player had less than 2 cards left in their deck and granted
+	an additional buy.
