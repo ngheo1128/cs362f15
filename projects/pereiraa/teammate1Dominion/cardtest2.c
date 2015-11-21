@@ -13,21 +13,26 @@
 void testCouncil(int currentPlayer, struct gameState *G, int handPos){
   
     int player = currentPlayer;
+    
     int hand = G->handCount[player];//get current handCount of player
     printf("old hand count %d \n", hand);
     int buys = G->numBuys;//get number of Buys player has
-    int otherHand = G->handCount[0];//get hand Count of other player's hand
+    int otherHand = G->handCount[1];//get hand Count of other player's hand
+    
     int choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     
     cardEffect(council_room, choice1, choice2, choice3, G, handPos, bonus);
     int newHand = G->handCount[player];//get new handcount
     printf("new hand count %d \n", newHand);
     int newbuys = G->numBuys;//get new numbuys
-    int newOtherHand = G->handCount[0];//get other players new hand count
+    int newOtherHand = G->handCount[1];//get other players new hand count
+    
+    
 
     int increase = newHand - hand;//how much the player's hand count has increase
     int buyIncrease = newbuys-buys;//how much the number of buys has increased
- 
+    printf("old otherhand count %d \n", otherHand);
+    printf("new otherhand count %d \n", newOtherHand);
     if(newHand == hand+3)//tests if player's hand increased by 3 (4 new cards and 1 discarded)
         printf("Hand Count test passed \n");
     else
@@ -54,12 +59,9 @@ int main(int argc, char *argv[])
         sea_hag, tribute, smithy};
     int seed = 1000;
     initializeGame(2, k, seed, &G);
-    int player = 1;
+    int player = 0;
     int handPos = 0;
-    drawCard(player, &G);//put cards in player's hand
-    drawCard(player, &G);
-    drawCard(player, &G);//put cards in player's hand
-    drawCard(player, &G);
+
     testCouncil(player, &G, handPos);
     return 0;
 }

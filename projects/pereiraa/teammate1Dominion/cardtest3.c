@@ -1,5 +1,5 @@
 /*****************************************************************************************
-* Tests the adven function by randomly choosing a current player of the 4 possibilities
+* Tests the adven function
 *1. current player who plays adventure card should have its hand increased by two treasure cards
 *2. The player's deck should decrease by at least 2 cards.
  *****************************************************************************************/
@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include "rngs.h"
 #include <stdlib.h>
-#include<time.h>
 
 void testAdven(int currentPlayer, struct gameState *G){
   
@@ -17,13 +16,12 @@ void testAdven(int currentPlayer, struct gameState *G){
     int i, card;
     int deckCount = G->deckCount[player];
         printf("Deck Count %d \n", deckCount);
-    
     int temphand[MAX_HAND];
     int drawntreasure=0;
     int cardDrawn;
     int z = 0;// this is the counter for the temp hand
     
-    
+
     
     adventureCard(G, player, drawntreasure, cardDrawn, z, temphand);
     int newHand = G->handCount[player];
@@ -32,7 +30,7 @@ void testAdven(int currentPlayer, struct gameState *G){
         {
             card =G->hand[player][i];
             if(card!=copper||card!=silver||card!=gold){
-               printf("treasures not added\n");
+               printf("treasures not added");
                break;
             }
             else
@@ -40,7 +38,7 @@ void testAdven(int currentPlayer, struct gameState *G){
         }
     else
         printf("Two treasures not added. Test failed.\n");
-    
+     printf("\n\n");
     
     
     int newDeckCount =G->deckCount[player];
@@ -53,19 +51,13 @@ void testAdven(int currentPlayer, struct gameState *G){
 
 int main(int argc, char *argv[])
 {
-    printf ("Testing Adven...\n");
+        printf ("Testing Adven...\n");
     struct gameState G;
     int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
         sea_hag, tribute, smithy};
     int seed = 1000;
-    srand(time(NULL));
-    initializeGame(4, k, seed, &G);
-    int i;
-    int player;
-    for(i =0; i <50; i++) {
-		player = rand()%4; //random player
-		printf("\nTest %d with player %d\n", i, player);
-    	testAdven(player, &G);
-    }
+    initializeGame(2, k, seed, &G);
+    int player = whoseTurn(&G);
+    testAdven(player, &G);
     return 0;
 }
