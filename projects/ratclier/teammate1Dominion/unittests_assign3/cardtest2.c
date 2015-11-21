@@ -47,11 +47,15 @@ int testAdventurerCard(struct gameState *state)
     struct gameState *origState;  // copy of game state
     int lastCard;                 // the last card in the hand
     int idx;                      // loop iterator
-    int diffDeckCount;            // difference between orig and new deck count
-    int diffDiscardCount;         // difference between orig and new discard count
+    int handPos;                  // card in play
     int passFlag      = 1;        // flag for testing proper gain of gold cards
+    int handCountIncr = 0;        // was handcount incremented? 0=no, 1=yes
     int currentPlayer = state->whoseTurn;
     int temphand[MAX_HAND];       // Added for teammate1Dominion card test
+
+    // Get the card in play
+    //
+    handPos = state->hand[currentPlayer][0];
 
     // Make a copy of the original game state
     //
@@ -61,11 +65,16 @@ int testAdventurerCard(struct gameState *state)
     //
     adventurerAction(currentPlayer, state, temphand);
 
-    // See if handCount increased by two cards
+    // See if handCount increased by two cards. After discarding, you
+    // should end up with 1 new card, not 2 (2 added, 1 discarded).
     //
-    if(state->handCount[currentPlayer] == origState->handCount[currentPlayer]+2)
+    if(state->handCount[currentPlayer] == origState->handCount[currentPlayer]+1)
     {
-        printf("adventurerAction: PASS two new cards added to hand\n");
+        // Signal that we have a proper increase in hand count
+        //
+        handCountIncr = 1;
+
+        printf("adventurerAction: PASS correct number of cards added to hand\n");
 
         // See if last two cards in hand are treasure cards (enum 4-6)
         //
@@ -88,20 +97,20 @@ int testAdventurerCard(struct gameState *state)
     }
     else 
     {
-        printf("adventurerAction: FAIL two new cards not added to hand\n");
+        printf("adventurerAction: FAIL incorrect number of cards added to hand\n");
     }
 
-    // See if the number of discarded cards is correct
+    // Check if card discarding was handled properly. You should end up
+    // with 1 new card in the player's hand and the last card in the
+    // discard pile should == handPos
     //
-    diffDeckCount = origState->deckCount[currentPlayer] - state->deckCount[currentPlayer];
-    diffDiscardCount = origState->discardCount[currentPlayer] - state->discardCount[currentPlayer];
-    if(diffDiscardCount + 2 == diffDeckCount)
+    if((handCountIncr == 1) && (state->discard[currentPlayer][0] == origState->hand[currentPlayer][handPos]))
     {
-        printf("adventurerAction: PASS correct number of cards discarded\n");
+        printf("adventurerCard: PASS correct number of cards discarded\n");
     }
     else 
     {
-        printf("adventurerAction: FAIL incorrect number of cards discarded\n");
+        printf("adventurerCard: FAIL incorrect number of cards discarded\n");
     }
 
     // Report what, if anything, changed in the game state

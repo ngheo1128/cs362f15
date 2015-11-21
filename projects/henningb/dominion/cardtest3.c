@@ -86,7 +86,7 @@ int main (){
     //play sea_hag card
     //Since we are not testing playCard or cardEffect, just call sea_hag card function
     printf("P%d played sea_hag\n", player);
-    seaHagCardEffect(player, &post);
+    seaHagCardEffect(player, &post, 4);
 
     //Test other players' top card of deck (a copper) is now top card of discard deck
     for(i = 0; i < 4; i++){

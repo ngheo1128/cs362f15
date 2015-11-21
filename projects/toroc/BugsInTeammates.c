@@ -5,8 +5,9 @@ Summary:
 	multiple tests failed for the same card, which lead me to believe there are 
 	multiple bugs affecting his implementation of the cards.
 
+###################	
 Teammate1: Kevin To
-
+###################
 	Running my tests against this team-mate's code was fairly easy as I never directly 
 	called the functions for the implementation but rather made sure to call the playCard 
 	function with the card being tested. As a result of doing this, I didn't need to make
@@ -48,13 +49,15 @@ Teammate1: Kevin To
 		Test #1 FAILED! Player did not receive 2 actions from Village.
 		***This test failed as result of the bug introduced by teammate1.
 
-	
+###########################	
 Teammate2: Sean Harrington
-	
+###########################	
 	Running my card tests against this team mate's code was fairly easy and I did
 	not need to make any edits to my tests. However, while my card test for Adventurer was
 	able to run the first two tests, the third test kept encountering a segmentation fault.
-	To offset this problem, I also ran the randomtestadventurer test against the implementation.
+	To offset this problem, I also ran the randomtestadventurer test against the implementation,
+	which kept timing out. I used GDB to figure out if it was my test that was timing out but it
+	turns out that it was my teammate's dominion file line 661.
 	
 	For Sean's implementation of dominion.c, my tests were able to detect multiple bugs for the 
 	following cards: Smithy, Adventurer, Village, and Council Room.
