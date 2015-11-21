@@ -1,0 +1,404 @@
+
+<=============== RUNNING ALL TEST =====================>
+
+
+<=============== RUNNING CARD TEST 1 =====================>
+./cardtest1
+Testing Smithy...
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+Other player's Hand Count test passed. 
+
+
+<=============== RUNNING CARD TEST 2 =====================>
+./cardtest2
+Testing Council...
+old hand count 5 
+new hand count 6 
+old otherhand count 0 
+new otherhand count 1 
+Hand Count test failed. The player's hand increased by 1 not 3 
+
+Numbuys test passed 
+
+Other player's Hand Count test passed 
+
+<=============== RUNNING CARD TEST 3 =====================>
+./cardtest3
+Testing Adven...
+Deck Count 5 
+Two treasures not added. Test failed.
+
+
+NewDeck Count 2 
+Deck reduced properly, passed
+
+<=============== RUNNING RANDOMTESTCARD =====================>
+./randomtestcard
+Testing Smithy...
+
+Test 0 with player 0 and handPos 2
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+Test 1 with player 2 and handPos 3
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+Test 2 with player 2 and handPos 2
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+Test 3 with player 2 and handPos 1
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+Test 4 with player 0 and handPos 1
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+Test 5 with player 3 and handPos 1
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+Test 6 with player 0 and handPos 0
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+Test 7 with player 2 and handPos 1
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+Test 8 with player 3 and handPos 0
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+Test 9 with player 3 and handPos 1
+
+Hand Count test failed. The player's hand increased by -1 not 2 
+
+Deck Count test failed. The player's deck decreased by 0 not 3 
+
+<=============== RUNNING RANDOMTESTADVENTURER =====================>
+./randomtestadventurer
+Testing Adven...
+
+Test 0 with player 0
+Deck Count 5 
+Two treasures not added. Test failed.
+NewDeck Count 2 
+Deck reduced properly, passed
+
+Test 1 with player 3
+Deck Count 10 
+Two treasures not added. Test failed.
+NewDeck Count 5 
+Deck reduced properly, passed
+
+Test 2 with player 2
+Deck Count 10 
+Two treasures not added. Test failed.
+NewDeck Count 6 
+Deck reduced properly, passed
+
+Test 3 with player 3
+Deck Count 5 
+Two treasures not added. Test failed.
+NewDeck Count 2 
+Deck reduced properly, passed
+
+Test 4 with player 2
+Deck Count 6 
+Two treasures not added. Test failed.
+NewDeck Count 3 
+Deck reduced properly, passed
+
+Test 5 with player 2
+Deck Count 3 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck reduced properly, passed
+
+Test 6 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 7 with player 1
+Deck Count 10 
+Two treasures not added. Test failed.
+NewDeck Count 5 
+Deck reduced properly, passed
+
+Test 8 with player 0
+Deck Count 2 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck reduced properly, passed
+
+Test 9 with player 1
+Deck Count 5 
+Two treasures not added. Test failed.
+NewDeck Count 1 
+Deck reduced properly, passed
+
+Test 10 with player 3
+Deck Count 2 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck reduced properly, passed
+
+Test 11 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 12 with player 0
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 13 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 14 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 15 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 16 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 17 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 18 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 19 with player 1
+Deck Count 1 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 20 with player 0
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 21 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 22 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 23 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 24 with player 1
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 25 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 26 with player 1
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 27 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 28 with player 0
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 29 with player 0
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 30 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 31 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 32 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 33 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 34 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 35 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 36 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 37 with player 0
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 38 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 39 with player 0
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 40 with player 0
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 41 with player 1
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 42 with player 3
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 43 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 44 with player 1
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 45 with player 2
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 46 with player 1
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 47 with player 1
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 48 with player 1
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
+
+Test 49 with player 1
+Deck Count 0 
+Two treasures not added. Test failed.
+NewDeck Count 0 
+Deck not reduced properly, failed
