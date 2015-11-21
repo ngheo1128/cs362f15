@@ -2,8 +2,8 @@
 // *****************************************************************************
 // 
 // Author:    Erik Ratcliffe
-// Date:      November 22, 2015
-// Project:   Assignment 5 - Unit Tests (teammates)
+// Date:      October 25, 2015
+// Project:   Assignment 3 - Unit Tests
 // Filename:  unittest2.c
 // Class:     CS 362 (Fall 2015)
 //
@@ -31,7 +31,6 @@
 //
 int testGainCard(int supplyPos, struct gameState *state, int toFlag, int player)
 {
-    int supplyCountRet = 0;       // holds return value from supplyCount()
     struct gameState *origState;  // copy of game state
     
     // Make a copy of the original game state
@@ -46,10 +45,11 @@ int testGainCard(int supplyPos, struct gameState *state, int toFlag, int player)
     // Within gainCard(), the supplyCount() function checks these conditions by
     // returning state->supplyCount[supplyPos] which will be 0 if empty or -1 if 
     // the card is not used in the game. We're not testing supplyCount() here,
-    // just gainCard().
+    // though, just gainCard().
     //
-    supplyCountRet = gainCard(supplyPos, state, toFlag, player);
-    if(supplyCountRet >= 1)
+    gainCard(supplyPos, state, toFlag, player);
+
+    if(state->supplyCount[supplyPos] >= 1)
     {
         // Enough cards exist. Continue with testing card movement
         // results.

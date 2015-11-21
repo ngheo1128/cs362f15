@@ -25,26 +25,33 @@ playAdventurer(int drawntreasure, struct gameState *state, int currentPlayer, in
 
 council_room:
 Function starts on line 1325
-playCouncil_Room(int i, int handPos, int currentPlayer, struct gameState *state) //rotated int handPos with int currentPlayer in func definition
-{
+int playCouncil_Room(struct gameState *state, int handPos) {
+
+    int i;
+    int currentPlayer = whoseTurn(state);
+
+    //+4 Cards
     for (i = 0; i < 4; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
 
+     //+1 Buy
     state->numBuys++;
 
+     //Each other player draws a card
     for (i = 0; i < state->numPlayers; i++)
 	{
 	  if ( i != currentPlayer )
-	    {
-	      drawCard(i, state);currentPlayer
-	    }
+      {
+	      drawCard(i, state);
+      }
 	}
 
-    discardCard(handPos, currentPlayer, state, 0);
+      //put played card in played card pile
+      discardCard(handPos, currentPlayer, state, 0);
 
-    return 0;
+      return 0;
 }
 
 

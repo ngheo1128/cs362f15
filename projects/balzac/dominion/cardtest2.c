@@ -49,6 +49,7 @@ void testAdventurerCard()
 
 	initializeGame(numPlayer, k, seed, &G); /*initialize a new game*/
 	G.handCount[p] = handCount;             /*set the number of cards in hand*/
+	G.discardCount[p] = handCount;
 	memcpy(G.hand[p], custom_hand, sizeof(int) * handCount); /*Populate hand with cards*/
 	G.deckCount[p] = 0; /*set player's deck count to 0 so shuffle needs to occur*/
 	

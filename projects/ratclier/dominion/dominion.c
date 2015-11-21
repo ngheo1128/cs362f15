@@ -56,7 +56,7 @@ int smithyCard(struct gameState *state, int handPos)
 
 // Adventurer card code moved from the cardEffect() switch statement
 //
-int adventurerCard(struct gameState *state)
+int adventurerCard(struct gameState *state, int handPos)
 {
   int currentPlayer = whoseTurn(state);
   int drawntreasure = 0;
@@ -89,6 +89,10 @@ int adventurerCard(struct gameState *state)
 	  state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; 
 	  z=z-1;
   }
+
+  //put played card in played card pile
+  discardCard(handPos, currentPlayer, state, 0);
+
   return 0;
 }
 
@@ -861,7 +865,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
       // Code moved to separate function
       //
-      adventurerCard(state);
+      adventurerCard(state, handPos);
 			
     case council_room:
       //+4 Cards
@@ -1334,6 +1338,9 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       //add card to played pile
       state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
       state->playedCardCount++;
+
+      // add card to discard pile
+      state->discard[currentPlayer][state->discardCount[currentPlayer]++] = state->hand[currentPlayer][handPos]; 
     }
 	
   //set played card to -1

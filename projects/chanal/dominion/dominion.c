@@ -667,7 +667,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-	  adventurerCard (drawntreasure, state, currentPlayer, cardDrawn, temphand, z); //function call
+	  adventurerCard (drawntreasure, state, currentPlayer, cardDrawn, temphand, z, handPos); //function call
       return 0;
 			
     case council_room:
@@ -1266,8 +1266,8 @@ int updateCoins(int player, struct gameState *state, int bonus)
 }
 
 //Refactored code Adventurer card effects
-int adventurerCard (int drawntreasure, struct gameState* state, int currentPlayer, int cardDrawn, int temphand[], int z) {
-      while(drawntreasure<=2){
+int adventurerCard (int drawntreasure, struct gameState* state, int currentPlayer, int cardDrawn, int temphand[], int z, int handPos) {
+      while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -1285,6 +1285,7 @@ int adventurerCard (int drawntreasure, struct gameState* state, int currentPlaye
 	state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
 	z=z-1;
       }
+      discardCard(handPos, currentPlayer, state, 0);
 	  return 0;
 }
 
@@ -1292,13 +1293,13 @@ int adventurerCard (int drawntreasure, struct gameState* state, int currentPlaye
 int councilRoomCard (int currentPlayer, struct gameState* state, int handPos){
       //+4 Cards
 	  int i;
-      for (i = 0; i <= 4; i++)
+      for (i = 0; i < 4; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
 			
       //+1 Buy
-      state->numActions++;
+      state->numBuys++;
 			
       //Each other player draws a card
       for (i = 0; i < state->numPlayers; i++)
@@ -1318,7 +1319,7 @@ int councilRoomCard (int currentPlayer, struct gameState* state, int handPos){
 int smithyCard(int currentPlayer, struct gameState* state, int handPos) {
       //+3 Cards
 	  int i;
-      for (i = 0; i <= 3; i++)
+      for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -1331,7 +1332,7 @@ int smithyCard(int currentPlayer, struct gameState* state, int handPos) {
 //Refactored code for salvager card effect
 int salvagerCard(struct gameState* state, int choice1, int currentPlayer, int handPos) {
       //+1 buy
-      state->numActions++;
+      state->numBuys++;
 			
       if (choice1)
 	{

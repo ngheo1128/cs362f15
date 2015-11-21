@@ -1,4 +1,4 @@
-Result for running tests for Wisam:
+Result for running tests for Jody:
 cardTest1.c:
 This is the tests the Smithy card - callSmithy().
 smithy_refactor() Test 1a:  FAIL, discard amounts NOT equal.
