@@ -1,118 +1,73 @@
+//Woo Choi
+//cardtest1.c
+//Smithy Test
+
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include <stdlib.h>
-#include <time.h>
+#include "rngs.h"
 
+/*Testing smithy
 
-
-int main() {
-
-    printf("\nTesting Adventurer Card:\n");
-
-    int randomSeed = 100;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int i, x, p;
-    int curPlayers = 4;
-    struct gameState state;
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(curPlayers, kingCards, randomSeed, &state);
-    //set current player
-    state.whoseTurn = 0;
-    int curPlayer = 0;
-    int failCounter = 0;
-    //hand == 0 when
-        //p == 0, x == 0, 1
-        //p == 1, x == 0
-        //p == 2, x == 0, 1
-
-
-    //controls combination of arrays that have cards at any time.
-    for (p = 0; p < 3; ++p) {
-
-        //controls which combination of cards get added.
-        for (x = 0; x < 3; ++x) {
-
-
-            //fill deck
-            if (p == 0 || p ==1 ) {
-                for (i = 0; i < 4; ++i) {
-                    state.deck[curPlayer][i] = i + x; //fill deck with cards 0-3 + x
-                }
-                state.deckCount[curPlayer] = 4;
-            }
-            else {
-                for (i = 0; i < 4; ++i) {
-                    state.deck[curPlayer][i] = -1; //empty deck
-                }
-                state.deckCount[curPlayer] = 0;
-            }
-
-            //fill discard
-            if (p ==1 || p == 2) {
-                for (i = 0; i < 4; ++i) {
-                    state.discard[curPlayer][i] = i + x; //fill discard with cards 0-3 + x
-                }
-                state.discardCount[curPlayer] = 4;
-            }
-            else {
-                for (i = 0; i < 4; ++i) {
-                    state.discard[curPlayer][i] = -1; //empty deck
-                }
-                state.discardCount[curPlayer] = 0;
-            }
-
-            //zero hand count
-            state.handCount[curPlayer] = 3;
-            for (i = 0; i < state.handCount[curPlayer]; ++i) {
-                state.hand[curPlayer][i] = -1;
-                //printf("card = %d\n", state.hand[curPlayer][i]);
-            }
-            state.handCount[curPlayer] = 0;
-
-            playAdventurer(&state);
-
-
-//            printf("x=%d, p=%d, count: %d \n", x, p, state.handCount[curPlayer]);
-//                for (i = 0; i < state.handCount[curPlayer]; ++i) {
-//                printf("card %d", state.hand[curPlayer][i]);
-//            }
-
-//            printf("\n");
-
-            if (p == 0 || p == 2) {
-                if (state.handCount[curPlayer] == x && x <= 2) {
-                    printf("Test Passed\n");
-                }
-                else {
-                    printf("Test Failed\n");
-                    failCounter++;
-                }
-            }
-            else if (p == 1) {
-                if (x == 0 && state.handCount[curPlayer] == 0) {
-                    printf("Test Passed\n");
-                }
-                else if (x > 0 && state.handCount[curPlayer] == 2) {
-                    printf("Test Passed\n");
-                }
-                else {
-                    printf("Test Failed\n");
-                    failCounter++;
-                }
-            }
-        }
-    }
-    if (failCounter <= 0) {
-        printf("All tests passed the Adventure Card\n");
-    }
-    else  {
-        printf("%d tests failed on the adventure card\n\n", failCounter);
-    }
-
+int smithyRefactor(int currentPlayer, int handPos, struct gameState *state)
+{
+	int i=0;
+    //+3 Cards
+    for (i = 1; i < 3; i++)
+	{
+	  drawCard(currentPlayer, state);
+	}
+	
+	//discard card from hand
+    discardCard(handPos, currentPlayer, state, 0);
     return 0;
 }
 
+Comment from refactor.c
+2. Smithy:
+	in for loop, initial i's value is now 1 instead of 0
+	player will only get +2 cards
+*/
 
+int main(){
+
+	int i;
+    int seed = 1000;
+    int numPlayer = 2;
+    int r;	
+    int k[10] = {adventurer, council_room, feast, gardens, mine
+               , remodel, smithy, village, baron, great_hall};
+    struct gameState G;
+	int currentPlayer = whoseTurn(&G);
+	int currentCardNum;	// number of cards before the smithy card is played.
+
+    // initialize game state
+    memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
+
+	//Begin smithy testing
+	printf("******************\n");
+	printf("cardtest1.c\n");
+	printf("Smithy Card Test:\n");
+
+	// gain smithy for currentPlayer and add to hand
+	gainCard(smithy, &G, 2, currentPlayer);	
+	currentCardNum = G.handCount[0];
+	
+	// go through hand to look for the smithy card
+	// numbHandCards: How many cards current player has in hand 
+	for (i = 0; i < numHandCards(&G); i++) {
+		// handCard: enum value of indexed card in player's hand
+		if(handCard(i, &G) == smithy){
+			// Play card with index handPos from current player's hand
+			playCard(i,-1,-1,-1,&G);	
+			// + 2 because discardCard was not used (so smithy wasn't accounted for)
+			printf("  Expected card count: %d\n  Actual card count: %d\n",currentCardNum+2,G.handCount[0]);		
+		}
+	}	
+	
+	printf("Smithy Card Test is now over\n\n");
+	return 0;
+}

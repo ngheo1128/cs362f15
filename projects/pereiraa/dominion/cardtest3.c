@@ -16,7 +16,14 @@ void testAdven(int currentPlayer, struct gameState *G){
     int i, card;
     int deckCount = G->deckCount[player];
         printf("Deck Count %d \n", deckCount);
-    adven(player, G);
+    int temphand[MAX_HAND];
+    int drawntreasure=2;
+    int cardDrawn;
+    int z = 0;// this is the counter for the temp hand
+    
+
+    
+    adventureCard(G, player, drawntreasure, cardDrawn, z, temphand);
     int newHand = G->handCount[player];
     if(newHand==hand+2)//if 2 treasures added check to make sure they are treasures
         for(i =newHand-1; i<newHand-3; i++)

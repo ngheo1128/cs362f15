@@ -1,85 +1,93 @@
+//Woo Choi
+//cardtest2.c
+//Adventurer Test
+
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include <stdlib.h>
-#include <time.h>
+#include "rngs.h"
 
-int main() {
+/*Testing Adventurer
+int adventurerRefactor(int currentPlayer, struct gameState *state)
+{
+	//copied paste from original cardEffect
 
-    printf("\nTesting Smithy Card function:\n");
+	  int temphand[MAX_HAND];// moved above the if statement
+	  int drawntreasure=10;
+	  int cardDrawn=0;
+	  int z = 0;// this is the counter for the temp hand
 
-    int randomSeed = 100;
-    int players = 4;
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-    int i, x, h;
-    struct gameState state;
-    int discardCount = 5;
-    int maxHandCount = 5;
-    int testCounter, curPlayer, prevHandCount, prevDiscardCount, handPos;
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(players, kingCards, randomSeed, &state);
-    testCounter = 0;
-
-    for (x = 0; x < players; ++x) {
-        for (h = 0; h < maxHandCount; ++h) {
-            curPlayer = x;
-            state.whoseTurn = x;
-            handPos = h;
-
-            //setup testing state
-            for (i = 0; i <= h; ++i) {
-                state.hand[curPlayer][i] = curse; //set whole hand = to curse
-                state.discard[curPlayer][i] = curse; //set whole discard = to curse
-            }
-
-            state.discardCount[curPlayer] = handPos;
-            state.handCount[curPlayer] = handPos + 1;
-            state.hand[curPlayer][handPos] = smithy;
-
-            prevDiscardCount = state.discardCount[curPlayer];
-            prevHandCount = state.handCount[curPlayer];
-
-            playSmithy(&state, handPos);
-
-            //test 3 cards added and 1 removed.
-            //printf("3 cards added test:\n");
-            if (prevHandCount + 2 == state.handCount[curPlayer]) {   //2 cards added
-                printf("Test Passed\n");
-            }
-            else {
-                printf("Test Failed\n");
-                //printf("prevDiscard %d, curDiscard %d, prevHandCount %d, curHandCount %d\n", prevDiscardCount, state.discardCount[curPlayer], prevHandCount, state.handCount[curPlayer]);
-                testCounter++;
-            }
-
-            //test discarded cards count incremented
-            //printf("discardCount incremented test:\n");
-            if (state.discardCount[curPlayer] == prevDiscardCount + 1) {
-                printf("Test Passed\n");
-            }
-            else {
-                printf("Test Failed\n");
-                testCounter++;
-            }
-
-            //test discarded card is smithy
-            //printf("discardCount smithy in discard test:\n");
-            if (state.discard[curPlayer][curPlayer + 1] == smithy) {
-                printf("Test Passed\n");
-            }
-            else {
-                printf("Test Failed\n");
-                testCounter++;
-            }
-        }
+	
+	// Actual implementation
+    while(drawntreasure<2){
+		if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+			shuffle(currentPlayer, state);
+		}
+	
+		drawCard(currentPlayer, state);
+		cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+	
+		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+		drawntreasure++;
+		else{
+			temphand[z]=cardDrawn;
+			state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+			z++;
+		}
     }
-    if (testCounter <= 0) {
-        printf("All tests passed the Smithy Card\n");
+    
+	while(z-1>=0){
+		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
+		z=z-1;
     }
-    else  {
-        printf("%d tests failed on the Smithy Card\n\n", testCounter);
-    }
-    return 0;
+      return 0;	
+}
+
+From refactor.c :
+1. Adventurer:
+	drawntreasure's initial value changed from 0 to 10.
+	the first while loop will not run
+*/
+
+int main(){
+
+	int i;
+    int seed = 1000;
+    int numPlayer = 2;
+    int r;	
+    int k[10] = {adventurer, council_room, feast, gardens, mine
+               , remodel, smithy, village, baron, great_hall};
+    struct gameState G;
+	int currentPlayer = whoseTurn(&G);
+	int currentCardNum;	// number of cards before the adventurer card is played.
+
+    // initialize game state
+    memset(&G, 23, sizeof(struct gameState));   // clear the game state
+    r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
+
+	//Begin Adventurer testing
+	printf("******************\n");
+	printf("cardtest2.c\n");
+	printf("Adventurer Card Test:\n");
+
+	// gain adventurer for currentPlayer and add to hand
+	gainCard(adventurer, &G, 2, currentPlayer);	
+	currentCardNum = G.handCount[0];
+	
+	// go through hand to look for the adventurer card
+	// numbHandCards: How many cards current player has in hand 
+	for (i = 0; i < numHandCards(&G); i++) {
+		// handCard: enum value of indexed card in player's hand
+		if(handCard(i, &G) == adventurer){
+			// Play card with index handPos from current player's hand
+			playCard(i,-1,-1,-1,&G);	
+			// + 1 because discardCard was not used (so adventurer wasn't accounted for)
+			printf("  Expected card count: %d\n  Actual card count: %d\n",currentCardNum+2,G.handCount[0]);		
+		}
+	}	
+	
+	printf("Adventurer Card Test is now over\n\n");
+	return 0;
 }

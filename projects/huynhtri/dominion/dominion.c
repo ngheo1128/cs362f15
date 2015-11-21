@@ -199,7 +199,7 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 }
 
 //Assignment 2 requirement of putting 5 cards into functions. All 5 are listed below:
-void adventurerCard(struct gameState *state){
+void adventurerCard(struct gameState *state, int handPos){
     //Declare all variables needed
     int currentPlayer = whoseTurn(state);
     int drawntreasure = 0;
@@ -213,7 +213,7 @@ void adventurerCard(struct gameState *state){
         }
         drawCard(currentPlayer, state);
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-        if (cardDrawn == copper || cardDrawn == gold)
+        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
           drawntreasure++;
         else{
           temphand[z]=cardDrawn;
@@ -225,6 +225,10 @@ void adventurerCard(struct gameState *state){
         state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
     }
+
+    //discard card from hand
+    discardCard(handPos, currentPlayer, state, 0);
+
     return;
 }
 
@@ -234,7 +238,7 @@ void smithyCard(struct gameState *state, int handPos){
     int currentPlayer = whoseTurn(state);
 
     //+3 Cards
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -251,7 +255,7 @@ void villageCard(struct gameState *state, int handPos){
     drawCard(currentPlayer, state);
 
     //+2 Actions
-    state->numActions = state->numActions + 3;
+    state->numActions = state->numActions + 2;
 
     //discard played card from hand
     discardCard(handPos, currentPlayer, state, 0);
@@ -518,7 +522,7 @@ int isGameOver(struct gameState *state) {
 
   //if three supply pile are at 0, the game ends
   j = 0;
-  for (i = 0; i < 25; i++){
+  for (i = 0; i < 27; i++){
       if (state->supplyCount[i] == 0){
         j++;
       }

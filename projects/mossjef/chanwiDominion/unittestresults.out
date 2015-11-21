@@ -1,0 +1,125 @@
+Result for running unit tests:
+unittest1.c:
+TESTING shuffle() for 5 iterations: 
+Beginning order: 1, 2, 3, 7, 13
+shuffle(): PASS when return value 0
+Ending order: 1, 2, 3, 13, 7
+shuffle(): PASS shuffle has occured at 3 position!
+Beginning order: 1, 2, 3, 13, 7
+shuffle(): PASS when return value 0
+Ending order: 2, 1, 13, 7, 3
+shuffle(): PASS shuffle has occured at 0 position!
+Beginning order: 2, 1, 13, 7, 3
+shuffle(): PASS when return value 0
+Ending order: 1, 2, 3, 13, 7
+shuffle(): PASS shuffle has occured at 0 position!
+Beginning order: 1, 2, 3, 13, 7
+shuffle(): PASS when return value 0
+Ending order: 1, 13, 7, 2, 3
+shuffle(): PASS shuffle has occured at 1 position!
+Beginning order: 1, 13, 7, 2, 3
+shuffle(): PASS when return value 0
+Ending order: 3, 13, 7, 1, 2
+shuffle(): PASS shuffle has occured at 0 position!
+shuffle(): PASS when return value is -1 on invalid input
+shuffle(): OK - ALL TESTS PASSED
+
+File 'dominion.c'
+Lines executed:3.63% of 578
+Branches executed:2.86% of 419
+Taken at least once:2.63% of 419
+Calls executed:2.11% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+unittest2.c:
+TESTING fullDeckCount(): 
+Testing with no player hand or discard
+fullDeckCount(): PASS estate card expected 2, counted 2
+fullDeckCount(): PASS council_room card expected 0, counted 0
+Testing with addition to player hand
+fullDeckCount(): PASS estate card expected 3, counted 3
+fullDeckCount(): PASS council_room card expected 1, counted 1
+Testing with addition to player discard
+fullDeckCount(): PASS council_room card expected 2, counted 2
+fullDeckCount(): PASS smithy card expected 4, counted 4
+fullDeckCount(): OK - ALL TESTS PASSED
+
+File 'dominion.c'
+Lines executed:5.19% of 578
+Branches executed:5.73% of 419
+Taken at least once:5.49% of 419
+Calls executed:2.11% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+unittest3.c:
+TESTING isGameOver(): 
+Testing return value for a new game
+isGameOver(): PASS return value for initialized game
+Testing condition where province supply is empty
+isGameOver(): PASS empty province
+Testing condition where three supply piles are out
+isGameOver(): PASS 3 empty supply piles
+Testing condition where more than three supply piles are out
+isGameOver(): PASS > 3 empty supply piles
+isGameOver(): OK - ALL TESTS PASSED
+
+File 'dominion.c'
+Lines executed:6.92% of 578
+Branches executed:7.64% of 419
+Taken at least once:7.40% of 419
+Calls executed:2.11% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+unittest4.c:
+TESTING gainCard(): 
+Testing condition where no supply is available
+gainCard(): PASS error expected when no supply available.
+Testing adding a card to a player's deck
+gainCard(): PASS return value correct (gaincard to deck).
+gainCard(): PASS, smithy detected in first position.
+gainCard(): PASS, total deck count of 1.
+gainCard(): PASS, smithy supply decreased to 9
+Testing gaincard to the player's hand
+gainCard(): PASS return value correct (gaincard to hand).
+gainCard(): PASS, smithy detected in correct position.
+gainCard(): PASS, total hand count correct
+gainCard(): PASS, smithy supply decreased correctly
+Testing gaincard to discard pile
+gainCard(): PASS return value correct (gaincard to discard).
+gainCard(): PASS, smithy detected in first position.
+gainCard(): PASS, total discard count of 1.
+gainCard(): PASS, adventurer supply decreased to 9
+gainCard(): OK - ALL TESTS PASSED
+
+File 'dominion.c'
+Lines executed:9.52% of 578
+Branches executed:9.07% of 419
+Taken at least once:8.83% of 419
+Calls executed:3.16% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest1.c:
+Testing useSmithy():
+Testing that 3 more cards are drawn
+useSmithy(): PASS return value correct
+useSmithy(): PASS handCount correct
+useSmithy(): FAIL discardCount incorrect. Expected 1, counted 0
+Testing that no cards are pulled from anywhere other than player's deck.
+useSmithy(): PASS, only copper cards detected in player's hand
+useSmithy(): PASS, only copper cards detected in player's hand
+Testing that player 2 is not adversly affected
+useSmithy(): PASS discardCount correct for second player
+useSmithy(): PASS Player 2 handCount correct
+Testing that the game state has not changed.
+useSmithy(): PASS, number of actions are not affected.
+useSmithy(): PASS, number of buys are not affected.
+useSmithy(): ISSUES - AT LEAST ONE TEST FAILED
+
+File 'dominion.c'
+Lines executed:13.67% of 578
+Branches executed:11.93% of 419
+Taken at least once:10.50% of 419
+Calls executed:5.26% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest2.c:
