@@ -1363,7 +1363,7 @@ int great_hallCard(struct gameState* state, int currentPlayer, int handPos)
 			
       //+1 Actions
       state->numActions++;
-	  
+	 
 			
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
@@ -1384,10 +1384,6 @@ int council_roomCard(struct gameState* state, int currentPlayer, int handPos)
 	int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 	//+1 Buy
 	
-	if  (cardDrawn == gold)
-	{
-		state->numActions++;
-	}
       
       state->numBuys++;
 			
