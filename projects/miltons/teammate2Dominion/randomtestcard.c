@@ -40,7 +40,7 @@ int randInt(int min, int max);
  **                   the game state from smithyEffect() are compared to the 
  **                   expected results to see if the function is working
  **                   properly.
- ** Parameters:       one int value: handPos
+ ** Parameters:       two int values: playerNumber, handPos
  **                   a pointer to a struct of type gameState: testState
  ** Pre-Conditions:   playerNumber and handPos are of type int with values
  **                   within valid ranges for the game. testState is a
@@ -51,7 +51,7 @@ int randInt(int min, int max);
  **                   results have been output to the console.
  **
  *****************************************************************************/
-int testSmithyEffect(struct gameState *testState, int handPos);
+int testSmithyEffect(int playerNumber, struct gameState *testState, int handPos);
 
 
 
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 
         // generate sensible random values for important preconditions:
         // select a random player
-//        playerNumber = randInt(1, 2); // can this go to 4 players?
+        playerNumber = randInt(1, 2); // can this go to 4 players?
         // random number of cards in current player's deck
         testState.deckCount[playerNumber] = randInt(0, MAX_DECK);
         // random number of cards in current player's discard pile
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
         handPos = randInt(0, handPos);
 
         // call test oracle function and pass it these parameters
-        int retVal = testSmithyEffect(&testState, handPos);
+        int retVal = testSmithyEffect(playerNumber, &testState, handPos);
 
         // check return value for failure / crash
         if (retVal < 0)
@@ -121,15 +121,19 @@ int main(int argc, char *argv[])
 
 
 
-int testSmithyEffect(struct gameState *post, int handPos)
+int testSmithyEffect(int playerNumber, struct gameState *post, int handPos)
 {
 
     int retVal;
     int cardsAvailable;
 
+    // set the whoseTurn variable in the state to the current player
+    post->whoseTurn = playerNumber;
+
     // create duplicate of game state for before and after comparison
     struct gameState pre;
     memcpy (&pre, post, sizeof(struct gameState));
+
 
     // call smithyEffect function
     smithyEffect(post, handPos);
