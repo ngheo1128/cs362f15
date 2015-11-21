@@ -1,7 +1,7 @@
 /* Name: Kathryn McDonald
  * Class: CS 362
- * File name: unittest2.c
- * Purpose: Tests the "shuffle" function in dominion.c */
+ * File name: cardtest1.c
+ * Purpose: Tests the "smithy" card in dominion.c */
 
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -111,12 +111,16 @@ int testInitializeGame(int numPlayers, int kingdomCards[10], struct gameState *s
 }
 
 int main() {
-  
+ 
   /* set up game state */
+  int i;
+  int numPlayer = 2;
+  int handCount;
+  int k[10] = {adventurer, council_room, feast, gardens, mine, 
+    remodel, smithy, village, baron, great_hall};
   struct gameState G;
-  int k[10] = {adventurer, gardens, embargo, village, minion, 
-    mine, cutpurse, sea_hag, tribute, smithy};
-    
+  int maxHandCount = 5;
+  
   /* initialize decks */
   testInitializeGame(2, k, &G);
   
@@ -125,123 +129,74 @@ int main() {
   G.hand[0][1] = copper;
   G.hand[0][2] = copper;
   G.hand[0][3] = copper;
-  G.hand[0][4] = copper;
+  G.hand[0][4] = smithy;
   
-  G.handCount[0] = 5; 
-  
-  /* set up hand for Player 1 */
-  G.hand[1][0] = silver;
-  G.hand[1][1] = silver;
-  G.hand[1][2] = silver;
-  G.hand[1][3] = silver;
-  
-  G.handCount[1] = 4; 
+  G.handCount[0] = 5;
+  G.coins = 4;
   
   printf("Setup complete.\n");
   
   /* test */
-  printf("Testing shuffle()...\n");
+  printf("Testing Smithy Card...\n");
   
   /* save game state */
   struct gameState Save;
-  Save.numPlayers = G.numPlayers;
-  Save.outpostPlayed = G.outpostPlayed;
-  Save.outpostTurn = G.outpostTurn;
-  Save.whoseTurn = G.whoseTurn;
-  Save.phase = G.phase;
   Save.numActions = G.numActions;
   Save.coins = G.coins;
   Save.numBuys = G.numBuys;
   Save.handCount[0] = G.handCount[0];
-  Save.handCount[1] = G.handCount[1];
-  Save.deckCount[0] = G.deckCount[0];
-  Save.deckCount[1] = G.deckCount[1];
   
-  /* shuffle Player 0's deck */
-  int shuffleResult = shuffle(0, &G);
+  /* play smithy */
+  int smithyResult = smithyCard(4, &G);
   
-  /* check shuffle() result */
 #if (PRINT_TEST == 1)
-  printf("Shuffle Player 0.\nResult: %d, Expected: %d\n",shuffleResult, 0);
-#endif
-#if (ENABLE_ASSERTS == 1)
-  assert(shuffleResult == 0);
+  printf("SmithyResult: %d ",smithyResult);
+  if (smithyResult == 0)
+    printf("Pass!\n");
+  else
+    printf("Fail!\n");
 #endif
   
-  /* confirm same number of cards in Player 0 and Player 1's decks */
+  /* confirm smithy played */
+#if (ENABLE_ASSERTS == 1)
+  assert(smithyResult == 0);
+#endif
+  
 #if (PRINT_TEST == 1)
-  if (Save.deckCount[0] == G.deckCount[0])
-    printf("Player 0 deckCount unchanged: Pass!\n");
+  printf("Hand Count: %d ",G.handCount[0]);
+  if (G.handCount[0] - Save.handCount[0] == 2)
+    printf("Pass!\n");
   else
-    printf("Player 0 deckCount unchanged: Fail!\n");
-  if (Save.deckCount[1] == G.deckCount[1])
-    printf("Player 1 deckCount unchanged: Pass!\n");
-  else
-    printf("Player 1 deckCount unchnaged: Fail!\n");
+    printf("Fail!\n");
 #endif
-  
+  /* confirm +3 cards
+   * the smithy card is discarded, so it will actually
+   * be +2 cards */
 #if (ENABLE_ASSERTS == 1)
-  assert(Save.deckCount[0] == G.deckCount[0]);
-  assert(Save.deckCount[1] == G.deckCount[1]);
+  assert(G.handCount[0] - Save.handCount[0] == 2);
 #endif
-    
+
   /* confirm unchanged game state elements */
 #if (PRINT_TEST == 1)
-  if (Save.numPlayers == G.numPlayers)
-    printf("numPlayers unchanged: Pass!\n");
+  if (G.numActions == Save.numActions)
+    printf("numActions: Pass!\n");
   else
-    printf("numPlayers unchanged: Fail!\n");
-  if (Save.outpostPlayed == G.outpostPlayed)
-    printf("outpostPlayed unchanged: Pass!\n");
+    printf("numActions: Fail!\n");
+  if (G.coins == Save.coins)
+    printf("coins: Pass!\n");
   else
-    printf("outpostPlayed unchanged: Fail!\n");
-  if (Save.outpostTurn == G.outpostTurn)
-    printf("outpostTurn unchanged: Pass!\n");
+    printf("coins: Fail!\n");
+  if (G.numBuys == Save.numBuys)
+    printf("numBuys: Pass!\n");
   else
-    printf("outpostTurn unchanged: Fail!\n");
-  if (Save.whoseTurn == G.whoseTurn)
-    printf("whoseTurn unchanged: Pass!\n");
-  else
-    printf("whoseTurn unchanged: Fail!\n");
-  if (Save.phase == G.phase)
-    printf("Phase unchanged: Pass!\n");
-  else
-    printf("Phase unchanged: Fail!\n");
-  if (Save.numActions == G.numActions)
-    printf("numActions unchanged: Pass!\n");
-  else
-    printf("numActions unchanged: Fail!\n");
-  if (Save.coins == G.coins)
-    printf("Coins unchanged: Pass!\n");
-  else
-    printf("Coins unchanged: Fail!\n");
-  if (Save.numBuys == G.numBuys)
-    printf("numBuys unchanged: Pass!\n");
-  else
-    printf("numBuys unchanged: Fail!\n");
-  if (Save.handCount[0] == G.handCount[0])
-    printf("Player 0 handCount unchanged: Pass!\n");
-  else
-    printf("Player 0 handCount unchanged: Fail!\n");
-  if (Save.handCount[1] == G.handCount[1])
-    printf("Player 1 handCount unchanged: Pass!\n");
-  else
-    printf("Player 1 handCount unchanged: Fail!\n");
+    printf("numBuys: Fail!\n");    
 #endif
 
 #if (ENABLE_ASSERTS == 1)
-  assert(Save.numPlayers == G.numPlayers);
-  assert(Save.outpostPlayed == G.outpostPlayed);
-  assert(Save.outpostTurn == G.outpostTurn);
-  assert(Save.whoseTurn == G.whoseTurn);
-  assert(Save.phase == G.phase);
-  assert(Save.numActions == G.numActions);
-  assert(Save.coins == G.coins);
-  assert(Save.numBuys == G.numBuys);
-  assert(Save.handCount[0] == G.handCount[0]);
-  assert(Save.handCount[1] == G.handCount[1]);
+  assert(G.numActions == Save.numActions);
+  assert(G.coins == Save.coins);
+  assert(G.numBuys == Save.numBuys);
 #endif
-  
   
 #if (ENABLE_ASSERTS == 1)
   printf("All tests passed!\n");

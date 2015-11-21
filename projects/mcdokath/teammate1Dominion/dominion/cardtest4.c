@@ -1,7 +1,7 @@
 /* Name: Kathryn McDonald
  * Class: CS 362
- * File name: cardtest3.c
- * Purpose: Tests the "village" card in dominion.c */
+ * File name: cardtest4.c
+ * Purpose: Tests the "Great Hall" card in dominion.c */
 
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -129,14 +129,14 @@ int main() {
   G.hand[0][1] = copper;
   G.hand[0][2] = copper;
   G.hand[0][3] = copper;
-  G.hand[0][4] = village;
+  G.hand[0][4] = great_hall;
   
   G.handCount[0] = 5;
   
   printf("Setup complete.\n");
   
   /* test */
-  printf("Testing Village Card...\n");
+  printf("Testing Great Hall Card...\n");
   
   /* save game state */
   struct gameState Save;
@@ -145,34 +145,33 @@ int main() {
   Save.handCount[0] = G.handCount[0];
   
   /* play village */
-  villageCard(0, &G, 4);
+  int greathallResult = cardEffect(16, -1, -1, -1, &G, 4, 0);
   
-  /* confirm village played */
+  /* confirm great hall played */
+#if (PRINT_TEST == 1)
+  printf("Great Hall Result: %d ",greathallResult);
+  if (greathallResult == 0)
+    printf("Pass!\n");
+  else
+    printf("Fail!\n");
+#endif
+  
+#if (ENABLE_ASSERTS == 1)
+  assert(greathallResult == 0);
+#endif
  
-  /* confirm +1 card
-   * because village has been discarded, the number of cards in hand
+  /* check +1 card
+   * because great hall has been discarded, the hand count
    * should be the same */
 #if (PRINT_TEST == 1)
   if (G.handCount[0] - Save.handCount[0] == 0)
-    printf("+1 card: Pass!\n");
+    printf("Hand Count: Pass!\n");
   else
-    printf("+1 card: Fail!\n");
+    printf("Hand Count: Fail!\n");
 #endif
   
 #if (ENABLE_ASSERTS == 1)
   assert(G.handCount[0] - Save.handCount[0] == 0);
-#endif
-  
-  /* confirm +2 Actions */
-#if (PRINT_TEST == 1)
-  if (G.numActions - Save.numActions == 2)
-    printf("+2 Actions: Pass!\n");
-  else
-    printf("+2 Actions: Fail!\n");
-#endif
-  
-#if (ENABLE_ASSERTS == 1)
-  assert(G.numActions - Save.numActions == 2);
 #endif
   
 #if (ENABLE_ASSERTS == 1)

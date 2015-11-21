@@ -1,7 +1,7 @@
 /* Name: Kathryn McDonald
  * Class: CS 362
- * File name: cardtest3.c
- * Purpose: Tests the "village" card in dominion.c */
+ * File name: cardtest2.c
+ * Purpose: Tests the "adventurer" card in dominion.c */
 
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -129,14 +129,14 @@ int main() {
   G.hand[0][1] = copper;
   G.hand[0][2] = copper;
   G.hand[0][3] = copper;
-  G.hand[0][4] = village;
+  G.hand[0][4] = adventurer;
   
   G.handCount[0] = 5;
   
   printf("Setup complete.\n");
   
   /* test */
-  printf("Testing Village Card...\n");
+  printf("Testing Adventurer Card...\n");
   
   /* save game state */
   struct gameState Save;
@@ -144,36 +144,45 @@ int main() {
   Save.numBuys = G.numBuys;
   Save.handCount[0] = G.handCount[0];
   
-  /* play village */
-  villageCard(0, &G, 4);
-  
-  /* confirm village played */
- 
-  /* confirm +1 card
-   * because village has been discarded, the number of cards in hand
-   * should be the same */
+  /* play adventurer */
+  int adventurerResult = adventurerCard(&G);
 #if (PRINT_TEST == 1)
-  if (G.handCount[0] - Save.handCount[0] == 0)
-    printf("+1 card: Pass!\n");
+  printf("adventurerResult: %d ",adventurerResult);
+  if (adventurerResult == 0)
+    printf("Pass!\n");
   else
-    printf("+1 card: Fail!\n");
+    printf("Fail!\n");
 #endif
   
 #if (ENABLE_ASSERTS == 1)
-  assert(G.handCount[0] - Save.handCount[0] == 0);
+  assert(adventurerResult == 0);
 #endif
   
-  /* confirm +2 Actions */
+  /* confirm +2 cards */
 #if (PRINT_TEST == 1)
-  if (G.numActions - Save.numActions == 2)
-    printf("+2 Actions: Pass!\n");
+  printf("Hand Count: %d ",G.handCount[0]);
+  if (G.handCount[0] - Save.handCount[0] == 2)
+    printf("Pass!\n");
   else
-    printf("+2 Actions: Fail!\n");
+    printf("Fail!\n");
 #endif
   
 #if (ENABLE_ASSERTS == 1)
-  assert(G.numActions - Save.numActions == 2);
+  assert(G.handCount[0] - Save.handCount[0] == 2);
 #endif
+  
+  /* confirm that drawn cards are Treasure Cards */
+  for (i = 5; i < G.handCount[0]; i++) { // start after existing hand
+#if (PRINT_TEST == 1)
+    if (G.hand[0][i] == copper || silver || gold)
+      printf("Drawn card is Treasure: Pass!\n");
+    else
+      printf("Drawn card is Treasure: Fail!\n");
+#endif
+#if (ENABLE_ASSERTS == 1)
+    assert(G.hand[0][i] == copper || silver || gold);
+#endif
+  }
   
 #if (ENABLE_ASSERTS == 1)
   printf("All tests passed!\n");

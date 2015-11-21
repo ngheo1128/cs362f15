@@ -145,9 +145,20 @@ int main() {
   Save.handCount[0] = G.handCount[0];
   
   /* play village */
-  villageCard(0, &G, 4);
+  int villageResult = villageCard(0, 4, &G);
   
   /* confirm village played */
+#if (PRINT_TEST == 1)
+  printf("Village Result: %d ",villageResult);
+  if (villageResult == 0)
+    printf("Pass!\n");
+  else
+    printf("Fail!\n");
+#endif
+  
+#if (ENABLE_ASSERTS == 1)
+  assert(villageResult == 0);
+#endif
  
   /* confirm +1 card
    * because village has been discarded, the number of cards in hand
