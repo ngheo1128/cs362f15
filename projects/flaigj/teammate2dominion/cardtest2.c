@@ -37,7 +37,7 @@ int main()
    memset(&G, 23, sizeof(struct gameState));   // clear the game state
    initializeGame(numPlayer, k, seed, &G); // initialize a new game
 
-   G.hand[0][1] = adventurer;
+   G.hand[0][0] = adventurer;
    // is adventurer 6 coins
    int cost = getCost(adventurer);
    printf("Test 1: Does adventurer cost 6 coins?\n");
@@ -67,8 +67,13 @@ int main()
 
    // use adventurer
    //adventurerCard(0, &G, myDrawnTrs, z, myTempHand, myDrawnCrd);
-   //G.deckCount[0] = 0;
-   cardEffect(adventurer, 0, 0, 0, &G, 0, 0);
+   G.deckCount[0] = 0;
+
+   G.discardCount[0] = 3;
+   G.discard[0][0] = copper;
+   G.discard[0][1] = smithy;
+   G.discard[0][2] = silver;
+   adventurerEffect(&G, 0);
 
    isAdventurer = 0;
    for (i = 0; i < G.handCount[0]; i++)
@@ -105,7 +110,7 @@ int main()
       } 
    }
 
-   if (flag && G.handCount[0] == 7)
+   if (flag && G.handCount[0] == 6)
       printf("Passed: 2 treasure cards were added to the hand.\n\n");
    else
       printf("Failed: 2 treasure cards were not added to the last hand.\n\n") ;
