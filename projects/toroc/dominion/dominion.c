@@ -1293,10 +1293,6 @@ int smithyCard(struct gameState* state, int currentPlayer, int handPos)
 	}
 		int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
 		
-		if (cardDrawn == gold)
-		{
-			state->numActions++;
-		}
 		
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
