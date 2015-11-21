@@ -403,7 +403,7 @@ int isGameOver(struct gameState *state) {
 
   //if three supply pile are at 0, the game ends
   j = 0;
-  for (i = 0; i < 25; i++)
+  for (i = 0; i < 26; i++)
     {
       if (state->supplyCount[i] == 0)
         {
@@ -420,8 +420,9 @@ int isGameOver(struct gameState *state) {
 
 int scoreFor (int player, struct gameState *state) {
 
-  int i;
+  int i, x;
   int score = 0;
+  int tempScore = 0;
   //score from hand
   for (i = 0; i < state->handCount[player]; i++)
     {
@@ -430,7 +431,12 @@ int scoreFor (int player, struct gameState *state) {
       if (state->hand[player][i] == duchy) { score = score + 3; };
       if (state->hand[player][i] == province) { score = score + 6; };
       if (state->hand[player][i] == great_hall) { score = score + 1; };
-      if (state->hand[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
+      if (state->hand[player][i] == gardens) {
+        for(x = 0; x < 26; ++x) {
+            tempScore += fullDeckCount(player, x, state);
+        }
+        score = score + ( tempScore / 10 );
+      }
     }
 
   //score from discard
@@ -441,7 +447,12 @@ int scoreFor (int player, struct gameState *state) {
       if (state->discard[player][i] == duchy) { score = score + 3; };
       if (state->discard[player][i] == province) { score = score + 6; };
       if (state->discard[player][i] == great_hall) { score = score + 1; };
-      if (state->discard[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
+            if (state->hand[player][i] == gardens) {
+        for(x = 0; x < 26; ++x) {
+            tempScore += fullDeckCount(player, x, state);
+        }
+        score = score + ( tempScore / 10 );
+      }
     }
 
   //score from deck
@@ -452,7 +463,12 @@ int scoreFor (int player, struct gameState *state) {
       if (state->deck[player][i] == duchy) { score = score + 3; };
       if (state->deck[player][i] == province) { score = score + 6; };
       if (state->deck[player][i] == great_hall) { score = score + 1; };
-      if (state->deck[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
+           if (state->hand[player][i] == gardens) {
+        for(x = 0; x < 26; ++x) {
+            tempScore += fullDeckCount(player, x, state);
+        }
+        score = score + ( tempScore / 10 );
+      }
     }
 
   return score;
@@ -1237,7 +1253,7 @@ int playAdventurer(struct gameState *state) {
     int cardDrawn;
     int drawntreasure = 0;
 
-    while(drawntreasure <= 2){
+    while(drawntreasure < 2){
         if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
           shuffle(currentPlayer, state);
         }
@@ -1268,7 +1284,7 @@ int playSmithy(struct gameState *state, int handPos) {
     int currentPlayer = whoseTurn(state);
 
       //+3 Cards
-      for (i = 0; i <= 3; i++)
+      for (i = 0; i < 3; i++)
 	  {
         drawCard(currentPlayer, state);
 	  }
