@@ -83,8 +83,10 @@ int main() {
 
 	printf("Playing and testing adventurer card...\n");
 
+    cardStatus = 0;
+
 	/*Play Adventurer card from hand*/
-	adventurerCard(drawntreasure, &G, p, cardDrawn, temphand, z);
+	adventurerCard(drawntreasure, &G, p, cardDrawn, temphand, z, 4);
 
 	/*Display the player's cards in hand and determine if Adventurer is present*/
 	for(i = 0; i < G.handCount[p]; i++){

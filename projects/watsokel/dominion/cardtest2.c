@@ -37,7 +37,40 @@ int checkAdventurerEffect(struct gameState *state, int player, int treasureCard)
 	int err=0; //used in place of assertion failure: test passed=0; assertion failure=1
 	//if treasureCard is a copper, an infinite loop will happen
 	//this block causes an infinite loop since coppers do not count in the buggy adventurerEffect function
-	int r = adventurerEffect(state, player);
+	
+	struct gameState oracle;
+	memcpy (&oracle, state, sizeof(struct gameState));
+	
+	//mimic the correct action of the adventurerCard() in the oracle:
+	
+	int drawntreasure = 0;
+	int cardDrawn;
+	int temphand[MAX_HAND];//stores the temporary drawn cards
+	int z = 0;// this is the counter for the temp hand
+
+	while(drawntreasure<2){
+		if (oracle.deckCount[player] <1){//if the deck is empty we need to shuffle discard and add to deck
+			shuffle(player, &oracle);
+		}
+		drawCard(player, &oracle);
+		cardDrawn = oracle.hand[player][oracle.handCount[player]-1];//top card of hand is most recently drawn card.
+		if (cardDrawn==copper || cardDrawn == silver || cardDrawn == gold)
+			++drawntreasure;
+		else{
+			temphand[z++]=cardDrawn;
+			oracle.handCount[player]--; //this should just remove the top card (the most recently drawn one).
+		}
+	}
+  
+	  while(z-1>=0){
+		oracle.discard[player][oracle.discardCount[player]++]=temphand[z-1]; // discard all cards in play that have been drawn
+		z--;
+	  }
+
+	discardCard(0,player,state,0);
+	
+	int r = adventurerEffect(state,player,0);
+	
 	if(r != 0){
 		#if (NOISY_TEST==1)
 		printf("  FAIL, return value=%d, expected=%d\n", r, 0);
@@ -48,28 +81,21 @@ int checkAdventurerEffect(struct gameState *state, int player, int treasureCard)
 		printf("  PASS, return value=%d, expected=%d\n", r, 0);
 		#endif 
 	}
+		
 	int expectedTreasureCount=2;
-	int silverOrGoldCount=0;
-	//int copperCount=0;
+	int copperSilverOrGoldCount=0;
 	//count the treasures in the hand
 	int h;
 	for(h=0; h<state->handCount[player]; h++){
-		if(treasureCard != copper){ //bug introduced will cause infinite loop if coppers are counted
-			if(state->hand[player][h]==treasureCard){
-				silverOrGoldCount++;
-			}
-		} /*else { 
 		if(state->hand[player][h]==treasureCard){
-			copperCount++;
+			copperSilverOrGoldCount++;
 		}
-	}	*/
 	}
-	if(silverOrGoldCount != expectedTreasureCount){
-		printf("  FAIL, treasureCount=%d, expected=%d\n", silverOrGoldCount, expectedTreasureCount);
-		printf("  NOTE: If treasure is 4 (copper), failed unit test is expected due to bug introduced in assignment 1.\n");
+	if(copperSilverOrGoldCount != expectedTreasureCount){
+		printf("  FAIL, treasureCount=%d, expected=%d\n", copperSilverOrGoldCount, expectedTreasureCount);
 		err++;
 	}else{
-		printf("  PASS, treasureCount=%d, expected=%d\n", silverOrGoldCount, expectedTreasureCount);	  
+		printf("  PASS, treasureCount=%d, expected=%d\n", copperSilverOrGoldCount, expectedTreasureCount);	  
 	}
 
 	/*Check for unexpected transactions*/
@@ -120,6 +146,7 @@ int main() {
 			printf("Testing player %d, and treasure card %d\n", p,treasureCard);
 			memset(&G, 23, sizeof(struct gameState));   // clear the game state
 			r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
+			G.whoseTurn=p;
 			G.handCount[p] = maxHandCount;                 // set the number of cards on hand
 			G.deckCount[p] = maxDeckCount; 
 			G.discardCount[p] = maxDiscardCount;
@@ -132,7 +159,7 @@ int main() {
 				memcpy(G.discard[p], silvers, sizeof(int) * maxDiscardCount); // set all the cards to silver
 			} else{
 				memcpy(G.deck[p], coppers, sizeof(int) * maxDeckCount); // set all the cards to copper
-				memcpy(G.discard[p], silvers, sizeof(int) * maxDiscardCount); // set all the cards to copper
+				memcpy(G.discard[p], coppers, sizeof(int) * maxDiscardCount); // set all the cards to copper
 			}
 			if(checkAdventurerEffect(&G,p,treasureCard) > 0){
 				errFlag++;
@@ -143,7 +170,6 @@ int main() {
 
 	if(errFlag != 0){
 		printf("Some tests failed.\n");
-		printf("NOTE: Some tests may have failed due to bugs introduced in assignment 1. These tests have detected those bugs. See above results for explanation.\n");
 	}else{
 		printf("All tests passed!\n");
 	}

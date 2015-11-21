@@ -1,0 +1,179 @@
+        -:    0:Source:randomtestadventurer.c
+        -:    0:Graph:randomtestadventurer.gcno
+        -:    0:Data:randomtestadventurer.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/*
+        -:    2: * Jason Gourley
+        -:    3: * gourleja@oregonstate.edu
+        -:    4: * CS362-400
+        -:    5: * Assignment 4 - randomtestadventurer.c
+        -:    6: * Description : Random tests for Adventurer card
+        -:    7: */
+        -:    8:
+        -:    9:#include <stdio.h>
+        -:   10:#include <stdlib.h>
+        -:   11:#include <time.h>
+        -:   12:#include "dominion.h"
+        -:   13:#include "rngs.h"
+        -:   14:
+        -:   15:#define CARDNAME    "adventurer"
+        -:   16:#define BASESEED    10
+        -:   17:#define TESTNUMBER  500
+        -:   18:
+        -:   19:/*
+        -:   20: * Description:     Create a random array of kingdom cards, always including the card under test
+        -:   21: * Preconditions:   The card array pointer and size has been provided
+        -:   22: * Postconditions:  The randomly generated hand of cards is returned to the calling function
+        -:   23: */
+     1500:   24:void randomCardSetup(int * kingdomCards, int setupSize)
+        -:   25:{
+        -:   26:    int i;
+        -:   27:
+     1500:   28:    kingdomCards[0] = CARDNAME; // Ensure card to test is always in the set of cards
+        -:   29:
+    15000:   30:    for (i = 1; i<setupSize; i++) {
+    13500:   31:        int cardCheck = 0;
+    44198:   32:        while(cardCheck == 0) {
+    17198:   33:            int testCard = rand()%20 + 7; // 20 kingdom cards available starting at the seventh position
+    17198:   34:            if (testCard == CARDNAME) { // Check for duplication of the card under test
+    #####:   35:                cardCheck = 0;
+        -:   36:            } else { // Check cards that are already pulled into the available set
+    17198:   37:                kingdomCards[i] = testCard;
+        -:   38:                int j;
+    97665:   39:                for (j = 0; j < i; j++) {
+    84165:   40:                    if(kingdomCards[j] == testCard) {
+     3698:   41:                        cardCheck = 0;
+     3698:   42:                        break;
+        -:   43:                    } else {
+    80467:   44:                        cardCheck = 1;
+        -:   45:                    }
+        -:   46:                }
+        -:   47:            }
+        -:   48:        }
+        -:   49:    }
+     1500:   50:    return;
+        -:   51:}
+        -:   52:
+        -:   53:
+        -:   54:/*
+        -:   55: * Description:     Create a fully random game
+        -:   56: * Preconditions:   The game struct has been provided
+        -:   57: * Postconditions:  The new game is created with a full set of random values
+        -:   58: */
+     1500:   59:void randomGame(struct gameState *state)
+        -:   60:{
+     1500:   61:    int testSeed = rand()%50000;
+     1500:   62:    int testPlayers = rand()%2 + 2;
+        -:   63:    int cards[10];
+     1500:   64:    randomCardSetup(cards, 10);
+     1500:   65:    initializeGame(testPlayers, cards, testSeed, state);
+     1500:   66:    return;
+        -:   67:}
+        -:   68:
+        -:   69:/*
+        -:   70: * Description:     Test the return values of the adventurer card
+        -:   71: * Preconditions:   The games state has been initialized, the seed and method name to test are passed
+        -:   72: * Postconditions:  The general messages and any failed test messages are displayed
+        -:   73: */
+        1:   74:int testCard(char* currentTest, int seed, struct gameState *state)
+        -:   75:{
+        -:   76:    int i;
+        1:   77:    int testsPassed = 0;
+        1:   78:    int testsFailed = 0;
+        1:   79:    int expectedValue = 0;
+        -:   80:
+        1:   81:    printf ("\n\n-------------------------------------------------------------------------------\n");
+        1:   82:    printf ("-------------------------------------------------------------------------------\n");
+        1:   83:    printf ("Testing Method  : %s()\n", currentTest);
+        -:   84:
+        1:   85:    int currentPlayer = whoseTurn(state);
+        1:   86:    int drawntreasure=0;
+        1:   87:    int handPos = 0;
+        -:   88:    int temphand[MAX_HAND];// moved above the if statement
+        1:   89:    int z = 0;// this is the counter for the temp hand
+        -:   90:    int cardDrawn;
+        -:   91:
+        -:   92:    //Check reduction of cards in hand
+      501:   93:    for (i=0; i<TESTNUMBER;i++){
+      500:   94:        randomGame(state);
+      500:   95:        expectedValue = state->handCount[state->whoseTurn] - 1;
+      500:   96:        adventurerEffectCard(z, cardDrawn, drawntreasure, state->whoseTurn, handPos, temphand, state);
+      500:   97:        if(state->handCount[state->whoseTurn] < expectedValue) {
+    #####:   98:            printf("  TEST FAIL    : Adventurer remove card from hand failed\n");
+    #####:   99:            testsFailed++;
+      500:  100:        } else {testsPassed++;}
+        -:  101:    }
+        -:  102:
+        -:  103:
+        -:  104:    //Check addition of cards to hand
+      501:  105:    for (i=0; i<TESTNUMBER;i++){
+      500:  106:        randomGame(state);
+        -:  107:
+      500:  108:        state->handCount[state->whoseTurn] = rand()%10;
+        -:  109:
+      500:  110:        expectedValue = state->handCount[state->whoseTurn];
+      500:  111:        adventurerEffectCard(z, cardDrawn, drawntreasure, state->whoseTurn, handPos, temphand, state);
+      500:  112:        if(state->handCount[state->whoseTurn] - expectedValue > 1) {
+      500:  113:            printf("  TEST FAIL    : Adventurer add correct number of cards to hand failed : ev = %i , actual = %i\n", expectedValue, state->handCount[state->whoseTurn]);
+      500:  114:            testsFailed++;
+    #####:  115:        } else {testsPassed++;}
+        -:  116:    }
+        -:  117:
+        -:  118:int j;
+        -:  119:
+      501:  120:    for (i=0; i<TESTNUMBER;i++){
+        -:  121:        //Check hand size with lack of treasure cards to add to hand
+      500:  122:        randomGame(state);
+        -:  123:
+      500:  124:        state->deckCount[state->whoseTurn] = rand()%20;
+      500:  125:        state->handCount[state->whoseTurn] = rand()%10;
+      500:  126:        int card = 0;
+   250500:  127:        for (j = 0; j < TESTNUMBER; j++)
+        -:  128:        {
+   250000:  129:          state->deck[state->whoseTurn][i] = card;
+   250000:  130:          state->discard[state->whoseTurn][i] = card;
+        -:  131:        }
+      500:  132:        expectedValue = state->handCount[state->whoseTurn] - 1;
+      500:  133:        if (expectedValue == -1) {expectedValue++;}
+      500:  134:        adventurerEffectCard(z, cardDrawn, drawntreasure, state->whoseTurn, handPos, temphand, state);
+      500:  135:        if(state->handCount[state->whoseTurn] != expectedValue) {
+      495:  136:            printf("  TEST FAIL    : Adventurer no treasure available but cards to hand failed : ev = %i , actual = %i\n", expectedValue, state->handCount[state->whoseTurn]);
+      495:  137:            testsFailed++;
+        5:  138:        } else {testsPassed++;}
+        -:  139:    }
+        -:  140:
+        1:  141:    printf ("    Tests Passed    : %i\n", testsPassed);
+        1:  142:    printf ("    Tests Failed    : %i\n", testsFailed);
+        1:  143:    printf ("-------------------------------------------------------------------------------\n\n");
+        -:  144:
+        1:  145:    return 0;
+        -:  146:}
+        -:  147:
+        -:  148:
+        -:  149:/*
+        -:  150: * Preconditions:   The user can pass a seed value for testing or it defaults to a set value
+        -:  151: * Postconditions:  Exit the test program normally
+        -:  152: */
+        1:  153:int main (int argc, char** argv)
+        -:  154:{
+        -:  155:
+        -:  156:    // Setup Game Seed
+        1:  157:    srand(time(NULL));
+        -:  158:    int seed;
+        1:  159:    char* currentTest = CARDNAME;
+        1:  160:    if(argv[1]) {
+    #####:  161:        seed = atoi(argv[1]);
+        -:  162:    } else {
+        1:  163:        seed = BASESEED;
+        -:  164:    }
+        -:  165:
+        -:  166:    // Initialize Game State
+        -:  167:    struct gameState G;
+        1:  168:    int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
+        1:  169:    initializeGame(2, k, seed, &G);
+        -:  170:
+        1:  171:    testCard(currentTest,seed, &G);
+        -:  172:
+        1:  173:    return 0;
+        -:  174:}

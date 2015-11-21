@@ -49,14 +49,14 @@ int smithyCard(struct gameState *state, int handPos)
 	}
 			
   //discard card from hand
-  discardCard(handPos, currentPlayer, state, 1);
+  discardCard(handPos, currentPlayer, state, 0);
   return 0;
 }
 
 
 // Adventurer card code moved from the cardEffect() switch statement
 //
-int adventurerCard(struct gameState *state)
+int adventurerCard(struct gameState *state, int handPos)
 {
   int currentPlayer = whoseTurn(state);
   int drawntreasure = 0;
@@ -73,7 +73,7 @@ int adventurerCard(struct gameState *state)
 	  drawCard(currentPlayer, state);
 
     //top card of hand is most recently drawn card.
-	  cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]];
+	  cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
 
 	  if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 	    drawntreasure++;
@@ -89,6 +89,10 @@ int adventurerCard(struct gameState *state)
 	  state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; 
 	  z=z-1;
   }
+
+  //put played card in played card pile
+  discardCard(handPos, currentPlayer, state, 0);
+
   return 0;
 }
 
@@ -113,8 +117,8 @@ int treasureMapCard(struct gameState *state, int handPos)
   if (index > -1)
 	{
 	  //trash both treasure cards
-	  discardCard(handPos, currentPlayer, state, -1);
-	  discardCard(index, currentPlayer, state, -1);
+	  discardCard(handPos, currentPlayer, state, 1);
+	  discardCard(index, currentPlayer, state, 1);
 
 	  //gain 4 Gold cards
 	  for (i = 0; i < 4; i++)
@@ -169,7 +173,7 @@ int feastCard(int choice1, struct gameState *state)
 	      printf("Deck Count: %d\n", state->handCount[currentPlayer] + state->deckCount[currentPlayer] + state->discardCount[currentPlayer]);
 	    }
 
-      gainCard(choice1, state, 2, currentPlayer);//Gain the card
+      gainCard(choice1, state, 0, currentPlayer);//Gain the card
       x = 0;//No more buying cards
 
 	    if (DEBUG){
@@ -861,7 +865,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
       // Code moved to separate function
       //
-      adventurerCard(state);
+      adventurerCard(state, handPos);
 			
     case council_room:
       //+4 Cards
@@ -1334,6 +1338,9 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       //add card to played pile
       state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
       state->playedCardCount++;
+
+      // add card to discard pile
+      state->discard[currentPlayer][state->discardCount[currentPlayer]++] = state->hand[currentPlayer][handPos]; 
     }
 	
   //set played card to -1

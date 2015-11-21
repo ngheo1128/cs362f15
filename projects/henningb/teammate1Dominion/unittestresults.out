@@ -1,0 +1,302 @@
+Unit Test Results:
+---------------------------------------------------
+Unit Test 1: shuffle()
+---------------------------------------------------
+Testing shuffle.
+
+Case 1: Testing shuffle on deck of count 0
+Testing shuffle return value. Expecting -1. Returned -1 ... PASS
+Testing that game state has not changed ... PASS
+
+Case 2: Testing shuffle on deck of count 1
+Testing shuffle return value. Expecting 0. Returned 0 ... PASS
+Testing that order of player 1's deck has not changed ... PASS
+Testing that game state has not changed ... PASS
+
+Case 3: Testing shuffle on deck of count 500
+Testing shuffle return value. Expecting 0. Returned 0 ... PASS
+Testing if deck is in different order ... TRUE
+Sorting decks and testing that they contain the same cards ... PASS
+Testing that rest of game state is unchanged ... PASS
+
+All checks passed
+File 'dominion.c'
+Lines executed:15.94% of 577
+Branches executed:15.83% of 417
+Taken at least once:13.43% of 417
+Calls executed:7.37% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+File 'unittest1.c'
+Lines executed:78.38% of 74
+Branches executed:100.00% of 26
+Taken at least once:65.38% of 26
+Calls executed:74.29% of 35
+unittest1.c:creating 'unittest1.c.gcov'
+
+---------------------------------------------------
+Unit Test 2: isGameOver()
+---------------------------------------------------
+Testing function isGameOver
+Test Case 1: Provinces are empty, no kingdom cards are empty
+Testing isGameOver return value. Expecting 1. Returned 1 ... PASS
+Testing that game state is unchanged ... PASS
+
+Test Case 2: Provinces not empty. One kingdom card empty
+Testing isGameOver return value. Expecting 0. Returned 0 ... PASS
+Testing that game state is unchanged ... PASS
+
+Test Case 3: Provinces not empty. Two kingdom cards empty
+Testing isGameOver return value. Expecting 0. Returned 0 ... PASS
+Testing that game state is unchanged ... PASS
+
+Test Case 4: Provinces not empty. Three kingdom cards empty
+Testing isGameOver return value. Expecting 1. Returned 1 ... PASS
+Testing that game state is unchanged ... PASS
+All tests passed
+
+Test Case 5: Provinces not empty. Three kingdom cards have 1 remaining
+Testing isGameOver return value. Expecting 0. Returned 0 ... PASS
+Testing that game state is unchanged ... PASS
+All tests passed
+File 'dominion.c'
+Lines executed:17.33% of 577
+Branches executed:17.75% of 417
+Taken at least once:14.87% of 417
+Calls executed:7.37% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+File 'unittest2.c'
+Lines executed:78.00% of 100
+Branches executed:100.00% of 24
+Taken at least once:50.00% of 24
+Calls executed:76.00% of 50
+unittest2.c:creating 'unittest2.c.gcov'
+
+---------------------------------------------------
+Unit Test 3: updateCoins()
+---------------------------------------------------
+Testing function updateCoins
+
+Case 1: 5 card hand, 0 copper, 0 silver, 0 gold, no bonus
+Testing coins. Expecting 0. Returned 0 ... PASS
+Testing that rest of game state is unchanged ... PASS
+
+Case 2: 5 card hand, 1 copper, 0 silver, 0 gold, no bonus
+Testing coins. Expecting 1. Returned 1 ... PASS
+Testing that rest of game state is unchanged ... PASS
+
+Case 3: 5 card hand, 1 copper, 1 silver, 0 gold, no bonus
+Testing coins. Expecting 3. Returned 3 ... PASS
+Testing that rest of game state is unchanged ... PASS
+
+Case 4: 5 card hand, 1 copper, 1 silver, 1 gold, no bonus
+Testing coins. Expecting 6. Returned 6 ... PASS
+Testing that rest of game state is unchanged ... PASS
+
+Case 5: 5 card hand, 1 copper, 1 silver, 1 gold, 5 bonus
+Testing coins. Expecting 11. Returned 11 ... PASS
+Testing that rest of game state is unchanged ... PASS
+
+Case 6: 5 card hand, 1 copper, 1 silver, 2 gold, 5 bonus
+Testing coins. Expecting 14. Returned 14 ... PASS
+Testing that rest of game state is unchanged ... PASS
+All tests passed
+File 'dominion.c'
+Lines executed:15.94% of 577
+Branches executed:15.83% of 417
+Taken at least once:13.43% of 417
+Calls executed:7.37% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+File 'unittest3.c'
+Lines executed:85.93% of 135
+Branches executed:100.00% of 26
+Taken at least once:50.00% of 26
+Calls executed:77.19% of 57
+unittest3.c:creating 'unittest3.c.gcov'
+
+---------------------------------------------------
+Unit Test 4: buyCard()
+---------------------------------------------------
+Testing function buyCard
+
+Case 1: Attempt to buy card with no buys
+Testing return value. Expecting -1. Returned -1 ... PASS
+Testing that game state is unchanged ... PASS
+
+Case 2: Attempt to buy sold-out card
+Testing return value. Expecting -1. Returned -1 ... PASS
+Testing that game state is unchanged ... PASS
+
+Case 3: Attempt to buy card with insufficient coins
+Testing return value. Expecting -1. Returned -1 ... PASS
+Testing that game state is unchanged ... PASS
+
+Case 4: Attempt to buy card just enough coins
+Testing return value. Expecting 0. Returned 0 ... PASS
+Testing number of coins after purchase. Expecting 0. Returned 0 ... PASS
+Testing that adventurer supply is decremented. Should now be 0 ... PASS
+Testing that player's discard pile is incremented ... PASS
+Testing that player's numBuys was decremented ... PASS
+Testing that new card in player's discard pile is adventurer ... PASS
+Testing that rest of game state is unchanged ... PASS
+All tests passed
+File 'dominion.c'
+Lines executed:20.97% of 577
+Branches executed:25.42% of 417
+Taken at least once:15.35% of 417
+Calls executed:12.63% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+File 'unittest4.c'
+Lines executed:76.72% of 116
+Branches executed:100.00% of 28
+Taken at least once:50.00% of 28
+Calls executed:74.07% of 54
+unittest4.c:creating 'unittest4.c.gcov'
+
+---------------------------------------------------
+Card Test 1: smithy
+---------------------------------------------------
+Testing smithy card
+ Hand is all copper with one smithy at pos 4
+Deck initialized to all silver. Played cards initialized to all gold.
+
+Testing that played card pile was increased by 1. Increased by 1. PASS
+Testing that top of played card pile is smithy. PASS
+Testing that player hand has net gain of 2 cards ... PASS
+Testing that all new cards came from deck (should all be silver) ... PASS
+Testing that players deck count was decreased by 3 ... PASS
+Verifying smithy no longer in player hand ... PASS
+Testing that rest of game state is unchanged ... PASS
+
+All tests passed
+File 'dominion.c'
+Lines executed:18.37% of 577
+Branches executed:17.75% of 417
+Taken at least once:14.15% of 417
+Calls executed:9.47% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+File 'cardtest1.c'
+Lines executed:75.64% of 78
+Branches executed:100.00% of 28
+Taken at least once:60.71% of 28
+Calls executed:70.37% of 27
+cardtest1.c:creating 'cardtest1.c.gcov'
+
+---------------------------------------------------
+Card Test 2: Adventurer
+---------------------------------------------------
+Testing adventurer card
+Case 1: 2 treasure cards (copper) in deck, 0 in discard, 0 in hand. Adventurer at pos 4.
+No other adventurer or treasure cards in deck, hand, or discard pile
+Testing that player's hand has net gain of 1 card ... PASS
+Testing that player's hand gained 2 treasure cards ... 1 treasure cards gained. FAIL
+Testing that playedCardCount is incremented by 1 ... Increased by 0. FAIL
+Testing that top of playedCards is adventurer ... FAIL
+Testing that hand no longer contains adventurer ... FAIL
+Testing that sum of discardCount and deckCount decreased by 2 ... FAIL
+Testing that nothing else in game state was changed ... PASS
+
+Case 2: 1 treasure cards (gold) in deck, 1 (silver) in discard, 0 in hand. Adventurer at pos 4.
+No other adventurer or treasure cards in deck, hand, or discard pile
+Testing that player's hand has net gain of 1 card ... PASS
+Testing that player's hand gained 2 treasure cards ... 1 treasure cards gained. FAIL
+Testing that playedCardCount is incremented by 1 ... Increased by 0. FAIL
+Testing that top of playedCards is adventurer ... FAIL
+Testing that hand no longer contains adventurer ... FAIL
+Testing that sum of discardCount and deckCount decreased by 2 ... FAIL
+Testing that nothing else in game state was changed ... PASS
+
+10 failures occurred
+File 'dominion.c'
+Lines executed:17.33% of 577
+Branches executed:18.23% of 417
+Taken at least once:14.39% of 417
+Calls executed:8.42% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+File 'cardtest2.c'
+Lines executed:87.12% of 132
+Branches executed:85.00% of 80
+Taken at least once:55.00% of 80
+Calls executed:76.47% of 34
+cardtest2.c:creating 'cardtest2.c.gcov'
+
+---------------------------------------------------
+Card Test 3: sea hag
+---------------------------------------------------
+Testing sea hag card
+Test case: 4 Players. Player 1 has sea hag in pos 4.
+No other sea hag cards in game.
+P1 played sea_hag
+Testing top of P0's discard pile. Expecting copper ... PASS
+Testing top of P2's discard pile. Expecting copper ... PASS
+Testing top of P3's discard pile. Expecting copper ... PASS
+Testing that P0's discard count was incremented by 1 ... PASS
+Testing that P2's discard count was incremented by 1 ... PASS
+Testing that P3's discard count was incremented by 1 ... PASS
+Testing that top of P0's deck is curse card ... FAIL
+Testing that top of P2's deck is curse card ... FAIL
+Testing that top of P3's deck is curse card ... FAIL
+Testing that P0's deck count is unchanged ... Deck count increased by -3. FAIL
+Testing that P1's deck count is unchanged ... PASS
+Testing that P2's deck count is unchanged ... Deck count increased by -3. FAIL
+Testing that P3's deck count is unchanged ... Deck count increased by -3. FAIL
+Testing that top card of P1's discard pile is not from deck ... PASS
+Testing that P1's discard count has not changed ... PASS
+Testing that P1's deck does not contain curse ... PASS
+Testing that P1's hand count decreased by 1 ... Decreased by 0. FAIL
+Testing that P1's hand no longer contains sea_hag ... sea_hag found at hand pos 4. FAIL
+Testing that playedCardCount is increased by 1 ... PlayedCount increased by 0. FAIL
+Testing that playedCards has sea_hag at the top ... FAIL
+Testing that nothing else in game state has changed ... PASS
+
+10 failures occurred
+File 'dominion.c'
+Lines executed:18.20% of 577
+Branches executed:22.78% of 417
+Taken at least once:14.63% of 417
+Calls executed:8.42% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+File 'cardtest3.c'
+Lines executed:83.47% of 121
+Branches executed:100.00% of 60
+Taken at least once:78.33% of 60
+Calls executed:72.73% of 44
+cardtest3.c:creating 'cardtest3.c.gcov'
+
+---------------------------------------------------
+Card Test 4: village
+---------------------------------------------------
+Testing village card
+
+Test case:Player 1 has village in pos 4.
+No other village cards in game.
+Testing that P1's hand count is unchanged ... PASS
+Testing that P1's deck decreased by 1 ... PASS
+Testing that top position in P1's hand contains card from deck ... PASS
+Testing that numActions has increased by 2 ... PASS
+Testing that P1's hand no longer contains village ... PASS
+Testing that playedCardCount is increased by 1 ... PASS
+Testing that playedCards has village at the top ... PASS
+Testing that nothing else in game state has changed ... PASS
+
+All tests passed
+File 'dominion.c'
+Lines executed:19.76% of 577
+Branches executed:22.78% of 417
+Taken at least once:14.15% of 417
+Calls executed:10.53% of 95
+dominion.c:creating 'dominion.c.gcov'
+
+File 'cardtest4.c'
+Lines executed:76.25% of 80
+Branches executed:100.00% of 26
+Taken at least once:61.54% of 26
+Calls executed:70.97% of 31
+cardtest4.c:creating 'cardtest4.c.gcov'
+
