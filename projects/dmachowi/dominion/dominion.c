@@ -685,13 +685,13 @@ int getCost(int cardNumber)
 void playAdventurer(struct gameState *state) {
     int currentPlayer = whoseTurn(state);
     int drawntreasure = 0;
-    int cardDrawn, z = 1;
+    int cardDrawn, z = 0;
     int temphand[MAX_HAND];
 
     //printf("inits ok\n");
     while(drawntreasure < 2){
         //printf("enter while\n");
-        if (state->deckCount[currentPlayer] <=1){//if the deck is empty we need to shuffle discard and add to deck
+        if (state->deckCount[currentPlayer] <=0){//if the deck is empty we need to shuffle discard and add to deck
           shuffle(currentPlayer, state);
           //printf("deck was less tahn 0, first if called\n");
         }
@@ -699,7 +699,7 @@ void playAdventurer(struct gameState *state) {
         drawCard(currentPlayer, state);
         //printf("drawcard called\n");
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-        if ((cardDrawn = copper) | (cardDrawn = silver) | (cardDrawn = gold)){
+        if ((cardDrawn == copper) || (cardDrawn == silver) || (cardDrawn == gold)){
                   drawntreasure++;
           //printf("treasure drawn!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \n");
         } else {
@@ -733,7 +733,7 @@ void playSmithy(struct gameState *state, int handPos) {
     //changed this cuz i was getting segfault
     int currentPlayer = whoseTurn(state);
     //printf("THIS IS CURRENT PLAYER IN SMITHY2 %d\n", currentPlayer);
-    for (i = 0; i <= 3; i++)
+    for (i = 0; i < 3; i++)
     {
         drawCard(currentPlayer, state);
     }
