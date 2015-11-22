@@ -34,6 +34,9 @@ int main(int argc, char *argv[])
     int cards[10] = {adventurer, council_room, feast, gardens, mine, remodel,
                     smithy, village, baron, great_hall};
 
+    // seed the rand() function with system clock to avoid getting same rand #s
+    srand((unsigned) time(&sysClock));
+
     // this loop populates every Byte of the game state with random values
     for (j = 0; j < sizeof(struct gameState); j++)
     {
@@ -43,7 +46,7 @@ int main(int argc, char *argv[])
     // initialize game to prevent segmentation fault errors
     retVal = initializeGame(NUM_PLAYERS, cards, seed, &testState);
 
-    int retVal = adventurerEffect(0, &testState);
+    retVal = adventurerEffect(0, &testState);
     if (retVal == 0)
     {
         printf("Adventurer card: PASS\n");
