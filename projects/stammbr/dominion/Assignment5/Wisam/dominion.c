@@ -1257,8 +1257,8 @@ for these cards to be inside functions, and I called the apropriate fucntion in 
 
 int adventurer_refactor( int drawntreasure, struct gameState *state, int temphand[], int z, int cardDrawn, int currentPlayer ) {
 
- // while(drawntreasure<2){
-  while(drawntreasure<2){
+  //while(drawntreasure<2){
+  while(drawntreasure<3){
     if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
@@ -1333,7 +1333,7 @@ int council_room_refactor(int currentPlayer, struct gameState *state, int handPo
   //Each other player draws a card
   for (i = 0; i < state->numPlayers; i++)
   {
-    if ( i != currentPlayer ) //( i == currentPlayer )
+    if ( i == currentPlayer )
       {
         drawCard(i, state);
       }

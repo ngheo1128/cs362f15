@@ -1,0 +1,90 @@
+---------------------------Bug Report – Rhett Guyer---------------
+
+1)	My test of the adventurer card function found that when the player’s deck count is 3 or less 2 treasure cards are not added. 
+
+2)	Also, for the adventurer card function when the player’s deck count is 1 or 0, it is not reduced properly.
+
+3)	My test for the smithy function found that sometimes the handcount and deck count of the player is off. Here are the results of my test:
+
+Testing Smithy...
+
+Test 0 with player 3 and handPos 1
+
+Hand Count test passed 
+
+Deck Count test passed 
+
+Test 1 with player 0 and handPos 0
+
+Hand Count test passed 
+
+Deck Count test passed 
+
+Test 2 with player 1 and handPos 3
+
+Hand Count test passed 
+
+Deck Count test passed 
+
+Test 3 with player 0 and handPos 1
+
+Hand Count test failed. The player's hand increased by 1 not 2 
+
+Deck Count test failed. The player's deck decreased by 2 not 3 
+
+Test 4 with player 2 and handPos 7
+
+Hand Count test passed 
+
+Deck Count test passed 
+
+Test 5 with player 2 and handPos 2
+
+Hand Count test passed 
+
+Deck Count test passed 
+
+Test 6 with player 2 and handPos 3
+
+Hand Count test passed 
+
+Deck Count test passed 
+
+Test 7 with player 3 and handPos 4
+
+Hand Count test passed 
+
+Deck Count test passed 
+
+Test 8 with player 3 and handPos 3
+
+Hand Count test passed 
+
+Deck Count test passed 
+
+Test 9 with player 2 and handPos 1
+
+Hand Count test failed. The player's hand increased by 0 not 2 
+
+Deck Count test failed. The player's deck decreased by 1 not 3
+
+
+
+
+
+---------------Bug Report – Allyce Mc Whorter----------------
+
+1)	My test of the smithy card (randtomtescard.c and cardtest1.c) found that the player’s hand decreases by 1 card (as opposed to increasing by 2).
+
+2)	In the same test  of the smithy card function I also found that the deck is not being decreased.
+
+3)	My test of the council_room card function (cardtest2.c) found that the player’s hand count increased by 1 not 3.
+
+4)	My test of the adventurer card (cardtest3.c and randomtestadventurer.c) found that 2 treasures were not added. 
+
+————See guyerTestResults.out and mcwhortertestresults.out for actual test results——
+
+
+
+
+

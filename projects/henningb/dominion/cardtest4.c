@@ -80,7 +80,7 @@ int main (){
 
     //Test that player's deck decreased by 1
     printf("Testing that P%d's deck decreased by 1 ... ", player);
-    comparison = post.deckCount[player] - pre.deckCount[player];
+    comparison = pre.deckCount[player] - post.deckCount[player];
     if(comparison == 1){
         printf("PASS\n");
     }

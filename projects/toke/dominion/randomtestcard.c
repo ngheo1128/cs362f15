@@ -117,8 +117,8 @@ int checkSmithyCard(int player, struct gameState *state) {
 
   // Tests hand count is increased by 3
   // This is a failing test!
-  printf("Test - Expected hand count: %d, Actual amount: %d -- ", preHandCount + 3, postHandCount);
-  testPassed = preHandCount + 3 == postHandCount;
+  printf("Test - Expected hand count: %d, Actual amount: %d -- ", preHandCount + 2, postHandCount);
+  testPassed = preHandCount + 2 == postHandCount;
   checkFailure(testPassed);
   overallTestsPassed = overallTestsPassed ? (testPassed ? 1 : 0) : 0;
   // assert (postHandCount == preHandCount + 3);

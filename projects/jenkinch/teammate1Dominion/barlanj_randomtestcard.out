@@ -1,0 +1,105 @@
+Result for running randomtestcard tests:
+randomtestcard.c:
+Test #0
+
+Status-----------------------------------
+numPlayer = 4
+currentPlayer = 0
+Starting currentPlayer deckCount = 0, discardCount = 404, handCount = 261, handPosOfVillage = 246
+Pre ending currentPlayer deckCount = 403, discardCount = 1, handCount = 261
+Post ending currentPlayer deckCount = 403, discardCount = 0, handCount = 261
+
+Test Results-----------------------------
+cardEffect(village): PASS, function returned successfully 
+cardEffect(village): PASS, handCount correct after discard/draw 
+cardEffect(village): FAIL, discardCount incorrect after discard 
+cardEffect(village): FAIL, latest card on discard pile incorrect 
+cardEffect(village): PASS, deckCount correct after draw 
+cardEffect(village): PASS, numActions correct after update 
+cardEffect(village): PASS, player 1 handCount unaffected after currentPlayer 0 discard/draw 
+cardEffect(village): PASS, player 1 discardCount unaffected after currentPlayer 0 discard 
+cardEffect(village): PASS, player 1 deckCount unaffected after currentPlayer 0 draw 
+cardEffect(village): PASS, player 2 handCount unaffected after currentPlayer 0 discard/draw 
+cardEffect(village): PASS, player 2 discardCount unaffected after currentPlayer 0 discard 
+cardEffect(village): PASS, player 2 deckCount unaffected after currentPlayer 0 draw 
+cardEffect(village): PASS, player 3 handCount unaffected after currentPlayer 0 discard/draw 
+cardEffect(village): PASS, player 3 discardCount unaffected after currentPlayer 0 discard 
+cardEffect(village): PASS, player 3 deckCount unaffected after currentPlayer 0 draw 
+
+
+Test #1
+
+Status-----------------------------------
+numPlayer = 3
+currentPlayer = 1
+Starting currentPlayer deckCount = 0, discardCount = 108, handCount = 178, handPosOfVillage = 89
+Pre ending currentPlayer deckCount = 107, discardCount = 1, handCount = 178
+Post ending currentPlayer deckCount = 107, discardCount = 0, handCount = 178
+
+Test Results-----------------------------
+cardEffect(village): PASS, function returned successfully 
+cardEffect(village): PASS, handCount correct after discard/draw 
+cardEffect(village): FAIL, discardCount incorrect after discard 
+cardEffect(village): FAIL, latest card on discard pile incorrect 
+cardEffect(village): PASS, deckCount correct after draw 
+cardEffect(village): PASS, numActions correct after update 
+cardEffect(village): PASS, player 0 handCount unaffected after currentPlayer 1 discard/draw 
+cardEffect(village): PASS, player 0 discardCount unaffected after currentPlayer 1 discard 
+cardEffect(village): PASS, player 0 deckCount unaffected after currentPlayer 1 draw 
+cardEffect(village): PASS, player 2 handCount unaffected after currentPlayer 1 discard/draw 
+cardEffect(village): PASS, player 2 discardCount unaffected after currentPlayer 1 discard 
+cardEffect(village): PASS, player 2 deckCount unaffected after currentPlayer 1 draw 
+
+
+Test #2
+
+Status-----------------------------------
+numPlayer = 2
+currentPlayer = 1
+Starting currentPlayer deckCount = 297, discardCount = 120, handCount = 461, handPosOfVillage = 313
+Pre ending currentPlayer deckCount = 296, discardCount = 121, handCount = 461
+Post ending currentPlayer deckCount = 296, discardCount = 120, handCount = 461
+
+Test Results-----------------------------
+cardEffect(village): PASS, function returned successfully 
+cardEffect(village): PASS, handCount correct after discard/draw 
+cardEffect(village): FAIL, discardCount incorrect after discard 
+cardEffect(village): FAIL, latest card on discard pile incorrect 
+cardEffect(village): PASS, deckCount correct after draw 
+cardEffect(village): PASS, numActions correct after update 
+cardEffect(village): PASS, player 0 handCount unaffected after currentPlayer 1 discard/draw 
+cardEffect(village): PASS, player 0 discardCount unaffected after currentPlayer 1 discard 
+cardEffect(village): PASS, player 0 deckCount unaffected after currentPlayer 1 draw 
+
+
+Test #3
+
+Status-----------------------------------
+numPlayer = 3
+currentPlayer = 0
+Starting currentPlayer deckCount = 142, discardCount = 57, handCount = 293, handPosOfVillage = 67
+Pre ending currentPlayer deckCount = 141, discardCount = 58, handCount = 293
+Post ending currentPlayer deckCount = 141, discardCount = 57, handCount = 293
+
+Test Results-----------------------------
+cardEffect(village): PASS, function returned successfully 
+cardEffect(village): PASS, handCount correct after discard/draw 
+cardEffect(village): FAIL, discardCount incorrect after discard 
+cardEffect(village): FAIL, latest card on discard pile incorrect 
+cardEffect(village): PASS, deckCount correct after draw 
+cardEffect(village): PASS, numActions correct after update 
+cardEffect(village): PASS, player 1 handCount unaffected after currentPlayer 0 discard/draw 
+cardEffect(village): PASS, player 1 discardCount unaffected after currentPlayer 0 discard 
+cardEffect(village): PASS, player 1 deckCount unaffected after currentPlayer 0 draw 
+cardEffect(village): PASS, player 2 handCount unaffected after currentPlayer 0 discard/draw 
+cardEffect(village): PASS, player 2 discardCount unaffected after currentPlayer 0 discard 
+cardEffect(village): PASS, player 2 deckCount unaffected after currentPlayer 0 draw 
+
+
+Summary----------------------------------
+Tests Run: 4, Test Cases Passed: 40, Test Cases Failed: 8
+
+File 'dominion.c'
+Lines executed:23.08% of 598
+dominion.c:creating 'dominion.c.gcov'
+

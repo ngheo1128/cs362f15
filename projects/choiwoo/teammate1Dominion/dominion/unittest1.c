@@ -1,110 +1,160 @@
+//Woo Choi
+//unitest1.c
 #include "dominion.h"
+#include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include <stdlib.h>
-#include <time.h>
+#include "rngs.h"
 
-//gameOver doesn't check treasure map
-int main() {
+/*
+getCost() function test
+int getCost(int cardNumber);
+*/
 
-    printf("\nTesting isGameOver() function:\n");
-
-    struct gameState state;
-    int randomSeed = 100;
-    int i, y;
-    int numPlayers = 3;
-
-    srand(time(NULL));
-
-    //chosen to cover edges and middle of possibilities
-    int kingCards[10] = {0, 1, 2, 10, 12, 18, 16, 22, 25, 26};
-
-    int testCounter = 0;
-    int gameOver = 0;
-    int counter;
-
-    printf("\nTesting three cards = 0 calcuation\n");
-    while (gameOver != 1) {
-
-        //reset gamestate
-        memset(&state, 'z', sizeof(struct gameState));
-        initializeGame(numPlayers, kingCards, randomSeed, &state);
-
-        counter = 0;
-        for (i = 0; i <= 26; ++i) { //all the possible supply cards
-            for (y = 0; y <= 10; ++y) { //the 10 chosen supply cards
-                if (kingCards[y] == i) { //if the current card matches the supply card index in state
-                    state.supplyCount[i] = (rand() % 13); //set card in state
-                    if (state.supplyCount[i] == 0) {
-                        ++counter;
-                    }
-                    break;
-                }
-            }
-        }
-        if (isGameOver(&state) == 1) {
-            //printf("Counter = %d, expected 3\n", counter);
-            //printf("Game Over Criteria\n");
-            if (counter == 3) {
-                printf("Test Passed\n");
-            }
-            else if (counter > 3) {
-                printf("Test Failed\n");
-                testCounter++;
-            }
-            gameOver = 1;
-        }
-        else {
-            //printf("Counter = %d, expected < 3\n", counter);
-            if (counter < 3) {
-                printf("Test Passed\n");
-            }
-            else {
-                printf("Test Failed\n");
-                testCounter++;
-            }
-        }
-    }
-
-    memset(&state, 'z', sizeof(struct gameState));
-    initializeGame(numPlayers, kingCards, randomSeed, &state);
-
-    gameOver = 0;
-
-    printf("\nTesting Province calcuation\n");
-    while (gameOver != 1) {
-        state.supplyCount[3] = (rand() % 13); //province card
-        if (isGameOver(&state) == 1) {
-            //printf("Province = %d, expected 0\n", state.supplyCount[province]);
-            //printf("Game Over Criteria\n");
-            if (state.supplyCount[province] == 0) {
-                printf("Test Passed\n");
-            }
-            else {
-                printf("Test Failed\n");
-                testCounter++;
-            }
-            gameOver = 1;
-        }
-        else {
-            //printf("Province = %d, expected > 0\n", state.supplyCount[province]);
-            if (state.supplyCount[province] > 0) {
-                printf("Test Passed\n");
-            }
-            else {
-                printf("Test Failed\n");
-                testCounter++;
-            }
-        }
-    }
-
-    if (testCounter <= 0) {
-        printf("All tests passed isGameOver()\n");
-    }
-    else {
-        printf("%d tests failed on isGameOver()\n\n", testCounter);
-    }
-
-    return 0;
+int main(){
+/*
+From dominion_helpers.h
+enum: 
+curse=0, estate=1, duchy=2, province=3, copper=4, silver=5, 
+gold=6, adventurer=7, council_room=8, feast=9, 
+gardens=10, mine=11, remodel=12, smithy=13, village=14,
+baron=15, great_hall=16, minion=17, steward=18, tribute=19,
+ambassador=20, cutpurse= 21, embargo =22, outpost =23, 
+salvager=24, sea_hag=25, treasure_map= 26;
+*/
+	
+	int i;
+	int x;
+	printf("******************\n");
+	printf("unittest1.c\n");
+	printf("getCost() Test:\n");
+	
+	// iterate thru numbers to test for correct values
+	for (i = 0; i < 27; i++)
+	{
+		x = getCost(i);
+		if ( i == 0){
+			if (x != 0)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 1){
+			if ( x != 2)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 2){
+			if ( x != 5)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 3){
+			if ( x != 8)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 4){
+			if ( x != 0)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 5){
+			if ( x != 3)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 6){
+			if ( x != 6)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 7){
+			if ( x != 6)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 8){
+			if ( x != 5)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 9){
+			if ( x != 4)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 10){
+			if ( x != 4)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 11){
+			if ( x != 5)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 12){
+			if ( x != 4)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 13){
+			if ( x != 4)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 14){
+			if ( x != 3)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 15){
+			if ( x != 4)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 16){
+			if ( x != 3)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 17){
+			if ( x != 5)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 18){
+			if ( x != 3)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 19){
+			if ( x != 5)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 20){
+			if ( x != 3)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 21){
+			if ( x != 4)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 22){
+			if ( x != 2)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 23){
+			if ( x != 5)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 24){
+			if ( x != 4)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 25){
+			if ( x != 4)
+				printf("assert failed at card number %d!",i);
+		}
+		if ( i == 26){
+			if ( x != 4)
+				printf("assert failed at card number %d!",i);
+		}
+	}
+	printf("Test for correct return value complete\n");
+	printf("Test for incorrect inputs: \n");
+	i = 27;
+	x = getCost(i); 
+	if ( x != -1)
+		printf("Range over highest limit is not working properly\n");
+	i = -1;
+	x = getCost(i);
+	if ( x != -1)
+		printf("Range under lowest limit is not working properly\n");
+	printf("Test for incorrect return value complete\n");
+	printf("getCost() test is now finished \n\n");
+	
+	return 0;
 }

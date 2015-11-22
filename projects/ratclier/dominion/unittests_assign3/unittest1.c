@@ -19,7 +19,7 @@
 // Test the discardCard() function
 //
 // discardCard():
-// Removes card from player's hand and either puts it in the played pile
+// Removes card from player's hand and either puts it in the discard pile
 // (if not trashed) or not (if trashed).
 //
 // handPos       - enumerated card
@@ -47,36 +47,38 @@ int testDiscardCard(int handPos, int currentPlayer, struct gameState *state, int
     //
     if(trashFlag >= 1)
     {
-        if(state->playedCardCount == origState->playedCardCount)
+        //if(state->playedCardCount == origState->playedCardCount)
+        if(state->discardCount[currentPlayer] == origState->discardCount[currentPlayer])
         {
-            printf("discardCard: PASS trashed card did not increment playedCardCount\n");
+            printf("discardCard: PASS trashed card did not increment discardCount\n");
         }
         else
         {
-            printf("discardCard: FAIL trashed card incremented playedCardCount\n");
+            printf("discardCard: FAIL trashed card incremented discardCount\n");
         }
     }
     else
     {
-        // If the card was NOT trashed, the card SHOULD be added to the played
-        // card pile and played card count SHOULD increment
+        // If the card was NOT trashed, the card SHOULD be added to the discard
+        // card pile and discarded card count SHOULD increment
         //
-        if(state->playedCardCount == origState->playedCardCount + 1)
+        if(state->discardCount[currentPlayer] == origState->discardCount[currentPlayer] + 1)
         {
-            printf("discardCard: PASS non-trashed card incremented playedCardCount\n");
+            printf("discardCard: PASS non-trashed card incremented discardCount\n");
         }
         else
         {
-            printf("discardCard: FAIL non-trashed card did not incremenet playedCardCount\n");
+            printf("discardCard: FAIL non-trashed card did not incremenet discardCount\n");
         }
 
-        if(state->playedCards[state->playedCardCount-1] == origState->hand[currentPlayer][handPos])
+        //if(state->playedCards[state->playedCardCount-1] == origState->hand[currentPlayer][handPos])
+        if(state->discard[currentPlayer][state->discardCount[currentPlayer]-1] == origState->hand[currentPlayer][handPos])
         {
-            printf("discardCard: PASS non-trashed card added to played card pile\n");
+            printf("discardCard: PASS non-trashed card added to discarded card pile\n");
         }
         else
         {
-            printf("discardCard: FAIL non-trashed card not added to played card pile\n");
+            printf("discardCard: FAIL non-trashed card not added to discarded card pile\n");
         }
     }
 

@@ -1,9 +1,9 @@
 /*****************
  * Author:  Brian Stamm
  * Title:  cardTest1.c
- * Assignment:  3
- * Date:  10.25.15
- * Notes:  Unit Test for callSmithy(), the Smithy card.
+ * Assignment:  5
+ * Date:  11.22.15
+ * Notes:  Unit Test for callSmithy(), the Smithy card - Jody.
  * ****************/
 
 #include "dominion.h"
@@ -23,42 +23,39 @@ void test(){
   srand(time(NULL));
   int r = rand();
   int i, counter, card, total, failNum;
-  int testHandCount, testDeckCount, testDiscardCount;
+  int testHandCount, testDeckCount, testDiscardCount, testPlayedCardCount;
   int testTrialCard;
 
   initializeGame(2, k, r, game);
 
+  testPlayedCardCount = game->playedCardCount + 1;
   testTrialCard = game->hand[player][0];
+  testHandCount = game->handCount[player] + 2;
+  testDiscardCount = game->discardCount[player] + 1;
+  testDeckCount = game->deckCount[player] - 3;
+  /*testTrialCard = game->hand[player][0];
   testHandCount = game->handCount[player] + 3;
   testDiscardCount = game->discardCount[player] + 1;
-  testDeckCount = game->deckCount[player] - 1;
+  testDeckCount = game->deckCount[player] - 1;*/
 
   if(callSmithy(player, 0, game) == 0){
-    if(testDiscardCount == game->discardCount[player]){
-      printf("callSmithy() Test 1a:  PASS, discard amounts equal.\n");
-      printf("\tTest:  %d\tSaved:  %d\n", testDiscardCount, game->discardCount[player]);
-    }
-    else{
-      printf("callSmithy() Test 1a:  FAIL, discard amounts NOT equal.\n");
+    if(testDiscardCount != game->discardCount[player]){
+      printf("smithy_refactor() Test 1a:  FAIL, discard amounts NOT equal.\n");
       printf("\tTest:  %d\tSaved:  %d\n", testDiscardCount, game->discardCount[player]);
     }
 
-    if(testHandCount == game->handCount[player]){
-      printf("Test 1b:  PASS, handCount amounts equal.\n");
-      printf("\tTest:  %d\tSaved:  %d\n", testHandCount, game->handCount[player]);      
-    }
-    else{
+    if(testHandCount != game->handCount[player]){
       printf("Test 1b:  FAIL, handCount amounts NOT equal.\n");
       printf("\tTest:  %d\tSaved:  %d\n", testHandCount, game->handCount[player]); 
     }
 
-    if(testDeckCount == game->deckCount[player]){
-      printf("Test 1c:  PASS, deckCount amounts equal.\n");
-      printf("\tTest:  %d\tSaved:  %d\n", testDeckCount, game->deckCount[player]); 
-    }
-    else{
+    if(testDeckCount != game->deckCount[player]){
       printf("Test 1c:  FAIL, deckCount amounts NOT equal.\n");
       printf("\tTest:  %d\tSaved:  %d\n", testDeckCount, game->deckCount[player]);      
+    }
+    if(testPlayedCardCount != game->playedCardCount){
+      printf("Test 1d:  FAIL, playedCardCount amounts NOT equal.\n");
+      printf("\tTest:  %d\tSaved:  %d\n", testPlayedCardCount, game->playedCardCount);      
     }
   }
   else{
@@ -66,6 +63,7 @@ void test(){
   }
 
 //Then do random decks, similar to shuffle test.
+  /*
   printf("\nRandom Testing to Start\n");
   counter = 1;
   failNum = 0;
@@ -115,6 +113,7 @@ void test(){
     counter++;      
   }
   printf("\ncallSmithy() Random Test fail number:  %d\n", failNum);
+  */
 }
 
 int main(int argc, char **argv){

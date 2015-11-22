@@ -119,12 +119,13 @@ void testscoreFor()
 	memset(&G, 23, sizeof(struct gameState)); /*clear the game state*/
 	initializeGame(numPlayer, k, seed, &G); /*initialize a new game*/
 	G.handCount[p] = handCount;             /*set the number of cards in hand*/
+	G.discardCount[p] = handCount;
 	memcpy(G.hand[p], custom_hand2, sizeof(int) * handCount); /*Populate hand with cards*/
 	memcpy(G.discard[p], custom_discard2, sizeof(int) * handCount); /*Populate hand with cards*/
 	memcpy(G.deck[p], custom_deck, sizeof(int) * handCount); /*Populate hand with cards*/
 	
 	printf ("\nDiscard Pile\n");
-	for(i = 0; i < G.handCount[p]; i++)
+	for(i = 0; i < G.discardCount[p]; i++)
 	{
 		cardNumToName(G.discard[p][i], name); /*Convert card number to cards name*/
 		printf("%s%s", name, ", ");
