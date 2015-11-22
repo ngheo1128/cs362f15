@@ -9,6 +9,8 @@ treasure
 #include <string.h>
 #include "dominion.h"
 #include "dominion_helpers.h"
+#include "cards.h"
+#include "card_handlers.h"
 
 const int SEED = 17;
 const int NUM_PLAYERS = 4;
@@ -53,7 +55,6 @@ int main(int argc, char **argv) {
                remodel,    smithy,       village, baron,   great_hall};
   struct gameState state;
   int handCount;
-  int temphand[MAX_HAND];
 
   initializeGame(NUM_PLAYERS, k, SEED, &state);
   state.whoseTurn = player;
@@ -70,8 +71,7 @@ int main(int argc, char **argv) {
   state.hand[player][0] = adventurer;
 
   printf("test adventurer\n");
-  // adventurerHandler(0, 0, 0, &state, 0, NULL);
-  adventurer_card(state.whoseTurn, 0, 0, 0, temphand, &state);
+  adventurerHandler(0, 0, 0, &state, 0, NULL);
   updateCoins(player, &state, 0);
 
   doTest("no treasure", state.coins == 0);
@@ -79,8 +79,7 @@ int main(int argc, char **argv) {
   // set up for 1 treasure test
   state.deck[player][state.deckCount[player] - 1] = copper;
   state.hand[player][0] = adventurer;
-  // adventurerHandler(0, 0, 0, &state, 0, NULL);
-  adventurer_card(state.whoseTurn, 0, 0, 0, temphand, &state);
+  adventurerHandler(0, 0, 0, &state, 0, NULL);
   updateCoins(player, &state, 0);
   doTest("1 treasure", state.coins == 1);
 

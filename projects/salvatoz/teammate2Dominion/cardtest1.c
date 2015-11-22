@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "dominion.h"
+#include "dominion_helpers.h"
+#include "refactor.h" 
 
 const int SEED = 17;
 const int NUM_PLAYERS = 4;
@@ -28,7 +30,7 @@ static int numCard(int player, const struct gameState *state, enum CARD cardNum)
   return count;
 }
 
-static char *printHand(int playerNum, const struct gameState *state) {
+char *printHand(int playerNum, const struct gameState *state) {
   static const char *cardNames[] = {
     "curse ",
     "estate ",
@@ -103,7 +105,7 @@ int main(int argc, char **argv) {
 
   /* use a smithy */
   // smithyHandler(0, 0, 0, &state, 0, NULL);
-  smithy_card(state.whoseTurn, 0, &state);
+  playSmithy(&state, state.whoseTurn, 0);
   numSmithys2 = numCard(player, &state, smithy);
   printf("smithys after: %d\n", numSmithys2);
 
@@ -113,5 +115,4 @@ int main(int argc, char **argv) {
   printf("player hand count after: %d\n", state.handCount[player]);
   printf("final hand: %s\n", printHand(player, &state));
 
-  return 0;
 }
