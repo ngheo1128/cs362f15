@@ -11,17 +11,20 @@ compiler warnings:
 
 UNIT TESTS:
 
-unittest4.c (gainCard() function)
-    test fails, returns non-zero value
-    (note: this fails on my own code too, might be faulty test code)
+TEST NAME    FUNCTION NAME    RESULT    COVERAGE
+unittest1    discardCard      PASS       1.88 %
+unittest2    updateCoins      PASS      15.70 %
+unittest3    drawCard         PASS       3.75 %
+unittest4    gainCard         PASS      17.06 %
 
 
 CARD TESTS:
 
-cardtest2: (Adventurer)
-    /bin/sh: line 1: 19124 Segmentation fault (core dumped)
-        cardtest2 >> unittestresults.out
-        make: *** [unittestresults.out] Error 139
+TEST NAME    CARD NAME     RESULT                         COVERAGE
+cardtest1    Smithy        PASS                            6.12 %
+cardtest2    Adventurer    PASS                           20.24 %
+cardtest3    Council Room  NOT REFACTORED / NOT TESTED     0.00 %
+cardtest4    Mine Card     NOT REFACTORED / NOT TESTED     0.00 %
 
 
 RANDOM TESTS:
@@ -43,6 +46,13 @@ randomtestadventurer: FAIL
     randomtestadventurer >> randomtestadventurer.out
     make: *** [randomtestadventurer.out] Error 139
 
+
+    The fault is located 
+
+    while(drawntreasure<2){
+
+      if (cardDrawn == copper || cardDrawn == silver)
+        drawntreasure++;
 
 Note: playdom won't run either from segfault error
 

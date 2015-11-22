@@ -173,7 +173,6 @@ int testAdventurerEffect(int playerNumber, struct gameState *post)
 // either deck and discard pile will be empty
 
     int retVal = 0;
-    int cardsAvailable;
 
     // create duplicate of game state for before and after comparison
     struct gameState pre;
