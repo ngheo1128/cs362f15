@@ -1,0 +1,26 @@
+cardtest1.c:
+cardtest1.c
+cardEffect_adventurer(): FAIL empty hand case
+cardEffect_adventurer(): FAIL not enough Treasure case
+cardEffect_adventurer(): FAIL full deck case
+cardEffect_adventurer(): FAIL empty deck case
+cardEffect_adventurer(): PASS changes to correct player only
+File 'dominion.c'
+Lines executed:5.85% of 581
+Branches executed:4.77% of 419
+Taken at least once:3.82% of 419
+Calls executed:3.16% of 95
+Creating 'dominion.c.gcov'
+
+cardtest4.c:
+cardtest4.c
+cardEffect_smithy(): PASS handCount properly incremented
+cardEffect_smithy(): PASS correct cards, order in correct user's hand
+cardEffect_smithy(): PASS changes to correct player only
+File 'dominion.c'
+Lines executed:8.61% of 581
+Branches executed:6.68% of 419
+Taken at least once:5.01% of 419
+Calls executed:5.26% of 95
+Creating 'dominion.c.gcov'
+

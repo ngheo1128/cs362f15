@@ -434,7 +434,7 @@ int isGameOver(struct gameState *state)
 
     //if three supply pile are at 0, the game ends
     j = 0;
-    for (i = 0; i < 25; i++)
+    for (i = 0; i < 27; i++) //FIXED 11-22-2015
     {
         if (state->supplyCount[i] == 0)
         {
@@ -1401,13 +1401,13 @@ void cardEffect_smithy(int currentPlayer, struct gameState* state, int handPos)
         }
 
         //discard card from hand
-        discardCard(0, currentPlayer, state, handPos);
+        discardCard(handPos, currentPlayer, state, 0); //FIXED 11-22-2015
 }
 
 void cardEffect_adventurer(int drawntreasure, struct gameState* state, int currentPlayer,int cardDrawn, int temphand[])
 {
 
-        int z; //counter for the temp hand
+        int z = 0; //counter for the temp hand
 
         while(drawntreasure<2)
         {
@@ -1423,6 +1423,7 @@ void cardEffect_adventurer(int drawntreasure, struct gameState* state, int curre
             {
                 temphand[z]=cardDrawn;
                 state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+                z++; //FIXED 11-22-2015
             }
         }
         while(z-1>=0)
@@ -1437,7 +1438,7 @@ void cardEffect_councilRoom(int currentPlayer, struct gameState* state, int hand
 {
         int i;
         //+4 Cards
-        for (i = 0; i <= 4; i++)
+        for (i = 0; i < 4; i++) //FIXED 11-22-2015
         {
             drawCard(currentPlayer, state);
         }

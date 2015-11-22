@@ -43,9 +43,12 @@ int main (int argc, char** argv) {
   cardEffect(village, 1, 2, 3, &g, handPos, &bonus);
   postcard = g.handCount[0];
   postdisc = g.discardCount[0];
-  //assert(postcard == precard+1);
-  //assert(postdisc == predisc+1);
-  //printf("All tests passed.\n");
+  if (postcard != precard+1) {
+    printf("First test failed for cardtest3.c");
+  }
+  if (postdisc != predisc+1) {
+    printf("Second test failed for cardtest3.c");
+  }
 
   return 0;
 }

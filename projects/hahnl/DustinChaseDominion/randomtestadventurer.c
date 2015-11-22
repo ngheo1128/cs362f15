@@ -73,7 +73,7 @@ int main (int argc, char** argv) {
     g.deckCount[0] = 50;
 
     //Adventure card gets played now
-    adventurerCard(drawntreasure, &g, currentPlayer, cardDrawn, temphand, z);
+    playAdventurer(&g);
 
     //TEST 1 - Check for proper discard
     if (g.hand[0][0] == adventurer) {
