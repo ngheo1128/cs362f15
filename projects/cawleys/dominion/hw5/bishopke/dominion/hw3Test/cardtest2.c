@@ -16,7 +16,7 @@ int countCoins(struct gameState *state, int player)
 
 	for (i=0; i<handSize; ++i)
 	{
-		if(state->hand[player][i] == gold || state->hand[player][i] == copper || state->hand[player][i] == silver)
+		if(state->hand[0][i] == gold || state->hand[0][i] == copper || state->hand[0][i] == silver)
 		{
 			++coins;
 		}
@@ -41,7 +41,7 @@ int testAdventurer(struct gameState *state, int player, int numInHand, const cha
 	int p0hand1 = state->handCount[0];
 
 //call adventurer to change to state for all tests;
-	adventurer_effect(state, 0);
+	adventurerCard(state, 0);
 
 
 //test to see if player 0 has 1 more card in their hand (2 new cards - adventurer)
@@ -71,7 +71,7 @@ int testAdventurer(struct gameState *state, int player, int numInHand, const cha
 	}
 	else
 	{
-		printf("FAIL: adventurer added %i coins to player 2's hand\n", (p2coins2 - p2coins1));
+		printf("FAIL: adventurer added %i coins to player 2's hand", (p2coins2 - p2coins1));
 		++errors;
 	}
 
