@@ -76,7 +76,7 @@ int main() {
             // printf ("cost of choice1 is %i \n", getCardCost(G.hand[0][i]));
 
             //verify that you can only play swap affordable cards
-            if (getCardCost(G.hand[0][i]) + 3 > getCardCost(coin))
+            if (getCardCost(G.hand[0][i]) + 3 >= getCardCost(coin))
             {
                 int playedIndex;
                 int foundMine = 0;
@@ -102,11 +102,11 @@ int main() {
                 // printf ("################################################### \n Error: expected non-mine card in hand location %i. \n ################################################### \n", mineCardLoc);
 
                 //verify that the minecard is in the played
-                for (playedIndex = 0; playedIndex < G.playedCardCount; playedIndex++)
+                for (playedIndex = 0; playedIndex < G.discardCount[0]; playedIndex++)
                 {
-                    if (G.playedCards[playedIndex] == mine)
+                    if (G.discard[0][playedIndex] == mine)
                     foundMine = 1;
-                    if (G.playedCards[playedIndex] == mine)
+                    if (G.discard[0][playedIndex] >= copper && G.discard[0][playedIndex] <= gold)
                     foundCoin = 1;
                 }
                 if (foundMine != 1)
@@ -129,10 +129,10 @@ int main() {
                 int foundMine = 0;
                 int foundCoin = 0;
 
-                printf ("unaffordable \n");
                 if (G.hand[0][i] == coin);
                 {
                     printf("Error: Gained a coin card even though it was unaffordable\n");
+
                 }
 
                 //verify that mine card is still in hand
@@ -160,6 +160,8 @@ int main() {
                 }
 
             }
+
+            printHand(0, &G);
         }
     }
 
@@ -179,7 +181,6 @@ int main() {
     }
     // printf ("################################################### \n Error: allows user to choose a non treasure card to buy. \n ################################################### \n");
 
-    printHand(0, &G);
     printf("All tests passed!\n");
 
     

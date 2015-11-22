@@ -20,14 +20,13 @@ struct gameState *state
 int main() {
 
     int i;
-    int coin_bonus = 0;
 
     //initialize the game
     struct gameState G;
     int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, 
     sea_hag, tribute, smithy};
 
-    printf ("* * * * * * * * * * * * * * * *  Testing Jason's village card.* * * * * * * * * * * * * * * * \n");
+    printf ("* * * * * * * * * * * * * * * *  Testing village card.* * * * * * * * * * * * * * * * \n");
 
     initializeGame(2, k, 2, &G);
 
@@ -40,12 +39,12 @@ int main() {
 
 
     // check state of game before calling function
-    printState(&G);
-     printSupply(&G);
-    printScores(&G);
-    printHand(0, &G);
-    printPlayed(0, &G);
-    printDeck(0, &G);
+    // printState(&G);
+    //  printSupply(&G);
+    // // printScores(&G);
+    // printHand(0, &G);
+    // printPlayed(0, &G);
+    // printDeck(0, &G);
     //printf ("Number of cards in hand %i \n", numHandCards(&G));
 
     char name[32];
@@ -56,16 +55,11 @@ int main() {
     for (i = (numHandCards(&G) -1); i >= 0; i--)
     {
         int numActions = G.numActions;
-        cardEffect(village, -1, -1, -1, &G, i, &coin_bonus);
+        playCard(i, -1, -1, -1, &G);
 
         //check to see if village card goes into discard
         printPlayed(0, &G);
 
-        if(G.playedCards[playedCards] != village)
-        {
-            cardNumToName(G.playedCards[playedCards], name);  
-            printf("Error: The card played is %s not village \n", name);
-        }
         //check to see if number of actions increased by 2
         if (numActions + 1 != G.numActions)
         {
