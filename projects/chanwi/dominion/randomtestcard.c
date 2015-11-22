@@ -20,7 +20,6 @@ int main(){
 	int chosenPlayer;
 	int smithyPos;
 	int randomSeed;
-	int bonus = 0;
 	
 	int errCount = 0;
 	int errTurn = 0;
@@ -48,8 +47,6 @@ int main(){
 	for (i = 0; i < NUM_TESTRUNS; i++){
 		int j;
 		int k;
-		int treasureDeck = 0;
-		int treasureDiscard = 0;
 		int ktvIndex = 0;
 		smithyPos = -1;
 		
@@ -123,7 +120,7 @@ int main(){
 		memcpy(&preTest, &G, sizeof(struct gameState));
 
 		//Play smithy card
-		int result = playCard(smithyPos, -1, -1, -1, &G);
+		playCard(smithyPos, -1, -1, -1, &G);
 
 	//Results of playing smithy card by Chosen player
 		//Check Whose Turn

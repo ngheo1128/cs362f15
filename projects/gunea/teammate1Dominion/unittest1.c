@@ -1,12 +1,3 @@
-/* -----------------------------------------------------------------------
- * James Carlin
- * 10/20/2015
- *
- * CardTest2
- *  Tests the greatHallCard
- * -----------------------------------------------------------------------
- */
-
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
@@ -15,70 +6,112 @@
 #include "rngs.h"
 
 
-
-void testUpdateCoins()
+int main()
 {
+	int seed = 2500;
+	int players = 2;
+	int maxBonus = 20;
+	int c, i, j, k;
+	int failedtests = 0;
+	int hand[10] = { adventurer, embargo, steward, cutpurse, outpost
+		, mine, smithy, remodel, great_hall, feast };
+	struct gameState testState;
+	int maxHandCount = 5;
+	// arrays of all coppers, silvers, and golds
+	int coppers[MAX_HAND];
+	int silvers[MAX_HAND];
+	int golds[MAX_HAND];
+	for (c = 0; c < MAX_HAND; c++)
+	{
+		coppers[c] = copper;
+		silvers[c] = silver;
+		golds[c] = gold;
+	}
+	printf("Testing updateCoins(): \n");
+
+	printf("-----------------------------------------\n");
+	printf("Testing with a hand full of the same treasure cards\n");
+	for (i = 0; i < players; i++)
+	{
+		for (j = 0; j < maxHandCount; j++)
+		{
+			for (k = 0; k < maxBonus; k++)
+			{
+				printf("Player: %d | Treasures in hand: %d | Bonus: %d\n", i, j, k);
+
+				memset(&testState, 23, sizeof(struct gameState));
+				//Initialize the game
+				initializeGame(players, hand, seed, &testState);
+
+				//set the hand count
+				testState.handCount[i] = j;
+
+				printf("Testing coppers\n");
+				//set all cards to coppers
+				memcpy(testState.hand[i], coppers, (sizeof(int)*j));
+
+				//call the function
+				updateCoins(i, &testState, k);
+				
+				//Print results
+				if (testState.coins == (j * 1 + k))
+					printf("PASS: ");
+				else {
+					printf("FAIL: ");
+					failedtests++;
+				}
+				printf("Expected = %d | Actual = %d\n", j * 1 + k, testState.coins);
 
 
-int i;
-    int seed = 1000;
-    int numPlayer = 2;
+				printf("Testing silvers\n");
+				//set all cards to silvers
+				memcpy(testState.hand[i], silvers, (sizeof(int)*j));
 
-    int k[10] = {adventurer, council_room, feast, gardens, mine
-               , remodel, smithy, village, baron, great_hall};
-	int testPlayer=1;
-	int handCount=5;
-//initialize gamestate
-    struct gameState G;
+				//call the function
+				updateCoins(i, &testState, k);
 
+				//Print results
+				if (testState.coins == (j * 2 + k))
+					printf("PASS: ");
+				else {
+					printf("FAIL: ");
+					failedtests++;
+				}
+				printf("Expected = %d | Actual = %d\n", j * 2 + k, testState.coins);
 
-//loading hand with 5 cards first, hardcoded in
+				printf("Testing golds\n");
+				//set all cards to golds
+				memcpy(testState.hand[i], golds, (sizeof(int)*j));
 
-int firstHand[5];
+				//call the function
+				updateCoins(i, &testState, k);
 
-//place specific cards in each possible spot
+				//Print results
+				if (testState.coins == (j * 3 + k))
+					printf("PASS: ");
+				else {
+					printf("FAIL: ");
+					failedtests++;
+				}
+				printf("Expected = %d | Actual = %d\n", j * 3 + k, testState.coins);
+			}
+		}
+	}
 
-firstHand[0] = copper;
-firstHand[1] = copper;
-firstHand[2] = estate;
-firstHand[3] = smithy;
-firstHand[4] = great_hall;
-
-//init game state
-initializeGame(numPlayer, k, seed, &G);
-
-
-//place cards in test player's hand
-G.handCount[testPlayer]= handCount;
-
-//place cards in test player's hand
-//new state
-memcpy(G.hand[testPlayer], firstHand, sizeof(int) * handCount);
-//the for loop iterates through the function
-//it checks the number of coins per iteration, with an added "bonus" roll
-//outputs pass/fail based on value of coins on state
-
-for(i=0; i < 100; i++)
-{
-    int testIterator = 2; //this is because that would be the the value of coins without bonus
-    updateCoins(testPlayer, &G, i);
-    if(G.coins == testIterator+i)
-    {
-        printf ("Passed, results : %d\n", G.coins);
-    }
-    else
-        {
-            printf ("Failed, expected : %d\n", testIterator+i);
-        }
-
-}
-
-}
-
-int main() {
-//runs the test update coins function
-	testUpdateCoins();
+	printf("\n");
+	printf("Failed tests: %d", failedtests);
+	printf("\n");
+	printf("-----------------------------------------\n");
+	printf("\n");
 
 
-    return 0;
+
+
+
+
+
+
+
+
+	return 0;
 }
