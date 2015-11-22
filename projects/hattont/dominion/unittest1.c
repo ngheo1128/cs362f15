@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
     printf("isGameOver(): %s 2 cards are empty\n", 
         (!isGameOver(&state)) ? "PASS" : "FAIL" );
 
-    state.supplyCount[treasure_map] = 0;
+    state.supplyCount[copper] = 0;
     printf("isGameOver(): %s 3 cards are empty\n", 
         (isGameOver(&state)) ? "PASS" : "FAIL" );
 

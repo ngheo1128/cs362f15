@@ -1,9 +1,7 @@
+/*
 - Created new module cards (cards.c and cards.h) that implements a new way of storing card costs and effects.
 - Extracted definitions for adventurer, smithy, council room, feast, mine, and treasure map into static functions in cards.c.
 - Extracted common/confusing behavior from card effect handlers into special helper functions.
-<<<<<<< HEAD
-- Updated getCost and cardEffect to check the cardsData struct.
-=======
 - Updated getCost and cardEffect to check the cardsData struct.
 
 Bugs:
@@ -32,4 +30,4 @@ Bugs:
     - cards.c:feastHandler:203
         temphand[i] = -1 happens before state->hand[currentPlayer][i] = temphand[i], so the hand
         will be erased
->>>>>>> @{-1}
+*/

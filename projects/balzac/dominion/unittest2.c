@@ -176,11 +176,11 @@ void testdrawCard()
 	/*checks if deck count is same count as discard pile before drawCard() was used.*/
 	if(deckCount_a + 1 == discardCount_b || deckCount_a == discardCount_b)
 	{
-		printf ("FAIL - discard pile added to deck pile.\n");
+		printf ("PASS - discard pile added to deck pile.\n");
 	}
 	else
 	{
-		printf ("PASS - discard pile NOT added to deck pile.\n");
+		printf ("FAIL - discard pile NOT added to deck pile.\n");
 	}
 	
 	/*checks if discard count is same count as deck pile before drawCard() was used.*/
@@ -196,25 +196,25 @@ void testdrawCard()
 	/*checks if card was added to played card pile*/
 	if(handCount_a == handCount_b + 1)
 	{
-		printf ("FAIL - card added to player's hand.\n");
+		printf ("PASS - card added to player's hand.\n");
 	}
 	else
 	{
-		printf ("PASS - card NOT added to player's hand.\n");
+		printf ("FAIL - card NOT added to player's hand.\n");
 	}
 	
 	/*checks if deck count decreased.*/
 	if(deckCount_a == discardCount_b - 1)
 	{
-		printf ("FAIL - card removed from deck pile.\n");
+		printf ("PASS - card removed from deck pile.\n");
 	}
 	else
 	{
-		printf ("PASS - card NOT removed from deck pile.\n");
+		printf ("FAIL - card NOT removed from deck pile.\n");
 	}
 	
 	/*checks if deck count is not less than 0*/
-	if(deckCount_a < 0)
+	if(deckCount_a <= 0)
 	{
 		printf ("FAIL - deck count is less than 0.\n");
 	}

@@ -8,7 +8,7 @@
 /** NUM_CARDS
  * Defines the number of dominion cards.
  */
-#define NUM_CARDS treasure_map
+#define NUM_CARDS (treasure_map + 1)
 
 /* cardEffectHandler
 * What is says on the tin. A pointer to a function that handles a card's

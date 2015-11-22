@@ -1,0 +1,157 @@
+unittest4.c
+isGameOver(): PASS 1 of every card
+isGameOver(): PASS province is empty
+isGameOver(): PASS 1 card is empty
+isGameOver(): PASS 2 cards are empty
+isGameOver(): PASS 3 cards are empty
+File 'dominion.c'
+Lines executed:21.09% of 569
+Creating 'dominion.c.gcov'
+
+unittest2.c:
+gainCard(): PASS discardCount is incremented
+gainCard(): PASS deckCount is incremented
+gainCard(): PASS handCount is incremented
+gainCard(): PASS supplyCount is decremented
+gainCard(): PASS empty card pile
+gainCard(): PASS out-of-play card
+File 'dominion.c'
+Lines executed:21.09% of 569
+Creating 'dominion.c.gcov'
+
+Testing Shuffle.
+ALL TESTS OK
+File 'dominion.c'
+Lines executed:21.09% of 569
+Creating 'dominion.c.gcov'
+
+Testing updateCoins
+ALL TESTS OK
+File 'dominion.c'
+Lines executed:21.09% of 569
+Creating 'dominion.c.gcov'
+
+cardtest1.c
+adventurerCard(): PASS empty hand case
+adventurerCard(): PASS not enough Treasure case
+adventurerCard(): PASS full deck case
+adventurerCard(): PASS empty deck case
+adventurerCard(): PASS changes to correct player only
+File 'dominion.c'
+Lines executed:21.09% of 569
+Creating 'dominion.c.gcov'
+
+cardtest2.c
+villageCard(): PASS empty hand (except Village card) case
+villageCard(): PASS empty deck case
+villageCard(): PASS changes to correct player only
+villageCard(): PASS 2 consecutive Village cards case
+File 'dominion.c'
+Lines executed:21.09% of 569
+Creating 'dominion.c.gcov'
+
+cardtest3.c
+greatHallCard(): PASS empty hand (except Great Hall card) case
+greatHallCard(): PASS empty deck case
+greatHallCard(): PASS 2 consecutive Great Hall cards case:
+greatHallCard(): PASS normal deck case with second player
+File 'dominion.c'
+Lines executed:21.09% of 569
+Creating 'dominion.c.gcov'
+
+cardtest4.c
+smithyCard(): PASS handCount properly incremented
+smithyCard(): PASS correct cards, order in correct user's hand
+smithyCard(): PASS changes to correct player only
+File 'dominion.c'
+Lines executed:21.09% of 569
+Creating 'dominion.c.gcov'
+
+Function 'cutpurseCard'
+Lines executed:0.00% of 13
+
+Function 'greatHallCard'
+Lines executed:100.00% of 5
+
+Function 'villageCard'
+Lines executed:100.00% of 5
+
+Function 'smithyCard'
+Lines executed:100.00% of 6
+
+Function 'council_roomCard'
+Lines executed:0.00% of 9
+
+Function 'adventurerCard'
+Lines executed:100.00% of 17
+
+Function 'updateCoins'
+Lines executed:100.00% of 11
+
+Function 'gainCard'
+Lines executed:100.00% of 13
+
+Function 'discardCard'
+Lines executed:92.86% of 14
+
+Function 'cardEffect'
+Lines executed:0.00% of 201
+
+Function 'getCost'
+Lines executed:0.00% of 30
+
+Function 'drawCard'
+Lines executed:77.27% of 22
+
+Function 'getWinners'
+Lines executed:0.00% of 24
+
+Function 'scoreFor'
+Lines executed:0.00% of 24
+
+Function 'isGameOver'
+Lines executed:100.00% of 10
+
+Function 'endTurn'
+Lines executed:0.00% of 20
+
+Function 'whoseTurn'
+Lines executed:0.00% of 2
+
+Function 'fullDeckCount'
+Lines executed:0.00% of 9
+
+Function 'supplyCount'
+Lines executed:100.00% of 2
+
+Function 'handCard'
+Lines executed:0.00% of 3
+
+Function 'numHandCards'
+Lines executed:0.00% of 2
+
+Function 'buyCard'
+Lines executed:0.00% of 13
+
+Function 'playCard'
+Lines executed:0.00% of 14
+
+Function 'shuffle'
+Lines executed:100.00% of 16
+
+Function 'initializeGame'
+Lines executed:0.00% of 62
+
+Function 'kingdomCards'
+Lines executed:0.00% of 13
+
+Function 'newGame'
+Lines executed:0.00% of 3
+
+Function 'compare'
+Lines executed:83.33% of 6
+
+File 'dominion.c'
+Lines executed:21.09% of 569
+Creating 'dominion.c.gcov'
+
