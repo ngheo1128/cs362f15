@@ -1,6 +1,4 @@
 // tests Adventurer card
-// int adventurerEffect(int currentPlayer, int drawntreasure, int temphand[MAX_HAND], struct gameState *state, int cardDrawn, int z)
-// adventurerEffect() is on line 1207 of dominion.c
 
 // test / assert against state of game before and after adventurer is played
 
@@ -89,7 +87,8 @@ int main(int argc, char *argv[])
 
         // generate sensible random values for important preconditions:
         // select a random player
-        playerNumber = randInt(0, 1); // can this go to 4 players?
+        playerNumber = randInt(0, 1);
+
         // random number of cards in current player's hand
         testState.handCount[playerNumber] = randInt(1, 10);
 
@@ -143,7 +142,6 @@ int main(int argc, char *argv[])
             testState.discard[playerNumber][index2] = 6;
         }
 
-
         // call test oracle function and pass it parameters
         retVal = testAdventurerEffect(playerNumber, &testState);
 
@@ -176,10 +174,6 @@ int testAdventurerEffect(int playerNumber, struct gameState *post)
 
     int retVal = 0;
     int cardsAvailable;
-    // int drawnTreasure = 0;
-    // int tempHand[MAX_HAND];
-    // int cardDrawn = 0;
-    // int z = 0;
 
     // set the whoseTurn variable in the state to the current player
     post->whoseTurn = playerNumber;
@@ -191,20 +185,8 @@ int testAdventurerEffect(int playerNumber, struct gameState *post)
     // call adventurerEffect function
     adventurerEffect(post);
 
-    // make changes to pre based on what adventurerEffect should do
-
-    // determine how many cards are left between deck and discard pile
-//n    cardsAvailable = pre.deckCount[playerNumber] + pre.discardCount[playerNumber];
-
-    // add 1 cards to hand since two cards are drawn and
-    // one is discarded or as many as are available if less than 2
-//    if (cardsAvailable >= 2) // doesn't guarantee the cards remaining are treasure cards
-//    {
-        pre.handCount[playerNumber] = pre.handCount[playerNumber] + 2;
-  //      pre.handCount[playerNumber]++;
- //   }
-    // else // 0 cards or 1 card available = no change to hand count
-//        pre.handCount[playerNumber] = pre.handCount[playerNumber] + cardsAvailable;
+    // add 2 cards to hand 
+    pre.handCount[playerNumber] = pre.handCount[playerNumber] + 2;
 
     // Andrew Shen's function do not return a value
     // so the following code is not used:
