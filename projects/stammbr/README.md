@@ -12,6 +12,9 @@ through this assignment.
 Assignment 4 - All files for this program are saved in the file named "Assignment4" under the
 parent file "dominion".
 
+Assignment 5 - All files are located in the "Assignment5" directory, and there is a 
+seperate README.md located there with more specific details.
+
 Final Part A - Located in hansejod's directory.
 
 Quiz 2 - All files needed for quiz 2 are in the folder named "Quiz2".  There is no makefile for 

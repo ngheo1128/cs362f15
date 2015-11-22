@@ -1,0 +1,104 @@
+Result for running randomtestadventurer tests:
+randomtestadventurer.c:
+Test #0
+
+Status-----------------------------------
+numPlayer = 4
+currentPlayer = 1
+Pre ending currentPlayer deckCount = 84, discardCount = 214, handCount = 361
+Pre ending currentPlayer deckCount = 77, discardCount = 219, handCount = 363
+Post ending currentPlayer deckCount = 77, discardCount = 214, handCount = 363
+
+Test Results-----------------------------
+cardEffect(adventurer): PASS, function returned successfully 
+cardEffect(adventurer): PASS, handCount correct after discard/draw 
+cardEffect(adventurer): FAIL, pre and post discardCount + deckCount sums don't match 
+cardEffect(adventurer): FAIL, incorrect card in handPos 361 
+cardEffect(adventurer): FAIL, incorrect card in handPos 362 
+cardEffect(adventurer): PASS, player 0 handCount unaffected after currentPlayer 1 discard/draw 
+cardEffect(adventurer): PASS, player 0 discardCount unaffected after currentPlayer 1 discard 
+cardEffect(adventurer): PASS, player 0 deckCount unaffected after currentPlayer 1 draw 
+cardEffect(adventurer): PASS, player 2 handCount unaffected after currentPlayer 1 discard/draw 
+cardEffect(adventurer): PASS, player 2 discardCount unaffected after currentPlayer 1 discard 
+cardEffect(adventurer): PASS, player 2 deckCount unaffected after currentPlayer 1 draw 
+cardEffect(adventurer): PASS, player 3 handCount unaffected after currentPlayer 1 discard/draw 
+cardEffect(adventurer): PASS, player 3 discardCount unaffected after currentPlayer 1 discard 
+cardEffect(adventurer): PASS, player 3 deckCount unaffected after currentPlayer 1 draw 
+
+
+Test #1
+
+Status-----------------------------------
+numPlayer = 3
+currentPlayer = 2
+Pre ending currentPlayer deckCount = 16, discardCount = 216, handCount = 112
+Pre ending currentPlayer deckCount = 191, discardCount = 39, handCount = 114
+Post ending currentPlayer deckCount = 194, discardCount = 0, handCount = 114
+
+Test Results-----------------------------
+cardEffect(adventurer): PASS, function returned successfully 
+cardEffect(adventurer): PASS, handCount correct after discard/draw 
+cardEffect(adventurer): FAIL, pre and post discardCount + deckCount sums don't match 
+cardEffect(adventurer): FAIL, incorrect card in handPos 112 
+cardEffect(adventurer): FAIL, incorrect card in handPos 113 
+cardEffect(adventurer): PASS, player 0 handCount unaffected after currentPlayer 2 discard/draw 
+cardEffect(adventurer): PASS, player 0 discardCount unaffected after currentPlayer 2 discard 
+cardEffect(adventurer): PASS, player 0 deckCount unaffected after currentPlayer 2 draw 
+cardEffect(adventurer): PASS, player 1 handCount unaffected after currentPlayer 2 discard/draw 
+cardEffect(adventurer): PASS, player 1 discardCount unaffected after currentPlayer 2 discard 
+cardEffect(adventurer): PASS, player 1 deckCount unaffected after currentPlayer 2 draw 
+
+
+Test #2
+
+Status-----------------------------------
+numPlayer = 4
+currentPlayer = 2
+Pre ending currentPlayer deckCount = 0, discardCount = 460, handCount = 83
+Pre ending currentPlayer deckCount = 447, discardCount = 11, handCount = 85
+Post ending currentPlayer deckCount = 441, discardCount = 0, handCount = 85
+
+Test Results-----------------------------
+cardEffect(adventurer): PASS, function returned successfully 
+cardEffect(adventurer): PASS, handCount correct after discard/draw 
+cardEffect(adventurer): FAIL, pre and post discardCount + deckCount sums don't match 
+cardEffect(adventurer): FAIL, incorrect card in handPos 83 
+cardEffect(adventurer): FAIL, incorrect card in handPos 84 
+cardEffect(adventurer): PASS, player 0 handCount unaffected after currentPlayer 2 discard/draw 
+cardEffect(adventurer): PASS, player 0 discardCount unaffected after currentPlayer 2 discard 
+cardEffect(adventurer): PASS, player 0 deckCount unaffected after currentPlayer 2 draw 
+cardEffect(adventurer): PASS, player 1 handCount unaffected after currentPlayer 2 discard/draw 
+cardEffect(adventurer): PASS, player 1 discardCount unaffected after currentPlayer 2 discard 
+cardEffect(adventurer): PASS, player 1 deckCount unaffected after currentPlayer 2 draw 
+cardEffect(adventurer): PASS, player 3 handCount unaffected after currentPlayer 2 discard/draw 
+cardEffect(adventurer): PASS, player 3 discardCount unaffected after currentPlayer 2 discard 
+cardEffect(adventurer): PASS, player 3 deckCount unaffected after currentPlayer 2 draw 
+
+
+Test #3
+
+Status-----------------------------------
+numPlayer = 2
+currentPlayer = 1
+Pre ending currentPlayer deckCount = 184, discardCount = 33, handCount = 314
+Pre ending currentPlayer deckCount = 138, discardCount = 77, handCount = 316
+Post ending currentPlayer deckCount = 138, discardCount = 33, handCount = 316
+
+Test Results-----------------------------
+cardEffect(adventurer): PASS, function returned successfully 
+cardEffect(adventurer): PASS, handCount correct after discard/draw 
+cardEffect(adventurer): FAIL, pre and post discardCount + deckCount sums don't match 
+cardEffect(adventurer): FAIL, incorrect card in handPos 314 
+cardEffect(adventurer): FAIL, incorrect card in handPos 315 
+cardEffect(adventurer): PASS, player 0 handCount unaffected after currentPlayer 1 discard/draw 
+cardEffect(adventurer): PASS, player 0 discardCount unaffected after currentPlayer 1 discard 
+cardEffect(adventurer): PASS, player 0 deckCount unaffected after currentPlayer 1 draw 
+
+
+Summary----------------------------------
+Tests Run: 4, Test Cases Passed: 905, Test Cases Failed: 12
+
+File 'dominion.c'
+Lines executed:23.08% of 598
+dominion.c:creating 'dominion.c.gcov'
+

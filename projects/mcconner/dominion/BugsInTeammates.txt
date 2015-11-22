@@ -1,6 +1,6 @@
 Rachael McConnell
 Assignment 5
-CS 362 Fall 2015
+CS362 Fall 2015
 
 Both teammates' code passed unittest1 (shuffle), unittest2 (updateCoins), and cardtest3 (council room), and failed parts of the remaining tests. For the
 tests that failed, here are the bugs found:

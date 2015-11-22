@@ -159,7 +159,7 @@ void setHand(struct gameState *G){
       case 1:
         G->handCount[p] = 15;
         for(j = 0; j < G->handCount[p]; j++){
-          if(j== 15) {
+          if(j== 14) {
             G->hand[p][j] = council_room;
           }else{
             G->hand[p][j] = silver;
@@ -199,6 +199,8 @@ int checkCouncil(int p, struct gameState *post, int handPos) {
      int newCard1, newCard2, newCard3, newCard4;
      int deckCard1, deckCard2, deckCard3, deckCard4;
      int postCouncil, preCouncil=0;
+
+     post->whoseTurn = p;
      
      //copy the game state to compare pre and post values
      memcpy(&pre, post, sizeof(struct gameState));  
@@ -262,11 +264,11 @@ int checkCouncil(int p, struct gameState *post, int handPos) {
 
 
      /***CHECK RESULTS***/
-     if(pre.handCount[p]+2 != post->handCount[p]){
+     if(pre.handCount[p]+3 != post->handCount[p]){
        printf("Unexpected handcount\n");
        fail = true;
      }  
-     if(pre.deckCount[p]-3 != post->deckCount[p]){
+     if(pre.deckCount[p]-4 != post->deckCount[p]){
        printf("Unexpected deckCount\n");
        fail = true;
      }

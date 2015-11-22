@@ -1,0 +1,643 @@
+* * * * * * * * * * * * * * * *  Testing village card.* * * * * * * * * * * * * * * * 
+played card 
+card being discarded is Village 
+Player 0's played cards: 
+
+card being discarded is Village 
+Player 0's played cards: 
+
+card being discarded is Village 
+Player 0's played cards: 
+
+card being discarded is Village 
+Player 0's played cards: 
+
+card being discarded is Village 
+Player 0's played cards: 
+
+All tests passed!
+File 'dominion.c'
+Lines executed:22.72% of 581
+Branches executed:25.18% of 417
+Taken at least once:15.11% of 417
+Calls executed:17.65% of 102
+dominion.c:creating 'dominion.c.gcov'
+
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Adventurer   
+3  Adventurer   
+4  Adventurer   
+
+Player 0's discard: 
+
+* * * * * * * * * * * * * * * * Testing adventurer card * * * * * * * * * * * * * * * * 
+play hand positin 4
+card being discarded is Adventurer 
+playstatus is 0 
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Adventurer   
+3  Adventurer   
+4  Copper       
+5  Copper       
+
+play hand positin 3
+card being discarded is Adventurer 
+playstatus is 0 
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Adventurer   
+3  Copper       
+4  Copper       
+5  Copper       
+6  Copper       
+
+play hand positin 2
+card being discarded is Adventurer 
+playstatus is 0 
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Adventurer   
+2  Copper       
+3  Copper       
+4  Copper       
+5  Copper       
+6  Copper       
+7  Copper       
+
+play hand positin 1
+card being discarded is Adventurer 
+playstatus is 0 
+Player 0's hand:
+#  Card
+0  Adventurer   
+1  Copper       
+2  Copper       
+3  Copper       
+4  Copper       
+5  Copper       
+6  Copper       
+7  Copper       
+8  Copper       
+
+play hand positin 0
+card being discarded is Adventurer 
+playstatus is 0 
+Player 0's hand:
+#  Card
+0  Copper       
+1  Copper       
+2  Copper       
+3  Copper       
+4  Copper       
+5  Copper       
+6  Copper       
+7  Copper       
+8  Copper       
+9  Copper       
+
+All tests passed!
+File 'dominion.c'
+Lines executed:24.96% of 581
+Branches executed:27.10% of 417
+Taken at least once:16.55% of 417
+Calls executed:20.59% of 102
+dominion.c:creating 'dominion.c.gcov'
+
+TESTING sea_hag case in cardEffect():
+Testing player 0
+  --Testing oracle against state before call to cardEffect(sea_hag) for player number 0, opponent number 1--
+    PASS: Opponent's card to be discarded=6,expected=6
+    PASS: Deck count before discarding top of deck=10,expected=10
+    PASS: Hand count before discarding top of deck=10,expected=10
+    PASS: Discard count before discarding top of deck=0,expected=0
+  --Testing oracle against call to cardEffect(sea_hag) for player number 0, opponent number 1--
+    PASS: Card on top of opponent's discard pile after discarding top of deck=6,expected=6
+    PASS: Card on top of opponent's deck after distributing curse=0,expected=0
+    PASS: Deck count after discarding top of deck=10,expected=10
+  Testing for unexpected transactions against oracle. Checking supply counts...
+      PASS: number of curse=9, expected=9
+    Checking Victory cards in supply:
+      PASS: number of estate=8, expected=8
+      PASS: number of duchy=8, expected=8
+      PASS: number of province=8, expected=8
+    Checking Treasure cards in supply:
+      PASS: number of copper=46, expected=46
+      PASS: number of silver=40, expected=40
+      PASS: number of gold=30, expected=30
+Testing player 1
+  --Testing oracle against state before call to cardEffect(sea_hag) for player number 1, opponent number 0--
+    PASS: Opponent's card to be discarded=6,expected=6
+    PASS: Deck count before discarding top of deck=10,expected=10
+    PASS: Hand count before discarding top of deck=10,expected=10
+    PASS: Discard count before discarding top of deck=0,expected=0
+  --Testing oracle against call to cardEffect(sea_hag) for player number 1, opponent number 0--
+    PASS: Card on top of opponent's discard pile after discarding top of deck=6,expected=6
+    PASS: Card on top of opponent's deck after distributing curse=0,expected=0
+    PASS: Deck count after discarding top of deck=10,expected=10
+  Testing for unexpected transactions against oracle. Checking supply counts...
+      PASS: number of curse=9, expected=9
+    Checking Victory cards in supply:
+      PASS: number of estate=8, expected=8
+      PASS: number of duchy=8, expected=8
+      PASS: number of province=8, expected=8
+    Checking Treasure cards in supply:
+      PASS: number of copper=46, expected=46
+      PASS: number of silver=40, expected=40
+      PASS: number of gold=30, expected=30
+All tests passed!
+File 'dominion.c'
+Lines executed:26.33% of 581
+Branches executed:28.06% of 417
+Taken at least once:18.23% of 417
+Calls executed:20.59% of 102
+dominion.c:creating 'dominion.c.gcov'
+
+* * * * * * * * * * * * * * * * Testing mineCard card* * * * * * * * * * * * * * * * 
+Testing swapping position Copper for Copper 
+card being discarded is Mine 
+card being discarded is Copper 
+code returned: 0 
+affordable 
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+
+Testing swapping position Copper for Silver 
+card being discarded is Mine 
+card being discarded is Copper 
+code returned: 0 
+affordable 
+Player 0's hand:
+#  Card
+0  Silver       
+1  Silver       
+2  Gold         
+3  Estate       
+
+Testing swapping position Copper for Gold 
+ Cannot difference is 0 and 6 
+code returned: -1 
+Error: Gained a coin card even though it was unaffordable
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+4  Mine         
+
+Testing swapping position Silver for Copper 
+card being discarded is Mine 
+card being discarded is Silver 
+code returned: 0 
+affordable 
+Player 0's hand:
+#  Card
+0  Copper       
+1  Copper       
+2  Gold         
+3  Estate       
+
+Testing swapping position Silver for Silver 
+card being discarded is Mine 
+card being discarded is Silver 
+code returned: 0 
+affordable 
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+
+Testing swapping position Silver for Gold 
+card being discarded is Mine 
+card being discarded is Silver 
+code returned: 0 
+affordable 
+Player 0's hand:
+#  Card
+0  Copper       
+1  Gold         
+2  Gold         
+3  Estate       
+
+Testing swapping position Gold for Copper 
+card being discarded is Mine 
+card being discarded is Gold 
+code returned: 0 
+affordable 
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Copper       
+3  Estate       
+
+Testing swapping position Gold for Silver 
+card being discarded is Mine 
+card being discarded is Gold 
+code returned: 0 
+affordable 
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Silver       
+3  Estate       
+
+Testing swapping position Gold for Gold 
+card being discarded is Mine 
+card being discarded is Gold 
+code returned: 0 
+affordable 
+Player 0's hand:
+#  Card
+0  Copper       
+1  Silver       
+2  Gold         
+3  Estate       
+
+All tests passed!
+File 'dominion.c'
+Lines executed:32.36% of 581
+Branches executed:39.57% of 417
+Taken at least once:23.26% of 417
+Calls executed:30.39% of 102
+dominion.c:creating 'dominion.c.gcov'
+
+* * * * * * * * * * * * * * * * Testing minionCard * * * * * * * * * * * * * * * *
+Testing minion card choice 1
+card being discarded is Minion 
+Error: bonus coins not increased by 2, instead there are 0 coins
+Error:  minion card was not added to played pile. Instead 0 minion cards were played 
+Testing minion card choice 2
+Before
+Player 0:
+Action phase
+1 actions
+4 coins
+1 buys
+
+Player 0's hand:
+#  Card
+0  Minion       
+1  Minion       
+2  Minion       
+3  Minion       
+4  Minion       
+
+Player 1's hand:
+#  Card
+0  Minion       
+1  Minion       
+2  Minion       
+3  Minion       
+4  Minion       
+
+card being discarded is Minion 
+card being discarded is Minion 
+card being discarded is Minion 
+card being discarded is Minion 
+card being discarded is Minion 
+card being discarded is Minion 
+card being discarded is Minion 
+card being discarded is Minion 
+card being discarded is Minion 
+card being discarded is Minion 
+after
+Player 0:
+Action phase
+1 actions
+3 coins
+1 buys
+
+Player 0's hand:
+#  Card
+0  Copper       
+1  Copper       
+2  Copper       
+3  Estate       
+
+Player 1's hand:
+#  Card
+0  Copper       
+1  Copper       
+2  Copper       
+3  Copper       
+
+Player 1's discard: 
+#  Card
+0  Minion        
+1  Minion        
+2  Minion        
+3  Minion        
+4  Minion        
+
+Player 1's discard: 
+#  Card
+0  Minion        
+1  Minion        
+2  Minion        
+3  Minion        
+4  Minion        
+
+Player 1's discard: 
+#  Card
+0  Minion        
+1  Minion        
+2  Minion        
+3  Minion        
+4  Minion        
+
+Player 1's discard: 
+#  Card
+0  Minion        
+1  Minion        
+2  Minion        
+3  Minion        
+4  Minion        
+
+Player 1's discard: 
+#  Card
+0  Minion        
+1  Minion        
+2  Minion        
+3  Minion        
+4  Minion        
+
+All tests passed!
+File 'dominion.c'
+Lines executed:35.80% of 581
+Branches executed:43.88% of 417
+Taken at least once:27.58% of 417
+Calls executed:37.25% of 102
+dominion.c:creating 'dominion.c.gcov'
+
+* * * * * * * * * * * * * * * * TESTING unittest1 gainCard():* * * * * * * * * * * * * * * * 
+Test: Card Adventurer added with no supply with flag 1 for player 0 
+Test: Card Council Room added with no supply with flag 1 for player 0 
+Test: Card Feast added with no supply with flag 1 for player 0 
+Test: Card Gardens added with no supply with flag 1 for player 0 
+Test: Card Mine added with no supply with flag 1 for player 0 
+Test: Card Remodel added with no supply with flag 1 for player 0 
+Test: Card Smithy added with no supply with flag 1 for player 0 
+Test: Card Village added with no supply with flag 1 for player 0 
+Test: Card Baron added with no supply with flag 1 for player 0 
+Test: Card Great Hall added with no supply with flag 1 for player 0 
+Test: Card Adventurer added with no supply with flag 2 for player 0 
+Test: Card Council Room added with no supply with flag 2 for player 0 
+Test: Card Feast added with no supply with flag 2 for player 0 
+Test: Card Gardens added with no supply with flag 2 for player 0 
+Test: Card Mine added with no supply with flag 2 for player 0 
+Test: Card Remodel added with no supply with flag 2 for player 0 
+Test: Card Smithy added with no supply with flag 2 for player 0 
+Test: Card Village added with no supply with flag 2 for player 0 
+Test: Card Baron added with no supply with flag 2 for player 0 
+Test: Card Great Hall added with no supply with flag 2 for player 0 
+Test: Card Adventurer added with no supply with flag 3 for player 0 
+Test: Card Council Room added with no supply with flag 3 for player 0 
+Test: Card Feast added with no supply with flag 3 for player 0 
+Test: Card Gardens added with no supply with flag 3 for player 0 
+Test: Card Mine added with no supply with flag 3 for player 0 
+Test: Card Remodel added with no supply with flag 3 for player 0 
+Test: Card Smithy added with no supply with flag 3 for player 0 
+Test: Card Village added with no supply with flag 3 for player 0 
+Test: Card Baron added with no supply with flag 3 for player 0 
+Test: Card Great Hall added with no supply with flag 3 for player 0 
+Test: Card Adventurer was added to deck for player 0 
+Test: Card Council Room was added to deck for player 0 
+Test: Card Feast was added to deck for player 0 
+Test: Card Gardens was added to deck for player 0 
+Test: Card Mine was added to deck for player 0 
+Test: Card Remodel was added to deck for player 0 
+Test: Card Smithy was added to deck for player 0 
+Test: Card Village was added to deck for player 0 
+Test: Card Baron was added to deck for player 0 
+Test: Card Great Hall was added to deck for player 0 
+Test: Card Adventurer was added to hand for player 0 
+Test: Card Council Room was added to hand for player 0 
+Test: Card Feast was added to hand for player 0 
+Test: Card Gardens was added to hand for player 0 
+Test: Card Mine was added to hand for player 0 
+Test: Card Remodel was added to hand for player 0 
+Test: Card Smithy was added to hand for player 0 
+Test: Card Village was added to hand for player 0 
+Test: Card Baron was added to hand for player 0 
+Test: Card Great Hall was added to hand for player 0 
+Test: Card Adventurer was added to discard for player 0 
+Test: Card Council Room was added to discard for player 0 
+Test: Card Feast was added to discard for player 0 
+Test: Card Gardens was added to discard for player 0 
+Test: Card Mine was added to discard for player 0 
+Test: Card Remodel was added to discard for player 0 
+Test: Card Smithy was added to discard for player 0 
+Test: Card Village was added to discard for player 0 
+Test: Card Baron was added to discard for player 0 
+Test: Card Great Hall was added to discard for player 0 
+Test: Card Adventurer added with no supply with flag 1 for player 1 
+Test: Card Council Room added with no supply with flag 1 for player 1 
+Test: Card Feast added with no supply with flag 1 for player 1 
+Test: Card Gardens added with no supply with flag 1 for player 1 
+Test: Card Mine added with no supply with flag 1 for player 1 
+Test: Card Remodel added with no supply with flag 1 for player 1 
+Test: Card Smithy added with no supply with flag 1 for player 1 
+Test: Card Village added with no supply with flag 1 for player 1 
+Test: Card Baron added with no supply with flag 1 for player 1 
+Test: Card Great Hall added with no supply with flag 1 for player 1 
+Test: Card Adventurer added with no supply with flag 2 for player 1 
+Test: Card Council Room added with no supply with flag 2 for player 1 
+Test: Card Feast added with no supply with flag 2 for player 1 
+Test: Card Gardens added with no supply with flag 2 for player 1 
+Test: Card Mine added with no supply with flag 2 for player 1 
+Test: Card Remodel added with no supply with flag 2 for player 1 
+Test: Card Smithy added with no supply with flag 2 for player 1 
+Test: Card Village added with no supply with flag 2 for player 1 
+Test: Card Baron added with no supply with flag 2 for player 1 
+Test: Card Great Hall added with no supply with flag 2 for player 1 
+Test: Card Adventurer added with no supply with flag 3 for player 1 
+Test: Card Council Room added with no supply with flag 3 for player 1 
+Test: Card Feast added with no supply with flag 3 for player 1 
+Test: Card Gardens added with no supply with flag 3 for player 1 
+Test: Card Mine added with no supply with flag 3 for player 1 
+Test: Card Remodel added with no supply with flag 3 for player 1 
+Test: Card Smithy added with no supply with flag 3 for player 1 
+Test: Card Village added with no supply with flag 3 for player 1 
+Test: Card Baron added with no supply with flag 3 for player 1 
+Test: Card Great Hall added with no supply with flag 3 for player 1 
+Test: Card Adventurer was added to deck for player 1 
+Test: Card Council Room was added to deck for player 1 
+Test: Card Feast was added to deck for player 1 
+Test: Card Gardens was added to deck for player 1 
+Test: Card Mine was added to deck for player 1 
+Test: Card Remodel was added to deck for player 1 
+Test: Card Smithy was added to deck for player 1 
+Test: Card Village was added to deck for player 1 
+Test: Card Baron was added to deck for player 1 
+Test: Card Great Hall was added to deck for player 1 
+Test: Card Adventurer was added to hand for player 1 
+Test: Card Council Room was added to hand for player 1 
+Test: Card Feast was added to hand for player 1 
+Test: Card Gardens was added to hand for player 1 
+Test: Card Mine was added to hand for player 1 
+Test: Card Remodel was added to hand for player 1 
+Test: Card Smithy was added to hand for player 1 
+Test: Card Village was added to hand for player 1 
+Test: Card Baron was added to hand for player 1 
+Test: Card Great Hall was added to hand for player 1 
+Test: Card Adventurer was added to discard for player 1 
+Test: Card Council Room was added to discard for player 1 
+Test: Card Feast was added to discard for player 1 
+Test: Card Gardens was added to discard for player 1 
+Test: Card Mine was added to discard for player 1 
+Test: Card Remodel was added to discard for player 1 
+Test: Card Smithy was added to discard for player 1 
+Test: Card Village was added to discard for player 1 
+Test: Card Baron was added to discard for player 1 
+Test: Card Great Hall was added to discard for player 1 
+All tests passed!
+File 'dominion.c'
+Lines executed:36.66% of 581
+Branches executed:43.88% of 417
+Taken at least once:28.30% of 417
+Calls executed:37.25% of 102
+dominion.c:creating 'dominion.c.gcov'
+
+* * * * * * * * * * * * * * * * TESTING unittest2 fullDeckCount():* * * * * * * * * * * * * * * * 
+Test: No Adventurer's in for player 0 
+Test: One Adventurer in deck for player 0 
+Test: One Adventurer in discard, hand and deck for player 0 
+Test: No Adventurer's in for player 1 
+Test: One Adventurer in deck for player 1 
+Test: One Adventurer in discard, hand and deck for player 1 
+Test: No Council Room's in for player 0 
+Test: One Council Room in deck for player 0 
+Test: One Council Room in discard, hand and deck for player 0 
+Test: No Council Room's in for player 1 
+Test: One Council Room in deck for player 1 
+Test: One Council Room in discard, hand and deck for player 1 
+Test: No Feast's in for player 0 
+Test: One Feast in deck for player 0 
+Test: One Feast in discard, hand and deck for player 0 
+Test: No Feast's in for player 1 
+Test: One Feast in deck for player 1 
+Test: One Feast in discard, hand and deck for player 1 
+Test: No Gardens's in for player 0 
+Test: One Gardens in deck for player 0 
+Test: One Gardens in discard, hand and deck for player 0 
+Test: No Gardens's in for player 1 
+Test: One Gardens in deck for player 1 
+Test: One Gardens in discard, hand and deck for player 1 
+Test: No Mine's in for player 0 
+Test: One Mine in deck for player 0 
+Test: One Mine in discard, hand and deck for player 0 
+Test: No Mine's in for player 1 
+Test: One Mine in deck for player 1 
+Test: One Mine in discard, hand and deck for player 1 
+Test: No Remodel's in for player 0 
+Test: One Remodel in deck for player 0 
+Test: One Remodel in discard, hand and deck for player 0 
+Test: No Remodel's in for player 1 
+Test: One Remodel in deck for player 1 
+Test: One Remodel in discard, hand and deck for player 1 
+Test: No Smithy's in for player 0 
+Test: One Smithy in deck for player 0 
+Test: One Smithy in discard, hand and deck for player 0 
+Test: No Smithy's in for player 1 
+Test: One Smithy in deck for player 1 
+Test: One Smithy in discard, hand and deck for player 1 
+Test: No Village's in for player 0 
+Test: One Village in deck for player 0 
+Test: One Village in discard, hand and deck for player 0 
+Test: No Village's in for player 1 
+Test: One Village in deck for player 1 
+Test: One Village in discard, hand and deck for player 1 
+Test: No Baron's in for player 0 
+Test: One Baron in deck for player 0 
+Test: One Baron in discard, hand and deck for player 0 
+Test: No Baron's in for player 1 
+Test: One Baron in deck for player 1 
+Test: One Baron in discard, hand and deck for player 1 
+Test: No Great Hall's in for player 0 
+Test: One Great Hall in deck for player 0 
+Test: One Great Hall in discard, hand and deck for player 0 
+Test: No Great Hall's in for player 1 
+Test: One Great Hall in deck for player 1 
+Test: One Great Hall in discard, hand and deck for player 1 
+All tests passed!
+File 'dominion.c'
+Lines executed:38.21% of 581
+Branches executed:46.76% of 417
+Taken at least once:31.18% of 417
+Calls executed:37.25% of 102
+dominion.c:creating 'dominion.c.gcov'
+
+* * * * * * * * * * * * * * * * TESTING unittest3 isGameOver():* * * * * * * * * * * * * * * * 
+Testing with all supply gone 
+Testing with two supply gone 
+Test: remove Duchy + Curse + Estate triggers end. 
+Test: remove Province + Curse + Estate triggers end. 
+Test: remove Copper + Curse + Estate triggers end. 
+Test: remove Silver + Curse + Estate triggers end. 
+Test: remove Gold + Curse + Estate triggers end. 
+Test: remove Adventurer + Curse + Estate triggers end. 
+Test: remove Council Room + Curse + Estate triggers end. 
+Test: remove Feast + Curse + Estate triggers end. 
+Test: remove Gardens + Curse + Estate triggers end. 
+Test: remove Mine + Curse + Estate triggers end. 
+Test: remove Remodel + Curse + Estate triggers end. 
+Test: remove Smithy + Curse + Estate triggers end. 
+Test: remove Village + Curse + Estate triggers end. 
+Test: remove Baron + Curse + Estate triggers end. 
+Test: remove Great Hall + Curse + Estate triggers end. 
+Test: remove Minion + Curse + Estate triggers end. 
+Test: remove Steward + Curse + Estate triggers end. 
+Test: remove Tribute + Curse + Estate triggers end. 
+Test: remove Ambassador + Curse + Estate triggers end. 
+Test: remove Cutpurse + Curse + Estate triggers end. 
+Test: remove Embargo + Curse + Estate triggers end. 
+Test: remove Outpost + Curse + Estate triggers end. 
+Test: remove Salvager + Curse + Estate triggers end. 
+Test: remove Sea Hag + Curse + Estate triggers end. 
+Test: remove Treasure Map + Curse + Estate triggers end. 
+All tests passed!
+File 'dominion.c'
+Lines executed:39.93% of 581
+Branches executed:48.68% of 417
+Taken at least once:33.09% of 417
+Calls executed:37.25% of 102
+dominion.c:creating 'dominion.c.gcov'
+
+* * * * * * * * * * * * * * * * Testint unittest4 scoreFor * * * * * * * * * * * * * * * * 
+Test: Empty Game 
+score after deck: 0 
+ 
+Test: one score card found in hand
+score after deck: 10 
+ 
+Test: One of each in deck 
+score after deck: 10 
+ 
+Test: One of each in discard
+score after deck: 10 
+ 
+All tests passed!
+File 'dominion.c'
+Lines executed:44.41% of 581
+Branches executed:58.75% of 417
+Taken at least once:43.41% of 417
+Calls executed:41.18% of 102
+dominion.c:creating 'dominion.c.gcov'
+

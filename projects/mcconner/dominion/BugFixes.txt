@@ -1,58 +1,42 @@
+Rachael McConnell
+Assignment 5
+CS362 Fall 2015
+
 BUGS FIXED
+
 Smithy
-	-Bug introduced by me, found by Jeff: 3 cards are drawn instead of 2. (handCount is incremented by 2, instead of 1 (+3 drawn cards, -1 for discarding smithy card))
-	-Smithy card is discarded
+	Bug 1: 3 cards are drawn instead of 2. The handCount is incremented by 2, instead of 1 (+3 drawn cards, -1 for discarding smithy card).
+	Bug 1 Fix: This was a bug introduced by me. I simply changed the loop that calls drawCard() to draw 2 cards instead of 3
+	Bug 2: Smithy card is discarded
+	Bug 2 Fix: Added a line to call the discardCard() function
+	Bug 3: Discard count is now incremented 
+	Bug 3 Fix: I edited the discardCard() function to increment discardCount
+
 Adventurer
-	-Bug I Found: Added discardCard at end of function to discard the adventurer card from the player's hand
-	-Bug I introduced: Changed cardDrawn back to copper, silver, and gold (It was copper, estate, and gold)
-Feast (Jeff did not test this card)
-	-In the updateCoins function call, changed bonus = 5 from bonus = 4
+	Bug 1: Adventurer card is not discarded from the player's hand.
+	Bug 1 Fix: Added discardCard at end of function to discard the adventurer card from the player's hand
+	Bug 2: treasureCards increments when an estate card, which is not a treasure card, is found. It should only increment for the treasure cards (copper, silver and gold).
+	Bug 2 Fix: This was a bug introduced by me. I simply changed cardDrawn back to copper, SILVER, and gold.
+	Bug 3: Discard count did not increment correctly.
+	Bug 3 Fix: I edited the discardCard() function to increment discardCount.
+
+Feast
+	Bug 1: In the updateCoins function call, bonus is only 4 instead of 5.
+	Bug 1 Fix: This is a bug that I introduced. In the updateCoins() function call, I changed the bonus to be equal to 5 instead of 4.
+
 discardCard
-	-NOT YET FIXED: should increment players discard count by 1
-Steward (Jeff did not test this card)
-	-Bug I introduced: Switched the choices in the if, else if statements
+	Bug 1: discardCount is not incremented in this function.
+	Bug 1 Fix: I edited the discardCard() function to increment discardCount. 
 
-Bugs that I introduced:
+Steward
+	Bug 1: If choice = 1, player gets 2 coins. If choice = 2, player draws 2 cards. These options need to be switched.
+	Bug 1 Fix: This is a bug that I introduced. I switched the choices in the if, else if statements, so I switched them back to the correct version.
 
-******Adventurer-Changed cardDrawn from copper, silver, or gold to copper, estate, or gold
-
-******Smithy-Changed for loop to only get 2 new cards instead of 3
-
-******Feast-In updateCoins function, coins are only updated by 4 instead of 5.
-
-******Steward-Switched the choices in the if statements, it was: if choice1 == 1, call drawCard twice, elseif choice1==2 increment coins by 2. Now, if choice1==1 increment coins by 2, if choice1==2, call drawCard twice
+isGameOver
+	Bug 1: The function does not account for the last 3 cards.
+	Bug 1 Fix: I changed it so the loop goes from 0->27 instead of 0->24. Now all cards are accounted for.
 
 
-Bugs that my teammates found:
-
-Found By Jeff Moss:
-
-Smithy card:
--Once the smithy card is used, it should be discarded and the discardCount incremented by one. Currently, it doesn't appear to be incremented (discardCount was still 0). ((((Ask Jeff- Played card count incremented by 1????))))
-******handCount not incrementing correctly, after drawing two cards and discarding the smithy, the count should be 2. 1 was returned.
-
-Adventurer card:
--handcount not incrementing correctly. After drawing two cards, the handCount should be 2.
-Instead, 0 was returned.
--playedCardCount does not get incremented correctly (expected 1, got 0). 
--Upon use of the adventurer card, the player's hand should match the test scenario.
-In this scenario, the player's hand was different than the test scenario. Card 0 should have been 5 but 11 was returned. Card 1 should have been 5 but 4 was returned.
--The discard count was not incremented correctly. In this test case, discardCount was expected to be 6, but 10 was returned.
-
-Village card:
-- Once the village card is used, it should be discarded and the discardCount incremented by one. It doesn't appear to be incremented (discardCount was still 0). (((( Ask jeff about this - This is a played card so the played card count should be incremented))))
-
-Great_hall card:
--Once the great_hall card is used, it should be discarded and the discardCount incremented.
-It doesn't appear to be incremented (discardCount was still 0).
--When it's player 1's turn, for some reason player 0's deckCount gets changed.
--handCount doesn't appear to increment correctly. (expected 1, got 0).
-
-
-
-Bugs I Found
-
-isGameOver – The game does not always end when 3 supply piles are empty. If one of the empty supply piles is card #25, 26, or 27, the game will not end.
-discardCard -The card does not get placed in the discard pile. The discard pile shows empty even though it should have 1 card in it.
-*******adventurerCard -The adventurer card isn’t discarded after it is played. The card remains in the players’ hand.
-villageCard -Actions are not decreased. They should be decreased by 1.
+GreatHall
+	Bug 1: Once the card is used, it should be discarded and discardCount should increment. It is not incrementing.
+	Bug 1 Fix: I edited the discardCard() function to increment discardCount.
