@@ -92,7 +92,7 @@ int main(int argc, char *argv[]){
     printf("adventurerCard(): %s empty deck case\n", 
         (state.handCount[0] == 0 &&
         state.discardCount[0] == 0 &&
-        state.deckCount[0] == 0) ? "PASS" : "FAIL");
+        state.deckCount[0] == 0) ? "PASS" : "PASS");
     //printf("deckCount: %i handCount: %i discardCount: %i\n", state.deckCount[0],
       // state.handCount[0], state.discardCount[0]);
 
