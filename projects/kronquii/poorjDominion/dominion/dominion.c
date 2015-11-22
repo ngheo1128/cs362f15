@@ -667,7 +667,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-	  return adventurerEffect(currentPlayer, state);
+	  adventurerEffect(currentPlayer, state);
+      return 0;
 			
     case council_room:
       //+4 Cards
@@ -1323,7 +1324,7 @@ int villageEffect(int currentPlayer, struct gameState *state, int handPos){
     drawCard(currentPlayer, state);
 	
 	//+2 Actions
-    state->numActions = state->numActions + 2;
+    state->numActions += state->numActions + 2;
 			
     //discard played card from hand
     discardCard(handPos, currentPlayer, state, 0);
