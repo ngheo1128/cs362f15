@@ -9,17 +9,45 @@ Bug Summary:
 4. draws incorrect number of cards
 5. incorrect card drawn
 
+suggested changes: 
+1. change line 14 in dominion.c: while (drawntreasure<2 && state->numActions<2)
+to:				while (drawntreasure <= 2))
+
 smithy function
 Bug Summary: 
 1. card is not discarded
 2. does not draw card
 3. smithy is not placed in played pile
 
+suggested changes: 
+1. add line to dominion.c to end of smithy function: 
+	discardCard(handPos, currentPlayer, state, 0);
+2. change lines 38 - 41 in dominion.c from: 
+	{
+		if (state->hand[currentPlayer][state->handCount[currentPlayer]] > state->coins)
+			drawCard(currentPlayer, state);
+	}
+
+	to: 
+		drawCard(currentPlayer, state); 
+
 sea_hag function
 Bug Summary: 
 1. Sea Hag was not played in played pile
 2. Sea Hag not discarded, resulting handCount errors
 3. Opponent deckCount errors, resulting in discarding wrong cards. 
+
+suggested changes: 
+1. change line 1215 in dominion.c from: 
+	state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];			    state->deckCount[i]--;
+	to: 
+	state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i] - 1];
+2. change line 1217 in dominion.c from: 
+	state->deck[i][state->deckCount[i]--] = curse;//Top card now a curse
+	to: 
+	state->deck[i][state->deckCount[i] - 1] = curse; 
+3. add line to dominon.c at the end of sea_hag case inbetween lines 1219 and 1220: 
+	discardCard(handPos, currentPlayer, state, 0);
 
 teammate 2 - wilcoant dominion.c Bug Summaries: 
 adventurer function
@@ -31,21 +59,60 @@ Bug Summary:
 - when only 1 treasure card is in deck - 
 5. draws incorrect number of cards
 
+suggested changes: 
+1. change line 784 in dominion.c from: 
+	play_adventurer(state, drawntreasure, currentPlayer, temphand, cardDrawn);
+	to: 
+	return play_adventurer(state, drawntreasure, currentPlayer, temphand, cardDrawn);
+2. change line 689 in dominion.c from: 
+	if (cardDrawn == copper || (cardDrawn == silver && cardDrawn == gold))
+	to: 
+	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+3. add line before 671 but after 670: 
+	discardCard(handPos, currentPlayer, state, 0); 
+
 smithy function
 Bug Summary: 
-1. smithy is not placed in played pile
-2. does not return correct value
+1. does not return correct value
+
+suggested changes: 
+1. change line 780 in dominion.c from: 
+	play_smithy(currentPlayer, state, handPos);
+	to: 
+	return play_smithy(currentPlayer, state, handPos);
 
 council_room function
 Bug Summary: 
 1. does not return correct value
 2. does not update numBuys appropriately 
 
+suggested changes: 
+1. change line 792 in dominion.c from: 
+    play_council(state, currentPlayer, handPos); 
+    to: 
+    return play_council(state, currentPlayer, handPos);
+2. change line 729 in dominion.c from: 
+    //state->numBuys++;
+    to: 
+    state->numBuys++;
+
 sea_hag function
 Bug Summary: 
 1. Sea Hag was not played in played pile
 2. Sea Hag not discarded, resulting handCount errors
 3. Opponent deckCount errors, resulting in discarding wrong cards. 
+
+suggested changed: 
+1. change line 1215 in dominion.c from: 
+	state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];			    state->deckCount[i]--;
+	to: 
+	state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i] - 1];
+2. change line 1217 in dominion.c from: 
+	state->deck[i][state->deckCount[i]--] = curse;//Top card now a curse
+	to: 
+	state->deck[i][state->deckCount[i] - 1] = curse; 
+3. add line to dominon.c at the end of sea_hag case inbetween lines 1219 and 1220: 
+	discardCard(handPos, currentPlayer, state, 0);
 
 Note: unittest tests on non-card functions did not find any bugs for both teammates, 
 they transcript for those tests have been ommitted 
@@ -110,7 +177,6 @@ Top Card Failures: 985/1000      Top CardPasses: 15/1000
 teammate 2 - wilcoant
 TESTING smithy_card()
 smithy_card failture to run
-smith_card does not place card in playedCard pile
 SMITHY_CARD: TESTS FOUND FAILURES
 
 TESTING adventurer_card()
