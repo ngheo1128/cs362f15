@@ -1,5 +1,6 @@
 // tests Adventurer card
 // int adventurerEffect(int player, struct gameState *state)
+
 #include <stdio.h>
 #include <stdlib.h>    // for rand and srand
 #include <time.h>      // for time
