@@ -61,6 +61,10 @@ int main(int argc, char *argv[])
     // }
 
     adventurerEffect(&testState);
+
+    // print PASS if function did not crash system
+    printf("Adventurer card: PASS\n");
+
     return 0;
 }
 

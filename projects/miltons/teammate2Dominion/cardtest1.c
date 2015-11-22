@@ -24,5 +24,8 @@ int main(int argc, char *argv[])
     // }
 
     smithyEffect(&testState, 0);
+
+    // print PASS if function did not crash system
+    printf("Smithy card: PASS\n");
     return 0;
 }
