@@ -1,6 +1,8 @@
-// tests Smithy card
-// int smithyEffect(int currentPlayer, struct gameState *state, int handPos)
-// smithyEffect() on line 1230 of dominion.c
+// tests Adventurer card
+// int adventurerEffect(int currentPlayer, int drawntreasure, int temphand[MAX_HAND], struct gameState *state, int cardDrawn, int z)
+// adventurerEffect() is on line 1207 of dominion.c
+
+// test / assert against state of game before and after adventurer is played
 
 // Test code adapted from examples in week 3 lecture "How to Write a Simple Random Tester."
 
@@ -31,27 +33,25 @@ int randInt(int min, int max);
 
 
 /*****************************************************************************
- ** Function:         testSmithyEffect()
- ** Description:      This function tests the smithyEffect() function. It
+ ** Function:         testAdventurerEffect()
+ ** Description:      This function tests the adventurerEffect() function. It
  **                   creates a copy of the game state, calls the function
  **                   passing it the game state, makes changes to the copy of
  **                   the game state based on what the function is expected to
  **                   do if it is working correctly. Then actual results to
- **                   the game state from smithyEffect() are compared to the 
- **                   expected results to see if the function is working
+ **                   the game state from adventurerEffect() are compared to
+ **                   the expected results to see if the function is working
  **                   properly.
- ** Parameters:       two int values: playerNumber, handPos
+ ** Parameters:       one int values: playerNumber
  **                   a pointer to a struct of type gameState: testState
- ** Pre-Conditions:   playerNumber and handPos are of type int with values
- **                   within valid ranges for the game. testState is a
- **                   initialized and its member variables should have valid
- **                   values, at least for the more important game parameters
- ** Post-Conditions:  The smithyEffect function has been tested. Errors 
+ ** Pre-Conditions:   variables are initialized with values in valid ranges
+ **                   within valid ranges for the game.
+ ** Post-Conditions:  The adventurerEffect function has been tested. Errors
  **                   and discrepancies between the actual results and expected
  **                   results have been output to the console.
  **
  *****************************************************************************/
-int testSmithyEffect(int playerNumber, struct gameState *testState, int handPos);
+int testAdventurerEffect(int playerNumber, struct gameState *post);
 
 
 
@@ -62,7 +62,6 @@ int main(int argc, char *argv[])
     int i;
     int j;
     int playerNumber;
-    int handPos;
     int retVal;
     int seed = 1; // better to make this random too?
     time_t sysClock;
@@ -73,8 +72,8 @@ int main(int argc, char *argv[])
     // seed the rand() function with system clock to avoid getting same rand #s
     srand((unsigned) time(&sysClock));
 
-    // each iteration of this outer loop runs a test against smithyEffect()
-    for (i = 1; i <= NUM_TESTS; i++)
+    // each iteration of this outer loop runs a test against adventurerEffect()
+    for (i = 0; i < NUM_TESTS; i++)
     {
         // this loop populates every Byte of the game state with random values
         for (j = 0; j < sizeof(struct gameState); j++)
@@ -95,22 +94,13 @@ int main(int argc, char *argv[])
         // random number of cards in current player's hand
         testState.handCount[playerNumber] = randInt(0, MAX_HAND);
 
-        // prevent negative values for array indices
-        if (testState.handCount[playerNumber] == 0)
-            handPos = 0;
-        else
-            handPos = testState.handCount[playerNumber] - 1;
-
-        // random value for position in hand of card to discard
-        handPos = randInt(0, handPos);
-
-        // call test oracle function and pass it these parameters
-        retVal = testSmithyEffect(playerNumber, &testState, handPos);
+        // call test oracle function and pass it parameters
+        int retVal = testAdventurerEffect(playerNumber, &testState);
 
         // check return value for failure / crash
         if (retVal < 0)
         {
-            printf("Test #%d Smithy card: FAIL\n", i);
+            printf("Test #%d Adventurer card: FAIL\n", i);
         }
     }
 
@@ -121,57 +111,61 @@ int main(int argc, char *argv[])
 
 
 
-int testSmithyEffect(int playerNumber, struct gameState *post, int handPos)
+int testAdventurerEffect(int playerNumber, struct gameState *post)
 {
 
-    int retVal;
+// hand should have 2 more cards in post than in pre AND
+// discard pile will have same or more cards in post than in pre
+// in case where deck doesn't run out of cards before 2 cards are
+// drawn
+
+// OR
+
+// hand will have 0 or 1 more cards in post than in pre AND
+// either deck and discard pile will be empty
+
+    int retVal = 0;
     int cardsAvailable;
+    int drawnTreasure = 0;
+    int tempHand[MAX_HAND];
+    int cardDrawn = 0; 
+    int z = 0;
 
     // create duplicate of game state for before and after comparison
     struct gameState pre;
     memcpy (&pre, post, sizeof(struct gameState));
 
-    // call smithyEffect function
-    retVal = smithyEffect(playerNumber, handPos, post);
+    // call adventurerEffect function
+    retVal = adventurerEffect(playerNumber, drawnTreasure, tempHand, post, cardDrawn, z);
 
-    // make changes to pre based on what smithyEffect should do
+    // make changes to pre based on what adventurerEffect should do
 
-    // hand should have 3 more cards in post than in pre
-    // but what happens if no cards are in discard pile or deck?
-
-    // determine how many cards are left between deck and discard pile 
+    // determine how many cards are left between deck and discard pile
     cardsAvailable = pre.deckCount[playerNumber] + pre.discardCount[playerNumber];
 
-    // add two cards to hand or as many as are available if less than 3
-    // because 3 cards are added to hand and the Smithy card is discarded
-    // a net gain of 2 cards
-    if (cardsAvailable >= 3)
+    // add 2 cards to hand or as many as are available if less than 2
+    if (cardsAvailable >= 2)
         pre.handCount[playerNumber] = pre.handCount[playerNumber] + 2;
-    else if (cardsAvailable >= 1)// 1 or 2 cards
-        pre.handCount[playerNumber] = pre.handCount[playerNumber] + cardsAvailable - 1;
-    // else do nothing for 0 cards available
+    else // 0 cards or 1 card
+        pre.handCount[playerNumber] = pre.handCount[playerNumber] + cardsAvailable;
 
-    // discard pile will either have 1 more card in post than in pre
-    // or will have 1 card (in case of empty deck during draw)
-
-
-    // make sure smithyEffect did not crash
+    // make sure adventurerEffect did not crash
     if (retVal < 0)
     {
-        printf("smithyEffect returned a nonzero value\n");
+        printf("adventurerEffect returned a nonzero value\n");
     }
     else
     {
         // compare actual result to expected result (post to pre)
-        // to make sure smithyEffect is working properly
+        // to make sure adventurerEffect is working properly
         if (pre.handCount[playerNumber] != post->handCount[playerNumber])
         {
-            printf("smithyEffect did not add the expected number of cards to the player's hand.\n");
+            printf("adventurerEffect did not add the expected number of cards to the player's hand.\n");
             retVal = -1;
         }
     }
 
-    // returns zero if smithyEffect did not crash
+    // returns zero if adventurerEffect did not crash
     return retVal;
 }
 

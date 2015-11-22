@@ -5,6 +5,7 @@ smithyEffect
 adventurerEffect
 feastEffect
 councilRoomEffect
+
 mineEffect
 
 -------------
