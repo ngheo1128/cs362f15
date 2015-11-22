@@ -1,98 +1,135 @@
-/*************************************************
-* Name: Solomon Huynh
-* Class: CS362 Software Engineering 2
-* Term: Fall 2015
-* File: randomtestadventurer.c
-* Description: Random testing on the adventurerCard function.
-**************************************************/
+/*****************************************************
+Author: Larissa Hahn
+randomtestadventurer.c - Adventurer Card Random Test
 
+NOTE: Compile with "make" command, but there IS a wait
+time maybe 5-7 minutes or so due to the bugs in the files
+which cause the tests to run slow. But they will
+eventually complete with a great test report.
+
+UPDATE: I will adjust the number here to make it take
+less time to run per Piazza post.
+
+******************************************************/
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
+#include <stdio.h>
+#include <string.h>
 #include "rngs.h"
+#include <assert.h>
+#include <stdbool.h>
 #include <time.h>
+#define NOISY_TEST 0
 
-#define DEBUG 0
-#define NOISY_TEST 1
+int main (int argc, char** argv) {
+  //Initialize variables
+  srand(time(NULL));
+  struct gameState g;
+  int newGame;
+  int drawntreasure = 0;
+  int temphand[MAX_HAND];
+  int z = 0;
+  int cardDrawn = 0;
+  int currentPlayer = 0;
+  int i = 0;
+  int j = 0;
+  bool failure = false;
+  int totalFailures = 0;
+  int discardErrors = 0;
+  int drawErrors = 0;
+  int treasureCount = 0;
+  int treasureErrors = 0;
 
-int main(){
-    srand(time(NULL));
-    struct gameState G;
-    int seed = 1000;
-    int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
-           sea_hag, tribute, smithy};
+  int k[10] = {
+    smithy,
+    adventurer,
+    village,
+    great_hall,
+    council_room,
+    gardens,
+    feast,
+    mine,
+    embargo,
+    tribute
+  };
 
-    printf("Testing adventurerCard function:\n");
-    int i, j;
-    int randomNumber;
-    int numCopper = 0;
-    int numSilver = 0;
-    int numGold = 0;
-    //Loops through all four players for testing purposes
-    for(i = 0; i < 20; i++){
-        printf("\nTest number %d\n", i + 1);
-        //Initialize game with 4 players
-        initializeGame(2, k, seed, &G);
-        G.whoseTurn = 0;
+  //Tests begin
+  printf("\n\n--------------------------------------\nrandomtestadventurer.c -- Tests Begin\n--------------------------------------\n\n");
+  for (i = 0; i < 2; i++) {  //Reduced number due to bugs causing long wait times
+    //Initialize game with Adventurer Card
+    memset(&g, 23, sizeof(struct gameState));
+    newGame = initializeGame(2, k, 1000, &g);
+    assert(newGame == 0);
+    g.whoseTurn = currentPlayer;
+    g.handCount[0] = 1;
+    g.hand[0][0] = adventurer;
 
-        //Put the adventurer card in the player's hands
-        G.hand[0][0] = adventurer;
-        G.handCount[0] = 1;
+    //Initialize deck
+    int randomCard = rand()%27+1;
+    for (j = 0; j < 50; j++) {
+      g.deck[0][j] = randomCard;
+    }
+    g.deckCount[0] = 50;
 
-        //Randomly generate cards in the deck
-        for(j = 0; j < 50; j++){
-            randomNumber = rand() % 50;
-            if(randomNumber >= 27 && randomNumber < 35)
-                G.deck[0][j] = 4;
-            else if(randomNumber >=35 && randomNumber < 42)
-                G.deck[0][j] = 5;
-            else if(randomNumber >=42 && randomNumber < 50)
-                G.deck[0][j] = 6;
-            else
-                G.deck[0][j] = randomNumber;
-        }
-        G.deckCount[0] = 50;
+    //Adventure card gets played now
+    adventurerCard(drawntreasure, &g, currentPlayer, cardDrawn, temphand, z);
 
-        printf("Playing adventurer card...\n");
-
-        //Run adventurer card
-        adventurerCard(&G);
-
-        //Confirm if adventurer card is removed from the hand
-        if(G.hand[0][0] != adventurer)
-            printf("Confirmed removal of adventurer card: PASS\n");
-        else
-            printf("Confirmed removal of adventurer card: FAIL\n");
-
-        //Check if the total cards in hand is 2
-        if(G.handCount[0] == 2)
-            printf("Confirmed total cards on hand is 2: %d - PASS\n", G.handCount[i]);
-        else
-            printf("Confirmed total cards on hand is 2: %d - FAIL\n", G.handCount[i]);
-
-        //Increases the count of each coin type chosen
-        for(j = 0; j < 2; j++){
-            if(G.hand[0][j] == copper)
-                numCopper++;
-            if(G.hand[0][j] == silver)
-                numSilver++;
-            if(G.hand[0][j] == gold)
-                numGold++;
-        }
-
-        printf("Position 1 is: %d\n", G.hand[0][0]);
-        printf("Position 2 is: %d\n", G.hand[0][1]);
-        printf("Position 3 is: %d\n", G.hand[0][2]);
+    //TEST 1 - Check for proper discard
+    if (g.hand[0][0] == adventurer) {
+      printf("-- FAIL: Adventurer card not discarded.\n");
+      failure = true;
+      discardErrors++;
     }
 
-    printf("\nNumber of bronze coins selected from test: %d\n", numCopper);
-    printf("Number of silver coins selected from test: %d\n", numSilver);
-    printf("Number of gold coins selected from test: %d\n", numGold);
-    printf("\nTesting complete...\n\n");
+    //TEST 2 - Check for proper draw card
+    if (g.handCount[0] > 2) {
+      printf("-- FAIL: Too MANY cards drawn.\n---- Target: 2 cards. Actual: %d cards.\n", g.handCount[0]);
+      failure = true;
+      drawErrors++;
+    } else if (g.handCount[0] < 2) {
+      printf("-- FAIL: Too FEW cards drawn.\n---- Target: 2 cards. Actual: %d cards.\n", g.handCount[0]);
+      failure = true;
+      drawErrors++;
+    }
 
-    return 0;
+    //TEST 3 - Check for proper treasure cards
+    for (j = 0; j < g.handCount[0]; j++) {
+      if (g.hand[0][j] == gold || g.hand[0][j] == silver || g.hand[0][j] == copper) {
+        treasureCount++;
+      }
+    }
+    if (treasureCount > 2) {
+      printf("-- FAIL: Too MANY treasure cards.\n---- Target: 2 cards. Actual: %d cards.\n", treasureCount);
+      failure = true;
+      treasureErrors++;
+    } else if (treasureCount < 2) {
+      printf("-- FAIL: Too FEW treasure cards.\n---- Target: 2 cards. Actual: %d cards.\n", treasureCount);
+      failure = true;
+      treasureErrors++;
+    }
 
+    if (failure == true) {
+      printf("^^^^^^^ Test Number %d out of 2 ^^^^^^^\n\n", i+1);
+      totalFailures++;
+    }
+  }
+
+  if (failure == true) {
+    //FAILURE STATUS REPORT - Random Testing for Adventurer Card:
+    printf("\n****************************************\n");
+    printf("  ---- TEST FAILURE STATUS REPORT ----\n");
+    printf("  ----       Adventurer Card      ----\n");
+    printf("****************************************\n");
+    printf("Total Test Failures:      %d/2\n", totalFailures);
+    printf("Discard Card Errors:      %d\n", discardErrors);
+    printf("Draw Card Errors:         %d\n", drawErrors);
+    printf("Treasure Card Errors:     %d\n", treasureErrors);
+    printf("****************************************\n\n");
+  }
+  else {
+    printf("\nALL TESTS PASS.\n");
+  }
+
+  return 0;
 }
