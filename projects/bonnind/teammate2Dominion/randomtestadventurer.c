@@ -3,8 +3,8 @@
  * bonnind@oregonstate.edu
  * randomtestadventurer.c
  *
- * This file contains a random tester unit test of adventurerCard() as part of 
- * the requirements for assignment 4.
+ * This file contains a random tester unit test of a teammate's adventurer 
+ * card function as part of the requirements for assignment 5.
  *
  * This tester randomly generates: 
  * deckCount:   0 - MAX_DECK
@@ -56,7 +56,7 @@ int printDetails(struct gameState *state, int curPlayer) {
     return 0;
 }
 
-int oracleAdventurerCard(struct gameState *state, int player, int handPos) {
+int oracleAdventurerCard(struct gameState *state, int player) {
     int i, treasureCount = 0, curCard;
 
     /* Traverse deck from right to left */
@@ -75,7 +75,6 @@ int oracleAdventurerCard(struct gameState *state, int player, int handPos) {
         }
         state->deckCount[player]--;
 
-        discardCard(handPos, player, state, 0);
         if (treasureCount == 2)
             break;
     }
@@ -165,10 +164,14 @@ int oracleVerified(struct gameState *state1, struct gameState *state2, int playe
 }
 
 int main(int argc, char *argv[]) {
-    int i, j, k, seed, deckCount, handCount, cardType, numPlayers, curPlayer;
+    int i, j, k, l, seed, deckCount, handCount, cardType, numPlayers, curPlayer;
     int handPos = 0;
     struct gameState comparisonState; //control
     struct gameState testState;  // adventurerCard() test
+    int tempHand[MAX_HAND];
+    for (l = 0; l < MAX_HAND; l++) {
+        tempHand[l] = 0;
+    }    
     /* generate random values */
     seed = time(NULL);
     srand(seed);
@@ -213,8 +216,15 @@ int main(int argc, char *argv[]) {
         /* comparison and test states must be identical */
         assert(memcmp(&testState, &comparisonState, sizeof(struct gameState)) == 0);
 
-        oracleAdventurerCard(&comparisonState, curPlayer, handPos);
-        adventurerCard(&testState, curPlayer, handPos);
+        oracleAdventurerCard(&comparisonState, curPlayer);
+
+        //reset tempHand
+        for (l = 0; l < MAX_HAND; l++) {
+            tempHand[l] = 0;
+        }  
+        
+        //int drawntreas, *state, curPlayer, temphand[], int z, int cardDrawn
+        adventureCard(0, &testState, curPlayer, tempHand, 0, 0);
 
         if (!oracleVerified(&testState, &comparisonState, curPlayer)) {
             printf("Seed: %i, Iteration: %i, numPlayers: %i, curPlayer: %i\n", 

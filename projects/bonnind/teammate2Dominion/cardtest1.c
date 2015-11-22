@@ -7,7 +7,12 @@
 #include "dominion_helpers.h"
 
 int main(int argc, char *argv[]){
-    int i = 0;
+    int i;
+    int tempHand[MAX_HAND];
+    for (i = 0; i < MAX_HAND; i++) {
+        tempHand[i] = 0;
+    }
+
     PutSeed(-1);
     printf("cardtest1.c\n");
     struct gameState state;
@@ -28,16 +33,17 @@ int main(int argc, char *argv[]){
 
     state.deckCount[0] = 4;
     state.discardCount[0] = 0;
-    state.handCount[0] = 1;
-    state.hand[0][0] = adventurer; 
+    state.handCount[0] = 0;
 
-    adventurerCard(&state, 0, 0);
+    //int drawntreas, *state, curPlayer, temphand[], int z, int cardDrawn
+    adventureCard(0, &state, 0, tempHand, 0, 0);
 
     printf("adventurerCard(): %s empty hand case\n", 
         (state.handCount[0] == 2 &&
         state.discardCount[0] == 2 &&
         state.deckCount[0] == 0) ? "PASS" : "FAIL");
-    
+    printf("deckCount: %i handCount: %i discardCount: %i\n", state.deckCount[0],
+        state.handCount[0], state.discardCount[0]);
     /* clear game state */
     memset(&state, 0, sizeof(struct gameState));
     
@@ -48,10 +54,9 @@ int main(int argc, char *argv[]){
 
     state.deckCount[0] = 4;
     state.discardCount[0] = 0;
-    state.handCount[0] = 1;
-    state.hand[0][0] = adventurer; 
+    state.handCount[0] = 0;
 
-    adventurerCard(&state, 0, 0);
+    adventureCard(0, &state, 0, tempHand, 0, 0);
     
     printf("adventurerCard(): %s not enough Treasure case\n", 
         (state.handCount[0] == 1 &&
@@ -67,10 +72,9 @@ int main(int argc, char *argv[]){
 
     state.deckCount[0] = MAX_DECK;
     state.discardCount[0] = 0;
-    state.handCount[0] = 1;
-    state.hand[0][0] = adventurer; 
+    state.handCount[0] = 0;
 
-    adventurerCard(&state, 0, 0);
+    adventureCard(0, &state, 0, tempHand, 0, 0);
 
     printf("adventurerCard(): %s full deck case\n", 
         (state.handCount[0] == 2 &&
@@ -87,18 +91,17 @@ int main(int argc, char *argv[]){
 
     state.deckCount[0] = 0;
     state.discardCount[0] = 0;
-    state.handCount[0] = 1;
-    state.hand[0][0] = adventurer; 
+    state.handCount[0] = 0;
     state.playedCardCount = 4;
 
-    adventurerCard(&state, 0, 0);
-        // printf("deckCount: %i handCount: %i discardCount: %i\n", state.deckCount[0],
-        // state.handCount[0], state.discardCount[0]);
+    adventureCard(0, &state, 0, tempHand, 0, 0);
+    
     printf("adventurerCard(): %s empty deck case\n", 
         (state.handCount[0] == 2 &&
-        (state.discardCount[0] +
-        state.deckCount[0]) == 2) ? "PASS" : "FAIL");
-
+        state.discardCount[0] == 2 &&
+        state.deckCount[0] == 0) ? "PASS" : "FAIL");
+    printf("deckCount: %i handCount: %i discardCount: %i\n", state.deckCount[0],
+        state.handCount[0], state.discardCount[0]);
 
     /* clear verified changes made by adventurerCard() */
     memset(&state.handCount[0], 0, sizeof(int));

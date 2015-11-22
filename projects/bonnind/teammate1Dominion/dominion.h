@@ -128,18 +128,19 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
 
-int adventurerCard(struct gameState *state, int currentPlayer, int handPos);
-/* Play Adventurer card. (draw until 2 treasure cards revealed.)*/
+int adventurerCard (int drawntreasure, struct gameState* state, int currentPlayer, int cardDrawn, int temphand[], int z);
+/* Play adventurer card and update game with card effects */
 
-int smithyCard(struct gameState *state, int currentPlayer, int handPos);
-/*Play Smithy card. (draw 3 cards)*/
+int smithyCard(int currentPlayer, struct gameState* state, int handPos);
+/* Play smithy card and update game with card effects */
 
-int villageCard(struct gameState *state, int currentPlayer, int handPos);
-/*Play Village card. (draw 1 card, +2 action)*/
+int villageCard(int currentPlayer, struct gameState* state, int handPos);
+/* Play village card and update game with card effects */
 
-int greatHallCard(struct gameState *state, int currentPlayer, int handPos);
-/*Play Great Hall card. (+1 card, +1 action)*/
+int great_hallCard(int currentPlayer, struct gameState* state, int handPos);
+/* Play Great Hall card and update game with card effects */
 
-int cutpurseCard(struct gameState *state, int currentPlayer, int handPos);
-/*Play Cutpurse card. (each other player discards a copper)*/
+int outpostCard(struct gameState* state, int hanPos, int currentPlayer);
+/* Play Outpost card and update game with card effects */
+
 #endif

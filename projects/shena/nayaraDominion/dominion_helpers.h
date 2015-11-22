@@ -3,12 +3,6 @@
 
 #include "dominion.h"
 
-/**
- * draw top card from deck or recycle discard pile back into deck
- * @param  player current player
- * @param  state  gamestate
- * @return        enum of card type drawn or -1 on empty deck/discard
- */
 int drawCard(int player, struct gameState *state);
 int updateCoins(int player, struct gameState *state, int bonus);
 int discardCard(int handPos, int currentPlayer, struct gameState *state, 
