@@ -1,0 +1,144 @@
+Result for running unit and card tests:
+unittest1.c:
+TESTING isGameOver():
+isGameOver(): PASS when game is initialized
+isGameOver(): PASS when province pile is empty
+isGameOver(): PASS when province pile is set to 1
+isGameOver(): PASS when gardens pile is empty
+isGameOver(): PASS when gardens and copper piles are empty
+isGameOver(): FAIL when gardens, copper, and treasure_map piles are empty
+isGameOver(): PASS when sea_hag pile is empty
+isGameOver(): PASS when sea_hag and silver piles are empty
+isGameOver(): FAIL when sea_hag, silver, and gold piles are empty
+isGameOver(): PASS when curse pile is empty
+isGameOver(): PASS when curse and estate piles are empty
+isGameOver(): PASS when curse, estate, and duchy piles are empty
+File 'dominion.c'
+Lines executed:17.33% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+unittest2.c:
+TESTING fullDeckCount():
+fullDeckCount(): PASS player 0, initial hand/discard/deck mix, copper 
+fullDeckCount(): PASS player 1, initial hand/discard/deck mix, copper 
+fullDeckCount(): PASS player 0, initial hand/discard/deck mix, curse 
+fullDeckCount(): PASS player 1, initial hand/discard/deck mix, sea_hag 
+fullDeckCount(): PASS player 0, player 0 played hand mix, copper 
+fullDeckCount(): PASS player 1, player 0 played hand mix, copper 
+fullDeckCount(): PASS player 0, player 0 draw hand mix, copper 
+fullDeckCount(): PASS player 1, player 0 draw hand mix, copper 
+fullDeckCount(): PASS player 0, player 0 everything empty, copper 
+File 'dominion.c'
+Lines executed:18.89% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+unittest3.c:
+TESTING scoreFor():
+scoreFor(): FAIL player 0, initial hand/discard/deck mix, expected 11, got 9 
+scoreFor(): FAIL player 1, initial hand/discard/deck mix, expected 2, got 0 
+scoreFor(): FAIL player 0, player 0 played hand mix, expected 11, got 6 
+scoreFor(): FAIL player 1, player 0 played hand mix, expected 2, got 0 
+scoreFor(): FAIL player 0, player 0 draw hand mix, expected 11, got -1 
+scoreFor(): PASS player 0, player 0 everything empty, expected 0, got 0 
+scoreFor(): PASS player 0, player 0 just curse in hand, expected -1, got -1 
+scoreFor(): PASS player 0, player 0 just estate in hand, expected 1, got 1 
+scoreFor(): PASS player 0, player 0 just duchy in hand, expected 3, got 3 
+scoreFor(): PASS player 0, player 0 just province in hand, expected 6, got 6 
+scoreFor(): PASS player 0, player 0 just great_hall in hand, expected 1, got 1 
+scoreFor(): PASS player 0, player 0 just garden in hand, expected 0, got 0 
+scoreFor(): FAIL player 0, player 0 just curse in discard, expected -1, got -2 
+scoreFor(): FAIL player 0, player 0 just estate in discard, expected 1, got 0 
+scoreFor(): FAIL player 0, player 0 just duchy in discard, expected 3, got 2 
+scoreFor(): FAIL player 0, player 0 just province in discard, expected 6, got 5 
+scoreFor(): FAIL player 0, player 0 just great_hall in discard, expected 1, got 0 
+scoreFor(): FAIL player 0, player 0 just garden in discard, expected 0, got -1 
+scoreFor(): FAIL player 0, player 0 just curse in deck, expected -1, got 0 
+scoreFor(): FAIL player 0, player 0 just estate in deck, expected 1, got 0 
+scoreFor(): FAIL player 0, player 0 just duchy in deck, expected 3, got 0 
+scoreFor(): FAIL player 0, player 0 just province in deck, expected 6, got 0 
+scoreFor(): FAIL player 0, player 0 just great_hall in deck, expected 1, got 0 
+scoreFor(): PASS player 0, player 0 just garden in deck, expected 0, got 0 
+File 'dominion.c'
+Lines executed:23.05% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+unittest4.c:
+TESTING shuffle():
+shuffle(): PASS player 1, function returned unsuccessfully on empty deck 
+shuffle(): PASS player 0, function returned successfully on initial hand/discard/deck mix 
+shuffle(): PASS player 0, deck count stayed the same 
+shuffle(): PASS player 0, 7 cards changed position in deck 
+shuffle(): PASS player 0, hand count stayed the same 
+shuffle(): PASS player 0, discard count stayed the same 
+shuffle(): PASS player 1, deck count stayed the same 
+shuffle(): PASS player 1, hand count stayed the same 
+shuffle(): PASS player 1, discard count stayed the same 
+shuffle(): PASS player 0, cards in hand remained same after shuffle 
+shuffle(): PASS player 0, cards in discard remained same after shuffle 
+shuffle(): PASS player 1, cards in deck remained same after shuffle 
+shuffle(): PASS player 1, cards in hand remained same after shuffle 
+shuffle(): PASS player 1, cards in discard remained same after shuffle 
+File 'dominion.c'
+Lines executed:23.40% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest1.c:
+TESTING cardEffect(smithy):
+cardEffect(smithy): PASS player 0, function returned successfully 
+cardEffect(smithy): FAIL player 0, handCount correct after discard/draw 
+cardEffect(smithy): FAIL player 0, discardCount correct after discard 
+cardEffect(smithy): FAIL player 0, deckCount correct after draw 
+cardEffect(smithy): PASS player 1, handCount unaffected after p0 discard/draw 
+cardEffect(smithy): PASS player 1, discardCount unaffected after p0 discard 
+cardEffect(smithy): PASS player 1, deckCount unaffected after p0 draw 
+File 'dominion.c'
+Lines executed:28.08% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest2.c:
+TESTING cardEffect(adventurer):
+cardEffect(adventurer): PASS player 0, function returned successfully 
+cardEffect(adventurer): FAIL player 0, handCount correct after discard/draw 
+cardEffect(adventurer): FAIL player 0, discardCount correct after discard 
+cardEffect(adventurer): FAIL player 0, deckCount correct after draw 
+cardEffect(adventurer): PASS player 1, handCount unaffected after p0 discard/draw 
+cardEffect(adventurer): PASS player 1, discardCount unaffected after p0 discard 
+cardEffect(adventurer): PASS player 1, deckCount unaffected after p0 draw 
+cardEffect(adventurer): PASS player 1 empty deck, function returned successfully 
+cardEffect(adventurer): FAIL player 1 empty deck, handCount correct after discard/draw 
+cardEffect(adventurer): PASS player 1 empty deck, discardCount + deckCount = 2 
+cardEffect(adventurer): PASS player 0, handCount unaffected after p1 discard/draw 
+cardEffect(adventurer): PASS player 0, discardCount unaffected after p1 discard 
+cardEffect(adventurer): PASS player 0, deckCount unaffected after p1 draw 
+File 'dominion.c'
+Lines executed:33.97% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest3.c:
+TESTING cardEffect(village):
+cardEffect(village): PASS player 0, function returned successfully 
+cardEffect(village): PASS player 0, handCount correct after discard/draw 
+cardEffect(village): FAIL player 0, discardCount correct after discard 
+cardEffect(village): PASS player 0, deckCount correct after draw 
+cardEffect(village): FAIL player 0, numActions correct after draw 
+cardEffect(village): PASS player 1, handCount unaffected after p0 discard/draw 
+cardEffect(village): PASS player 1, discardCount unaffected after p0 discard 
+cardEffect(village): PASS player 1, deckCount unaffected after p0 draw 
+File 'dominion.c'
+Lines executed:35.01% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest4.c:
+TESTING cardEffect(great_hall):
+cardEffect(great_hall): PASS player 0, function returned successfully 
+cardEffect(great_hall): PASS player 0, handCount correct after discard/draw 
+cardEffect(great_hall): FAIL player 0, discardCount correct after discard 
+cardEffect(great_hall): PASS player 0, deckCount correct after draw 
+cardEffect(great_hall): PASS player 0, numActions correct after draw 
+cardEffect(great_hall): PASS player 1, handCount unaffected after p0 discard/draw 
+cardEffect(great_hall): PASS player 1, discardCount unaffected after p0 discard 
+cardEffect(great_hall): PASS player 1, deckCount unaffected after p0 draw 
+File 'dominion.c'
+Lines executed:35.70% of 577
+dominion.c:creating 'dominion.c.gcov'
+

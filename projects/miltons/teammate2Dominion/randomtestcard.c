@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
         handPos = randInt(0, handPos);
 
         // call test oracle function and pass it these parameters
-        int retVal = testSmithyEffect(playerNumber, &testState, handPos);
+        retVal = testSmithyEffect(playerNumber, &testState, handPos);
 
         // check return value for failure / crash
         if (retVal < 0)
@@ -146,11 +146,14 @@ int testSmithyEffect(int playerNumber, struct gameState *post, int handPos)
     // determine how many cards are left between deck and discard pile 
     cardsAvailable = pre.deckCount[playerNumber] + pre.discardCount[playerNumber];
 
-    // add three cards to hand or as many as are available if less than 3
-    if (cardsAvailable >= 3) 
-        pre.handCount[playerNumber] = pre.handCount[playerNumber] + 3;
-    else // 0, 1, or 2 cards
-        pre.handCount[playerNumber] = pre.handCount[playerNumber] + cardsAvailable;
+    // add two cards to hand or as many as are available if less than 3
+    // because 3 cards are added to hand and the Smithy card is discarded
+    // a net gain of 2 cards
+    if (cardsAvailable >= 3)
+        pre.handCount[playerNumber] = pre.handCount[playerNumber] + 2;
+    else if (cardsAvailable >= 1)// 1 or 2 cards
+        pre.handCount[playerNumber] = pre.handCount[playerNumber] + cardsAvailable - 1;
+    // else do nothing for 0 cards available
 
     // discard pile will either have 1 more card in post than in pre
     // or will have 1 card (in case of empty deck during draw)

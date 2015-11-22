@@ -53,7 +53,7 @@ void smithyTest()
 	if(G.deckCount[player] == 2){
 		printf ("PASS - Player 1: 2 cards in deck\n");
 	} else {
-		printf ("FAIL - Player 1: %d cards in deck\n", G.handCount[player]);
+		printf ("FAIL - Player 1: %d cards in deck\n", G.deckCount[player]);
 	}
 	
 	if (G.discardCount[player] > 0){
