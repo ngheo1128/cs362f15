@@ -1,9 +1,9 @@
 /*****************
  * Author:  Brian Stamm
  * Title:  randomtestadventurer.c
- * Assignment:  4
+ * Assignment:  5
  * Date:  11.8.15
- * Notes:  Random tests for the Adventurer card, adventurerMethod().
+ * Notes:  Random tests for the Adventurer card, adventurerMethod() -Jody.
  * ****************/
 
 #include "dominion.h"
@@ -109,9 +109,9 @@ void test(){
   int r = rand();
 
   //ADDED for WISAM tests
-  int drawnTreasure = 0;
+  /*int drawnTreasure = 0;
   int z = 0;
-  int cD = 0;
+  int cD = 0;*/
 
   //Initial check
   if(setHand(game, copper, r, 1)){
@@ -140,9 +140,9 @@ void test(){
       totalError++;
     }
     //ADDED for WISAM tests
-    drawnTreasure = 0;
+    /*drawnTreasure = 0;
     z = 0;
-    cD = 0;
+    cD = 0;*/
     counter++;
   }
 

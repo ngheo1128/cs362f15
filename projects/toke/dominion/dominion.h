@@ -131,7 +131,7 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 void executeSmithyCard(int currentPlayer, struct gameState *state, int handPos);
 /* Run the actions associated with the smithy card */
 
-void executeAdventurerCard(int drawntreasure, struct gameState *state, int currentPlayer);
+void executeAdventurerCard(int handPos, struct gameState *state, int currentPlayer);
 /* Run the actions associated with the adventurer card */
 
 void executeVillageCard(struct gameState *state, int currentPlayer, int handPos);

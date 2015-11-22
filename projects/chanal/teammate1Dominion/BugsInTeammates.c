@@ -12,6 +12,11 @@ My cardtest1 (tests smithy) test results:
 		-Test passed where the player received +3 cards after playing smithy
 		-Test passed where smithy is discarded from the player's hand
 
+	**After notifying my teammate, he reuploaded his original dominion.c file that contained the bug in smithy. The test results after running the code were:
+		-Test passed, card is present in player 0's hand
+		-Test failed, player 0's hand did not receive +3 cards
+		-Test passed, smithy is dicarded from player 0's hand after use
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 My cardtest2 (tests adventurer) test results:
@@ -23,6 +28,7 @@ My cardtest2 (tests adventurer) test results:
 	the refactor.c, however, my cardtest2 was able to pick up this bug. 
 		-Test failed where adventurer is still in player's hand after playing
 		-Test failed for not having the correct number of treasure cards
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 My cardtest3 (tests council_room) test results:
@@ -39,9 +45,18 @@ My cardtest3 (tests council_room) test results:
 		-Test passed for player drawing correct number of cards
 		-Test passed for correct incrementation of numBuys (+1)
 		-Test passed for council room for being in the played pile
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-********No other card tests can be ran on my teammate's code since I did not do an Embargo or Steward card test.*******
+My cardtest4 (tests salvager) test results:
+	Salvager was not a card my teammate refactored and I called cardeffect to invoke playing salager. The test results for salvager were:
+		-Test passed, card is not present in player 0's hand after playing salvager
+		-Test passed, player 0 has +1 numBuys
+		-Testing passed, 4 cards left in player 0's hand
+		-Test failed, current coins is 4.
+	Although there was one failed test, I believe that my cardtest is not properly testing the card as the results of current coins varies after
+	each run even when I originally tested on my own dominion.
+	
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 My randomtestAdventurer (tests adventurer) test results:
@@ -52,8 +67,18 @@ My randomtestAdventurer (tests adventurer) test results:
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 My randomtestcard (tests smithy) test results:
-	My test had split results where 17340 of 28936 tests, the incorrect amount of cards were drawn after smithy and 17340 of 28936 tests, smithy
-	was not discarded from the hand after play. As there was not buggy code introduced into dominion.c for playSmithy, the tests should all have passed,
-	however, with random tests, bugs may have been found due to the randomly generated values besides the player's hand containing smithy. 
-		-Test failed for incorrect number of cards drawn 17430 of 28936 tests
-		-Test failed for smithy not discarded from hand 17430 of 28936 tests
+	My test had split results from 25332 tests, the incorrect amount of cards were drawn after smithy and 25332 of 25332 tests, smithy
+	was not discarded from the hand after play 16940 of 25332 tests. As there was not buggy code introduced into dominion.c for playSmithy, the tests should all have passed,
+	however, with random tests, the randomly generated values besides the player's hand containing smithy may have created test scenarios where discarding was not possible. 
+		-Test failed for incorrect number of cards drawn 25332 of 25332 tests
+		-Test failed for smithy not discarded from hand 16940 of 25332 tests
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+My unittest1 passed for update coins method for all my scenarios. 
+My unittest2 passed for gameIsOver function for all my scenarios.
+My unittest3 passed for shuffle function for all my scenarios.
+My unittest4 passed for drawCard function. The test results were:
+	-All Tests passed for draw card with non-empty deck
+	-All tests passed for draw card with empty deck and non-empty discard pile
+	-Some tets failed in draw card for an empty deck and empty discard pile (this was just a boundary test that I originally implmented and doesn't necessarily provide useful information)

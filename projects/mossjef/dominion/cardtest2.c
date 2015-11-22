@@ -61,11 +61,11 @@ void testuseAdventurer () {
 	G.deckCount[1] = 0;
 	
 	for (j = 0; j < 5; j++) {
-		G.deck[player][j] = mine;
+		G.deck[player][j] = silver;
 		G.deckCount[player]++;	
 	}
 	for (j = 5; j < 10; j++) {
-		G.deck[player][j] = silver;
+		G.deck[player][j] = mine;
 		G.deckCount[player]++; 
 	}
 
@@ -91,15 +91,18 @@ void testuseAdventurer () {
 
 	for(j = 0; j < 5; j++) {
 		//Give player 0 5 cards coppers only
-		G.hand[0][j] = copper;	
+		G.hand[0][j] = copper;
 	}
 	
+	G.hand[0][0] = adventurer;
 
 	for(j = 0; j < 5; j++) {
 		//Give player 1 5 cards gold only
-		G.hand[1][j] = gold;	
+		G.hand[1][j] = gold;
 	}
 	
+	G.hand[1][0] = adventurer;
+
 	//set embargo tokens to 0 for all supply piles
 	for (i = 0; i <= treasure_map; i++)
 	{
@@ -122,6 +125,7 @@ void testuseAdventurer () {
 	int extP2discardCount = G.discardCount[1];
 	int extnumBuys = G.numBuys;
 	int extnumActions = G.numActions;
+	int handPos = 0;
 
 	//Initialize the external values for the player's hand
 	for (i = 0; i < extHandCount; i++) {
@@ -133,7 +137,7 @@ void testuseAdventurer () {
 	printf("Testing that the hand draw logic is correct\n");
 #endif
 	int adventurerRet;
-	adventurerRet = useAdventurer(player, &G);
+	adventurerRet = useAdventurer(handPos, player, &G);
 
 	//Test return value	
 	if (adventurerRet == 0) {
@@ -143,15 +147,19 @@ void testuseAdventurer () {
 		fail = 1;
 	}
 
-	//Add 5 action cards and 2 treasure cards to extHandCount
-	extHandCount += 7;
+	//Add 4 action cards and 2 treasure cards to extHandCount
+	extHandCount += 6;
 
-	//Discard adventurer from extHandCount and add to discard count
-	extDiscardCount++;
+	//Add adventurer card to handCount
+	extHandCount++;
 
 	//Discard all 5 action cards from extHandCount
 	extHandCount-=5;
 	extDiscardCount+=5;
+
+	//Discard adventurer card
+	extHandCount--;
+	extDiscardCount++;
 
 #if(NOISY_TEST == 1)
 	printf("Testing hand counts\n");

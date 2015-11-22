@@ -124,7 +124,7 @@ int main () {
 
 	struct gameState G;
 
-	printf ("Testing Adventurer Card.\n");
+	printf ("Testing great_hall Card.\n");
 
 	printf ("RANDOM TESTS.\n");
 

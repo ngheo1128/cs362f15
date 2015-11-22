@@ -17,6 +17,7 @@
 
 int checkAdventureCard(int p, struct gameState *post);
 void randomizeHandCount(struct gameState *state);
+void randomizePlayedCards(struct gameState *state);
 void randomizeHandCards(struct gameState *state);
 void printIntArray(int arrayLength, int *arr, char *msg);
 void randomizeGameStruct(struct gameState *state);
@@ -44,6 +45,7 @@ int main () {
     printf("------ Random Test %d ------\n", n + 1);
     randomizeGameStruct(&G);
     randomizeHandCount(&G);
+    randomizePlayedCards(&G);
     randomizeHandCards(&G);
     randomizeDeck(&G);
     player = floor(Random() * 2);
@@ -73,7 +75,7 @@ int checkAdventureCard(int player, struct gameState *state) {
     otherPlayer = 0;
   }
 
-  // Take a snapshot of the "before" game state
+  // // Take a snapshot of the "before" game state
   int preHandCount = state->handCount[player];
   int preHandCountOtherPlayer = state->handCount[otherPlayer];
   int preDeckCount = state->deckCount[player];
@@ -88,7 +90,7 @@ int checkAdventureCard(int player, struct gameState *state) {
   // Execute the method under test
   executeAdventurerCard(0, state, player);
 
-  // Save the snapshot of the "after" game state
+  // // Save the snapshot of the "after" game state
   int postHandCount = state->handCount[player];
   int postHandCountOtherPlayer = state->handCount[otherPlayer];
   int postDeckCount = state->deckCount[player];
@@ -111,8 +113,8 @@ int checkAdventureCard(int player, struct gameState *state) {
   overallTestsPassed = overallTestsPassed ? (testPassed ? 1 : 0) : 0;
   assert (testPassed);
 
-  printf("Test - Expected hand count: %d, Actual amount: %d -- ", preHandCount + 2, postHandCount);
-  testPassed = postHandCount == preHandCount + 2;
+  printf("Test - Expected hand count: %d, Actual amount: %d -- ", preHandCount + 1, postHandCount);
+  testPassed = postHandCount == preHandCount + 1;
   checkFailure(testPassed);
   overallTestsPassed = overallTestsPassed ? (testPassed ? 1 : 0) : 0;
   assert (testPassed);
@@ -184,6 +186,21 @@ int checkAdventureCard(int player, struct gameState *state) {
   return 1;
 }
 
+void randomizePlayedCards(struct gameState *state)
+{
+  // Randomize the played card count
+  int ranplayedCount = floor(Random() * MAX_DECK);
+  state->playedCardCount = ranplayedCount;
+
+  // Randomize the played card deck
+  int i, cardToAdd;
+  for (i = 0; i < ranplayedCount; ++i)
+  {
+    cardToAdd = floor(Random() * 26); // Only add cards between 0 and 25, inclusive
+    state->playedCards[state->playedCardCount] = cardToAdd;
+  }  
+}
+
 void checkFailure(int result) {
   if (result == 0)
   {
@@ -236,6 +253,16 @@ void randomizeHandCount(struct gameState *state) {
   state->handCount[0] = ranHandCountPlayer1;
   state->handCount[1] = ranHandCountPlayer2;
 
+  if (ranHandCountPlayer1 == 0)
+  {
+    state->handCount[0]++;
+  }
+
+  if (ranHandCountPlayer2 == 0)
+  {
+    state->handCount[1]++;
+  }
+
   // For debugging
   // printf("hand count of player 1: %d\n", state->handCount[0]);
   // printf("hand count of player 2: %d\n", state->handCount[1]);
@@ -250,6 +277,12 @@ void randomizeHandCards(struct gameState *state) {
     // Loop to iterate through the player's cards
     for (i = 0; i < state->handCount[j]; i++)
     {
+      // Always set the first card to be adventurer
+      if (i == 0)
+      {
+        state->hand[j][i] = adventurer;
+        continue;
+      }
       cardToAdd = floor(Random() * 26); // Only add cards between 0 and 25, inclusive
       state->hand[j][i] = cardToAdd;
       // printf("Added: %d\n", cardToAdd);

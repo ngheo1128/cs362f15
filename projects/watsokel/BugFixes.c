@@ -100,3 +100,14 @@ ID  BUG DESCRIPTION                                 BUG FIX                     
                                                     the second duplicate for loop header was replaced with
                                                         for (i = 0; i < state->deckCount[player]; i++)
 ----------------------------------------------------------------------------------------------------------------------------
+8   In the sea_hag case in cardEffect(), the        The line:                                               20 Nov 2015
+    discardCard() method was not called to              discardCard(handPos,currentPlayer,state,0);         08:38 hr
+    discard the sea_hag card after it was           was added to the sea_hag case in cardEffect() to
+    played, resulting in the sea_hag card not       discard the sea_hag card after it is played.
+    being discarded, and remaining in the hand.
+----------------------------------------------------------------------------------------------------------------------------
+9   In smithyEffect(), the smithy card was not      The buggy line:                                         20 Nov 2015
+    actually discarded after it was played,             discardCard(handPos,currentPlayer,state,1);         08:41 hr
+    resulting in the smithy card remaining in       was corrected to:
+    the player's hand even after a call to              discardCard(handPos,currentPlayer,state,0);
+    discardCard().                                  which now contains the correct discard flag.

@@ -1,9 +1,9 @@
 /*****************
  * Author:  Brian Stamm
  * Title:  cardTest2.c
- * Assignment:  3
- * Date:  10.25.15
- * Notes:  Unit tests for the Adventurer card, adventurer_refactor().
+ * Assignment:  5
+ * Date:  11.22.15
+ * Notes:  Unit tests for the Adventurer card, adventurer_refactor() - Wisam's dominion.c
  * ****************/
 
 #include "dominion.h"
@@ -176,6 +176,7 @@ void test(){
   cD = 0;
 
   //Fourth check, no treasure in deck, only last cards are copper
+  /*
   if(setHand(game, curse, r, 1)){
     printf("%d:  Error setting DECK.\n", counter);
   }
@@ -202,7 +203,7 @@ void test(){
     }
     counter++;
   }
-
+*/
 }
 
 int main(int argc, char **argv){

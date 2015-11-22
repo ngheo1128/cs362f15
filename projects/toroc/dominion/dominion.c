@@ -1293,10 +1293,6 @@ int smithyCard(struct gameState* state, int currentPlayer, int handPos)
 	}
 		int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
 		
-		if (cardDrawn == gold)
-		{
-			state->numActions++;
-		}
 		
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
@@ -1323,8 +1319,6 @@ int adventurerCard(struct gameState* state, int currentPlayer)
 		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 		{
 			drawntreasure++;
-			if (drawntreasure == 2 && cardDrawn == gold)
-				state->numBuys--;
 		}
 		else
 		{
@@ -1350,14 +1344,7 @@ int villageCard(struct gameState* state, int currentPlayer, int handPos)
       state->numActions = state->numActions + 2;
 			
       //discard played card from hand
-	  if (state->deckCount[currentPlayer] >2)
-	  {
 		  discardCard(handPos, currentPlayer, state, 0);
-	  }
-	else
-	{
-		drawCard(currentPlayer, state);
-	}		
       
       return 0;
 }
@@ -1369,11 +1356,7 @@ int great_hallCard(struct gameState* state, int currentPlayer, int handPos)
 			
       //+1 Actions
       state->numActions++;
-	  
-	  if (state->deckCount[currentPlayer]<2)
-	{
-		state->numBuys++;
-	}
+	 
 			
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
@@ -1394,10 +1377,6 @@ int council_roomCard(struct gameState* state, int currentPlayer, int handPos)
 	int cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 	//+1 Buy
 	
-	if  (cardDrawn == gold)
-	{
-		state->numActions++;
-	}
       
       state->numBuys++;
 			

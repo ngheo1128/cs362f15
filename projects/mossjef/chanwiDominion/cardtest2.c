@@ -134,7 +134,7 @@ void testuseAdventurer () {
 #endif
 	int adventurerRet;
 	int drawntreasure = 0;
-	int cardDrawn = 0;
+	int cardDrawn = 5;
 	int z = 0;
 	int temphand[MAX_HAND];
 
