@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
     srand((unsigned) time(&sysClock));
 
     // each iteration of this outer loop runs a test against smithyEffect()
-    for (i = 0; i < NUM_TESTS; i++)
+    for (i = 1; i <= NUM_TESTS; i++)
     {
         // this loop populates every Byte of the game state with random values
         for (j = 0; j < sizeof(struct gameState); j++)

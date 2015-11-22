@@ -16,7 +16,7 @@ compiler warnings: cardtest1 and cardtest2 give compiler warnings for
     z, cardDrawn, drawntreasure, temphand, x
 
 TEST NAME    CARD NAME     RESULT
-cardtest1    Smithy        PASS
+cardtest1    Smithy        PASS (did not crash)
 cardtest2:   Adventurer    FAIL
     /bin/sh: line 1: 31639 Segmentation fault (core dumped)
         cardtest2 >> unittestresults.out
@@ -26,11 +26,10 @@ cardtest3
 
 RANDOM TESTS:
 
-randomtestcard:  FAIL for all 2000 random tests
-                 (Smithy did not add the expected number of cards to hand)
+randomtestcard:  PASS for all 2000 random tests
 
 randomtestadventurer: FAIL
-    /bin/sh: line 1: 11054 Segmentatoin fault (core dumped)
+    /bin/sh: line 1: 11054 Segmentation fault (core dumped)
         randomtestadventurer >> randomtestadventurer.out
         make: *** [randomtestadventurer.out] Error 139
 
