@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    printf("%d tests run. All tests passed unless noted above.\n", i);
+    printf("%d tests run. All tests passed unless noted above.\n", i - 1);
 
     exit(0);
 }

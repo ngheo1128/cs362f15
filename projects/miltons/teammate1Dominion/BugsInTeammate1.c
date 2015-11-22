@@ -4,34 +4,33 @@ Teammate 1 name: Ashok Nayar
 
 issues:
 
+compiler warnings:
+    unused variables in cardEffect function of dominion.c:
+    z, cardDrawn, drawntreasure, temphand, x
+
+
 UNIT TESTS:
 
-
+TEST NAME    FUNCTION NAME    RESULT
+unittest1    discardCard      PASS
+unittest2    updateCoins      PASS
+unittest3    drawCard         PASS
+unittest4    gainCard         FAIL (???)
 
 
 CARD TESTS:
 
-compiler warnings: cardtest1 and cardtest2 give compiler warnings for
-    unused variables in cardEffect function of dominion.c:
-    z, cardDrawn, drawntreasure, temphand, x
-
 TEST NAME    CARD NAME     RESULT
-cardtest1    Smithy        PASS (did not crash)
-cardtest2:   Adventurer    FAIL
-    /bin/sh: line 1: 31639 Segmentation fault (core dumped)
-        cardtest2 >> unittestresults.out
-        make: *** [unittestresults.out] Error 139
-cardtest3
+cardtest1    Smithy        PASS
+cardtest2    Adventurer    PASS
+cardtest3    Council Room  PASS
+cardtest4    Mine Card     NOT REFACTORED / NOT TESTED
 
 
 RANDOM TESTS:
 
-randomtestcard:  PASS for all 2000 random tests
-
-randomtestadventurer: FAIL
-    /bin/sh: line 1: 11054 Segmentation fault (core dumped)
-        randomtestadventurer >> randomtestadventurer.out
-        make: *** [randomtestadventurer.out] Error 139
-
+TEST NAME             RESULT
+randomtestcard:       PASS for all 2000 random tests
+randomtestadventurer: PASS for all 2000 random tests
 
 */

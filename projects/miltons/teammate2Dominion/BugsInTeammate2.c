@@ -44,6 +44,13 @@ randomtestadventurer: FAIL
     make: *** [randomtestadventurer.out] Error 139
 
 
+    The fault is located 
+
+    while(drawntreasure<2){
+
+      if (cardDrawn == copper || cardDrawn == silver)
+        drawntreasure++;
+
 Note: playdom won't run either from segfault error
 
 */
