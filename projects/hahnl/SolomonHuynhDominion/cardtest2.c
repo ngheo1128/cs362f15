@@ -46,12 +46,16 @@ int main (int argc, char** argv) {
   printf("\n\ncardtest2.c - Test for adventurerCard() function:\n\n");
   precard = g.handCount[0];
   predisc = g.discardCount[0];
-  adventurerCard(drawntreasure, &g, currentPlayer, cardDrawn, temphand, z);
+  adventurerCard(&g);
   postcard = g.handCount[0];
   postdisc = g.discardCount[0];
-  //assert(postcard == precard+2);
-  //assert(postdisc == predisc+1);
-  //printf("All tests passed.");
+
+  if (postcard != precard+2) {
+    printf("First test failed for cardtest2");
+  }
+  if (postdisc != predisc+1) {
+    printf("First test failed for cardtest2");
+  }
 
   return 0;
 }

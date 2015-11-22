@@ -41,9 +41,12 @@ int main (int argc, char** argv) {
   precard = g.handCount[0];
   cardEffect(smithy, 1, 2, 3, &g, handPos, &bonus);
   postcard = g.handCount[0];
-  assert(postcard == precard+3);
-  assert(g.playedCardCount == 1);
-  printf("All tests passed.");
+  if (postcard != precard+3) {
+    printf("Test failed");
+  }
+  if (g.playedCardCount != 1) {
+    printf("Second test failed.");
+  }
 
   return 0;
 }

@@ -1,42 +1,37 @@
-Adventurer random card test results:
-randomtestadventurer.c:
+Results:
+randomtestadventurer.c
 
-Starting to test Adventurer card...
 
-Adventurer card was not discarded - FAIL.
+--------------------------------------
+randomtestadventurer.c -- Tests Begin
+--------------------------------------
 
-Adventurer card was not discarded - FAIL.
+-- FAIL: Adventurer card not discarded.
+-- FAIL: Too FEW cards drawn.
+---- Target: 2 cards. Actual: -1 cards.
+-- FAIL: Too FEW treasure cards.
+---- Target: 2 cards. Actual: 0 cards.
+^^^^^^^ Test Number 1 out of 2 ^^^^^^^
 
-Adventurer card was not discarded - FAIL.
+-- FAIL: Adventurer card not discarded.
+-- FAIL: Too FEW cards drawn.
+---- Target: 2 cards. Actual: -1 cards.
+-- FAIL: Too FEW treasure cards.
+---- Target: 2 cards. Actual: 0 cards.
+^^^^^^^ Test Number 2 out of 2 ^^^^^^^
 
-Adventurer card was not discarded - FAIL.
 
-Adventurer card was not discarded - FAIL.
+****************************************
+  ---- TEST FAILURE STATUS REPORT ----
+  ----       Adventurer Card      ----
+****************************************
+Total Test Failures:      2/2
+Discard Card Errors:      2
+Draw Card Errors:         2
+Treasure Card Errors:     2
+****************************************
 
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Now printing testing errors...
-
-The number of treasure count errors was: 0
-
-The number of hand count errors was: 10
-
-Now printing counts of cards picked up:
-
-The count of copper cards picked up is: 10
-
-The count of silver cards picked up is: 10
-
-The count of gold cards picked is: 0
 File 'dominion.c'
-Lines executed:18.94% of 586
+Lines executed:20.99% of 586
 dominion.c:creating 'dominion.c.gcov'
 
