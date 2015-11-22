@@ -1,7 +1,7 @@
 /* Name: Kathryn McDonald
  * Class: CS 362
- * File name: randomtestcard.c
- * Purpose: Random tester for the "village" card in dominion.c */
+ * File name: randomtestadventurer.c
+ * Purpose: Random tester for the "adventurer" card in dominion.c */
 
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -202,32 +202,32 @@ int generateHand(struct gameState *state, int player, int maxHandCount) {
  return 0;
 }
 
-int checkVillage(struct gameState *state, int player, int maxHandCount, int *villagePos) {
+int checkAdventurer(struct gameState *state, int player, int maxHandCount, int *adventurerPos) {
   int i;
   
-  /* see if player has village card */
+  /* see if player has adventurer card */
   for (i = 0; i < maxHandCount; i++) {
-   if (state->hand[player][i] == village) {
-     *villagePos = i;
+   if (state->hand[player][i] == adventurer) {
+     *adventurerPos = i;
      return 0;
    }
   }
   
-  /* return 1 if no village card found */
+  /* return 1 if no adventurer card found */
   return 1;
 }
 
-void insertVillage(struct gameState *state, int player, int maxHandCount, int *villagePos) {
+void insertAdventurer(struct gameState *state, int player, int maxHandCount, int *adventurerPos) {
  int handPos = rand() % maxHandCount;
 
-  /* insert village card into random hand position */
-  state->hand[player][handPos] = village;
-  *villagePos = handPos;
+  /* insert adventurer card into random hand position */
+  state->hand[player][handPos] = adventurer;
+  *adventurerPos = handPos;
 }
 
 int consistencyCheck(int numPlayers, int testedPlayer, int kingdomCards[10], struct gameState *currentState, struct gameState *saveState) {
-  /* check that numActions +2, but since playing village was 1 action, numActions will only increase by 1 */
-  if (!(currentState->numActions == saveState->numActions + 1)) {
+  /* check that numActions decremented */
+  if (!(currentState->numActions == saveState->numActions - 1)) {
     printf("----------\nERROR: numActions\n");
     return -1;
   }
@@ -249,13 +249,11 @@ int consistencyCheck(int numPlayers, int testedPlayer, int kingdomCards[10], str
     printf("----------\nERROR: numBuys\n");
     return -1;
   }
-  /* because village has been discarded, the handCount should actually be the same */
-  if (!(currentState->handCount[testedPlayer] == saveState->handCount[testedPlayer])) {
+  if (!(currentState->handCount[testedPlayer] == saveState->handCount[testedPlayer] + 2)) {
     printf("----------\nERROR: handCount\n");
     return -1;
   }
-  /* one card has been drawn */
-  if (!(currentState->deckCount[testedPlayer] == saveState->deckCount[testedPlayer] - 1)) {
+  if (!(currentState->deckCount[testedPlayer] == saveState->deckCount[testedPlayer] - 2)) {
     printf("----------\nERROR: deckCount\n");
     return -1;
   }
@@ -268,7 +266,7 @@ int main() {
   
   /* set up game state */
   int i;
-  int villagePos = -1;
+  int adventurerPos = -1;
   int k[10] = {adventurer, council_room, feast, gardens, mine, 
     remodel, smithy, village, baron, great_hall};
   struct gameState G;
@@ -296,9 +294,9 @@ int main() {
     int result = generateHand(&G, testedPlayer, maxHandCount);
     assert(result == 0);
     
-    /* randomly include village card in one of the hand positions */
-    if (checkVillage(&G, testedPlayer, maxHandCount, &villagePos) != 0) {
-      insertVillage(&G, testedPlayer, maxHandCount, &villagePos);
+    /* randomly include adventurer card in one of the hand positions */
+    if (checkAdventurer(&G, testedPlayer, maxHandCount, &adventurerPos) != 0) {
+      insertAdventurer(&G, testedPlayer, maxHandCount, &adventurerPos);
     }
     
     G.handCount[testedPlayer] = 5;
@@ -312,8 +310,8 @@ int main() {
     Save.handCount[testedPlayer] = G.handCount[testedPlayer];
     Save.deckCount[testedPlayer] = G.deckCount[testedPlayer];
     
-    /* play village card */
-    result = playCard(villagePos, -1, -1, -1, &G);
+    /* play adventurer card */
+    result = playCard(adventurerPos, -1, -1, -1, &G);
     assert(result == 0);
     
     /* check consistency */
