@@ -14,7 +14,7 @@ void testSmithyCard(){
 	struct gameState* state = malloc(sizeof(struct gameState));
 
 	//selects between treasure and non-treasure because that is the relevant part
-	int randomPool = {gold, mine};
+	int randomPool[] = {gold, mine};
 
 	//update count
 	state->handCount[0] = rand() % 5 + 1;
@@ -27,15 +27,15 @@ void testSmithyCard(){
 	//set player hands
 	int playerHand[MAX_HAND];
 	int i;
-	for( i = 0 ; i < handCount[0] ; i++ ){
+	for( i = 0 ; i < state->handCount[0] ; i++ ){
 		playerHand[i] = randomPool[rand() % 2];
 	}
 	int playerDiscard[MAX_DECK];
-	for( i = 0 ; i < discardCount[0] ; i++ ){
+	for( i = 0 ; i < state->discardCount[0] ; i++ ){
 		playerDiscard[i] = randomPool[rand() % 2];
 	}
 	int playerDeck[MAX_DECK];
-	for( i = 0 ; i < deckCount[0] ; i++ ){
+	for( i = 0 ; i < state->deckCount[0] ; i++ ){
 		playerDeck[i] = randomPool[rand() % 2];
 	}
 
@@ -46,7 +46,7 @@ void testSmithyCard(){
 	smithyCard(state, 1);
 
 	
-	if( state->handCount[0] == handCount[0] + 3 ){
+	if( state->handCount[0] == state->handCount[0] + 3 ){
 		printf("Test passed. Correct final number cards in hand\n");
 	} else {
 		printf("Test failed. Wrong final number cards in hand\n");
