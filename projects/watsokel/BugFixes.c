@@ -6,6 +6,7 @@ BugFixes.c                          ONID: watsokel
 
 BUG FIXES
 ---------
+All bugs identified by teammates were fixed using GDB debugger. Bug fixes and code changes are documented below:
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ID  BUG DESCRIPTION                                 BUG FIX                                                 DATE FIXED          
@@ -111,3 +112,4 @@ ID  BUG DESCRIPTION                                 BUG FIX                     
     resulting in the smithy card remaining in       was corrected to:
     the player's hand even after a call to              discardCard(handPos,currentPlayer,state,0);
     discardCard().                                  which now contains the correct discard flag.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++    
