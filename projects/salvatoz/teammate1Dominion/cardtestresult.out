@@ -1,0 +1,466 @@
+Function 'initializeCardData'
+Lines executed:0.00% of 16
+No branches
+No calls
+
+Function 'treasureMapHandler'
+Lines executed:0.00% of 14
+Branches executed:0.00% of 10
+Taken at least once:0.00% of 10
+Calls executed:0.00% of 4
+
+Function 'mineHandler'
+Lines executed:88.24% of 17
+Branches executed:100.00% of 10
+Taken at least once:60.00% of 10
+Calls executed:100.00% of 8
+
+Function 'feastHandler'
+Lines executed:0.00% of 18
+Branches executed:0.00% of 10
+Taken at least once:0.00% of 10
+Calls executed:0.00% of 6
+
+Function 'councilRoomHandler'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+Calls executed:0.00% of 4
+
+Function 'smithyHandler'
+Lines executed:0.00% of 6
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 3
+
+Function 'adventurerHandler'
+Lines executed:0.00% of 18
+Branches executed:0.00% of 8
+Taken at least once:0.00% of 8
+Calls executed:0.00% of 5
+
+Function 'cardDefined'
+Lines executed:100.00% of 2
+Branches executed:100.00% of 4
+Taken at least once:50.00% of 4
+Calls executed:100.00% of 1
+
+Function 'cardExists'
+Lines executed:100.00% of 1
+Branches executed:100.00% of 4
+Taken at least once:50.00% of 4
+No calls
+
+Function 'isTreasure'
+Lines executed:100.00% of 2
+Branches executed:100.00% of 6
+Taken at least once:66.67% of 6
+No calls
+
+Function 'lastDrawn'
+Lines executed:0.00% of 3
+No branches
+No calls
+
+File 'cards.c'
+Lines executed:18.69% of 107
+Branches executed:40.00% of 60
+Taken at least once:23.33% of 60
+Calls executed:29.03% of 31
+Creating 'cards.c.gcov'
+
+        -:    0:Source:cards.c
+        -:    0:Graph:cards.gcno
+        -:    0:Data:cards.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "dominion.h"
+        -:    2:#include "dominion_helpers.h"
+        -:    3:#include "cards.h"
+        -:    4:#include <stdio.h>
+        -:    5:#include <stdlib.h>
+        -:    6:#include <string.h>
+        -:    7:
+        -:    8:struct cardData cardsData[NUM_CARDS];
+        -:    9:
+        -:   10:/** lastDrawn
+        -:   11: * Get the last card drawn by currentPlayer.
+        -:   12: * Preconditions: state is initialized.
+        -:   13: */
+function lastDrawn called 0 returned 0% blocks executed 0%
+    #####:   14:static inline int lastDrawn(int currentPlayer, const struct gameState* state) {
+    #####:   15:  return *(*(state->hand + currentPlayer) +
+    #####:   16:           *(state->handCount + currentPlayer - 1));
+        -:   17:}
+        -:   18:
+        -:   19:/** isTreasure
+        -:   20: * Checks whether the given card number c is a treasure card.
+        -:   21: * Preconditions: copper, silver, and gold are defined globally, preferably by
+        -:   22: *    the CARD enum from dominion.h.
+        -:   23: */
+function isTreasure called 3 returned 100% blocks executed 100%
+        3:   24:static inline int isTreasure(int c) {
+        3:   25:  return c == copper || c == silver || c == gold;
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+        -:   26:}
+        -:   27:
+function cardExists called 6 returned 100% blocks executed 83%
+        6:   28:int cardExists(int c) { return 0 <= c && c < NUM_CARDS; }
+branch  0 taken 6 (fallthrough)
+branch  1 taken 0
+branch  2 taken 6 (fallthrough)
+branch  3 taken 0
+        -:   29:
+function cardDefined called 4 returned 100% blocks executed 86%
+        4:   30:int cardDefined(const struct cardData cd[], int c) {
+        4:   31:  return cardExists(c) && (*(cd + c)).effectHandler != 0;
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0
+branch  3 taken 0 (fallthrough)
+branch  4 taken 4
+        -:   32:}
+        -:   33:
+        -:   34:/** adventurerHandler
+        -:   35: * Card effect: Reveal cards from your deck until you reveal 2 treasure cards.
+        -:   36: * Put those Treasure cards in your hand and discard the other revealed cards.
+        -:   37: *
+        -:   38: * Additional rules: If you have to shuffle in the middle, shuffle. Don't
+        -:   39: * shuffle in the revealed cards as these cards do not go into the Discard pile
+        -:   40: * until you have finished revealing cards. If you run out of cards while
+        -:   41: * shuffling and still have only one Treasure, you get just that one Treasure.
+        -:   42: */
+function adventurerHandler called 0 returned 0% blocks executed 0%
+    #####:   43:int adventurerHandler(int choice1, int choice2, int choice3,
+        -:   44:                      struct gameState* state, int handPos, int* bonus) {
+    #####:   45:  int z = 0;
+        -:   46:  int temphand[MAX_HAND];
+    #####:   47:  int drawntreasure = 0;
+        -:   48:  int cardDrawn;
+    #####:   49:  int currentPlayer = whoseTurn(state);
+call    0 never executed
+        -:   50:
+    #####:   51:  while (drawntreasure < 2) {
+branch  0 never executed
+branch  1 never executed
+    #####:   52:    if (state->deckCount[currentPlayer] < 1) {
+branch  0 never executed
+branch  1 never executed
+    #####:   53:      shuffle(currentPlayer, state);
+call    0 never executed
+        -:   54:    }
+    #####:   55:    drawCard(currentPlayer, state);
+call    0 never executed
+    #####:   56:    cardDrawn = lastDrawn(currentPlayer, state);
+call    0 never executed
+    #####:   57:    if (isTreasure(cardDrawn))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   58:      drawntreasure++;
+        -:   59:    else {
+    #####:   60:      temphand[z++] = cardDrawn;
+    #####:   61:      state->handCount[currentPlayer]--;
+        -:   62:    }
+        -:   63:  }
+    #####:   64:  while (--z >= 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:   65:    state->discard[currentPlayer][state->discardCount[currentPlayer]++] =
+    #####:   66:        temphand[z];
+    #####:   67:    z = z - 1;
+        -:   68:  }
+    #####:   69:  return 1;
+        -:   70:}
+        -:   71:
+        -:   72:/** smithyHandler
+        -:   73: * Card Effect: +3 cards
+        -:   74: */
+function smithyHandler called 0 returned 0% blocks executed 0%
+    #####:   75:int smithyHandler(int choice1, int choice2, int choice3,
+        -:   76:                  struct gameState* state, int handPos, int* bonus) {
+        -:   77:  int i;
+    #####:   78:  int currentPlayer = whoseTurn(state);
+call    0 never executed
+        -:   79:
+    #####:   80:  for (i = 3; i < 0; i--) {
+branch  0 never executed
+branch  1 never executed
+    #####:   81:    drawCard(currentPlayer, state);
+call    0 never executed
+        -:   82:  }
+        -:   83:
+    #####:   84:  discardCard(handPos, currentPlayer, state, 0);
+call    0 never executed
+    #####:   85:  return 1;
+        -:   86:}
+        -:   87:
+        -:   88:/** councilRoomHandler
+        -:   89: * Card Effect: +4 cards, +1 buy, each other player draws a card.
+        -:   90: */
+function councilRoomHandler called 0 returned 0% blocks executed 0%
+    #####:   91:int councilRoomHandler(int choice1, int choice2, int choice3,
+        -:   92:                       struct gameState* state, int handPos, int* bonus) {
+        -:   93:  int i;
+    #####:   94:  int currentPlayer = whoseTurn(state);
+call    0 never executed
+    #####:   95:  for (i = 0; i < 4; i++) {
+branch  0 never executed
+branch  1 never executed
+    #####:   96:    drawCard(currentPlayer, state);
+call    0 never executed
+        -:   97:  }
+        -:   98:
+    #####:   99:  state->numBuys++;
+        -:  100:
+    #####:  101:  for (i = 0; i < state->numPlayers; i++) {
+branch  0 never executed
+branch  1 never executed
+    #####:  102:    if (i != currentPlayer) {
+branch  0 never executed
+branch  1 never executed
+    #####:  103:      drawCard(i, state);
+call    0 never executed
+        -:  104:    }
+        -:  105:  }
+        -:  106:
+    #####:  107:  discardCard(handPos, currentPlayer, state, 0);
+call    0 never executed
+        -:  108:
+    #####:  109:  return 1;
+        -:  110:}
+        -:  111:
+        -:  112:/**
+        -:  113: * Card Effect: Trash this card. Gain a card costing up to 5.
+        -:  114: * Additional Rules:
+        -:  115: *    - The gained card goes into the discard pile.
+        -:  116: *    - The gained card has to be a card from the supply.
+        -:  117: *    - You cannot acquire a card costing greater than 5 (ex. by trying to
+        -:  118: *      combine other treasures with this card.)
+        -:  119: */
+function feastHandler called 0 returned 0% blocks executed 0%
+    #####:  120:int feastHandler(int choice1, int choice2, int choice3, struct gameState* state,
+        -:  121:                 int handPos, int* bonus) {
+        -:  122:  int i, x;
+    #####:  123:  const int currentPlayer = whoseTurn(state);
+call    0 never executed
+        -:  124:  int temphand[MAX_HAND];
+    #####:  125:  const int cardToGain = choice1;
+        -:  126:
+        -:  127:  // gain card with cost up to 5
+        -:  128:  // Backup hand
+    #####:  129:  for (i = 0; i <= state->handCount[currentPlayer]; i++) {
+branch  0 never executed
+branch  1 never executed
+    #####:  130:    temphand[i] = state->hand[currentPlayer][i];  // Backup card
+    #####:  131:    state->hand[currentPlayer][i] = NULL;
+        -:  132:  }
+        -:  133:  // Backup hand
+        -:  134:
+        -:  135:  // Update Coins for Buy
+    #####:  136:  updateCoins(currentPlayer, state, 5);
+call    0 never executed
+    #####:  137:  x = 1;       // Condition to loop on
+    #####:  138:  while (x) {  // Buy one card
+branch  0 never executed
+branch  1 never executed
+    #####:  139:    if (supplyCount(cardToGain, state) <= 0) {
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  140:      // card to gain must be available
+        -:  141:      if (DEBUG) printf("None of that card left, sorry!\n");
+        -:  142:
+        -:  143:      if (DEBUG) {
+        -:  144:        printf("Cards Left: %d\n", supplyCount(cardToGain, state));
+        -:  145:      }
+    #####:  146:    } else if (state->coins < getCost(cardToGain)) {
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  147:      // selected card must be under 5 cost
+    #####:  148:      printf("That card is too expensive!\n");
+call    0 never executed
+        -:  149:
+        -:  150:      if (DEBUG) {
+        -:  151:        printf("Coins: %d < %d\n", state->coins, getCost(cardToGain));
+        -:  152:      }
+        -:  153:    } else {
+        -:  154:      if (DEBUG) {
+        -:  155:        printf("Deck Count: %d\n", state->handCount[currentPlayer] +
+        -:  156:                                       state->deckCount[currentPlayer] +
+        -:  157:                                       state->discardCount[currentPlayer]);
+        -:  158:      }
+        -:  159:
+    #####:  160:      gainCard(cardToGain, state, 0, currentPlayer);  // Gain the card
+call    0 never executed
+    #####:  161:      x = 0;                                          // No more buying cards
+        -:  162:
+        -:  163:      if (DEBUG) {
+        -:  164:        printf("Deck Count: %d\n", state->handCount[currentPlayer] +
+        -:  165:                                       state->deckCount[currentPlayer] +
+        -:  166:                                       state->discardCount[currentPlayer]);
+        -:  167:      }
+        -:  168:    }
+        -:  169:  }
+        -:  170:
+        -:  171:  // Reset Hand
+    #####:  172:  for (i = 0; i <= state->handCount[currentPlayer]; i++) {
+branch  0 never executed
+branch  1 never executed
+    #####:  173:    temphand[i] = -1;
+    #####:  174:    state->hand[currentPlayer][i] = temphand[i];
+        -:  175:  }
+        -:  176:  // Reset Hand
+        -:  177:
+    #####:  178:  return 1;
+        -:  179:}
+        -:  180:
+        -:  181:/**
+        -:  182: * Card Effect: Trash a Treasure card from your hand. Gain a treasure card
+        -:  183: *    costing up to 3 more; put it into your hand.
+        -:  184: */
+function mineHandler called 3 returned 100% blocks executed 86%
+        3:  185:int mineHandler(int choice1,  // the card to trash
+        -:  186:                int choice2,  // the card to gain
+        -:  187:                int choice3, struct gameState* state, int handPos, int* bonus) {
+        -:  188:  int i;
+        3:  189:  const int currentPlayer = whoseTurn(state);
+call    0 returned 3
+        3:  190:  const int cardToTrash = state->hand[currentPlayer][choice1];
+        3:  191:  const int cardToGain = choice2;
+        -:  192:
+        -:  193:  // verify that the card to trash is treasure
+        3:  194:  if (!isTreasure(cardToTrash)) {
+call    0 returned 3
+branch  1 taken 1 (fallthrough)
+branch  2 taken 2
+        1:  195:    return -1;
+        -:  196:  }
+        -:  197:
+        -:  198:  // check that the card to gain actually exists
+        2:  199:  if (!cardExists(cardToGain)) {
+call    0 returned 2
+branch  1 taken 0 (fallthrough)
+branch  2 taken 2
+    #####:  200:    return -1;
+        -:  201:  }
+        -:  202:
+        -:  203:  // make sure the card to gain isn't too expensive
+        2:  204:  if ((getCost(cardToTrash) + 3) > getCost(cardToGain)) {
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 0 (fallthrough)
+branch  3 taken 2
+    #####:  205:    return -1;
+        -:  206:  }
+        -:  207:
+        2:  208:  gainCard(cardToGain, state, 2, currentPlayer);
+call    0 returned 2
+        -:  209:
+        -:  210:  // discard card from hand
+        2:  211:  discardCard(handPos, currentPlayer, state, 0);
+call    0 returned 2
+        -:  212:
+        -:  213:  // discard trashed card
+        2:  214:  for (i = 0; i < state->handCount[currentPlayer]; i++) {
+branch  0 taken 2
+branch  1 taken 0 (fallthrough)
+        2:  215:    if (state->hand[currentPlayer][i] == cardToTrash) {
+branch  0 taken 2 (fallthrough)
+branch  1 taken 0
+        2:  216:      discardCard(i, currentPlayer, state, 0);
+call    0 returned 2
+        2:  217:      break;
+        -:  218:    }
+        -:  219:  }
+        -:  220:
+        2:  221:  return 1;
+        -:  222:}
+        -:  223:
+        -:  224:/** treasureMapHandler
+        -:  225: * Card Effect: Trash this and another copy of Treasure Map from your hand. If
+        -:  226: *    you do trash two Treasure Maps, gain 4 Gold cards, putting them on top of
+        -:  227: *    your deck.
+        -:  228: * Additional Rules:
+        -:  229: *    - Playing this without another Treasure Map in hand means you trash this
+        -:  230: *      and gain nothing.
+        -:  231: *    - Two copies of Treasure Map must be trashed to gain the gold.
+        -:  232: *    - If there aren't enough gold cards remaining, then gain all remaining
+        -:  233: *      golds.
+        -:  234: *    - If your deck was empty, then the gold cards are the only cards in it.
+        -:  235: */
+function treasureMapHandler called 0 returned 0% blocks executed 0%
+    #####:  236:int treasureMapHandler(int choice1, int choice2, int choice3,
+        -:  237:                       struct gameState* state, int handPos, int* bonus) {
+    #####:  238:  int secondTreasureMapIndex = 0;
+        -:  239:  int i;
+    #####:  240:  int currentPlayer = whoseTurn(state);
+call    0 never executed
+        -:  241:
+        -:  242:  // search hand for another treasure_map
+    #####:  243:  for (i = 0; i < state->handCount[currentPlayer]; i++) {
+branch  0 never executed
+branch  1 never executed
+    #####:  244:    if (state->hand[currentPlayer][i] == treasure_map && i != handPos) {
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:  245:      secondTreasureMapIndex = i;
+    #####:  246:      break;
+        -:  247:    }
+        -:  248:  }
+        -:  249:
+    #####:  250:  if (secondTreasureMapIndex > 0) {
+branch  0 never executed
+branch  1 never executed
+        -:  251:    // trash both treasure cards
+    #####:  252:    discardCard(handPos, currentPlayer, state, 1);
+call    0 never executed
+    #####:  253:    discardCard(secondTreasureMapIndex, currentPlayer, state, 1);
+call    0 never executed
+        -:  254:
+        -:  255:    // gain 4 Gold cards
+    #####:  256:    for (i = 0; i < 4; i++) {
+branch  0 never executed
+branch  1 never executed
+    #####:  257:      gainCard(gold, state, 1, currentPlayer);
+call    0 never executed
+        -:  258:    }
+        -:  259:
+        -:  260:    // return success
+    #####:  261:    return 1;
+        -:  262:  }
+        -:  263:
+        -:  264:  // no second treasure_map found in hand
+    #####:  265:  return -1;
+        -:  266:}
+        -:  267:
+function initializeCardData called 0 returned 0% blocks executed 0%
+    #####:  268:void initializeCardData(struct cardData (*data)[NUM_CARDS]) {
+        -:  269:  // zero initialize the whole array so we can check if a card is defined by
+        -:  270:  // the value of its effectHandler pointer
+    #####:  271:  memset(data, 0, sizeof(*data));
+        -:  272:
+    #####:  273:  struct cardData* cardData = *data;
+        -:  274:
+        -:  275:  // initialize array values
+    #####:  276:  cardData[adventurer].cost = 6;
+    #####:  277:  cardData[adventurer].effectHandler = adventurerHandler;
+    #####:  278:  cardData[smithy].cost = 4;
+    #####:  279:  cardData[smithy].effectHandler = smithyHandler;
+    #####:  280:  cardData[council_room].cost = 5;
+    #####:  281:  cardData[council_room].effectHandler = councilRoomHandler;
+    #####:  282:  cardData[feast].cost = 4;
+    #####:  283:  cardData[feast].effectHandler = feastHandler;
+    #####:  284:  cardData[mine].cost = 5;
+    #####:  285:  cardData[mine].effectHandler = mineHandler;
+    #####:  286:  cardData[treasure_map].cost = 4;
+    #####:  287:  cardData[treasure_map].effectHandler = treasureMapHandler;
+    #####:  288:}

@@ -12,8 +12,7 @@ struct cardData cardsData[NUM_CARDS];
  * Preconditions: state is initialized.
  */
 static inline int lastDrawn(int currentPlayer, const struct gameState* state) {
-  return *(*(state->hand + currentPlayer) +
-           *(state->handCount + currentPlayer - 1));
+  return state->hand[currentPlayer][state->handCount[currentPlayer] - 1];
 }
 
 /** isTreasure
@@ -48,7 +47,9 @@ int adventurerHandler(int choice1, int choice2, int choice3,
   int cardDrawn;
   int currentPlayer = whoseTurn(state);
 
-  while (drawntreasure < 2) {
+  while (drawntreasure < 2 && 
+         (state->deckCount[currentPlayer] > 0 
+          || state->discardCount[currentPlayer] > 0)) {
     if (state->deckCount[currentPlayer] < 1) {
       shuffle(currentPlayer, state);
     }
@@ -58,13 +59,12 @@ int adventurerHandler(int choice1, int choice2, int choice3,
       drawntreasure++;  // !
     else {
       temphand[z++] = cardDrawn;
-      state->handCount[currentPlayer]--;
+      state->handCount[currentPlayer] = state->handCount[currentPlayer] - 1;
     }
   }
   while (--z >= 0) {
     state->discard[currentPlayer][state->discardCount[currentPlayer]++] =
         temphand[z];
-    z = z - 1;
   }
   return 1;
 }
@@ -77,7 +77,7 @@ int smithyHandler(int choice1, int choice2, int choice3,
   int i;
   int currentPlayer = whoseTurn(state);
 
-  for (i = 3; i < 0; i--) {
+  for (i = 0; i < 3; i++) {
     drawCard(currentPlayer, state);
   }
 
@@ -128,7 +128,7 @@ int feastHandler(int choice1, int choice2, int choice3, struct gameState* state,
   // Backup hand
   for (i = 0; i <= state->handCount[currentPlayer]; i++) {
     temphand[i] = state->hand[currentPlayer][i];  // Backup card
-    state->hand[currentPlayer][i] = NULL;
+    state->hand[currentPlayer][i] = -1;
   }
   // Backup hand
 
@@ -170,8 +170,8 @@ int feastHandler(int choice1, int choice2, int choice3, struct gameState* state,
 
   // Reset Hand
   for (i = 0; i <= state->handCount[currentPlayer]; i++) {
-    temphand[i] = -1;
     state->hand[currentPlayer][i] = temphand[i];
+    temphand[i] = -1;
   }
   // Reset Hand
 
@@ -235,7 +235,7 @@ int mineHandler(int choice1,  // the card to trash
  */
 int treasureMapHandler(int choice1, int choice2, int choice3,
                        struct gameState* state, int handPos, int* bonus) {
-  int secondTreasureMapIndex = 0;
+  int secondTreasureMapIndex = -1;
   int i;
   int currentPlayer = whoseTurn(state);
 
@@ -247,7 +247,7 @@ int treasureMapHandler(int choice1, int choice2, int choice3,
     }
   }
 
-  if (secondTreasureMapIndex > 0) {
+  if (secondTreasureMapIndex > -1) {
     // trash both treasure cards
     discardCard(handPos, currentPlayer, state, 1);
     discardCard(secondTreasureMapIndex, currentPlayer, state, 1);
