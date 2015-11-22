@@ -135,3 +135,6 @@ all: playdom player testDrawCard testBuyCard badTestDrawCard
 
 clean:
 	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so testDrawCard badTestDrawCard unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 unittestresults.out randomtestadventurer.out randomtestadventurer randomtestcard randomtestcard.out
+
+unittest.out: dominion.o rngs.o hw3Test/main.c hw3Test/assert.c hw3Test/cardtest1.c hw3Test/cardtest2.c hw3Test/cardtest3.c hw3Test/cardtest4.c
+	gcc -o $@ -g $^ $(CFLAGS) -I./ -I./hw3Test
