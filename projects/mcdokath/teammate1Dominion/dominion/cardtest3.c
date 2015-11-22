@@ -145,7 +145,7 @@ int main() {
   Save.handCount[0] = G.handCount[0];
   
   /* play village */
-  int villageResult = villageCard(0, 4, &G);
+  int villageResult = villageCard(0, &G, 4);
   
   /* confirm village played */
 #if (PRINT_TEST == 1)
