@@ -8,6 +8,8 @@ councilRoomEffect
 
 mineEffect
 
+cardtests: Smithy, Adventurer, Council Room, Mine
+
 -------------
 
 Teammate1
