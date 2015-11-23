@@ -10,8 +10,6 @@
 
 #define DEBUG 0
 
-
-
 /* http://dominion.diehrstraits.com has card texts */
 /* http://dominion.isotropic.org has other stuff */
 
@@ -87,7 +85,7 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 		   struct gameState *state);
 /* Responsible for initializing all supplies, and shuffling deck and
    drawing starting hands for all players.  Check that 10 cards selected
-   are in fact (different) kingdom cards, and that numPlayers is valid. 
+   are in fact (different) kingdom cards, and that numPlayers is valid.
 
 Cards not in game should initialize supply position to -1 */
 
@@ -130,20 +128,17 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
 
-   /* refactored functions by tullisb */
+//Separate card functions start here
+int adventurer_card (int currentPlayer, struct gameState *state, int drawntreasure,
+    int cardDrawn, int z, int temphand[]);
 
-void adventurerFunction(int drawntreasure, struct gameState *state, int currentPlayer, int temphand[], int z);
+int smithy_card(int currentPlayer, struct gameState *state, int handPos);
 
-void smithyFunction(int currentPlayer, struct gameState *state, int handPos);
+int great_hall_card(int currentPlayer, struct gameState *state, int handPos);
 
-void villageFunction(int currentPlayer, struct gameState *state, int handPos);
+int cutpurse_card(int currentPlayer, struct gameState *state, int handPos);
 
-void great_hallFunction(int currentPlayer, struct gameState *state, int handPos);
+int council_room_card(int currentPlayer, struct gameState *state, int handPos);
 
-void stewardFunction(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2, int choice3);
-
-void outpostFunction(struct gameState *state, int handPos, int currentPlayer);
-
-void council_roomFunction(struct gameState *state, int handPos, int currentPlayer);
 
 #endif

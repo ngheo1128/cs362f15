@@ -10,8 +10,6 @@
 
 #define DEBUG 0
 
-
-
 /* http://dominion.diehrstraits.com has card texts */
 /* http://dominion.isotropic.org has other stuff */
 
@@ -129,21 +127,15 @@ int scoreFor(int player, struct gameState *state);
 int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
-
-   /* refactored functions by tullisb */
-
-void adventurerFunction(struct gameState *state, int currentPlayer);
-
-void smithyFunction(int currentPlayer, struct gameState *state, int handPos);
-
-void villageFunction(int currentPlayer, struct gameState *state, int handPos);
-
-void great_hallFunction(int currentPlayer, struct gameState *state, int handPos);
-
-void stewardFunction(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2, int choice3);
-
-void outpostFunction(struct gameState *state, int handPos, int currentPlayer);
-
-void council_roomFunction(struct gameState *state, int handPos, int currentPlayer);
-
+int play_smithy(int currentPlayer, struct gameState *state, int handPos);
+/* draw three cards, calls drawCard 3 times and discards smithy card*/
+int play_adventurer(struct gameState *state, int drawntreasure, int currentPlayer, int temphand[MAX_HAND], int cardDrawn);
+/* iterate through deck until you get two treasure cards and discard
+other cards drawn which are stored in a temp array */
+int play_remodel(struct gameState *state, int choice2, int choice1, int currentPlayer, int handPos);
+/*if current card +2 is less than chosen card then gainCard is called and the current card is discarded*/
+int play_council(struct gameState *state, int currentPlayer, int handPos);
+/*draw 4 and each other player draws one then add one buy to current player */
+int play_village(int currentPlayer, int handPos, struct gameState *state);
+/*draw one card and gain 2 actions*/
 #endif
