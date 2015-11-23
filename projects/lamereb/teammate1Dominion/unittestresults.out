@@ -1,0 +1,90 @@
+unittest1.c --> 
+
+UNIT TEST 1 COMPLETE with 0 ERRORS
+
+File 'dominion.c'
+Lines executed:28.60% of 570
+Creating 'dominion.c.gcov'
+
+unittest2.c --> 
+
+UNIT TEST 2 COMPLETE with 0 ERRORS
+
+File 'dominion.c'
+Lines executed:28.60% of 570
+Creating 'dominion.c.gcov'
+
+unittest3.c --> 
+
+UNIT TEST 3 COMPLETE with 0 ERRORS
+
+File 'dominion.c'
+Lines executed:28.60% of 570
+Creating 'dominion.c.gcov'
+
+unittest4.c --> 
+
+UNIT TEST 4 COMPLETE with 0 ERRORS
+
+File 'dominion.c'
+Lines executed:28.60% of 570
+Creating 'dominion.c.gcov'
+
+cardtest1.c --> 
+ERROR: player 0 able to play smithy card that's not in hand
+ERROR: smithy card never added to discard pile
+
+SMITHY CARD TEST COMPLETE with 2 ERRORS
+
+File 'dominion.c'
+Lines executed:28.60% of 570
+Creating 'dominion.c.gcov'
+
+cardtest2.c --> 
+ TESTING VILLAGE CARD
+ERROR: Player given 0 cards instead of 1.
+ERROR: Player given 1 actions instead of 2.
+ERROR: Village card not properly discarded.
+ TESTING VILLAGE CARD
+ERROR: Player given 0 cards instead of 1.
+ERROR: Player given 1 actions instead of 2.
+ERROR: Village card not properly discarded.
+
+VILLAGE CARD TEST COMPLETE with 6 ERRORS
+
+File 'dominion.c'
+Lines executed:28.60% of 570
+Creating 'dominion.c.gcov'
+
+cardtest3.c --> 
+ TESTING COUNCIL ROOM CARD
+ERROR: player 0 able to play village card that's not in hand
+ERROR: Player given 0 buys instead of 1.
+ERROR: Council Room card not properly discarded.
+ERROR: Player 1 did not draw a card
+ERROR: Player 2 did not draw a card
+ERROR: Player 3 did not draw a card
+ TESTING COUNCIL ROOM CARD
+ERROR: player 1 able to play village card that's not in hand
+ERROR: Council Room card not properly discarded.
+ERROR: Player 0 did not draw a card
+ERROR: Player 2 did not draw a card
+ERROR: Player 3 did not draw a card
+
+COUNCIL ROOM CARD TEST COMPLETE with 11 ERRORS
+
+File 'dominion.c'
+Lines executed:28.60% of 570
+Creating 'dominion.c.gcov'
+
+cardtest4.c --> 
+ TESTING ADVENTURER CARD
+ERROR: player 0 able to play ADVENTURER card that's not in hand
+ERROR: Council Room card not properly discarded.
+
+ADVENTURE CARD TEST COMPLETE with 2 ERRORS
+
+File 'dominion.c'
+Lines executed:31.58% of 570
+Creating 'dominion.c.gcov'
+

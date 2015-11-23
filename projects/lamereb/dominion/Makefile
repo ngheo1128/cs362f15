@@ -69,6 +69,13 @@ randomtestcard.out: randomtestcard.c dominion.o rngs.o
 	gcov dominion.c >> randomtestcard.out
 	./randomtestcard >> randomtestcard.out
 
+rtsmithy.out: rtsmithy.c dominion.o rngs.o
+	gcc -o rtsmithy rtsmithy.c dominion.o rngs.o $(CFLAGS)
+	echo "rtsmithy.c -->" > rtsmithy.out
+	gcov dominion.c >> rtsmithy.out
+	./rtsmithy >> rtsmithy.out
+
+
 randomtestadventurer.out: randomtestadventurer.c dominion.o rngs.o
 	gcc -o randomtestadventurer randomtestadventurer.c dominion.o rngs.o $(CFLAGS) 
 	echo "randomtestadventurer.c -->" > randomtestadventurer.out
@@ -81,4 +88,4 @@ player: player.c interface.o
 all: playdom player testDrawCard testBuyCard badTestDrawCard
 
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestcard randomtestadventurer testInit.exe *.gcov *.gcda *.gcno *.so
+	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestcard randomtestadventurer testInit.exe *.gcov *.gcda *.gcno *.so badTestDrawCard testDrawCard
