@@ -90,7 +90,7 @@ int main() {
 		cardNumToName(test_state.hand[0][i], name);
 		printf("\t%s", name);
 	}
-	printf("\nNumber of Cards:   %d, Expected Number of Cards:   9\n", test_state.handCount[0]);
+	printf("\nNumber of Cards:   %d, Expected Number of Cards:   8\n", test_state.handCount[0]);
 	printf("Number of Buys:   %d, Expected Number of Buys:   2\n", test_state.numBuys);
 	printf("Number of Discard:   %d\n\n", test_state.discardCount[0]);
 
@@ -103,7 +103,7 @@ int main() {
 	}
 	printf("\nNumber of Cards:   %d\n\n", test_state.handCount[1]);
 
-	if (test_state.handCount[0] == 9 && test_state.numBuys == 2 && test_state.discardCount[0] == 1)
+	if (test_state.handCount[0] == 8 && test_state.numBuys == 2 && test_state.discardCount[0] == 1)
 	{
 		printf("(Test #1 passed unit test!)\n\n");
 	}

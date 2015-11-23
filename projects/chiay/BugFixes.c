@@ -2,6 +2,8 @@
      Bug Fixes for dominion
 ********************************
 
+** All bugs introduced in assignment 2 are reverted before bug fixes. **
+
 Bugs found by teammate:
 -----------------------
 
@@ -60,7 +62,50 @@ Fix   : (1) First if statement, (state->deckCount[player] > 3)
 		//Change form state->deckCount[player]-- to state->deckCount[player]++
 		state->deckCount[player]++;
 				}
-Test   : Both tests passed unit test.
+Code added : None
+Test       : Both tests passed unit test.
+
+
+/**********************************************************************************************/
+
+
+Bug 2      : Calculation error in scoreFor() function for discardCount and deckCount
+Code       : Third for - loop. for (i = 0; i < state->discardCount[player]; i++)
+Fix        : Third for - loop. for (i = 0; i < state->deckCount[player]; i++)
+Code added : None
+Test       : All 9 tests passed unit test.
+
+
+/**********************************************************************************************/
+
+
+Bug 3      : cardEffect_council_rool() function won't discard council room card (introduced in assignment 2)
+Code       :
+
+       for (i = 0; i < state->numPlayers; i++)
+       {
+          if (i != currentPlayer)
+	  {
+	     drawCard(i, state);
+	  }
+	  else
+	  {
+	     return;
+	  }
+       }
+
+Fix        :
+
+       for (i = 0; i < state->numPlayers; i++)
+       {
+          if (i != currentPlayer)
+	  {
+	     drawCard(i, state);
+          }
+       }
+
+Code added : None
+Test       : Test passed unit test.
 
 
 /**********************************************************************************************/
