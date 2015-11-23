@@ -143,7 +143,7 @@ int councilAction(int player, struct gameState *state, int handPos);
   Current player draws 4 additional cards, and get 1 addtional buy.
   All other players gets to draw a card.*/
 
-int adventurerAction(int player, struct gameState *state, int temphand[]);
+int adventurerAction(int player, struct gameState *state, int temphand[], int handPos);
 /*Play adventurer card with index handpos from current player's hand.
  Current Player cycles through their deck until they get  treasure cards.  
  The drawn non-treasure cards are placed in the temphand array to be discarded later.*/

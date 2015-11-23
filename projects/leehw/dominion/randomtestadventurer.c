@@ -36,12 +36,12 @@ struct failures {
 int initFailures(struct failures *fail);
 void setDeck(struct gameState *G, int numPlayers);
 void setHand(struct gameState *G, int numPlayers);
-int checkAdventurer(int p, struct gameState post, struct failures *failure, int currentPlayer);
+int checkAdventurer(int p, struct gameState post, struct failures *failure, int currentPlayer, int handPos);
 
 int main(){
 
   int seed = 1000;
-  int n, i, r;
+  int n, i, r, j, handPos;
   //int result = 0;
   //bool pass = true;
   int p = 0;
@@ -58,7 +58,7 @@ int main(){
   srand(time(NULL));
 
   //The following random loop was inspired by Lecture 11 CS 362
-  for (n = 0; n < 3000; n++){
+  for (n = 0; n <3000; n++){
      //initialize random gamesate
      for (i = 0; i < sizeof(struct gameState); i++){
           ((char*)&G)[i] = floor(Random() * 256);
@@ -69,6 +69,7 @@ int main(){
      if (p == 0){
        p = 1;
      }
+     G.numPlayers = p;
      //printf("\np before init is: %d\n", p);
      seed = floor(Random() * 5000);
      r = initializeGame(p, k, seed, &G); //initialize game
@@ -88,7 +89,15 @@ int main(){
      //run check on gamestate for adventurer card
      for (i = 0; i < p; i++){
        G.coins = floor(Random() * 50);
-       checkAdventurer(p, G, &fail, i);
+       G.playedCardCount = 0;
+       for (j = 0; j< G.handCount[i]; j++){
+         if (G.hand[i][j] == adventurer){
+           handPos = j;
+           break;
+         }
+       }
+       checkAdventurer(p, G, &fail, i, handPos);
+
      }
      //clear game state
      memset(&G, 23, sizeof(struct gameState));
@@ -154,7 +163,7 @@ void setHand(struct gameState *G, int numPlayers){
   
 }
 
-int checkAdventurer(int p, struct gameState post, struct failures *failure, int currentPlayer) {
+int checkAdventurer(int p, struct gameState post, struct failures *failure, int currentPlayer, int handPos) {
 
   struct gameState pre;
   int i;
@@ -171,10 +180,11 @@ int checkAdventurer(int p, struct gameState post, struct failures *failure, int 
   //copy the game state to compare pre and post values
   memcpy(&pre, &post, sizeof(struct gameState));
 
-  result = adventurerAction(currentPlayer, &post, temphand);
+  printf("test\n");
+  result = adventurerAction(currentPlayer, &post, temphand, handPos);
   printf("Result is %d\n", result);
   printf("discardCard is %d\n", post.discardCount[currentPlayer]);
-  
+
   //how many treasurer cards in deck?
   for (i = 0; i < pre.deckCount[currentPlayer]; i++){
     if ((pre.deck[currentPlayer][i] == gold) || (pre.deck[currentPlayer][i] == silver) || (pre.deck[currentPlayer][i] == copper)){
@@ -193,27 +203,43 @@ int checkAdventurer(int p, struct gameState post, struct failures *failure, int 
     //if only 1 treasure card in player's hand/discard pile
     if (treasureCount == 0){
       expHandCount = pre.handCount[currentPlayer] - 1;
-    } else if (treasureCount == 1){
+    }
+    else if (treasureCount == 1){
       expHandCount = pre.handCount[currentPlayer];
-    } else{
+    }
+    else{
       expHandCount = pre.handCount[currentPlayer] + 2 - 1;
     }
     printf("Hand Count\t Expected:%d\t Result:%d\n", expHandCount, post.handCount[currentPlayer]);
 
     //check deck count
     //if shuffle deck was called, indicating the deck count ran out, and the discard pile was shuffled back into the deck
-    if (pre.deckCount[currentPlayer] - result < 0){
-      expDeckCount = pre.deckCount[currentPlayer] - result + pre.discardCount[currentPlayer];
-      expDiscCount = result + 1;
-    }else{
-      expDeckCount = pre.deckCount[currentPlayer] - result;
-      expDiscCount = pre.discardCount[currentPlayer] + result + 1;
-    }
-    printf("Deck Count\t Expected:%d\t Result:%d\n", expDeckCount, post.deckCount[currentPlayer]);
+        if (pre.deckCount[currentPlayer] - result < 0){
+          expDeckCount = pre.deckCount[currentPlayer] - result + pre.discardCount[currentPlayer];
+          if (treasureCount == 0){
+            expDiscCount = result + 1;
+          } else if (treasureCount ==1){
+            expDiscCount = result -1 + 1;
+          } else {
+            expDiscCount = result - 2 + 1;
+          }
+        }else{
+          expDeckCount = pre.deckCount[currentPlayer] - result ;
+          if (treasureCount == 0){
+            expDiscCount = pre.discardCount[currentPlayer] + result + 1;
+          }
+          else if (treasureCount == 1){
+            expDiscCount = pre.discardCount[currentPlayer] + result - 1 + 1;
+          }
+          else {
+            expDiscCount = pre.discardCount[currentPlayer] + result - 2 + 1;
+          }
+        }
+        printf("Deck Count\t Expected:%d\t Result:%d\n", expDeckCount, post.deckCount[currentPlayer]);
 
     //check discard pile
     //should be + the cards cycled through and the discarded adventurer card
-    printf("Discard Count\t Expected:%d\t Result:%d\n", expDiscCount, post.discardCount[currentPlayer]);
+      printf("Discard Count\t Expected:%d\t Result:%d\n", expDiscCount, post.discardCount[currentPlayer]);
 
     //check card count for all other players
     //currentPlayer = p;
@@ -252,12 +278,12 @@ int checkAdventurer(int p, struct gameState post, struct failures *failure, int 
       failure->handFail++;
     }
 
-    failure->totalDeck++;
-    if (expDeckCount != post.deckCount[currentPlayer]){
-      printf("Unexpected deckCount\n");
-      fail = true;
-      failure->deckFail++;
-    }
+        failure->totalDeck++;
+        if (expDeckCount != post.deckCount[currentPlayer]){
+          printf("Unexpected deckCount\n");
+          fail = true;
+          failure->deckFail++;
+        }
 
     failure->totalDisc++;
     if (expDiscCount != post.discardCount[currentPlayer]){
@@ -266,9 +292,6 @@ int checkAdventurer(int p, struct gameState post, struct failures *failure, int 
       failure->discFail++;
     }
 
-    //since no handpos is passed in to function, and no discarding
-    //is called in code, can safely assume that the last two cards
-    //post hand will be the found treasure cards
     if (treasureCount > 1){
       failure->totalTreasure++;
       if ((post.hand[currentPlayer][post.handCount[currentPlayer] - 1] != gold)
@@ -280,24 +303,24 @@ int checkAdventurer(int p, struct gameState post, struct failures *failure, int 
 
       }
       failure->totalTreasure++;
-      if ((post.hand[currentPlayer][post.handCount[currentPlayer] - 2] != gold)
-        && (post.hand[currentPlayer][post.handCount[currentPlayer] - 2] != silver)
-        && (post.hand[currentPlayer][post.handCount[currentPlayer] - 2] != copper)){
+      if ((post.hand[currentPlayer][handPos] != gold)
+        && (post.hand[currentPlayer][handPos] != silver)
+        && (post.hand[currentPlayer][handPos] != copper)){
         printf("Treasurer card not added to hand\n");
         fail = true;
         failure->treasureFail++;
       }
-    } else{
+    }else if (treasureCount == 1){
       failure->totalTreasure++;
-      if ((post.hand[currentPlayer][post.handCount[currentPlayer] - 1] != gold)
-        && (post.hand[currentPlayer][post.handCount[currentPlayer] - 1] != silver)
-        && (post.hand[currentPlayer][post.handCount[currentPlayer] - 1] != copper)){
+      if ((post.hand[currentPlayer][handPos] != gold)
+        && (post.hand[currentPlayer][handPos] != silver)
+        && (post.hand[currentPlayer][handPos] != copper)){
         printf("Treasurer card not added to hand\n");
         fail = true;
         failure->treasureFail++;
       }
-   }
-
+    }
+    
     //check card count for other players
     for (i = 0; i< p; i++){
       if (i != currentPlayer){
@@ -310,6 +333,7 @@ int checkAdventurer(int p, struct gameState post, struct failures *failure, int 
         }
       }
     }
+
     //check coin count has not changed
     failure->totalCoins++;
     if (pre.coins != post.coins){
@@ -318,43 +342,46 @@ int checkAdventurer(int p, struct gameState post, struct failures *failure, int 
       fail = true;
       failure->coinsFail++;
     }
+
     //check adventurer count
     failure->totalAdventurer++;
     if (preAdventurer - 1 != postAdventurer){
       printf("Adventurer card not discarded\n");
-      fail= true;
+      fail = true;
       failure->adventurerFail++;
     }
+
     //for 0 deck
-  }else{
+  }
+  else{
     //check hand count
-    //should be +2 treasure cards -1 discarded adventurer card
-    printf("Hand Count\t Expected:%d\t Result:%d\n", pre.handCount[currentPlayer], post.handCount[currentPlayer]);
+    //should -1 discarded adventurer card
+    printf("Hand Count\t Expected:%d\t Result:%d\n", pre.handCount[currentPlayer]-1, post.handCount[currentPlayer]);
 
     //check deck count
-    printf("Deck Count\t Expected:%d\t Result:%d\n", pre.deckCount[currentPlayer] - result, post.deckCount[currentPlayer]);
+        printf("Deck Count\t Expected:%d\t Result:%d\n", pre.deckCount[currentPlayer] - result, post.deckCount[currentPlayer]);
 
     //check discard pile
     //should be + the cards cycled through and the discarded adventurer card
-    printf("Discard Count\t Expected:%d\t Result:%d\n", pre.discardCount[currentPlayer], post.discardCount[currentPlayer]);
+       printf("Discard Count\t Expected:%d\t Result:%d\n", pre.discardCount[currentPlayer]+result+1, post.discardCount[currentPlayer]);
 
     //check results
     failure->totalHand++;
-    if (pre.handCount[currentPlayer] != post.handCount[currentPlayer]){
+    if (pre.handCount[currentPlayer]-1 != post.handCount[currentPlayer]){
       printf("Unexpected handcount\n");
       fail = true;
       failure->handFail++;
     }
 
     failure->totalDeck++;
-    if (pre.deckCount[currentPlayer] != post.deckCount[currentPlayer]){
+    if (pre.deckCount[currentPlayer]-result != post.deckCount[currentPlayer]){
       printf("Unexcpected deckCount\n");
       fail = true;
       failure->deckFail++;
     }
 
     failure->totalDisc++;
-    if (pre.discardCount[currentPlayer] != post.discardCount[currentPlayer]){
+    if (pre.discardCount[currentPlayer]+result+1 != post.discardCount[currentPlayer]){
       printf("Unexcpected discardCount\n");
       fail = true;
       failure->discFail++;

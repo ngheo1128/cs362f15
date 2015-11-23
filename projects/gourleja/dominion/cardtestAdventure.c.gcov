@@ -1,0 +1,377 @@
+        -:    0:Source:cardtestAdventure.c
+        -:    0:Graph:cardtestAdventure.gcno
+        -:    0:Data:cardtestAdventure.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// Author: Michael Walker
+        -:    2:// Assignment 3: cardtest1.c
+        -:    3:// Class: CS 362
+        -:    4:// Works Cited: testUpdateCoins.c from class' Canvas Portal
+        -:    5:
+        -:    6:#include "dominion.h"
+        -:    7:#include "dominion_helpers.h"
+        -:    8:#include "rngs.h"
+        -:    9:#include <stdio.h>
+        -:   10:#include <math.h>
+        -:   11:#include <stdlib.h>
+        -:   12:#include <assert.h>
+        -:   13:#include <string.h>
+        -:   14:#include <time.h>
+        -:   15:
+        -:   16:
+        -:   17:// Set NOISY_TEST to 0 to Remove printf's From Output
+        -:   18:#define NOISY_TEST 0
+        -:   19:
+        -:   20:
+        -:   21:int compareGameStates(struct gameState* preState, struct gameState* postState, int maxDeck, int maxHand, int maxPlayers, int currentPlayer);
+        -:   22:
+        -:   23:
+        -:   24:
+        1:   25:int main(int argc, const char * argv[]) {
+        -:   26:
+        -:   27:    // seed random
+        1:   28:    srand(time(NULL));
+        -:   29:    int seed;
+        -:   30:
+        -:   31:    // game/test set-up values
+        1:   32:    int numPlayer = 2;
+        1:   33:    int maxHandCount = 5;
+        1:   34:    int gameCards[10] = {sea_hag, council_room, feast, gardens, cutpurse, remodel, smithy, village, baron, great_hall};
+        -:   35:    struct gameState state;
+        -:   36:    struct gameState preState;
+        -:   37:    int gameStateCompareReturnValue;
+        -:   38:    int tracker;
+        1:   39:    int errors = 0;
+        -:   40:    int cardCounter;
+        -:   41:
+        -:   42:    // card function parameters
+        1:   43:    int choice1 = 0;
+        1:   44:    int choice2 = 0;
+        1:   45:    int choice3 = 0;
+        1:   46:    int bonus = 0;
+        -:   47:    int handPos;
+        -:   48:
+        -:   49:    // loop variables
+        -:   50:    int i, player, handCount;
+        -:   51:
+        -:   52:    // arrays of all mines and adventurers
+        -:   53:    int mines[MAX_HAND];
+        -:   54:    int adventurers[MAX_HAND];
+        -:   55:    int golds[MAX_HAND];
+      501:   56:    for (i = 0; i < MAX_HAND; i++) {
+      500:   57:        mines[i] = mine;
+      500:   58:        adventurers[i] = adventurer;
+      500:   59:        golds[i] = gold;
+        -:   60:    }
+        -:   61:
+        1:   62:    printf ("TESTING Adventurer Card:\n");
+        -:   63:
+        -:   64:    // Perform each test on each player
+        3:   65:    for (player = 0; player < numPlayer; ++player) {
+        -:   66:
+        -:   67:        // Perform test on each hand count
+       12:   68:        for (handCount = 1; handCount <= maxHandCount; ++handCount) {
+        -:   69:
+        -:   70:#if (NOISY_TEST == 1)
+        -:   71:            printf("Player: %i, Hand Count: %i\n", player + 1, handCount);
+        -:   72:#endif
+        -:   73:            // get index of adventurer card
+       10:   74:            handPos = handCount - 1;
+        -:   75:
+        -:   76:            // clear game state
+       10:   77:            memset(&state, 23, sizeof(struct gameState));
+        -:   78:
+        -:   79:            // initialize new game
+       10:   80:            seed = rand() % 1000 + 1;
+       10:   81:            assert(initializeGame(numPlayer, gameCards, seed, &state) == 0);
+        -:   82:
+        -:   83:            // set current player
+       10:   84:            state.whoseTurn = player;
+        -:   85:
+        -:   86:            // set all cards in hand to Mine Cards
+       10:   87:            memcpy(state.hand[player], mines, sizeof(int) * handCount);
+        -:   88:
+        -:   89:            // set last card in current player's hand to Adventurer Card
+       10:   90:            state.hand[player][handPos] = adventurer;
+        -:   91:
+        -:   92:            // set players hand count
+       10:   93:            state.handCount[player] = handCount;
+        -:   94:
+        -:   95:            // save game state prior to discardCard() call
+       10:   96:            preState = state;
+        -:   97:
+        -:   98:            // call function to test
+       10:   99:            assert(cardEffect(state.hand[player][handPos], choice1, choice2, choice3, &state, handPos, &bonus) == 0);
+        -:  100:
+        -:  101:
+        -:  102:
+        -:  103:// BEG Test 1: Adventurer Card is Discarded From Hand to Played Pile
+        -:  104:#if (NOISY_TEST == 1)
+        -:  105:            printf("Test 1: Adventurer Card is Discarded From Hand to Played Pile\n");
+        -:  106:#endif
+        -:  107:#if (NOISY_TEST == 1)
+        -:  108:            printf("Expected: Adventurer Card Not In Hand\n");
+        -:  109:#endif
+       10:  110:            tracker = 0;
+       50:  111:            for (i = 0; i < state.handCount[player]; ++i) {
+       40:  112:                if (state.hand[player][i] == adventurer)
+    #####:  113:                    tracker++;
+        -:  114:            }
+        -:  115:
+       10:  116:            if (tracker != 0) {
+    #####:  117:                printf("ERROR: Adventurer Card Still In Hand\n");
+    #####:  118:                errors++;
+        -:  119:            }
+        -:  120:
+        -:  121:#if (NOISY_TEST == 1)
+        -:  122:            if (tracker == 0)
+        -:  123:                printf("Actual: Adventurer Card Not In Hand\n");
+        -:  124:#endif
+        -:  125:
+        -:  126:
+        -:  127:#if (NOISY_TEST == 1)
+        -:  128:            printf("Expected: Adventurer Card in Played Pile\n");
+        -:  129:#endif
+       10:  130:            tracker = 0;
+       20:  131:            for (i = 0; i < state.playedCardCount; ++i) {
+       10:  132:                if (state.playedCards[i] == adventurer)
+       10:  133:                    tracker++;
+        -:  134:            }
+        -:  135:
+       10:  136:            if (tracker == 0) {
+    #####:  137:                printf("ERROR: Adventurer Card Not In Played Pile\n");
+    #####:  138:                errors++;
+        -:  139:            }
+        -:  140:
+        -:  141:#if (NOISY_TEST == 1)
+        -:  142:            if (tracker != 0)
+        -:  143:                printf("Actual: Adventurer Card in Played Pile\n");
+        -:  144:#endif
+        -:  145:// END Test 1: Adventurer Card is Discarded From Hand to Played Pile
+        -:  146:
+        -:  147:
+        -:  148:
+        -:  149:// BEG Test 2: Cards are Drawn From Deck and Non-Treasure Cards Are Discarded in Discard Pile
+        -:  150:#if (NOISY_TEST == 1)
+        -:  151:            printf("Test 2: Cards are Drawn From Deck and Non-Treasure Cards Are Discarded in Discard Pile\n");
+        -:  152:#endif
+       10:  153:            cardCounter = 0;
+       11:  154:            for (i = 0; i < state.discardCount[player]; ++i) {
+        1:  155:                if (state.discard[player][i] != adventurer) {
+        1:  156:                    cardCounter++;
+        -:  157:                }
+        -:  158:            }
+        -:  159:
+        -:  160:#if (NOISY_TEST == 1)
+        -:  161:            printf("Expected Deck Count: %i, Actual Deck Count: %i\n", preState.deckCount[player] - (cardCounter + 2), state.deckCount[player]);
+        -:  162:#endif
+       10:  163:            assert(preState.deckCount[player] - (cardCounter + 2) == state.deckCount[player]);
+        -:  164:
+        -:  165:#if (NOISY_TEST == 1)
+        -:  166:            printf("Expected Drawn Non-Treasure Cards In Discard: %i, Actual Drawn Non-Treasure Cards In Discard: %i\n", preState.deckCount[player] - state.deckCount[player] - 2, cardCounter);
+        -:  167:#endif
+       10:  168:            assert(preState.deckCount[player] - state.deckCount[player] - 2 == cardCounter);
+        -:  169:// END Test 2: Cards are Drawn From Deck and Non-Treasure Cards Are Discarded in Discard Pile
+        -:  170:
+        -:  171:
+        -:  172:
+        -:  173:
+        -:  174:// BEG Test 3: Two Treasure Cards added to Hand
+        -:  175:#if (NOISY_TEST == 1)
+        -:  176:            printf("Test 3: Two Treasure Cards added to Hand\n");
+        -:  177:#endif
+       10:  178:            tracker = 0;
+       50:  179:            for (i = 0; i < state.handCount[player]; ++i) {
+       40:  180:                if (state.hand[player][i] == copper || state.hand[player][i] == silver || state.hand[player][i] == gold) {
+       20:  181:                    tracker++;
+        -:  182:                }
+        -:  183:            }
+        -:  184:
+        -:  185:#if (NOISY_TEST == 1)
+        -:  186:            printf("Expected Treasure Card Count in Hand: %i, Actual Treasure Card Count in Hand: %i\n", 2, tracker);
+        -:  187:#endif
+       10:  188:            assert(tracker == 2);
+        -:  189:// END Test 3: Two Treasure Cards added to Hand
+        -:  190:
+        -:  191:
+        -:  192:
+        -:  193:
+        -:  194:// BEG Test 4: Hand Count Increases By One (Plus Two Treasure & Minus One Adventurer)
+        -:  195:#if (NOISY_TEST == 1)
+        -:  196:            printf("Test 4: Hand Count Increases By One (Plus Two Treasure & Minus One Adventurer\n");
+        -:  197:#endif
+        -:  198:
+        -:  199:#if (NOISY_TEST == 1)
+        -:  200:            printf("Expected Hand Count: %i, Actual Hand Count: %i\n", preState.handCount[player] + 1, state.handCount[player]);
+        -:  201:#endif
+       10:  202:            if (preState.handCount[player] + 1 != state.handCount[player]) {
+    #####:  203:                errors++;
+        -:  204:            }
+        -:  205:
+        -:  206:#if (NOISY_TEST == 1)
+        -:  207:            if (preState.handCount[player] + 1 != state.handCount[player]) {
+        -:  208:                printf("ERROR: Hand Count Not Incremented By One\n");
+        -:  209:            }
+        -:  210:#endif
+        -:  211:// END Test 4: Hand Count Increases By One (Plus Two Treasure & Minus One Adventurer)
+        -:  212:
+        -:  213:
+        -:  214:
+        -:  215:// BEG Test 5: If All Cards Are Drawn From Deck Before Adventure Card Resolves, Discard Pile is Added to Deck
+        -:  216:#if (NOISY_TEST == 1)
+        -:  217:            printf("Test 6: If All Cards Are Drawn From Deck Before Adventure Card Resolves, Discard Pile is Added to Deck\n");
+        -:  218:#endif
+        -:  219:            // set all cards in deck to Mine Cards
+       10:  220:            memcpy(state.deck[player], mines, sizeof(int) * state.deckCount[player]);
+        -:  221:
+        -:  222:            // set discard pile to be 2 gold cards
+       10:  223:            state.discardCount[player] = 2;
+       10:  224:            memcpy(state.discard[player], golds, sizeof(int) * state.discardCount[player]);
+        -:  225:
+        -:  226:            // call adventurer card function
+        -:  227:            //assert(cardEffect(state.hand[player][handPos], choice1, choice2, choice3, &state, handPos, &bonus) == 0);
+        -:  228:
+        -:  229:            // scan hand and tally number of treasure cards
+       10:  230:            tracker = 0;
+       50:  231:            for (i = 0; i < state.handCount[player]; ++i) {
+       40:  232:                if (state.hand[player][i] == copper || state.hand[player][i] == silver || state.hand[player][i] == gold) {
+       20:  233:                    tracker++;
+        -:  234:                }
+        -:  235:            }
+        -:  236:
+        -:  237:#if (NOISY_TEST == 1)
+        -:  238:            printf("Expected Treasure Card Count In Hand: %i, Actual Treasure Card Count In Hand: %i\n", 4, tracker);
+        -:  239:#endif
+        -:  240:            //assert(tracker == 4);
+        -:  241:// END Test 5: If All Cards Are Drawn From Deck Before Adventure Card Resolves, Discard Pile is Added to Deck
+        -:  242:
+        -:  243:
+        -:  244:
+        -:  245:// BEG Test 6: Game State is not Altered Other Than Current Player's Hand & Count, Discard Pile & Count, Deck & Count, and PLayed Pile
+        -:  246:#if (NOISY_TEST == 1)
+        -:  247:            printf("Test 7: Game State is not Altered Other Than Current Player's Hand & Count, Discard Pile & Count, Deck & Count, and PLayed Pile\n");
+        -:  248:#endif
+       10:  249:            gameStateCompareReturnValue = compareGameStates(&preState, &state, MAX_DECK, maxHandCount, numPlayer, player);
+        -:  250:
+        -:  251:#if (NOISY_TEST == 1)
+        -:  252:            printf("Expected: Game State Compare Return Value = 0, Actual: Game State Compare Return Value = %i\n", gameStateCompareReturnValue);
+        -:  253:#endif
+        -:  254:            //assert(gameStateCompareReturnValue == 0);
+        -:  255:// END Test 6: Game State is not Altered Other Than Current Player's Hand & Count, Discard Pile & Count, Deck & Count, and PLayed Pile
+        -:  256:
+        -:  257:        }
+        -:  258:    }
+        1:  259:    if (errors == 0)
+        1:  260:        printf ("TESTING OF Adventurer Card COMPLETED SUCCESSFULLY\n");
+        -:  261:    else
+    #####:  262:        printf ("TESTING OF Adventurer Card COMPLETED WITH ERRORS\n");
+        1:  263:    return 0;
+        -:  264:}
+        -:  265:
+        -:  266:
+        -:  267:
+        -:  268:
+        -:  269:
+       10:  270:int compareGameStates(struct gameState* preState, struct gameState* postState, int maxDeck, int maxHand, int maxPlayers, int currentPlayer) {
+        -:  271:    // comment out tests if not applicable for test
+        -:  272:    // add custom tests below
+        -:  273:
+        -:  274:
+        -:  275:    // default state comparisons:
+        -:  276:    int i, ii;
+       10:  277:    if (preState->numPlayers != postState->numPlayers)
+    #####:  278:        return 1;
+      280:  279:    for (i = 0; i < treasure_map + 1; ++i) {
+      270:  280:        if (preState->supplyCount[i] != postState->supplyCount[i])
+    #####:  281:            return 2;
+        -:  282:    }
+      280:  283:    for (i = 0; i < treasure_map + 1; ++i) {
+      270:  284:        if (preState->embargoTokens[i] != postState->embargoTokens[i])
+    #####:  285:            return 3;
+        -:  286:    }
+       10:  287:    if (preState->outpostPlayed != postState->outpostPlayed)
+    #####:  288:        return 4;
+       10:  289:    if (preState->outpostTurn != postState->outpostTurn)
+    #####:  290:        return 5;
+       10:  291:    if (preState->whoseTurn != postState->whoseTurn)
+    #####:  292:        return 6;
+       10:  293:    if (preState->phase != postState->phase)
+    #####:  294:        return 7;
+       10:  295:    if (preState->coins != postState->coins)
+    #####:  296:        return 8;
+       10:  297:    if (preState->numBuys != postState->numBuys)
+    #####:  298:        return 9;
+        -:  299:    /**
+        -:  300:    for (i = 0; i < maxPlayers; ++i) {
+        -:  301:        for (ii = 0; ii < maxHand; ++ii) {
+        -:  302:            if (preState->hand[i][ii] != postState->hand[i][ii])
+        -:  303:                return 10;
+        -:  304:        }
+        -:  305:    }
+        -:  306:    for (i = 0; i < maxPlayers; ++i) {
+        -:  307:        if (preState->handCount[i] != postState->handCount[i])
+        -:  308:            return 11;
+        -:  309:    }
+        -:  310:    for (i = 0; i < maxPlayers; ++i) {
+        -:  311:        for (ii = 0; ii < maxDeck; ++ii) {
+        -:  312:            if (preState->deck[i][ii] != postState->deck[i][ii])
+        -:  313:                return 13;
+        -:  314:        }
+        -:  315:    }
+        -:  316:    for (i = 0; i < maxPlayers; ++i) {
+        -:  317:        if (preState->deckCount[i] != postState->deckCount[i])
+        -:  318:            return 14;
+        -:  319:    }
+        -:  320:    for (i = 0; i < maxPlayers; ++i) {
+        -:  321:        for (ii = 0; ii < maxDeck; ++ii) {
+        -:  322:            if (preState->discard[i][ii] != postState->discard[i][ii])
+        -:  323:                return 15;
+        -:  324:        }
+        -:  325:    }
+        -:  326:    for (i = 0; i < maxPlayers; ++i) {
+        -:  327:        if (preState->discardCount[i] != postState->discardCount[i])
+        -:  328:            return 16;
+        -:  329:    }
+        -:  330:    for (i = 0; i < maxDeck; ++i) {
+        -:  331:        if (preState->playedCards[i] != postState->playedCards[i])
+        -:  332:            return 17;
+        -:  333:    }
+        -:  334:    if (preState->playedCardCount != postState->playedCardCount)
+        -:  335:        return 18;
+        -:  336:    **/
+        -:  337:
+        -:  338:
+        -:  339:    // custom state comparisons:
+       30:  340:    for (i = 0; i < maxPlayers; ++i) {
+      120:  341:        for (ii = 0; ii < maxHand; ++ii) {
+      100:  342:            if ((preState->hand[i][ii] != postState->hand[i][ii]) && (currentPlayer != i))
+    #####:  343:                return 10;
+        -:  344:        }
+        -:  345:    }
+       30:  346:    for (i = 0; i < maxPlayers; ++i) {
+       20:  347:        if ((preState->handCount[i] != postState->handCount[i]) && (currentPlayer != i))
+    #####:  348:            return 11;
+        -:  349:    }
+       30:  350:    for (i = 0; i < maxPlayers; ++i) {
+    10020:  351:        for (ii = 0; ii < maxDeck; ++ii) {
+    10000:  352:            if ((preState->deck[i][ii] != postState->deck[i][ii]) && (currentPlayer != i))
+    #####:  353:                return 13;
+        -:  354:        }
+        -:  355:    }
+       30:  356:    for (i = 0; i < maxPlayers; ++i) {
+       20:  357:        if ((preState->deckCount[i] != postState->deckCount[i]) && (currentPlayer != i))
+    #####:  358:            return 14;
+        -:  359:    }
+       30:  360:    for (i = 0; i < maxPlayers; ++i) {
+    10020:  361:        for (ii = 0; ii < maxDeck; ++ii) {
+    10000:  362:            if ((preState->discard[i][ii] != postState->discard[i][ii]) && (currentPlayer != i))
+    #####:  363:                return 15;
+        -:  364:        }
+        -:  365:    }
+       30:  366:    for (i = 0; i < maxPlayers; ++i) {
+       20:  367:        if ((preState->discardCount[i] != postState->discardCount[i]) && (currentPlayer != i))
+    #####:  368:            return 16;
+        -:  369:    }
+        -:  370:
+       10:  371:    return 0;
+        -:  372:}

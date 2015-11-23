@@ -55,7 +55,7 @@ void villageTest()
 	if(G.deckCount[player] == 4){
 		printf ("PASS - Player 1: 4 cards in deck\n");
 	} else {
-		printf ("FAIL - Player 1: %d cards in deck\n", G.handCount[player]);
+		printf ("FAIL - Player 1: %d cards in deck\n", G.deckCount[player]);
 	}
 	
 	if (G.discardCount[player] == 1){

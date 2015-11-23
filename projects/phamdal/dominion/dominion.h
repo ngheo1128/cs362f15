@@ -130,7 +130,7 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 
 //Separate card functions start here
 int adventurer_card (int currentPlayer, struct gameState *state, int drawntreasure,
-    int cardDrawn, int z, int temphand[]);
+    int cardDrawn, int z, int temphand[], int handPos);
 
 int smithy_card(int currentPlayer, struct gameState *state, int handPos);
 

@@ -62,7 +62,7 @@ int main(){
   srand(time(NULL));
 
   //The following random loop was inspired by Lecture 11 CS 362
-  for (n = 0; n < 50; n++){
+  for (n = 0; n < 60; n++){
     //initialize random gamesate
     for (i = 0; i < sizeof(struct gameState); i++){
       ((char*)&G)[i] = floor(Random() * 256);
@@ -73,6 +73,7 @@ int main(){
     if (p == 0){
       p = 1;
     }
+    G.numPlayers = p;
     seed = floor(Random() * 5000);
      printf("\np before init is: %d\n", p);
     r = initializeGame(p, k, seed, &G); //initialize game
@@ -93,6 +94,7 @@ int main(){
     //run check on gamestate for council card
     for (i = 0; i < p; i++){
       handPos = floor(Random() * G.handCount[i]);
+      G.hand[i][handPos] = council_room;
       G.playedCardCount = floor(Random() *MAX_DECK);
       G.numBuys = floor(Random() *50);
       G.coins = floor(Random() *50);
@@ -167,6 +169,7 @@ int checkCouncil(int p, struct gameState post, int handPos, struct failures *fai
   //int newCard1, newCard2, newCard3, newCard4;
   //int deckCard1, deckCard2, deckCard3, deckCard4;
   int preCouncil = 0;
+  int postCouncil =0;
   int councilCount = 0;
 
   //copy the game state to compare pre and post values
@@ -174,27 +177,33 @@ int checkCouncil(int p, struct gameState post, int handPos, struct failures *fai
 
   councilAction(currentPlayer, &post, handPos);
 
+
   //expected hand count
   printf("Hand Count\t Expected: %d\t Result:%d\n", pre.handCount[currentPlayer] + 3, post.handCount[currentPlayer]);
   //check deck count
-  printf("Deck Count\t Expected: %d\t Result:%d\n", pre.deckCount[currentPlayer] - 4, post.deckCount[currentPlayer]);
+  if (pre.deckCount[currentPlayer] < 4){
+    printf("Deck Count\t Expected: %d\t Result:%d\n", pre.discardCount[currentPlayer] -(4- pre.deckCount[currentPlayer]), post.deckCount[currentPlayer]);
+  }else{
+    printf("Deck Count\t Expected: %d\t Result:%d\n", pre.deckCount[currentPlayer] - 4, post.deckCount[currentPlayer]);
+  }
   //gather count of council cards
-  if (post.hand[currentPlayer][pre.handCount[currentPlayer]] == council_room){
+  if (post.hand[currentPlayer][post.handCount[currentPlayer]-1] == council_room){
     councilCount++;
   }
-  if (post.hand[currentPlayer][pre.handCount[currentPlayer]] == council_room){
+  if (post.hand[currentPlayer][post.handCount[currentPlayer]-2] == council_room){
     councilCount++;
   }
-  if (post.hand[currentPlayer][pre.handCount[currentPlayer] + 1] == council_room){
-    councilCount++;
-  }
-  if (post.hand[currentPlayer][pre.handCount[currentPlayer] + 2] == council_room){
+  if (post.hand[currentPlayer][post.handCount[currentPlayer] -3] == council_room){
     councilCount++;
   }
   if (post.hand[currentPlayer][handPos] == council_room){
     councilCount++;
   }
- 
+
+  //if (post.hand[currentPlayer][handPos] == council_room){
+  //  councilCount++;
+  //}
+
   //check number of buys
   printf("Buys\t Expected: %d\t Result:%d\n", pre.numBuys + 1, post.numBuys);
 
@@ -202,7 +211,11 @@ int checkCouncil(int p, struct gameState post, int handPos, struct failures *fai
   for (i = 0; i< p; i++){
     if (i != currentPlayer){
       printf("HandCount p%d\t Expected: %d\t Result:%d\n", i + 1, pre.handCount[i] + 1, post.handCount[i]);
-      printf("DeckCount p%d\t Expected: %d\t Result:%d\n", i + 1, pre.deckCount[i] - 1, post.deckCount[i]);
+      if (pre.deckCount[i] < 1){
+        printf("DeckCount p%d\t Expected: %d\t Result:%d\n", i + 1, pre.discardCount[i] - 1, post.deckCount[i]);
+      } else{
+        printf("DeckCount p%d\t Expected: %d\t Result:%d\n", i + 1, pre.deckCount[i] - 1, post.deckCount[i]);
+      }
     }
   }
 
@@ -217,27 +230,54 @@ int checkCouncil(int p, struct gameState post, int handPos, struct failures *fai
       preCouncil++;
     }
   }
-  printf("Council count\t Expected: %d\t Result:%d\n", preCouncil - 1, (preCouncil - 1 + councilCount));
+
+  postCouncil = 0;
+  for (i = 0; i< post.handCount[currentPlayer]; i++){
+    //  printf("prehand[%d][%d]: %d\n", p, i, pre.hand[p][i]);
+    if (post.hand[currentPlayer][i] == council_room){
+      postCouncil++;
+    }
+  }
+
+  printf("councilcount: %d\n", councilCount);
+  printf("precouncil: %d\n", preCouncil);
+  if (councilCount == 0){
+    printf("Council count\t Expected: %d\t Result:%d\n", preCouncil -1 , postCouncil);
+  } else{
+    printf("Council count\t Expected: %d\t Result:%d\n", preCouncil + councilCount-1, postCouncil);
+    }
   //check discard count incremenetd
-  printf("Discard count \t Expected: %d\t Result:%d\n", pre.discardCount[currentPlayer] + 1, post.discardCount[currentPlayer]);
+  if (pre.deckCount[currentPlayer] < 4){
+    printf("Discard count \t Expected: %d\t Result:%d\n", 1, post.discardCount[currentPlayer]);
+  }else{
+    printf("Discard count \t Expected: %d\t Result:%d\n", pre.discardCount[currentPlayer] + 1, post.discardCount[currentPlayer]);
+  }
 
 
   /***CHECK RESULTS***/
   failure->totalHand++;
-  if (pre.handCount[currentPlayer] + 2 != post.handCount[currentPlayer]){
+  if (pre.handCount[currentPlayer] + 3 != post.handCount[currentPlayer]){
     printf("Unexpected handcount\n");
     fail = true;
     failure->handFail++;
   }
   failure->totalDeck++;
-  if (pre.deckCount[currentPlayer] - 3 != post.deckCount[currentPlayer]){
-    printf("Unexpected deckCount\n");
-    fail = true;
-    failure->deckFail++;
+  if (pre.deckCount[currentPlayer] < 4){
+    if (pre.discardCount[currentPlayer] - (4 - pre.deckCount[currentPlayer]) != post.deckCount[currentPlayer]){
+      printf("Unexpected deckCount\n");
+      fail = true;
+      failure->deckFail++;
+    }
+  }else{
+    if (pre.deckCount[currentPlayer] - 4 != post.deckCount[currentPlayer]){
+      printf("Unexpected deckCount\n");
+      fail = true;
+      failure->deckFail++;
+    }
   }
   /*if ((deckCard1 != newCard1) || (deckCard2 != newCard2) || (deckCard3 != newCard3) || (deckCard4 != newCard4)){
-    printf("Unexpected card added to hand\n");
-    fail = true;
+  printf("Unexpected card added to hand\n");
+  fail = true;
   }*/
 
   failure->totalBuys++;
@@ -256,10 +296,18 @@ int checkCouncil(int p, struct gameState post, int handPos, struct failures *fai
         failure->handOtherFail++;
       };
       failure->totalDeckOther++;
-      if (pre.deckCount[i] - 1 != post.deckCount[i]){
-        printf("Unexpected Deckcount p%d\n", i + 1);
-        fail = true;
-        failure->deckOtherFail++;
+      if (pre.deckCount[i] < 1){
+        if (pre.discardCount[i] - 1 != post.deckCount[i]){
+          printf("Unexpected Deckcount p%d\n", i + 1);
+          fail = true;
+          failure->deckOtherFail++;
+        }
+      } else {
+        if (pre.deckCount[i] - 1 != post.deckCount[i]){
+          printf("Unexpected Deckcount p%d\n", i + 1);
+          fail = true;
+          failure->deckOtherFail++;
+        }
       }
     }
   }
@@ -272,19 +320,36 @@ int checkCouncil(int p, struct gameState post, int handPos, struct failures *fai
   }
   //check council count
   failure->totalCouncil++;
-  if (preCouncil - 1 != (preCouncil -1 + councilCount)){
-    printf("Council card not discarded\n");
-    fail = true;
-    failure->councilFail++;
+  if (councilCount == 0){
+    if (preCouncil - 1 != postCouncil){
+      printf("Council card not discarded\n");
+      fail = true;
+      failure->councilFail++;
+    }
+  } else{
+    if (preCouncil + councilCount-1 != postCouncil){
+      printf("Council card not discarded\n");
+      fail = true;
+      failure->councilFail++;
+    }
   }
 
   //check discard pile incremented
   failure->totalDisc++;
-  if (pre.discardCount[currentPlayer] + 1 != post.discardCount[currentPlayer]){
-    printf("Discard count not incremented\n");
-    fail = true;
-    failure->discFail++;
+  if (pre.deckCount[currentPlayer] < 4){
+    if (1 != post.discardCount[currentPlayer]){
+      printf("Discard count not incremented\n");
+      fail = true;
+      failure->discFail++;
+    }
+  } else{
+    if (pre.discardCount[currentPlayer] + 1 != post.discardCount[currentPlayer]){
+      printf("Discard count not incremented\n");
+      fail = true;
+      failure->discFail++;
+    }
   }
+  
 
   if (fail == true){
     return -1;

@@ -1,0 +1,353 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+CFLAGS	Makefile	/^CFLAGS = -Wall -fpic -coverage -lm$/;"	m
+DEBUG	badTestDrawCard.c	8;"	d	file:
+NOISY_TEST	badTestDrawCard.c	9;"	d	file:
+checkDrawCard	badTestDrawCard.c	/^int checkDrawCard(int p, struct gameState *post) {$/;"	f
+main	badTestDrawCard.c	/^int main () {$/;"	f
+DEBUG	betterTestDrawCard.c	8;"	d	file:
+NOISY_TEST	betterTestDrawCard.c	9;"	d	file:
+checkDrawCard	betterTestDrawCard.c	/^int checkDrawCard(int p, struct gameState *post) {$/;"	f
+main	betterTestDrawCard.c	/^int main () {$/;"	f
+array	bug1.c	/^scoreFor(): The function fails on every attempt where the deck is larger than the discard pile.  It fails most of the time when the deck is smaller than the discard pile.  It only runs consistently when the deck and discard are even.  Looking at the code, this is due to the fact that the deck is being read up to the number of cards in discard, not the number that is actually in the deck, so if the deck is larger, cards are not being read, but if the deck is smaller, extra values, most likely the deck count array, and then cards from the discard, are being counted.$/;"	v
+buggy	bug1.c	/^getWinners(): All test for getWinners ran successful.  Function uses scoreFor() function, which was already found to be buggy, so test also uses scoreFor() function.  The getWinners() function itself has not been found in this test to contain bugs.$/;"	v
+deck	bug1.c	/^scoreFor(): The function fails on every attempt where the deck is larger than the discard pile.  It fails most of the time when the deck is smaller than the discard pile.  It only runs consistently when the deck and discard are even.  Looking at the code, this is due to the fact that the deck is being read up to the number of cards in discard, not the number that is actually in the deck, so if the deck is larger, cards are not being read, but if the deck is smaller, extra values, most likely the deck count array, and then cards from the discard, are being counted.$/;"	v
+discard	bug1.c	/^scoreFor(): The function fails on every attempt where the deck is larger than the discard pile.  It fails most of the time when the deck is smaller than the discard pile.  It only runs consistently when the deck and discard are even.  Looking at the code, this is due to the fact that the deck is being read up to the number of cards in discard, not the number that is actually in the deck, so if the deck is larger, cards are not being read, but if the deck is smaller, extra values, most likely the deck count array, and then cards from the discard, are being counted.$/;"	v
+larger	bug1.c	/^scoreFor(): The function fails on every attempt where the deck is larger than the discard pile.  It fails most of the time when the deck is smaller than the discard pile.  It only runs consistently when the deck and discard are even.  Looking at the code, this is due to the fact that the deck is being read up to the number of cards in discard, not the number that is actually in the deck, so if the deck is larger, cards are not being read, but if the deck is smaller, extra values, most likely the deck count array, and then cards from the discard, are being counted.$/;"	v
+read	bug1.c	/^scoreFor(): The function fails on every attempt where the deck is larger than the discard pile.  It fails most of the time when the deck is smaller than the discard pile.  It only runs consistently when the deck and discard are even.  Looking at the code, this is due to the fact that the deck is being read up to the number of cards in discard, not the number that is actually in the deck, so if the deck is larger, cards are not being read, but if the deck is smaller, extra values, most likely the deck count array, and then cards from the discard, are being counted.$/;"	v
+smaller	bug1.c	/^scoreFor(): The function fails on every attempt where the deck is larger than the discard pile.  It fails most of the time when the deck is smaller than the discard pile.  It only runs consistently when the deck and discard are even.  Looking at the code, this is due to the fact that the deck is being read up to the number of cards in discard, not the number that is actually in the deck, so if the deck is larger, cards are not being read, but if the deck is smaller, extra values, most likely the deck count array, and then cards from the discard, are being counted.$/;"	v
+values	bug1.c	/^scoreFor(): The function fails on every attempt where the deck is larger than the discard pile.  It fails most of the time when the deck is smaller than the discard pile.  It only runs consistently when the deck and discard are even.  Looking at the code, this is due to the fact that the deck is being read up to the number of cards in discard, not the number that is actually in the deck, so if the deck is larger, cards are not being read, but if the deck is smaller, extra values, most likely the deck count array, and then cards from the discard, are being counted.$/;"	v
+NUM_PLAYERS	cardtest1.c	/^const int NUM_PLAYERS = 4;$/;"	v
+SEED	cardtest1.c	/^const int SEED = 17;$/;"	v
+doTest	cardtest1.c	/^static void doTest(const char *testName, int condition) {$/;"	f	file:
+main	cardtest1.c	/^int main(int argc, char **argv) {$/;"	f
+numCard	cardtest1.c	/^static int numCard(int player, const struct gameState *state, enum CARD cardNum) {$/;"	f	file:
+printHand	cardtest1.c	/^char *printHand(int playerNum, const struct gameState *state) {$/;"	f
+NUM_PLAYERS	cardtest2.c	/^const int NUM_PLAYERS = 4;$/;"	v
+SEED	cardtest2.c	/^const int SEED = 17;$/;"	v
+doTest	cardtest2.c	/^static void doTest(const char *testName, int condition) {$/;"	f	file:
+fillDeck	cardtest2.c	/^static void fillDeck(int player, struct gameState *state, enum CARD cardNum) {$/;"	f	file:
+fillHand	cardtest2.c	/^static void fillHand(int player, struct gameState *state, enum CARD cardNum) {$/;"	f	file:
+main	cardtest2.c	/^int main(int argc, char **argv) {$/;"	f
+numCard	cardtest2.c	/^static int numCard(int player, const struct gameState *state, enum CARD cardNum) {$/;"	f	file:
+NUM_PLAYERS	cardtest3.c	/^const int NUM_PLAYERS = 4;$/;"	v
+SEED	cardtest3.c	/^const int SEED = 17;$/;"	v
+doTest	cardtest3.c	/^static void doTest(const char *testName, int condition) {$/;"	f	file:
+main	cardtest3.c	/^int main(int argc, char **argv) {$/;"	f
+NUM_PLAYERS	cardtest4.c	/^const int NUM_PLAYERS = 4;$/;"	v
+SEED	cardtest4.c	/^const int SEED = 17;$/;"	v
+doTest	cardtest4.c	/^static void doTest(const char *testName, int condition) {$/;"	f	file:
+fillHand	cardtest4.c	/^static void fillHand(int player, struct gameState *state, enum CARD cardNum) {$/;"	f	file:
+main	cardtest4.c	/^int main(int argc, char **argv) {$/;"	f
+numCard	cardtest4.c	/^static int numCard(int player, const struct gameState *state, enum CARD cardNum) {$/;"	f	file:
+players	coverage1.c	/^getWinners(): line 470 is never run, because there are never unused players, the unittest2 always runs with 4 players.  It should be changed to run with a varied number of players.$/;"	v
+run	coverage1.c	/^getWinners(): line 470 is never run, because there are never unused players, the unittest2 always runs with 4 players.  It should be changed to run with a varied number of players.$/;"	v
+array	documentation.c	/^adventurer: In the game, the adventurer card allows the player to draw cards, until two treasure cards are drawn.  The treasure cards are kept, and all other cards drawn are placed in the discard pile.  The implementation for the adventurer card is also int the cardEffects() function switch.  It consists of 2 while loops.  The first used to draw cards until there are two treasure cards drawn.  The number of treasure cards are stored in the drawntreasure variable, that is initialized to 0 at the top of the cardEffect function.  Within the while loop, first it checks if the draw pile if empty.  If it is, it used the shuffle function to reshuffle the discard pile.  Then, a card is drawn using the drawCard function, it is stored in the cardDrawn variable, and it is checked in an if statement to see if it is a treasure card, by comparing it to the copper, silver, and gold cards.  If the card is a treasure card, the drawntreasure card is incremented.  If not, the card is placed into the temphand array, instantiated at the top of the cardEffect function, the card is removed from the hand by decrementing tehe handCount variable in the gamestate, and z, the counter for the temphand array, is incremented.  Finally, a while loop is used to emptied by using the discard function on the current players hand while it matches the temphand.$/;"	v
+card	documentation.c	/^adventurer: In the game, the adventurer card allows the player to draw cards, until two treasure cards are drawn.  The treasure cards are kept, and all other cards drawn are placed in the discard pile.  The implementation for the adventurer card is also int the cardEffects() function switch.  It consists of 2 while loops.  The first used to draw cards until there are two treasure cards drawn.  The number of treasure cards are stored in the drawntreasure variable, that is initialized to 0 at the top of the cardEffect function.  Within the while loop, first it checks if the draw pile if empty.  If it is, it used the shuffle function to reshuffle the discard pile.  Then, a card is drawn using the drawCard function, it is stored in the cardDrawn variable, and it is checked in an if statement to see if it is a treasure card, by comparing it to the copper, silver, and gold cards.  If the card is a treasure card, the drawntreasure card is incremented.  If not, the card is placed into the temphand array, instantiated at the top of the cardEffect function, the card is removed from the hand by decrementing tehe handCount variable in the gamestate, and z, the counter for the temphand array, is incremented.  Finally, a while loop is used to emptied by using the discard function on the current players hand while it matches the temphand.$/;"	v
+cards	documentation.c	/^adventurer: In the game, the adventurer card allows the player to draw cards, until two treasure cards are drawn.  The treasure cards are kept, and all other cards drawn are placed in the discard pile.  The implementation for the adventurer card is also int the cardEffects() function switch.  It consists of 2 while loops.  The first used to draw cards until there are two treasure cards drawn.  The number of treasure cards are stored in the drawntreasure variable, that is initialized to 0 at the top of the cardEffect function.  Within the while loop, first it checks if the draw pile if empty.  If it is, it used the shuffle function to reshuffle the discard pile.  Then, a card is drawn using the drawCard function, it is stored in the cardDrawn variable, and it is checked in an if statement to see if it is a treasure card, by comparing it to the copper, silver, and gold cards.  If the card is a treasure card, the drawntreasure card is incremented.  If not, the card is placed into the temphand array, instantiated at the top of the cardEffect function, the card is removed from the hand by decrementing tehe handCount variable in the gamestate, and z, the counter for the temphand array, is incremented.  Finally, a while loop is used to emptied by using the discard function on the current players hand while it matches the temphand.$/;"	v
+cards	documentation.c	/^updateCoins: The function starts by setting the coins in the gamestate struct to 0, then looping through all of the cards in the current players hand.  If the card is a copper, it adds 1 to the coins variable, adds 2 if it is a silver, and 3 if it is a gold.  Finally it adds the bonus, added by action cards, which is passed in as a parameter.$/;"	v	typeref:struct:action
+copper	documentation.c	/^adventurer: In the game, the adventurer card allows the player to draw cards, until two treasure cards are drawn.  The treasure cards are kept, and all other cards drawn are placed in the discard pile.  The implementation for the adventurer card is also int the cardEffects() function switch.  It consists of 2 while loops.  The first used to draw cards until there are two treasure cards drawn.  The number of treasure cards are stored in the drawntreasure variable, that is initialized to 0 at the top of the cardEffect function.  Within the while loop, first it checks if the draw pile if empty.  If it is, it used the shuffle function to reshuffle the discard pile.  Then, a card is drawn using the drawCard function, it is stored in the cardDrawn variable, and it is checked in an if statement to see if it is a treasure card, by comparing it to the copper, silver, and gold cards.  If the card is a treasure card, the drawntreasure card is incremented.  If not, the card is placed into the temphand array, instantiated at the top of the cardEffect function, the card is removed from the hand by decrementing tehe handCount variable in the gamestate, and z, the counter for the temphand array, is incremented.  Finally, a while loop is used to emptied by using the discard function on the current players hand while it matches the temphand.$/;"	v
+function	documentation.c	/^adventurer: In the game, the adventurer card allows the player to draw cards, until two treasure cards are drawn.  The treasure cards are kept, and all other cards drawn are placed in the discard pile.  The implementation for the adventurer card is also int the cardEffects() function switch.  It consists of 2 while loops.  The first used to draw cards until there are two treasure cards drawn.  The number of treasure cards are stored in the drawntreasure variable, that is initialized to 0 at the top of the cardEffect function.  Within the while loop, first it checks if the draw pile if empty.  If it is, it used the shuffle function to reshuffle the discard pile.  Then, a card is drawn using the drawCard function, it is stored in the cardDrawn variable, and it is checked in an if statement to see if it is a treasure card, by comparing it to the copper, silver, and gold cards.  If the card is a treasure card, the drawntreasure card is incremented.  If not, the card is placed into the temphand array, instantiated at the top of the cardEffect function, the card is removed from the hand by decrementing tehe handCount variable in the gamestate, and z, the counter for the temphand array, is incremented.  Finally, a while loop is used to emptied by using the discard function on the current players hand while it matches the temphand.$/;"	v
+gamestate	documentation.c	/^adventurer: In the game, the adventurer card allows the player to draw cards, until two treasure cards are drawn.  The treasure cards are kept, and all other cards drawn are placed in the discard pile.  The implementation for the adventurer card is also int the cardEffects() function switch.  It consists of 2 while loops.  The first used to draw cards until there are two treasure cards drawn.  The number of treasure cards are stored in the drawntreasure variable, that is initialized to 0 at the top of the cardEffect function.  Within the while loop, first it checks if the draw pile if empty.  If it is, it used the shuffle function to reshuffle the discard pile.  Then, a card is drawn using the drawCard function, it is stored in the cardDrawn variable, and it is checked in an if statement to see if it is a treasure card, by comparing it to the copper, silver, and gold cards.  If the card is a treasure card, the drawntreasure card is incremented.  If not, the card is placed into the temphand array, instantiated at the top of the cardEffect function, the card is removed from the hand by decrementing tehe handCount variable in the gamestate, and z, the counter for the temphand array, is incremented.  Finally, a while loop is used to emptied by using the discard function on the current players hand while it matches the temphand.$/;"	v
+hand	documentation.c	/^discardCard: The discardCard function is actually used if a card is being discarded, or if it is being trashed.  First it checks the last parameter, the trashFlag, if it is not set, then the card is placed into the discard pile inside the gamestate struct and the number of cards played is incremented.  Then, the card discarded is set to negative one.  If it is the last card, or there is only one card left in the players hand, the hand count is decremented and the function ends.  Otherwise, the hand cards are moved up in the current player's hand and then the hand count is decremented./;"	v	typeref:struct:players
+set	documentation.c	/^discardCard: The discardCard function is actually used if a card is being discarded, or if it is being trashed.  First it checks the last parameter, the trashFlag, if it is not set, then the card is placed into the discard pile inside the gamestate struct and the number of cards played is incremented.  Then, the card discarded is set to negative one.  If it is the last card, or there is only one card left in the players hand, the hand count is decremented and the function ends.  Otherwise, the hand cards are moved up in the current player's hand and then the hand count is decremented./;"	v	typeref:struct:not
+silver	documentation.c	/^adventurer: In the game, the adventurer card allows the player to draw cards, until two treasure cards are drawn.  The treasure cards are kept, and all other cards drawn are placed in the discard pile.  The implementation for the adventurer card is also int the cardEffects() function switch.  It consists of 2 while loops.  The first used to draw cards until there are two treasure cards drawn.  The number of treasure cards are stored in the drawntreasure variable, that is initialized to 0 at the top of the cardEffect function.  Within the while loop, first it checks if the draw pile if empty.  If it is, it used the shuffle function to reshuffle the discard pile.  Then, a card is drawn using the drawCard function, it is stored in the cardDrawn variable, and it is checked in an if statement to see if it is a treasure card, by comparing it to the copper, silver, and gold cards.  If the card is a treasure card, the drawntreasure card is incremented.  If not, the card is placed into the temphand array, instantiated at the top of the cardEffect function, the card is removed from the hand by decrementing tehe handCount variable in the gamestate, and z, the counter for the temphand array, is incremented.  Finally, a while loop is used to emptied by using the discard function on the current players hand while it matches the temphand.$/;"	v
+silver	documentation.c	/^updateCoins: The function starts by setting the coins in the gamestate struct to 0, then looping through all of the cards in the current players hand.  If the card is a copper, it adds 1 to the coins variable, adds 2 if it is a silver, and 3 if it is a gold.  Finally it adds the bonus, added by action cards, which is passed in as a parameter.$/;"	v	typeref:struct:a
+trashFlag	documentation.c	/^discardCard: The discardCard function is actually used if a card is being discarded, or if it is being trashed.  First it checks the last parameter, the trashFlag, if it is not set, then the card is placed into the discard pile inside the gamestate struct and the number of cards played is incremented.  Then, the card discarded is set to negative one.  If it is the last card, or there is only one card left in the players hand, the hand count is decremented and the function ends.  Otherwise, the hand cards are moved up in the current player's hand and then the hand count is decremented./;"	v	typeref:struct:the
+variable	documentation.c	/^adventurer: In the game, the adventurer card allows the player to draw cards, until two treasure cards are drawn.  The treasure cards are kept, and all other cards drawn are placed in the discard pile.  The implementation for the adventurer card is also int the cardEffects() function switch.  It consists of 2 while loops.  The first used to draw cards until there are two treasure cards drawn.  The number of treasure cards are stored in the drawntreasure variable, that is initialized to 0 at the top of the cardEffect function.  Within the while loop, first it checks if the draw pile if empty.  If it is, it used the shuffle function to reshuffle the discard pile.  Then, a card is drawn using the drawCard function, it is stored in the cardDrawn variable, and it is checked in an if statement to see if it is a treasure card, by comparing it to the copper, silver, and gold cards.  If the card is a treasure card, the drawntreasure card is incremented.  If not, the card is placed into the temphand array, instantiated at the top of the cardEffect function, the card is removed from the hand by decrementing tehe handCount variable in the gamestate, and z, the counter for the temphand array, is incremented.  Finally, a while loop is used to emptied by using the discard function on the current players hand while it matches the temphand.$/;"	v
+variable	documentation.c	/^updateCoins: The function starts by setting the coins in the gamestate struct to 0, then looping through all of the cards in the current players hand.  If the card is a copper, it adds 1 to the coins variable, adds 2 if it is a silver, and 3 if it is a gold.  Finally it adds the bonus, added by action cards, which is passed in as a parameter.$/;"	v	typeref:struct:coins
+z	documentation.c	/^adventurer: In the game, the adventurer card allows the player to draw cards, until two treasure cards are drawn.  The treasure cards are kept, and all other cards drawn are placed in the discard pile.  The implementation for the adventurer card is also int the cardEffects() function switch.  It consists of 2 while loops.  The first used to draw cards until there are two treasure cards drawn.  The number of treasure cards are stored in the drawntreasure variable, that is initialized to 0 at the top of the cardEffect function.  Within the while loop, first it checks if the draw pile if empty.  If it is, it used the shuffle function to reshuffle the discard pile.  Then, a card is drawn using the drawCard function, it is stored in the cardDrawn variable, and it is checked in an if statement to see if it is a treasure card, by comparing it to the copper, silver, and gold cards.  If the card is a treasure card, the drawntreasure card is incremented.  If not, the card is placed into the temphand array, instantiated at the top of the cardEffect function, the card is removed from the hand by decrementing tehe handCount variable in the gamestate, and z, the counter for the temphand array, is incremented.  Finally, a while loop is used to emptied by using the discard function on the current players hand while it matches the temphand.$/;"	v
+buyCard	dominion.c	/^int buyCard(int supplyPos, struct gameState *state) {$/;"	f
+cardEffect	dominion.c	/^int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)$/;"	f
+compare	dominion.c	/^int compare(const void* a, const void* b) {$/;"	f
+discardCard	dominion.c	/^int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)$/;"	f
+drawCard	dominion.c	/^int drawCard(int player, struct gameState *state)$/;"	f
+endTurn	dominion.c	/^int endTurn(struct gameState *state) {$/;"	f
+fullDeckCount	dominion.c	/^int fullDeckCount(int player, int card, struct gameState *state) {$/;"	f
+gainCard	dominion.c	/^int gainCard(int supplyPos, struct gameState *state, int toFlag, int player)$/;"	f
+getCost	dominion.c	/^int getCost(int cardNumber)$/;"	f
+getWinners	dominion.c	/^int getWinners(int players[MAX_PLAYERS], struct gameState *state) {$/;"	f
+handCard	dominion.c	/^int handCard(int handPos, struct gameState *state) {$/;"	f
+initializeGame	dominion.c	/^int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,$/;"	f
+isGameOver	dominion.c	/^int isGameOver(struct gameState *state) {$/;"	f
+kingdomCards	dominion.c	/^int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7,$/;"	f
+newGame	dominion.c	/^struct gameState* newGame() {$/;"	f
+numHandCards	dominion.c	/^int numHandCards(struct gameState *state) {$/;"	f
+playCard	dominion.c	/^int playCard(int handPos, int choice1, int choice2, int choice3, struct gameState *state) $/;"	f
+scoreFor	dominion.c	/^int scoreFor (int player, struct gameState *state) {$/;"	f
+shuffle	dominion.c	/^int shuffle(int player, struct gameState *state) {$/;"	f
+supplyCount	dominion.c	/^int supplyCount(int card, struct gameState *state) {$/;"	f
+updateCoins	dominion.c	/^int updateCoins(int player, struct gameState *state, int bonus)$/;"	f
+whoseTurn	dominion.c	/^int whoseTurn(struct gameState *state) {$/;"	f
+CARD	dominion.h	/^enum CARD$/;"	g
+DEBUG	dominion.h	11;"	d
+MAX_DECK	dominion.h	7;"	d
+MAX_HAND	dominion.h	6;"	d
+MAX_PLAYERS	dominion.h	9;"	d
+_DOMINION_H	dominion.h	2;"	d
+adventurer	dominion.h	/^   adventurer,$/;"	e	enum:CARD
+ambassador	dominion.h	/^   ambassador, \/* choice1 = hand#, choice2 = number to return to supply *\/$/;"	e	enum:CARD
+baron	dominion.h	/^   baron, \/* choice1: boolean for discard of estate *\/$/;"	e	enum:CARD
+coins	dominion.h	/^  int coins; \/* Use as you see fit! *\/$/;"	m	struct:gameState
+copper	dominion.h	/^   copper,$/;"	e	enum:CARD
+council_room	dominion.h	/^   council_room,$/;"	e	enum:CARD
+curse	dominion.h	/^  {curse = 0,$/;"	e	enum:CARD
+cutpurse	dominion.h	/^   cutpurse,$/;"	e	enum:CARD
+deck	dominion.h	/^  int deck[MAX_PLAYERS][MAX_DECK];$/;"	m	struct:gameState
+deckCount	dominion.h	/^  int deckCount[MAX_PLAYERS];$/;"	m	struct:gameState
+discard	dominion.h	/^  int discard[MAX_PLAYERS][MAX_DECK];$/;"	m	struct:gameState
+discardCount	dominion.h	/^  int discardCount[MAX_PLAYERS];$/;"	m	struct:gameState
+duchy	dominion.h	/^   duchy,$/;"	e	enum:CARD
+embargo	dominion.h	/^   embargo, \/* choice1 = supply# *\/$/;"	e	enum:CARD
+embargoTokens	dominion.h	/^  int embargoTokens[treasure_map+1];$/;"	m	struct:gameState
+estate	dominion.h	/^   estate,$/;"	e	enum:CARD
+feast	dominion.h	/^   feast, \/* choice1 is supply # of card gained) *\/$/;"	e	enum:CARD
+gameState	dominion.h	/^struct gameState {$/;"	s
+gardens	dominion.h	/^   gardens,$/;"	e	enum:CARD
+gold	dominion.h	/^   gold,$/;"	e	enum:CARD
+great_hall	dominion.h	/^   great_hall,$/;"	e	enum:CARD
+hand	dominion.h	/^  int hand[MAX_PLAYERS][MAX_HAND];$/;"	m	struct:gameState
+handCount	dominion.h	/^  int handCount[MAX_PLAYERS];$/;"	m	struct:gameState
+mine	dominion.h	/^   mine, \/* choice1 is hand# of money to trash, choice2 is supply# of$/;"	e	enum:CARD
+minion	dominion.h	/^   minion, \/* choice1:  1 = +2 coin, 2 = redraw *\/$/;"	e	enum:CARD
+numActions	dominion.h	/^  int numActions; \/* Starts at 1 each turn *\/$/;"	m	struct:gameState
+numBuys	dominion.h	/^  int numBuys; \/* Starts at 1 each turn *\/$/;"	m	struct:gameState
+numPlayers	dominion.h	/^  int numPlayers; \/\/number of players$/;"	m	struct:gameState
+outpost	dominion.h	/^   outpost,$/;"	e	enum:CARD
+outpostPlayed	dominion.h	/^  int outpostPlayed;$/;"	m	struct:gameState
+outpostTurn	dominion.h	/^  int outpostTurn;$/;"	m	struct:gameState
+phase	dominion.h	/^  int phase;$/;"	m	struct:gameState
+playedCardCount	dominion.h	/^  int playedCardCount;$/;"	m	struct:gameState
+playedCards	dominion.h	/^  int playedCards[MAX_DECK];$/;"	m	struct:gameState
+province	dominion.h	/^   province,$/;"	e	enum:CARD
+remodel	dominion.h	/^   remodel, \/* choice1 is hand# of card to remodel, choice2 is supply# *\/$/;"	e	enum:CARD
+salvager	dominion.h	/^   salvager, \/* choice1 = hand# to trash *\/$/;"	e	enum:CARD
+sea_hag	dominion.h	/^   sea_hag,$/;"	e	enum:CARD
+silver	dominion.h	/^   silver,$/;"	e	enum:CARD
+smithy	dominion.h	/^   smithy,$/;"	e	enum:CARD
+steward	dominion.h	/^   steward, \/* choice1: 1 = +2 card, 2 = +2 coin, 3 = trash 2 (choice2,3) *\/$/;"	e	enum:CARD
+supplyCount	dominion.h	/^  int supplyCount[treasure_map+1];  \/\/this is the amount of a specific type of card given a specific number.$/;"	m	struct:gameState
+treasure_map	dominion.h	/^   treasure_map$/;"	e	enum:CARD
+tribute	dominion.h	/^   tribute,$/;"	e	enum:CARD
+village	dominion.h	/^   village,$/;"	e	enum:CARD
+whoseTurn	dominion.h	/^  int whoseTurn;$/;"	m	struct:gameState
+_DOMINION_HELPERS_H	dominion_helpers.h	2;"	d
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+addCardToHand	interface.c	/^int addCardToHand(int player, int card, struct gameState *game) {$/;"	f
+cardNumToName	interface.c	/^void cardNumToName(int card, char *name){$/;"	f
+countHandCoins	interface.c	/^int countHandCoins(int player, struct gameState *game) {$/;"	f
+executeBotTurn	interface.c	/^void executeBotTurn(int player, int *turnNum, struct gameState *game) {$/;"	f
+getCardCost	interface.c	/^int getCardCost(int card) {$/;"	f
+phaseNumToName	interface.c	/^void phaseNumToName(int phase, char *name) {$/;"	f
+printDeck	interface.c	/^void printDeck(int player, struct gameState *game) {$/;"	f
+printDiscard	interface.c	/^void printDiscard(int player, struct gameState *game) {$/;"	f
+printHand	interface.c	/^void printHand(int player, struct gameState *game) {$/;"	f
+printHelp	interface.c	/^void printHelp(void) {$/;"	f
+printPlayed	interface.c	/^void printPlayed(int player, struct gameState *game) {$/;"	f
+printScores	interface.c	/^void printScores(struct gameState *game) {$/;"	f
+printState	interface.c	/^void printState(struct gameState *game) {$/;"	f
+printSupply	interface.c	/^void printSupply(struct gameState *game) {$/;"	f
+selectKingdomCards	interface.c	/^void selectKingdomCards(int randomSeed, int kingCards[NUM_K_CARDS]) {$/;"	f
+ACTION_PHASE	interface.h	45;"	d
+ADVENTURER_COST	interface.h	61;"	d
+AMBASSADOR_COST	interface.h	78;"	d
+BARON_COST	interface.h	71;"	d
+BUY_PHASE	interface.h	46;"	d
+CLEANUP_PHASE	interface.h	47;"	d
+COMPARE	interface.h	32;"	d
+COPPER_COST	interface.h	54;"	d
+COPPER_VALUE	interface.h	49;"	d
+COUNCIL_ROOM_COST	interface.h	62;"	d
+CURSE_COST	interface.h	60;"	d
+CUTPURSE_COST	interface.h	79;"	d
+DUCHY_COST	interface.h	58;"	d
+EMBARGO_COST	interface.h	80;"	d
+ESTATE_COST	interface.h	57;"	d
+FAILURE	interface.h	38;"	d
+FALSE	interface.h	35;"	d
+FEAST_COST	interface.h	63;"	d
+GARDEN_COST	interface.h	64;"	d
+GOLD_COST	interface.h	56;"	d
+GOLD_VALUE	interface.h	51;"	d
+GREAT_HALL_COST	interface.h	72;"	d
+HANDSIZE	interface.h	30;"	d
+MATCH	interface.h	40;"	d
+MAX_STRING_LENGTH	interface.h	33;"	d
+MINE_COST	interface.h	65;"	d
+MINION_COST	interface.h	73;"	d
+MONEYLENDER_COST	interface.h	66;"	d
+NOT_WINNER	interface.h	42;"	d
+NUM_COPPER	interface.h	24;"	d
+NUM_C_CARDS_2	interface.h	21;"	d
+NUM_C_CARDS_3	interface.h	22;"	d
+NUM_C_CARDS_4	interface.h	23;"	d
+NUM_GOLD	interface.h	26;"	d
+NUM_K_CARDS	interface.h	18;"	d
+NUM_SILVER	interface.h	25;"	d
+NUM_TOTAL_K_CARDS	interface.h	17;"	d
+NUM_V_CARDS_2	interface.h	19;"	d
+NUM_V_CARDS_3or4	interface.h	20;"	d
+ONETHOUSAND	interface.h	85;"	d
+OUTPOST_COST	interface.h	81;"	d
+PROVINCE_COST	interface.h	59;"	d
+REMODEL_COST	interface.h	67;"	d
+SALVAGER_COST	interface.h	82;"	d
+SEA_HAG_COST	interface.h	83;"	d
+SHANTY_TOWN_COST	interface.h	74;"	d
+SILVER_COST	interface.h	55;"	d
+SILVER_VALUE	interface.h	50;"	d
+SMITHY_COST	interface.h	68;"	d
+START_COPPER	interface.h	28;"	d
+START_ESTATE	interface.h	29;"	d
+STEWARD_COST	interface.h	75;"	d
+SUCCESS	interface.h	37;"	d
+TREASURE_MAP_COST	interface.h	84;"	d
+TRIBUTE_COST	interface.h	76;"	d
+TRUE	interface.h	34;"	d
+UNUSED	interface.h	27;"	d
+VILLAGE_COST	interface.h	69;"	d
+WINNER	interface.h	41;"	d
+WISHING_WELL_COST	interface.h	77;"	d
+WOODCUTTER_COST	interface.h	70;"	d
+_INTERFACE_H	interface.h	10;"	d
+main	playdom.c	/^int main (int argc, char** argv) {$/;"	f
+main	player.c	/^int main(int argc, char* argv[]) {$/;"	f
+main2	player.c	/^int main2(int argc, char *argv[]) {$/;"	f
+makeRandomGameState	randomGameState.c	/^struct gameState makeRandomGameState(){$/;"	f
+adventure	randomhistory.c	/^	For random test adventure, the test had complete branch coverage, the funciton was run on every test of 1000, the only suprise was that drawntreasure++; (line 25) was ran 2000, twice for every iteration.  The functional playAdventurer would be expected to run this way, but in its buggy form this should not have happened.  It made me realize that there is another bug, when a coin is drawn, it can be drawn a second time after a reshuffle.$/;"	v
+coverage	randomhistory.c	/^	For random test adventure, the test had complete branch coverage, the funciton was run on every test of 1000, the only suprise was that drawntreasure++; (line 25) was ran 2000, twice for every iteration.  The functional playAdventurer would be expected to run this way, but in its buggy form this should not have happened.  It made me realize that there is another bug, when a coin is drawn, it can be drawn a second time after a reshuffle.$/;"	v
+drawn	randomhistory.c	/^	For random test adventure, the test had complete branch coverage, the funciton was run on every test of 1000, the only suprise was that drawntreasure++; (line 25) was ran 2000, twice for every iteration.  The functional playAdventurer would be expected to run this way, but in its buggy form this should not have happened.  It made me realize that there is another bug, when a coin is drawn, it can be drawn a second time after a reshuffle.$/;"	v
+drawntreasure	randomhistory.c	/^	For random test adventure, the test had complete branch coverage, the funciton was run on every test of 1000, the only suprise was that drawntreasure++; (line 25) was ran 2000, twice for every iteration.  The functional playAdventurer would be expected to run this way, but in its buggy form this should not have happened.  It made me realize that there is another bug, when a coin is drawn, it can be drawn a second time after a reshuffle.$/;"	v
+function	randomhistory.c	/^	The test ran 1000 times and failed 1000 times.  I did not expect it to fail every test.  I only expected it to fail when a gold card was present in the deck.  It was also failing many more of the checks than I expected.  What I found was the deck began not matching the expected cards at the position the adventurer card was played.  As it turned out, this was because the adventurer card was not being discarded at the end of the playAdventurer function, and was effecting the position of all the cards being checked.  So that, in addition to the gold card being skipped were found as bugs.  $/;"	v
+of	randomhistory.c	/^	For random test adventure, the test had complete branch coverage, the funciton was run on every test of 1000, the only suprise was that drawntreasure++; (line 25) was ran 2000, twice for every iteration.  The functional playAdventurer would be expected to run this way, but in its buggy form this should not have happened.  It made me realize that there is another bug, when a coin is drawn, it can be drawn a second time after a reshuffle.$/;"	v
+of	randomhistory.c	/^	The test itself ran 1000 times and failed 1000 times.  It was seen that every time there were too few cards.  This was expected, and is due to the bug introduced to only have the user draw 2 cards instead of 3, so the user always has 1 fewer card than expected.$/;"	v
+oop	randomhistory.c	/^	For random test card, the test ran and had complete branch coverage.  There are no conidtionals in the playSmithy funciton, with the exception of the for loop, so this would make sense to have occured.  The buggy version ran the appropriate number of times, but the inside of the for loop only ran 200 times, twice for evey call to playSmithy, where a functional version would have ran it 3 times for evey call.$/;"	v
+playSmithy	randomhistory.c	/^	For random test card, the test ran and had complete branch coverage.  There are no conidtionals in the playSmithy funciton, with the exception of the for loop, so this would make sense to have occured.  The buggy version ran the appropriate number of times, but the inside of the for loop only ran 200 times, twice for evey call to playSmithy, where a functional version would have ran it 3 times for evey call.$/;"	v
+ran	randomhistory.c	/^	For random test adventure, the test had complete branch coverage, the funciton was run on every test of 1000, the only suprise was that drawntreasure++; (line 25) was ran 2000, twice for every iteration.  The functional playAdventurer would be expected to run this way, but in its buggy form this should not have happened.  It made me realize that there is another bug, when a coin is drawn, it can be drawn a second time after a reshuffle.$/;"	v
+times	randomhistory.c	/^	For random test card, the test ran and had complete branch coverage.  There are no conidtionals in the playSmithy funciton, with the exception of the for loop, so this would make sense to have occured.  The buggy version ran the appropriate number of times, but the inside of the for loop only ran 200 times, twice for evey call to playSmithy, where a functional version would have ran it 3 times for evey call.$/;"	v
+CARD_BUFFER_SIZE	randomtestadventurer.c	18;"	d	file:
+FAST_FAIL	randomtestadventurer.c	/^const static int FAST_FAIL = 1;$/;"	v	file:
+G	randomtestadventurer.c	/^struct gameState G;$/;"	v	typeref:struct:gameState
+LONGEST_CARD_NAME	randomtestadventurer.c	17;"	d	file:
+PADDING	randomtestadventurer.c	19;"	d	file:
+STATE_BUFFER_FMT	randomtestadventurer.c	/^static const char STATE_BUFFER_FMT[] = ($/;"	v	file:
+STATE_BUFFER_SIZE	randomtestadventurer.c	20;"	d	file:
+TESTMODE	randomtestadventurer.c	/^enum TESTMODE {$/;"	g	file:
+assertThat	randomtestadventurer.c	/^static void assertThat(const char *msg, int test) {$/;"	f	file:
+cardNames	randomtestadventurer.c	/^static const char *cardNames[] = {$/;"	v	file:
+checkActivePlayerCards	randomtestadventurer.c	/^static int checkActivePlayerCards(const struct gameState *previous, $/;"	f	file:
+checkInactivePlayerCards	randomtestadventurer.c	/^static int checkInactivePlayerCards(const struct gameState *previous, $/;"	f	file:
+countPlayerCards	randomtestadventurer.c	/^static int countPlayerCards(const struct gameState *state, int playerNum) {$/;"	f	file:
+fresh	randomtestadventurer.c	/^    fresh,$/;"	e	enum:TESTMODE	file:
+genTestState	randomtestadventurer.c	/^static void genTestState(struct gameState *state) {$/;"	f	file:
+integrityCheck	randomtestadventurer.c	/^static void integrityCheck(const struct gameState *referenceState,$/;"	f	file:
+isTreasure	randomtestadventurer.c	/^static inline int isTreasure(int c) {$/;"	f	file:
+loadCards	randomtestadventurer.c	/^static int loadCards(char *cardString, int *cards, int maxCards) {$/;"	f	file:
+loadState	randomtestadventurer.c	/^int loadState(const char *filename, struct gameState *state) {$/;"	f
+loadStateReadable	randomtestadventurer.c	/^static void loadStateReadable(const char *buffer, $/;"	f	file:
+main	randomtestadventurer.c	/^int main(int argc, char **argv) {$/;"	f
+quit	randomtestadventurer.c	/^static void quit()$/;"	f	file:
+randomCard	randomtestadventurer.c	/^static int randomCard() {$/;"	f	file:
+randomNonTreasureCard	randomtestadventurer.c	/^static int randomNonTreasureCard() {$/;"	f	file:
+replay	randomtestadventurer.c	/^    replay$/;"	e	enum:TESTMODE	file:
+runTest	randomtestadventurer.c	/^static void runTest(struct gameState *state) {$/;"	f	file:
+saveCards	randomtestadventurer.c	/^static void saveCards(char *buffer, int numCards, int *cards) {$/;"	f	file:
+saveState	randomtestadventurer.c	/^int saveState(const char *filename, const struct gameState *state) {$/;"	f
+saveStateReadable	randomtestadventurer.c	/^static void saveStateReadable(char buffer[STATE_BUFFER_SIZE], struct gameState *state) {$/;"	f	file:
+setActivePlayerCards	randomtestadventurer.c	/^static void setActivePlayerCards(struct gameState *state) {$/;"	f	file:
+setInactivePlayerCards	randomtestadventurer.c	/^static void setInactivePlayerCards(struct gameState *state) {$/;"	f	file:
+stringToCardNum	randomtestadventurer.c	/^int stringToCardNum(const char *cardName) {$/;"	f
+treasureInDeck	randomtestadventurer.c	/^int treasureInDeck(const struct gameState *state, int playerNum) {$/;"	f
+treasureInDiscard	randomtestadventurer.c	/^int treasureInDiscard(const struct gameState *state, int playerNum) {$/;"	f
+treasureInHand	randomtestadventurer.c	/^int treasureInHand(const struct gameState *state, int playerNum) {$/;"	f
+treasureToGain	randomtestadventurer.c	/^int treasureToGain(const struct gameState *state, int playerNum) {$/;"	f
+CARD_BUFFER_SIZE	randomtestcard.c	19;"	d	file:
+FAST_FAIL	randomtestcard.c	/^const static int FAST_FAIL = 0;$/;"	v	file:
+G	randomtestcard.c	/^struct gameState G;$/;"	v	typeref:struct:gameState
+LONGEST_CARD_NAME	randomtestcard.c	18;"	d	file:
+PADDING	randomtestcard.c	20;"	d	file:
+STATE_BUFFER_FMT	randomtestcard.c	/^static const char STATE_BUFFER_FMT[] = ($/;"	v	file:
+STATE_BUFFER_SIZE	randomtestcard.c	21;"	d	file:
+TESTMODE	randomtestcard.c	/^enum TESTMODE {$/;"	g	file:
+assertThat	randomtestcard.c	/^static void assertThat(const char *msg, int test) {$/;"	f	file:
+cardNames	randomtestcard.c	/^static const char *cardNames[] = {$/;"	v	file:
+checkActivePlayerCards	randomtestcard.c	/^static int checkActivePlayerCards(const struct gameState *previous, $/;"	f	file:
+checkInactivePlayerCards	randomtestcard.c	/^static int checkInactivePlayerCards(const struct gameState *previous, $/;"	f	file:
+countPlayerCards	randomtestcard.c	/^static int countPlayerCards(const struct gameState *state, int playerNum) {$/;"	f	file:
+fresh	randomtestcard.c	/^    fresh,$/;"	e	enum:TESTMODE	file:
+genTestState	randomtestcard.c	/^static void genTestState(struct gameState *state) {$/;"	f	file:
+integrityCheck	randomtestcard.c	/^static void integrityCheck(const struct gameState *referenceState,$/;"	f	file:
+isTreasure	randomtestcard.c	/^static inline int isTreasure(int c) {$/;"	f	file:
+loadCards	randomtestcard.c	/^static int loadCards(char *cardString, int *cards, int maxCards) {$/;"	f	file:
+loadState	randomtestcard.c	/^int loadState(const char *filename, struct gameState *state) {$/;"	f
+loadStateReadable	randomtestcard.c	/^static void loadStateReadable(const char *buffer, $/;"	f	file:
+main	randomtestcard.c	/^int main(int argc, char **argv) {$/;"	f
+quit	randomtestcard.c	/^static void quit()$/;"	f	file:
+randomCard	randomtestcard.c	/^static int randomCard() {$/;"	f	file:
+randomNonTreasureCard	randomtestcard.c	/^static int randomNonTreasureCard() {$/;"	f	file:
+replay	randomtestcard.c	/^    replay$/;"	e	enum:TESTMODE	file:
+runTest	randomtestcard.c	/^static void runTest(struct gameState *state) {$/;"	f	file:
+saveCards	randomtestcard.c	/^static void saveCards(char *buffer, int numCards, int *cards) {$/;"	f	file:
+saveState	randomtestcard.c	/^int saveState(const char *filename, const struct gameState *state) {$/;"	f
+saveStateReadable	randomtestcard.c	/^static void saveStateReadable(char buffer[STATE_BUFFER_SIZE], struct gameState *state) {$/;"	f	file:
+setActivePlayerCards	randomtestcard.c	/^static void setActivePlayerCards(struct gameState *state) {$/;"	f	file:
+setInactivePlayerCards	randomtestcard.c	/^static void setInactivePlayerCards(struct gameState *state) {$/;"	f	file:
+stringToCardNum	randomtestcard.c	/^int stringToCardNum(const char *cardName) {$/;"	f
+treasureInDeck	randomtestcard.c	/^int treasureInDeck(const struct gameState *state, int playerNum) {$/;"	f
+treasureInDiscard	randomtestcard.c	/^int treasureInDiscard(const struct gameState *state, int playerNum) {$/;"	f
+treasureInHand	randomtestcard.c	/^int treasureInHand(const struct gameState *state, int playerNum) {$/;"	f
+treasureToGain	randomtestcard.c	/^int treasureToGain(const struct gameState *state, int playerNum) {$/;"	f
+checkCards	randomtestutil.c	/^int checkCards(const struct gameState *before, $/;"	f
+copyCards	randomtestutil.c	/^void copyCards(const struct gameState *realState, $/;"	f
+sortCards	randomtestutil.c	/^void sortCards(struct gameState *state) {$/;"	f
+playAdventurer	refactor.c	/^int playAdventurer (struct gameState *state, int currentPlayer, int cardDrawn, int drawntreasure, int temphand[], int z){$/;"	f
+playMine	refactor.c	/^int playMine (struct gameState *state, int choice1, int choice2, int currentPlayer, int handPos){$/;"	f
+playRemodel	refactor.c	/^int playRemodel (struct gameState *state, int choice1, int choice2, int currentPlayer, int handPos){$/;"	f
+playSmithy	refactor.c	/^int playSmithy (struct gameState *state, int currentPlayer, int handPos){$/;"	f
+playVillage	refactor.c	/^int playVillage (struct gameState *state, int currentPlayer, int handPos){$/;"	f
+A256	rngs.c	43;"	d	file:
+CHECK	rngs.c	41;"	d	file:
+DEFAULT	rngs.c	44;"	d	file:
+GetSeed	rngs.c	/^   void GetSeed(long *x)$/;"	f
+MODULUS	rngs.c	39;"	d	file:
+MULTIPLIER	rngs.c	40;"	d	file:
+PlantSeeds	rngs.c	/^   void PlantSeeds(long x)$/;"	f
+PutSeed	rngs.c	/^   void PutSeed(long x)$/;"	f
+Random	rngs.c	/^   double Random(void)$/;"	f
+STREAMS	rngs.c	42;"	d	file:
+SelectStream	rngs.c	/^   void SelectStream(int index)$/;"	f
+TestRandom	rngs.c	/^   void TestRandom(void)$/;"	f
+initialized	rngs.c	/^static int  initialized   = 0;          \/* test for stream initialization *\/$/;"	v	file:
+seed	rngs.c	/^static long seed[STREAMS] = {DEFAULT};  \/* current state of each stream   *\/$/;"	v	file:
+stream	rngs.c	/^static int  stream        = 0;          \/* stream index, 0 is the default *\/$/;"	v	file:
+_RNGS_	rngs.h	10;"	d
+main	rt.c	/^int main(int argc, char** argv) {$/;"	f
+DEBUG	supplyTest.c	8;"	d	file:
+NOISY_TEST	supplyTest.c	9;"	d	file:
+main	supplyTest.c	/^int main () {$/;"	f
+DEBUG	testBuyCard.c	8;"	d	file:
+NOISY_TEST	testBuyCard.c	9;"	d	file:
+checkDrawCard	testBuyCard.c	/^int checkDrawCard(int p, struct gameState* post) {$/;"	f
+main	testBuyCard.c	/^int main() {$/;"	f
+DEBUG	testDrawCard.c	8;"	d	file:
+NOISY_TEST	testDrawCard.c	9;"	d	file:
+checkDrawCard	testDrawCard.c	/^int checkDrawCard(int p, struct gameState* post) {$/;"	f
+main	testDrawCard.c	/^int main() {$/;"	f
+main	testInit.c	/^int main(int argc, char** argv) {$/;"	f
+main	testShuffle.c	/^int main() {$/;"	f
+main	testtest.c	/^int main (){$/;"	f
+doTest	unittest1.c	/^static void doTest(char *testName, int condition) {$/;"	f	file:
+fillHand	unittest1.c	/^void fillHand(int playerNum, struct gameState *state, enum CARD card) {$/;"	f
+main	unittest1.c	/^int main(int argc, char **argv) {$/;"	f
+printHand	unittest1.c	/^char *printHand(int playerNum, struct gameState *state) {$/;"	f
+doTest	unittest2.c	/^static void doTest(char *testName, int condition) {$/;"	f	file:
+main	unittest2.c	/^int main(int argc, char **argv) {$/;"	f
+compare	unittest3.c	/^static int compare(const void* a, const void* b) {$/;"	f	file:
+doTest	unittest3.c	/^static void doTest(char *testName, int condition) {$/;"	f	file:
+main	unittest3.c	/^int main(int argc, char **argv) {$/;"	f
+SEED	unittest4.c	/^const int SEED = 37;$/;"	v
+doTest	unittest4.c	/^static void doTest(char *testName, int condition) {$/;"	f	file:
+main	unittest4.c	/^int main(int argc, char **argv) {$/;"	f

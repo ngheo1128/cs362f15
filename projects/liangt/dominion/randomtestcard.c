@@ -83,7 +83,7 @@ int main() {
     randomizeDeck(&G, k, cur_player);
     randomizeDiscard(&G, k, cur_player);
     handPos = rand() % G.handCount[cur_player];
-    G.hand[cur_player][handPos] = adventurer;
+    G.hand[cur_player][handPos] = village;
     G.whoseTurn = cur_player;
     ori_handCount = G.handCount[cur_player];
     ori_actions = G.numActions;
@@ -98,10 +98,11 @@ int main() {
       valid_handCount = 1;
     }
 
-    // Check actions gain 1 net (1 to play village, 2 gained from village)
+    // Check actions have +2 net change before playCard()
+    // playCard() decrements actions by 1 AFTER cardEffect()
 
     valid_actions = 0;
-    if (G.numActions == ori_actions + 1) {
+    if (G.numActions == ori_actions + 2) {
       valid_actions = 1;
     }
 

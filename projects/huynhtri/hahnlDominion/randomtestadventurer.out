@@ -1,0 +1,173 @@
+Adventurer card random test results:
+Testing adventurerCard function:
+
+Test number 1
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 15 - FAIL
+Position 1 is: 7
+Position 2 is: 9
+Position 3 is: 1
+
+Test number 2
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 0 - FAIL
+Position 1 is: 7
+Position 2 is: 5
+Position 3 is: 7
+
+Test number 3
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 0 - FAIL
+Position 1 is: 7
+Position 2 is: 26
+Position 3 is: 1
+
+Test number 4
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 0 - FAIL
+Position 1 is: 7
+Position 2 is: 6
+Position 3 is: 12
+
+Test number 5
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 5 - FAIL
+Position 1 is: 7
+Position 2 is: 24
+Position 3 is: 1
+
+Test number 6
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 13 - FAIL
+Position 1 is: 7
+Position 2 is: 5
+Position 3 is: 9
+
+Test number 7
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 1 - FAIL
+Position 1 is: 7
+Position 2 is: 4
+Position 3 is: 4
+
+Test number 8
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 0 - FAIL
+Position 1 is: 7
+Position 2 is: 21
+Position 3 is: 1
+
+Test number 9
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 6 - FAIL
+Position 1 is: 7
+Position 2 is: 5
+Position 3 is: 4
+
+Test number 10
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 14 - FAIL
+Position 1 is: 7
+Position 2 is: 21
+Position 3 is: 1
+
+Test number 11
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 4 - FAIL
+Position 1 is: 7
+Position 2 is: 22
+Position 3 is: 1
+
+Test number 12
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 5 - FAIL
+Position 1 is: 7
+Position 2 is: 19
+Position 3 is: 1
+
+Test number 13
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 4 - FAIL
+Position 1 is: 7
+Position 2 is: 2
+Position 3 is: 1
+
+Test number 14
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 7 - FAIL
+Position 1 is: 7
+Position 2 is: 6
+Position 3 is: 4
+
+Test number 15
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 7 - FAIL
+Position 1 is: 7
+Position 2 is: 25
+Position 3 is: 1
+
+Test number 16
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 4 - FAIL
+Position 1 is: 7
+Position 2 is: 5
+Position 3 is: 22
+
+Test number 17
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 6 - FAIL
+Position 1 is: 7
+Position 2 is: 5
+Position 3 is: 4
+
+Test number 18
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 8 - FAIL
+Position 1 is: 7
+Position 2 is: 23
+Position 3 is: 1
+
+Test number 19
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 5 - FAIL
+Position 1 is: 7
+Position 2 is: 0
+Position 3 is: 1
+
+Test number 20
+Playing adventurer card...
+Confirmed removal of adventurer card: FAIL
+Confirmed total cards on hand is 2: 4 - FAIL
+Position 1 is: 7
+Position 2 is: 4
+Position 3 is: 6
+
+Number of bronze coins selected from test: 2
+Number of silver coins selected from test: 5
+Number of gold coins selected from test: 2
+
+Testing complete...
+
+File 'dominion.c'
+Lines executed:17.87% of 582
+dominion.c:creating 'dominion.c.gcov'
+

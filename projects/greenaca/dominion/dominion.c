@@ -1266,13 +1266,13 @@ int smithy_card(int currentPlayer, int handPos, struct gameState *state)
     }
 			
     //discard card from hand
-    discardCard(handPos, currentPlayer, state, 1);
+    discardCard(handPos, currentPlayer, state, 0);
     return 0;
 }
 
 int adventurer_card(int currentPlayer, int cardDrawn, int drawntreasure, int z, int temphand[], struct gameState *state)
 {
-     while(drawntreasure<=4){
+     while(drawntreasure<=2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -1324,7 +1324,6 @@ int village_card(int currentPlayer, struct gameState *state, int handPos)
 {
       //+2 Card
       drawCard(currentPlayer, state);
-      drawCard(currentPlayer, state);
 			
       //+2 Actions
       state->numActions = state->numActions + 2;
@@ -1350,12 +1349,12 @@ int steward_card(int currentPlayer, struct gameState *state, int handPos, int ch
       else
 	{
 	  //trash 2 cards in hand
-	  discardCard(choice2, currentPlayer, state, 0);
-	  discardCard(choice3, currentPlayer, state, 0);
+	  discardCard(choice2, currentPlayer, state, 1);
+	  discardCard(choice3, currentPlayer, state, 1);
 	}
 			
       //discard card from hand
-      discardCard(handPos, currentPlayer, state, 1);
+      discardCard(handPos, currentPlayer, state, 0);
       return 0;
 }
 

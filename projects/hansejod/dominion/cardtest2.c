@@ -50,7 +50,7 @@ int main()
         printf("discardCount %d \n", result2);
         
         printf("Calling Adventurer function!\n");
-        callAdventurer(0, 14, &temphand1, &game1);
+        callAdventurer(0, &game1);
         
         if(memcmp(&game1, &game2, sizeof(struct gameState)) == 0){
             printf("Shuffle returns a -1 when the deckcount is 0.\n");

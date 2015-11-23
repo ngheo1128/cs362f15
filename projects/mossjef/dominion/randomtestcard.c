@@ -82,9 +82,9 @@ void checkGreat_hall(int handPos, int player, struct gameState *post, int *fail)
 	//Now check the state of the player with the adventurer card
 	
 	//An additional card must be added to the hand
-	//assert(pre.handCount[player]+1 == post->handCount[player]);
+	assert(pre.handCount[player] == post->handCount[player]);
 	//This assert failed, the following if statement verifies
-	if (pre.handCount[player]+1 != post->handCount[player]) {
+	if (pre.handCount[player] != post->handCount[player]) {
 		printf("FAIL: Handcount. Expected %d, got %d\n", pre.handCount[player]+1, post->handCount[player]);
 		*fail = 1;
 	}
@@ -117,7 +117,7 @@ int main () {
 
 	struct gameState G;
 
-	printf ("Testing Adventurer Card.\n");
+	printf ("Testing great_hall Card.\n");
 
 	printf ("RANDOM TESTS.\n");
 

@@ -1,0 +1,117 @@
+        -:    0:Source:cardtest4.c
+        -:    0:Graph:cardtest4.gcno
+        -:    0:Data:cardtest4.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/*
+        -:    2: * Jason Gourley
+        -:    3: * gourleja@oregonstate.edu
+        -:    4: * CS362-400
+        -:    5: * Assignment 3 - cardtest4.c
+        -:    6: * Description : Unit tests for minion card
+        -:    7: */
+        -:    8:
+        -:    9:#include <stdio.h>
+        -:   10:#include <stdlib.h>
+        -:   11:#include "dominion.h"
+        -:   12:#include "rngs.h"
+        -:   13:
+        -:   14:#define CARDNAME  "minion"
+        -:   15:#define BASESEED    10
+        -:   16:
+        -:   17:/*
+        -:   18: * Description:     Test the return values of the minion card
+        -:   19: * Preconditions:   The games state has been initialized, the seed and method name to test are passed
+        -:   20: * Postconditions:  The general messages and any failed test messages are displayed
+        -:   21: */
+        1:   22:int testCard(char* currentTest, int seed, struct gameState *state)
+        -:   23:{
+        -:   24:    int i;
+        1:   25:    int testsPassed = 0;
+        1:   26:    int testsFailed = 0;
+        1:   27:    int expectedValue = 0;
+        1:   28:    int bonus = 0;
+        -:   29:
+        1:   30:    printf ("\n\n-------------------------------------------------------------------------------\n");
+        1:   31:    printf ("-------------------------------------------------------------------------------\n");
+        1:   32:    printf ("Testing Method  : %s()\n", currentTest);
+        1:   33:    printf ("Seed            : %i\n", seed);
+        -:   34:
+        -:   35:    //Check increase of cards in hand
+        1:   36:    expectedValue = state->numActions + 1;
+        1:   37:    cardEffect(minion,0,0,0,state, 0, &bonus);
+        1:   38:    if(state->numActions != expectedValue) {
+    #####:   39:        printf("  TEST FAIL    : minion card add action failed\n");
+    #####:   40:        testsFailed++;
+        1:   41:    } else {testsPassed++;}
+        -:   42:
+        -:   43:    //Check increase of coins for player
+        1:   44:    expectedValue = state->coins + 2;
+        1:   45:    cardEffect(minion,1,0,0,state, 0, &bonus);
+        1:   46:    if(state->coins != expectedValue) {
+    #####:   47:        printf("  TEST FAIL    : minion card add coins failed\n");
+    #####:   48:        testsFailed++;
+        1:   49:    } else {testsPassed++;}
+        -:   50:
+        -:   51:    //Check size of players hand after call is correct
+        1:   52:    expectedValue = 4;
+        1:   53:    cardEffect(minion,0,1,0,state, 0, &bonus);
+        1:   54:    if(state->handCount[state->whoseTurn] != expectedValue) {
+    #####:   55:        printf("  TEST FAIL    : minion redraw hand size failed\n");
+    #####:   56:        testsFailed++;
+        1:   57:    } else {testsPassed++;}
+        -:   58:
+        -:   59:    //Check size of opponents hand after call is correct, over 5 in hand
+        1:   60:    expectedValue = 4;
+        1:   61:    state->whoseTurn = 0;
+        1:   62:    state->handCount[1] = 5;
+        1:   63:    cardEffect(minion,0,1,0,state, 0, &bonus);
+        1:   64:    if(state->handCount[1] != expectedValue) {
+    #####:   65:        printf("  TEST FAIL    : minion redraw opponents hand size failed\n");
+    #####:   66:        testsFailed++;
+        1:   67:    } else {testsPassed++;}
+        -:   68:
+        -:   69:    //Check size of opponents hand after call is correct, less than 5 in hand
+        1:   70:    expectedValue = 4;
+        1:   71:    state->whoseTurn = 0;
+        1:   72:    state->handCount[1] = 4;
+        1:   73:    cardEffect(minion,0,1,0,state, 0, &bonus);
+        1:   74:    if(state->handCount[1] != expectedValue) {
+    #####:   75:        printf("  TEST FAIL    : minion add cards to opponents hand failed\n");
+    #####:   76:        printf("hand count %i\n", state->handCount[1]);
+    #####:   77:        testsFailed++;
+        1:   78:    } else {testsPassed++;}
+        -:   79:
+        1:   80:    printf ("    Tests Passed    : %i\n", testsPassed);
+        1:   81:    printf ("    Tests Failed    : %i\n", testsFailed);
+        1:   82:    printf ("-------------------------------------------------------------------------------\n\n");
+        -:   83:
+        1:   84:    return 0;
+        -:   85:}
+        -:   86:
+        -:   87:
+        -:   88:/*
+        -:   89: * Preconditions:   The user can pass a seed value for testing or it defaults to a set value
+        -:   90: * Postconditions:  Exit the test program normally
+        -:   91: */
+        1:   92:int main (int argc, char** argv)
+        -:   93:{
+        -:   94:
+        -:   95:    // Setup Game Seed
+        -:   96:    int seed;
+        1:   97:    char* currentTest = CARDNAME;
+        1:   98:    if(argv[1]) {
+    #####:   99:        seed = atoi(argv[1]);
+        -:  100:    } else {
+        1:  101:        seed = BASESEED;
+        -:  102:    }
+        -:  103:
+        -:  104:    // Initialize Game State
+        -:  105:    struct gameState G;
+        1:  106:    int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
+        1:  107:    initializeGame(2, k, seed, &G);
+        -:  108:
+        1:  109:    testCard(currentTest,seed, &G);
+        -:  110:
+        1:  111:    return 0;
+        -:  112:}
