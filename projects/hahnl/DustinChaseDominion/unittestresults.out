@@ -1,193 +1,91 @@
-Function and card test results:
-unittest1.c:
+Results:
+unittest1.c
 
-Testing updateCoins()...
-All tests pass!File 'dominion.c'
-Lines executed:15.87% of 586
+
+unittest1.c - Test for updateCoins() function:
+
+All tests passed.
+File 'dominion.c'
+Lines executed:15.70% of 586
 dominion.c:creating 'dominion.c.gcov'
 
-unittest2.c:
+unittest2.c
 
-All card cost tests passed!
+
+unittest2.c - Test for isGameOver() function:
+
+
+Pass Test 1
+
+Pass Test 2
+
+All tests passed.
+
 File 'dominion.c'
-Lines executed:20.82% of 586
+Lines executed:16.72% of 586
 dominion.c:creating 'dominion.c.gcov'
 
-unittest3.c:
+unittest3.c
 
-Testing buyCard():
 
-Test with no buys left passed!
+unittest3.c - Test for whoseTurn() function:
 
-Test with buys left passed!
+Pass Test 1
+Pass Test 2
+Pass Test 3
+Pass Test 4
 
-Test with not enough supply left passed!
-
-Test with enough supply left passed!
-
-Buy card number of coins left passed!
-
-Buy card number of buys left passed!
-
-Supply passed!
-
-Discard passed!
+Pass all tests.
 File 'dominion.c'
-Lines executed:26.11% of 586
+Lines executed:16.89% of 586
 dominion.c:creating 'dominion.c.gcov'
 
-unittest4.c:
+unittest4.c
 
-Testing isGameOver...
 
-The number of tests that failed was 100
+unittest4.c - Test for getCost() function:
 
-The frequency of cards causing errors was: 
 
-Card number 0 showed in error results 6 times.
+All cards pass.
 
-Card number 1 showed in error results 8 times.
-
-Card number 2 showed in error results 9 times.
-
-Card number 4 showed in error results 11 times.
-
-Card number 5 showed in error results 8 times.
-
-Card number 6 showed in error results 7 times.
-
-Card number 7 showed in error results 7 times.
-
-Card number 8 showed in error results 14 times.
-
-Card number 9 showed in error results 12 times.
-
-Card number 10 showed in error results 7 times.
-
-Card number 11 showed in error results 6 times.
-
-Card number 12 showed in error results 11 times.
-
-Card number 13 showed in error results 5 times.
-
-Card number 14 showed in error results 6 times.
-
-Card number 15 showed in error results 8 times.
-
-Card number 16 showed in error results 7 times.
-
-Card number 17 showed in error results 12 times.
-
-Card number 18 showed in error results 5 times.
-
-Card number 19 showed in error results 5 times.
-
-Card number 20 showed in error results 7 times.
-
-Card number 21 showed in error results 9 times.
-
-Card number 22 showed in error results 10 times.
-
-Card number 23 showed in error results 8 times.
-
-Card number 24 showed in error results 7 times.
-
-Card number 25 showed in error results 56 times.
-
-Card number 26 showed in error results 51 times.
-
-Testing of isGameOver is complete!
+All tests pass with expected results.
 File 'dominion.c'
-Lines executed:27.82% of 586
+Lines executed:5.12% of 586
 dominion.c:creating 'dominion.c.gcov'
 
-cardtest1.c:
+cardtest1.c
 
-Starting to test Smithy card...
 
-Error type 0 is hand count incorrect.
+cardtest1.c - Test for smithyCard() function:
 
-Error type 1 is discard count incorrect.
-
-Error type 2 is smithy is in hand but shouldn't be.
-
-Error count 0 is: 3000
-
-Error count 1 is: 0
-
-Error count 2 is: 0
-
-Testing of smithy card complete.
-File 'dominion.c'
-Lines executed:31.23% of 586
+Test failedFile 'dominion.c'
+Lines executed:19.97% of 586
 dominion.c:creating 'dominion.c.gcov'
 
-cardtest2.c:
+cardtest2.c
 
-Testing remodel card...
 
-Numbers of errors found is 0
+cardtest2.c - Test for adventurerCard() function:
 
-Testing remodel card complete!
-File 'dominion.c'
-Lines executed:33.11% of 586
+First test failed for cardtest2File 'dominion.c'
+Lines executed:17.92% of 586
 dominion.c:creating 'dominion.c.gcov'
 
-cardtest3.c:
+cardtest3.c
 
-Starting to test council card...
 
-The number of errors found is: 
+cardtest3.c - Test for villageCard() function:
 
-Player hand errors: 0
-
-Player buy errors: 4
-
-opponent_hand_errors : 0
-
-Testing of Council Room complete!
-File 'dominion.c'
-Lines executed:34.81% of 586
+First test failed for cardtest3.cSecond test failed for cardtest3.cFile 'dominion.c'
+Lines executed:19.28% of 586
 dominion.c:creating 'dominion.c.gcov'
 
-cardtest4.c:
+cardtest4.c
 
-Starting to test Adventurer card...
 
-Adventurer card was not discarded - FAIL.
+cardtest4.c - Test for greatHallCard() function:
 
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Adventurer card was not discarded - FAIL.
-
-Now printing testing errors...
-
-The number of treasure count errors was: 0
-
-The number of hand count errors was: 10
-
-Now printing counts of cards picked up:
-
-The count of copper cards picked up is: 11
-
-The count of silver cards picked up is: 9
-
-The count of gold cards picked is: 0
-File 'dominion.c'
-Lines executed:37.88% of 586
+First test failed or cardtest4.cSecond test failed for cardtest4.cFile 'dominion.c'
+Lines executed:19.28% of 586
 dominion.c:creating 'dominion.c.gcov'
 

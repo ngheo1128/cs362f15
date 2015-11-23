@@ -401,7 +401,7 @@ int isGameOver(struct gameState *state) {
 
   //if three supply pile are at 0, the game ends
   j = 0;
-  for (i = 0; i < 25; i++)
+  for (i = 0; i < 27; i++)
     {
       if (state->supplyCount[i] == 0)
 	{
@@ -1232,11 +1232,10 @@ int activateSmithy(int currentPlayer, struct gameState *state, int handPos)
     for (i = 0; i < 3; i++)
 	{
         drawCard(currentPlayer, state);
-        i++;
 	}
 			
     //discard card from hand
-    discardCard(currentPlayer, handPos, state, 0);
+    discardCard(handPos, currentPlayer, state, 0);
     
     return 0;
 }
@@ -1248,7 +1247,7 @@ int activateAdventurer(int currentPlayer, struct gameState *state, int temphand[
     int cardDrawn;
     
     while(drawntreasure < 2){
-        if (state->deckCount[currentPlayer] <2){ //if the deck is empty we need to shuffle discard and add to deck
+        if (state->deckCount[currentPlayer] <1){ //if the deck is empty we need to shuffle discard and add to deck
             shuffle(currentPlayer, state);
         }
         
@@ -1257,11 +1256,11 @@ int activateAdventurer(int currentPlayer, struct gameState *state, int temphand[
         
         if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold){
             drawntreasure++;
-            z++;
         }
         else{
             temphand[z]=cardDrawn;
             state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+            z++;
         }
     }
     
@@ -1279,7 +1278,7 @@ int activateVillage(int currentPlayer, struct gameState *state, int handPos)
     drawCard(currentPlayer, state);
 			
     //+2 Actions
-    state->numActions = state->supplyCount[0] + 2;
+    state->numActions = state->numActions + 2;
 			
     //discard played card from hand
     discardCard(handPos, currentPlayer, state, 0);
@@ -1303,8 +1302,8 @@ int activateSteward(int currentPlayer, struct gameState *state, int handPos, int
     else
 	{
         //trash 2 cards in hand
-        discardCard(currentPlayer, choice2, state, 1);
-        discardCard(currentPlayer, choice3, state, 1);
+        discardCard(choice2, currentPlayer, state, 1);
+        discardCard(choice3, currentPlayer, state, 1);
 	}
 			
     //discard card from hand
@@ -1356,7 +1355,7 @@ int activateMinion(int currentPlayer, struct gameState *state, int handPos, int 
                     }
                                     
                     //draw 4
-                    for (j = 0; j <= 4; j++)
+                    for (j = 0; j < 4; j++)
                     {
                         drawCard(i, state);
                     }

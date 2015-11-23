@@ -37,6 +37,11 @@ int main() {
         G.hand[1][i] = minion;
     }
 
+    G.handCount[1] =5;
+
+    G.discardCount[1] = 0;
+    G.discard[1][0]=curse;
+
     //fill hand of player 2 with adventurer cards.
     // for (i = 0; i < 5; i++)
     // {
@@ -126,11 +131,13 @@ int main() {
     printf("Before\n");
     printState(&G);
     printHand(0, &G);
+    printHand(1, &G);
 
     playCard(0, 0, 1, -1, &G);
     printf("after\n");
     printState(&G);
     printHand(0, &G);
+    printHand(1, &G);
     //check to make sure that coins weren't added.
     if (countHandCoins(0, &G) != G.coins)
     {
@@ -140,9 +147,16 @@ int main() {
 
     //verify that the hand has been discarded for player 1
     foundMinion = 0;
-    for (Index = 0; Index < G.playedCardCount; Index++)
+    for (Index = 0; Index < G.discardCount[0]; Index++)
     {
-        if (G.playedCards[Index] == minion)
+        if (G.discard[0][Index] == minion)
+        foundMinion++;
+    }
+
+    for (Index = 0; Index < G.discardCount[1]; Index++)
+    {
+        printDiscard(1, &G);
+        if (G.discard[1][Index] == minion)
         foundMinion++;
     }
 

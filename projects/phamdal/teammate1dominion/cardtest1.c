@@ -36,7 +36,7 @@
  		fail = 1; 
  	}
 
- 	if(state->deckCount[0] != 7) {
+ 	if(state->deckCount[0] != 2) {
  		printf("smithy_card does not draw from deck\n"); 
  		fail = 1; 
  	}

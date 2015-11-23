@@ -6,18 +6,15 @@
 #include "rngs.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
+#define NOISY_TEST 0
 
 int main() {
-    int i, j, m;
+    int i, m;
     int seed = 1000;
     int success = 1;
     int count = 0, preCount = 0;
     int numPlayer = 2;
-    int maxBonus = 10;
-    int p = 0, r, deckC;
-    int shuffled = 0;
-    int originalDeck[100];
+    int p = 1, r;
     int k[10] = {adventurer, council_room, feast, gardens, mine
                , remodel, smithy, village, baron, great_hall};
     struct gameState G;
@@ -26,13 +23,13 @@ int main() {
     for (i = 0; i < 10; i++) {
         memset(&G, 23, sizeof(struct gameState));   // clear the game state
         r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
-        for (m = 0; m < 5; m++) {
+        for (m = 0; m < 3; m++) {
         	
         	preCount = G.handCount[p];
         	#if (NOISY_TEST == 1)
                 printf("Card in players hand before smithy: %d\n", preCount);
             #endif
-            smithyCard(p, &G, count, j);
+            smithyCard(p, &G, count);
             count = G.handCount[p];
             #if (NOISY_TEST == 1)
                 printf("Card in players hand after smithy: %d\n", count);

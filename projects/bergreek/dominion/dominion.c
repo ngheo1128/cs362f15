@@ -1249,7 +1249,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 void smithyEffect(struct gameState *state, int player, int handPos)
 {
 	int i;
-	for (i = 1; i < 3; i++)
+	for (i = 0; i < 3; i++)
 	{
 		drawCard(player, state);
 	}
@@ -1275,6 +1275,7 @@ void adventurerEffect(struct gameState *state, int player, int hand[MAX_HAND], i
 			drawnTreasure++;
 		}
 		else {
+      hand[handPos] = cardDrawn;
 			state->handCount[player]--;
 			handPos++;
 		}	
@@ -1310,7 +1311,7 @@ int mineEffect(struct gameState *state, int player, int handPos, int choice1, in
     discardCard(handPos, player, state, 0);
 
     int i;
-    for (i = 0; i < state->deckCount[player]; i++)
+    for (i = 0; i < state->handCount[player]; i++)
 	{
 	  if (state->hand[player][i] == card)
 	    {
@@ -1344,8 +1345,8 @@ void stewardEffect(struct gameState *state, int player, int handPos, int choice1
 	}
     else
 	{
-	  discardCard(choice2, player, state, 0);
-	  discardCard(choice3, player, state, 0);
+	  discardCard(choice2, player, state, 1);
+	  discardCard(choice3, player, state, 1);
 	}
 			
 	discardCard(handPos, player, state, 0);

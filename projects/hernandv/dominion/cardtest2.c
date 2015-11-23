@@ -25,7 +25,6 @@ int main() {
 	GS->hand[p][4] = adventurer; //5th card in hand is adventurer
 	
 	int drawntreasure = 0;
-	int newtreasure = 0;
 	int cardDrawn = 0;
 	int z = 0;
 	int temphand[MAX_HAND];
