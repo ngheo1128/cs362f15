@@ -200,7 +200,6 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 
 int shuffle(int player, struct gameState *state) {
  
-
   int newDeck[MAX_DECK];
   int newDeckPos = 0;
   int card;
@@ -226,6 +225,35 @@ int shuffle(int player, struct gameState *state) {
   }
 
   return 0;
+}
+
+int shuffle2(int player, struct gameState *state) {
+
+	int newDeck[MAX_DECK];
+	int newDeckPos = 0;
+	int card;
+	int i;
+
+	if (state->deckCount[player] > 3)
+		return -1;
+	qsort((void*)(state->deck[player]), state->deckCount[player], sizeof(int), compare);
+	/* SORT CARDS IN DECK TO ENSURE DETERMINISM! */
+
+	while (state->deckCount[player] < 3) {
+		card = floor(Random() * state->discardCount[player]);
+		newDeck[newDeckPos] = state->discard[player][card];
+		newDeckPos++;
+		for (i = card; i < state->deckCount[player] - 1; i++) {
+			state->deck[player][i] = state->discard[player][i + 1];
+		}
+		state->deckCount[player]++;
+	}
+	for (i = 0; i < newDeckPos; i++) {
+		state->deck[player][i] = newDeck[i];
+		state->deckCount[player]++;
+	}
+
+	return 0;
 }
 
 int playCard(int handPos, int choice1, int choice2, int choice3, struct gameState *state) 
@@ -441,7 +469,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
@@ -1163,7 +1191,8 @@ void cardEffect_smithy(int handPos, int currentPlayer, struct gameState *state)
      drawCard(currentPlayer, state);
    }
 
-   discardCard(handPos, currentPlayer, state, 1);
+	//Bug found by teammate fixed
+   discardCard(handPos, currentPlayer, state, 0);
 
    return;
 }
@@ -1174,11 +1203,12 @@ void cardEffect_adventurer(int currentPlayer, struct gameState *state)
    int drawntreasure=0;
    int cardDrawn;
    int z = 0;
+	int i = 0;
    int temphand[MAX_HAND];
 
    while(drawntreasure<2){
-      if (state->deckCount[currentPlayer] <1){
-         shuffle(currentPlayer, state);
+      if (state->deckCount[currentPlayer] < 1){
+         shuffle2(currentPlayer, state);
       }
       drawCard(currentPlayer, state);
       cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
@@ -1191,9 +1221,18 @@ void cardEffect_adventurer(int currentPlayer, struct gameState *state)
       }
    }
    while(z-1>=0){
-      state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z];
+		//Bug found by teammate fixed
+      state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1];
       z=z-1;
    }
+
+	for (i = 0; i < state->handCount[currentPlayer]; i++){
+		if (state->hand[currentPlayer][i] == adventurer){
+			discardCard(i, currentPlayer, state, 0);
+			break;
+		}
+	}
+
    return;
 }
 
@@ -1215,10 +1254,11 @@ void cardEffect_council_room(int handPos, int currentPlayer, struct gameState *s
       {
          drawCard(i, state);
       }
-      else
+		//Bug introduced in assign 2
+      /*else
       {
          return;
-      }
+      }*/
    }
 
    discardCard(handPos, currentPlayer, state, 0);
@@ -1231,7 +1271,7 @@ void cardEffect_council_room(int handPos, int currentPlayer, struct gameState *s
 int cardEffect_remodal(int handPos, int currentPlayer, struct gameState *state, int choice1, int choice2, int choice3)
 {
    int i;
-   int j; 
+   int j = 0; 
 
    if ( (getCost(state->hand[currentPlayer][choice1]) + 2) > getCost(choice2))
    {
@@ -1261,7 +1301,9 @@ void cardEffect_salvager(int handPos, int currentPlayer, struct gameState *state
 
    if (choice1)
    {
-      state->coins = state->numBuys + getCost( handCard(choice1, state) );
+		//Bug introduced in assign 3
+      //state->coins = state->numBuys + getCost( handCard(choice1, state) );
+		state->coins = state->coins + getCost(handCard(choice1, state));
       discardCard(choice1, currentPlayer, state, 1);
    }
 
@@ -1304,6 +1346,8 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       //reduce number of cards in hand
       state->handCount[currentPlayer]--;
     }
+
+  state->discardCount[currentPlayer]++;
 	
   return 0;
 }
