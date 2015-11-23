@@ -115,7 +115,7 @@ Steps to Produce/Reproduce
 2. Call the cardEffect function as: cardEffect(village, 0, 0, 0, &testState, 0, 0)
 3. Compare handCount of the currrent player before the function call to after
 4. Compare the deckSize of the current player after the call to the deckSize before the
-call - one
+call minus one
 5. Examine the handCount of the currrent player after the call
 6. Examine the deckSize of the current player after the call
 
@@ -158,7 +158,7 @@ Steps to Produce/Reproduce
 1. Make all dominion files and create a gamestate
 2. Call the cardEffect function as: cardEffect(village, 0, 0, 0, &testState, 0, 0)
 3. Compare playedCardCount of game state after the call to the expected amount
-4. Examine playedCardCount of the game state after the call
+4. Examine playedCardCount of the game state after the call. Should increase by one, but does not.
 
 
 Expected Results
@@ -210,7 +210,6 @@ Actual Results
 testState.numActions - originalState.numActions = 1
 
 -----------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
 Title: Steward Card, trash option chosen, cards are not trashed
 
 Class: Bug, major
@@ -250,7 +249,6 @@ Actual Results
 --------------
 testState.playedCardCount > 2
 
------------------------------------------------------------------------------------------
 
 *******************************************************************************************
 Team Member: Sharon Kuo
@@ -375,7 +373,7 @@ Steps to Produce/Reproduce
 3. Set up the  deck, ensuring first card drawn is non-treasure, and the next two are
 treasure cards
 4. Compare playedCardCount of game state after the call to the expected amount
-5. Examine playedCardCount of the game state after the call
+5. Examine playedCardCount of the game state after the call. Should increase by one, but does not.
 
 
 Expected Results
