@@ -80,7 +80,7 @@ struct gameState* newGame();
 
 void runAdventurer(int drawntreasure, struct gameState *state, int currentPlayer, int cardDrawn, int z, int temphand[MAX_HAND]);
 
-void smithyCard(int currentPlayer, struct gameState *state, int handPos, int i);
+void smithyCard(int currentPlayer, struct gameState *state, int handPos);
 
 int remodelCard(int currentPlayer, int choice1, struct gameState *state, int choice2, int handPos, int i, int j);
 
