@@ -1,0 +1,67 @@
+        -:    0:Source:cardtest1.c
+        -:    0:Graph:cardtest1.gcno
+        -:    0:Data:cardtest1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/* -----------------------------------------------------------------------
+        -:    2:* Ben Tullis
+        -:    3:* CS362
+        -:    4:* Testing council_roomFunction()
+        -:    5:* -----------------------------------------------------------------------
+        -:    6:*/
+        -:    7:
+        -:    8:#include "dominion.h"
+        -:    9:#include "dominion_helpers.h"
+        -:   10:#include <string.h>
+        -:   11:#include <stdio.h>
+        -:   12:#include <assert.h>
+        -:   13:#include "rngs.h"
+        -:   14:#include <stdlib.h>
+        -:   15:#include <time.h>
+        -:   16:
+        -:   17:// set NOISY_TEST to 0 to remove printfs from output
+        -:   18:#define NOISY_TEST 0
+        -:   19:
+        1:   20:int main() {
+        1:   21:	srand(time(NULL));
+        1:   22:	int seed = 1000;
+        1:   23:	int numPlayer = 2;
+        1:   24:	int p = 0;
+        1:   25:	int k[10] = { adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall };
+        -:   26:	struct gameState G;
+        -:   27:	int playerHandcount;
+        -:   28:	int playerHandcount2;
+        -:   29:	int coins;
+        -:   30:	int rCard;
+        -:   31:	int numBuys;
+        1:   32:	int iterations = 1000;
+        -:   33:
+        1:   34:	printf("\nTESTING council_roomFunction():\n");
+     1001:   35:	for (int i = 0; i < iterations; i++)
+        -:   36:	{
+     1000:   37:		memset(&G, 23, sizeof(struct gameState));   // clear the game state
+     1000:   38:		initializeGame(numPlayer, k, seed, &G);		// initialize a new game
+     1000:   39:		playerHandcount = G.handCount[p];			// get current player's handcount
+     1000:   40:		playerHandcount2 = G.handCount[p + 1];		// get player 2's handcount
+     1000:   41:		numBuys = G.numBuys;						// get players number of buys
+     1000:   42:		coins = G.coins;							// get coins
+     1000:   43:		rCard = rand() % 5;							// pick a random card from the hand
+        -:   44:
+     1000:   45:		play_council(&G, p, rCard);			// call council_roomFunction (handPos is not revelant) only that playerHandcount decreases by one
+     1000:   46:		playerHandcount += 3;						// increment playerHandcount by three to match against expected values (+4 then -1)
+     1000:   47:		playerHandcount2++;							// other player draws another card
+     1000:   48:		numBuys++;									// increment numBuys by one
+        -:   49:#if (NOISY_TEST == 1)	
+        -:   50:		printf("playerHandcount: %d G.handCount[p]: %d\n", playerHandcount, G.handCount[p]);
+        -:   51:		printf("playerHandcount2: %d G.handCount[p]: %d\n", playerHandcount2, G.handCount[p+1]);
+        -:   52:		printf("coins: %d G.coins: %d\n", coins, G.coins);
+        -:   53:		printf("numBuys: %d G.numBuys: %d\n", numBuys, G.numBuys);
+        -:   54:#endif
+     1000:   55:		assert(playerHandcount == G.handCount[p]);		// check if the we received the expected handcount
+     1000:   56:		assert(playerHandcount2 == G.handCount[p + 1]); // check that other player's cards have been incremented by one
+     1000:   57:		assert(coins == G.coins);						// check that coins have not been disturbed
+     1000:   58:		assert(numBuys = G.numBuys);					// check that numbuys has been incremented by one
+        -:   59:	}
+        1:   60:	printf("All tests passed!\n");
+        1:   61:	return 0;
+        -:   62:}
