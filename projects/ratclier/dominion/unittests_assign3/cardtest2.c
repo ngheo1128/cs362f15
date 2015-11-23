@@ -98,7 +98,7 @@ int testAdventurerCard(struct gameState *state, int handPos)
     // with 1 new card in the player's hand and the last card in the
     // discard pile should == handPos
     //
-    if((handCountIncr == 1) && (state->discard[currentPlayer][0] == origState->hand[currentPlayer][handPos]))
+    if((handCountIncr == 1) && (state->discard[currentPlayer][state->discardCount[currentPlayer]-1] == origState->hand[currentPlayer][handPos]))
     {
         printf("adventurerCard: PASS correct number of cards discarded\n");
     }
