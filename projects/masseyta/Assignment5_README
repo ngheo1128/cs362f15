@@ -1,5 +1,12 @@
 Connor Peavey dominion.c code located in Teammate1 file
 Sharon Kuo doninion.c code located in Teammate2 file
 
-BugsInTeammates.c located in my dominion folder
-BugFixes.c located in my dominion folder
+BugsInTeammates.c located in my dominion folder and main folder
+BugFixes.c located in my dominion folderand main folder
+
+Teammate's folders contain:
+Bug Report
+dominion.c code (THIS is the old dominion code I tested full of errors)
+dominion folder (all dominion files up to date as of their latest push 6:41pm Sunday 11/22)
+dominion folder/myTests (copies of my unit, card, and random tests that was run against the buggy dominion.c
+code in the main teammate folder)
