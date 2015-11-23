@@ -16,7 +16,7 @@ int main() {
   struct gameState G;
 
   if (NOISY_TEST)
-  	printf("Testing buggySmithy():\n");
+  	printf("Testing smithy_ref():\n");
 
   initializeGame(numPlayer, k, seed, &G);
 
@@ -26,7 +26,7 @@ int main() {
 
   // Play card directly (game starts with player 0)
 
-  CEsmithy(0, &G, 1);
+  smithy_ref(&G, 0, 1, 1);
 
   // Check that the total cards in hand is now 3 - 1
 
@@ -42,8 +42,8 @@ int main() {
 
   // assert(G.discard[0][0] == smithy);
 
-  if (NOISY_TEST)
-  	printf("All tests passed.\n");
+  // if (NOISY_TEST)
+  // 	printf("All tests passed.\n");
 
 	return 0;
 }

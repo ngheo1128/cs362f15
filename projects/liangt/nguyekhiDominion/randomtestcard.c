@@ -1,88 +1,151 @@
-/*
-This program will random test the function CEsteward(). I haven't test this card in the last assignment
-so I decide to do it here. According to the specification, this card will have 3 different choices
-1. +2 cards, 2. +2 coins, 3. trash 2 cards from hand. Similar to CEadventurer I will check the cards in hand
-and coins of the gameState before and after the player play the card. The randomness of this test is deckCount
-and handCount and discardCount, and coins
-*/
-
 #include "dominion.h"
-#include "rngs.h"
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
-#include <assert.h>
+#include "dominion_helpers.h"
 #include <string.h>
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+#include <time.h>
+#include "rngs.h"
 
-int main()
-{
-    int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, steward};
-    struct gameState game;
-    srand(time(NULL));
-    int numTests = 10000;
-    int i;
-    int numFails = 0;
-    for (i = 0; i < numTests; i++)
-    {
-        int seed = rand();
-        initializeGame(2, k, seed, &game);
-        int player = rand() % 2;        //random player 1 or 2
-        game.deckCount[player] = rand() % MAX_DECK;     //random deckCount
-        game.discardCount[player] = (rand() % MAX_DECK);    //random discardCount
-        game.handCount[player] = rand() % MAX_HAND;     //random handCount
-        game.coins = rand() % 10;  //random coins from 0 to 10
-        struct gameState before;
-        struct gameState after;
-        int handPos = rand() % 10;
-        memcpy(&before, &game, sizeof(struct gameState));
-        int choice1 = rand() % 3 + 1;   //random choice1
-        int choice2 = rand() % 10;  //random choice2
-        int choice3 = rand() % 10;  //random choice3
-        CEsteward(player, &game, choice1, choice2, choice3, handPos);
-        memcpy(&after, &game, sizeof(struct gameState));
+static const int TEST_RUNS = 10000;
 
-        //check to see if the function draw 2 treasure cards or not
-        if(choice1 == 1)
-        {
-            if (after.handCount[player] != before.handCount[player] + 1)
-            {
-                numFails++;
-                printf("Error, the player do not draw 2 cards\n");
-            }
-            if (after.deckCount[player] != before.deckCount[player] - 2)
-            {
-                numFails++;
-                printf("Error, the player do not draw 2 cards\n");
-            }
-            if (after.discardCount[player] != before.discardCount[player] + 1)
-            {
-                numFails++;
-                printf("Error, the player do not discard the steward card\n");
-            }
-        }
-        if (choice1 == 2)
-        {
-            if (after.coins != before.coins + 2)
-            {
-                numFails++;
-                printf("Error, the player do not gain 2 coins\n");
-            }
-        }
-        if (choice1 == 3)
-        {
-            if (before.discardCount[player] != after.discardCount[player] + 1)
-            {
-                numFails++;
-                printf("Error, the player do not discard 2 cards\n");
-            }
-        }
-        printf("choice1 = %d, choice 2 = %d, choice3 = %d\n", choice1, choice2, choice3);
-        printf ("gameState before play adventurer card : player %d coin %d handCount %d deckCount %d discardCount %d\n",
-		player, before.coins, before.handCount[player], before.deckCount[player], before.discardCount[player]);
-		printf ("gameState after play adventurer card : player %d coin %d handCount %d deckCount %d discardCount %d\n\n",
-		player, after.coins, after.handCount[player], after.deckCount[player], after.discardCount[player]);
-    }
-    printf ("%d out of %d Tests failed\n",numFails , numTests*3);
-    return 0;
+// Input: Array of kingdom cards
+// Output: Random enum of any of the inputted kingdom cards
+  // and victory, curse, and treasure cards
+int randomCard(int k[10]) {
+  int pool[17];
+  int i;
+  for (i = 0; i < 7; i++) {
+    pool[i] = i; //To match enums of non-kingdom cards
+  }
+  for (i = 7; i < 17; i++) {
+    pool[i] = k[i - 7]; //match enums of kingdom cards
+  }
+  return pool[rand() % 17];
 }
 
+// Randomizes hand
+void randomizeHand(struct gameState * G, int k[10], int cur_player) {
+  int i;
+  G->handCount[cur_player] = 1 + rand() % (MAX_HAND - 2); // 1 to 498
+  for (i = 0; i < G->handCount[cur_player]; i++) {
+    G->hand[cur_player][i] = randomCard(k);
+  }
+}
+
+// Randomizes deck
+void randomizeDeck(struct gameState * G, int k[10], int cur_player) {
+  int i;
+  G->deckCount[cur_player] = 1 + rand() % MAX_DECK; // 1 to 500
+  for (i = 0; i < G->deckCount[cur_player]; i++) {
+    G->deck[cur_player][i] = randomCard(k);
+  }
+}
+
+// Randomizes discard pile
+void randomizeDiscard(struct gameState * G, int k[10], int cur_player) {
+  int i;
+  G->discardCount[cur_player] = 1 + rand() % (MAX_DECK - 1); // 1 to 499
+  for (i = 0; i < G->discardCount[cur_player]; i++) {
+    G->discard[cur_player][i] = randomCard(k);
+  }
+}
+
+int main() {
+
+  srand(time(NULL));
+
+  int i;
+  int seed = 1000; // This won't matter since we'll be randomizing the deck/hand
+  int numPlayer = 4;
+  int k[10] = {adventurer, council_room, feast, gardens, mine
+             , remodel, smithy, village, baron, great_hall};
+  struct gameState G;
+  int cur_player;
+  int handPos;
+  int ori_handCount, valid_handCount;
+  int valid_discard;
+  int ori_nonhandCount, valid_nonhandCount;
+  int sub_tests_total = TEST_RUNS * 4; // Four tests
+  int sub_tests_passed = 0;
+  int valid_handCount_passed = 0;
+  int ori_actions, valid_actions;
+  int valid_actions_passed;
+  int valid_discard_passed = 0;
+  int valid_nonhandCount_passed = 0;
+
+	printf("Random testing village via cardEffect():\n");
+
+  for (i = 0; i < TEST_RUNS; i++) {
+    initializeGame(numPlayer, k, seed, &G);
+    cur_player = rand() % numPlayer;
+    randomizeHand(&G, k, cur_player);
+    randomizeDeck(&G, k, cur_player);
+    randomizeDiscard(&G, k, cur_player);
+    handPos = rand() % G.handCount[cur_player];
+    G.hand[cur_player][handPos] = village;
+    G.whoseTurn = cur_player;
+    ori_handCount = G.handCount[cur_player];
+    ori_actions = G.numActions;
+    ori_nonhandCount = G.deckCount[cur_player] + G.discardCount[cur_player];
+
+    int bonus = 0;
+    cardEffect(village,0,0,0,&G,handPos,&bonus);
+
+    // Check net hand count the same as before (1 extra card - 1 village card)
+
+    valid_handCount = 0;
+    if (G.handCount[cur_player] == ori_handCount) {
+      valid_handCount = 1;
+    }
+
+    // Check actions have +2 net change before playCard()
+    // playCard() decrements actions by 1 AFTER cardEffect()
+
+    valid_actions = 0;
+    if (G.numActions == ori_actions + 2) {
+      valid_actions = 1;
+    }
+
+    // Check village card is on top of discard pile
+
+    valid_discard = 0;
+    if (G.discard[cur_player][G.discardCount[cur_player] - 1] == village) {
+      valid_discard = 1;
+    }
+
+    // Check net total of deck + discard is same as original
+      // (1 village - 1 misc)
+
+    valid_nonhandCount = 0;
+    if (
+      G.deckCount[cur_player] +
+      G.discardCount[cur_player] ==
+      ori_nonhandCount) {
+      valid_nonhandCount = 1;
+    }
+
+    valid_handCount_passed += valid_handCount;
+    valid_actions_passed += valid_actions;
+    valid_discard_passed += valid_discard;
+    valid_nonhandCount_passed += valid_nonhandCount;
+
+    sub_tests_passed +=
+      valid_handCount +
+      valid_actions +
+      valid_discard +
+      valid_nonhandCount;
+
+  }
+
+  printf("Test Runs: %d\n", TEST_RUNS);
+  printf("Total Sub-tests: %d\n", sub_tests_total);
+  printf("Sub-tests passed: %d\n", sub_tests_passed);
+  printf("\thandCount tests passed: %d\n", valid_handCount_passed);
+  printf("\tactions tests passed: %d\n", valid_actions_passed);
+  printf("\tdiscard tests passed: %d\n", valid_discard_passed);
+  printf("\tnonhandCount tests passed: %d\n", valid_nonhandCount_passed);
+  printf("Sub-tests failed: %d\n", sub_tests_total - sub_tests_passed);
+
+	return 0;
+}

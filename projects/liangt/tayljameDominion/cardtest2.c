@@ -17,7 +17,7 @@ int main() {
   struct gameState G;
 
   if (NOISY_TEST)
-  	printf("Testing CEadventurer():\n");
+  	printf("Testing adventurer_ref():\n");
 
   initializeGame(numPlayer, k, seed, &G);
 
@@ -32,19 +32,19 @@ int main() {
   G.hand[0][1] = adventurer;
 
   if (NOISY_TEST)
-    printf("Test: all coppers in deck [failed]\n");
+    printf("Test: all coppers in deck\n");
 
   for (i = 0; i < 5; i++) {
     G.deck[0][i] = copper;
   }
 
-  CEadventurer(&G, 0, 1);
+  adventurer_ref(&G, 0);
 
-  // assert(G.hand[0][G.handCount[0]-1] == copper &&
-  //   G.hand[0][G.handCount[0]-2] == copper);
+  assert(G.hand[0][G.handCount[0]-1] == copper &&
+    G.hand[0][G.handCount[0]-2] == copper);
 
   if (NOISY_TEST)
-    printf("Test: all silvers in deck [failed]\n");
+    printf("Test: all silvers in deck\n");
 
   initializeGame(numPlayer, k, seed, &G);
   for (i = 0; i < 5; i++) {
@@ -54,13 +54,13 @@ int main() {
     G.deck[0][i] = silver;
   }
   G.hand[0][1] = adventurer;
-  CEadventurer(&G, 0, 1);
+  adventurer_ref(&G, 0);
 
-  // assert(G.hand[0][G.handCount[0]-1] == silver &&
-  //   G.hand[0][G.handCount[0]-2] == silver);
+  assert(G.hand[0][G.handCount[0]-1] == silver &&
+    G.hand[0][G.handCount[0]-2] == silver);
 
   if (NOISY_TEST)
-    printf("Test: all golds in deck [failed]\n");
+    printf("Test: all golds in deck\n");
 
   initializeGame(numPlayer, k, seed, &G);
   for (i = 0; i < 5; i++) {
@@ -70,10 +70,10 @@ int main() {
     G.deck[0][i] = gold;
   }
   G.hand[0][1] = adventurer;
-  CEadventurer(&G, 0, 1);
+  adventurer_ref(&G, 0);
 
-  // assert(G.hand[0][G.handCount[0]-1] == gold &&
-  //   G.hand[0][G.handCount[0]-2] == gold);
+  assert(G.hand[0][G.handCount[0]-1] == gold &&
+    G.hand[0][G.handCount[0]-2] == gold);
 
   if (NOISY_TEST)
     printf("Test: only two treasure cards are drawn\n");
@@ -83,8 +83,8 @@ int main() {
     G.hand[0][G.handCount[0]-3] != silver &&
     G.hand[0][G.handCount[0]-3] != gold);
 
-  // if (NOISY_TEST)
-  // 	printf("All tests passed.\n");
+  if (NOISY_TEST)
+  	printf("All tests passed.\n");
 
 	return 0;
 }

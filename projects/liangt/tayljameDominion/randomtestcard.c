@@ -51,23 +51,11 @@ void randomizeDiscard(struct gameState * G, int k[10], int cur_player) {
   }
 }
 
-int isTreasureCard(int input) {
-  if (
-    (input == copper) ||
-    (input == silver) ||
-    (input == gold)) {
-    return 1;
-  }
-  else {
-    return 0;
-  }
-}
-
 int main() {
 
   srand(time(NULL));
 
-  int i, j;
+  int i;
   int seed = 1000; // This won't matter since we'll be randomizing the deck/hand
   int numPlayer = 4;
   int k[10] = {adventurer, council_room, feast, gardens, mine
@@ -76,20 +64,17 @@ int main() {
   int cur_player;
   int handPos;
   int ori_handCount, valid_handCount;
-  int valid_hand;
   int valid_discard;
   int ori_nonhandCount, valid_nonhandCount;
   int sub_tests_total = TEST_RUNS * 4; // Four tests
   int sub_tests_passed = 0;
   int valid_handCount_passed = 0;
-  int valid_hand_passed = 0;
+  int ori_actions, valid_actions;
+  int valid_actions_passed;
   int valid_discard_passed = 0;
   int valid_nonhandCount_passed = 0;
-  int coppers_drawn = 0;
-  int silvers_drawn = 0;
-  int golds_drawn = 0;
 
-	printf("Random testing CEadventurer():\n");
+	printf("Random testing village via cardEffect():\n");
 
   for (i = 0; i < TEST_RUNS; i++) {
     initializeGame(numPlayer, k, seed, &G);
@@ -98,82 +83,69 @@ int main() {
     randomizeDeck(&G, k, cur_player);
     randomizeDiscard(&G, k, cur_player);
     handPos = rand() % G.handCount[cur_player];
-    G.hand[cur_player][handPos] = adventurer;
+    G.hand[cur_player][handPos] = village;
     G.whoseTurn = cur_player;
     ori_handCount = G.handCount[cur_player];
+    ori_actions = G.numActions;
     ori_nonhandCount = G.deckCount[cur_player] + G.discardCount[cur_player];
 
-    CEadventurer(&G, cur_player, handPos);
+    int bonus = 0;
+    cardEffect(village, 0,0,0, &G, handPos, &bonus);
 
-    // Check net hand count is 1 more than original
-      // (2 treasure - 1 adventurer)
+    // Check net hand count the same as before (1 extra card - 1 village card)
 
     valid_handCount = 0;
-    if (G.handCount[cur_player] == ori_handCount + 1) {
+    if (G.handCount[cur_player] == ori_handCount) {
       valid_handCount = 1;
     }
 
-    // Check that last two cards in hand are treasure cards
+    // Check actions have +2 net change before playCard()
+    // playCard() decrements actions by 1 AFTER cardEffect()
 
-    valid_hand = 0;
-    if (
-      isTreasureCard(G.hand[cur_player][G.handCount[cur_player] - 1]) &&
-      isTreasureCard(G.hand[cur_player][G.handCount[cur_player] - 2])) {
-      valid_hand = 1;
+    valid_actions = 0;
+    if (G.numActions == ori_actions + 2) {
+      valid_actions = 1;
     }
 
-    // Check adventurer card is on top of discard pile
+    // Check village card is on top of discard pile
 
     valid_discard = 0;
-    if (G.discard[cur_player][G.discardCount[cur_player] - 1] == adventurer) {
+    if (G.discard[cur_player][G.discardCount[cur_player] - 1] == village) {
       valid_discard = 1;
     }
 
-    // Check net total of deck + discard is 1 less than original
-      // (1 adventurer - 2 treasure)
+    // Check net total of deck + discard is same as original
+      // (1 village - 1 misc)
 
     valid_nonhandCount = 0;
     if (
       G.deckCount[cur_player] +
       G.discardCount[cur_player] ==
-      ori_nonhandCount - 1) {
+      ori_nonhandCount) {
       valid_nonhandCount = 1;
     }
 
     valid_handCount_passed += valid_handCount;
-    valid_hand_passed += valid_hand;
+    valid_actions_passed += valid_actions;
     valid_discard_passed += valid_discard;
     valid_nonhandCount_passed += valid_nonhandCount;
 
     sub_tests_passed +=
       valid_handCount +
-      valid_hand +
+      valid_actions +
       valid_discard +
       valid_nonhandCount;
 
-    // Tally how many of each treasure card is drawn
-
-    for (j = 1; j < 3; j++) {
-      if (G.hand[cur_player][G.handCount[cur_player] - j] == copper)
-        coppers_drawn++;
-      else if (G.hand[cur_player][G.handCount[cur_player] - j] == silver)
-        silvers_drawn++;
-      else if (G.hand[cur_player][G.handCount[cur_player] - j] == gold)
-        golds_drawn++;
-    }
   }
 
   printf("Test Runs: %d\n", TEST_RUNS);
   printf("Total Sub-tests: %d\n", sub_tests_total);
   printf("Sub-tests passed: %d\n", sub_tests_passed);
   printf("\thandCount tests passed: %d\n", valid_handCount_passed);
-  printf("\thand tests passed: %d\n", valid_hand_passed);
+  printf("\tactions tests passed: %d\n", valid_actions_passed);
   printf("\tdiscard tests passed: %d\n", valid_discard_passed);
   printf("\tnonhandCount tests passed: %d\n", valid_nonhandCount_passed);
   printf("Sub-tests failed: %d\n", sub_tests_total - sub_tests_passed);
-  printf("Coppers drawn: %d\n", coppers_drawn);
-  printf("Silvers drawn: %d\n", silvers_drawn);
-  printf("Golds drawn: %d\n", golds_drawn);
 
 	return 0;
 }

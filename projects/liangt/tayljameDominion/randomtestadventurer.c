@@ -89,7 +89,7 @@ int main() {
   int silvers_drawn = 0;
   int golds_drawn = 0;
 
-	printf("Random testing CEadventurer():\n");
+	printf("Random testing adventurer_ref():\n");
 
   for (i = 0; i < TEST_RUNS; i++) {
     initializeGame(numPlayer, k, seed, &G);
@@ -103,7 +103,7 @@ int main() {
     ori_handCount = G.handCount[cur_player];
     ori_nonhandCount = G.deckCount[cur_player] + G.discardCount[cur_player];
 
-    CEadventurer(&G, cur_player, handPos);
+    adventurer_ref(&G, cur_player);
 
     // Check net hand count is 1 more than original
       // (2 treasure - 1 adventurer)
