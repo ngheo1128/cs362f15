@@ -139,11 +139,11 @@ int testAdven(int *hand, int player, int handCount, int handpos, int changeDeck,
 		}
 	}
 	if(endcount == 2){
-		printf("\tPASSED - The correct number of treasure cards were added.\n");
+		printf("\tFAILED - Not enough treasure cards were added to the hand.\n");
+		failed=1;
 	}
 	else{
-		printf("\tFAILED - The correct number of treasure cards were NOT added.\n");
-		failed = 1;
+		printf("\tPASSED - The correct number of treasure cards were added.\n");
 	}
 	
 	//Check that if a "mine" card was added to the deck then that card was skipped and not added to the hand.
