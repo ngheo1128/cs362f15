@@ -1273,8 +1273,8 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       //state->playedCardCount++;
       // add to discard pile
       char name[32];
-      cardNumToName(state->hand[currentPlayer][handPos], name);
-      printf("card being discarded is %s \n", name);
+      //cardNumToName(state->hand[currentPlayer][handPos], name);
+      //printf("card being discarded is %s \n", name);
       state->discard[currentPlayer][state->discardCount[currentPlayer]++] = state->hand[currentPlayer][handPos];	// add card played to discard
       //state->discardCount[currentPlayer]+=1;	// increment discardCount
    }
