@@ -45,7 +45,7 @@ void randomizeDeck(struct gameState * G, int k[10], int cur_player) {
 // Randomizes discard pile
 void randomizeDiscard(struct gameState * G, int k[10], int cur_player) {
   int i;
-  G->discardCount[cur_player] = 1 + rand() % (MAX_DECK - 1); // 1 to 499
+  G->discardCount[cur_player] = rand() % MAX_DECK; // 0 to 499
   for (i = 0; i < G->discardCount[cur_player]; i++) {
     G->discard[cur_player][i] = randomCard(k);
   }

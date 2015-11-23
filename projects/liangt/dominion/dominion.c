@@ -664,7 +664,10 @@ int buggyAdventurer(struct gameState *state, int handPos) {
   int drawntreasure = 0;
   int z = 0;// this is the counter for the temp hand
   int cardDrawn;
-  while (drawntreasure < 2) {
+  int pool = state->deckCount[currentPlayer] + state->discardCount[currentPlayer];
+  int cardsDrawn = 0;
+  int allCardsDrawn = 0;
+  while (drawntreasure < 2 && !allCardsDrawn) {
     if (state->deckCount[currentPlayer] < 1) {//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
@@ -677,6 +680,12 @@ int buggyAdventurer(struct gameState *state, int handPos) {
       state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
       z++;
     }
+
+    // Prevents infinite loop if deck + discard doesn't contain 2+ treasure cards
+    cardsDrawn++;
+    if (cardsDrawn > pool)
+      allCardsDrawn = 1;
+
   }
   
   while (z - 1 >= 0) {

@@ -41,7 +41,7 @@ int main() {
   buggyAdventurer(&G, 1);
 
   assert(G.hand[0][G.handCount[0]-1] == copper &&
-    G.hand[0][G.handCount[0]-2] == copper);
+    G.hand[0][1] == copper);
 
   if (NOISY_TEST)
     printf("Test: all silvers in deck\n");
@@ -57,7 +57,7 @@ int main() {
   buggyAdventurer(&G, 1);
 
   assert(G.hand[0][G.handCount[0]-1] == silver &&
-    G.hand[0][G.handCount[0]-2] == silver);
+    G.hand[0][1] == silver);
 
   if (NOISY_TEST)
     printf("Test: all golds in deck\n");
@@ -73,7 +73,7 @@ int main() {
   buggyAdventurer(&G, 1);
 
   assert(G.hand[0][G.handCount[0]-1] == gold &&
-    G.hand[0][G.handCount[0]-2] == gold);
+    G.hand[0][1] == gold);
 
   if (NOISY_TEST)
     printf("Test: only two treasure cards are drawn\n");
