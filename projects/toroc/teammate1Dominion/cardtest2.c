@@ -1,364 +1,389 @@
-//############################################################
-// Filename: cardtest2.c
-// Unit Test Objective: Tests the executeAdventurerCard method
-//                      in dominion.c. This validates the
-//                      behavior for the Adventurer card.
-//############################################################
+/*
+*	CS362 - Assignment 3 - cardtest2.c
+*	Card Test #2: This program runs the following 6 tests
+*		to ensure the Adventurer card implementation is correct:
+*			1. Cards drawn are first two treasure cards
+*			2. Cards drawn belong to player's deck
+*			3. Adventurer doesn't affect other player's deck
+*			4. Adventurer doesn't affect other player's hand
+*			5. Adventurer doesn't grant additional actions
+*			6. Adventurer doesn't grant additional buys
+*
+*	Author: Carol D. Toro
+*	Date: 10/20/2015
+*/
 
 #include "dominion.h"
 #include "dominion_helpers.h"
+#include "rngs.h"
+#include <assert.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
+#include <time.h>
 
-#define DEBUG 0
+
+// set NOISY_TEST to 0 to remove printfs from output
 #define NOISY_TEST 1
+int main()
+{
+	/*initialize variables needed*/
+	int	i;
+	int k[10] = { adventurer, council_room, feast, gardens, mine,
+		remodel, smithy, village, baron, great_hall };
+	int gameSeed;
+	int numPlayer = 2;
+	struct gameState Game;
+	int currentActions, expectedActions, currentBuys, expectedBuys;
+	int result, currentNumCards, numCardsAfter, cardType;
+	const char* cardNames[] = { "curse", "estate", "duchy", "province", "copper", "silver", "gold", "adventurer", "council_room", "feast", "gardens", "mine", "remodel", "Adventurer", "village", "baron", "great_hall", "minion", "steward", "tribute", "ambassador", "cutpurse", "embargo", "outpost", "salvager", "sea_hag", "treasure_map" };
 
-void CheckPlayerHasTwoExtraTreasureCards();
-void CheckThatTreasureCardsWereTakenInOrderFromDeck();
-void CheckThatOtherPlayersWereNotAffectedByAction();
-void CheckThatCardsCanBeDrawnFromEmptyDeck();
-void CheckThatNoneTreasureCardsAreDiscarded();
-void TestAmountOfCoinsInSupplyDidNotChange();
-void initializeStartGameDeck(struct gameState *state);
-void emptyDeckAndAddToDiscard(struct gameState *state);
+	/*Keep track of P0s deck & hand before & after*/
+	int p_0_deckBeforeAdventurer[MAX_DECK];
+	//int p_0_deckAfterAdventurer[MAX_DECK];
+	//int p_0_handBeforeAdventurer[MAX_HAND];
+	int p_0_handAfterAdventurer[MAX_HAND];
 
-int main () {
+	/*Keep track of P1s deck before & after*/
+	int p_1_deckBeforeAdventurer[MAX_DECK];
+	int p_1_deckAfterAdventurer[MAX_DECK];
+	int p_1_handBeforeAdventurer[MAX_HAND];
+	int p_1_handAfterAdventurer[MAX_HAND];
 
-	printf ("Card Testing: executeAdventurerCard().\n");
+	/*initialize array of silver filled hands, starting with Adventurer*/
+	int silverHand[MAX_HAND];
+	for (i = 0; i < MAX_HAND; i++)
+	{
+		if (i == 0)
+			silverHand[i] = adventurer;
+		else
+			silverHand[i] = silver;
+	}
 
-	// Player who plays the adventurer card should have two extra treasure cards
-	// in their hand.
-	CheckPlayerHasTwoExtraTreasureCards();
+	/*initialize array of copper filled hands*/
+	int copperHand[MAX_HAND];
+	for (i = 0; i < MAX_HAND; i++)
+	{
+		if (i == 0)
+			copperHand[i] = adventurer;
+		else
+			copperHand[i] = copper;
+	}
 
-	// Check that the treasure cards were taken in order from the deck.
-	CheckThatTreasureCardsWereTakenInOrderFromDeck();
 
-	// Check that only the player who plays the action card is affected. Check
-	// everyone else's deck and hand counts.
-	CheckThatOtherPlayersWereNotAffectedByAction();
+	/*Starting Test #1*/
+#if (NOISY_TEST==1)
+	printf("Starting cardtest2.c which checks adventureCard() \n");
+	printf("\n Starting Test #1 - player receives first 2 treasure cards \n");
+#endif
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
 
-	// Check that cards can still be drawn from an empty deck, but a full
-	// discard pile.
-	CheckThatCardsCanBeDrawnFromEmptyDeck();
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
 
-	// Check that we discard all the cards that were drawn from the deck that
-	// were not treasure cards.
-	CheckThatNoneTreasureCardsAreDiscarded();
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
 
-	// Check that the coins in the card supply were not affected
-	TestAmountOfCoinsInSupplyDidNotChange();
+	/*load player 0 hands with silverHand array & player 1 with copper*/
+	memcpy(Game.hand[0], silverHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.hand[1], copperHand, sizeof(int) * MAX_HAND);
+
+	/*load silver in the p0's deck*/
+	Game.deck[0][0] = silver;
+	Game.deck[0][1] = copper;
+	Game.deck[0][2] = copper;
+	Game.deck[0][3] = silver;
+	Game.deck[0][4] = silver;
+	Game.deck[0][5] = gold;
+
+	/*Save player 0's deck*/
+	for (i = 0; i < 10; i++)
+	{
+		p_0_deckBeforeAdventurer[i] = Game.deck[0][i];
+	}
+
+	updateCoins(0, &Game, 0);
+
+	currentNumCards = (numHandCards(&Game));
+
+	cardType = handCard(0, &Game);
+
+	/*play the adventurer card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	numCardsAfter = (numHandCards(&Game));
+
+	/*Copy the hand after the Adventure was played*/
+	for (i = 0; i < numCardsAfter; i++)
+	{
+		p_0_handAfterAdventurer[i] = Game.hand[0][i];
+	}
+
+
+#if (NOISY_TEST==1)
+	if (p_0_handAfterAdventurer[currentNumCards] == p_0_deckBeforeAdventurer[currentNumCards - 1] && p_0_handAfterAdventurer[currentNumCards + 1] == p_0_deckBeforeAdventurer[currentNumCards - 2])
+	{
+		printf("\t Current card = %s, Expected card = %s\n", cardNames[p_0_handAfterAdventurer[currentNumCards]], cardNames[p_0_deckBeforeAdventurer[currentNumCards - 1]]);
+		printf("\t Current card = %s, Expected card = %s\n", cardNames[p_0_handAfterAdventurer[currentNumCards + 1]], cardNames[p_0_deckBeforeAdventurer[currentNumCards - 2]]);
+		printf(" Test #1 passed. Player received the expected cards\n");
+	}
+	else
+	{
+		printf("\t Current card = %s, Expected card = %s\n", cardNames[p_0_handAfterAdventurer[currentNumCards]], cardNames[p_0_deckBeforeAdventurer[currentNumCards - 1]]);
+		printf("\t Current card = %s, Expected card = %s\n", cardNames[p_0_handAfterAdventurer[currentNumCards + 1]], cardNames[p_0_deckBeforeAdventurer[currentNumCards - 2]]);
+		printf(" Test #1 FAILED! Player did not receive expected cards. \n");
+	}
+
+#endif
+
+
+
+	/*Starting Test #2*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #2 - player receives treasures from own deck \n");
+#endif
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with silverHand array & player 1 with copper*/
+	memcpy(Game.hand[0], silverHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.hand[1], copperHand, sizeof(int) * MAX_HAND);
+
+
+	/*Save player 0's deck*/
+	for (i = 0; i < 10; i++)
+	{
+		p_0_deckBeforeAdventurer[i] = Game.deck[0][i];
+	}
+
+	updateCoins(0, &Game, 0);
+
+	currentNumCards = (numHandCards(&Game));
+
+	cardType = handCard(0, &Game);
+
+	/*play the adventurer card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	numCardsAfter = (numHandCards(&Game));
+
+	/*Copy the hand after the Adventure was played*/
+	for (i = 0; i < numCardsAfter + 2; i++)
+	{
+		p_0_handAfterAdventurer[i] = Game.hand[0][i];
+	}
+
+
+#if (NOISY_TEST==1)
+	if (p_0_handAfterAdventurer[currentNumCards] == p_0_deckBeforeAdventurer[currentNumCards - 3] && p_0_handAfterAdventurer[currentNumCards + 1] == p_0_deckBeforeAdventurer[currentNumCards - 4])
+	{
+		printf("\t Current card = %d, Expected card = %d\n", p_0_handAfterAdventurer[currentNumCards], p_0_deckBeforeAdventurer[currentNumCards - 3]);
+		printf("\t Current card = %d, Expected card = %d\n", p_0_handAfterAdventurer[currentNumCards + 1], p_0_deckBeforeAdventurer[currentNumCards - 4]);
+		printf(" Test #2 passed. Player received treasure cards from deck \n");
+	}
+	else
+	{
+		printf("\t Current card = %d, Expected card = %d\n", p_0_handAfterAdventurer[currentNumCards], p_0_deckBeforeAdventurer[currentNumCards - 3]);
+		printf("\t Current card = %d, Expected card = %d\n", p_0_handAfterAdventurer[currentNumCards + 1], p_0_deckBeforeAdventurer[currentNumCards - 4]);
+		printf(" Test #2 FAILED! Player did not receive treasure cards from own deck. \n");
+	}
+
+#endif
+
+	/*Starting Test #3*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #3 - Adventurer doesn't affect other player's deck \n");
+#endif
+
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with silverHand array & player's 1 deck with copper*/
+	memcpy(Game.hand[0], silverHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.deck[1], copperHand, sizeof(int) * MAX_HAND);
+
+
+	/*save player 1's deck*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_deckBeforeAdventurer[i] = Game.deck[1][i];
+	}
+
+	/* P0 plays the Adventurer card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	numCardsAfter = (numHandCards(&Game));
+
+	/*Copy p1's deck after the Adventurer was played*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_deckAfterAdventurer[i] = Game.deck[1][i];
+	}
+
+#if (NOISY_TEST==1)
+	if (memcmp(p_1_deckBeforeAdventurer, p_1_deckAfterAdventurer, 10) == 0)
+	{
+		printf("Test #3 passed and other player's deck was not affected! \n");
+	}
+	else
+	{
+		printf("Test #3 FAILED! Other player's deck was affected by Adventurer! \n");
+	}
+#endif
+
+	/*Starting Test #4*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #4 - adventurer doesn't affect other player's hand \n");
+#endif
+
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with silverHand array & player's 1 deck with copper*/
+	memcpy(Game.hand[0], silverHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.deck[1], copperHand, sizeof(int) * MAX_HAND);
+
+	/*save player 1's hand*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_handBeforeAdventurer[i] = Game.hand[1][i];
+	}
+
+	/*P0 plays the Adventurer card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	numCardsAfter = (numHandCards(&Game));
+
+	/*Copy p1's hand after the Adventurer was played*/
+	for (i = 0; i < 10; i++)
+	{
+		p_1_handAfterAdventurer[i] = Game.hand[1][i];
+	}
+
+#if (NOISY_TEST==1)
+	if (memcmp(p_1_handBeforeAdventurer, p_1_handAfterAdventurer, 10) == 0)
+	{
+		printf("Test #4 passed and other player's hand was not affected! \n");
+	}
+	else
+	{
+		printf("Test #4 FAILED! Other player's hand was affected by Adventurer! \n");
+	}
+#endif
+
+	/*Starting Test #5*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #5 - ensure player doesn't receive additional actions \n");
+#endif
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with silverHand array & player 1 with copper*/
+	memcpy(Game.hand[0], silverHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.hand[1], copperHand, sizeof(int) * MAX_HAND);
+
+	/*load player's deck with gold*/
+	memcpy(Game.deck[0], silverHand, sizeof(int) * MAX_DECK);
+
+	updateCoins(0, &Game, 0);
+
+	currentNumCards = (numHandCards(&Game));
+
+	cardType = handCard(0, &Game);
+
+	/*play the Adventurer card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	expectedActions = 0;
+	currentActions = Game.numActions;
+
+#if (NOISY_TEST==1)
+	if (expectedActions == currentActions)
+	{
+		printf("\t Current actions = %d, Expected actions = %d\n", currentActions, expectedActions);
+		printf("Test #5 passed. \n");
+	}
+	else
+	{
+		printf("\t Current actions = %d, Expected actions = %d\n", currentActions, expectedActions);
+		printf("Test #5 FAILED! Player had additional actions. \n");
+	}
+
+#endif
+
+	/*Starting Test #7*/
+#if (NOISY_TEST==1)
+	printf("\n Starting Test #6 - ensure player doesn't receive additional buys \n");
+#endif
+	/*initialize gameSeed*/
+	gameSeed = rand() % 1000 + 1;
+
+	/*clear the game state*/
+	memset(&Game, 23, sizeof(struct gameState));
+
+	/*initialize game*/
+	initializeGame(numPlayer, k, gameSeed, &Game);
+
+	/*load player 0 hands with silverHand array & player 1 with copper*/
+	memcpy(Game.hand[0], silverHand, sizeof(int) * MAX_HAND);
+	memcpy(Game.hand[1], copperHand, sizeof(int) * MAX_HAND);
+
+	/*load player's deck with gold*/
+	memcpy(Game.deck[0], silverHand, sizeof(int) * MAX_DECK);
+
+	updateCoins(0, &Game, 0);
+
+	currentNumCards = (numHandCards(&Game));
+
+	cardType = handCard(0, &Game);
+
+	/*play the Adventurer card*/
+	result = playCard(0, 1, 2, 3, &Game);
+
+	expectedBuys = 1;
+	currentBuys = Game.numBuys;
+
+#if (NOISY_TEST==1)
+	if (expectedBuys == currentBuys)
+	{
+		printf("\t Current buys = %d, Expected buys = %d\n", currentBuys, expectedBuys);
+		printf("Test #6 passed.  Player did not have additional buys.\n");
+	}
+	else
+	{
+		printf("\t Current buys = %d, Expected buys = %d\n", currentBuys, expectedBuys);
+		printf("Test #6 FAILED! Player had additional buys. \n");
+	}
+
+#endif
+
 
 	return 0;
-}
 
-void CheckPlayerHasTwoExtraTreasureCards()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int player1 = 0;
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-
-	printf("Testing...Player 1 has 2 more treasure cards in their hand after adventurer is played.\n");
-	int preHandCount = G.handCount[player1];
-	executeAdventurerCard(0, &G, player1);
-	int postHandCount = G.handCount[player1];
-	if (postHandCount != preHandCount + 2)
-	{
-		printf("Test Failed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
-	}
-	else
-	{
-		printf("Test Passed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
-	}
-}
-
-void CheckThatTreasureCardsWereTakenInOrderFromDeck()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int player1 = 0;
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-	initializeStartGameDeck(&G);
-
-	printf("Testing...Treasure cards were taken in order from the deck.\n");
-	int preDeckCount = G.deckCount[player1];
-	int preHandCount = G.handCount[player1];
-	int firstTreasureCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 1];
-	int secondTreasureCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 2];
-	executeAdventurerCard(0, &G, player1);
-
-	int postHandCount = G.handCount[player1];
-	int postDeckCount = G.deckCount[player1];
-	int firstTreasureCardToBeAddedToHand = G.hand[player1][preHandCount];
-	int secondTreasureCardToBeAddedToHand = G.hand[player1][preHandCount + 1];
-
-	// Check hand count
-	if (postHandCount != preHandCount + 2)
-	{
-		printf("Test Failed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
-	}
-	else
-	{
-		printf("Test Passed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
-	}
-
-	// Check deck count
-	if (postDeckCount != preDeckCount - 2)
-	{
-		printf("Test Failed: Expected deckCount was %d. Actual deckCount was %d.\n", preDeckCount - 2, postDeckCount);
-	}
-	else
-	{
-		printf("Test Passed: Expected deckCount was %d. Actual deckCount was %d.\n", preDeckCount - 2, postDeckCount);
-	}
-
-	// Check that cards were added in order
-	if ((firstTreasureCardToBeRemovedFromDeck != firstTreasureCardToBeAddedToHand)
-	        || (secondTreasureCardToBeRemovedFromDeck != secondTreasureCardToBeAddedToHand))
-	{
-		printf("Test Failed: Treasures were not added in order from deck to hand.\n");
-	}
-	else
-	{
-		printf("Test Passed: Treasures were added in order from deck to hand.\n");
-	}
-
-	// Check that the cards added to the hand are copper cards. At this point, a players
-	// deck should only contain copper cards
-	if ((firstTreasureCardToBeAddedToHand != copper)
-	        || (secondTreasureCardToBeAddedToHand != copper))
-	{
-		printf("Test Failed: Card(s) added to the hand were not treasure cards.\n");
-	}
-	else
-	{
-		printf("Test Passed: Card(s) added to the hand were treasure cards.\n");
-	}
-}
-
-void CheckThatOtherPlayersWereNotAffectedByAction()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int player1 = 0;
-	int player2 = 1;
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-	initializeStartGameDeck(&G);
-
-	printf("Testing...Action did not affect another player's handCount or deckCount.\n");
-	int preDeckCount = G.deckCount[player2];
-	int preHandCount = G.handCount[player2];
-	executeAdventurerCard(0, &G, player1);
-
-	int postHandCount = G.handCount[player2];
-	int postDeckCount = G.deckCount[player2];
-
-	// Check hand count
-	if (postHandCount != preHandCount)
-	{
-		printf("Test Failed: Other player's handCount was affected.\n");
-	}
-	else
-	{
-		printf("Test Passed: Other player's handCount was not affected.\n");
-	}
-
-	// Check deck count
-	if (postDeckCount != preDeckCount)
-	{
-		printf("Test Failed: Other player's deckCount was affected.\n");
-	}
-	else
-	{
-		printf("Test Passed: Other player's deckCount was not affected.\n");
-	}
-}
-
-void CheckThatCardsCanBeDrawnFromEmptyDeck()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int player1 = 0;
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-	initializeStartGameDeck(&G);
-	emptyDeckAndAddToDiscard(&G);
-
-	printf("Testing...Cards can be drawn from an empty deck.\n");
-	int preHandCount = G.handCount[player1];
-	executeAdventurerCard(0, &G, player1);
-
-	int postDeckCount = G.deckCount[player1];
-	int postDiscardCount = G.discardCount[player1];
-	int firstTreasureCardToBeAddedToHand = G.hand[player1][preHandCount];
-	int secondTreasureCardToBeAddedToHand = G.hand[player1][preHandCount + 1];
-
-	// Check that discard pile is empty
-	if (postDiscardCount < 0)
-	{
-		printf("Test Failed: Discard pile is not empty.\n");
-	}
-	else
-	{
-		printf("Test Passed: Discard pile is empty.\n");
-	}
-
-	// Check that deck has cards in it
-	if (postDeckCount <= 0)
-	{
-		printf("Test Failed: Deck was empty.\n");
-	}
-	else
-	{
-		printf("Test Passed: Deck was not empty.\n");
-	}
-
-	// Check that two treasures were added to the player's hand
-	if ((firstTreasureCardToBeAddedToHand != copper)
-	        || (secondTreasureCardToBeAddedToHand != copper))
-	{
-		printf("Test Failed: Card(s) added to hand were not treasures.\n");
-	}
-	else
-	{
-		printf("Test Passed: Card(s) added to hand were treasures.\n");
-	}
-}
-
-void CheckThatNoneTreasureCardsAreDiscarded()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int player1 = 0;
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-
-	// Set the top of the deck to have 2 estate cards. The rest of
-	// the deck will contain coppers.
-	int j;
-	G.deckCount[player1] = 0;
-	for (j = 0; j < 8; j++)
-	{
-		G.deck[player1][j] = copper;
-		G.deckCount[player1]++;
-	}
-	for (j = 8; j < 10; j++)
-	{
-		G.deck[player1][j] = estate;
-		G.deckCount[player1]++;
-	}
-
-	printf("Testing...Non-treasure cards are discarded.\n");
-	int preDiscardCount = G.discardCount[player1];
-	executeAdventurerCard(0, &G, player1);
-	int postDiscardCount = G.discardCount[player1];
-	int firstDiscard = G.discard[player1][0];
-	int secondDiscard = G.discard[player1][1];
-
-	// Check that discard pile is not empty
-	if (postDiscardCount != preDiscardCount + 2)
-	{
-		printf("Test Failed: Discard pile is empty.\n");
-	}
-	else
-	{
-		printf("Test Passed: Discard pile is not empty.\n");
-	}
-
-	// Check that two estates were added to the discard pile
-	if ((firstDiscard != estate)
-	        || (secondDiscard != estate))
-	{
-		printf("Test Failed: Incorrect cards were discarded.\n");
-	}
-	else
-	{
-		printf("Test Passed: Correct cards were discarded.\n");
-	}
-}
-
-void TestAmountOfCoinsInSupplyDidNotChange()
-{
-	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	             remodel, smithy, village, baron, great_hall
-	            };
-
-	struct gameState G;
-	int player1 = 0;
-
-	printf("Testing...The amount of coins in the coin supply did not change.\n");
-	memset(&G, 23, sizeof(struct gameState)); // Clear the game state
-	initializeGame(2, k, 1, &G);
-
-	int preCopper = G.supplyCount[copper];
-	int preSilver = G.supplyCount[silver];
-	int preGold = G.supplyCount[gold];
-	executeAdventurerCard(0, &G, player1);
-	int postCopper = G.supplyCount[copper];
-	int postSilver = G.supplyCount[silver];
-	int postGold = G.supplyCount[gold];
-	if ((postCopper != preCopper) 
-		|| (postSilver != preSilver) 
-		|| (postGold != preGold))
-	{
-		printf("Test Failed: The amount of coins in the supply changed.\n");
-	}
-	else
-	{
-		printf("Test Passed: The amount of coins in the supply is unchanged.\n");
-	}
-}
-
-void initializeStartGameDeck(struct gameState *state)
-{
-	int i, j;
-	for (i = 0; i < 2; ++i)
-	{
-		state->deckCount[i] = 0;
-		for (j = 0; j < 3; j++)
-		{
-			state->deck[i][j] = estate;
-			state->deckCount[i]++;
-		}
-		for (j = 3; j < 10; j++)
-		{
-			state->deck[i][j] = copper;
-			state->deckCount[i]++;
-		}
-	}
-}
-
-// Empties the deck for player 1
-void emptyDeckAndAddToDiscard(struct gameState *state)
-{
-	int j, i;
-
-	i = 0;
-	for (j = state->deckCount[0] - 1; j >= 0; j--)
-	{
-		state->discard[0][i] = state->deck[0][j];
-		state->discardCount[0]++;
-		// printf("adding %d to the discard pile\n", state->discard[0][i]);
-		i++;
-	}
-
-	state->deckCount[0] = 0; // Empty the deck
 }

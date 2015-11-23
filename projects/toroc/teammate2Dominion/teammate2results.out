@@ -1,0 +1,148 @@
+Result for running Dominion tests:
+cardtest1.c:
+Starting cardtest1.c which checks smithyCard() 
+
+ Starting Test #1 - player only receives 3 cards after playing smithy 
+	 
+Game state = 6, Expected state = 7
+ Test #1 FAILED! Player did not receive 3 cards. 
+
+ Starting Test #2 - smithy card is discarded & replaced by correct card 
+	 Received card: copper, Expected card: copper 
+ Test #2 passed and smithy was replaced by correct card! 
+
+ Starting Test #3 - player draws cards from own deck 
+	 Received card: copper, Expected card: copper 
+	 Received card: curse, Expected card: copper 
+	 Received card: copper, Expected card: estate 
+ Test #3 FAILED! Cards not drawn from player's deck! 
+
+ Starting Test #4 - smithy doesn't affect other player's deck 
+Test #4 passed and other player's deck was not affected! 
+
+ Starting Test #5 - smithy doesn't affect other player's hand 
+Test #5 passed and other player's hand was not affected! 
+
+ Starting Test #6 - ensure player doesn't receive additional actions 
+	 Current actions = 1, Expected actions = 0
+Test #6 FAILED! Player had additional actions. 
+
+ Starting Test #7 - ensure player doesn't receive additional buys 
+	 Current buys = 2, Expected buys = 1
+Test #7 FAILED! Player had additional buys. 
+File 'dominion.c'
+Lines executed:29.88% of 579
+Branches executed:30.46% of 417
+Taken at least once:19.42% of 417
+Calls executed:23.96% of 96
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest3.c:
+Starting cardtest3.c which checks councilRoomCard() 
+
+ Starting Test #1 - player receives 4 cards after playing CouncilRoom 
+	 
+Game state = 9, Expected state = 8
+ Test #1 FAILED! Player did not receive 4 cards. 
+
+ Starting Test #2 - council room card is discarded & replaced by correct card 
+	 Received card: estate, Expected card: copper 
+ Test #2 FAILED! CouncilRoom was not replaced by correct card! 
+
+ Starting Test #3 - player draws cards from own deck 
+	 Received card: estate, Expected card: estate 
+	 Received card: copper, Expected card: copper 
+	 Received card: copper, Expected card: copper 
+	 Received card: estate, Expected card: estate 
+ Test #3 passed and cards were drawn from player's deck! 
+
+ Starting Test #4 - CouncilRoom makes other player draw cards 
+Test #4 passed and other player's deck was not affected! 
+
+ Starting Test #5 - CouncilRoom doesn't affect other player's hand 
+Test #5 passed. Other player had to draw cards. 
+
+ Starting Test #6 - ensure player doesn't receive additional actions 
+	 Current actions = 0, Expected actions = 0
+Test #6 passed. 
+
+ Starting Test #7 - ensure player only receives 1 buy 
+	 Current buys = 2, Expected buys = 2
+Test #7 passed.  Player received 1 additional buy.
+File 'dominion.c'
+Lines executed:37.13% of 579
+Branches executed:41.97% of 417
+Taken at least once:24.22% of 417
+Calls executed:34.38% of 96
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest4.c:
+Starting cardtest3.c which checks GreatHallCard() 
+
+ Starting Test #1 - player receives 1 card after playing Great Hall 
+	 Current cards = 5, Expected cards = 5
+ Test #1 passed. Player received 1 card. 
+
+ Starting Test #2 - Great Hall is card is discarded & replaced by correct card 
+	 Received card: copper, Expected card: copper 
+ Test #2 passed. Great Hall was replaced by correct card! 
+
+ Starting Test #3 - player draws card from own deck 
+	 Received card: estate, Expected card: estate 
+ Test #3 passed and card was drawn from player's deck! 
+
+ Starting Test #4 - Great Hall doesn't affect other player 
+Test #4 passed and other player's deck was not affected! 
+
+ Starting Test #5 - Great Hall doesn't affect other player's hand 
+Test #5 passed. Other player hand was not affected. 
+
+ Starting Test #6 - ensure player receives 1 additional action 
+	 Current actions = 1, Expected actions = 1
+Test #6 passed. 
+
+ Starting Test #7 - ensure player only receives 1 buy 
+	 Current buys = 1, Expected buys = 1
+Test #7 passed.  Player did not receive additional buy.
+File 'dominion.c'
+Lines executed:37.82% of 579
+Branches executed:41.97% of 417
+Taken at least once:24.46% of 417
+Calls executed:36.46% of 96
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest5.c:
+Starting cardtest1.c which checks villageCard() 
+
+ Starting Test #1 - player receives 2 additional actions 
+	 Current actions = 1, Expected actions = 2
+Test #1 FAILED! Player did not receive 2 actions from Village. 
+
+ Starting Test #2 - player receives 1 card after playing Village 
+	 Current cards = 5, Expected cards = 5
+ Test #2 passed. Player received 1 card. 
+
+ Starting Test #3 - Village card is discarded & replaced by correct card 
+	 Received card: silver, Expected card: estate 
+ Test #3 FAILED! Village was not replaced by correct card! 
+
+ Starting Test #4 - Village doesn't affect other player's deck 
+Test #4 passed and other player's deck was not affected! 
+
+ Starting Test #5 - Village doesn't affect other player's hand 
+Test #5 passed and other player's hand was not affected! 
+
+ Starting Test #6 - ensure player doesn't receive additional cards 
+	 Current handcount = 5, Expected handCount = 5
+Test #6 FAILED! Player had additional cards. 
+
+ Starting Test #7 - ensure player doesn't receive additional buys 
+	 Current buys = 2, Expected buys = 1
+Test #7 FAILED! Player had additional buys. 
+File 'dominion.c'
+Lines executed:38.00% of 579
+Branches executed:41.97% of 417
+Taken at least once:24.94% of 417
+Calls executed:36.46% of 96
+dominion.c:creating 'dominion.c.gcov'
+

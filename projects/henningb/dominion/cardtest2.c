@@ -76,7 +76,7 @@ int main (){
 
     //play adventurer card
     //Since we are not testing playCard or cardEffect, just call adventurer card function
-    adventurerCardEffect(player, &post);
+    adventurerCardEffect(player, &post, 4);
 
     //Run checks
     failures += checkResults(player, &pre, &post, 0);
@@ -121,7 +121,7 @@ int main (){
 
     //play adventurer card
     //Since we are not testing playCard or cardEffect, just call adventurer card function
-    adventurerCardEffect(player, &post);
+    adventurerCardEffect(player, &post, 4);
 
     //Run checks
     failures += checkResults(player, &pre, &post, 0);

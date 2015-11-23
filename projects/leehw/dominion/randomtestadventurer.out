@@ -66294,9 +66294,9 @@ Coin count failures: 0/5411
 Adventurer count failures: 2998/5411
 
 File 'dominion.c'
-Lines executed:45.09% of 570
-Branches executed:53.00% of 417
-Taken at least once:35.01% of 417
-Calls executed:29.47% of 95
+Lines executed:46.84% of 570
+Branches executed:54.44% of 417
+Taken at least once:36.45% of 417
+Calls executed:32.63% of 95
 Creating 'dominion.c.gcov'
 

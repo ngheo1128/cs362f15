@@ -171,69 +171,69 @@ int main() {
    G.hand[0][3] = copper;
    G.hand[0][4] = copper;
 
-   printf("Test 1: Test score for player 1's hand + deck + discard.\n");
-   
    G.deck[0][0] = copper;
-   G.deck[0][1] = duchy;
+   G.deck[0][1] = copper;
    G.deck[0][2] = copper;
    G.deck[0][3] = copper;
    G.deck[0][4] = copper;
-   
-   G.discard[0][0] = curse;
-   G.discard[0][1] = copper;
-   G.discard[0][2] = copper;
-   G.discard[0][3] = copper;
-   G.discard[0][4] = copper;
 
+   printf("Test 1: Test score for player 1's hand\n");
    
    printf("Hand: ");
    printMyHand(G, 0);
    test(6, scoreFor(0, &G));
    printf("\n");
-   printf("Deck: ");
-   printMyDeck(G, 0);
-   test(9, scoreFor(0, &G));
-   printf("\n");
-   printf("Discard: ");
-   printMyDiscards(G, 0);
-   test(8, scoreFor(0, &G));
-   printf("\n");
    
+   // end p1
    endTurn(&G);
    
-   G.hand[1][0] = great_hall;
+   // p2 turn
+   printf("Test 2: Test score for player 2's deck.\n");
+  
+   G.hand[1][0] = copper;
    G.hand[1][1] = copper;
-   G.hand[1][2] = great_hall;
+   G.hand[1][2] = copper;
    G.hand[1][3] = copper;
    G.hand[1][4] = copper;
-
-   printf("Test 2: Test score for player 2's hand + deck + discard.\n");
    
    G.deck[1][0] = copper;
    G.deck[1][1] = province;
    G.deck[1][2] = province;
    G.deck[1][3] = copper;
    G.deck[1][4] = copper;
-   
-   G.discard[1][0] = province;
-   G.discard[1][1] = copper;
-   G.discard[1][2] = copper;
-   G.discard[1][3] = copper;
-   G.discard[1][4] = copper;
-
-   
-   printf("Hand: ");
-   printMyHand(G, 1);
-   scoreFor(1, &G);
-   test(2, scoreFor(1, &G));
-   printf("\n");
+  
    printf("Deck: ");
    printMyDeck(G, 1);
-   test(14, scoreFor(1, &G));
+   test(12, scoreFor(1, &G));
    printf("\n");
+
+   // end p2
+   endTurn(&G);
+
+   // p3 turn
+   G.hand[2][0] = copper;
+   G.hand[2][1] = copper;
+   G.hand[2][2] = copper;
+   G.hand[2][3] = copper;
+   G.hand[2][4] = copper;
+
+   G.deck[2][0] = copper;
+   G.deck[2][1] = copper;
+   G.deck[2][2] = copper;
+   G.deck[2][3] = copper;
+   G.deck[2][4] = copper;
+  
+  G.discardCount[2] = 5; 
+   G.discard[2][0] = province;
+   G.discard[2][1] = copper;
+   G.discard[2][2] = copper;
+   G.discard[2][3] = copper;
+   G.discard[2][4] = copper;
+   
+   printf("Test 3: Test score for player 3's discard pile.\n");
    printf("Discard: ");
-   printMyDiscards(G, 1);
-   test(20, scoreFor(1, &G));
+   printMyDiscards(G, 2);
+   test(6, scoreFor(2, &G));
    printf("\n");
 
    return 0;

@@ -399,7 +399,8 @@ int isGameOver(struct gameState *state) {
 
   //if three supply pile are at 0, the game ends
   j = 0;
-  for (i = 0; i < 25; i++)
+  //A5 - change from 25 to 28 to fix bug
+  for (i = 0; i < 28; i++)
     {
       if (state->supplyCount[i] == 0)
 	{
@@ -1126,6 +1127,11 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
       state->playedCardCount++;
     }
+
+  // A5- added to fix bug in discardCard function
+  //add card to discard pile and increment discardCount
+    state->discard[currentPlayer][state->discardCount[currentPlayer] + 1] = state->hand[currentPlayer][handPos];
+    state->discardCount[currentPlayer]++;
 	
   //set played card to -1
   state->hand[currentPlayer][handPos] = -1;
@@ -1225,13 +1231,16 @@ int updateCoins(int player, struct gameState *state, int bonus)
 //end of dominion.c
 
 int adventurerCard(int drawntreasure, int currentPlayer, struct gameState *state, int cardDrawn, int temphand[], int z) {
+  z = 0;
+
   while(drawntreasure<2){
   if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
     shuffle(currentPlayer, state);
   }
   drawCard(currentPlayer, state);
   cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-  if (cardDrawn == copper || cardDrawn == estate || cardDrawn == gold)
+  // A5 - switched second 'cardDrawn ==' back to silver- I had changed it to estate
+  if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
     drawntreasure++;
   else{
     temphand[z]=cardDrawn;
@@ -1243,6 +1252,10 @@ int adventurerCard(int drawntreasure, int currentPlayer, struct gameState *state
   state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
   z=z-1;
       }
+      //A5 - added this to fix bug
+      //discard card from hand
+      int handPos = 0;
+      discardCard(handPos, currentPlayer, state, 0);
       return 0;
 }
 
@@ -1250,7 +1263,8 @@ int adventurerCard(int drawntreasure, int currentPlayer, struct gameState *state
 int smithyCard(int currentPlayer, struct gameState *state, int handPos) {
   //+3 Cards
 	int i;
-      for (i = 0; i < 2; i++)
+      //A5- changed this to add 3 cards instead of 2- bug fix
+      for (i = 0; i < 3; i++)
   {
     drawCard(currentPlayer, state);
   }
@@ -1299,7 +1313,8 @@ int feastCard(struct gameState *state, int currentPlayer, int choice1, int temph
       //Backup hand
 
       //Update Coins for Buy
-      updateCoins(currentPlayer, state, 4);
+      //A5 - updateCoins function changed back to bonus=5 instead of bonus=4 - bug fix
+      updateCoins(currentPlayer, state, 5);
       int x = 1;//Condition to loop on
    while( x == 1) {//Buy one card
 	  if (supplyCount(choice1, state) <= 0){
@@ -1345,13 +1360,14 @@ int feastCard(struct gameState *state, int currentPlayer, int choice1, int temph
 
 
 int stewardCard(int choice1, int currentPlayer, struct gameState *state, int choice2, int choice3, int handPos) {
-  if (choice1 == 2)
+  // A5 - changed the choice's back to fix bug introduced by me
+  if (choice1 == 1)
   {
     //+2 cards
     drawCard(currentPlayer, state);
     drawCard(currentPlayer, state);
   }
-      else if (choice1 == 1)
+      else if (choice1 == 2)
   {
     //+2 coins
     state->coins = state->coins + 2;

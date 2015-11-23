@@ -79,8 +79,9 @@ int main()
 
    int handBeforePlay = G.handCount[0];
    // play a council_room card
-   council_roomCard(0, &G, 4);
-
+   //council_roomCard(0, &G, 4);
+   cardEffect(council_room, 0, 0, 0, &G, 4, 0);
+   
    int cardsDrawnCnt = G.handCount[0] - handBeforePlay;
    printf("Test 3: Checking if 4 cards drawn and one discarded.\n");
 

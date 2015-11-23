@@ -30,7 +30,7 @@ int main()
 	fail_count += unitTest4();
 
 	//call card1 -Smithy
-	fail_count += cardtest1_cardsReceived();
+	fail_count += cardtest1();
 
 	//call card2 -Adventurer
 	fail_count += cardtest2();

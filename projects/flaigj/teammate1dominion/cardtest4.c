@@ -59,7 +59,6 @@ int main()
    // play a sea_hag card
    cardEffect(sea_hag, 0, 0, 0, &G, 4, 0);
 
-   smithyCard(0, &G, 4);
    //int oldHand = G.deckCount[0]+G.deckCount[0];
 
    printf("Test 3: Checking quantity in player 1's discard pile.\n");
@@ -69,26 +68,27 @@ int main()
    else
       printf("Failed: There are no cards in the discard pile.\n\n");
 
-   printf("Test 4: Checking if player 1 has a curse card in hand.\n");
+   printf("Test 4: Checking if player 1 still has sea_hag in hand.\n");
 
-   int isCurse = 0;
+   isSeaHag = 0;
    for (i = 0; i < G.handCount[0]; i++)
    {
       if (G.hand[0][i] == sea_hag)
       {
-	 isCurse = 1;
+	 isSeaHag = 1;
 	 i = G.handCount[0];
       }
    }
 
-   if (isCurse)
-      printf("Failed: Curse card in player 1's hand.\n\n");
+   if (isSeaHag == 1)
+      printf("Failed: SeaHag not removed from player 1's hand.\n\n");
    else
-      printf("Passed: Curse card not in player 1's hand\n\n");
+      printf("Passed: SeaHag removed from player 1's hand\n\n");
 
    printf("Test 5: Checking if other players have curse cards at top of deck.\n");
 
    int isCurseP2 = 0;
+
    int isCurseP3 = 0;
 
    if (G.deck[1][G.deckCount[1]-1] == curse)
@@ -97,7 +97,7 @@ int main()
    if (G.deck[2][G.deckCount[2]-1] == curse)
       isCurseP3 = 1;
 
-   if (isCurseP2 && isCurseP3)
+   if (isCurseP2 == 1 && isCurseP3 == 1)
       printf("Passed: Curse cards in top of deck of other players hands.\n\n");
    else
       printf("Failed: Curse card not int top of deck of other player hands.\n\n");
@@ -109,22 +109,6 @@ int main()
       printf("Passed: Total cards correct.\n\n");
    else
       printf("Failed: Total cards are %d.\n\n", totals);
-
-   isSeaHag = 0;
-   for (i = 0; i < G.handCount[0]; i++)
-   {
-      if (G.hand[0][i] == sea_hag || G.deck[0][i] == sea_hag)
-      {
-	 isSeaHag = 1;
-	 i = G.handCount[0];
-      }
-   }
-
-   printf("Test 7: Is sea_hag anywhere in player 1's piles?\n");
-   if (isSeaHag)
-      printf("Passed: SeaHag in hand\n\n");
-   else
-      printf("Failed: SeaHag not in hand.\n\n");
 
    return 0;
 }

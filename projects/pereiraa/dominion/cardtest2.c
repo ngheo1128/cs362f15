@@ -1,6 +1,6 @@
 /*****************************************************************************************
 * Tests the council function:
-*1. current player who plays council card receives 5 cards. His hand should have +3 cards now (after the current card is discarded.
+*1. current player who plays council card receives 4 cards. His hand should have +3 cards now (after the current card is discarded.
 *2. The number of buys should increase by 1.
 *3. Other player's hand should increase by 1
  *****************************************************************************************/
@@ -14,11 +14,14 @@ void testCouncil(int currentPlayer, struct gameState *G, int handPos){
   
     int player = currentPlayer;
     int hand = G->handCount[player];//get current handCount of player
+    printf("old hand count %d \n", hand);
     int buys = G->numBuys;//get number of Buys player has
     int otherHand = G->handCount[0];//get hand Count of other player's hand
+    int choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     
-    council(player, G, handPos);
+    cardEffect(council_room, choice1, choice2, choice3, G, handPos, bonus);
     int newHand = G->handCount[player];//get new handcount
+    printf("new hand count %d \n", newHand);
     int newbuys = G->numBuys;//get new numbuys
     int newOtherHand = G->handCount[0];//get other players new hand count
 

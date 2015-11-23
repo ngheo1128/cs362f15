@@ -1,0 +1,112 @@
+        -:    0:Source:cardtest2.c
+        -:    0:Graph:cardtest2.gcno
+        -:    0:Data:cardtest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/*
+        -:    2: * Jason Gourley
+        -:    3: * gourleja@oregonstate.edu
+        -:    4: * CS362-400
+        -:    5: * Assignment 3 - cardtest2.c
+        -:    6: * Description : Unit tests for Adventurer card
+        -:    7: */
+        -:    8:
+        -:    9:#include <stdio.h>
+        -:   10:#include <stdlib.h>
+        -:   11:#include "dominion.h"
+        -:   12:#include "rngs.h"
+        -:   13:
+        -:   14:#define CARDNAME  "adventurer"
+        -:   15:#define BASESEED    10
+        -:   16:
+        -:   17:/*
+        -:   18: * Description:     Test the return values of the adventurer card
+        -:   19: * Preconditions:   The games state has been initialized, the seed and method name to test are passed
+        -:   20: * Postconditions:  The general messages and any failed test messages are displayed
+        -:   21: */
+        1:   22:int testCard(char* currentTest, int seed, struct gameState *state)
+        -:   23:{
+        -:   24:    int i;
+        1:   25:    int testsPassed = 0;
+        1:   26:    int testsFailed = 0;
+        1:   27:    int expectedValue = 0;
+        -:   28:
+        1:   29:    printf ("\n\n-------------------------------------------------------------------------------\n");
+        1:   30:    printf ("-------------------------------------------------------------------------------\n");
+        1:   31:    printf ("Testing Method  : %s()\n", currentTest);
+        1:   32:    printf ("Seed            : %i\n", seed);
+        -:   33:
+        -:   34:    //Check increase of cards in hand
+        -:   35:
+        1:   36:    int currentPlayer = whoseTurn(state);
+        1:   37:    int drawntreasure=0;
+        1:   38:    int handPos = 0;
+        -:   39:    int temphand[MAX_HAND];// moved above the if statement
+        1:   40:    int z = 0;// this is the counter for the temp hand
+        -:   41:    int cardDrawn;
+        -:   42:
+        -:   43:    //Check reduction of cards in hand
+        1:   44:    expectedValue = state->handCount[currentPlayer] - 1;
+        1:   45:    cardAdventurer(temphand, z, cardDrawn, drawntreasure, handPos, currentPlayer, state);
+        1:   46:    if(state->handCount[currentPlayer] < expectedValue) {
+    #####:   47:        printf("  TEST FAIL    : Adventurer remove card from hand failed\n");
+    #####:   48:        testsFailed++;
+        1:   49:    } else {testsPassed++;}
+        -:   50:
+        -:   51:    //Check addition of cards to hand
+        1:   52:    expectedValue = state->handCount[currentPlayer];
+        1:   53:    cardAdventurer(temphand, z, cardDrawn, drawntreasure, handPos, currentPlayer, state);
+        1:   54:    if(state->handCount[currentPlayer] - expectedValue > 1) {
+    #####:   55:        printf("  TEST FAIL    : Adventurer add correct number of cards to hand failed\n");
+    #####:   56:        testsFailed++;
+        1:   57:    } else {testsPassed++;}
+        -:   58:
+        -:   59:// Invalid Test, Improperly creating a deck without treasure cards
+        -:   60://    //Check hand size with lack of treasure cards to add to hand
+        -:   61://    state->deckCount[currentPlayer] = 10;
+        -:   62://    int card = 0;
+        -:   63://    for (i = 0; i < 500; i++)
+        -:   64://    {
+        -:   65://      state->deck[currentPlayer][i] = card;
+        -:   66://      state->discard[currentPlayer][i] = card;
+        -:   67://    }
+        -:   68://    expectedValue = state->handCount[currentPlayer] - 1;
+        -:   69://    cardAdventurer(temphand, z, cardDrawn, drawntreasure, handPos, currentPlayer, state);
+        -:   70://    if(state->handCount[currentPlayer] != expectedValue) {
+        -:   71://        printf("  TEST FAIL    : Adventurer no treasure available but cards to hand failed\n");
+        -:   72://        testsFailed++;
+        -:   73://    } else {testsPassed++;}
+        -:   74:
+        1:   75:    printf ("    Tests Passed    : %i\n", testsPassed);
+        1:   76:    printf ("    Tests Failed    : %i\n", testsFailed);
+        1:   77:    printf ("-------------------------------------------------------------------------------\n\n");
+        -:   78:
+        1:   79:    return 0;
+        -:   80:}
+        -:   81:
+        -:   82:
+        -:   83:/*
+        -:   84: * Preconditions:   The user can pass a seed value for testing or it defaults to a set value
+        -:   85: * Postconditions:  Exit the test program normally
+        -:   86: */
+        1:   87:int main (int argc, char** argv)
+        -:   88:{
+        -:   89:
+        -:   90:    // Setup Game Seed
+        -:   91:    int seed;
+        1:   92:    char* currentTest = CARDNAME;
+        1:   93:    if(argv[1]) {
+    #####:   94:        seed = atoi(argv[1]);
+        -:   95:    } else {
+        1:   96:        seed = BASESEED;
+        -:   97:    }
+        -:   98:
+        -:   99:    // Initialize Game State
+        -:  100:    struct gameState G;
+        1:  101:    int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
+        1:  102:    initializeGame(2, k, seed, &G);
+        -:  103:
+        1:  104:    testCard(currentTest,seed, &G);
+        -:  105:
+        1:  106:    return 0;
+        -:  107:}

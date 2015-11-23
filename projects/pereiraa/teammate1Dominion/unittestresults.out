@@ -1,0 +1,46 @@
+Testing Smithy...
+
+Hand Count test passed 
+
+Deck Count test passed 
+Other player's Hand Count test passed. 
+
+File 'cardtest1.c'
+Lines executed:87.50% of 32
+Branches executed:100.00% of 8
+Taken at least once:50.00% of 8
+No calls
+cardtest1.c:creating 'cardtest1.c.gcov'
+
+Testing Council...
+old hand count 4 
+new hand count 5 
+Hand Count test failed. The player's hand increased by 1 not 3 
+
+Numbuys test passed 
+
+Other player's Hand Count test failed. 
+File 'cardtest2.c'
+Lines executed:91.43% of 35
+Branches executed:100.00% of 6
+Taken at least once:50.00% of 6
+No calls
+cardtest2.c:creating 'cardtest2.c.gcov'
+
+Testing Adven...
+Deck Count 5 
+Two treasures not added. Test failed.
+
+NewDeck Count 5 
+Deck not reduced properly, failed
+File 'cardtest3.c'
+Lines executed:74.19% of 31
+Branches executed:33.33% of 12
+Taken at least once:16.67% of 12
+No calls
+cardtest3.c:creating 'cardtest3.c.gcov'
+
+File 'dominion.c'
+Lines executed:22.80% of 649
+dominion.c:creating 'dominion.c.gcov'
+

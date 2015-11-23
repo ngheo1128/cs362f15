@@ -28,7 +28,14 @@ My cardtest3 (tests council room) test results:
 		-The test passed in where the council room card is in the played pile
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-*******No other cardtest can be ran on teammate's code since I did not do great_hall or villager cardtest*********
+My cardtest4 (tests salvager) test results:
+	-Test passed, card is not present in player's hand after player
+	-Test passed for the correct number of numBuys incremented
+	-Test passed for discarding salvager after player
+	-Test failed for state of current coins
+		Although there was one failed test, I believe that my cardtest is not properly testing the card as the results of current coins varies after
+		each run even when I originally tested on my own dominion.
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -42,4 +49,12 @@ My randomtestcard (tests smithy) test results:
 	In the test results for randomtestcard, I was able to discover the same bugs as described in cardtest1.
 		-All 24655 tests failed for incorrect number of cards drawn by player
 		-All 24655 tests passed in that after playing smithy, the card was discarded from the player's hand
-		
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+My unittest1 passed all tests for update coins method.
+My unittest2 passed all tests for isGameOver method.
+My unittest3 passed all tests for shuffle method.
+My unittest4 passed tests for draw card. Tests results were:
+	-Tests passed for when player has a non-empty deck
+	-Tests passed for when player has an empty deck and non-empty discard pile
+	-Some tests failed for where the player had an empty deck and an empty discard pile (this test was to test boundaries when I originally implemented it and does not provide useful information)
