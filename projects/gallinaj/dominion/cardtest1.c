@@ -40,7 +40,7 @@ int testRefAdventurer(struct gameState *state) {
       }
 
       printf("Testing deck count decrease\n");
-      if(state->deckCount[currentPlayer] >= (tempDeckCount - 2))
+      if(state->deckCount[currentPlayer] < (tempDeckCount - 2))
       {
           printf("Test failed\n");
           fail++;

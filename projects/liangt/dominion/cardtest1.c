@@ -31,19 +31,19 @@ int main() {
   // Check that the total cards in hand is now 3 - 1
 
   if (NOISY_TEST)
-    printf("Test: Net increase of 2 cards in player's hand [failed]\n");
+    printf("Test: Net increase of 2 cards in player's hand\n");
 
-  // assert(G.handCount[0] == 5+3-1);
+  assert(G.handCount[0] == 5+3-1);
 
   // Check that smithy is in discard pile
 
   if (NOISY_TEST)
-    printf("Test: Smithy card in discard pile [failed]\n");
+    printf("Test: Smithy card in discard pile\n");
 
-  // assert(G.discard[0][0] == smithy);
+  assert(G.discard[0][0] == smithy);
 
-  // if (NOISY_TEST)
-  // 	printf("All tests passed.\n");
+  if (NOISY_TEST)
+  	printf("All tests passed.\n");
 
 	return 0;
 }

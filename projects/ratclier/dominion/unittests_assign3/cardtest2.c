@@ -42,19 +42,14 @@
 // and still only have one treasure, you get just that one treasure.
 //
 //
-int testAdventurerCard(struct gameState *state)
+int testAdventurerCard(struct gameState *state, int handPos)
 {
     struct gameState *origState;  // copy of game state
     int lastCard;                 // the last card in the hand
     int idx;                      // loop iterator
-    int handPos;                  // card in play
     int handCountIncr = 0;        // was handcount incremented? 0=no, 1=yes
     int passFlag      = 1;        // flag for testing proper gain of gold cards
     int currentPlayer = state->whoseTurn;
-
-    // Get the card in play
-    //
-    handPos = state->handCount[currentPlayer]-1;
 
     // Make a copy of the original game state
     //
@@ -103,7 +98,7 @@ int testAdventurerCard(struct gameState *state)
     // with 1 new card in the player's hand and the last card in the
     // discard pile should == handPos
     //
-    if((handCountIncr == 1) && (state->discard[currentPlayer][0] == origState->hand[currentPlayer][handPos]))
+    if((handCountIncr == 1) && (state->discard[currentPlayer][state->discardCount[currentPlayer]-1] == origState->hand[currentPlayer][handPos]))
     {
         printf("adventurerCard: PASS correct number of cards discarded\n");
     }
@@ -125,6 +120,7 @@ int main(int argc, char *argv[])
 {
     int numPlayers = 2;         // default number of players
     int randomSeed = 1000;      // random seed for the game
+    int handPos;                // card in play
     struct gameState *state;    // holds the updated game state
     int kingdomCards[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
 
@@ -144,7 +140,11 @@ int main(int argc, char *argv[])
     //
     gainCard(adventurer, state, 2, state->whoseTurn);
 
-    testAdventurerCard(state);
+    // Grab the position of the last TM card
+    //
+    handPos = state->handCount[state->whoseTurn]-1;
+
+    testAdventurerCard(state, handPos);
 
     return 0;
 }

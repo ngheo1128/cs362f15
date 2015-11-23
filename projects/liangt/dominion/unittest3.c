@@ -36,7 +36,7 @@ int main() {
   assert(G.discard[1][0] != adventurer);
 
   if (NOISY_TEST)
-    printf("Test: discarded card in discarded pile [failed]\n");
+    printf("Test: discarded card in discarded pile\n");
 
   G.hand[1][0] = gardens;
 
@@ -44,10 +44,10 @@ int main() {
 
   // THIS ASSERTION FAILED. COMMENTED SO THAT MAKE CAN CONTINTUE
 
-  // assert(G.discard[1][0] == gardens);
+  assert(G.discard[1][0] == gardens);
 
-  // if (NOISY_TEST)
-  // 	printf("All tests passed.\n");
+  if (NOISY_TEST)
+  	printf("All tests passed.\n");
 
 	return 0;
 }

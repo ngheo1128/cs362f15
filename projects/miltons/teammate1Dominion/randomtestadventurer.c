@@ -1,6 +1,4 @@
 // tests Adventurer card
-// int adventurerEffect(int currentPlayer, int drawntreasure, int temphand[MAX_HAND], struct gameState *state, int cardDrawn, int z)
-// adventurerEffect() is on line 1207 of dominion.c
 
 // test / assert against state of game before and after adventurer is played
 
@@ -15,7 +13,7 @@
 #include "dominion_helpers.h"
 
 #define NUM_TESTS 2000 // number of tests to run
-#define NUM_PLAYERS  2 
+#define NUM_PLAYERS  2
 
 
 
@@ -42,7 +40,7 @@ int randInt(int min, int max);
  **                   the game state from adventurerEffect() are compared to
  **                   the expected results to see if the function is working
  **                   properly.
- ** Parameters:       one int values: playerNumber
+ ** Parameters:       one int: playerNumber,
  **                   a pointer to a struct of type gameState: testState
  ** Pre-Conditions:   variables are initialized with values in valid ranges
  **                   within valid ranges for the game.
@@ -61,6 +59,9 @@ int main(int argc, char *argv[])
 
     int i;
     int j;
+    int k;
+    int index1;
+    int index2;
     int playerNumber;
     int retVal;
     int seed = 1; // better to make this random too?
@@ -73,7 +74,7 @@ int main(int argc, char *argv[])
     srand((unsigned) time(&sysClock));
 
     // each iteration of this outer loop runs a test against adventurerEffect()
-    for (i = 0; i < NUM_TESTS; i++)
+    for (i = 1; i <= NUM_TESTS; i++)
     {
         // this loop populates every Byte of the game state with random values
         for (j = 0; j < sizeof(struct gameState); j++)
@@ -86,16 +87,63 @@ int main(int argc, char *argv[])
 
         // generate sensible random values for important preconditions:
         // select a random player
-        playerNumber = randInt(1, 2); // can this go to 4 players?
-        // random number of cards in current player's deck
-        testState.deckCount[playerNumber] = randInt(0, MAX_DECK);
-        // random number of cards in current player's discard pile
-        testState.discardCount[playerNumber] = randInt(0, MAX_DECK);
+        playerNumber = randInt(0, 1);
+
         // random number of cards in current player's hand
-        testState.handCount[playerNumber] = randInt(0, MAX_HAND);
+        testState.handCount[playerNumber] = randInt(1, 10);
+
+        // assign a random card to each index in the current player's hand
+        for (k = 0; k < testState.handCount[playerNumber]; k++)
+            testState.hand[playerNumber][k] = randInt(0, 26);
+
+        // random number of cards in current player's deck (from 0 to # of max minus cards in hand)
+        testState.deckCount[playerNumber] = randInt(0, MAX_DECK - testState.handCount[playerNumber]);
+
+        // assign a random card to each index in the player's deck
+        for (k = 0; k < testState.deckCount[playerNumber]; k++)
+            testState.deck[playerNumber][k] = randInt(0, 26);
+
+        // random number of cards in current player's discard pile (0 to # not in deck and not in hand)
+        testState.discardCount[playerNumber] = MAX_DECK - (testState.deckCount[playerNumber] + testState.handCount[playerNumber]);
+
+        // assign a random card to each index in the discard pile
+        for (k = 0; k < testState.discardCount[playerNumber]; k++)
+            testState.discard[playerNumber][k] = randInt(0, 26);
+
+        // make sure at least two cards in deck or discard pile are treasure cards
+        if (testState.deckCount[playerNumber] > 1)
+        {
+            // get a random position in deck
+            index1 = randInt(0, testState.deckCount[playerNumber]);
+
+            do // get another random position in deck
+            {
+                index2 = randInt(0, testState.deckCount[playerNumber]);
+            }
+            while (index1 == index2); // make sure not same indices
+
+            // put treasure cards in deck
+            testState.deck[playerNumber][index1] = 5;
+            testState.deck[playerNumber][index2] = 6;
+        }
+        else // add two treasure cards to discard pile
+        {
+            // get a random position in discard pile
+            index1 = randInt(0, testState.discardCount[playerNumber]);
+
+            do // get another random position in discard pile
+            {
+                index2 = randInt(0, testState.discardCount[playerNumber]);
+            }
+            while (index1 == index2); // make sure not same indices
+
+            // put treasure cards in discard pile
+            testState.discard[playerNumber][index1] = 5;
+            testState.discard[playerNumber][index2] = 6;
+        }
 
         // call test oracle function and pass it parameters
-        int retVal = testAdventurerEffect(playerNumber, &testState);
+        retVal = testAdventurerEffect(playerNumber, &testState);
 
         // check return value for failure / crash
         if (retVal < 0)
@@ -104,7 +152,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    printf("%d tests run. All tests passed unless noted above.\n", i);
+    printf("%d tests run. All tests passed unless noted above.\n", (i - 1));
 
     exit(0);
 }
@@ -125,11 +173,6 @@ int testAdventurerEffect(int playerNumber, struct gameState *post)
 // either deck and discard pile will be empty
 
     int retVal = 0;
-    int cardsAvailable;
-    // int drawnTreasure = 0;
-    // int tempHand[MAX_HAND];
-    // int cardDrawn = 0; 
-    // int z = 0;
 
     // create duplicate of game state for before and after comparison
     struct gameState pre;
@@ -140,14 +183,8 @@ int testAdventurerEffect(int playerNumber, struct gameState *post)
 
     // make changes to pre based on what adventurerEffect should do
 
-    // determine how many cards are left between deck and discard pile
-    cardsAvailable = pre.deckCount[playerNumber] + pre.discardCount[playerNumber];
-
-    // add 2 cards to hand or as many as are available if less than 2
-    if (cardsAvailable >= 2)
-        pre.handCount[playerNumber] = pre.handCount[playerNumber] + 2;
-    else // 0 cards or 1 card
-        pre.handCount[playerNumber] = pre.handCount[playerNumber] + cardsAvailable;
+    // add 2 cards to hand 
+    pre.handCount[playerNumber] = pre.handCount[playerNumber] + 2;
 
     // make sure adventurerEffect did not crash
     if (retVal < 0)

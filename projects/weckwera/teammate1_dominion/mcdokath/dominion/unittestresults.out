@@ -1,0 +1,231 @@
+Results of all unit and card tests:
+unittest1.c
+Testing gainCard().... 
+Testing player 0: 
+Card to deck: Player 0 card to deck test passed
+Card to hand: Test passed
+Card to discard: Test passed
+Testing player 1: 
+Card to deck: Player 1 card to deck test passed
+Card to hand: Test passed
+Card to discard: Test passed
+File 'dominion.c'
+Lines executed:18.26% of 564
+Branches executed:17.27% of 417
+Taken at least once:14.15% of 417
+Calls executed:8.42% of 95
+Creating 'dominion.c.gcov'
+
+unittest2.c
+Testing buyCard...
+Player 0 no new hand card test: passed
+whose turn: 0, i = 0 
+Player 1 no new hand card test: passed
+whose turn: 0, i = 1 
+Player 1 no new deck card test: passed
+Player 2 no new hand card test: passed
+whose turn: 0, i = 2 
+Player 2 no new deck card test: passed
+Player 3 no new hand card test: passed
+whose turn: 0, i = 3 
+Player 3 no new deck card test: passed
+Test normal buyCard works
+Test no buys left passed
+Test no coins passed
+Test none left passed
+File 'dominion.c'
+Lines executed:20.39% of 564
+Branches executed:25.42% of 417
+Taken at least once:15.35% of 417
+Calls executed:12.63% of 95
+Creating 'dominion.c.gcov'
+
+unittest3.c
+Setup complete.
+***
+Success test buyCard()...
+***
+buyCard Player 0.
+Result: 0, Expected: 0
+Player 0 discardCount +1: Pass!
+Player 1 discardCount unchanged: Pass!
+Player 0 deckCount unchanged: Pass!
+Player 1 deckCount unchanged: Pass!
+numPlayers unchanged: Pass!
+outpostPlayed unchanged: Pass!
+outpostTurn unchanged: Pass!
+whoseTurn unchanged: Pass!
+Phase 1 Expected 1: Pass!
+numActions unchanged: Pass!
+Coins -3: Pass!
+numBuys-1: Pass!
+Player 0 handCount unchanged: Pass!
+Player 1 handCount unchanged: Pass!
+Setup complete.
+***
+Test buyCard() not enough buys...
+***
+buyCard Player 0.
+Result: -1, Expected: -1
+Player 0 discardCount unchanged: Pass!
+Player 1 discardCount unchanged: Pass!
+Player 0 deckCount unchanged: Pass!
+Player 1 deckCount unchanged: Pass!
+numPlayers unchanged: Pass!
+outpostPlayed unchanged: Pass!
+outpostTurn unchanged: Pass!
+whoseTurn unchanged: Pass!
+Phase 0 Expected 0: Pass!
+numActions unchanged: Pass!
+Coins unchanged: Pass!
+numBuys unchanged: Pass!
+Player 0 handCount unchanged: Pass!
+Player 1 handCount unchanged: Pass!
+Setup complete.
+***
+Test buyCard() not enough cards...
+***
+buyCard Player 0.
+Result: -1, Expected: -1
+Player 0 discardCount unchanged: Pass!
+Player 1 discardCount unchanged: Pass!
+Player 0 deckCount unchanged: Pass!
+Player 1 deckCount unchanged: Pass!
+numPlayers unchanged: Pass!
+outpostPlayed unchanged: Pass!
+outpostTurn unchanged: Pass!
+whoseTurn unchanged: Pass!
+Phase 0 Expected 0: Pass!
+numActions unchanged: Pass!
+Coins unchanged: Pass!
+numBuys unchanged: Pass!
+Player 0 handCount unchanged: Pass!
+Player 1 handCount unchanged: Pass!
+Setup complete.
+***
+Test buyCard() not enough coins...
+***
+buyCard Player 0.
+Result: -1, Expected: -1
+Player 0 discardCount unchanged: Pass!
+Player 1 discardCount unchanged: Pass!
+Player 0 deckCount unchanged: Pass!
+Player 1 deckCount unchanged: Pass!
+numPlayers unchanged: Pass!
+outpostPlayed unchanged: Pass!
+outpostTurn unchanged: Pass!
+whoseTurn unchanged: Pass!
+Phase 0 Expected 0: Pass!
+numActions unchanged: Pass!
+Coins unchanged: Pass!
+numBuys unchanged: Pass!
+Player 0 handCount unchanged: Pass!
+Player 1 handCount unchanged: Pass!
+File 'dominion.c'
+Lines executed:8.33% of 564
+Branches executed:12.47% of 417
+Taken at least once:5.04% of 417
+Calls executed:7.37% of 95
+Creating 'dominion.c.gcov'
+
+unittest4.c
+Setup complete.
+***
+Success test discard gainCard()...
+***
+gainCard Player 0.
+Result: 0, Expected: 0
+Player 0 handCount unchanged: Pass!
+Player 1 handCount unchanged: Pass!
+Player 0 deckCount unchanged: Pass!
+Player 1 deckCount unchanged: Pass!
+Player 0 discardCount + 1: Pass!
+Player 1 discardCount unchanged: Pass!
+Setup complete.
+***
+Success test deck gainCard()...
+***
+gainCard Player 0.
+Result: 0, Expected: 0
+Player 0 handCount unchanged: Pass!
+Player 1 handCount unchanged: Pass!
+Player 0 deckCount +1: Pass!
+Player 1 deckCount unchanged: Pass!
+Player 0 discardCount unchanged: Pass!
+Player 1 discardCount unchanged: Pass!
+Setup complete.
+***
+Success test hand gainCard()...
+***
+gainCard Player 0.
+Result: 0, Expected: 0
+Player 0 handCount +1: Pass!
+Player 1 handCount unchanged: Pass!
+Player 0 deckCount unchanged: Pass!
+Player 1 deckCount unchanged: Pass!
+Player 0 discardCount unchanged: Pass!
+Player 1 discardCount unchanged: Pass!
+Setup complete.
+***
+Test not enough cards gainCard()...
+***
+gainCard Player 0.
+Result: -1, Expected: -1
+Player 0 handCount unchanged: Pass!
+Player 1 handCount unchanged: Pass!
+Player 0 deckCount unchanged: Pass!
+Player 1 deckCount unchanged: Pass!
+Player 0 discardCount unchanged: Pass!
+Player 1 discardCount unchanged: Pass!
+Setup complete.
+***
+Test card not in game gainCard()...
+***
+gainCard Player 0.
+Result: -1, Expected: -1
+Player 0 handCount unchanged: Pass!
+Player 1 handCount unchanged: Pass!
+Player 0 deckCount unchanged: Pass!
+Player 1 deckCount unchanged: Pass!
+Player 0 discardCount unchanged: Pass!
+Player 1 discardCount unchanged: Pass!
+File 'dominion.c'
+Lines executed:6.21% of 564
+Branches executed:4.32% of 417
+Taken at least once:3.84% of 417
+Calls executed:3.16% of 95
+Creating 'dominion.c.gcov'
+
+cardtest1.c
+Testing smithy...
+Smithy card function completed
+Incorrect number of cards drawn
+Player 1 no new hand card test: passed
+Player 1 no new deck card test: passed
+Player 2 no new hand card test: passed
+Player 2 no new deck card test: passed
+Player 3 no new hand card test: passed
+Player 3 no new deck card test: passed
+File 'dominion.c'
+Lines executed:18.97% of 564
+Branches executed:17.75% of 417
+Taken at least once:14.15% of 417
+Calls executed:9.47% of 95
+Creating 'dominion.c.gcov'
+
+cardtest2.c
+Testing adventurer...
+Adventurer refactor returns 0
+Player 1 no new hand card test: passed
+Player 1 no new deck card test: passed
+Player 2 no new hand card test: passed
+Player 2 no new deck card test: passed
+Player 3 no new hand card test: passed
+Player 3 no new deck card test: passed
+Card Test 2File 'dominion.c'
+Lines executed:18.09% of 564
+Branches executed:17.75% of 417
+Taken at least once:14.15% of 417
+Calls executed:8.42% of 95
+Creating 'dominion.c.gcov'
+

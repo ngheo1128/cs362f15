@@ -13,7 +13,10 @@
 int testVillage(int player) {
   struct gameState g;
 
-  int i, handSize, deckSize, discardSize, actionCount, villagePos = -1;
+  int i, handSize, actionCount, villagePos = -1;
+#if VERBOSE
+  int discardSize, deckSize;
+#endif
 
   int errorCount = 0;
   int seed = rand();
@@ -31,8 +34,10 @@ int testVillage(int player) {
 
   // save count of cards in hand, deck and discard pile
   handSize = g.handCount[player];
+#if VERBOSE
   deckSize = g.deckCount[player];
   discardSize = g.discardCount[player];
+#endif
   // save count of actions
   actionCount = g.numActions;
   printf(" TESTING VILLAGE CARD\n");

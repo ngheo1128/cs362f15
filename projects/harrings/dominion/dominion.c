@@ -655,7 +655,7 @@ void adventurerfunction(struct gameState *state, int currentPlayer, int handPos)
 	}
 	drawCard(currentPlayer, state);
 	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	if (cardDrawn == copper && cardDrawn == silver && cardDrawn == gold)
+	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 	  drawntreasure++;
 	else{
 	  temphand[z]=cardDrawn;
@@ -667,6 +667,7 @@ void adventurerfunction(struct gameState *state, int currentPlayer, int handPos)
 	state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
 	z=z-1;
       }
+	  discardCard(handPos, currentPlayer, state, 0);
     
 }
 
@@ -676,7 +677,6 @@ int councilfunction (struct gameState *state, int currentPlayer, int i, int hand
 	//+4 Cards
       for (i = 0; i < 4; i++)
 	{
-	  drawCard(currentPlayer, state);
 	  drawCard(currentPlayer, state);
 	}
 			
@@ -709,7 +709,7 @@ int smithyfunction(struct gameState *state, int currentPlayer, int handPos)
 	int i=0;
 		
       //+3 Cards
-      for (i = 0; i < 2; ++i)
+      for (i = 0; i <= 2; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -727,7 +727,7 @@ int villagefunction(struct gameState *state, int currentPlayer, int handPos)
       drawCard(currentPlayer, state);
 			
       //+2 Actions
-      state->numActions =2;
+      state->numActions =state->numActions+2;
 			
       //discard played card from hand
       discardCard(handPos, currentPlayer, state, 0);

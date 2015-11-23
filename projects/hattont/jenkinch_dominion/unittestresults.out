@@ -1,0 +1,27 @@
+cardtest1.c:
+cardtest1.c:
+cardtest1.c
+activateAdventurer(): PASS empty hand case
+activateAdventurer(): FAIL not enough Treasure case
+activateAdventurer(): FAIL full deck case
+activateAdventurer(): FAIL empty deck case
+activateAdventurer(): PASS changes to correct player only
+File 'dominion.c'
+Lines executed:8.46% of 579
+Branches executed:6.24% of 417
+Taken at least once:5.52% of 417
+Calls executed:5.26% of 95
+Creating 'dominion.c.gcov'
+
+cardtest4.c:
+cardtest4.c
+activateSmithy(): FAIL handCount properly incremented
+activateSmithy(): FAIL correct cards, order in correct user's hand
+activateSmithy(): PASS changes to correct player only
+File 'dominion.c'
+Lines executed:11.57% of 579
+Branches executed:8.15% of 417
+Taken at least once:6.71% of 417
+Calls executed:7.37% of 95
+Creating 'dominion.c.gcov'
+

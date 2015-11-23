@@ -35,16 +35,23 @@ int main() {
         G.hand[0][i] = adventurer;
     }
     
+    for (i = 0; i < 20; i++)
+    {
+        G.deck[0][G.deckCount[0]] = copper;
+        G.deckCount[0]++;
+    }
     // check state of game before calling function
     // printState(&G);
     //  printSupply(&G);
     // // printScores(&G);
     printHand(0, &G);
+    printDiscard(0, &G);
     // printPlayed(0, &G);
     //printDeck(0, &G);
     //printf ("Number of cards in hand %i \n", numHandCards(&G));
 
-
+    int bonus = 0;
+    int initialTreasure = 0;
     printf("* * * * * * * * * * * * * * * * Testing adventurer card * * * * * * * * * * * * * * * * \n");
 
     //keeps track of played cards
@@ -52,14 +59,17 @@ int main() {
     for (i = (numHandCards(&G) -1); i >= 0; i--)
     {
 
-        playCard(i, -1, -1, -1, &G);
-
+        printf("play hand positin %i\n",i );
+        int playstatus = cardEffect(adventurer, -1, -1, -1, &G, i, &bonus);
+        printf("playstatus is %i \n", playstatus);
+        // printDiscard(0, &G);
         //check to see if adventurer card goes into discard
         //printPlayed(0, &G);
         printHand(0, &G);
-        if (G.playedCards[playedCards] != adventurer)
+        if (G.discard[0][G.discardCount[0]-1] != adventurer)
         {
             printf("Error: adventurer card did not go into discard\n");
+            
         }
 
         int j;
@@ -71,10 +81,11 @@ int main() {
             treasurePresent++;
         }
         
+        initialTreasure += 2;
 //assertion commented out because previous error affects this assertion.        
-        if (treasurePresent != 2)
+        if (treasurePresent != initialTreasure)
         {
-            printf("Error: Did not gain 2 treasure cards, gained %i treasure instead \n", treasurePresent);
+            printf("Error: Did not gain +2 treasure cards, gained %i treasure instead \n", treasurePresent);
         }
 
 
@@ -82,7 +93,6 @@ int main() {
         
         // printPlayed(0, &G);
         // printDeck(0, &G);
-        playedCards++;
     }
 
     printf("All tests passed!\n");

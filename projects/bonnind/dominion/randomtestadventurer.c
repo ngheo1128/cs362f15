@@ -56,7 +56,7 @@ int printDetails(struct gameState *state, int curPlayer) {
     return 0;
 }
 
-int oracleAdventurerCard(struct gameState *state, int player) {
+int oracleAdventurerCard(struct gameState *state, int player, int handPos) {
     int i, treasureCount = 0, curCard;
 
     /* Traverse deck from right to left */
@@ -75,6 +75,7 @@ int oracleAdventurerCard(struct gameState *state, int player) {
         }
         state->deckCount[player]--;
 
+        discardCard(handPos, player, state, 0);
         if (treasureCount == 2)
             break;
     }
@@ -212,8 +213,8 @@ int main(int argc, char *argv[]) {
         /* comparison and test states must be identical */
         assert(memcmp(&testState, &comparisonState, sizeof(struct gameState)) == 0);
 
-        oracleAdventurerCard(&comparisonState, curPlayer);
-        adventurerCard(&testState, curPlayer);
+        oracleAdventurerCard(&comparisonState, curPlayer, handPos);
+        adventurerCard(&testState, curPlayer, handPos);
 
         if (!oracleVerified(&testState, &comparisonState, curPlayer)) {
             printf("Seed: %i, Iteration: %i, numPlayers: %i, curPlayer: %i\n", 
