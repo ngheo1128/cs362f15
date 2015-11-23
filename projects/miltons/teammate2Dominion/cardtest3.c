@@ -21,5 +21,7 @@ int main(int argc, char *argv[])
     // {
     //     printf("Council Room card: FAIL\n");
     // }
+
+    printf("Council Room card: NOT REFACTORED / NOT TESTED\n");
     return 0;
 }

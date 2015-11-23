@@ -1,6 +1,4 @@
 // tests Adventurer card
-// int adventurerEffect(int currentPlayer, int drawntreasure, int temphand[MAX_HAND], struct gameState *state, int cardDrawn, int z)
-// adventurerEffect() is on line 1207 of dominion.c
 
 // test / assert against state of game before and after adventurer is played
 
@@ -15,7 +13,7 @@
 #include "dominion_helpers.h"
 
 #define NUM_TESTS 2000 // number of tests to run
-#define NUM_PLAYERS  2 
+#define NUM_PLAYERS  2
 
 
 
@@ -42,7 +40,7 @@ int randInt(int min, int max);
  **                   the game state from adventurerEffect() are compared to
  **                   the expected results to see if the function is working
  **                   properly.
- ** Parameters:       one int values: playerNumber
+ ** Parameters:       one int: playerNumber,
  **                   a pointer to a struct of type gameState: testState
  ** Pre-Conditions:   variables are initialized with values in valid ranges
  **                   within valid ranges for the game.

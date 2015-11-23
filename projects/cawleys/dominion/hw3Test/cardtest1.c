@@ -17,7 +17,7 @@ int testSmithy (struct gameState * state, int currentPlayer, int handPos, int nu
 	
 	smithy_effect(state, currentPlayer, handPos);
 
-	errors += assert( state->handCount[currentPlayer] == numInHand, "smithy_effect()", message);
+	errors += assert( state->handCount[currentPlayer] == numInHand, "smithyCard()", message);
 	printf("       There are now %i cards in the hand\n", state->handCount[0]);
 
 	//tests to see that smithy came from player 0's deck. Player 0 should now have 2 cards in their hand, and player 1 should have 5
@@ -43,6 +43,7 @@ int testSmithy (struct gameState * state, int currentPlayer, int handPos, int nu
 	}
 	
 	//test to see that smithy discarded. Discard started at 5, so it should now be 6
+	
 	if (state->discardCount[0] == 6)
 	{
 		printf("PASS: Smithy was discarded\n");
@@ -59,7 +60,7 @@ int testSmithy (struct gameState * state, int currentPlayer, int handPos, int nu
 
 
 //tests to see if the cards were received. In the end there should be +2 cards in the hand, +3 new -1 smithy
-int cardtest1_cardsReceived()
+int cardtest1()
 {
 	struct gameState state;
 	initState(&state);

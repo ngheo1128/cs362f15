@@ -3,10 +3,12 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
+#include <time.h>
+#include <stdlib.h>
 #include "rngs.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
+#define NOISY_TEST 0
 
 int main() {
     int i, j;
@@ -21,9 +23,10 @@ int main() {
     int numPlayer = 2;
     int p = 0, r;
     int k[10] = {adventurer, council_room, feast, gardens, mine
-               , remodel, smithy, village, baron, great_hall};
+             , remodel, smithy, village, baron, great_hall};
     struct gameState G;
-
+	srand(time(NULL));
+	
     printf ("TESTING runAdventurer():\n");
     for (i = 0; i < 5; i++) {
     	memset(&G, 23, sizeof(struct gameState));   // clear the game state
@@ -34,7 +37,6 @@ int main() {
     	drawnTreasure = 0;
 
         for (j = 0; j < G.handCount[p]; j++) {
-        	printf("Hand = %d\n\n", G.hand[p][j]);
             if (G.hand[p][j] == copper || G.hand[p][j] == silver || G.hand[p][j] == gold) {
                 initialTreasure++;
             }
@@ -64,7 +66,6 @@ int main() {
     	drawnTreasure = 0;
         G.hand[p][G.handCount[p] - 1] = gold;
         for (j = 0; j < G.handCount[p]; j++) {
-        	printf("Hand = %d\n\n", G.hand[p][j]);
             if (G.hand[p][j] == copper || G.hand[p][j] == silver || G.hand[p][j] == gold) {
                 initialTreasure++;
             }

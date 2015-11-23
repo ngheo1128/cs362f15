@@ -6,6 +6,7 @@ BugFixes.c                          ONID: watsokel
 
 BUG FIXES
 ---------
+All bugs identified by teammates were fixed using GDB debugger. Bug fixes and code changes are documented below:
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ID  BUG DESCRIPTION                                 BUG FIX                                                 DATE FIXED          
@@ -49,7 +50,7 @@ ID  BUG DESCRIPTION                                 BUG FIX                     
                                                     already incremented in the first corrected statement 
                                                     using post-fix notation. 
 ----------------------------------------------------------------------------------------------------------------------------
-3   In the sea_hag case of the cardEffect()         This is the erroenous statement:                        17 Nov 2015 
+4   In the sea_hag case of the cardEffect()         This is the erroenous statement:                        17 Nov 2015 
     method, the curse card is placed in the             state->deck[i][state->deckCount[i]--]=curse;        20:40 hr
     incorrect location in the deck. In the buggy    In the bug fix, the above line is replaced with
     version of sea_hag, the opponent's deck was         state->deck[i][state->deckCount[i]-1]=curse;        
@@ -60,7 +61,7 @@ ID  BUG DESCRIPTION                                 BUG FIX                     
                                                     original unit tests in cardtest3.c.
         
 ----------------------------------------------------------------------------------------------------------------------------
-4   After a call to discardCard(), the discard      When trashFlag<1, the original discardCard() method     17 Nov 2015
+5   After a call to discardCard(), the discard      When trashFlag<1, the original discardCard() method     17 Nov 2015
     count is not incremented as expected. Instead,  places the discard to be discarded into the             21:17 hr
     it remained the same. Checking the top of the   playedCards pile instead of the discard pile.
     discard pile resulted in a garbage value, even  To correct this, the following incorrect statements
@@ -72,7 +73,7 @@ ID  BUG DESCRIPTION                                 BUG FIX                     
                                                     discarded to the top of the discard pile, then
                                                     increments the discard count.
 ----------------------------------------------------------------------------------------------------------------------------
-5   In adventurerEffect2(), the  adventurer         This is the buggy statement:                            17 Nov 2015
+6   In adventurerEffect2(), the  adventurer         This is the buggy statement:                            17 Nov 2015
     card was refactored to shuffle when                 if (state->deckCount[currentPlayer]<2)              21:22 hr
     the deckCount was less than 2, which is         which has been correct to:
     a bug, as the deck should be shuffled                   if (state->deckCount[currentPlayer]<1)
@@ -80,7 +81,7 @@ ID  BUG DESCRIPTION                                 BUG FIX                     
                                                     and adventurerEffect2() method now passes all of
                                                     the original unit tests in unittest2.c.
 ----------------------------------------------------------------------------------------------------------------------------
-6   The total score is computed incorrectly in      The for loop header is incorrect for the third score    17 Nov 2015     
+7   The total score is computed incorrectly in      The for loop header is incorrect for the third score    17 Nov 2015     
     the scoreFor() method. More specifically,       computation loop. Specifically, the header:             21:31 hr
     the score computed from the discard pile            for (i = 0; i < state->discardCount[player]; i++)
     is added twice in error, while no score         appears twice in the scoreFor() method, incorrectly
@@ -90,7 +91,7 @@ ID  BUG DESCRIPTION                                 BUG FIX                     
                                                     replaced with
                                                         for (i = 0; i < state->deckCount[player]; i++)
 ----------------------------------------------------------------------------------------------------------------------------
-7   The total score is computed incorrectly in      The for loop header is incorrect for the third score    17 Nov 2015     
+8   The total score is computed incorrectly in      The for loop header is incorrect for the third score    17 Nov 2015     
     the scoreFor() method. No score was computed    computation loop. This header:                          21:31 hr
     from the cards in the deck.                         for (i = 0; i < state->discardCount[player]; i++)
                                                     is duplicated in error in the scoreFor() method, thus
@@ -100,14 +101,15 @@ ID  BUG DESCRIPTION                                 BUG FIX                     
                                                     the second duplicate for loop header was replaced with
                                                         for (i = 0; i < state->deckCount[player]; i++)
 ----------------------------------------------------------------------------------------------------------------------------
-8   In the sea_hag case in cardEffect(), the        The line:                                               20 Nov 2015
+9   In the sea_hag case in cardEffect(), the        The line:                                               20 Nov 2015
     discardCard() method was not called to              discardCard(handPos,currentPlayer,state,0);         08:38 hr
     discard the sea_hag card after it was           was added to the sea_hag case in cardEffect() to
     played, resulting in the sea_hag card not       discard the sea_hag card after it is played.
     being discarded, and remaining in the hand.
 ----------------------------------------------------------------------------------------------------------------------------
-9   In smithyEffect(), the smithy card was not      The buggy line:                                         20 Nov 2015
+10   In smithyEffect(), the smithy card was not      The buggy line:                                         20 Nov 2015
     actually discarded after it was played,             discardCard(handPos,currentPlayer,state,1);         08:41 hr
     resulting in the smithy card remaining in       was corrected to:
     the player's hand even after a call to              discardCard(handPos,currentPlayer,state,0);
     discardCard().                                  which now contains the correct discard flag.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++    

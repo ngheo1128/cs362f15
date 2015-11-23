@@ -6,7 +6,7 @@
 #include "rngs.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
+#define NOISY_TEST 0
 
 int main() {
     int i, j;
@@ -41,9 +41,6 @@ int main() {
         }
         if (shuffled == 0) {
             printf("Error shuffling %d\n", shuffled);
-        }
-        else {
-            printf("Shuffled\n");
         }
         assert(shuffled != 0);
     }

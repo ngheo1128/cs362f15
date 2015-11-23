@@ -6,20 +6,16 @@
 #include "rngs.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
+#define NOISY_TEST 0
 
 int main() {
-    int i, j, m;
+    int i, m;
     int actions;
+    int inactions;
     int success = 1;
-    int failed = 0;
     int seed = 1000;
-    int count = 0;
     int numPlayer = 2;
-    int maxBonus = 10;
-    int p = 0, r, deckC;
-    int shuffled = 0;
-    int originalDeck[100];
+    int p = 0, r;
     int k[10] = {adventurer, council_room, feast, gardens, mine
                , remodel, smithy, village, baron, great_hall};
     struct gameState G;
@@ -29,17 +25,20 @@ int main() {
         memset(&G, 23, sizeof(struct gameState));   // clear the game state
         r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
         G.numActions = i;
+        inactions = 0;
         for (m = 0; m < 5; m++) {
         	#if (NOISY_TEST == 1)
                 printf("Actions in players hand before village: %d\n", G.numActions);
             #endif
             actions = G.numActions;
-            villageCard(p, &G, G.handCount[p] - 1);
+            villageCard(p, &G, G.handCount[p]);
+            inactions = (i + (m+1)*2);
             #if (NOISY_TEST == 1)
                 printf("Actions in players hand after village: %d\n", G.numActions);
-                printf("Should be: %d\n", (m+1)*2);
+                printf("M= %d\n", m);
+                printf("Should be: %d\n", inactions);
             #endif
-            if ((m+1)*2 != G.numActions) {
+            if (inactions != G.numActions) {
                 printf("TEST FAILED\n");
                 success = 0;
             }
