@@ -1,0 +1,9 @@
+Running randomtestadventurer tests:
+-------randomtestadventurer.c:
+randomtestadventurer - Testing adventurer card
+Random test:
+Test failed. Wrong final number cards in hand
+Testing doneFile 'dominion.c'
+Lines executed:24.96% of 569
+Creating 'dominion.c.gcov'
+
