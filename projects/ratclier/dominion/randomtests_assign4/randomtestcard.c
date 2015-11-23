@@ -18,8 +18,7 @@
 #include "unittest_helpers.h"
 #include "randomtest_helpers.h"
 
-//#define testRuns 30000
-#define testRuns 30
+#define testRuns 30000
 
 // Test the treasure map card
 //
@@ -39,14 +38,13 @@
 //
 int testTreasureMapCard(struct gameState *state, int handPos)
 {
-    struct gameState *origState;  // copy of game state
-    int origNumTreasureMap = 0;   // orig number of treasure map cards
-    int newNumTreasureMap  = 0;   // new number of treasure map cards
-    int discardedTreasureMap = 0;
-    int origTopGolds       = 0;   // orig number of golds at top of deck
-    int newTopGolds        = 0;   // new number of golds at top of deck
-    int idx                = 0;   // loop iterator
-    int passFlag           = 1;   // signals whether or not a test passed (default: true)
+    struct gameState *origState;   // copy of game state
+    int origNumTreasureMap   = 0;  // orig number of treasure map cards
+    int discardedTreasureMap = 0;  // number of discarded TM cards
+    int origTopGolds         = 0;  // orig number of golds at top of deck
+    int newTopGolds          = 0;  // new number of golds at top of deck
+    int idx                  = 0;  // loop iterator
+    int passFlag             = 1;  // signals whether or not a test passed (default: true)
     int currentPlayer = state->whoseTurn;
 
     // Make a copy of the original game state
@@ -63,14 +61,6 @@ int testTreasureMapCard(struct gameState *state, int handPos)
     {
         if(origState->hand[currentPlayer][idx] == treasure_map)
             origNumTreasureMap++;
-    }
-
-    // Determine new number of treasure map cards in hand
-    //
-    for(idx = 0; idx < state->handCount[currentPlayer]; idx++)
-    {
-        if(state->hand[currentPlayer][idx] == treasure_map)
-            newNumTreasureMap++;
     }
 
     for(idx = 0; idx < origState->handCount[currentPlayer]; idx++)
