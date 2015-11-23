@@ -56,7 +56,7 @@ int main() {
         state.deck[p2][i]    = province;
     }
     //math based on card values
-    testPlayersScore[p2] = ((handCount * 3) / 10) + (1 * handCount) + (6 * handCount);
+    testPlayersScore[p2] = (handCount * ((handCount * 3) / 10)) + (1 * handCount) + (6 * handCount);
     //scoreFor function
     officialPlayersScore[p2] = scoreFor(p2, &state);
 
@@ -68,7 +68,7 @@ int main() {
         state.deck[p3][i]    = curse;
     }
     //math based on card values
-    testPlayersScore[p3] = (1 * handCount) + ((handCount * 3) / 10) + (-1 * handCount);
+    testPlayersScore[p3] = (1 * handCount) + (handCount * ((handCount * 3) / 10)) + (-1 * handCount);
     //scoreFor function
     officialPlayersScore[p3] = scoreFor(p3, &state);
 
@@ -80,7 +80,7 @@ int main() {
         state.deck[p4][i]    = gardens;
     }
     //math based on card values
-    testPlayersScore[p4] = (1 * handCount) + (3 * handCount) + ((handCount * 3) / 10);
+    testPlayersScore[p4] = (1 * handCount) + (3 * handCount) + (handCount * ((handCount * 3) / 10));
     //scoreFor function
     officialPlayersScore[p4] = scoreFor(p4, &state);
 
@@ -88,12 +88,13 @@ int main() {
     int counter = 0;
     for (i = 0; i < curPlayers; ++i) {
         if(testPlayersScore[i] != officialPlayersScore[i]) {
-            //printf("test score: %d, \"offical score\" %d\n", testPlayersScore[i], officialPlayersScore[i]);
+            printf("test score: %d, \"offical score\" %d\n", testPlayersScore[i], officialPlayersScore[i]);
             printf("Test failed on player %d\n", i);
             counter++;
             //assert(testPlayersScore[i] == officialPlayersScore[i]);
         }
         else {
+            printf("test score: %d, \"offical score\" %d\n", testPlayersScore[i], officialPlayersScore[i]);
             printf("Test passed on player %d\n", i);
         }
     }

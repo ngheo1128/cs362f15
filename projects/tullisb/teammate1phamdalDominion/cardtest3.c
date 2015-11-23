@@ -29,7 +29,7 @@ int main() {
 	int outpostPlayed;
 	int iterations = 1000;
 
-	printf("\nTESTING smithyFunction():\n");
+	printf("\nTESTING smithy_card():\n");
 
 	for (int i = 0; i < iterations; i++)
 	{
@@ -41,7 +41,6 @@ int main() {
 		curseNum = G.hand[p + 1][curse];			// get player 2's number of curse cards
 		outpostPlayed = G.outpostPlayed;			// get outpostPlayed
 
-		smithyFunction(p, &G, 1);					// call smithy function
 		playerHandcount += 3;						// increment playerHandcount to match against expected values
 #if (NOISY_TEST == 1)
 		printf("playerHandcount: %d G.handCount[p]: %d\n", playerHandcount, G.handCount[p]);
@@ -50,6 +49,8 @@ int main() {
 		printf("curseNum: %d  G.hand[p + 1][curseNum]: %d\n", curseNum, G.hand[p + 1][curseNum]);
 		printf("outpostPlayed: %d G.outpostPlayed: %d\n", outpostPlayed, G.outpostPlayed);
 #endif
+		smithy_card(p, &G, 1);						// call smithy function
+
 		assert(playerHandcount == G.handCount[p]);		// check if the we received the expected handcount
 		assert(playerHandcount2 == G.handCount[p + 1]); // check that other player's cards are not disturbed
 		assert(coins == G.coins);						// check that coins have not been disturbed
