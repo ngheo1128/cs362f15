@@ -664,7 +664,7 @@ int buggyAdventurer(struct gameState *state, int handPos) {
   int drawntreasure = 0;
   int z = 0;// this is the counter for the temp hand
   int cardDrawn;
-  while (drawntreasure < 3) {
+  while (drawntreasure < 2) {
     if (state->deckCount[currentPlayer] < 1) {//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
