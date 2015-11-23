@@ -687,14 +687,14 @@ int adventurer_play(struct gameState *state, int currentPlayer, int handPos) {
         z=z-1;
     }
 
-    
+    discardCard(handPos, currentPlayer, state, 0);
     
     return 0;
 }
 
 int council_room_play(struct gameState *state, int currentPlayer, int handPos) {
 //+4 Cards
-for (int i = 0; i <= 4; i++)
+for (int i = 0; i < 4; i++)
 {
     drawCard(currentPlayer, state);
 }
@@ -718,8 +718,14 @@ return 0;
 
 int smithy_play (struct gameState *state, int currentPlayer, int handPos) {
     //+3 Cards
+    if (state->deckCount[currentPlayer] < 1){//if the deck is empty we need to shuffle discard and add to deck
+        shuffle(currentPlayer, state);
+    }
+    if ((state->deckCount[currentPlayer] + state->discardCount[currentPlayer]) < 3) {
+        return -1;
+    }
 
-    for (int i = 0; i <= 3; i++)
+    for (int i = 0; i < 3; i++)
     {
 
         drawCard(currentPlayer, state);
@@ -736,7 +742,7 @@ int village_play (struct gameState *state, int currentPlayer, int handPos) {
     drawCard(currentPlayer, state);
     
     //+2 Actions
-    numActions = state->numActions + 2;
+    state->numActions = state->numActions + 2;
     
     //discard played card from hand
     discardCard(handPos, currentPlayer, state, 0);
