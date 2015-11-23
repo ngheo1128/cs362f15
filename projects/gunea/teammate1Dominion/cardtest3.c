@@ -1,12 +1,3 @@
-/* -----------------------------------------------------------------------
- * James Carlin
- * 10/20/2015
- *
- * CardTest2
- *  Tests the greatHallCard
- * -----------------------------------------------------------------------
- */
-
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
@@ -14,79 +5,45 @@
 #include <assert.h>
 #include "rngs.h"
 
-
-
-void testGreatHall()
+int main()
 {
+	int seed = 2500;
+	int players = 2;
+	int maxBonus = 20;
+	int c = 0,
+		i = 0,
+		j = 0,
+		k = 0,
+		m = 0;
+	int failedtests = 0;
+	int playedCount = 0;
+	int hand[10] = { adventurer, embargo, steward, cutpurse, outpost
+		, mine, smithy, remodel, great_hall, feast };
+	struct gameState testState;
+	int temphand[MAX_HAND];// moved above the if statement
+	int drawntreasure = 0;
+	int cardDrawn = 0;
 
+	memset(&testState, 23, sizeof(struct gameState));
+	//Initialize the game
+	initializeGame(players, hand, seed, &testState);
 
+	int handCount = testState.handCount[i];
+	for (i = 0; i < players; i++)
+	{	
+		printf("------------------------------\n");
+		printf("Cards in hand: %d\n", numHandCards(&testState));
+		printf("Number of played cards: %d\n", playedCount);
+		printf("Discard count: %d\n", testState.discardCount[i]);
 
-    int seed = 1000;
-    int numPlayer = 2;
-
-    int k[10] = {adventurer, council_room, feast, gardens, mine
-               , remodel, smithy, village, baron, great_hall};
-	int testPlayer=1;
-	int handCount=5;
-//initialize gamestate
-    struct gameState G;
-
-
-//loading hand with 5 cards first, hardcoded in
-
-int firstHand[5];
-
-//place specific cards in each possible spot
-
-firstHand[0] = feast;
-firstHand[1] = feast;
-firstHand[2] = estate;
-firstHand[3] = smithy;
-firstHand[4] = great_hall;
-
-
-initializeGame(numPlayer, k, seed, &G);
-
-//set specifics for new game state
-
-G.handCount[testPlayer]= handCount;
-
-//place cards in test player's hand
-
-memcpy(G.hand[testPlayer], firstHand, sizeof(int) * handCount);
-
-//The adventure card has two basic functions
-//draws cards until two treasures are drawn
-//discards all other cards
-
-//now to test actual function
-
-greatHallCard(&G, testPlayer, 4);
-
-//now going to test state after passing correct values
-//since it adds two treasures, handCount should be at 7
-
-if(G.numActions == 2)
-{
-    printf ("Passed, game action =3, expected %d\n", G.numActions);
-}
-else if(G.numActions == 3)
-{
-    printf("Failed, game action = %d cards, expected 2\n", G.numActions);
-    printf("This occurs because of a bug I introduced, else would be 2");
-}
-else
-    {
-    printf ("Failed, game action = %d cards, expected 3\n", G.numActions);
-
-    }
-
-}
-
-int main() {
-
-	testGreatHall();
-
-
-    return 0;
+		printf("Playing Village Card\n");
+		villageCard(&testState, i, j);
+	
+		printf("Cards in hand: %d\n", numHandCards(&testState));
+		printf("Number of played cards: %d\n", playedCount);
+		printf("Discard count: %d\n", testState.discardCount[i]);
+		printf("------------------------------\n");
+		printf("\n");
+	}
+	return 0;
 }

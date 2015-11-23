@@ -53,6 +53,9 @@ cardTest3: dominion.o cardtest3.c
 cardTest4: dominion.o cardtest4.c
 	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS)
 
+cardTestAdventure: dominion.o cardtestAdventure.c
+	gcc -o cardtestAdventure cardtestAdventure.c -g dominion.o rngs.o $(CFLAGS)
+
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
@@ -64,7 +67,7 @@ randomtestadventurer: dominion.o randomtestadventurer.c
 
 all: playdom player testDrawCard testBuyCard badTestDrawCard
 
-allUnitTests: unitTest1 unitTest2 unitTest3 unitTest4 cardTest1 cardTest2 cardTest3 cardTest4
+allUnitTests: unitTest1 unitTest2 unitTest3 unitTest4 cardTest1 cardTest2 cardTest3 cardTest4 cardTestAdventure
 
 unittestresults.out: clean all allUnitTests
 	# Run Programs and save results
@@ -84,6 +87,8 @@ unittestresults.out: clean all allUnitTests
 	gcov cardtest3.c >> unittestresults.out
 	./cardtest4 >> unittestresults.out
 	gcov cardtest4.c >> unittestresults.out
+	./cardtestAdventure >> unittestresults.out
+	gcov cardtestAdventure.c >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 	# Append full coverage results
 	cat unittest1.c.gcov >> unittestresults.out

@@ -1,12 +1,3 @@
-/* -----------------------------------------------------------------------
- * James Carlin
- * 10/20/2015
- *
- * CardTest1
- *  Tests the SMITHY card
- * -----------------------------------------------------------------------
- */
-
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
@@ -14,88 +5,55 @@
 #include <assert.h>
 #include "rngs.h"
 
-
-
-void testSmithy()
+int main()
 {
+	int seed = 2500;
+	int players = 2;
+	int maxBonus = 20;
+	int c, i, j, k;
+	int failedtests = 0;
+	int playedCount;
+	int hand[10] = { adventurer, embargo, steward, cutpurse, outpost
+		, mine, smithy, remodel, great_hall, feast };
+	struct gameState testState;
 
 
-    int i;
-    int seed = 1000;
-    int numPlayer = 2;
-    int maxBonus = 10;
-    int k[10] = {adventurer, council_room, feast, gardens, mine
-               , remodel, smithy, village, baron, great_hall};
-	int testPlayer=1;
-	int handCount=5;
-//initialize gamestate
-    struct gameState G;
+	memset(&testState, 23, sizeof(struct gameState));
+	//Initialize the game
+	initializeGame(players, hand, seed, &testState);
 
+	playedCount = testState.playedCardCount;
 
-//loading hand with 5 cards first, hardcoded in
-
-int firstHand[5];
-
-//place specific cards in each possible spot
-
-firstHand[0] = copper;
-firstHand[1] = silver;
-firstHand[2] = gold;
-firstHand[3] = smithy;
-firstHand[4] = adventurer;
-
-
-initializeGame(numPlayer, k, seed, &G);
-
-//set specifics for new game state
-
-G.handCount[testPlayer]= handCount;
-
-//place cards in test player's hand
-
-memcpy(G.hand[testPlayer], firstHand, sizeof(int) * handCount);
-
-//the smithy card has two basic functions
-//first it draws 3 cards
-//then discards the smithy
-
-//now to test actual function
-
-smithyCard(&G, testPlayer, 3);
-//Tests to see if 3 cards were drawn
-//this portion does not test the discard function yet
-//just the drawing function
-if(G.handCount[testPlayer] == 8 || G.handCount[testPlayer] == 7)
-	{
-	printf ("Passed, player %d drew correct amount of cards\n", testPlayer);
-	if(G.handCount[testPlayer] == 8)
-	{
-		printf ("Failed, player %d did not discard the smithy card\n", testPlayer);
+	for (i = 0; i < players; i++)
+	{	
+		printf("------------------------------\n");
+		printf("Player %d | Cards in hand: %d\n", i, numHandCards(&testState));
+		printf("Number of played cards: %d\n", playedCount);
+		for (c = 0; c < testState.handCount[i]; c++)
+		{
+			if (&testState.hand[i][c] == smithy) {
+				printf("smithy found\n");
+				k = 1;
+			}
+		}
+		if (k != 1)
+		{
+			testState.hand[i][1] = smithy;
+		}
+		for (c = 0; c < testState.handCount[i]; c++)
+		{
+			if (&testState.hand[i][c] == smithy) {
+				printf("smithy found\n");
+				//k = 1;
+			}
+		}
+		printf("Playing Smithy Card\n");
+		smithyCard(&testState, i, j);
+		k = testState.playedCardCount;
+		printf("Cards in hand: %d\n", i, numHandCards(&testState));
+		printf("Number of played cards: %d\n", playedCount);
+		printf("------------------------------\n");
+		printf("\n");
 	}
-
-	else if(G.handCount[testPlayer] == 7)
-		{
-			printf ("Passed, player %d discarded the smithy card\n", testPlayer);
-		}
-
-	else
-		{
-			printf ("Failed, player %d did not discard the smithy card\n", testPlayer);
-		}
-
-}
-
-else
-{
-	printf ("Failed, player %d drew incorrect amount of cards\n", testPlayer);
-}
-
-}
-
-int main() {
-
-	testSmithy();
-
-
-    return 0;
+	return 0;
 }

@@ -1,0 +1,221 @@
+Results from testing dominion.c
+Test #1, Handcount of 5 cards, one copper, no bonus
+Expected coins=1 Actual coins=1 
+Test #1 PASSED 
+
+Test #2, Handcount of 5 cards, one copper, two silver, no bonus
+Expected coins=5 Actual coins=5 
+Test #2 PASSED 
+
+Test #3, Handcount of 7 cards, two copper, two gold, no bonus
+Expected coins=8 Actual coins=8 
+Test #3 PASSED 
+
+File 'dominion.c'
+Lines executed:15.86% of 580
+dominion.c:creating 'dominion.c.gcov'
+
+Test #1, Province supply empty
+Expected game state=1, Actual game state=1 
+Test #1 PASSED, Game is over
+
+Test #2, One supply pile empty
+Expected game state=0, Actual game state=1 
+Test #2 PASSED, Game continues
+
+File 'dominion.c'
+Lines executed:16.38% of 580
+dominion.c:creating 'dominion.c.gcov'
+
+Test, Deck 1 shuffle
+Player 0's deck before shuffle: 5, 3, 8, 6, 4 
+Player 1's deck before shuffle: 6, 5, 13, 6, 10 
+Player 0's deck after shuffle: 5, 6, 8, 3, 4 
+Player 1's deck after shuffle: 6, 5, 13, 6, 10 
+Deck 1 has 3 cards in same position after shuffle, can be <= 4
+Deck 2 has 0 cards in a different position, not shuffled
+Test PASSED
+
+File 'dominion.c'
+Lines executed:16.55% of 580
+dominion.c:creating 'dominion.c.gcov'
+
+Testing drawCard() for Player 0 with empty deck and non-empty discard pile
+Test PASSED, discard pile shuffled with deck
+Test FAILED, card NOT added to player's hand after draw
+Test PASSED, discard pile was empty
+Test FAILED, deck NOT decremented after draw
+Test FAILED, card drawn from empty deck
+
+File 'dominion.c'
+Lines executed:18.62% of 580
+dominion.c:creating 'dominion.c.gcov'
+
+Playing Smithy card and testing...
+Hand count before Smithy is 5...
+Estate, Copper, Copper, Copper, Smithy, 
+Test PASSED, card is present in player 0's hand
+
+Hand count after Smithy is 6...
+Estate, Copper, Copper, Copper, Copper, Copper, 
+Test PASSED, card is NOT present in player 0's hand
+
+Testing for correct number of cards drawn...
+Test FAILED, Player 0 drew incorrect amount of cards
+
+Checking if Smithy Card is in played pile...
+Test PASSED, Smithy is in played pile
+
+Estate, Copper, Copper, Copper, Copper, Copper, 
+Testing if card is discarded from hand...
+Test PASSED, Smithy is discarded from player 0's hand after use
+
+File 'dominion.c'
+Lines executed:23.28% of 580
+dominion.c:creating 'dominion.c.gcov'
+
+Playing Adventurer card and testing...
+Hand count before Adventurer is 5...
+Estate, Copper, Copper, Copper, Adventurer, 
+Test PASSED, card is present in player 0's hand
+
+Hand count after adventurer is 7...
+Estate, Copper, Copper, Copper, Adventurer, Copper, Copper, 
+Test FAILED, card is present in player 0's hand
+
+Testing for correct number of treasure cards added...
+Test PASSED, two treasure cards are added to player 0's hand
+
+File 'dominion.c'
+Lines executed:25.17% of 580
+dominion.c:creating 'dominion.c.gcov'
+
+Playing Village card and testing...
+Hand count before village is 5...
+Estate, Copper, Copper, Copper, Village, 
+Test PASSED, card is present in player 0's hand
+
+Hand count after village is 5...
+Estate, Copper, Copper, Copper, Copper, 
+Test PASSED, card is NOT present in player 0's hand
+
+Testing for correct number of cards drawn...
+Test PASSED, Player 0 drew +1 cards
+
+Testing for correct number of actions...
+Test FAILED, Player 0 has incorrect number of numActions
+
+Checking if card is in played pile...
+Test PASSED, Village is in played pile
+
+File 'dominion.c'
+Lines executed:26.03% of 580
+dominion.c:creating 'dominion.c.gcov'
+
+Playing Great Hall card and testing...
+Hand count before Great Hall is 5...
+Estate, Copper, Copper, Copper, Great Hall, 
+Test PASSED, card is present in player 0's hand
+
+Hand count after Great Hall is 5...
+Estate, Copper, Copper, Copper, Copper, 
+Test PASSED, card is NOT present in player 0's hand
+
+Testing for correct number of cards drawn...
+Test PASSED, Player 0 drew +1 cards
+
+Testing for correct number of actions...
+Test PASSED, Player 0 has +1 numActions
+
+Checking if card is in played pile...
+Test PASSED, Great Hall is in played pile
+
+File 'dominion.c'
+Lines executed:26.90% of 580
+dominion.c:creating 'dominion.c.gcov'
+
+Function 'compare'
+Lines executed:100.00% of 6
+
+Function 'supplyCount'
+Lines executed:0.00% of 2
+
+Function 'fullDeckCount'
+Lines executed:0.00% of 9
+
+Function 'whoseTurn'
+Lines executed:0.00% of 2
+
+Function 'handCard'
+Lines executed:0.00% of 3
+
+Function 'numHandCards'
+Lines executed:0.00% of 2
+
+Function 'isGameOver'
+Lines executed:30.00% of 10
+
+Function 'scoreFor'
+Lines executed:0.00% of 24
+
+Function 'getWinners'
+Lines executed:0.00% of 24
+
+Function 'getCost'
+Lines executed:0.00% of 30
+
+Function 'discardCard'
+Lines executed:85.71% of 14
+
+Function 'gainCard'
+Lines executed:0.00% of 13
+
+Function 'buyCard'
+Lines executed:0.00% of 18
+
+Function 'updateCoins'
+Lines executed:100.00% of 11
+
+Function 'cutpurseCard'
+Lines executed:0.00% of 14
+
+Function 'shuffle'
+Lines executed:100.00% of 16
+
+Function 'drawCard'
+Lines executed:80.00% of 25
+
+Function 'greatHallCard'
+Lines executed:100.00% of 5
+
+Function 'villageCard'
+Lines executed:100.00% of 5
+
+Function 'smithyCard'
+Lines executed:100.00% of 6
+
+Function 'endTurn'
+Lines executed:0.00% of 20
+
+Function 'adventurerCard'
+Lines executed:78.57% of 14
+
+Function 'cardEffect'
+Lines executed:0.00% of 215
+
+Function 'playCard'
+Lines executed:0.00% of 14
+
+Function 'initializeGame'
+Lines executed:93.55% of 62
+
+Function 'kingdomCards'
+Lines executed:0.00% of 13
+
+Function 'newGame'
+Lines executed:100.00% of 3
+
+File 'dominion.c'
+Lines executed:26.90% of 580
+dominion.c:creating 'dominion.c.gcov'
+

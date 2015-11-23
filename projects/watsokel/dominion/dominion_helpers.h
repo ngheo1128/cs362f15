@@ -13,11 +13,11 @@ int getCost(int cardNumber);
 int smithyEffect(int currentPlayer, struct gameState *state, int handPos); 
 /* Adds three cards to hand. */
 
-int adventurerEffect(struct gameState *state, int currentPlayer); 
+int adventurerEffect(struct gameState *state, int currentPlayer, int handPos); 
 /* Draws cards until two Treasure cards drawn. Adds the two Treasure cards to hand, 
 and discards non-Treasure cards */
 
-int adventurerEffect2(struct gameState *state, int currentPlayer); 
+int adventurerEffect2(struct gameState *state, int currentPlayer, int handPos); 
 /* Draws cards until two Treasure cards drawn. Adds the two Treasure cards to hand, 
 and discards non-Treasure cards (bug introduced) 
 I needed to write a new adventurerEffect() method because my previous buggy version

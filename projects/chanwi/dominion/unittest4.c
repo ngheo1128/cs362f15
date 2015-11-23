@@ -1,4 +1,4 @@
-/* Unit Test 4 - scoreFor()
+/* Unit Test 4 - getCost()
 
 */
 

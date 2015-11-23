@@ -5,10 +5,9 @@ BugsInTeammates.c                   ONID: watsokel
 ----------------------------------------------------------------------------------------------------------------------------
 
 
-
 BUG REPORT FOR TEAMMATE 1 (Jason Flaig; onid: flaigj)
 -----------------------------------------------------
-8 bugs were detected using tests in cardtest1.c and cardtest2.c
+After running all tests, 8 bugs were detected via tests in unittest2, cardtest1.c, cardtest2.c, cardtest3.c.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           SEVERITY  PRIORITY      HOW TO REPRODUCE            
@@ -141,7 +140,7 @@ ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           
 
 BUG REPORT FOR TEAMMATE 2 (Dustin Dinh; onid: dinhd)
 ----------------------------------------------------
-8 bugs were detected using tests in cardtest1.c and cardtest2.c
+After running all tests, 8 bugs were detected via tests in unittest2, cardtest1.c, cardtest2.c, cardtest3.c
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ID  DESCRIPTION                 EXPECTED OUTPUT         ACTUAL OUTPUT           SEVERITY  PRIORITY      HOW TO REPRODUCE            

@@ -1290,13 +1290,14 @@ void executeSmithyCard(int currentPlayer, struct gameState *state, int handPos)
   discardCard(handPos, currentPlayer, state, 0);
 }
 
-void executeAdventurerCard(int drawntreasure, struct gameState *state, int currentPlayer)
+void executeAdventurerCard(int handPos, struct gameState *state, int currentPlayer)
 {
   int cardDrawn;
   int temphand[MAX_HAND];
+  int drawntreasure = 0;
   int z = 0;// this is the counter for the temp hand
 
-  while (drawntreasure < 4) {
+  while (drawntreasure < 2) {
     if (state->deckCount[currentPlayer] < 1)
     {
       //if the deck is empty we need to shuffle discard and add to deck
@@ -1307,10 +1308,8 @@ void executeAdventurerCard(int drawntreasure, struct gameState *state, int curre
 
     //top card of hand is most recently drawn card.
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1];
-
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
     {
-      drawntreasure++;
       drawntreasure++;
     }
     else
@@ -1328,6 +1327,8 @@ void executeAdventurerCard(int drawntreasure, struct gameState *state, int curre
 
     z = z - 1;
   }
+
+  discardCard(handPos, currentPlayer, state, 0);
 }
 
 void executeVillageCard(struct gameState *state, int currentPlayer, int handPos)

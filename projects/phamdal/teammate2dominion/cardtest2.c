@@ -110,7 +110,7 @@ int main() {
 	cardEffect(adventurer, 0, 0, 0, state, 0, 0);  
 
 	if(state->hand[0][5] != gold && state->hand[0][6] != gold) {
-		printf("adventurer_card does shuffle discard pile back into deck as stated\n");
+		printf("adventurer_card doesn't shuffle discard pile back into deck as stated\n");
 		fail3 = 1;  
 	}
 

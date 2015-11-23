@@ -112,7 +112,7 @@ int main (){
     r = initializeGame(2, k, 1, &post);
     post.supplyCount[council_room] = 0;
     post.supplyCount[baron] = 0;
-    post.supplyCount[remodel] = 0;
+    post.supplyCount[treasure_map] = 0;     //Changed this to the last card to make sure bugfix successful
     post.supplyCount[province] = 10; //Make sure province not empty
     memcpy(&pre, &post, sizeof(struct gameState));
     r = isGameOver(&post);

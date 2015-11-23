@@ -12,7 +12,7 @@ unittest2:
 unittest3:
     scoreFor() contains a bug. The gardens card causes errors due to passing
     0 to numHandsCards for the card argument and therefore not actually
-    counting all cards.s
+    counting all cards.
 
 unittest4:
     Since getWinners() uses scoreFor(), it would technically have the same issue listed above.
@@ -28,7 +28,7 @@ cardtest1:
     "Caught introduced bug where adventurer may add more than max 2 treasures (3)"
 
 cardtest2:
-    Testing smithy card showed 1 major bug with the dsicardCard funciton. That funciton does not place
+    Testing smithy card showed 1 major bug with the dsicardCard function. That funciton does not place
     discarded cards in the discard pile or increment the discardCount.
 
     "Caught introduced bug where drawCard() gets called 4 times."
@@ -39,7 +39,7 @@ cardtest3:
 ------------------------------------------------------------------------------------------
 
 /*
-*   Teamate2 Bugs
+*   Teamate1 Bugs Woo Choi
 */
 
 unittest1:

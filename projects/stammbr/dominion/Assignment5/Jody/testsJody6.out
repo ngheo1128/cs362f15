@@ -1,0 +1,116 @@
+Result for running tests for Jody:
+cardTest1.c:
+This is the tests the Smithy card - callSmithy().
+smithy_refactor() Test 1a:  FAIL, discard amounts NOT equal.
+	Test:  1	Saved:  0
+
+ ***************************** 
+
+cardTest2.c:
+This is the tests for the Adventurer card, callAdventurer().
+1:  adventureMethod():  FAIL, error initial, tcount - 3.
+2:  adventureMethod():  FAIL, large deck, last are copper, tcount - 3.
+3:  adventureMethod():  FAIL, random deck.  tcount - 3.
+
+ ***************************** 
+
+cardTest3.c:
+This is the tests for the Council card, in callCouncilRoom().
+This is first initial test for callCouncilRoom.
+Council Test :  FAILED - buy number NOT correct
+	Test:  2	Saved:  1
+
+ ***************************** 
+
+cardTest4.c:
+This is the tests for the Village card, the villageMethod().
+villageMethod() Test 1:  PASS, played card amounts equal.
+	Test:  1	Saved:  1
+villageMethod() Test 1:  PASS, handCount amounts equal.
+	Test:  0	Saved:  0
+villageMethod() Test 1:  PASS, deckCount amounts equal.
+	Test:  9	Saved:  9
+villageMethod() Test :  PASSED - action number correct
+	Test:  3	Saved:  3
+
+ ***************************** 
+
+unitTest1.c:
+shuffle() test 1:  PASSED - first if
+Testing started - increasing card count from 0 to 500
+shuffle() increase random test:  FAIL
+Amount of Cards:  1	Percent same:  100.0
+
+shuffle() increase random test:  FAIL
+Amount of Cards:  2	Percent same:  100.0
+
+shuffle() increasing deck - FAILED  - 2 times
+
+Testing 500 cards, random
+shuffle() random deck - PASSED.
+
+
+ ***************************** 
+
+unitTest2.c:
+This is the tests for the updateCoins() function.
+1- updateCoins():  PASS when all copper, no bonus
+2- updateCoins():  FAIL when all silver, no bonus
+Total:  100	Actual Coins:  10
+3- updateCoins():  FAIL when all gold, no bonus
+Total:  1500	Actual Coins:  15
+4- updateCoins():  FAIL mix, no bonus
+Total:  1001	Actual Coins:  5
+5- updateCoins():  PASS copper, small bonus
+6- updateCoins():  PASS copper, negative bonus
+7- updateCoins():  PASS copper, large bonus
+8- updateCoins():  FAIL mix, extreme large bonus
+Should have:  4294967296	Was:0
+
+ ***************************** 
+
+unitTest3.c:
+This is the tests for the gainCard() function.
+gainCard():  PASSED test one, first if.
+gainCard():  PASSED test two, discard.
+gainCard():  PASSED test three, add card.
+gainCard():  PASSED test four, add card.
+
+ ***************************** 
+
+unitTest4.c:
+This is the tests for the isGameOver() function.
+isGameOver() test:  PASSED 1 - province cards 0
+isGameOver() test:  PASSED 2 - Game not over
+isGameOver() test:  PASSED 3 - Game not over
+isGameOver() test:  PASSED 4 - Game not over
+isGameOver() test:  PASSED 5 - Game over
+isGameOver() test:  FAILED 6b - Game over
+	Number of cards:  2
+	Province supplyCount:  0
+isGameOver() test:  FAILED 6b - Game over
+	Number of cards:  2
+	Province supplyCount:  0
+isGameOver() test failed random 2 times.
+
+ ***************************** 
+
+Result for running random tests.
+Adventurer:
+ 
+This is the tests for the Adventurer card, adventurerMethod().
+------------Final-------------
+Total tests:  100000
+Total errors in random:  100000
+Unknow errors in random:  0
+
+ ***************************** 
+
+Result for running randomtestcard: 
+This is the tests for the Village card, the villageMethod().
+villageMethod() Initialize Tests:  PASSED ALL.
+
+Random Testing to Start
+Total Random Tests:  100000
+villageMethod() Random Test fail number iterations:  0
+villageMethod() Random Test fail number total:  0
