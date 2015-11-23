@@ -1,0 +1,57 @@
+unittest1.c --> 
+
+UNIT TEST 1 COMPLETE with 0 ERRORS
+
+File 'dominion.c'
+Lines executed:33.57% of 563
+Creating 'dominion.c.gcov'
+
+unittest2.c --> 
+
+UNIT TEST 2 COMPLETE with 0 ERRORS
+
+File 'dominion.c'
+Lines executed:33.57% of 563
+Creating 'dominion.c.gcov'
+
+unittest3.c --> 
+
+UNIT TEST 3 COMPLETE with 0 ERRORS
+
+File 'dominion.c'
+Lines executed:33.57% of 563
+Creating 'dominion.c.gcov'
+
+unittest4.c --> 
+
+UNIT TEST 4 COMPLETE with 0 ERRORS
+
+File 'dominion.c'
+Lines executed:33.57% of 563
+Creating 'dominion.c.gcov'
+
+cardtest1.c --> 
+ERROR: player 0 able to play smithy card that's not in hand
+ERROR: 3 cards were not added to player's hand
+ERROR: smithy card never added to discard pile
+
+SMITHY CARD TEST COMPLETE with 3 ERRORS
+
+File 'dominion.c'
+Lines executed:33.57% of 563
+Creating 'dominion.c.gcov'
+
+cardtest2.c --> 
+ TESTING VILLAGE CARD
+ERROR: Player given 0 cards instead of 1.
+ERROR: Village card not properly discarded.
+ TESTING VILLAGE CARD
+ERROR: Player given 0 cards instead of 1.
+ERROR: Village card not properly discarded.
+
+VILLAGE CARD TEST COMPLETE with 4 ERRORS
+
+File 'dominion.c'
+Lines executed:33.57% of 563
+Creating 'dominion.c.gcov'
+

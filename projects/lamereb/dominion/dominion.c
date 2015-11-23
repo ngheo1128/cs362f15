@@ -1144,12 +1144,16 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
 {
 
-  //if card is not trashed, added to Played pile 
+  //if card is not trashed, it's added to Played pile 
   if (trashFlag < 1)
   {
     //add card to played pile
     state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
     state->playedCardCount++;
+  }
+  // otherwise, it is trashed, so it needs to go to the discard pile
+  else {
+    state->discard[currentPlayer][state->discardCount[currentPlayer]++] = state->hand[currentPlayer][handPos];
   }
 
   //set played card to -1
@@ -1269,7 +1273,7 @@ int playAdventureCard(struct gameState *state) {
     //top card of hand is most recently drawn card.
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
 
-    if (cardDrawn == copper || cardDrawn == smithy || cardDrawn == gold)
+    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
       drawntreasure++;
     else {
       temphand[z]=cardDrawn;
@@ -1296,7 +1300,7 @@ int playSmithyCard(struct gameState *state, int handPos) {
   }
 
   //discard card from hand
-  discardCard(handPos, currentPlayer, state, 1);
+  discardCard(handPos, currentPlayer, state, 0);
   return 0;
 
 }
@@ -1305,7 +1309,6 @@ int playVillageCard(struct gameState *state, int handPos) {
   int currentPlayer = whoseTurn(state);
 
   //+1 Card
-  drawCard(currentPlayer, state);
   drawCard(currentPlayer, state);
 
   //+2 Actions
@@ -1339,7 +1342,7 @@ int playCouncilRoomCard(struct gameState *state, int handPos) {
   }
 
   //put played card in played card pile
-  discardCard(handPos, currentPlayer, state, 1);
+  discardCard(handPos, currentPlayer, state, 0);
 
   return 0;
 }
