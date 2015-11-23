@@ -1,0 +1,10 @@
+/*
+Bug report
+
+Smithy card bug
+	Smithy card adds too many cards to players hand
+
+Adventurer card bug
+	Adventurer card draws one to little cards.
+	
+*/

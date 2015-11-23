@@ -1,0 +1,8 @@
+Running randomtestcard tests:
+-------randomtestcard.c:
+randomcardtest - Testing smithy card
+Test failed. Wrong final number cards in hand
+File 'dominion.c'
+Lines executed:24.78% of 569
+Creating 'dominion.c.gcov'
+
