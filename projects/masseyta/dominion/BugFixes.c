@@ -3,8 +3,9 @@
 Title: BugFixes.c
 Assignment: 5
 
-Purpose: Record bugs reported to me in dominion code and the code corrections
-implemented as a fix
+Purpose: Record bugs reported to me in dominion code and record the code corrections
+implemented to fix bugs. Fix bugs not found by teammates that were originally
+mentioned in refactor.c
 ******************************************************************************
 
 ------------------------   Bug #1 ----------------------------
@@ -83,28 +84,23 @@ Class:              Bug, Major
 Reporter:           Connor Peavey
 Email:              Connorpeavey@gmail.com
 
-Environment:    	Tests run on GNU/Linux on server flip3
-Reproducible:       True
+Description:   	    While running unit test on cardEffect it was discovered that current players hand was 
+                    being increased by 3 instead of 2. 
 
-Description:   		While running unit test on cardEffect it was discovered that current players hand was 
-                	being increased by 3 instead of 2. 
-
-Replication:    	Create a gamestate. The necessary requirements for creating the bug is that the current 
-                	player have a smithy card. Then the player must play the card. Bug occurs.
 
 Expected Results:   Current player hand is increased by 2.
 Actual Results:     Current player hand is increased by 3.
 
-Title: Smithy card effect draws too many cards
-Class: Bug, major
+Title: 		    Smithy card effect draws too many cards
+Class: 		    Bug, major
 
-Reporter: Sharon Kuo
-Email: kuos@oregonstate.edu
+Reporter: 	   Sharon Kuo
+Email: 		   kuos@oregonstate.edu
 
-Description:		Used a unit test written for the smithy card function to compare values of the
-					player's hand count, deck count, discarded card count, and played card count
-					from before and after playing the smithy card. The hand count and deck counts
-					are not as expected. 
+Description:	   Used a unit test written for the smithy card function to compare values of the
+      		  player's hand count, deck count, discarded card count, and played card count
+		  from before and after playing the smithy card. The hand count and deck counts
+		  are not as expected. 
 
 Expected Results:	game.handCount[0] = 5       game.deckCount[0] = 2
 Actual Results:		game.handCount[0] = 6
@@ -130,7 +126,7 @@ REPORTED: 		Not reported by teammates
 Class: 			Bug, minor
 
 Description: 	When baron card is played the current player gains a duchy instead
-				of an estate.
+		of an estate.
 
 Expected Results:	testState->supplyCount[duchy] == state->supplyCount[duchy] -1
 Actual Results:		testState->supplyCount[duchy] == state->supplyCount[duchy]
@@ -158,8 +154,8 @@ REPORTED: 		Not reported by teammates
 Class: 			Bug, minor
 
 Description:	Call the steward card function. Select to have two cards trashed. The
-				cards not indicating a trashed status. The cards are indicating a
-				discarded status.
+		cards not indicating a trashed status. The cards are indicating a
+		discarded status.
 
 Expected Results:	testState->discardCount < 2
 Actual Results:		testState->discardCount > 2
@@ -271,10 +267,10 @@ Reporter: 		Sharon Kuo
 Email: 			kuos@oregonstate.edu
 
 Description:	Used a unit test written for the scoreFor() function to calculate the score for
-				players based on some generated sets of decks. Compared expected score with
-				actual score for the following scenarios: empty deck, hand, and discard pile;
-				15 kingdom and 3 garden cards; 15 treasure and 3 garden cards; 9 estate, 3
-				duchy, 3 province, and 3 curse cards.
+		players based on some generated sets of decks. Compared expected score with
+		actual score for the following scenarios: empty deck, hand, and discard pile;
+		15 kingdom and 3 garden cards; 15 treasure and 3 garden cards; 9 estate, 3
+		duchy, 3 province, and 3 curse cards.
 
 Expected Results:	15 kingdom cards and 3 garden cards (total of 18 cards): score = 3
 					15 treasure cards and 3 garden cards (total of 18 cards): score = 3
@@ -353,4 +349,4 @@ Removed the if statement matching to card zero, instead allowing for full card c
 
   return count;
 
-  CHECKED RESULTS WITH TEST: 	Score = 3
+  CHECKED RESULTS WITH TEST: 	Score = 3, correct
