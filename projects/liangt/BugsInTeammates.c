@@ -89,7 +89,7 @@ Coppers drawn: 6357
 Silvers drawn: 6723
 Golds drawn: 6920
 
-Random testing buggyVillage():
+Random testing village via cardEffect():
 Test Runs: 10000
 Total Sub-tests: 40000
 Sub-tests passed: 20557
