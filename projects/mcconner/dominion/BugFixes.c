@@ -1,3 +1,5 @@
+/*
+
 Rachael McConnell
 Assignment 5
 CS362 Fall 2015
@@ -40,3 +42,6 @@ isGameOver
 GreatHall
 	Bug 1: Once the card is used, it should be discarded and discardCount should increment. It is not incrementing.
 	Bug 1 Fix: I edited the discardCard() function to increment discardCount.
+
+
+*/

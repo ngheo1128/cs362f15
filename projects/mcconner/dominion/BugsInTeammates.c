@@ -1,3 +1,5 @@
+/*
+
 Rachael McConnell
 Assignment 5
 CS362 Fall 2015
@@ -42,3 +44,5 @@ Adventurer:
 
 Village:
 	-The number of actions did not increase by 1 as was expected.
+
+*/
