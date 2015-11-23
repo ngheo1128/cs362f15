@@ -32,8 +32,7 @@ RANDOM TESTS:
 TEST NAME             RESULT                              COVERAGE
 randomtestcard:       FAIL for all 2000 random tests      20.75 %
 
-randomtestcard:  FAIL for all 2000 random tests
-                 (Smithy did not add expected number of cards to player's hand)
+    Smithy did not add expected number of cards to player's hand.
 
     The fault is located in function smithyEffect of dominion.c at line 687:
         for (i = 0; i < 4; i++)
@@ -55,8 +54,9 @@ randomtestadventurer: PASS for all 2000 random tests      21.84 %
 
         if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 
-    This line is missing the gold condition (in other words, it only checks for copper or silver).
-    Although this error is not causing the game to crash, the function should check for all three
-    treasure cards to generate the desired behavior.
+    This line is missing the gold condition (in other words, it only checks
+    for copper or silver). Although this error is not causing the game to
+    crash, the function should check for all three treasure cards to
+    generate the desired behavior.
 
 */
