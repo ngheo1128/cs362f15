@@ -2,7 +2,7 @@
 randomtestcard.c
 Sharon Kuo (kuos@oregonstate.edu)
 CS362-400: Assignment 3
-Description: Radnom testing for the smithy card, as implemented in smithyCard().
+Description: Random testing for the smithy card, as implemented in smithyCard().
   Adds three cards to the player's hand.
 ******************************************************************************/
 
