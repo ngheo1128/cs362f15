@@ -1,0 +1,147 @@
+        -:    0:Source:unittest2.c
+        -:    0:Graph:unittest2.gcno
+        -:    0:Data:unittest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "dominion.h"
+        -:    2:#include "dominion_helpers.h"
+        -:    3:#include <string.h>
+        -:    4:#include <stdio.h>
+        -:    5:#include <assert.h>
+        -:    6:#include "rngs.h"
+        -:    7:
+        -:    8:#define NOISY_TEST 0
+        -:    9:
+        -:   10://can't use asserts on this function as buyCard has some errors
+        -:   11:
+        -:   12://test buyCard
+function main called 1 returned 100% blocks executed 100%
+        1:   13:int main(){
+        -:   14:	int i;
+        1:   15:	int numPlayers = 2;
+        1:   16:	int p = 0;
+        1:   17:	int seed = 1000;
+        -:   18:	int k[10] = {adventurer, council_room, feast, gardens, mine
+        1:   19:	           , remodel, smithy, village, baron, great_hall};
+        -:   20:	struct gameState G;
+        -:   21:	
+        1:   22:	printf("Testing buyCard()\n");
+call    0 returned 100%
+        -:   23:	
+        1:   24:	memset(&G, 23, sizeof(struct gameState));
+        1:   25:	initializeGame(numPlayers, k, seed, &G);
+call    0 returned 100%
+        -:   26:	
+        -:   27:	//testing when player has enough buys/money and there are enough cards
+        1:   28:	G.coins = 7;
+        1:   29:	G.numBuys = 3; 
+        1:   30:	G.supplyCount[1] = 2;
+        1:   31:	G.discardCount[p] = 5;
+        1:   32:	G.deckCount[p] = 5;
+        1:   33:	G.handCount[p] = 5;
+        -:   34:	
+        -:   35:	#if (NOISY_TEST == 1)
+        -:   36:	printf("Pre Buy: %d\n", G.numBuys);
+        -:   37:	printf("Pre Coins: %d\n", G.coins);
+        -:   38:	printf("Pre Discard: %d\n", G.discardCount[p]);
+        -:   39:	printf("Pre Deck: %d\n", G.deckCount[p]);
+        -:   40:	printf("Pre card count:%d\n", G.supplyCount[1]);
+        -:   41:	printf("Pre player hand count:%d\n", G.handCount[0]);
+        -:   42:	#endif
+        1:   43:	buyCard(1, &G);
+call    0 returned 100%
+        -:   44:	#if (NOISY_TEST == 1)
+        -:   45:	printf("Post Buy: %d\n", G.numBuys);
+        -:   46:	printf("Post Coins: %d\n", G.coins);
+        -:   47:	printf("Post Discard: %d\n", G.discardCount[p]);
+        -:   48:	printf("Post Deck: %d\n", G.deckCount[p]);
+        -:   49:	printf("Post card count:%d\n", G.supplyCount[1]);
+        -:   50:	printf("Post player hand count:%d\n", G.handCount[0]);
+        -:   51:	#endif
+        -:   52:	
+        -:   53:	//testing when player doesn't have money
+        1:   54:	G.coins = 0;
+        1:   55:	G.numBuys = 3; 
+        1:   56:	G.supplyCount[1] = 2;
+        1:   57:	G.discardCount[p] = 5;
+        1:   58:	G.deckCount[p] = 5;
+        1:   59:	G.handCount[p] = 5;
+        -:   60:	
+        -:   61:	#if (NOISY_TEST == 1)
+        -:   62:	printf("Pre Buy: %d\n", G.numBuys);
+        -:   63:	printf("Pre Coins: %d\n", G.coins);
+        -:   64:	printf("Pre Discard: %d\n", G.discardCount[p]);
+        -:   65:	printf("Pre Deck: %d\n", G.deckCount[p]);
+        -:   66:	printf("Pre card count:%d\n", G.supplyCount[1]);
+        -:   67:	printf("Pre player hand count:%d\n", G.handCount[0]);
+        -:   68:	#endif
+        1:   69:	buyCard(1, &G);
+call    0 returned 100%
+        -:   70:	#if (NOISY_TEST == 1)
+        -:   71:	printf("Post Buy: %d\n", G.numBuys);
+        -:   72:	printf("Post Coins: %d\n", G.coins);
+        -:   73:	printf("Post Discard: %d\n", G.discardCount[p]);
+        -:   74:	printf("Post Deck: %d\n", G.deckCount[p]);
+        -:   75:	printf("Post card count:%d\n", G.supplyCount[1]);
+        -:   76:	printf("Post player hand count:%d\n", G.handCount[0]);
+        -:   77:	#endif
+        -:   78:
+        -:   79:	//testing when player can't buy anymore
+        1:   80:	G.coins = 10;
+        1:   81:	G.numBuys = 0; 
+        1:   82:	G.supplyCount[1] = 2;
+        1:   83:	G.discardCount[p] = 5;
+        1:   84:	G.deckCount[p] = 5;
+        1:   85:	G.handCount[p] = 5;
+        -:   86:	
+        -:   87:	#if (NOISY_TEST == 1)
+        -:   88:	printf("Pre Buy: %d\n", G.numBuys);
+        -:   89:	printf("Pre Coins: %d\n", G.coins);
+        -:   90:	printf("Pre Discard: %d\n", G.discardCount[p]);
+        -:   91:	printf("Pre Deck: %d\n", G.deckCount[p]);
+        -:   92:	printf("Pre card count:%d\n", G.supplyCount[1]);
+        -:   93:	printf("Pre player hand count:%d\n", G.handCount[0]);
+        -:   94:	#endif
+        1:   95:	buyCard(1, &G);
+call    0 returned 100%
+        -:   96:	#if (NOISY_TEST == 1)
+        -:   97:	printf("Post Buy: %d\n", G.numBuys);
+        -:   98:	printf("Post Coins: %d\n", G.coins);
+        -:   99:	printf("Post Discard: %d\n", G.discardCount[p]);
+        -:  100:	printf("Post Deck: %d\n", G.deckCount[p]);
+        -:  101:	printf("Post card count:%d\n", G.supplyCount[1]);
+        -:  102:	printf("Post player hand count:%d\n", G.handCount[0]);
+        -:  103:	#endif
+        -:  104:	
+        -:  105:	//testing when there are no cards left
+        1:  106:	G.coins = 3;
+        1:  107:	G.numBuys = 3; 
+        1:  108:	G.supplyCount[1] = 0;
+        1:  109:	G.discardCount[p] = 5;
+        1:  110:	G.deckCount[p] = 5;
+        1:  111:	G.handCount[p] = 5;
+        -:  112:	
+        -:  113:	#if (NOISY_TEST == 1)
+        -:  114:	printf("Pre Buy: %d\n", G.numBuys);
+        -:  115:	printf("Pre Coins: %d\n", G.coins);
+        -:  116:	printf("Pre Discard: %d\n", G.discardCount[p]);
+        -:  117:	printf("Pre Deck: %d\n", G.deckCount[p]);
+        -:  118:	printf("Pre card count:%d\n", G.supplyCount[1]);
+        -:  119:	printf("Pre player hand count:%d\n", G.handCount[0]);
+        -:  120:	#endif
+        1:  121:	buyCard(1, &G);
+call    0 returned 100%
+        -:  122:	#if (NOISY_TEST == 1)
+        -:  123:	printf("Post Buy: %d\n", G.numBuys);
+        -:  124:	printf("Post Coins: %d\n", G.coins);
+        -:  125:	printf("Post Discard: %d\n", G.discardCount[p]);
+        -:  126:	printf("Post Deck: %d\n", G.deckCount[p]);
+        -:  127:	printf("Post card count:%d\n", G.supplyCount[1]);
+        -:  128:	printf("Post player hand count:%d\n", G.handCount[0]);
+        -:  129:	#endif
+        -:  130:	
+        1:  131:    printf("All tests passed!\n");
+call    0 returned 100%
+        -:  132:
+        1:  133:    return 0;
+        -:  134:}

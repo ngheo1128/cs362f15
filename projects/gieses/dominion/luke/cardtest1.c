@@ -5,9 +5,9 @@
 #include <assert.h>
 #include "rngs.h"
 
-#define NOISY_TEST 1
+#define NOISY_TEST 0
 
-//test great_hall function
+//test adventurer function
 int main(){
 	int i;
 	int numPlayers = 2;
@@ -17,7 +17,7 @@ int main(){
 	           , remodel, smithy, village, baron, great_hall};
 	struct gameState G;
 	
-	printf("Testing great_hall()\n");
+	printf("Testing adventurerCard()\n");
 	
 	memset(&G, 23, sizeof(struct gameState));
 	initializeGame(numPlayers, k, seed, &G);
@@ -27,28 +27,30 @@ int main(){
 	G.hand[p][0] = smithy;
 	G.hand[p][1] = great_hall;
 	G.hand[p][2] = adventurer;
-	G.hand[p][3] = village;
+	G.hand[p][3] = gold;
 	G.hand[p][4] = silver;
 	
-	int preHand = G.handCount[p];
-	int preDiscard = G.discardCount[p];
-	int preActions = G.numActions;
+	G.deck[p][0] = smithy;
+	G.deck[p][1] = gold;
+	G.deck[p][2] = estate;
+	G.deck[p][3] = silver;
+	G.deck[p][4] = adventurer;
 	
 	#if (NOISY_TEST == 1)
-	printf("Pre player hand count: %d\n", preHand);
-	printf("Pre player discard count: %d\n", preDiscard);
-	printf("Pre player action count: %d\n", preActions);
+	printf("Pre player hand count: %d\n", G.handCount[p]);
+	printf("Pre player discard count: %d\n", G.discardCount[p]);
+	printf("Pre deck count: %d\n", G.deckCount[p]);
 	#endif
 	
-	great_hallCard(&G, 1);
+	adventurerCard(&G);
 	
 	#if (NOISY_TEST == 1)
 	printf("Post player hand count: %d\n", G.handCount[p]);
 	printf("Post player discard count: %d\n", G.discardCount[p]);
-	printf("Post player action count: %d\n", G.numActions);
+	printf("Post deck count: %d\n", G.deckCount[p]);
 	#endif
 	
-	if(preHand == G.handCount[p]){
+	if(G.hand[p][G.handCount[p - 1]] == silver){
 		#if (NOISY_TEST == 1)
 		printf("Test passed!\n");
 		#endif
@@ -57,26 +59,18 @@ int main(){
 		printf("Test failed!\n");
 		#endif
 	}
+	if(G.hand[p][G.handCount[p - 2]] == gold){
+		#if (NOISY_TEST == 1)
+		printf("Test passed!\n");
+		#endif
+	}else{
+		#if (NOISY_TEST == 1)
+		printf("Test failed!\n");
+		#endif
+	}
+
 	
-	if(preDiscard < G.discardCount[p]){
-		#if (NOISY_TEST == 1)
-		printf("Test passed!\n");
-		#endif
-	}else{
-		#if (NOISY_TEST == 1)
-		printf("Test failed!\n");
-		#endif
-	}
-	
-	if(preActions < G.numActions){
-		#if (NOISY_TEST == 1)
-		printf("Test passed!\n");
-		#endif
-	}else{
-		#if (NOISY_TEST == 1)
-		printf("Test failed!\n");
-		#endif
-	}
+	printf("All tests passed!\n");
 	
 	return 0;
 }

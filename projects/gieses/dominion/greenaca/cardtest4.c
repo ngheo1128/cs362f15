@@ -5,9 +5,9 @@
 #include <assert.h>
 #include "rngs.h"
 
-#define NOISY_TEST 1
+#define NOISY_TEST 0
 
-//test great_hall function
+//test village function
 int main(){
 	int i;
 	int numPlayers = 2;
@@ -17,7 +17,7 @@ int main(){
 	           , remodel, smithy, village, baron, great_hall};
 	struct gameState G;
 	
-	printf("Testing great_hall()\n");
+	printf("Testing village card()\n");
 	
 	memset(&G, 23, sizeof(struct gameState));
 	initializeGame(numPlayers, k, seed, &G);
@@ -40,7 +40,7 @@ int main(){
 	printf("Pre player action count: %d\n", preActions);
 	#endif
 	
-	great_hallCard(&G, 1);
+	villageCard(&G, 3);
 	
 	#if (NOISY_TEST == 1)
 	printf("Post player hand count: %d\n", G.handCount[p]);
@@ -48,7 +48,7 @@ int main(){
 	printf("Post player action count: %d\n", G.numActions);
 	#endif
 	
-	if(preHand == G.handCount[p]){
+	if(preHand < G.handCount[p]){
 		#if (NOISY_TEST == 1)
 		printf("Test passed!\n");
 		#endif

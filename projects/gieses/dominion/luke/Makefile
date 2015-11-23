@@ -78,7 +78,7 @@ randomtestcard.out: dominion.c rngs.o interface.o
 	gcov -b dominion.c >> randomtestcard.out
 	
 randomtestadventurer.out: dominion.c rngs.o interface.o
-	echo "Result for random test adventurer:" > randomtestadventurer.out
+	echo "Result for random test card:" > randomtestcard.out
 	
 	gcc -o randomtestadventurer randomtestadventurer.c -g dominion.c rngs.o interface.o $(CFLAGS)
 	randomtestadventurer >> randomtestadventurer.out
