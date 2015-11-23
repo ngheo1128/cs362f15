@@ -211,7 +211,7 @@ void playAdventurer(struct gameState *state) {
 	}
 	drawCard(currentPlayer, state);
 	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	if (cardDrawn == copper || cardDrawn == silver)
+	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 	  drawntreasure++;
 	else{
 	  temphand[z]=cardDrawn;
@@ -230,7 +230,7 @@ void playSmithy(struct gameState *state, int handPos) {
 	
 	int i; //loop counter
 	int currentPlayer = whoseTurn(state);
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -274,7 +274,7 @@ void playFeast(struct gameState *state, int choice1) {
       //Backup hand
 
       //Update Coins for Buy
-      updateCoins(currentPlayer, state, 4);
+      updateCoins(currentPlayer, state, 5);
       int x = 1;//Condition to loop on
       while( x == 1) {//Buy one card
 	if (supplyCount(choice1, state) <= 0){
