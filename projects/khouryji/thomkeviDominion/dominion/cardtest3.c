@@ -1,53 +1,147 @@
-/* -----------------------------------------------------------------------
- * Unit test for dominion-base playSmithy function
- * Include the following lines in your makefile:
- *
- * cardtest3: cardtest3.c dominion.c rngs.c
- *      gcc -o cardtest3 cardtest3.c dominion.c rngs.c $(CFLAGS)
- * -----------------------------------------------------------------------
- */
-
 #include "dominion.h"
-#include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
-#include "rngs.h"
+#include "unittestHelper.h"
+#include <stdlib.h>
+#include <limits.h>
 
-int main() {
 
-  int seed = 1000;
-  int numPlayer = 2;
-  int p, r, handCount, initHandCount, initPlayedCount;
-  int k[10] = {adventurer, council_room, feast, gardens, mine
-             , remodel, smithy, village, baron, great_hall};
-  struct gameState G;
-  int maxHandCount = 5;
+int main()
+{
+  int i;
+  int TEST_TIMES= 3;
+  struct gameState testerState;
+  srand(time(0));
 
-  printf ("TESTING playSmithy():\n");
+  printf("*****************************************************\n");
+  printf("*CARDTEST3 Suite \n");
+  printf("  (tests STEWARD with 3 semi-random states)\n");
+  printf("*****************************************************\n");
+  for(i=0; i<TEST_TIMES; i++)
+  {    
+    createRandState(&testerState);
+    testerState.handCount[testerState.whoseTurn]= rand() % 13 +1;
+    unittest2(&testerState);
+  }
   
-  p = 0; // set player 0
+  return 0;
+}
   
-  memset(&G, 23, sizeof(struct gameState));   // clear the game state
-  r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
-  r = gainCard(smithy, &G, 2, p); // add smithy to player 0s hand
+//Tests drawCard()
+unittest2(struct gameState *state)
+{
+  int i, b, r, test[E_playedCardCount+1]= {0};
+  int handPos=0,
+    choice,
+    cardChoice1,
+    cardChoice2;
+
+  int hand[1]={-1}, //arrays that show how many players may have differences in those attributes after call
+    handCount[1]={-1},
+    deck[1]={-1},
+    deckCount[1]={-1},
+    discard[1]={-1},
+    discardCount[1]={-1};
 
 
-  initPlayedCount = G.playedCardCount;
-  initHandCount = G.handCount[p];
+  int hLen=1,
+    hcLen=1,
+    deLen=1,
+    decLen=1,
+    diLen=1,
+    dicLen=1;
 
-  r = playSmithy(&G, 0, initHandCount - 1);
+  struct gameState copyState, afterCopy;
   
-  //+1 played card count
-  printf("G.playedCardCount = %d, expected = %d\n", G.playedCardCount, initPlayedCount + 1);
-  assert(G.playedCardCount == initPlayedCount + 1); // check if the played card count is correct
-
-  // +3 cards - Discard Smithy = Net +2
-  printf("G.handCount[p] = %d, expected = %d\n", G.handCount[p], initHandCount + 2);
-  assert(G.handCount[p] == initHandCount + 2); // check if the handcount is correct
   
-  printf("All tests passed!\n");
+  //snapshot of state BEFORE
+  copyState= *state;
+
+  choice= rand() % 3 + 1;
+  cardChoice1= 1;
+  cardChoice2= 2;
+  handPos= 0;
+  playSteward(choice, cardChoice1, cardChoice2,state->whoseTurn, handPos, state);
+
+  //snapshot of state AFTER
+  afterCopy= *state;
+
+  if(cardChoice1== cardChoice2
+  ||cardChoice2== handPos
+  ||cardChoice1== handPos)
+  {
+    return;
+  }
+
+  discard[0]= afterCopy.whoseTurn;
+  discardCount[0]= afterCopy.whoseTurn;
+  switch(choice)
+  {
+    case 1:
+      hand[0]= afterCopy.whoseTurn;
+      handCount[0]= afterCopy.whoseTurn;    
+      deck[0]= afterCopy.whoseTurn;
+      deckCount[0]= afterCopy.whoseTurn;
+      //check if handCount went up by 1 (draw 2 cards and discard STEWARD)
+      if(afterCopy.handCount[afterCopy.whoseTurn]!= copyState.handCount[copyState.whoseTurn]+ 1)
+      {
+            printf("Test handCount+=1: FAILED\n");
+            printf("handCount Before: %d\n", copyState.handCount[copyState.whoseTurn]);
+            printf("handCount After: %d\n\n", afterCopy.handCount[afterCopy.whoseTurn]);
+      }
+      //check if STEWARD was discarded
+      if(afterCopy.discardCount[afterCopy.whoseTurn]!= copyState.discardCount[copyState.whoseTurn]- 1)
+        { 
+            printf("Test discardCount+=3: FAILED\n");
+            printf("discardCount Before: %d\n", copyState.handCount[copyState.whoseTurn]);
+            printf("discardCount After: %d\n\n", afterCopy.handCount[afterCopy.whoseTurn]);
+        }
+      break;
+    case 2:
+      //check if coins went up by 2
+      if(afterCopy.coins!= copyState.coins+ 2)
+      {
+            printf("Test coins+=2: FAILED\n");
+            printf("coins Before: %d\n", copyState.coins);
+            printf("coins After: %d\n\n", afterCopy.coins);
+      }
+      //check if STEWARD was discarded
+      if(afterCopy.discardCount[afterCopy.whoseTurn]!= copyState.discardCount[copyState.whoseTurn]- 1)
+        { 
+            printf("Test discardCount+=3: FAILED\n");
+            printf("discardCount Before: %d\n", copyState.handCount[copyState.whoseTurn]);
+            printf("discardCount After: %d\n\n", afterCopy.handCount[afterCopy.whoseTurn]);
+        }
+      break;
+    case 3:
+        hand[0]= afterCopy.whoseTurn;
+        handCount[0]= afterCopy.whoseTurn;
+        discard[0]= afterCopy.whoseTurn;
+        discardCount[0]= afterCopy.whoseTurn;
+        deck[0]= afterCopy.whoseTurn;
+        deckCount[0]= afterCopy.whoseTurn;
+        //check if handCount went down by 3 (discard 2 cards of choice and discard STEWARD)
+        if(afterCopy.handCount[afterCopy.whoseTurn]!= copyState.handCount[copyState.whoseTurn]- 3)
+        { 
+            printf("Test handCount-=3: FAILED\n");
+            printf("handCount Before: %d\n", copyState.handCount[copyState.whoseTurn]);
+            printf("handCount After: %d\n\n", afterCopy.handCount[afterCopy.whoseTurn]);
+        }
+        //check if discardCount went up by 3 (discard 2 cards of choice and discard STEWARD)
+        if(afterCopy.discardCount[afterCopy.whoseTurn]!= copyState.discardCount[copyState.whoseTurn]- 3)
+        { 
+            printf("Test discardCount+=3: FAILED\n");
+            printf("discardCount Before: %d\n", copyState.handCount[copyState.whoseTurn]);
+            printf("discardCount After: %d\n\n", afterCopy.handCount[afterCopy.whoseTurn]);
+        }
+      break;
+  }  
+
+  //******************************************************************************
+  //Find all changes to gamestate and print errors if changes were not expected
+  printBadDiffs(&copyState, &afterCopy, test, hand, hLen, handCount, hcLen, discard, diLen, discardCount, dicLen, deck, deLen, deckCount, decLen);  
 
   return 0;
-
 }
+
+
