@@ -1115,7 +1115,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 int smithyEffect(int currentPlayer, int handPos, struct gameState *state) {
     //+3 Cards
     int i;
-    for (i == 0; i < 3; i++)
+    for (i = 0; i < 3; i++)
     {
         drawCard(currentPlayer, state);
     }
@@ -1127,9 +1127,10 @@ int smithyEffect(int currentPlayer, int handPos, struct gameState *state) {
 
 int adventurerEffect(int currentPlayer, int handPos, struct gameState *state) {
     int temphand[MAX_HAND];// moved above the if statement
-    int z;
+    int z = 0;
     int drawntreasure = 0;
     int cardDrawn;
+    discardCard(handPos, currentPlayer, state, 0);
     while(drawntreasure<2){
         if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
             shuffle(currentPlayer, state);
@@ -1148,10 +1149,12 @@ int adventurerEffect(int currentPlayer, int handPos, struct gameState *state) {
         state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
     }
+
     return 0;
 }
 
 int council_roomEffect(int currentPlayer, int handPos, struct gameState *state) {
+    state->numBuys++;//Increase buys by 1!
     int i = 0;
     //+4 Cards
     for (i = 0; i < 4; i++)
@@ -1264,7 +1267,7 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
   return 0;
 }
 
-int villageEffect(int handPos, int currentPlayer, struct gameState *state) {
+int villageEffect(int currentPlayer, int handPos, struct gameState *state) {
     //+1 Card
     drawCard(currentPlayer, state);
 
