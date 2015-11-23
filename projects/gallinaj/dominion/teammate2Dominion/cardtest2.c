@@ -5,16 +5,13 @@
 #include <math.h>
 #include <stdlib.h>
 
-int testRefAdventurer(struct gameState *state);
 
+int testRefSmithy(struct gameState *state, int handPos);
 
-int testRefAdventurer(struct gameState *state) {
+int testRefSmithy(struct gameState *state, int handPos) {
 
-    int z = 0;
+    int i;
     int currentPlayer = whoseTurn(state);
-    int temphand[MAX_HAND];
-    int cardDrawn;
-    int drawntreasure = 0;
 
     int tempDeckCount = 0;
     int tempDiscardCount = 0;
@@ -24,23 +21,14 @@ int testRefAdventurer(struct gameState *state) {
     tempDeckCount = state->deckCount[currentPlayer];
     tempDiscardCount = state->discardCount[currentPlayer];
 
-    while(drawntreasure <= 2){
-        if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
-          shuffle(currentPlayer, state);
-        }
+      //+3 Cards
+    for (i = 1; i < 3; i++)
+    {
         drawCard(currentPlayer, state);
-        cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-          drawntreasure++;
-        else{
-          temphand[z] = cardDrawn;
-          state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-          z++;
-        }
-      }
+    }
 
       printf("Testing deck count decrease\n");
-      if(state->deckCount[currentPlayer] < (tempDeckCount - 2))
+      if(state->deckCount[currentPlayer] != (tempDeckCount - 3))
       {
           printf("Test failed\n");
           fail++;
@@ -51,13 +39,11 @@ int testRefAdventurer(struct gameState *state) {
           pass++;
       }
 
-      while(z - 1 >= 0){
-        state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z-1]; // discard all cards in play that have been drawn
-        z = z - 1;
-      }
+      //discard card from hand
+    discardCard(handPos, currentPlayer, state, 0);
 
       printf("Testing discard count increase\n");
-      if(state->discardCount[currentPlayer] >= (tempDiscardCount + 7))
+      if(state->discardCount[currentPlayer] >= (tempDiscardCount + 8)) //Normal discard of 5 plus extra 3
       {
           printf("Test failed\n");
           fail++;
@@ -67,11 +53,8 @@ int testRefAdventurer(struct gameState *state) {
           printf("Test passed\n");
           pass++;
       }
-
-//      printf("%d tests passed, %d tests failed\n", pass, fail);
-
-
       return 0;
+
 }
 
 int main()
@@ -79,17 +62,18 @@ int main()
     int retValue;
     int seed = 1000;
     int numPlayers = 2;
+    int handPos = 1;
 
     struct gameState G;
 
     int kings[10] = {adventurer, council_room, feast, gardens, mine,
                      remodel, smithy, village, baron, great_hall};
 
-    printf("*****Testing refactored Adventurer function*****\n");
+    printf("*****Testing Smithy function*****\n");
 
     initializeGame(numPlayers, kings, seed, &G);
 
-    retValue = testRefAdventurer(&G);
+    retValue = testRefSmithy(&G, handPos);
 
     if(retValue == 0)
     {

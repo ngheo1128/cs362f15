@@ -10,11 +10,11 @@ int testRefAdventurer(struct gameState *state);
 
 int testRefAdventurer(struct gameState *state) {
 
-    int z = 0;
     int currentPlayer = whoseTurn(state);
     int temphand[MAX_HAND];
+    int drawntreasure=0;
     int cardDrawn;
-    int drawntreasure = 0;
+    int z = 0;
 
     int tempDeckCount = 0;
     int tempDiscardCount = 0;
@@ -24,23 +24,23 @@ int testRefAdventurer(struct gameState *state) {
     tempDeckCount = state->deckCount[currentPlayer];
     tempDiscardCount = state->discardCount[currentPlayer];
 
-    while(drawntreasure <= 2){
+    while(drawntreasure<2){
         if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
-          shuffle(currentPlayer, state);
+            shuffle(currentPlayer, state);
         }
         drawCard(currentPlayer, state);
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
         if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-          drawntreasure++;
+            drawntreasure++;
         else{
-          temphand[z] = cardDrawn;
-          state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-          z++;
+            temphand[z]=cardDrawn;
+            state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+            z++;
         }
-      }
+    }
 
       printf("Testing deck count decrease\n");
-      if(state->deckCount[currentPlayer] < (tempDeckCount - 2))
+      if(state->deckCount[currentPlayer] > (tempDeckCount - 2))
       {
           printf("Test failed\n");
           fail++;
@@ -51,10 +51,10 @@ int testRefAdventurer(struct gameState *state) {
           pass++;
       }
 
-      while(z - 1 >= 0){
-        state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z-1]; // discard all cards in play that have been drawn
-        z = z - 1;
-      }
+    while(z-1>0){
+        state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
+        z=z-1;
+    }
 
       printf("Testing discard count increase\n");
       if(state->discardCount[currentPlayer] >= (tempDiscardCount + 7))
@@ -85,7 +85,7 @@ int main()
     int kings[10] = {adventurer, council_room, feast, gardens, mine,
                      remodel, smithy, village, baron, great_hall};
 
-    printf("*****Testing refactored Adventurer function*****\n");
+    printf("*****Testing Adventurer function*****\n");
 
     initializeGame(numPlayers, kings, seed, &G);
 
