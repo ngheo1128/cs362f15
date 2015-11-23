@@ -1,0 +1,770 @@
+Adventurer random card test results:
+randomtestadventurer.c:
+
+Starting to test Adventurer card...
+
+The treasure count is: 3
+
+Card 0 is 7.
+
+Card 1 is 19.
+
+Card 2 is 4.
+
+Card 3 is 4.
+
+Card 4 is 20.
+
+Card 5 is 0.
+
+Card 6 is 20.
+
+Card 7 is 0.
+
+Card 8 is 3.
+
+Card 9 is 0.
+
+Card 10 is 9.
+
+Card 11 is 0.
+
+Card 12 is 3.
+
+Card 13 is 0.
+
+Card 14 is 2.
+
+Card 15 is 0.
+
+Card 16 is 11.
+
+Card 17 is 0.
+
+Card 18 is 17.
+
+Card 19 is 0.
+
+Card 20 is 12.
+
+Card 21 is 0.
+
+Card 22 is 24.
+
+Card 23 is 0.
+
+Card 24 is 19.
+
+Card 25 is 0.
+
+Card 26 is 6.
+
+Adventurer card was not discarded - FAIL.
+
+The treasure count is: 4
+
+Card 0 is 7.
+
+Card 1 is 12.
+
+Card 2 is 4.
+
+Card 3 is 19.
+
+Card 4 is 4.
+
+Card 5 is 4.
+
+Card 6 is 19.
+
+Card 7 is 0.
+
+Card 8 is 3.
+
+Card 9 is 0.
+
+Card 10 is 17.
+
+Card 11 is 0.
+
+Card 12 is 18.
+
+Card 13 is 0.
+
+Card 14 is 20.
+
+Card 15 is 0.
+
+Card 16 is 16.
+
+Card 17 is 0.
+
+Card 18 is 23.
+
+Card 19 is 0.
+
+Card 20 is 13.
+
+Card 21 is 0.
+
+Card 22 is 0.
+
+Card 23 is 0.
+
+Card 24 is 24.
+
+Card 25 is 0.
+
+Card 26 is 15.
+
+Card 27 is 0.
+
+Card 28 is 12.
+
+Card 29 is 0.
+
+Card 30 is 7.
+
+Card 31 is 0.
+
+Card 32 is 22.
+
+Card 33 is 0.
+
+Card 34 is 10.
+
+Card 35 is 0.
+
+Card 36 is 23.
+
+Card 37 is 0.
+
+Card 38 is 4.
+
+Adventurer card was not discarded - FAIL.
+
+The treasure count is: 4
+
+Card 0 is 7.
+
+Card 1 is 16.
+
+Card 2 is 4.
+
+Card 3 is 4.
+
+Card 4 is 2.
+
+Card 5 is 4.
+
+Card 6 is 0.
+
+Card 7 is 0.
+
+Card 8 is 26.
+
+Card 9 is 0.
+
+Card 10 is 16.
+
+Card 11 is 0.
+
+Card 12 is 9.
+
+Card 13 is 0.
+
+Card 14 is 10.
+
+Card 15 is 0.
+
+Card 16 is 16.
+
+Card 17 is 0.
+
+Card 18 is 13.
+
+Card 19 is 0.
+
+Card 20 is 17.
+
+Card 21 is 0.
+
+Card 22 is 25.
+
+Card 23 is 0.
+
+Card 24 is 14.
+
+Card 25 is 0.
+
+Card 26 is 1.
+
+Card 27 is 0.
+
+Card 28 is 3.
+
+Card 29 is 0.
+
+Card 30 is 19.
+
+Card 31 is 0.
+
+Card 32 is 24.
+
+Card 33 is 0.
+
+Card 34 is 10.
+
+Card 35 is 0.
+
+Card 36 is 18.
+
+Card 37 is 0.
+
+Card 38 is 23.
+
+Card 39 is 0.
+
+Card 40 is 11.
+
+Card 41 is 0.
+
+Card 42 is 13.
+
+Card 43 is 0.
+
+Card 44 is 21.
+
+Card 45 is 0.
+
+Card 46 is 2.
+
+Card 47 is 0.
+
+Card 48 is 8.
+
+Card 49 is 0.
+
+Card 50 is 2.
+
+Card 51 is 0.
+
+Card 52 is 26.
+
+Card 53 is 0.
+
+Card 54 is 2.
+
+Card 55 is 0.
+
+Card 56 is 11.
+
+Card 57 is 0.
+
+Card 58 is 17.
+
+Card 59 is 0.
+
+Card 60 is 5.
+
+Adventurer card was not discarded - FAIL.
+
+The treasure count is: 4
+
+Card 0 is 7.
+
+Card 1 is 12.
+
+Card 2 is 4.
+
+Card 3 is 9.
+
+Card 4 is 4.
+
+Card 5 is 11.
+
+Card 6 is 0.
+
+Card 7 is 19.
+
+Card 8 is 26.
+
+Card 9 is 3.
+
+Card 10 is 16.
+
+Card 11 is 18.
+
+Card 12 is 9.
+
+Card 13 is 14.
+
+Card 14 is 10.
+
+Card 15 is 2.
+
+Card 16 is 16.
+
+Card 17 is 17.
+
+Card 18 is 13.
+
+Card 19 is 16.
+
+Card 20 is 17.
+
+Card 21 is 15.
+
+Card 22 is 25.
+
+Card 23 is 26.
+
+Card 24 is 14.
+
+Card 25 is 10.
+
+Card 26 is 1.
+
+Card 27 is 23.
+
+Card 28 is 3.
+
+Card 29 is 9.
+
+Card 30 is 19.
+
+Card 31 is 5.
+
+Card 32 is 15.
+
+Card 33 is 0.
+
+Card 34 is 10.
+
+Card 35 is 0.
+
+Card 36 is 9.
+
+Card 37 is 0.
+
+Card 38 is 26.
+
+Card 39 is 0.
+
+Card 40 is 10.
+
+Card 41 is 0.
+
+Card 42 is 5.
+
+Adventurer card was not discarded - FAIL.
+
+The treasure count is: 4
+
+Card 0 is 7.
+
+Card 1 is 0.
+
+Card 2 is 4.
+
+Card 3 is 18.
+
+Card 4 is 4.
+
+Card 5 is 16.
+
+Card 6 is 0.
+
+Card 7 is 11.
+
+Card 8 is 26.
+
+Card 9 is 23.
+
+Card 10 is 16.
+
+Card 11 is 5.
+
+Card 12 is 5.
+
+Adventurer card was not discarded - FAIL.
+
+The treasure count is: 6
+
+Card 0 is 7.
+
+Card 1 is 26.
+
+Card 2 is 4.
+
+Card 3 is 15.
+
+Card 4 is 4.
+
+Card 5 is 7.
+
+Card 6 is 0.
+
+Card 7 is 2.
+
+Card 8 is 26.
+
+Card 9 is 24.
+
+Card 10 is 16.
+
+Card 11 is 11.
+
+Card 12 is 5.
+
+Card 13 is 8.
+
+Card 14 is 10.
+
+Card 15 is 17.
+
+Card 16 is 16.
+
+Card 17 is 5.
+
+Card 18 is 14.
+
+Card 19 is 16.
+
+Card 20 is 21.
+
+Card 21 is 15.
+
+Card 22 is 19.
+
+Card 23 is 26.
+
+Card 24 is 20.
+
+Card 25 is 10.
+
+Card 26 is 1.
+
+Card 27 is 23.
+
+Card 28 is 10.
+
+Card 29 is 9.
+
+Card 30 is 24.
+
+Card 31 is 5.
+
+Card 32 is 8.
+
+Card 33 is 0.
+
+Card 34 is 6.
+
+Adventurer card was not discarded - FAIL.
+
+The treasure count is: 5
+
+Card 0 is 7.
+
+Card 1 is 8.
+
+Card 2 is 4.
+
+Card 3 is 26.
+
+Card 4 is 4.
+
+Card 5 is 1.
+
+Card 6 is 0.
+
+Card 7 is 12.
+
+Card 8 is 26.
+
+Card 9 is 4.
+
+Card 10 is 21.
+
+Card 11 is 11.
+
+Card 12 is 9.
+
+Card 13 is 8.
+
+Card 14 is 0.
+
+Card 15 is 17.
+
+Card 16 is 24.
+
+Card 17 is 5.
+
+Card 18 is 20.
+
+Card 19 is 16.
+
+Card 20 is 4.
+
+Adventurer card was not discarded - FAIL.
+
+Adventurer card was not discarded - FAIL.
+
+The treasure count is: 6
+
+Card 0 is 7.
+
+Card 1 is 2.
+
+Card 2 is 4.
+
+Card 3 is 6.
+
+Card 4 is 7.
+
+Card 5 is 1.
+
+Card 6 is 24.
+
+Card 7 is 12.
+
+Card 8 is 26.
+
+Card 9 is 4.
+
+Card 10 is 2.
+
+Card 11 is 11.
+
+Card 12 is 0.
+
+Card 13 is 8.
+
+Card 14 is 16.
+
+Card 15 is 17.
+
+Card 16 is 18.
+
+Card 17 is 5.
+
+Card 18 is 24.
+
+Card 19 is 16.
+
+Card 20 is 2.
+
+Card 21 is 15.
+
+Card 22 is 19.
+
+Card 23 is 26.
+
+Card 24 is 0.
+
+Card 25 is 10.
+
+Card 26 is 13.
+
+Card 27 is 23.
+
+Card 28 is 21.
+
+Card 29 is 9.
+
+Card 30 is 9.
+
+Card 31 is 5.
+
+Card 32 is 0.
+
+Card 33 is 0.
+
+Card 34 is 16.
+
+Card 35 is 0.
+
+Card 36 is 1.
+
+Card 37 is 0.
+
+Card 38 is 14.
+
+Card 39 is 0.
+
+Card 40 is 9.
+
+Card 41 is 0.
+
+Card 42 is 25.
+
+Card 43 is 0.
+
+Card 44 is 9.
+
+Card 45 is 0.
+
+Card 46 is 11.
+
+Card 47 is 0.
+
+Card 48 is 26.
+
+Card 49 is 0.
+
+Card 50 is 3.
+
+Card 51 is 0.
+
+Card 52 is 19.
+
+Card 53 is 0.
+
+Card 54 is 6.
+
+Adventurer card was not discarded - FAIL.
+
+The treasure count is: 4
+
+Card 0 is 7.
+
+Card 1 is 0.
+
+Card 2 is 4.
+
+Card 3 is 19.
+
+Card 4 is 4.
+
+Card 5 is 14.
+
+Card 6 is 24.
+
+Card 7 is 9.
+
+Card 8 is 26.
+
+Card 9 is 10.
+
+Card 10 is 2.
+
+Card 11 is 21.
+
+Card 12 is 0.
+
+Card 13 is 24.
+
+Card 14 is 16.
+
+Card 15 is 3.
+
+Card 16 is 18.
+
+Card 17 is 12.
+
+Card 18 is 24.
+
+Card 19 is 21.
+
+Card 20 is 2.
+
+Card 21 is 24.
+
+Card 22 is 19.
+
+Card 23 is 19.
+
+Card 24 is 0.
+
+Card 25 is 8.
+
+Card 26 is 13.
+
+Card 27 is 21.
+
+Card 28 is 21.
+
+Card 29 is 13.
+
+Card 30 is 9.
+
+Card 31 is 10.
+
+Card 32 is 0.
+
+Card 33 is 16.
+
+Card 34 is 16.
+
+Card 35 is 19.
+
+Card 36 is 1.
+
+Card 37 is 21.
+
+Card 38 is 14.
+
+Card 39 is 15.
+
+Card 40 is 9.
+
+Card 41 is 6.
+
+Card 42 is 1.
+
+Card 43 is 0.
+
+Card 44 is 13.
+
+Card 45 is 0.
+
+Card 46 is 26.
+
+Card 47 is 0.
+
+Card 48 is 21.
+
+Card 49 is 0.
+
+Card 50 is 26.
+
+Card 51 is 0.
+
+Card 52 is 11.
+
+Card 53 is 0.
+
+Card 54 is 3.
+
+Card 55 is 0.
+
+Card 56 is 26.
+
+Card 57 is 0.
+
+Card 58 is 22.
+
+Card 59 is 0.
+
+Card 60 is 6.
+
+Adventurer card was not discarded - FAIL.
+
+Now printing testing errors...
+
+The number of treasure count errors was: 9
+
+The number of hand count errors was: 10
+
+Now printing counts of cards picked up:
+
+The count of copper cards picked up is: 23
+
+The count of silver cards picked up is: 12
+
+The count of gold cards picked is: 7
+File 'dominion.c'
+Lines executed:18.04% of 582
+dominion.c:creating 'dominion.c.gcov'
+

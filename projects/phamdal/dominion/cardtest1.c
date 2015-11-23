@@ -36,15 +36,10 @@
  		fail = 1; 
  	}
 
- 	if(state->deckCount[0] != 7) {
+ 	if(state->deckCount[0] != 2) {
  		printf("smithy_card does not draw from deck\n"); 
- 		fail = 1; 
- 	}
-
- 	if(state->playedCards[state->playedCardCount] != smithy) {
- 		printf("smith_card does not place card in playedCard pile\n"); 
- 		fail = 1; 
- 	}
+ 		fail = 1;
+	}
 
  	if(state->playedCardCount != 1) {
  		printf("smithy_card does not incremented playedCardCount\n"); 

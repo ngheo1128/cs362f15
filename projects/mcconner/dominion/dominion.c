@@ -399,7 +399,8 @@ int isGameOver(struct gameState *state) {
 
   //if three supply pile are at 0, the game ends
   j = 0;
-  for (i = 0; i < 25; i++)
+  //A5 - change from 25 to 28 to fix bug
+  for (i = 0; i < 28; i++)
     {
       if (state->supplyCount[i] == 0)
 	{
@@ -1125,9 +1126,12 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       //add card to played pile
       state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
       state->playedCardCount++;
-    }else{
-      state->discardCount[currentPlayer]++;
     }
+
+  // A5- added to fix bug in discardCard function
+  //add card to discard pile and increment discardCount
+    state->discard[currentPlayer][state->discardCount[currentPlayer] + 1] = state->hand[currentPlayer][handPos];
+    state->discardCount[currentPlayer]++;
 	
   //set played card to -1
   state->hand[currentPlayer][handPos] = -1;
@@ -1227,6 +1231,8 @@ int updateCoins(int player, struct gameState *state, int bonus)
 //end of dominion.c
 
 int adventurerCard(int drawntreasure, int currentPlayer, struct gameState *state, int cardDrawn, int temphand[], int z) {
+  z = 0;
+
   while(drawntreasure<2){
   if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
     shuffle(currentPlayer, state);

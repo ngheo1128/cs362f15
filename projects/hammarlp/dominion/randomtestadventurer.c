@@ -14,7 +14,7 @@ void testAdventurerCard(){
 	struct gameState* state = malloc(sizeof(struct gameState));
 
 	//selects between treasure and non-treasure because that is the relevant part
-	int randomPool = {gold, mine};
+	int randomPool[] = {gold, mine};
 
 	//update count
 	state->handCount[0] = rand() % 5 + 1;
@@ -27,15 +27,15 @@ void testAdventurerCard(){
 	//set player hands
 	int playerHand[MAX_HAND];
 	int i;
-	for( i = 0 ; i < handCount[0] ; i++ ){
+	for( i = 0 ; i < state->handCount[0] ; i++ ){
 		playerHand[i] = randomPool[rand() % 2];
 	}
 	int playerDiscard[MAX_DECK];
-	for( i = 0 ; i < discardCount[0] ; i++ ){
+	for( i = 0 ; i < state->discardCount[0] ; i++ ){
 		playerDiscard[i] = randomPool[rand() % 2];
 	}
 	int playerDeck[MAX_DECK];
-	for( i = 0 ; i < deckCount[0] ; i++ ){
+	for( i = 0 ; i < state->deckCount[0] ; i++ ){
 		playerDeck[i] = randomPool[rand() % 2];
 	}
 	
@@ -49,7 +49,6 @@ void testAdventurerCard(){
 	printf("Random test:\n");
 	adventurerCard(state);
 
-<<<<<<< HEAD
 	//total cards in hand should be 5. 
 	if( state->handCount[0] == 5 ){
 		printf("Test passed. Correct final number cards in hand\n");
@@ -86,10 +85,7 @@ void testAdventurerCard(){
 	} 
 
 	//printf("%d %d %d\n", state->handCount[0], state->discardCount[0], state->deckCount[0]);
-*/
-=======
->>>>>>> 94eed62ad3efd70d35cc28d7a33db35dbc5fe612
-	
+*/	
 }
 
 int main(){
@@ -97,10 +93,7 @@ int main(){
 
 	testAdventurerCard();
 
-<<<<<<< HEAD
-=======
 	printf("Testing done");
 
->>>>>>> 94eed62ad3efd70d35cc28d7a33db35dbc5fe612
 	return 0;
 }

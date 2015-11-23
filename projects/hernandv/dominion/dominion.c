@@ -441,7 +441,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
@@ -1187,8 +1187,8 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
   if (trashFlag < 1)
     {
       //add card to played pile
-      state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
-      state->playedCardCount++;
+      state->discard[currentPlayer][state->discardCount[currentPlayer] + 1] = state->hand[currentPlayer][handPos];
+      state->discardCount[currentPlayer]++;
     }
 	
   //set played card to -1
@@ -1288,7 +1288,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 //Refactored code
 int adventurerCard (int drawntreasure, struct gameState* state, int currentPlayer, int cardDrawn, int temphand[], int z) {
       while(drawntreasure<2){
-	if (state->deckCount[currentPlayer] <=1){//if the deck is empty we need to shuffle discard and add to deck
+	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
 	drawCard(currentPlayer, state);
@@ -1317,7 +1317,7 @@ int smithyCard(int currentPlayer, struct gameState* state, int handPos) {
 	}
 			
       //discard card from hand
-      discardCard(handPos, currentPlayer, state, 1);
+      discardCard(handPos, currentPlayer, state, 0);
 	return 0;
 }
 
@@ -1326,17 +1326,17 @@ int villageCard(int currentPlayer, struct gameState* state, int handPos) {
 		drawCard(currentPlayer, state);
 		
 		//+2 Actions
-		state->numActions = state->numActions + 3;
+		state->numActions = state->numActions + 2;
 		
 		//discard played card from hand
-		discardCard(handPos, currentPlayer, state, 1);
+		discardCard(handPos, currentPlayer, state, 0);
 	return 0;
 }
 
 int great_hallCard(int currentPlayer, struct gameState* state, int handPos) {
 		//+1 Card
 		drawCard(currentPlayer, state);
-		drawCard(currentPlayer, state);
+		//drawCard(currentPlayer, state);
 		
 		//+1 Actions
 		state->numActions++;

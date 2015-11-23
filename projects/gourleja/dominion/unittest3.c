@@ -77,8 +77,8 @@ int testMethod(char* currentTest, int seed, struct gameState *state)
     //check for correct coin increment value
     expectedValue = state->coins + 2;
     state->numActions = 2;
-    state->hand[whoseTurn(state)][0] = 17;
-    actualValue = playCard(0, 1, -1, -1, state);
+    state->hand[state->whoseTurn][0] = minion;
+    actualValue = playCard(0, 1, 0, 0, state);
     if(state->coins != expectedValue) {
         printf("  TEST FAIL    : Coin increment check failed\n");
         testsFailed++;

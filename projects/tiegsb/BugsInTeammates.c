@@ -1,6 +1,6 @@
 /*
 Brian Tiegs
-CS 362 - Assignment
+CS 362 - Assignment 5
 
 Bug Report for Dominion.c
 

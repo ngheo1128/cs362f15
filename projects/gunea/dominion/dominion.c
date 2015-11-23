@@ -670,7 +670,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     {
     case adventurer:
 		//Call adventurerFunction()
-		adventurerFunction(drawntreasure, currentPlayer, state, handPos, temphand[MAX_HAND], z, cardDrawn);
+		adventurerFunction(drawntreasure, currentPlayer, state, handPos, temphand, z, cardDrawn);
       return 0;
 			
     case council_room:
@@ -1060,8 +1060,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 		
     case embargo: 
     	//call embargoFunction
-		embargoFunction(currentPlayer, state, handPos, choice1);
-      return 0;
+		return embargoFunction(currentPlayer, state, handPos, choice1);
+
 		
     case outpost:
       //set outpost flag
@@ -1250,11 +1250,11 @@ void smithyFunction(int currentPlayer, struct gameState *state, int handPos, int
 	}
 	
 	//discard card from hand
-	discardCard(handPos, currentPlayer, state, 1);
+	discardCard(handPos, currentPlayer, state, 0);
 }
 
 //Refactored Adventurer function
-void adventurerFunction(int drawntreasure, int currentPlayer, struct gameState *state, int handPos, int temphand[MAX_HAND], int z, int cardDrawn)
+void adventurerFunction(int drawntreasure, int currentPlayer, struct gameState *state, int handPos, int *temphand[MAX_HAND], int z, int *cardDrawn)
 {
 	while (drawntreasure<2) {
 		if (state->deckCount[currentPlayer] <1) {//if the deck is empty we need to shuffle discard and add to deck
@@ -1272,7 +1272,7 @@ void adventurerFunction(int drawntreasure, int currentPlayer, struct gameState *
 	}
 	while (z - 1 >= 0) {
 		state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z - 1]; // discard all cards in play that have been drawn
-		z = z + 1;
+		z = z - 1;
 	}
 }
 
@@ -1315,7 +1315,7 @@ void ambassadorFunction(int drawntreasure, int currentPlayer, struct gameState *
 	{
 		if (i != currentPlayer)
 		{
-			gainCard(state->hand[currentPlayer][choice1], state, 1, i);
+			gainCard(state->hand[currentPlayer][choice1], state, 0, i);
 		}
 	}
 

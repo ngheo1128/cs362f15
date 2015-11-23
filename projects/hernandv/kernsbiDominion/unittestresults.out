@@ -1,0 +1,155 @@
+Test results:
+
+Test #1, Handcount of 5 cards, one copper, no bonus
+Expected coins=1 Actual coins=1 
+Test #1 PASSED 
+
+Test #2, Handcount of 5 cards, one copper, two silver, no bonus
+Expected coins=5 Actual coins=5 
+Test #2 PASSED 
+
+Test #3, Handcount of 7 cards, two copper, two gold, no bonus
+Expected coins=8 Actual coins=8 
+Test #3 PASSED 
+
+File 'unittest1.c'
+Lines executed:95.00% of 60
+unittest1.c:creating 'unittest1.c.gcov'
+
+File 'dominion.c'
+Lines executed:15.94% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+Test #1, Province supply empty
+Expected game state=1, Actual game state=1 
+Test #1 PASSED, Game is over
+
+Test #2, One supply pile empty
+Expected game state=0, Actual game state=1 
+Test #2 PASSED, Game continues
+
+File 'unittest2.c'
+Lines executed:92.31% of 26
+unittest2.c:creating 'unittest2.c.gcov'
+
+File 'dominion.c'
+Lines executed:16.46% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+Test, Deck 1 shuffle
+Player 0's deck before shuffle: 5, 3, 8, 6, 4 
+Player 1's deck before shuffle: 6, 5, 13, 6, 10 
+Player 0's deck after shuffle: 4, 5, 6, 8, 3 
+Player 1's deck after shuffle: 6, 5, 13, 6, 10 
+Deck 1 has 0 cards in same position after shuffle, can be <= 4
+Deck 2 has 0 cards in a different position, not shuffled
+Test PASSED
+
+File 'unittest3.c'
+Lines executed:91.89% of 37
+unittest3.c:creating 'unittest3.c.gcov'
+
+File 'dominion.c'
+Lines executed:16.64% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+Testing drawCard() for Player 0 with empty deck and non-empty discard pile
+Test PASSED, discard pile shuffled with deck
+Test FAILED, card NOT added to player's hand after draw
+Test PASSED, discard pile was empty
+Test FAILED, deck NOT decremented after draw
+Test FAILED, card drawn from empty deck
+
+File 'unittest4.c'
+Lines executed:88.10% of 42
+unittest4.c:creating 'unittest4.c.gcov'
+
+File 'dominion.c'
+Lines executed:18.72% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+Playing Smithy card and testing...
+Hand count before Smithy is 5...
+Copper, Estate, Copper, Copper, Smithy, 
+Test PASSED, card is present in player 0's hand
+
+Hand count after Smithy is 7...
+Copper, Estate, Copper, Copper, Estate, Copper, Copper, 
+Test PASSED, card is NOT present in player 0's hand
+
+Testing for correct number of cards drawn...
+Test PASSED, Player 0 drew +3 cards
+
+Checking if Smithy Card is in played pile...
+Test FAILED, Smithy is NOT in played pile
+
+Copper, Estate, Copper, Copper, Estate, Copper, Copper, 
+Testing if card is discarded from hand...
+Test PASSED, Smithy is discarded from player 0's hand after use
+
+File 'interface.c'
+Lines executed:3.60% of 250
+interface.c:creating 'interface.c.gcov'
+
+File 'cardtest1.c'
+Lines executed:87.76% of 49
+cardtest1.c:creating 'cardtest1.c.gcov'
+
+File 'dominion.c'
+Lines executed:22.70% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+Playing Adventurer card and testing...
+Hand count before Adventurer is 5...
+Copper, Estate, Copper, Copper, Adventurer, 
+Test PASSED, card is present in player 0's hand
+
+Hand count after adventurer is 7...
+Copper, Estate, Copper, Copper, Adventurer, Copper, Copper, 
+Test FAILED, card is present in player 0's hand
+
+Testing for correct number of treasure cards added...
+Test PASSED, two treasure cards are added to player 0's hand
+
+File 'interface.c'
+Lines executed:3.60% of 250
+interface.c:creating 'interface.c.gcov'
+
+File 'cardtest2.c'
+Lines executed:92.86% of 42
+cardtest2.c:creating 'cardtest2.c.gcov'
+
+File 'dominion.c'
+Lines executed:24.26% of 577
+dominion.c:creating 'dominion.c.gcov'
+
+Playing Great Hall card and testing...
+Hand count before Great Hall is 5...
+Copper, Estate, Copper, Copper, Great Hall, 
+Test PASSED, card is present in player 0's hand
+
+Hand count after Great Hall is 5...
+Copper, Estate, Copper, Copper, Copper, 
+Test PASSED, card is NOT present in player 0's hand
+
+Testing for correct number of cards drawn...
+Test PASSED, Player 0 drew +1 cards
+
+Testing for correct number of actions...
+Test PASSED, Player 0 has +1 numActions
+
+Checking if card is in played pile...
+Test PASSED, Great Hall is in played pile
+
+File 'interface.c'
+Lines executed:3.60% of 250
+interface.c:creating 'interface.c.gcov'
+
+File 'cardtest4.c'
+Lines executed:86.36% of 44
+cardtest4.c:creating 'cardtest4.c.gcov'
+
+File 'dominion.c'
+Lines executed:25.48% of 577
+dominion.c:creating 'dominion.c.gcov'
+
