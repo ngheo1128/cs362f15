@@ -291,7 +291,7 @@ int main(){
 			printf("FAILED. Removed cards in deck.\n");
 
 		printf("\nTest5b: Discard count should not be inremented if trashed: \n");
-		if(testState.discardCount[p] >= 2)
+		if(testState.discardCount[p] <= 2)
 			printf("Passed. Removed cards trashed\n");
 		else
 			printf("FAILED. Removed cards not trashed.\n");

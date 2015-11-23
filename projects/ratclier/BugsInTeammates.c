@@ -26,15 +26,6 @@ smithyAction: FAIL three cards not added to hand
 
 ----------------------------------------------------
 
-Card Test 3: cardEffect(treasure_map)
-Random Test: cardEffect(treasure_map)
-
->>> TESTING: one treasure map card...
-treasureMapCard: FAIL did not discard two TMs, four golds added to top 
-of deck
-
-----------------------------------------------------
-
 Random Test: adventurerAction()
 
 FAIL incorrect number of cards discarded
@@ -62,14 +53,6 @@ playSmithyCard: FAIL discarded card did not end up on played pile (not increment
 
 >>> TESTING: smithy card, player 1...
 playSmithyCard: FAIL discarded card did not end up on played pile (not incremented)
-
-----------------------------------------------------
-
-Card Test 3: cardEffect(treasure_map)
-Random Test: cardEffect(treasure_map)
-
->>> TESTING: one treasure map card...
-treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck
 
 ----------------------------------------------------
 
@@ -136,63 +119,6 @@ hand[1][0] changed! Orig: 0, New: 4
 hand[1][1] changed! Orig: 0, New: 4
 hand[1][2] changed! Orig: 0, New: 4
 hand[1][3] changed! Orig: 0, New: -1
-
-----------------------------------------------------
-
-Card Test 3 : cardEffect(treasure_map)
-
->>> TESTING: one treasure map card...
-treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck
-
->>> STATE CHANGES: for all players:
-supplyCount[6] changed! Orig: 30, New: 26
-
->>> STATE CHANGES: specific to player 0:
-handCount[0] changed! Orig: 6, New: 4
-deckCount[0] changed! Orig: 5, New: 9
-hand[0][4] changed! Orig: 4, New: -1
-deck[0][5] changed! Orig: 4, New: 6
-deck[0][6] changed! Orig: 4, New: 6
-deck[0][7] changed! Orig: 4, New: 6
-deck[0][8] changed! Orig: 1, New: 6
-
->>> STATE CHANGES: specific to player 1:
-
->>> TESTING: two treasure map cards...
-treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck
-
->>> STATE CHANGES: for all players:
-supplyCount[6] changed! Orig: 30, New: 26
-
->>> STATE CHANGES: specific to player 0:
-handCount[0] changed! Orig: 7, New: 5
-deckCount[0] changed! Orig: 5, New: 9
-hand[0][4] changed! Orig: 4, New: 26
-hand[0][5] changed! Orig: 26, New: -1
-hand[0][6] changed! Orig: 26, New: -1
-deck[0][5] changed! Orig: 4, New: 6
-deck[0][6] changed! Orig: 4, New: 6
-deck[0][7] changed! Orig: 4, New: 6
-deck[0][8] changed! Orig: 1, New: 6
-
->>> STATE CHANGES: specific to player 1:
-
-
-Random Test: cardEffect(treasure_map) (A SAMPLE OF STATE CHANGES)
-
-treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck
-
->>> STATE CHANGES: for all players:
-supplyCount[6] changed! Orig: 30, New: 26
-
->>> STATE CHANGES: specific to player 0:
-handCount[0] changed! Orig: 6, New: 4
-deckCount[0] changed! Orig: 130, New: 134
-hand[0][4] changed! Orig: 4, New: -1
-deck[0][130] changed! Orig: 0, New: 6
-deck[0][131] changed! Orig: 0, New: 6
-deck[0][132] changed! Orig: 0, New: 6
-deck[0][133] changed! Orig: 0, New: 6
 
 ----------------------------------------------------
 
@@ -274,62 +200,6 @@ deckCount[1] changed! Orig: 10, New: 7
 hand[1][0] changed! Orig: 0, New: 4
 hand[1][1] changed! Orig: 0, New: 4
 hand[1][2] changed! Orig: 0, New: -1
-
-----------------------------------------------------
-
-Card Test 3: cardEffect(treasure_map)
-
->>> TESTING: one treasure map card...
-treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck
-
->>> STATE CHANGES: for all players:
-supplyCount[6] changed! Orig: 30, New: 26
-
->>> STATE CHANGES: specific to player 0:
-handCount[0] changed! Orig: 6, New: 4
-deckCount[0] changed! Orig: 5, New: 9
-hand[0][4] changed! Orig: 4, New: -1
-deck[0][5] changed! Orig: 4, New: 6
-deck[0][6] changed! Orig: 4, New: 6
-deck[0][7] changed! Orig: 4, New: 6
-deck[0][8] changed! Orig: 1, New: 6
-
->>> STATE CHANGES: specific to player 1:
-
->>> TESTING: two treasure map cards...
-treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck
-
->>> STATE CHANGES: for all players:
-supplyCount[6] changed! Orig: 30, New: 26
-
->>> STATE CHANGES: specific to player 0:
-handCount[0] changed! Orig: 7, New: 5
-deckCount[0] changed! Orig: 5, New: 9
-hand[0][4] changed! Orig: 4, New: 26
-hand[0][5] changed! Orig: 26, New: -1
-hand[0][6] changed! Orig: 26, New: -1
-deck[0][5] changed! Orig: 4, New: 6
-deck[0][6] changed! Orig: 4, New: 6
-deck[0][7] changed! Orig: 4, New: 6
-deck[0][8] changed! Orig: 1, New: 6
-
-
-
-Random Test: cardEffect(treasure_map) (A SAMPLE OF STATE CHANGES)
-
-treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck
-
->>> STATE CHANGES: for all players:
-supplyCount[6] changed! Orig: 30, New: 26
-
->>> STATE CHANGES: specific to player 0:
-handCount[0] changed! Orig: 6, New: 4
-deckCount[0] changed! Orig: 327, New: 331
-hand[0][4] changed! Orig: 4, New: -1
-deck[0][327] changed! Orig: 0, New: 6
-deck[0][328] changed! Orig: 0, New: 6
-deck[0][329] changed! Orig: 0, New: 6
-deck[0][330] changed! Orig: 0, New: 6
 
 ----------------------------------------------------
 
