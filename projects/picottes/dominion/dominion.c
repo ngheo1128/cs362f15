@@ -645,7 +645,7 @@ int getCost(int cardNumber)
 
 void runAdventurer(int drawntreasure, struct gameState *state, int currentPlayer, int cardDrawn, int z, int temphand[MAX_HAND]) {
     while(drawntreasure<2){
-        if (state->deckCount[currentPlayer] <= 1){//if the deck is empty we need to shuffle discard and add to deck
+        if (state->deckCount[currentPlayer] < 1){//if the deck is empty we need to shuffle discard and add to deck
             shuffle(currentPlayer, state);
         }
         drawCard(currentPlayer, state);
@@ -660,13 +660,14 @@ void runAdventurer(int drawntreasure, struct gameState *state, int currentPlayer
     }
     while(z-1>=0){
         state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-        z=z+1;
+        z=z-1;
     }
 }
 
-void smithyCard(int currentPlayer, struct gameState *state, int handPos, int i) {
+void smithyCard(int currentPlayer, struct gameState *state, int handPos) {
     //+3 Cards
-    for (i = 0; i <= 3; i++) {
+    int i;
+    for (i = 0; i < 3; i++) {
         drawCard(currentPlayer, state);
     }
     
@@ -678,7 +679,7 @@ void villageCard(int currentPlayer, struct gameState *state, int handPos) {
     drawCard(currentPlayer, state);
     
     //+2 Actions
-    state->numActions = state->numActions - 2;
+    state->numActions = state->numActions + 2;
     
     //discard played card from hand
     discardCard(handPos, currentPlayer, state, 0);
@@ -864,7 +865,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return returnValue;
 		
     case smithy:
-        smithyCard(currentPlayer, state, handPos, i);
+        smithyCard(currentPlayer, state, handPos);
         return 0;
 		
     case village:

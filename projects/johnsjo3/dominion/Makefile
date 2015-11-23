@@ -31,7 +31,7 @@ runtests: testDrawCard
 
 unittestresults.out: clean unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c dominion.o rngs.o
 	gcc -o unittest1 dominion.o rngs.o unittest1.c $(CFLAGS)
-	unittest1 >> unittestresults.out
+	unittest1 > unittestresults.out
 	gcc -o unittest2 dominion.o rngs.o unittest2.c $(CFLAGS)
 	unittest2 1000 >> unittestresults.out
 	gcc -o unittest3 dominion.o rngs.o unittest3.c $(CFLAGS)

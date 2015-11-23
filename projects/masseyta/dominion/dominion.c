@@ -18,6 +18,7 @@ struct gameState* newGame() {
   return g;
 }
 
+
 int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7,
 		  int k8, int k9, int k10) {
   int* k = malloc(10 * sizeof(int));
@@ -327,17 +328,20 @@ int fullDeckCount(int player, int card, struct gameState *state) {
 
   for (i = 0; i < state->deckCount[player]; i++)
     {
-      if (state->deck[player][i] == card) count++;
+     // if (state->deck[player][i] == card) 
+      count++;
     }
 
   for (i = 0; i < state->handCount[player]; i++)
     {
-      if (state->hand[player][i] == card) count++;
+      //if (state->hand[player][i] == card) 
+      count++;
     }
 
   for (i = 0; i < state->discardCount[player]; i++)
     {
-      if (state->discard[player][i] == card) count++;
+     // if (state->discard[player][i] == card) 
+      count++;
     }
 
   return count;
@@ -441,7 +445,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
@@ -713,6 +717,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	  if (DEBUG){
 	    printf("Cards Left: %d\n", supplyCount(choice1, state));
 	  }
+    return -1;
 	}
 	else if (state->coins < getCost(choice1)){
 	  printf("That card is too expensive!\n");
@@ -720,6 +725,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	  if (DEBUG){
 	    printf("Coins: %d < %d\n", state->coins, getCost(choice1));
 	  }
+    return -1;
 	}
 	else{
 
@@ -1235,7 +1241,7 @@ Output:     Three more cards are drawn and added to hand, smithy is
 int smithyRef(int handPos, int currentPlayer, struct gameState *state) {
 	int i;
       //+3 Cards
-      for (i = 0; i <= 3; i++)
+      for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -1262,7 +1268,6 @@ int adventurerRef(int z, int handPos, int currentPlayer, int cardDrawn, struct g
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
         if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold){
             drawntreasure++;
-            state->coins = state->coins++;
         }else{
             temphand[z]=cardDrawn;
             state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
@@ -1273,6 +1278,8 @@ int adventurerRef(int z, int handPos, int currentPlayer, int cardDrawn, struct g
         state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
       }
+
+      discardCard(handPos, currentPlayer, state, 0);
 
     return 0;
 }
@@ -1318,8 +1325,8 @@ int stewardRef(int handPos, int currentPlayer, struct gameState *state, int choi
     else
     {
         //trash 2 cards in hand
-        discardCard(choice2, currentPlayer, state, 0);
-        discardCard(choice3, currentPlayer, state, 0);
+        discardCard(choice2, currentPlayer, state, 1);
+        discardCard(choice3, currentPlayer, state, 1);
     }
 
       //discard card from hand
@@ -1377,10 +1384,10 @@ int baronRef(int handPos, int currentPlayer, struct gameState *state, int choice
     }
 
     else{
-        if (supplyCount(duchy, state) > 0){
-            gainCard(duchy, state, 0, currentPlayer);//Gain an estate
-            state->supplyCount[duchy]--;//Decrement Estates
-            if (supplyCount(duchy, state) == 0){
+        if (supplyCount(estate, state) > 0){
+            gainCard(estate, state, 0, currentPlayer);//Gain an estate
+            state->supplyCount[estate]--;//Decrement Estates
+            if (supplyCount(estate, state) == 0){
                 isGameOver(state);
             }
         }

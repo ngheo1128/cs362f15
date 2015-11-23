@@ -74,7 +74,7 @@ int main(){
         G.hand[p][0] = adventurer;  //set players only card in hand to adventurer for testing purposes
     
         /*Play adventurer card with G gameState*/
-        adventurerCard(drawntreasure, &G, p, cardDrawn, temphand, z);   
+        adventurerCard(drawntreasure, &G, p, cardDrawn, temphand, z, 0);   
 
         drawntreasure = 0;
 

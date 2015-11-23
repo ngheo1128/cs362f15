@@ -1271,7 +1271,7 @@ int playSmithy( int handPos, struct gameState *state )
 {
     // Smithy
     int i;
-    int discard = 2; // 1 is for trashing, we are moving to played cards pile though
+    int discard = 0; // 1 is for trashing, we are moving to played cards pile though
     int currentPlayer = whoseTurn(state); // get the current player
     // draw 3 cards
     for (i = 0; i < 3; i++ )
@@ -1323,7 +1323,7 @@ int playVillage( int handPos, struct gameState *state )
     // draw a card
     drawCard(currentPlayer, state);
     // add two actions
-    state->numActions = 2;
+    state->numActions = state->numActions + 2;
     // discard played card from hand
     discardCard(handPos, currentPlayer, state, discard);
     return 0; 
@@ -1355,7 +1355,7 @@ int playCouncil_room( int handPos, struct gameState *state )
     // add one buy
     state->numBuys++;
     // other players draw one card
-    for (i=1; i < state->numPlayers; i++)
+    for (i=0; i < state->numPlayers; i++)
     {
         if (i != currentPlayer )
             drawCard(i, state);

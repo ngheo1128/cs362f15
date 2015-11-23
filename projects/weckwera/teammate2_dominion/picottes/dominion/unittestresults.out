@@ -1,0 +1,164 @@
+Results of all unit and card tests:
+unittest1.c
+Testing gainCard().... 
+Testing player 0: 
+Card to deck: Player 0 card to deck test passed
+Card to hand: Test passed
+Card to discard: Test passed
+Testing player 1: 
+Card to deck: Player 1 card to deck test passed
+Card to hand: Test passed
+Card to discard: Test passed
+File 'dominion.c'
+Lines executed:18.07% of 570
+Branches executed:17.27% of 417
+Taken at least once:14.15% of 417
+Calls executed:8.42% of 95
+Creating 'dominion.c.gcov'
+
+unittest2.c
+Testing buyCard...
+Player 0 no new hand card test: passed
+whose turn: 0, i = 0 
+Player 1 no new hand card test: passed
+whose turn: 0, i = 1 
+Player 1 no new deck card test: passed
+Player 2 no new hand card test: passed
+whose turn: 0, i = 2 
+Player 2 no new deck card test: passed
+Player 3 no new hand card test: passed
+whose turn: 0, i = 3 
+Player 3 no new deck card test: passed
+Test normal buyCard works
+Test no buys left passed
+Test no coins passed
+Test none left passed
+File 'dominion.c'
+Lines executed:20.18% of 570
+Branches executed:25.42% of 417
+Taken at least once:15.35% of 417
+Calls executed:12.63% of 95
+Creating 'dominion.c.gcov'
+
+unittest3.c
+TESTING shuffle():
+Test shuffle.
+Shuffled
+Test shuffle.
+Shuffled
+Test shuffle.
+Shuffled
+Test shuffle.
+Shuffled
+Test shuffle.
+Shuffled
+Test shuffle.
+Shuffled
+Test shuffle.
+Shuffled
+Test shuffle.
+Shuffled
+Test shuffle.
+Shuffled
+Test shuffle.
+Shuffled
+All tests passed!
+File 'dominion.c'
+Lines executed:15.79% of 570
+Branches executed:15.83% of 417
+Taken at least once:13.19% of 417
+Calls executed:7.37% of 95
+Creating 'dominion.c.gcov'
+
+unittest4.c
+TESTING handCard():
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 1, Card from handCard() 1
+Card in players hand: 4, Card from handCard() 4
+Card in players hand: 4, Card from handCard() 4
+All tests passed!
+File 'dominion.c'
+Lines executed:16.49% of 570
+Branches executed:15.83% of 417
+Taken at least once:12.95% of 417
+Calls executed:8.42% of 95
+Creating 'dominion.c.gcov'
+
+cardtest1.c
+Testing smithy...
+Smithy card function completed
+Incorrect number of cards drawn
+Player 1 no new hand card test: passed
+Player 1 no new deck card test: passed
+Player 2 no new hand card test: passed
+Player 2 no new deck card test: passed
+Player 3 no new hand card test: passed
+Player 3 no new deck card test: passed
+File 'dominion.c'
+Lines executed:18.77% of 570
+Branches executed:17.75% of 417
+Taken at least once:14.15% of 417
+Calls executed:9.47% of 95
+Creating 'dominion.c.gcov'
+
+cardtest2.c
+Testing adventurer...
+Player 1 no new hand card test: passed
+Player 1 no new deck card test: passed
+Player 2 no new hand card test: passed
+Player 2 no new deck card test: passed
+Player 3 no new hand card test: passed
+Player 3 no new deck card test: passed
+Card Test 2File 'dominion.c'
+Lines executed:17.54% of 570
+Branches executed:17.75% of 417
+Taken at least once:14.15% of 417
+Calls executed:8.42% of 95
+Creating 'dominion.c.gcov'
+

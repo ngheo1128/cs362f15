@@ -24,6 +24,7 @@ void adventurerTest()
 	int bonus = 0;
 	
 	int drawntreasure = 0;
+	int handPos = 0;
 	int cardDrawn = 0;
 	int z = 0;
 	int temphand[MAX_HAND];
@@ -60,7 +61,7 @@ void adventurerTest()
 	
 	printf ("Activate Adventurer Card\n");
 	memcpy(&S, &G, sizeof(struct gameState));
-	adventurerCard(drawntreasure, cardDrawn, player, z, temphand, &G);
+	adventurerCard(drawntreasure, handPos, cardDrawn, player, z, temphand, &G);
 	updateCoins(player, &G, bonus);
 	
 	if(G.handCount[player] == 6){

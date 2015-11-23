@@ -66,13 +66,13 @@ void CheckPlayerHasTwoExtraTreasureCards()
 	int preHandCount = G.handCount[player1];
 	executeAdventurerCard(0, &G, player1);
 	int postHandCount = G.handCount[player1];
-	if (postHandCount != preHandCount + 2)
+	if (postHandCount != preHandCount + 1)
 	{
-		printf("Test Failed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
+		printf("Test Failed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 1, postHandCount);
 	}
 	else
 	{
-		printf("Test Passed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
+		printf("Test Passed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 1, postHandCount);
 	}
 }
 
@@ -90,26 +90,22 @@ void CheckThatTreasureCardsWereTakenInOrderFromDeck()
 
 	printf("Testing...Treasure cards were taken in order from the deck.\n");
 	int preDeckCount = G.deckCount[player1];
-	int preHandCount = G.handCount[player1];
 	int firstTreasureCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 1];
 	int secondTreasureCardToBeRemovedFromDeck = G.deck[player1][preDeckCount - 2];
+	// printf("firstTreasureCardToBeRemovedFromDeck: %d\n", firstTreasureCardToBeRemovedFromDeck);
+	// printf("secondTreasureCardToBeRemovedFromDeck: %d\n", secondTreasureCardToBeRemovedFromDeck);
 	executeAdventurerCard(0, &G, player1);
 
-	int postHandCount = G.handCount[player1];
 	int postDeckCount = G.deckCount[player1];
-	int firstTreasureCardToBeAddedToHand = G.hand[player1][preHandCount];
-	int secondTreasureCardToBeAddedToHand = G.hand[player1][preHandCount + 1];
+	int postHandCount = G.handCount[player1];
+	int firstTreasureCardToBeAddedToHand = G.hand[player1][postHandCount - 1];
 
-	// Check hand count
-	if (postHandCount != preHandCount + 2)
-	{
-		printf("Test Failed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
-	}
-	else
-	{
-		printf("Test Passed: Expected handcount was %d. Actual handcount was %d.\n", preHandCount + 2, postHandCount);
-	}
+	// The index is at 0 because the last card is moved to the hand pos of the
+	// adventure card when the adventure card gets discarded.
+	int secondTreasureCardToBeAddedToHand = G.hand[player1][0];
 
+	// printf("firstTreasureCardToBeAddedToHand: %d\n", firstTreasureCardToBeAddedToHand);
+	// printf("secondTreasureCardToBeAddedToHand: %d\n", secondTreasureCardToBeAddedToHand);
 	// Check deck count
 	if (postDeckCount != preDeckCount - 2)
 	{
@@ -200,13 +196,13 @@ void CheckThatCardsCanBeDrawnFromEmptyDeck()
 	emptyDeckAndAddToDiscard(&G);
 
 	printf("Testing...Cards can be drawn from an empty deck.\n");
-	int preHandCount = G.handCount[player1];
 	executeAdventurerCard(0, &G, player1);
 
 	int postDeckCount = G.deckCount[player1];
 	int postDiscardCount = G.discardCount[player1];
-	int firstTreasureCardToBeAddedToHand = G.hand[player1][preHandCount];
-	int secondTreasureCardToBeAddedToHand = G.hand[player1][preHandCount + 1];
+	int postHandCount = G.handCount[player1];
+	int firstTreasureCardToBeAddedToHand = G.hand[player1][postHandCount - 1];
+	int secondTreasureCardToBeAddedToHand = G.hand[player1][0];
 
 	// Check that discard pile is empty
 	if (postDiscardCount < 0)
