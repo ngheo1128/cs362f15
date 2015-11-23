@@ -135,7 +135,7 @@ int main(int argc, char * argv[]) {
 		}
 		
 		//drawCards should be drawCards less pluss smithy
-		if (gs->discardCount[playerNum] + gs->deckCount[playerNum] - drawCards + 1 != stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum]) {
+		if (gs->discardCount[playerNum] + gs->deckCount[playerNum] != stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum] - drawCards + 1) {
 			printf("deck + discard count is not as expected.  Expected: %d, Actual: %d\r\n",stateCopy->discardCount[playerNum] + stateCopy->deckCount[playerNum] - drawCards + 1, gs->discardCount[playerNum] + gs->deckCount[playerNum]);
 			numberOfErrors++;
 		}

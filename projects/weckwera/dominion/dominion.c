@@ -646,26 +646,22 @@ int getCost(int cardNumber)
 //Function for refactored and buggy adventurer card
 int adventurerCard(struct gameState *state)
 {
+  int shuffleCount = 0;
   int currentPlayer = whoseTurn(state);
   int temphand[MAX_HAND];// moved above the if statement
   int drawntreasure=0;
   int cardDrawn;
   int z = 0;// this is the counter for the temp hand
 
-  while(drawntreasure<2){
+
+  while(drawntreasure<2 && shuffleCount < 2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
+      shuffleCount++; //if deck shuffled more than once, we've gone through the whole thing
 	}
 	drawCard(currentPlayer, state);
-    /*
-     * INTRODUCED BUG HERE
-     */
-	//original: cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
-	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-2];
-    //top card of hand is second-most recently drawn card.
-    /*
-     * END BUG
-     */
+
+    cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
 
 	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 	  drawntreasure++;
@@ -691,10 +687,7 @@ int smithyCard(int handPos, struct gameState *state)
    //+3 Cards
       for (i = 0; i < 3; i++)
 	{
-     //BUG INTRODUCED HERE
-	  //original: drawCard(currentPlayer, state);
-	  drawCard(currentPlayer + 1, state);
-      // END BUG
+	  drawCard(currentPlayer, state);
 	}
 
       //discard card from hand
@@ -710,11 +703,7 @@ int villageCard(int currentPlayer, struct gameState *state, int handPos)
 
       //+2 Actions
       //
-      //BUG BEGINS
-      // original: state->numActions = state->numActions + 2;
       state->numActions = state->numActions + 2;
-      state->numActions = state->numActions + 2;
-      //END BUG
 
       //discard played card from hand
       discardCard(handPos, currentPlayer, state, 0);
@@ -722,8 +711,8 @@ int villageCard(int currentPlayer, struct gameState *state, int handPos)
 }
 
 //Function for the refactored and buggy Feast card
-int feastCard(int card, int choice1, int choice2, int choice3, struct
-        gameState *state, int handPos, int *bonus, int currentPlayer)
+int feastCard(int choice1, int choice2, int choice3, struct
+        gameState *state, int currentPlayer)
 {
   int i;
   int x;
@@ -733,6 +722,7 @@ int feastCard(int card, int choice1, int choice2, int choice3, struct
   if (nextPlayer > (state->numPlayers - 1)){
     nextPlayer = 0;
   }
+
       //gain card with cost up to 5
       //Backup hand
       for (i = 0; i <= state->handCount[currentPlayer]; i++){
@@ -754,7 +744,9 @@ int feastCard(int card, int choice1, int choice2, int choice3, struct
 	  }
 	}
 	else if (state->coins < getCost(choice1)){
-	  printf("That card is too expensive!\n");
+        //taken out for formatting
+	  //printf("That card is too expensive!\n");
+      return 1;
 
 	  if (DEBUG){
 	    printf("Coins: %d < %d\n", state->coins, getCost(choice1));
@@ -777,20 +769,10 @@ int feastCard(int card, int choice1, int choice2, int choice3, struct
       }
 
       //Reset Hand
-      // BUG INTRODUCED HERE
-      //
-      //original:
-//      for (i = 0; i <= state->handCount[currentPlayer]; i++){
-//	state->hand[currentPlayer][i] = temphand[i];
-//	temphand[i] = -1;
-      for (i = 0; i < state->handCount[currentPlayer]; i++){
+      for (i = 0; i <= state->handCount[currentPlayer]; i++){
 	state->hand[currentPlayer][i] = temphand[i];
 	temphand[i] = -1;
       }
-      //END BUG
-
-
-      //Reset Hand
 
       return 0;
 }
@@ -898,7 +880,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 
     case feast:
-        feastCard(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
+        feastCard(choice1, choice2, choice3, state, currentPlayer);
 
  //     //gain card with cost up to 5
  //     //Backup hand
