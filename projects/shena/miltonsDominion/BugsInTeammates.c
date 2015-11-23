@@ -20,7 +20,6 @@ cardtest4.c
 	This tested the Great Hall Card. Test ran without a hitch.
 	Bugs found:
 		1. Card count not correctly adjusted
-		2. numActions not correctly increased
 	
 unittest1.c
 		This tested the isGameOver() function. Test ran without a hitch. No bugs were found.
