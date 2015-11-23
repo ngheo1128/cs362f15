@@ -184,7 +184,10 @@ int main(int argc, char *argv[])
     //
     gainCard(treasure_map, state, 2, currentPlayer);
 
-    handPos = state->hand[currentPlayer][0];
+    // Grab the position of the last TM card
+    //
+    handPos = state->handCount[currentPlayer]-1;
+
     testTreasureMapCard(state, handPos, currentPlayer);
 
     // New game
@@ -212,7 +215,10 @@ int main(int argc, char *argv[])
     gainCard(treasure_map, state, 2, currentPlayer);
     gainCard(treasure_map, state, 2, currentPlayer);
 
-    handPos = state->hand[currentPlayer][0];
+    // Grab the position of the last TM card
+    //
+    handPos = state->handCount[currentPlayer]-1;
+
     testTreasureMapCard(state, handPos, currentPlayer);
 
     return 0;
