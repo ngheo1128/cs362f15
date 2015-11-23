@@ -68,10 +68,10 @@ int main(){
 		testState.deck[p][4] = silver;
 		preCount = testState.handCount[p];
 		cardEffect(adventurer, 0, 0, 0, &testState, 0, 0);		// should have two coin cards when done
-		if(testState.handCount[p] - preCount == 2) 
-			printf("Passed. Coin card amount expected: %d   count finish: %d\n", 2, testState.handCount[p] - preCount);
+		if(testState.handCount[p] - preCount == 1) 
+			printf("Passed. Coin card amount expected: %d   count finish: %d\n", 1, testState.handCount[p] - preCount);
 		else 
-			printf("FAILED. Coin card amount expeccted: %d   count finish: %d\n", 2, testState.handCount[p] - preCount);
+			printf("FAILED. Coin card amount expeccted: %d   count finish: %d\n", 1, testState.handCount[p] - preCount);
 		printf("Coin cards Found: ");
 		for(j = 0; j < testState.handCount[p]; j++){
 			if(testState.hand[p][j] == copper){
@@ -112,10 +112,10 @@ int main(){
 		preCount = testState.handCount[p];
 		cardEffect(adventurer, 0, 0, 0, &testState, 0, 0);		// should have two coin cards when done
 		
-		if(testState.handCount[p] - preCount == 2) 
-			printf("Passed. Coin card amount expected: %d   count finish: %d\n", 2, testState.handCount[p] - preCount);
+		if(testState.handCount[p] - preCount == 1) 
+			printf("Passed. Coin card amount expected: %d   count finish: %d\n", 1, testState.handCount[p] - preCount);
 		else 
-			printf("FAILED. Coin card amount expeccted: %d   count finish: %d\n", 2, testState.handCount[p] - preCount);
+			printf("FAILED. Coin card amount expeccted: %d   count finish: %d\n", 1, testState.handCount[p] - preCount);
 		printf("Coin cards Found: ");
 		for(j = 0; j < testState.handCount[p]; j++){
 			if(testState.hand[p][j] == copper){
