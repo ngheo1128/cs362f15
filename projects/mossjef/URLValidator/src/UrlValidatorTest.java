@@ -41,7 +41,32 @@ public class UrlValidatorTest extends TestCase {
    public void testManualTest()
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-	   System.out.println(urlVal.isValid("http://www.amazon.com"));
+	   
+	   //Testing invalid URLs
+	   System.out.println("Testing invalid URLs ( All tests should be false )");
+	   System.out.println(urlVal.isValid("http://ww.amazon.com:"));
+	   System.out.println(urlVal.isValid("ttp://www.amazon.com:"));
+	   System.out.println(urlVal.isValid("htt://www.amazon.com:"));
+	   System.out.println(urlVal.isValid("http:/www.amazon.com:"));
+	   System.out.println(urlVal.isValid("http://www.amazon.om:"));
+	   System.out.println(urlVal.isValid("http://amazon.com:"));
+	   System.out.println(urlVal.isValid("ftp://amazon.com:"));
+	   System.out.println(urlVal.isValid("http://www.amazon.com:"));
+	   System.out.println(urlVal.isValid("http://www.amazon.com:808080"));
+	   
+	   //Testing valid URLs
+	   System.out.println("Testing valid URLs ( All tests should be true )");
+	   System.out.println(urlVal.isValid("http://www.google.com"));
+	   System.out.println(urlVal.isValid("http://www.google.com/test"));
+	   System.out.println(urlVal.isValid("http://www.oregonstate.edu"));
+	   System.out.println(urlVal.isValid("http://www.ca.gov"));
+	   System.out.println(urlVal.isValid("http://www.asp.net"));
+	   System.out.println(urlVal.isValid("http://www.amazon.com:0"));
+	   System.out.println(urlVal.isValid("http://www.amazon.com:88"));
+	   System.out.println(urlVal.isValid("http://www.amazon.com:888"));
+	   System.out.println(urlVal.isValid("http://www.amazon.com:8080"));
+	   System.out.println(urlVal.isValid("http://www.amazon.com:80808"));
+	   
 	   
 	   
    }
