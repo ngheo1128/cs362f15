@@ -43,29 +43,30 @@ public class UrlValidatorTest extends TestCase {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 	   
 	   //Testing invalid URLs
-	   System.out.println("Testing invalid URLs ( All tests should be false )");
-	   System.out.println(urlVal.isValid("http://ww.amazon.com:"));
-	   System.out.println(urlVal.isValid("ttp://www.amazon.com:"));
-	   System.out.println(urlVal.isValid("htt://www.amazon.com:"));
-	   System.out.println(urlVal.isValid("http:/www.amazon.com:"));
-	   System.out.println(urlVal.isValid("http://www.amazon.om:"));
-	   System.out.println(urlVal.isValid("http://amazon.com:"));
-	   System.out.println(urlVal.isValid("ftp://amazon.com:"));
-	   System.out.println(urlVal.isValid("http://www.amazon.com:"));
-	   System.out.println(urlVal.isValid("http://www.amazon.com:808080"));
+
+	   assertFalse(urlVal.isValid("ht://www.google.com"));
+	   assertFalse(urlVal.isValid("http://ww.amazon.com:"));
+	   assertFalse(urlVal.isValid("ttp://www.amazon.com:"));
+	   assertFalse(urlVal.isValid("htt://www.amazon.com:"));
+	   assertFalse(urlVal.isValid("http:/www.amazon.com:"));
+	   assertFalse(urlVal.isValid("http://www.amazon.om:"));
+	   assertFalse(urlVal.isValid("http://amazon.com:"));
+	   assertFalse(urlVal.isValid("ftp://amazon.com:"));
+	   assertFalse(urlVal.isValid("http://www.amazon.com:"));
+	   assertFalse(urlVal.isValid("http://www.amazon.com:808080"));
 	   
 	   //Testing valid URLs
-	   System.out.println("Testing valid URLs ( All tests should be true )");
-	   System.out.println(urlVal.isValid("http://www.google.com"));
-	   System.out.println(urlVal.isValid("http://www.google.com/test"));
-	   System.out.println(urlVal.isValid("http://www.oregonstate.edu"));
-	   System.out.println(urlVal.isValid("http://www.ca.gov"));
-	   System.out.println(urlVal.isValid("http://www.asp.net"));
-	   System.out.println(urlVal.isValid("http://www.amazon.com:0"));
-	   System.out.println(urlVal.isValid("http://www.amazon.com:88"));
-	   System.out.println(urlVal.isValid("http://www.amazon.com:888"));
-	   System.out.println(urlVal.isValid("http://www.amazon.com:8080"));
-	   System.out.println(urlVal.isValid("http://www.amazon.com:80808"));
+
+	   assertTrue(urlVal.isValid("http://www.google.com"));
+	   assertTrue(urlVal.isValid("http://www.google.com/test"));
+	   assertTrue(urlVal.isValid("http://www.oregonstate.edu"));
+	   assertTrue(urlVal.isValid("http://www.ca.gov"));
+	   assertTrue(urlVal.isValid("http://www.asp.net"));
+	   assertTrue(urlVal.isValid("http://www.amazon.com:0"));
+	   assertTrue(urlVal.isValid("http://www.amazon.com:88"));
+	   assertTrue(urlVal.isValid("http://www.amazon.com:888"));
+	   assertTrue(urlVal.isValid("http://www.amazon.com:8080"));
+	   assertTrue(urlVal.isValid("http://www.amazon.com:80808"));
 	   
 	   
 	   
