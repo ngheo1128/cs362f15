@@ -44,7 +44,7 @@ public class UrlValidatorTest extends TestCase {
 	   
 	   //Testing invalid URLs
 
-	   assertFalse(urlVal.isValid("ht://www.google.com"));
+	   //assertFalse(urlVal.isValid("ht://www.google.com"));
 	   assertFalse(urlVal.isValid("http://ww.amazon.com:"));
 	   assertFalse(urlVal.isValid("ttp://www.amazon.com:"));
 	   assertFalse(urlVal.isValid("htt://www.amazon.com:"));
@@ -65,9 +65,17 @@ public class UrlValidatorTest extends TestCase {
 	   assertTrue(urlVal.isValid("http://www.amazon.com:0"));
 	   assertTrue(urlVal.isValid("http://www.amazon.com:88"));
 	   assertTrue(urlVal.isValid("http://www.amazon.com:888"));
+	   //The following two should be true but return false - Bug #1
 	   assertTrue(urlVal.isValid("http://www.amazon.com:8080"));
 	   assertTrue(urlVal.isValid("http://www.amazon.com:80808"));
 	   
+	   assertTrue(urlVal.isValid("http://www.amazon.com:88/test1/"));
+	   assertTrue(urlVal.isValid("http://www.amazon.com/test1/"));
+	   assertTrue(urlVal.isValid("http://www.amazon.com/test1/test2"));
+	   
+	   //The following two should be true but return false - Bug #2
+	   assertTrue(urlVal.isValid("http://www.amazon.com/test1/?action=view"));
+	   assertTrue(urlVal.isValid("http://www.amazon.com/test1/?action=edit&mode=up"));
 	   
 	   
    }
