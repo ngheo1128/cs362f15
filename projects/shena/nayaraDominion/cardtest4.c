@@ -12,7 +12,7 @@
 //=================
 int main(int argc, char **argv){
 	
-	printf("\n\nVillage Card Test \n\n");
+	printf("\n\nGreat Hall Card Test \n\n");
 	printf("Creating new gameState... \n");
 	struct gameState *s = newGame();
 	int numCards;

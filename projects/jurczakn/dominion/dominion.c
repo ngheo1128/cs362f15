@@ -400,7 +400,7 @@ int isGameOver(struct gameState *state) {
 
   //if three supply pile are at 0, the game ends
   j = 0;
-  for (i = 0; i < 25; i++)
+  for (i = 0; i < 27; i++)
     {
       if (state->supplyCount[i] == 0)
 	{
@@ -442,7 +442,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
@@ -536,7 +536,12 @@ int drawCard(int player, struct gameState *state)
       state->discard[player][i] = -1;
     }
 
-    state->deckCount[player] = state->discardCount[player];
+    if (state->discardCount[player]<0){
+	state->deckCount[player] = 0;
+    }
+    else{
+        state->deckCount[player] = state->discardCount[player];
+    }
     state->discardCount[player] = 0;//Reset discard
 
     //Shufffle the deck
@@ -1238,6 +1243,8 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       //add card to played pile
       state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
       state->playedCardCount++;
+      state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->hand[currentPlayer][handPos];
+      state->discardCount[currentPlayer]++;
     }
 	
   //set played card to -1

@@ -7,13 +7,14 @@
 #include <assert.h>
 #include "rngs.h"
 
-#define VERBOSE 0
+#define VERBOSE 1
 
 // the purpose here is to test the playSmithy() function
 int testSmithy(int player) {
   struct gameState g;
 
-  int i, handSize, discardSize, smithyPos = -1;
+  int i, handSize, smithyPos = -1;
+
 
   int errorCount = 0;
   int seed = rand();
@@ -34,14 +35,15 @@ int testSmithy(int player) {
     g.deck[player][g.deckCount[player]++] = gold;
   }
 #if VERBOSE
+  int discardSize;
   printf(" TESTING SMITHY CARD\n");
   printf("Starting deck count: %d\n", g.deckCount[player]);
   printf("Starting hand count: %d\n", g.handCount[player]);
   printf("Starting discard count: %d\n", g.discardCount[player]);
+  discardSize = g.discardCount[player];
 #endif
 
   // save count of cards in player's discard pile and hand
-  discardSize = g.discardCount[player];
   handSize = g.handCount[player];
   for (i = 0; i < g.handCount[player]; ++i) {
 #if VERBOSE
@@ -72,9 +74,10 @@ int testSmithy(int player) {
   g.hand[player][g.handCount[player]++] = smithy;
   handSize = g.handCount[player];
   smithyPos = handSize - 1;
-  discardSize = g.discardCount[player];
+
 
 #if VERBOSE
+  discardSize = g.discardCount[player];
   printf("# Hand AFTER adding SMITHY card:\n");
   for (i = 0; i < g.handCount[player]; ++i) {
     printf("Hand Card %d : %d\n", i, g.hand[player][i]);
@@ -89,7 +92,7 @@ int testSmithy(int player) {
   printf(" --> %d : hand size before playing smithy\n", handSize);
   printf(" --> %d : hand size after playing smithy\n", g.handCount[player]);
 #endif
-  if (g.handCount[player] != handSize + 3) {
+  if (g.handCount[player] != handSize + 2) {
     printf("ERROR: 3 cards were not added to player's hand\n");
     errorCount++;
   }
@@ -105,8 +108,13 @@ int testSmithy(int player) {
   }
 #endif
 
-  // assert that smithy card is now on top of discard pile
-  if (g.discard[player][discardSize] != smithy) {
+  // assert that smithy card is now in playedCards
+  // if (g.discard[player][discardSize] != smithy) {
+  for (i = 0; i < g.playedCardCount; i++) {
+    printf("g.playedCards[%d] is %d\n", i, g.playedCards[i]);
+  }
+  
+  if (g.playedCards[g.playedCardCount + 1] != smithy) {
     printf("ERROR: smithy card never added to discard pile\n");
     errorCount++;
   }
