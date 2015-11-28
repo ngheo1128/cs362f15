@@ -384,7 +384,59 @@ public class UrlValidatorTest extends TestCase {
 	   
    }
    
-   public void testYourSecondPartition(){
+   public void testAuthority(){
+       
+	   UrlValidator urlVal3 = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
+	   //Test some known valid web pages
+	   assertTrue(urlVal3.isValidAuthority("oregonstate.edu"));
+	   assertTrue(urlVal3.isValidAuthority("www.google.com"));
+	   assertTrue(urlVal3.isValidAuthority("microsoft.com"));
+	   assertFalse(urlVal3.isValidAuthority(null));
+	   
+	   //--BUG FOUND-- local host does not validate correctly
+	   //The bug is located in DomainValidator, line 139 (should be testing for isValid, not !isValid)
+
+	   //assertTrue(urlVal3.isValidAuthority("localhost"));
+	   //assertTrue(urlVal3.isValidAuthority("mymachine"));
+       
+       //There is a check for null, but there is not a check for empty string - may not be a bug
+	   //assertFalse(validator.isValidAuthority(""));
+	   
+	   //--POTENTIAL BUG FOUND-- These fail and don't get caught by validation
+	   //assertFalse(urlVal3.isValidAuthority(".2edu"));
+	   //assertFalse(urlVal3.isValidAuthority(".."));
+	   //assertFalse(urlVal3.isValidAuthority("aaa."));
+	   
+	   //Test port numbers
+	   assertTrue(urlVal3.isValidAuthority("google.com:0"));
+	   assertTrue(urlVal3.isValidAuthority("google.com:80"));
+	   assertTrue(urlVal3.isValidAuthority("google.com:808"));
+	   
+	   //--BUG REPLICATED-- This same bug was found in manual testing with port numbers
+	   //Any port number above 3 digits does not pass the assertion
+	   //assertTrue(urlVal3.isValidAuthority("google.com:8080"));
+	   //assertTrue(urlVal3.isValidAuthority("google.com:80808"));
+	   //assertTrue(urlVal3.isValidAuthority("google.com:808808"));
+	   //assertTrue(urlVal3.isValidAuthority("google.com:8088080"));
+	   
+	   //Test invalid port numbers
+	   assertFalse(urlVal3.isValidAuthority("google.com:"));
+	   assertFalse(urlVal3.isValidAuthority("google.com:-1"));
+	   assertFalse(urlVal3.isValidAuthority("google.com:32a"));
+	   
+	   //Test IP Addresses
+	   assertTrue(urlVal3.isValidAuthority("255.255.255.255"));
+	   assertTrue(urlVal3.isValidAuthority("0.0.0.0"));
+	   
+	   //--BUG FOUND-- IP Address are not validated. The following assertions fail
+	   //Bug is found on line 96 of InetAddressValidator, if value is over 255, it should return false
+	   //assertFalse(urlVal3.isValidAuthority("256.256.256.256"));
+	   
+	   //--SAME BUG-- IP Addresses are not validated for invalid inputs
+	   //assertFalse(urlVal3.isValidAuthority("0.0.0."));
+	   //assertFalse(urlVal3.isValidAuthority("0.0"));
+	   //assertFalse(urlVal3.isValidAuthority("0.0."));
+	   //assertFalse(urlVal3.isValidAuthority("-1.-1.-1.-1"));
 	   
    }
    
