@@ -17,6 +17,9 @@
 
 
 import junit.framework.TestCase;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Random;
 
 
@@ -77,6 +80,36 @@ public class UrlValidatorTest extends TestCase {
 	   
 	   
    }
+   
+   public void testManualTest2() 
+   {
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   String urlFile="src/UrlsToVerify.txt";
+	   
+	   try{
+		   FileReader txtFile = new FileReader(urlFile);
+		   BufferedReader fbuffer = new BufferedReader(txtFile);
+
+		   String line;
+
+		   while ((line = fbuffer.readLine()) != null){
+			   String[] tokens = line.split("[ ]");
+			   String url = tokens[0];
+			   boolean bool = Boolean.parseBoolean(tokens[1]);
+   
+			   if(bool != urlVal.isValid(url)){
+				   System.out.println(url);
+			   }
+           }
+
+		   fbuffer.close();
+      
+	   }catch(Exception err){
+		   System.out.println(err.getMessage());                      
+	   }
+
+   }
+   
    
    /* Partition tests. The input domain shall be partitioned in the following way:
     * <scheme>://<authority><path>?<query>
