@@ -38,13 +38,13 @@
 //
 int testTreasureMapCard(struct gameState *state, int handPos)
 {
-    struct gameState *origState;  // copy of game state
-    int origNumTreasureMap = 0;   // orig number of treasure map cards
-    int newNumTreasureMap  = 0;   // new number of treasure map cards
-    int origTopGolds       = 0;   // orig number of golds at top of deck
-    int newTopGolds        = 0;   // new number of golds at top of deck
-    int idx                = 0;   // loop iterator
-    int passFlag           = 1;   // signals whether or not a test passed (default: true)
+    struct gameState *origState;   // copy of game state
+    int origNumTreasureMap   = 0;  // orig number of treasure map cards
+    int discardedTreasureMap = 0;  // number of discarded TM cards
+    int origTopGolds         = 0;  // orig number of golds at top of deck
+    int newTopGolds          = 0;  // new number of golds at top of deck
+    int idx                  = 0;  // loop iterator
+    int passFlag             = 1;  // signals whether or not a test passed (default: true)
     int currentPlayer = state->whoseTurn;
 
     // Make a copy of the original game state
@@ -63,12 +63,12 @@ int testTreasureMapCard(struct gameState *state, int handPos)
             origNumTreasureMap++;
     }
 
-    // Determine new number of treasure map cards in hand
-    //
-    for(idx = 0; idx < state->handCount[currentPlayer]; idx++)
+    for(idx = 0; idx < origState->handCount[currentPlayer]; idx++)
     {
-        if(state->hand[currentPlayer][idx] == treasure_map)
-            newNumTreasureMap++;
+        if((origState->hand[currentPlayer][idx] == treasure_map) && (state->hand[currentPlayer][idx] == -1))
+        {
+            discardedTreasureMap++;
+        }
     }
 
     // See how many cards on top of the original deck were golds (if any)
@@ -94,18 +94,33 @@ int testTreasureMapCard(struct gameState *state, int handPos)
         // We started with two treasure map cards. See how many were
         // discarded.
         //
-        if(origNumTreasureMap - newNumTreasureMap == 2)
+        if(discardedTreasureMap == 2) 
         {
             // We discarded two treasure map cards. Check golds.
             //
-            if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+            if(origState->deckCount[currentPlayer] >= 4) // Deck started big enough to add 4 golds
             {
-                printf("treasureMapCard: PASS two TMs discarded, four golds added to top of deck\n");
+                if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+                {
+                    printf("treasureMapCard: PASS two TMs discarded, four golds added to top of deck\n");
+                }
+                else
+                {
+                    printf("treasureMapCard: FAIL two TMs discarded, four golds not added to top of deck\n");
+                    passFlag = 0;
+                }
             }
-            else 
+            else // Deck is too small, four golds should not be added
             {
-                printf("treasureMapCard: FAIL two TMs discarded, four golds not added to top of deck\n");
-                passFlag = 0;
+                if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+                {
+                    printf("treasureMapCard: FAIL two TMs discarded, four golds added from too-small deck\n");
+                    passFlag = 0;
+                }
+                else
+                {
+                    printf("treasureMapCard: PASS two TMs discarded, four golds not added from too-small deck\n");
+                }
             }
         }
         else
@@ -123,20 +138,71 @@ int testTreasureMapCard(struct gameState *state, int handPos)
             }
         }
     }
-    else 
+    else if(origNumTreasureMap == 1)
     {
-        // We started with one treasure map card. Discarding it does
-        // nothing but discard a card. Check to make sure no golds were
-        // added to the top of the deck.
-        //
-        if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+        if(discardedTreasureMap == 1)
         {
-            printf("treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck\n");
-            passFlag = 0;
+            // We started with one treasure map card. Discarding it does
+            // nothing but discard a card. Check to make sure no golds were
+            // added to the top of the deck.
+            //
+            if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+            {
+                printf("treasureMapCard: FAIL discarded one TM, four golds added to top of deck\n");
+                passFlag = 0;
+            }
+            else 
+            {
+                printf("treasureMapCard: PASS discarded one TM, golds not added to top of deck\n");
+            }
         }
-        else 
+        else // started with one TM, did not discard it
         {
-            printf("treasureMapCard: PASS did not discard two TMs, golds not added to top of deck\n");
+            // We did not discard two TMs so we should not have 4 golds
+            // added to the top of the deck.
+            //
+            if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+            {
+                printf("treasureMapCard: FAIL discarded no TMs, four golds added to top of deck\n");
+                passFlag = 0;
+            }
+            else 
+            {
+                printf("treasureMapCard: PASS discarded no TMs, golds not added to top of deck\n");
+            }
+
+        }
+    }
+    else // No treasure map cards
+    {
+        if(discardedTreasureMap > 0)
+        {
+            // We started with no treasure map cards. None should have
+            // been discarded. Check to make sure no golds were
+            // added to the top of the deck.
+            //
+            if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+            {
+                printf("treasureMapCard: FAIL discarded TM that should not exist, four golds added to top of deck\n");
+                passFlag = 0;
+            }
+            else 
+            {
+                printf("treasureMapCard: FAIL discarded TM that should not exist\n");
+                passFlag = 0;
+            }
+        }
+        else // No discarded TMs, should also be no golds added to deck
+        {
+            if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+            {
+                printf("treasureMapCard: FAIL discarded no TMs, four golds added to top of deck\n");
+                passFlag = 0;
+            }
+            else 
+            {
+                printf("treasureMapCard: PASS discarded no TMs, no golds added to top of deck\n");
+            }
         }
     }
 
@@ -186,8 +252,6 @@ int main(int argc, char *argv[])
         state = newGame();
         initializeGame(numPlayers, kingdomCards, randomSeed, state);
 
-        printf("\n");
-
         for(idx = 0; idx < numPlayers; idx++)
         {
             printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
@@ -219,8 +283,6 @@ int main(int argc, char *argv[])
         // needs to be reduced by 1)
         //
         deckSize = randomByRange(9, MAX_DECK - 1);
-
-        printf("\n");
 
         for(idx = 0; idx < numPlayers; idx++)
         {
@@ -344,7 +406,7 @@ int main(int argc, char *argv[])
                 state->deck[idx][idx2] = card;
             }
 
-            // Slip in one treasure map card 
+            // Slip in two treasure map cards
             //
             gainCard(treasure_map, state, 2, idx);
             gainCard(treasure_map, state, 2, idx);

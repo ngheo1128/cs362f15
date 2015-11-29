@@ -16,6 +16,7 @@
  */
 
 import junit.framework.TestCase;
+import java.util.*;
 
 /**
  * Performs Validation Test for url validations.
@@ -24,12 +25,6 @@ import junit.framework.TestCase;
  *          2011) $
  */
 public class UrlValidatorTest extends TestCase {
-
-	private boolean printStatus = false;
-	private boolean printIndex = false;// print index that indicates current
-										// scheme,host,port,path, query test
-										// were using.
-
 	private String testURL = null;
 	
 	/*URL Components for Partition 1*/
@@ -41,13 +36,13 @@ public class UrlValidatorTest extends TestCase {
 	private String[] fragments1 = new String[3];
 	
 	/*URL Components for Partition 2*/
-	private String[] schemes2 = new String[10];
-	private String[] hosts2 = new String[10];
-	private String[] tld2 = new String[10];
-	private String[] ports2 = new String[10];
-	private String[] paths2 = new String[10];
-	private String[] queries2 = new String[10];
-	private String[] fragments2 = new String[10];
+	private String[] schemes2 = new String[12];
+	private String[] hosts2 = new String[5];
+	private String[] tlds2 = new String[15];
+	private String[] ports2 = new String[11];
+	private String[] paths2 = new String[9];
+	private String[] queries2 = new String[11];
+	private String[] fragments2 = new String[8];
 	
 	/**
 	 * Constructor
@@ -75,6 +70,23 @@ public class UrlValidatorTest extends TestCase {
 		hosts1[0] = hosts2[0] = "google.com";
 		hosts1[1] = hosts2[1] = "www.google.com";
 		
+		//set up valid hosts
+		hosts2[0] = "ebay";
+		hosts2[1] = "google";
+		hosts2[2] = "www.google";
+
+		//set up top-level domains
+		tlds2[0] = ".arpa";
+		tlds2[1] = ".ca";
+		tlds2[2] = ".com";
+		tlds2[3] = ".gov";
+		tlds2[4] = ".int";
+		tlds2[5] = ".mil";
+		tlds2[6] = ".net";
+		tlds2[7] = ".org";
+		tlds2[8] = ".edu";
+		tlds2[9] = ".co.uk";
+		
 		//set up valid ports
 		ports1[0] = ports2[0] = ":80";
 		ports1[1] = ports2[1] = ":22";
@@ -90,6 +102,9 @@ public class UrlValidatorTest extends TestCase {
 		//set up valid queries
 		queries1[0] = queries2[0] = "?action=view";
 		queries1[1] = queries2[1] = "?action=edit&mode=up";
+		queries2[2] = "?action=edit+";
+		queries2[3] = "?action=edit+edit2";
+		
 		
 		//set up valid fragments
 		fragments1[0] = fragments2[0] = "#";
@@ -104,11 +119,14 @@ public class UrlValidatorTest extends TestCase {
 		System.out.println("TRACE: tearDown()\n");	  
 		//TODO: cleanup code goes here 
 	 }
-	 
+	
+
+	
 	/**
 	 * Manual Tests
 	 */
 	public void testManualTest() {
+		//List<String> failedTests = new ArrayList<String>();
 		System.out.println("TRACE: testManualTest()");	   
 		//UrlValidator uv = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 		UrlValidator uv = new UrlValidator();
@@ -121,7 +139,11 @@ public class UrlValidatorTest extends TestCase {
 					
 			testURL = "http://www.amazon.com";
 			assertEquals(testURL, true, uv.isValid(testURL)); 
-			System.out.println("   PASS:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
+			System.out.println("   PASS:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));	
+			
+			testURL = "http://www.ebay.arpa";
+			assertEquals(testURL, true, uv.isValid(testURL)); 
+			System.out.println("   PASS:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));
 
 			testURL = "http://www.google.com";
 			assertEquals(testURL, true, uv.isValid(testURL)); 
@@ -148,7 +170,6 @@ public class UrlValidatorTest extends TestCase {
 			assertEquals(testURL, true, uv.isValid(testURL));  
 			System.out.println("   PASS:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));	
 				
-					
 		} catch(AssertionError e){										
 			System.out.println("   FAIL:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
 		}
@@ -189,8 +210,6 @@ public class UrlValidatorTest extends TestCase {
 		} catch(AssertionError e){
 			System.out.println("   FAIL:  "+testURL+"   expected=false, isValid()="+uv.isValid(testURL));
 		}
-		
-		//TODO: More manual tests!
 	
 	}
 
@@ -198,8 +217,8 @@ public class UrlValidatorTest extends TestCase {
 	/** 
 	 * Tests URLs with missing components
 	 */
-	public void testYourFirstPartition() {
-		System.out.println("TRACE: testYourFirstPartition()");	   
+	public void testMissingComponents() {
+		System.out.println("TRACE: testMissingComponents()");	   
 		UrlValidator uv = new UrlValidator();
 
 		//missing scheme
@@ -223,7 +242,6 @@ public class UrlValidatorTest extends TestCase {
 			
 		}catch(AssertionError e){
 			System.out.println("   FAIL:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
-
 		}
 		
 		//missing host
@@ -267,7 +285,6 @@ public class UrlValidatorTest extends TestCase {
 			
 		}catch(AssertionError e){
 			System.out.println("   FAIL:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
-
 		}
 		
 		//missing top-level domain
@@ -298,7 +315,6 @@ public class UrlValidatorTest extends TestCase {
 			
 		}catch(AssertionError e){
 			System.out.println("   FAIL:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
-
 		}
 		
 		//missing port
@@ -341,15 +357,16 @@ public class UrlValidatorTest extends TestCase {
 		} catch(AssertionError e){										
 			System.out.println("   FAIL:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
 		}
+
 	}
 
 	
 	
 	/** 
-	 * Grammatical/Syntactical errors: extra slashes
+	 * Test URLs with extra slashes
 	 */
-	public void testYourSecondPartition() {
-		System.out.println("TRACE: testYourSecondPartition()");	
+	public void testExtraSlashes() {
+		System.out.println("TRACE: testExtraSlashes()");	
 		UrlValidator uv = new UrlValidator();
 
 		try{
@@ -388,45 +405,177 @@ public class UrlValidatorTest extends TestCase {
 			
 		}catch(AssertionError e){
 			System.out.println("   FAIL:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
-
 		}
+
 
 	}
 
 	/**
-	 * Errors in top-level domains .ca .com .au  .co.uk 
-	 * Multiple queries
-	 * Encoded URLs should be valid: /%20
-	 * 
+	 * Test URLs with various top-level domains
 	 */
-	public void testYourThirdPartition(){
+	public void testTopLevelDomains(){
+		System.out.println("TRACE: testTopLevelDomains()");	
+		UrlValidator uv = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 		
+		String[] myUrls = new String[5];
+		myUrls[0] = "http://www.is.co.za/";
+		myUrls[1] = "http://www.myURL.co.uk";
+		myUrls[2] = "http://www.myURL.nz";
+		myUrls[3] = "http://www.myURL.osaka";
+		myUrls[3] = "http://www.myURL.mobi";
+
+		for (int i = 0; i < myUrls.length; i++)
+		{
+			try{
+				assertEquals(myUrls[i], true, uv.isValid(myUrls[i])); 
+				System.out.println("   PASS:  "+myUrls[i]+"   expected=true, isValid()="+uv.isValid(myUrls[i]));		
+			} catch(AssertionError e){										
+				System.out.println("   FAIL:  "+myUrls[i]+"   expected=true, isValid()="+uv.isValid(myUrls[i]));		
+			}
+		}
 	}
 
 	/** 
-	 * Test URL inputs with syntactical errors other than missing components 
-	 * Grammatical/Syntactical errors: whitespace, file://, extra slashes, missing slash, encoded URLs should be valid: e.g. /%20
-	 *  Components in the wrong order???
+	 * Testing common numbers: all of these urls should evaluate to true
 	 */
-	public void testYourFourthPartition(){
+	public void testPorts(){
+		System.out.println("TRACE: testPorts()");	
+		UrlValidator uv = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+		String[] myPorts = new String[17];
+		myPorts[0] = "http://192.0.2.10/index.html";				// ip4v address
+		myPorts[1] = "http://142.42.1.1:8080/";						// ip4v address with port
+		myPorts[2] = "http://142.42.1.1:20/";
+		myPorts[3] = "http://142.42.1.1:21/";
+		myPorts[4] = "http://142.42.1.1:23/";
+		myPorts[5] = "http://142.42.1.1:25/";
+		myPorts[6] = "http://142.42.1.1:53/";
+		myPorts[7] = "http://142.42.1.1:80/";
+		myPorts[8] = "http://142.42.1.1:110/";
+		myPorts[9] = "http://142.42.1.1:119/";
+		myPorts[10] = "http://142.42.1.1:143/";
+		myPorts[11] = "http://142.42.1.1:161/";
+		myPorts[12] = "http://142.42.1.1:194/";
+		myPorts[13] = "https://142.42.1.1:443/";					// commonly used for https
+		myPorts[14] = "http://142.42.1.1:465/";
+		myPorts[15] = "http://142.42.1.1:8443/";
+		myPorts[16] = "http://142.42.1.1:1470/";
+
+		for (int i = 0; i < myPorts.length; i++)
+		{
+			try{
+				assertEquals(myPorts[i], true, uv.isValid(myPorts[i])); 
+				System.out.println("   PASS:  "+myPorts[i]+"   expected=true, isValid()="+uv.isValid(myPorts[i]));		
+			} catch(AssertionError e){										
+				System.out.println("   FAIL:  "+myPorts[i]+"   expected=true, isValid()="+uv.isValid(myPorts[i]));		
+			}
+		}
+	}
+	
+	/** 
+	 * Testing common numbers: all of these urls should evaluate to true
+	 */
+	public void testQueries(){
+		System.out.println("TRACE: testQueries()");	
+		UrlValidator uv = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+		String[] queries = new String[4];
+		queries[0] = "http://www.google.com?";				// ip4v address
+		queries[1] = "http://www.google.com/mytest/program.exe?";						// ip4v address with port
+		queries[2] = "http://142.42.1.1:20/?question=answer";
+		queries[3] = "http://www.ebay.ca/index.html?test1=ans1&mode=2";
 		
+
+		for (int i = 0; i < queries.length; i++)
+		{
+			try{
+				assertEquals(queries[i], true, uv.isValid(queries[i])); 
+				System.out.println("   PASS:  "+queries[i]+"   expected=true, isValid()="+uv.isValid(queries[i]));		
+			} catch(AssertionError e){										
+				System.out.println("   FAIL:  "+queries[i]+"   expected=true, isValid()="+uv.isValid(queries[i]));		
+			}
+		}
+	}
+	
+	public void testEncodings(){
+		//URL encoding replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits.
+		//URLs cannot contain spaces. URL encoding normally replaces a space with a plus (+) sign or with %20.
+		System.out.println("\nTRACE: testEncodings()");
+		UrlValidator uv = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+		String[] encodedStrPass = new String[5];
+		encodedStrPass[0] = "http://www.myURL.com/%20";
+		encodedStrPass[1] = "http://www.myURL.com/abc%20def.html";
+		encodedStrPass[2] = "http://www.myURL.com/abc%3E";
+		encodedStrPass[3] = "http://www.myURL.com/abc%3Edef%3F";
+		encodedStrPass[4] = "http://www.myURL.com/abc%3Edef%3F/%E2%80%98backtick%E2%80%98";
+
+		for (int i = 0; i < encodedStrPass.length; i++)
+		{
+			try{
+				assertEquals(encodedStrPass[i], true, uv.isValid(encodedStrPass[i])); 
+				System.out.println("   PASS:  "+encodedStrPass[i]+"   expected=true, isValid()="+uv.isValid(encodedStrPass[i]));		
+			} catch(AssertionError e){										
+				System.out.println("   FAIL:  "+encodedStrPass[i]+"   expected=true, isValid()="+uv.isValid(encodedStrPass[i]));		
+			}
+			
+		}
+		
+		String[] encodedStrFail = new String[5];
+		encodedStrFail[0] = "%20http://www.myURL.com/";
+		encodedStrFail[1] = "%20http://www.myURL.com/%20";
+		encodedStrFail[2] = "http://www.%20m%20y%20U%20R%20L%20.com/";
+		encodedStrFail[3] = "http://www.%20m%20y%20U%20R%20L%20.com/";
+		encodedStrFail[4] = "http://www.myURL.com%18/abc%18";
+		
+		for (int i = 0; i < encodedStrFail.length; i++)
+		{
+			try{
+				assertEquals(encodedStrFail[i], false, uv.isValid(encodedStrFail[i])); 
+				System.out.println("   PASS:  "+encodedStrFail[i]+"   expected=false, isValid()="+uv.isValid(encodedStrFail[i]));		
+			} catch(AssertionError e){										
+				System.out.println("   FAIL:  "+encodedStrFail[i]+"   expected=false, isValid()="+uv.isValid(encodedStrFail[i]));		
+			}
+		}
+	}
+	
+	/** 
+	 * Test URL inputs with different letter cases
+	 */
+	public void testLetterCase(){
+		System.out.println("TRACE: testLetterCase()");	
+		UrlValidator uv = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+		/*schemes that should pass */
+		String[] myUrls = new String[4];
+		myUrls[0] = "http://www.google.com/";			// valid address
+		myUrls[1] = "HTTP://www.google.com/";			// testing case insensitivity on scheme
+		myUrls[2] = "http://www.GOOGLE.COM/";			// testing case insensitivity on host subcomponent		
+		myUrls[3] = "Http://www.gOoGlE.com/";
+		
+		for (int i = 0; i < myUrls.length; i++)
+		{
+			try{
+				assertEquals(myUrls[i], true, uv.isValid(myUrls[i])); 
+				System.out.println("   PASS:  "+myUrls[i]+"   expected=true, isValid()="+uv.isValid(myUrls[i]));		
+			} catch(AssertionError e){										
+				System.out.println("   FAIL:  "+myUrls[i]+"   expected=true, isValid()="+uv.isValid(myUrls[i]));		
+			}
+		}
 	}
 	
 	/**
-	 *  Programmatic tests 
+	 * Programmatically test all possible permutations of their combinations.
 	 */
 	public void testIsValid() {
 		System.out.println("TRACE: testIsValid()");	   
 
 		/* Test missing components programmatically */
-		
-		//add empty (missing) components
+
+		//add missing components
 		schemes1[schemes1.length-1] = hosts1[hosts1.length-1] = ports1[ports1.length-1] = 
 				paths1[paths1.length-1] = queries1[queries1.length-1] = fragments1[fragments1.length-1] = "";
 				
 		UrlValidator uv = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-		System.out.println("\n  ASSERTION  DETAILS");
-
+		System.out.println(" -- Testing URLs with missing components --");
 		for(int i=0, schLen=schemes1.length; i<schLen; i++){
 			for(int j=0, hosLen=hosts1.length; j<hosLen; j++){
 				for(int k=0, porLen=ports1.length; k<porLen; k++){
@@ -441,14 +590,14 @@ public class UrlValidatorTest extends TestCase {
 									//Source: http://stackoverflow.com/questions/4115602/assert-statement-causing-junit-tests-to-stop	
 									try{
 										assertEquals(testURL, false, uv.isValid(testURL)); //should be an invalid url due to missing required components
-										System.out.println("  PASS:  "+testURL+"   expected=false, isValid()="+uv.isValid(testURL));	
+										//System.out.println("  PASS:  "+testURL+"   expected=false, isValid()="+uv.isValid(testURL));	
 									} catch(AssertionError e){
 										System.out.println("  FAIL:  "+testURL+"   expected=false, isValid()="+uv.isValid(testURL));
 									}
 								}else{
 									try{
 										assertEquals(testURL, true, uv.isValid(testURL)); 
-										System.out.println("   PASS:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
+										//System.out.println("   PASS:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
 									} catch(AssertionError e){										
 										System.out.println("   FAIL:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
 									}
@@ -462,52 +611,150 @@ public class UrlValidatorTest extends TestCase {
 		}
 		
 		/* Test syntactically invalid URLs programmatically */
+		System.out.println(" -- Testing syntatically incorrect URLs --");
 		UrlValidator urlVal2 = new UrlValidator(schemes2); //only the schemes in schemes2 are valid schemes
 
-		//TODO: add invalid schemes
-		//schemes2[4] = "htp://";
-		//schemes2[5] = "http:"; //missing
-		//
-			// ... MORE ...
+		//add invalid schemes
+		schemes2[4] = " h";
+		schemes2[5] = "h";
+		schemes2[6] = "hp://";
+		schemes2[7] = "htp://";
+		schemes2[8] = "htps://";
+		schemes2[9] = "http:"; //missing
+		schemes2[10] = "http:/";
+		schemes2[11] = "http:// ";
 		
-		//TODO: add invalid hosts
-		//hosts2[2]
-			// ... MORE ...
+		//add invalid hosts
+		hosts2[2] = "abc.co m";
+		hosts2[3] = " abc.com";
+		hosts2[4] = "ab%20c.com";
+				
+		//add invalid top-level domains
+		tlds2[10] = "."; 
+		tlds2[11] = "..";
+		tlds2[12] = ".%20";
+		tlds2[13] = ".c%20om";
+		tlds2[14] = ".%20com";
+												
+		//add invalid ports
+		ports2[3] = "0.5";
+		ports2[4] = "-10";
+		ports2[5] = "12345";
+		ports2[6] = "123456";
+		ports2[7] = "1234567";
+		ports2[8] = "8 0";
+		ports2[9] = " 80";
+		ports2[10] = "80 ";
+				
+		//add invalid paths, 
+		paths2[5] = "//";
+		paths2[6] = "///";
+		paths2[7] = "/anch//";
+		paths2[8] = " /";
 		
-		//TODO: add invalid ports
-		//ports2[3]
-			// ... MORE ...
+
 		
-		//TODO: add invalid paths, queries, fragments etc
+		//add invalid fragments
+		fragments2[2] = " ";
+		fragments2[3] = "# ";
+		fragments2[4] = " #";
+		fragments2[5] = "# abc";
+		fragments2[6] = "#anch ";
+		fragments2[7] = "# anch ";
+		
+		for(int i=0, schLen=schemes2.length; i<schLen; i++){
+			for(int j=0, hosLen=hosts2.length; j<hosLen; j++){
+				for(int k=0, tldLen=tlds2.length; k<tldLen; k++){
+					for(int l=0, porLen=ports2.length; l<porLen; l++){
+						for(int m=0, patLen=paths2.length; m<patLen; m++){
+							for(int o=0, refLen=fragments2.length; o<refLen; o++){
+								testURL = 
+										new StringBuilder().append(schemes2[i]).append(hosts2[j]).append(tlds2[k])
+										.append(ports2[l]).append(paths2[m]).append(fragments2[o]).toString();								
+								if(i>3 || j>1 || k>9 || l>2 || m>4 || o>1){	//starting at invalid schemes
+									try{
+										assertEquals(testURL, false, uv.isValid(testURL)); //should be an invalid url due to missing required components
+										//System.out.println("  PASS:  "+testURL+"   expected=false, isValid()="+uv.isValid(testURL));	
+									} catch(AssertionError e){
+										System.out.println("  FAIL:  "+testURL+"   expected=false, isValid()="+uv.isValid(testURL));
+									}
+								}else{
+									try{
+										assertEquals(testURL, true, uv.isValid(testURL)); 
+										//System.out.println("  PASS:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
+									} catch(AssertionError e){										
+										System.out.println("  FAIL:  "+testURL+"   expected=true, isValid()="+uv.isValid(testURL));		
+										
+									}
+								}
+								
+							}
+						}
+					}
+				}
+			}
+		}
+			
+		
+
 	}
 	
 
-	/*
-	 * Errors in top-level domains .ca .com .au  .co.uk 
-	 * Multiple queries
-	 * Encoded URLs should be valid: /%20
-	 * 
+	/**
+	 * Further investigations on individual failed tests 
 	 * */
 	public void testAnyOtherUnitTest() {
 		System.out.println("TRACE: testAnyOtherUnitTest()");	   
+		UrlValidator uv = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+		List<String> failedTests = new ArrayList<String>();
+		failedTests.add("http://ebay.arpa:0");
+		failedTests.add("http://ebay.arpa:80");
+		failedTests.add("http://ebay.com:500");
+		failedTests.add("http://ebay.com:999");
+		failedTests.add("http://ebay.com:1000");
+		failedTests.add("http://ebay.com:32000");
+		failedTests.add("http://ebay.com:16000");
+		failedTests.add("http://ebay.com:8000");
+		failedTests.add("http://ebay.com:4000");
+		failedTests.add("http://ebay.com:2000");
+		failedTests.add("http://ebay.com:1000");
+
+		failedTests.add("http://ebay.com:65535");
+		failedTests.add("http://ebay.arpa:80/test1#");
+		failedTests.add("http://ebay.arpa:80/test1#anchr");
+		failedTests.add("http://ebay.arpa:80/t123#");
+		failedTests.add("http://ebay.arpa:80/t123#anchr");
+		failedTests.add("http://ebay.arpa:80/test1/#");
+		failedTests.add("http://ebay.arpa:80/test1/#anchr");
+		failedTests.add("http://ebay.arpa:80/test1/file#");
+		failedTests.add("http://ebay.arpa:80/test1/file#anchr");
+		failedTests.add("http://ebay.arpa:80/test1/file#");
+		failedTests.add("http://ebay.arpa:80/test1/file#");
+
+		System.out.println("-- Further Investigations:-- ");
+		for(String f:failedTests){
+			try{
+				assertEquals(f, true, uv.isValid(f));  
+				System.out.println("   PASS:  "+f+"   expected=true, isValid()="+uv.isValid(f));
+			}catch(AssertionError e){
+				System.out.println("   FAIL:  "+f+"   expected=true, isValid()="+uv.isValid(f));		
+			}
+		}
+		
 
 	}
-
+	
 	/**
-	 * Create set of tests by taking the testUrlXXX arrays and running through
-	 * all possible permutations of their combinations.
-	 *
-	 * @param testObjects
-	 *            Used to create a url.
-	 * @throws Exception 
+	 * Print failed tests
 	 */
-
-	/* 	Main method not required: http://sqa.fyicenter.com/FAQ/JUnit/Do_You_Need_to_Write_a_main_Method_in_a_JUnit_.html
-		Main method recommended: http://www.appperfect.com/support/java-coding-rules/junit.html*/
-	/*public static void main(String[] argv) throws Exception {
-		UrlValidatorTest vt = new UrlValidatorTest("url test");
-		vt.setUp();
-		vt.testIsValid();
-		vt.tearDown();
-	}*/
+	public void testPrintFailedTests(List<String> failedTests){
+		//UrlValidatorTest vt = new UrlValidatorTest("url test");
+	    System.out.println("\n***FAILED TESTS SUMMARY***");
+		for(String ele : failedTests){
+	        System.out.println("  "+ele);
+	    }
+		System.out.println("**************************");
+	}
+	
 }

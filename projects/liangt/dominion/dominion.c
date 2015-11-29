@@ -428,8 +428,8 @@ int scoreFor (int player, struct gameState *state) {
     {
       if (state->hand[player][i] == curse) { score = score - 1; };
       if (state->hand[player][i] == estate) { score = score + 1; };
-      if (state->hand[player][i] == duchy) { score = score + 3; };
-      if (state->hand[player][i] == province) { score = score + 6; };
+      if (state->hand[player][i] == duchy) { score = score + 5; };
+      if (state->hand[player][i] == province) { score = score + 8; };
       if (state->hand[player][i] == great_hall) { score = score + 1; };
       if (state->hand[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
     }
@@ -439,19 +439,19 @@ int scoreFor (int player, struct gameState *state) {
     {
       if (state->discard[player][i] == curse) { score = score - 1; };
       if (state->discard[player][i] == estate) { score = score + 1; };
-      if (state->discard[player][i] == duchy) { score = score + 3; };
-      if (state->discard[player][i] == province) { score = score + 6; };
+      if (state->discard[player][i] == duchy) { score = score + 5; };
+      if (state->discard[player][i] == province) { score = score + 8; };
       if (state->discard[player][i] == great_hall) { score = score + 1; };
       if (state->discard[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
     }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
-      if (state->deck[player][i] == duchy) { score = score + 3; };
-      if (state->deck[player][i] == province) { score = score + 6; };
+      if (state->deck[player][i] == duchy) { score = score + 5; };
+      if (state->deck[player][i] == province) { score = score + 8; };
       if (state->deck[player][i] == great_hall) { score = score + 1; };
       if (state->deck[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
     }
@@ -651,10 +651,10 @@ int getCost(int cardNumber)
 int buggySmithy(struct gameState *state, int handPos) {
   int i;
   int currentPlayer = whoseTurn(state);
-  for (i = 0; i < 4; i++) {
+  for (i = 0; i < 3; i++) {
     drawCard(currentPlayer, state);
   }
-  discardCard(handPos, currentPlayer, state, 1);
+  discardCard(handPos, currentPlayer, state, 0);
   return 0;
 }
 
@@ -664,33 +664,44 @@ int buggyAdventurer(struct gameState *state, int handPos) {
   int drawntreasure = 0;
   int z = 0;// this is the counter for the temp hand
   int cardDrawn;
-  while (drawntreasure < 3) {
+  int pool = state->deckCount[currentPlayer] + state->discardCount[currentPlayer];
+  int cardsDrawn = 0;
+  int allCardsDrawn = 0;
+  while (drawntreasure < 2 && !allCardsDrawn) {
     if (state->deckCount[currentPlayer] < 1) {//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1]; //top card of hand is most recently drawn card.
-    if (cardDrawn == copper || cardDrawn == gold)
+    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
       drawntreasure++;
     else{
       temphand[z]=cardDrawn;
       state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
       z++;
     }
+
+    // Prevents infinite loop if deck + discard doesn't contain 2+ treasure cards
+    cardsDrawn++;
+    if (cardsDrawn > pool)
+      allCardsDrawn = 1;
+
   }
   
   while (z - 1 >= 0) {
     state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
     z = z - 1;
   }
+
+  discardCard(handPos, currentPlayer, state, 0); // discard adventurer card
+
   return 0;
 }
 
 int buggyVillage(struct gameState *state, int handPos) {
   int currentPlayer = whoseTurn(state);
   drawCard(currentPlayer, state);
-  drawCard(currentPlayer, state);
-  state->numActions = state->numActions + 1;
+  state->numActions = state->numActions + 2;
   discardCard(handPos, currentPlayer, state, 0);
   return 0;
 }
@@ -717,7 +728,7 @@ int buggyMine(int choice1, int choice2, struct gameState *state, int handPos) {
       return -1;
     }
 
-  gainCard(choice2, state, 1, currentPlayer);
+  gainCard(choice2, state, 2, currentPlayer);
 
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
@@ -727,7 +738,7 @@ int buggyMine(int choice1, int choice2, struct gameState *state, int handPos) {
   {
     if (state->hand[currentPlayer][i] == j)
       {
-        discardCard(i, currentPlayer, state, 0);      
+        discardCard(i, currentPlayer, state, 1);      
         break;
       }
   }
@@ -754,8 +765,6 @@ int buggyCouncilRoom(struct gameState *state, int handPos){
         drawCard(i, state);
       }
   }
-
-  updateCoins(currentPlayer, state, 3);
       
   //put played card in played card pile
   discardCard(handPos, currentPlayer, state, 0);
@@ -1263,8 +1272,8 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
   if (trashFlag < 1)
     {
       //add card to played pile
-      state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
-      state->playedCardCount++;
+      state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->hand[currentPlayer][handPos]; 
+      state->discardCount[currentPlayer]++;
     }
 	
   //set played card to -1

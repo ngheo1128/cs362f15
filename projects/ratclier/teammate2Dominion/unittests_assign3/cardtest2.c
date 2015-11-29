@@ -2,8 +2,8 @@
 // *****************************************************************************
 // 
 // Author:    Erik Ratcliffe
-// Date:      November 22, 2015
-// Project:   Assignment 5 - Unit Tests (teammates)
+// Date:      October 25, 2015
+// Project:   Assignment 3 - Unit Tests
 // Filename:  cardtest2.c
 // Class:     CS 362 (Fall 2015)
 //
@@ -42,19 +42,14 @@
 // and still only have one treasure, you get just that one treasure.
 //
 //
-int testAdventurerCard(struct gameState *state)
+int testAdventurerCard(struct gameState *state, int handPos)
 {
     struct gameState *origState;  // copy of game state
     int lastCard;                 // the last card in the hand
     int idx;                      // loop iterator
-    int handPos;                  // card in play
-    int passFlag      = 1;        // flag for testing proper gain of gold cards
     int handCountIncr = 0;        // was handcount incremented? 0=no, 1=yes
+    int passFlag      = 1;        // flag for testing proper gain of gold cards
     int currentPlayer = state->whoseTurn;
-
-    // Get the card in play
-    //
-    handPos = state->hand[currentPlayer][0];
 
     // Make a copy of the original game state
     //
@@ -62,8 +57,8 @@ int testAdventurerCard(struct gameState *state)
 
     // Run the adventurer card function
     //
+    //adventurerCard(state, handPos);
     playAdventureCard(state);
-
 
     // See if handCount increased by two cards. After discarding, you
     // should end up with 1 new card, not 2 (2 added, 1 discarded).
@@ -74,7 +69,7 @@ int testAdventurerCard(struct gameState *state)
         //
         handCountIncr = 1;
 
-        printf("playAdventureCard: PASS correct number of cards added to hand\n");
+        printf("adventurerCard: PASS correct number of cards added to hand\n");
 
         // See if last two cards in hand are treasure cards (enum 4-6)
         //
@@ -88,24 +83,23 @@ int testAdventurerCard(struct gameState *state)
         }
         if(passFlag == 1)
         {
-            printf("playAdventureCard: PASS last two cards in hand are treasure cards\n");
+            printf("adventurerCard: PASS last two cards in hand are treasure cards\n");
         }
         else 
         {
-            printf("playAdventureCard: FAIL at least one of the last two cards in hand is not a treasure card\n");
+            printf("adventurerCard: FAIL at least one of the last two cards in hand is not a treasure card\n");
         }
     }
     else 
     {
-        printf("playAdventureCard: FAIL incorrect number of cards added to hand\n");
+        printf("adventurerCard: FAIL incorrect number of cards added to hand\n");
     }
-
 
     // Check if card discarding was handled properly. You should end up
     // with 1 new card in the player's hand and the last card in the
     // discard pile should == handPos
     //
-    if((handCountIncr == 1) && (state->discard[currentPlayer][0] == origState->hand[currentPlayer][handPos]))
+    if((handCountIncr == 1) && (state->discard[currentPlayer][state->discardCount[currentPlayer]-1] == origState->hand[currentPlayer][handPos]))
     {
         printf("adventurerCard: PASS correct number of cards discarded\n");
     }
@@ -113,24 +107,6 @@ int testAdventurerCard(struct gameState *state)
     {
         printf("adventurerCard: FAIL incorrect number of cards discarded\n");
     }
-
-
-
-
-    // See if the number of discarded cards is correct. Should be at least
-    // 1 new discarded card, possibly others depending on what's in tmp
-    // hand.
-    /*
-    diffDeckCount = origState->deckCount[currentPlayer] - state->deckCount[currentPlayer];
-    diffDiscardCount = origState->discardCount[currentPlayer] - state->discardCount[currentPlayer];
-    if(diffDiscardCount + 1 <= diffDeckCount)
-    {
-        printf("playAdventureCard: PASS correct number of cards discarded\n");
-    }
-    else 
-    {
-        printf("playAdventureCard: FAIL incorrect number of cards discarded\n");
-    } */
 
     // Report what, if anything, changed in the game state
     //
@@ -145,6 +121,7 @@ int main(int argc, char *argv[])
 {
     int numPlayers = 2;         // default number of players
     int randomSeed = 1000;      // random seed for the game
+    int handPos;                // card in play
     struct gameState *state;    // holds the updated game state
     int kingdomCards[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
 
@@ -159,7 +136,16 @@ int main(int argc, char *argv[])
     //
     printf(">>> TESTING: adventurer card, player 0...\n");
     state->whoseTurn = 0;
-    testAdventurerCard(state);
+
+    // Add an adventurer card in case one isn't already there
+    //
+    gainCard(adventurer, state, 2, state->whoseTurn);
+
+    // Grab the position of the last TM card
+    //
+    handPos = state->handCount[state->whoseTurn]-1;
+
+    testAdventurerCard(state, handPos);
 
     return 0;
 }

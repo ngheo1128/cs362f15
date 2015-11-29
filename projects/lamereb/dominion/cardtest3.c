@@ -14,7 +14,10 @@ int testCouncilRoom(int player) {
   struct gameState g;
 
   int i, buyCount, councilPos = -1;
-  int handSize[4], deckSize[4], discardSize[4];
+  int handSize[4];
+#if VERBOSE
+  int discardSize[4], deckSize[4];
+#endif
 
   int errorCount = 0;
   int seed = rand();
@@ -35,8 +38,10 @@ int testCouncilRoom(int player) {
   // save count of cards in all player's hand, deck and discard pile
   for (i = 0; i < 4; ++i) {
     handSize[i] = g.handCount[i];
+#if VERBOSE
     deckSize[i] = g.deckCount[i];
     discardSize[i] = g.discardCount[i];
+#endif
   }
 
   //save count of player's buys

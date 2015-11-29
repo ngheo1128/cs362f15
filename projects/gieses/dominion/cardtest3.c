@@ -5,7 +5,7 @@
 #include <assert.h>
 #include "rngs.h"
 
-#define NOISY_TEST 0
+#define NOISY_TEST 1
 
 //test great_hall function
 int main(){
@@ -48,7 +48,7 @@ int main(){
 	printf("Post player action count: %d\n", G.numActions);
 	#endif
 	
-	if(preHand < G.handCount[p]){
+	if(preHand == G.handCount[p]){
 		#if (NOISY_TEST == 1)
 		printf("Test passed!\n");
 		#endif

@@ -41,10 +41,10 @@ int main() {
   buggyAdventurer(&G, 1);
 
   assert(G.hand[0][G.handCount[0]-1] == copper &&
-    G.hand[0][G.handCount[0]-2] == copper);
+    G.hand[0][1] == copper);
 
   if (NOISY_TEST)
-    printf("Test: all silvers in deck [failed]\n");
+    printf("Test: all silvers in deck\n");
 
   initializeGame(numPlayer, k, seed, &G);
   for (i = 0; i < 5; i++) {
@@ -56,8 +56,8 @@ int main() {
   G.hand[0][1] = adventurer;
   buggyAdventurer(&G, 1);
 
-  // assert(G.hand[0][G.handCount[0]-1] == silver &&
-  //   G.hand[0][G.handCount[0]-2] == silver);
+  assert(G.hand[0][G.handCount[0]-1] == silver &&
+    G.hand[0][1] == silver);
 
   if (NOISY_TEST)
     printf("Test: all golds in deck\n");
@@ -73,18 +73,18 @@ int main() {
   buggyAdventurer(&G, 1);
 
   assert(G.hand[0][G.handCount[0]-1] == gold &&
-    G.hand[0][G.handCount[0]-2] == gold);
+    G.hand[0][1] == gold);
 
   if (NOISY_TEST)
-    printf("Test: only two treasure cards are drawn [failed]\n");
+    printf("Test: only two treasure cards are drawn\n");
 
-  // assert(
-  //   G.hand[0][G.handCount[0]-3] != copper &&
-  //   G.hand[0][G.handCount[0]-3] != silver &&
-  //   G.hand[0][G.handCount[0]-3] != gold);
+  assert(
+    G.hand[0][G.handCount[0]-3] != copper &&
+    G.hand[0][G.handCount[0]-3] != silver &&
+    G.hand[0][G.handCount[0]-3] != gold);
 
-  // if (NOISY_TEST)
-  // 	printf("All tests passed.\n");
+  if (NOISY_TEST)
+  	printf("All tests passed.\n");
 
 	return 0;
 }

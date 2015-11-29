@@ -132,7 +132,7 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 
    /* refactored functions by tullisb */
 
-void adventurerFunction(struct gameState *state, int currentPlayer);
+void adventurerFunction(int drawntreasure, struct gameState *state, int currentPlayer, int temphand[], int z);
 
 void smithyFunction(int currentPlayer, struct gameState *state, int handPos);
 

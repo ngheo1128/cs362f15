@@ -1,0 +1,52 @@
+cardtest1.c -->
+File 'dominion.c'
+Lines executed:33.57% of 563
+Creating 'dominion.c.gcov'
+
+ TESTING SMITHY CARD
+Starting deck count: 15
+Starting hand count: 5
+Starting discard count: 0
+Hand Card 0 : 4
+Hand Card 1 : 4
+Hand Card 2 : 4
+Hand Card 3 : 4
+Hand Card 4 : 1
+ERROR: player 0 able to play smithy card that's not in hand
+# Hand AFTER playing SMITHY card:
+Hand Card 0 : 4
+Hand Card 1 : 4
+Hand Card 2 : 4
+Hand Card 3 : 4
+Hand Card 4 : 1
+Hand Card 5 : 6
+Hand Card 6 : 6
+# Hand AFTER adding SMITHY card:
+Hand Card 0 : 4
+Hand Card 1 : 4
+Hand Card 2 : 4
+Hand Card 3 : 4
+Hand Card 4 : 1
+Hand Card 5 : 6
+Hand Card 6 : 6
+Hand Card 7 : 13
+ --> 8 : hand size before playing smithy
+ --> 10 : hand size after playing smithy
+ERROR: 3 cards were not added to player's hand
+card at pos 7 = 6
+Hand Card 0 : 4
+Hand Card 1 : 4
+Hand Card 2 : 4
+Hand Card 3 : 4
+Hand Card 4 : 1
+Hand Card 5 : 6
+Hand Card 6 : 6
+Hand Card 7 : 6
+Hand Card 8 : 6
+Hand Card 9 : 6
+ERROR: smithy card never added to discard pile
+Discard Card 0 : 0
+Discard Card 1 : 0
+
+SMITHY CARD TEST COMPLETE with 3 ERRORS
+

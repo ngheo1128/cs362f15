@@ -2,8 +2,8 @@
 // *****************************************************************************
 // 
 // Author:    Erik Ratcliffe
-// Date:      November 22, 2015
-// Project:   Assignment 5 - Unit Tests (teammates)
+// Date:      October 25, 2015
+// Project:   Assignment 3 - Unit Tests
 // Filename:  cardtest2.c
 // Class:     CS 362 (Fall 2015)
 //
@@ -42,20 +42,16 @@
 // and still only have one treasure, you get just that one treasure.
 //
 //
-int testAdventurerCard(struct gameState *state)
+int testAdventurerCard(struct gameState *state, int handPos)
 {
     struct gameState *origState;  // copy of game state
     int lastCard;                 // the last card in the hand
     int idx;                      // loop iterator
-    int handPos;                  // card in play
-    int passFlag      = 1;        // flag for testing proper gain of gold cards
     int handCountIncr = 0;        // was handcount incremented? 0=no, 1=yes
-    int currentPlayer = state->whoseTurn;
+    int passFlag      = 1;        // flag for testing proper gain of gold cards
     int temphand[MAX_HAND];       // Added for teammate1Dominion card test
 
-    // Get the card in play
-    //
-    handPos = state->hand[currentPlayer][0];
+    int currentPlayer = state->whoseTurn;
 
     // Make a copy of the original game state
     //
@@ -63,6 +59,7 @@ int testAdventurerCard(struct gameState *state)
 
     // Run the adventurer card function
     //
+    //adventurerCard(state, handPos);
     adventurerAction(currentPlayer, state, temphand);
 
     // See if handCount increased by two cards. After discarding, you
@@ -74,7 +71,7 @@ int testAdventurerCard(struct gameState *state)
         //
         handCountIncr = 1;
 
-        printf("adventurerAction: PASS correct number of cards added to hand\n");
+        printf("adventurerCard: PASS correct number of cards added to hand\n");
 
         // See if last two cards in hand are treasure cards (enum 4-6)
         //
@@ -88,23 +85,23 @@ int testAdventurerCard(struct gameState *state)
         }
         if(passFlag == 1)
         {
-            printf("adventurerAction: PASS last two cards in hand are treasure cards\n");
+            printf("adventurerCard: PASS last two cards in hand are treasure cards\n");
         }
         else 
         {
-            printf("adventurerAction: FAIL at least one of the last two cards in hand is not a treasure card\n");
+            printf("adventurerCard: FAIL at least one of the last two cards in hand is not a treasure card\n");
         }
     }
     else 
     {
-        printf("adventurerAction: FAIL incorrect number of cards added to hand\n");
+        printf("adventurerCard: FAIL incorrect number of cards added to hand\n");
     }
 
     // Check if card discarding was handled properly. You should end up
     // with 1 new card in the player's hand and the last card in the
     // discard pile should == handPos
     //
-    if((handCountIncr == 1) && (state->discard[currentPlayer][0] == origState->hand[currentPlayer][handPos]))
+    if((handCountIncr == 1) && (state->discard[currentPlayer][state->discardCount[currentPlayer]-1] == origState->hand[currentPlayer][handPos]))
     {
         printf("adventurerCard: PASS correct number of cards discarded\n");
     }
@@ -126,6 +123,7 @@ int main(int argc, char *argv[])
 {
     int numPlayers = 2;         // default number of players
     int randomSeed = 1000;      // random seed for the game
+    int handPos;                // card in play
     struct gameState *state;    // holds the updated game state
     int kingdomCards[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
 
@@ -140,7 +138,16 @@ int main(int argc, char *argv[])
     //
     printf(">>> TESTING: adventurer card, player 0...\n");
     state->whoseTurn = 0;
-    testAdventurerCard(state);
+
+    // Add an adventurer card in case one isn't already there
+    //
+    gainCard(adventurer, state, 2, state->whoseTurn);
+
+    // Grab the position of the last TM card
+    //
+    handPos = state->handCount[state->whoseTurn]-1;
+
+    testAdventurerCard(state, handPos);
 
     return 0;
 }
