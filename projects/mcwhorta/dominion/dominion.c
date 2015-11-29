@@ -655,7 +655,7 @@ int drawAdventurerCard(int currentPlayer, struct gameState *state)
     int z=0;
     int temphand[MAX_HAND]; /*moved above if statement*/
 
-    while(drawntreasure<3)
+    while(drawntreasure<2)
     {
         if (state->deckCount[currentPlayer] <1) //if the deck is empty we need to shuffle discard and add to deck
         {
@@ -683,7 +683,7 @@ int drawAdventurerCard(int currentPlayer, struct gameState *state)
 int drawCouncilRoomCard(int currentPlayer, struct gameState *state, int handPos)
 {
     //+4 Cards
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 4; i++)
 	{
         drawCard(currentPlayer, state);
 	}
@@ -708,7 +708,7 @@ int drawCouncilRoomCard(int currentPlayer, struct gameState *state, int handPos)
 
 int drawRemodelCard(int currentPlayer, int *choices, struct gameState *state, int handPos)
 {
-    int j = state->hand[currentPlayer][choices[1]];  //store card we will trash
+    int j = state->hand[currentPlayer][choices[0]];  //store card we will trash
 
     if ( (getCost(state->hand[currentPlayer][choices[0]]) + 2) > getCost(choices[1]) )
 	{
@@ -754,7 +754,7 @@ int drawSalvagerCard(int currentPlayer, int *choices, struct gameState *state, i
 int drawSmithyCard(int currentPlayer, struct gameState *state, int handPos)
 {
     //+3 Cards
-    for (int i = 0; i > 3; i++)
+    for (int i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}

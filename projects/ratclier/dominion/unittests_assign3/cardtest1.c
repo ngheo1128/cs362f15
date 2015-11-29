@@ -110,14 +110,30 @@ int main(int argc, char *argv[])
     //
     printf(">>> TESTING: smithy card, player 0...\n");
     currentPlayer = 0;
-    handPos = floor(Random() * state->handCount[currentPlayer]);
+
+    // Add one Smithy card
+    //
+    gainCard(smithy, state, 2, currentPlayer);
+
+    // Grab the position of the last Smithy card
+    //
+    handPos = state->handCount[currentPlayer]-1;
+
     testSmithyCard(currentPlayer, state, handPos);
 
     // Test smithy card for player 1
     //
     printf(">>> TESTING: smithy card, player 1...\n");
     currentPlayer = 1;
-    handPos = floor(Random() * state->handCount[currentPlayer]);
+
+    // Add one Smithy card
+    //
+    gainCard(smithy, state, 2, currentPlayer);
+
+    // Grab the position of the last Smithy card
+    //
+    handPos = state->handCount[currentPlayer]-1;
+
     testSmithyCard(currentPlayer, state, handPos);
 
     return 0;

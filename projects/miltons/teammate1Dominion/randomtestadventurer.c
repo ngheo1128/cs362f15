@@ -173,32 +173,26 @@ int testAdventurerEffect(int playerNumber, struct gameState *post)
 // either deck and discard pile will be empty
 
     int retVal = 0;
-    int cardsAvailable;
-
-    // set the whoseTurn variable in the state to the current player
-    post->whoseTurn = playerNumber;
 
     // create duplicate of game state for before and after comparison
     struct gameState pre;
     memcpy (&pre, post, sizeof(struct gameState));
 
     // call adventurerEffect function
-    adventurerEffect(post);
+    retVal = adventurerEffect(playerNumber, post);
+
+    // make changes to pre based on what adventurerEffect should do
 
     // add 2 cards to hand 
     pre.handCount[playerNumber] = pre.handCount[playerNumber] + 2;
 
-    // Andrew Shen's function do not return a value
-    // so the following code is not used:
-
     // make sure adventurerEffect did not crash
-    // if (retVal < 0)
-    // {
-    //     printf("adventurerEffect returned a nonzero value\n");
-    // }
-    // else
-    // {
-
+    if (retVal < 0)
+    {
+        printf("adventurerEffect returned a nonzero value\n");
+    }
+    else
+    {
         // compare actual result to expected result (post to pre)
         // to make sure adventurerEffect is working properly
         if (pre.handCount[playerNumber] != post->handCount[playerNumber])
@@ -206,10 +200,9 @@ int testAdventurerEffect(int playerNumber, struct gameState *post)
             printf("adventurerEffect did not add the expected number of cards to the player's hand.\n");
             retVal = -1;
         }
+    }
 
-    // }
-
-    // returns zero if test passed
+    // returns zero if adventurerEffect did not crash
     return retVal;
 }
 

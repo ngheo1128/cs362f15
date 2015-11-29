@@ -4,12 +4,14 @@
 #include<stdio.h>
 #include "dominion.h"
 #include "dominion_helpers.h"
-//#include "rngs.h"
+
 
 int main(int argc, char *argv[])
 {
 
     // Ashok Nayar did not choose the mine card for his assignment.
+
+    printf("Mine card: NOT REFACTORED\n");
 
     // struct gameState testState;
     // int retVal = mineEffect(0, &testState, 0, 0, 0);

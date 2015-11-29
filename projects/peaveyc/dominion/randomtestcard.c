@@ -154,8 +154,8 @@ int randTestAdventurer(){
     //check for hand counts +4 for whoseturn, and +1 for others
     for(i=0; i<numPlayers; i++){
         if(i == whoseTurn){
-            if(handCount[i] != (game->handCount[i] - 4)){ //THE PLAYER SHOULD NOW HAVE 2 EXTRA CARDS
-                printf("Player %d's hand size was %d, and is now %d. There should be a +4 increase in hand size.\n", i, handCount[i], game->handCount[i]);
+            if(handCount[i] != (game->handCount[i] - 3)){ //THE PLAYER SHOULD NOW HAVE 3 EXTRA CARDS
+                printf("Player %d's hand size was %d, and is now %d. There should be a +3 increase in hand size.\n", i, handCount[i], game->handCount[i]);
                 error = 1;
             }
         } else {

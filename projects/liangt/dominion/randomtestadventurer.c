@@ -45,7 +45,7 @@ void randomizeDeck(struct gameState * G, int k[10], int cur_player) {
 // Randomizes discard pile
 void randomizeDiscard(struct gameState * G, int k[10], int cur_player) {
   int i;
-  G->discardCount[cur_player] = 1 + rand() % (MAX_DECK - 1); // 1 to 499
+  G->discardCount[cur_player] = rand() % MAX_DECK; // 0 to 499
   for (i = 0; i < G->discardCount[cur_player]; i++) {
     G->discard[cur_player][i] = randomCard(k);
   }
@@ -67,7 +67,7 @@ int main() {
 
   srand(time(NULL));
 
-  int i, j;
+  int i;
   int seed = 1000; // This won't matter since we'll be randomizing the deck/hand
   int numPlayer = 4;
   int k[10] = {adventurer, council_room, feast, gardens, mine
@@ -105,6 +105,10 @@ int main() {
 
     buggyAdventurer(&G, handPos);
 
+    // NOTE: CURRENTLY DOES NOT CHECK IF DECK + DISCARD LACKS 2+ TREASURE CARDS
+      // WILL RETURN FAILED TESTS IF SUCH IS THE CASE
+      // THIS CASE WOULD BE EXTREMELY RARE IN ACTUAL PLAY
+
     // Check net hand count is 1 more than original
       // (2 treasure - 1 adventurer)
 
@@ -113,12 +117,13 @@ int main() {
       valid_handCount = 1;
     }
 
-    // Check that last two cards in hand are treasure cards
+    // Check last card is treasure card and handPos that formerly held
+      // adventurer card is a treasure card (discardCard swaps cards)
 
     valid_hand = 0;
     if (
       isTreasureCard(G.hand[cur_player][G.handCount[cur_player] - 1]) &&
-      isTreasureCard(G.hand[cur_player][G.handCount[cur_player] - 2])) {
+      isTreasureCard(G.hand[cur_player][handPos])) {
       valid_hand = 1;
     }
 
@@ -153,14 +158,19 @@ int main() {
 
     // Tally how many of each treasure card is drawn
 
-    for (j = 1; j < 3; j++) {
-      if (G.hand[cur_player][G.handCount[cur_player] - j] == copper)
-        coppers_drawn++;
-      else if (G.hand[cur_player][G.handCount[cur_player] - j] == silver)
-        silvers_drawn++;
-      else if (G.hand[cur_player][G.handCount[cur_player] - j] == gold)
-        golds_drawn++;
-    }
+    if (G.hand[cur_player][G.handCount[cur_player] - 1] == copper)
+      coppers_drawn++;
+    else if (G.hand[cur_player][G.handCount[cur_player] - 1] == silver)
+      silvers_drawn++;
+    else if (G.hand[cur_player][G.handCount[cur_player] - 1] == gold)
+      golds_drawn++;
+
+    if (G.hand[cur_player][handPos] == copper)
+      coppers_drawn++;
+    else if (G.hand[cur_player][handPos] == silver)
+      silvers_drawn++;
+    else if (G.hand[cur_player][handPos] == gold)
+      golds_drawn++;
   }
 
   printf("Test Runs: %d\n", TEST_RUNS);

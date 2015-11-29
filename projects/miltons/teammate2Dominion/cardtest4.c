@@ -21,5 +21,7 @@ int main(int argc, char *argv[])
     // {
     //     printf("Mine card: FAIL\n");
     // }
+
+    printf("Mine card: NOT REFACTORED / NOT TESTED\n");
     return 0;
 }

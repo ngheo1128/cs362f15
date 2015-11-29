@@ -418,6 +418,13 @@ int scoreFor (int player, struct gameState *state) {
 
   int i;
   int score = 0;
+  int cards = 0;
+
+  // count total cards for each player
+  cards += state->handCount[player];
+  cards += state->deckCount[player];
+  cards += state->discardCount[player];
+
   //score from hand
   for (i = 0; i < state->handCount[player]; i++)
     {
@@ -426,7 +433,7 @@ int scoreFor (int player, struct gameState *state) {
       if (state->hand[player][i] == duchy) { score = score + 3; };
       if (state->hand[player][i] == province) { score = score + 6; };
       if (state->hand[player][i] == great_hall) { score = score + 1; };
-      if (state->hand[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
+      if (state->hand[player][i] == gardens) { score = score + ( cards / 10 ); };
     }
 
   //score from discard
@@ -437,7 +444,7 @@ int scoreFor (int player, struct gameState *state) {
       if (state->discard[player][i] == duchy) { score = score + 3; };
       if (state->discard[player][i] == province) { score = score + 6; };
       if (state->discard[player][i] == great_hall) { score = score + 1; };
-      if (state->discard[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
+      if (state->discard[player][i] == gardens) { score = score + ( cards / 10 ); };
     }
 
   //score from deck
@@ -448,7 +455,7 @@ int scoreFor (int player, struct gameState *state) {
       if (state->deck[player][i] == duchy) { score = score + 3; };
       if (state->deck[player][i] == province) { score = score + 6; };
       if (state->deck[player][i] == great_hall) { score = score + 1; };
-      if (state->deck[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
+      if (state->deck[player][i] == gardens) { score = score + ( cards / 10 ); };
     }
 
   return score;
@@ -667,7 +674,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      return adventurerCard(currentPlayer, state, temphand);
+      return adventurerCard(currentPlayer, state, temphand, handPos);
 			
     case council_room:
       return councilRoomCard(currentPlayer, state, handPos);
@@ -692,6 +699,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	  if (DEBUG){
 	    printf("Cards Left: %d\n", supplyCount(choice1, state));
 	  }
+    return -1;
 	}
 	else if (state->coins < getCost(choice1)){
 	  printf("That card is too expensive!\n");
@@ -699,6 +707,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	  if (DEBUG){
 	    printf("Coins: %d < %d\n", state->coins, getCost(choice1));
 	  }
+    return -1;
 	}
 	else{
 
@@ -1254,23 +1263,24 @@ int smithyCard(int player, struct gameState* state, int handPos) {
   int i;
 
   // draw cards
-  for (i = 0; i < 3; ++i) {
+  for (i = 0; i <= 3; i++) {
     drawCard(player, state);
   }
 
   // discard card
-  discardCard(handPos, player, state, 1);
+  discardCard(handPos, player, state, 0);
 
   return 0;
 }
 
-int adventurerCard(int player, struct gameState* state, int* tempHand) {
+int adventurerCard(int player, struct gameState* state, int* tempHand,
+  int handPos) {
   int drawnTreasure = 0;
   int cardDrawn;
   int z = 0;
 
   // draw treasure cards
-  while (drawnTreasure <= 2) {
+  while (drawnTreasure < 2) {
     if (state->deckCount[player] < 1) {
       // if the deck is empty, shuffle discard and add to deck
       shuffle(player, state);
@@ -1289,10 +1299,13 @@ int adventurerCard(int player, struct gameState* state, int* tempHand) {
   }
 
   //discard cards in play that have been drawn
-  while (z - 1 > 0) {
+  while (z - 1 >= 0) {
     state->discard[player][state->discardCount[player]++] = tempHand[z - 1];
     z--;
   }
+
+  // discard card
+  discardCard(handPos, player, state, 0);
 
   return 0;
 }
@@ -1328,7 +1341,7 @@ int villageCard(int player, struct gameState* state, int handPos) {
   state->numActions = state->numActions + 2;
 
   // discard played card from hand
-  discardCard(0, player, state, handPos);
+  discardCard(handPos, player, state, 0);
 
   return 0;
 }
@@ -1343,12 +1356,13 @@ int remodelCard(int player, struct gameState* state, int handPos, int choice1,
   gainCard(choice2, state, 0, player);
 
   // discard card from hand
-  discardCard(0, player, state, handPos);
+  discardCard(handPos, player, state, 0);
 
   // discard trashed card
   for (i = 0; i < state->handCount[player]; i++) {
     if (state->hand[player][i] == j) {
-      discardCard(i, player, state, 0);
+      discardCard(i, player, state, 1);
+      break;
     }
   }
 

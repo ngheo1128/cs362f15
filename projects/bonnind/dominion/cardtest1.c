@@ -28,9 +28,10 @@ int main(int argc, char *argv[]){
 
     state.deckCount[0] = 4;
     state.discardCount[0] = 0;
-    state.handCount[0] = 0;
+    state.handCount[0] = 1;
+    state.hand[0][0] = adventurer; 
 
-    adventurerCard(&state, 0);
+    adventurerCard(&state, 0, 0);
 
     printf("adventurerCard(): %s empty hand case\n", 
         (state.handCount[0] == 2 &&
@@ -47,9 +48,10 @@ int main(int argc, char *argv[]){
 
     state.deckCount[0] = 4;
     state.discardCount[0] = 0;
-    state.handCount[0] = 0;
+    state.handCount[0] = 1;
+    state.hand[0][0] = adventurer; 
 
-    adventurerCard(&state, 0);
+    adventurerCard(&state, 0, 0);
     
     printf("adventurerCard(): %s not enough Treasure case\n", 
         (state.handCount[0] == 1 &&
@@ -65,9 +67,10 @@ int main(int argc, char *argv[]){
 
     state.deckCount[0] = MAX_DECK;
     state.discardCount[0] = 0;
-    state.handCount[0] = 0;
+    state.handCount[0] = 1;
+    state.hand[0][0] = adventurer; 
 
-    adventurerCard(&state, 0);
+    adventurerCard(&state, 0, 0);
 
     printf("adventurerCard(): %s full deck case\n", 
         (state.handCount[0] == 2 &&
@@ -84,17 +87,18 @@ int main(int argc, char *argv[]){
 
     state.deckCount[0] = 0;
     state.discardCount[0] = 0;
-    state.handCount[0] = 0;
+    state.handCount[0] = 1;
+    state.hand[0][0] = adventurer; 
     state.playedCardCount = 4;
 
-    adventurerCard(&state, 0);
-    
+    adventurerCard(&state, 0, 0);
+        // printf("deckCount: %i handCount: %i discardCount: %i\n", state.deckCount[0],
+        // state.handCount[0], state.discardCount[0]);
     printf("adventurerCard(): %s empty deck case\n", 
         (state.handCount[0] == 2 &&
-        state.discardCount[0] == 2 &&
-        state.deckCount[0] == 0) ? "PASS" : "FAIL");
-    // printf("deckCount: %i handCount: %i discardCount: %i\n", state.deckCount[0],
-    //     state.handCount[0], state.discardCount[0]);
+        (state.discardCount[0] +
+        state.deckCount[0]) == 2) ? "PASS" : "FAIL");
+
 
     /* clear verified changes made by adventurerCard() */
     memset(&state.handCount[0], 0, sizeof(int));

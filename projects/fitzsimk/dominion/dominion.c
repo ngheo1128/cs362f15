@@ -1234,7 +1234,8 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
   return 0;
 }
-/*	PLAY TREASURE MAP
+/*
+* PLAY TREASURE MAP
 */
 int play_treasure_map(int currentPlayer,struct gameState *state, int handPos){
 
@@ -1250,6 +1251,7 @@ int play_treasure_map(int currentPlayer,struct gameState *state, int handPos){
       }
       if (index > -1){
         discardCard(index, currentPlayer, state, 1);
+        discardCard(handPos, currentPlayer, state, 1);
         //gain 4 Gold cards
         for (i = 0; i < 4; i++){
 	      gainCard(gold, state, 1, currentPlayer);
@@ -1266,7 +1268,7 @@ int play_treasure_map(int currentPlayer,struct gameState *state, int handPos){
 int play_smithy(int currentPlayer,struct gameState *state, int handPos){
           //+3 Cards
       int i;
-      for(i = 1; i < 3; i++){
+      for(i = 0; i < 3; i++){
 	  drawCard(currentPlayer, state);
 	}
 
@@ -1289,35 +1291,6 @@ int play_smithy(int currentPlayer,struct gameState *state, int handPos){
 	drawCard(currentPlayer, state);
 	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-	  drawntreasure=2;
-	else{
-	  temphand[z]=cardDrawn;
-	  state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-	  z++;
-	}
-      }
-      while(z-1>=0){
-	state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-	z=z-1;
-      }
-      return 0;
-}
-
-/*
-    PLAY ADVENTURER ALT
-*/
- int play_adventurer_alt(int currentPlayer,struct gameState *state, int handPos){
-   int drawntreasure=0;
-   int cardDrawn;
-   int temphand[MAX_HAND];
-   int z=0; //coutner for tempHand array
-   while(drawntreasure<2){
-	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
-	  shuffle(currentPlayer, state);
-	}
-	drawCard(currentPlayer, state);
-	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 	  drawntreasure++;
 	else{
 	  temphand[z]=cardDrawn;
@@ -1326,8 +1299,9 @@ int play_smithy(int currentPlayer,struct gameState *state, int handPos){
 	}
       }
       while(z-1>=0){
-        state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-        z=z-1;
+            state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
+                z=z-1;
+                state->discardCount[currentPlayer]++;
       }
       return 0;
 }
@@ -1387,7 +1361,7 @@ int play_cutpurse(int currentPlayer,struct gameState *state, int handPos){
 	    {
 	      for (j = 0; j < state->handCount[i]; j++)
 		{
-		  if (state->hand[i][j] == 5)
+		  if (state->hand[i][j] == 4)
 		    {
 		      discardCard(j, i, state, 0);
 		      break;

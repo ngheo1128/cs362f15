@@ -95,7 +95,7 @@ int shuffle(int player, struct gameState *state);
 /* Assumes all cards are now in deck array (or hand/played):  discard is
  empty */
 
-int adventurerCard(int drawntreasure, int cardDrawn, int currentPlayer, int z, int temphand[], struct gameState *state);
+int adventurerCard(int drawntreasure, int handPos, int cardDrawn, int currentPlayer, int z, int temphand[], struct gameState *state);
 
 int smithyCard(int i, int currentPlayer, int handPos, struct gameState *state);
 

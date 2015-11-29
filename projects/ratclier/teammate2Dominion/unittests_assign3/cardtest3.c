@@ -54,6 +54,8 @@ int testTreasureMapCard(struct gameState *state, int handPos, int currentPlayer)
     //
     cardEffect(treasure_map, 0, 0, 0, state, handPos, 0);
 
+    //treasureMapCard(state, handPos);
+
     // Determine original number of treasure map cards in hand
     //
     for(idx = 0; idx < origState->handCount[currentPlayer]; idx++)
@@ -184,7 +186,10 @@ int main(int argc, char *argv[])
     //
     gainCard(treasure_map, state, 2, currentPlayer);
 
-    handPos = state->hand[currentPlayer][0];
+    // Grab the position of the last TM card
+    //
+    handPos = state->handCount[currentPlayer]-1;
+
     testTreasureMapCard(state, handPos, currentPlayer);
 
     // New game
@@ -212,7 +217,10 @@ int main(int argc, char *argv[])
     gainCard(treasure_map, state, 2, currentPlayer);
     gainCard(treasure_map, state, 2, currentPlayer);
 
-    handPos = state->hand[currentPlayer][0];
+    // Grab the position of the last TM card
+    //
+    handPos = state->handCount[currentPlayer]-1;
+
     testTreasureMapCard(state, handPos, currentPlayer);
 
     return 0;

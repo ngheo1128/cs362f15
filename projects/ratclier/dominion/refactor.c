@@ -106,3 +106,25 @@ In cardtest2.c:
   I understand it's a position in the hand (you would think I would get
   that from the name "handPos," and you would be wrong).
 
+
+11/22/2015:
+
+In randomtestcard.c:
+
+- Completely revamped how the discarded card count is handled. Now I
+  detect which cards changed from 26 (treasure map) to -1, which indicates
+  a discarded treasure map card. Much, much more accurate.
+
+In randomtestadventurer.c:
+
+- Fixed card draw and discard handling to more closely match the (better)
+  methodology in cardtest2.c. 
+
+In cardtest1.c, cardtest2.c, cardtest3.c:
+
+- Fixed severely broken setting of the handPos variable. Previously it
+  would grab either the first card in the hand or a random card, neither
+  of which is correct. Now it grabs the last card in the hand, which is
+  what we want (handPos is set immediately after adding a card that we
+  may want to eventually discard).
+

@@ -230,10 +230,10 @@ int shuffle(int player, struct gameState *state) {
   return 0;
 }
 
-int adventurerCard(int drawntreasure, int cardDrawn, int currentPlayer, int z, int temphand[], struct gameState *state)
+int adventurerCard(int drawntreasure, int handPos, int cardDrawn, int currentPlayer, int z, int temphand[], struct gameState *state)
 {
-	while(drawntreasure<=2){
-		if (state->deckCount[currentPlayer] =0){//if the deck is empty we need to shuffle discard and add to deck
+	while(drawntreasure<2){
+		if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 			shuffle(currentPlayer, state);
 		}
 		
@@ -252,6 +252,10 @@ int adventurerCard(int drawntreasure, int cardDrawn, int currentPlayer, int z, i
 		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
 		z=z-1;
 	}
+	
+	//discard card from hand
+	discardCard(handPos, currentPlayer, state, 0);	
+	
 	return 0;
 }
 
@@ -261,9 +265,9 @@ int smithyCard(int i, int currentPlayer, int handPos, struct gameState *state)
 	for (i = 0; i < 3; i++)	{
 		drawCard(currentPlayer, state);
 	}
-	if(i == 3){ //after 3 cards are drawn, discard card from hand
-		discardCard(handPos, currentPlayer, state, 1);
-	}
+	//discard card from hand
+	discardCard(handPos, currentPlayer, state, 0);
+	
 	return 0;
 }
 
@@ -277,17 +281,15 @@ int councilRoomCard(int i, int currentPlayer, int handPos, struct gameState *sta
 	//+1 Buy
 	state->numBuys++;	
 	
-	//Other player draws a card
-	int nextPlayer = currentPlayer + 1;
-	if (nextPlayer > state->numPlayers - 1){
-		nextPlayer = 0;
+	//Each other player draws a card
+	for (i = 0; i < state->numPlayers; i++){
+		if ( i != currentPlayer ){
+			drawCard(i, state);
+	    }
 	}
-	drawCard(nextPlayer, state);
 			
 	//put played card in played card pile
-	if(i == 4){ //after 4 cards are drawn, discard card from hand
-		discardCard(handPos, currentPlayer, state, 0);
-	}
+	discardCard(handPos, currentPlayer, state, 0);
 			
 	return 0;
 }
@@ -311,7 +313,7 @@ int treasureMapCard(int index, int i, int currentPlayer, int handPos, struct gam
 	//search hand for another treasure_map
 	index = -1;
     
-	for (i = 1; i < state->handCount[currentPlayer]; i++){
+	for (i = 0; i < state->handCount[currentPlayer]; i++){
 		if (state->hand[currentPlayer][i] == treasure_map && i != handPos){
 			index = i;
 			break;
@@ -325,7 +327,7 @@ int treasureMapCard(int index, int i, int currentPlayer, int handPos, struct gam
 
 		//gain 4 Gold cards
 		for (i = 0; i < 4; i++){
-			gainCard(gold, state, 0, currentPlayer);
+			gainCard(gold, state, 1, currentPlayer);
 		}
 				
 		//return success
@@ -507,7 +509,7 @@ int isGameOver(struct gameState *state) {
 
   //if three supply pile are at 0, the game ends
   j = 0;
-  for (i = 0; i < 25; i++)
+  for (i = 0; i < 27; i++)
     {
       if (state->supplyCount[i] == 0)
 	{
@@ -549,7 +551,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
@@ -775,7 +777,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-		adventurerCard(drawntreasure, cardDrawn, currentPlayer, z, temphand, state);
+		adventurerCard(drawntreasure, handPos, cardDrawn, currentPlayer, z, temphand, state);
 			
     case council_room:
 		councilRoomCard(i, currentPlayer, handPos, state);
@@ -1251,12 +1253,12 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
 {
 	
-  //if card is not trashed, added to Played pile 
+  //if card is not trashed, added to Discard pile 
   if (trashFlag < 1)
     {
-      //add card to played pile
-      state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
-      state->playedCardCount++;
+      //add card to discard pile
+      state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->hand[currentPlayer][handPos];
+      state->discardCount[currentPlayer]++;
     }
 	
   //set played card to -1

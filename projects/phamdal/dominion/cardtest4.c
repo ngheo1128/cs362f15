@@ -38,7 +38,7 @@ int main() {
  		fail = 1; 
  	}
 
- 	if(state->handCount[0] != 3) {
+ 	if(state->handCount[0] != 4) {
  		printf("Incorrect number of cards in Player 1 hand\n"); 
  		fail = 1; 
  	}

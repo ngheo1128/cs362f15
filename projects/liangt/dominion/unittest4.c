@@ -21,13 +21,15 @@ int main() {
   initializeGame(numPlayer, k, seed, &G);
 
   if (NOISY_TEST)
-    printf("Test: Starting deck + hand has score of 3 from estate cards [failed]\n");
+    printf("Test: Starting deck + hand has score of 3 from estate cards\n");
 
-  // assert(scoreFor(0, &G) == 3);
+  assert(scoreFor(0, &G) == 3);
 
   // LOOKING AT THE CODE, IT'S CLEAR THAT THE DECK SCORE CALCULATION HAS AN ERROR:
   // It uses discardCount instead of deckCount. Further tests will take that
   // into account
+
+  // Corrected in assignment 5
 
   int i;
 
@@ -45,7 +47,7 @@ int main() {
   assert(scoreFor(0, &G) == 3*5*1);
 
   if (NOISY_TEST)
-    printf("Test: If discardCount == deckCount and all cards are duchy [failed]\n");
+    printf("Test: If discardCount == deckCount and all cards are duchy\n");
 
   for (i = 0; i < 5; i++) {
     G.hand[0][i] = duchy;
@@ -53,10 +55,10 @@ int main() {
     G.deck[0][i] = duchy;
   }
 
-  // assert(scoreFor(0, &G) == 3*5*5);
+  assert(scoreFor(0, &G) == 3*5*5);
 
   if (NOISY_TEST)
-    printf("Test: If discardCount == deckCount and all cards are province [failed]\n");
+    printf("Test: If discardCount == deckCount and all cards are province\n");
 
   for (i = 0; i < 5; i++) {
     G.hand[0][i] = province;
@@ -64,10 +66,10 @@ int main() {
     G.deck[0][i] = province;
   }
 
-  // assert(scoreFor(0, &G) == 3*5*8);
+  assert(scoreFor(0, &G) == 3*5*8);
 
-  // if (NOISY_TEST)
-  // 	printf("All tests passed.\n");
+  if (NOISY_TEST)
+  	printf("All tests passed.\n");
 
 	return 0;
 }
