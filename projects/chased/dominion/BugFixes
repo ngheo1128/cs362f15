@@ -1,0 +1,30 @@
+Dustin Chase
+ CS 362 
+ Assignment 5
+ Correcting bugs found by teammates:
+ 
+ In the Adventurer card, my teammate noticed that the number of coins being picked up 
+ was incorrect. I went back to the code and corrected the conditional which left "gold"
+ from the treasure cards. The new conditional is this: 
+ 
+ if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+	  drawntreasure++;
+ 
+ In the Smithy card, my teammate noticed that the incorrect number of cards was being drawn. 
+ I went back to the implementation and corrected the number of cards being drawn from 2 to 3. 
+ Changed cards drawn from 3 to 2 in for loop. This way the loop will hault when the player has 
+ drawn 2 cards instead of the correct 3 cards like this: 
+ 
+ for (i = 0; i < 3; i++)
+{
+    drawCard(currentPlayer, state);
+}
+
+
+ In the Council Room card, my teammate noticed that the number of buys was incorrect. I went back to the 
+ source code and changed the numBuys from +2 to +1. This corrects the number of buys in the Council Room card. 
+ 
+ state->numBuys += 1;
+ 
+ In the Feast card, my teammater noticed that the number of coins was incorrect after the card was played. 
+ I went back to the source code and corrected the last parameter from the incorrect 4 to the correct 5. 
