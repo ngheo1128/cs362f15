@@ -90,7 +90,7 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
       state->supplyCount[duchy] = 8;
       state->supplyCount[province] = 8;
     }
-  else
+  elsn
     {
       state->supplyCount[estate] = 12;
       state->supplyCount[duchy] = 12;
@@ -669,7 +669,7 @@ int adventurerEffect(int player, struct gameState *state)
 	drawCard(player, state);
 	int cardDrawn = state->hand[player][state->handCount[player]-1];//top card of hand is most recently drawn card.
 	
-    if (cardDrawn == silver || cardDrawn == gold)
+    if (cardDrawn == silver || cardDrawn == gold cardDrawn == copper)
 	  drawntreasure++;
 	else{
 	  temphand[z]=cardDrawn;
@@ -692,7 +692,7 @@ int villageEffect(int player, int handPos, struct gameState *state)
     drawCard(player, state);
     
     //+2 Actions
-    state->numActions = state->numActions * 2;
+    state->numActions = state->numActions + 2;
     
     //discard played card from hand
     discardCard(handPos, player, state, 0);
@@ -714,7 +714,7 @@ int councilEffect(int player, int handPos, struct gameState *state)
     //Each other player draws a card
     for (i = 0; i < state->numPlayers; i++)
     {
-        if ( i == player )
+        if ( i != player )
         {
             drawCard(i, state);
         }
@@ -735,7 +735,7 @@ int feastEffect(int player, int handPos, struct gameState *state, int choice1)
     //Backup hand
     
     //Update Coins for Buy
-    updateCoins(player , state, 0);
+    updateCoins(player , state, 5);
     int x = 1;//Condition to loop on
     while( x == 1) {//Buy one card
         if (supplyCount(choice1, state) <= 0){
