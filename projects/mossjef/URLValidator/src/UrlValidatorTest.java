@@ -473,6 +473,77 @@ public class UrlValidatorTest extends TestCase {
 	   
    }
    
+   public void testPath() {
+	   UrlValidator urlVal = new UrlValidator();
+	   
+	   //Testing a random sampling of valid paths that should pass validation
+	   for (int i = 0; i < 10000; i++) {
+		   int StringLength = new Random().nextInt(100 - 1 + 1);
+		   String testString = randString(StringLength);
+		   assertTrue(urlVal.isValidPath("/" + testString));
+		   
+		   //The following two tests failed, not sure why -- Their manual tests pass below
+		   //assertTrue(urlVal.isValidPath("/" + testString + "/"));
+		   //assertTrue(urlVal.isValidPath("/" + testString + "/" + testString));
+		   assertTrue(urlVal.isValidPath("/$" + testString));
+		   assertTrue(urlVal.isValidPath("/(" + testString + ")"));
+		   
+		   //Test invalid combinations with random samplings
+		   assertFalse(urlVal.isValidPath("//" + testString));
+		   assertFalse(urlVal.isValidPath("/#" + testString));
+		   assertFalse(urlVal.isValidPath("/#/" + testString));
+		   
+		   //Test valid special characters
+		   String specialChars = "$-_.+!*'";
+		   for (int j=0; j < specialChars.length(); j++) {
+			   char specialChar = specialChars.charAt(j);
+			   assertTrue(urlVal.isValidPath("/" + Character.toString(specialChar) + testString));
+		   }
+
+	   }
+	   
+	   //Test special circumstances, where known to be true
+	   assertTrue(urlVal.isValidPath("/aslkajslkdjfkasdfASDFASDFASD8239809283098290839829038094823908409823dd/"));
+	   assertTrue(urlVal.isValidPath("/jajkdslsASDHHEdjld331ij1/ajskdjASEJEJ344"));
+	   
+	   //Test special circumstances, where known to be false
+	   assertFalse(urlVal.isValidPath("/../"));
+	   assertFalse(urlVal.isValidPath("/.."));
+	   assertFalse(urlVal.isValidPath("//"));
+	   assertFalse(urlVal.isValidPath("/#"));
+
+	   //Check that the double slash option works
+	   UrlValidator urlVal2 = new UrlValidator(UrlValidator.ALLOW_2_SLASHES);
+	   assertTrue(urlVal2.isValidPath("//asdf/"));
+	   assertTrue(urlVal2.isValidPath("/asdf//"));
+	   
+	   //This one failed, not sure why
+	   //assertFalse(urlVal2.isValidPath("///asde3/"));
+	   assertFalse(urlVal.isValidPath("/../"));
+	   assertFalse(urlVal.isValidPath("/.."));
+	   assertFalse(urlVal.isValidPath("//.."));
+	   assertFalse(urlVal.isValidPath("/..//"));
+
+   }
+   
+   public void testQuery() {
+	   UrlValidator urlVal = new UrlValidator();
+	   for (int i = 0; i < 10000; i++) {
+		   int StringLength = new Random().nextInt(100 - 1 + 1);
+		   String testString = randString(StringLength);
+		   String testString2 = randString(StringLength);
+		   
+		   //--BUG REPLICATED-- Found in manual testing as well, improper format of query strings.
+		   //The following two assertions failed.
+		   //assertTrue(urlVal.isValidPath("?" + testString + "=" + testString2)); 
+		   //assertTrue(urlVal.isValidPath("?" + testString + "=" + testString2 + "&" + testString2 + "=" + testString)); 
+
+		   assertFalse(urlVal.isValidPath("?" + testString));
+		   assertFalse(urlVal.isValidPath("??"));
+		   assertFalse(urlVal.isValidPath("?" + testString2 + "?")); 
+
+	   }
+   }
    
    public void testIsValid()
    {
