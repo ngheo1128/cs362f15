@@ -23,6 +23,7 @@ IpAddr uses random testing to probe numbers within the real world range of possi
 
 
 Debugging:
+Please check URLValidatorTest.java file for specific tests.
 The first bug we found was in the InetAddressValidator.java file on line 96. The bug was that in 
 if(iIpSegment > 255){ return true; }, it should return false. More information about the bug can be found in Bug Report Validator-001.
         The second bug we found was in URLValidator.java file on line 158 that is: 
