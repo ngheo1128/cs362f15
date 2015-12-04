@@ -1,0 +1,94 @@
+unittest1.c:
+
+UNIT TEST FOR isGameOver() FUNCTION
+PASS: Successful game continuence on all piles stocked.
+PASS: Successful game over output. Province == 0
+PASS: No game over on 1 supplyCount == 0
+PASS: No game over on 2 supplyCount == 0
+PASS: Game over with 3 stacks empty.
+
+File 'dominion.c'
+No executable lines
+dominion.c:creating 'dominion.c.gcov'
+
+unittest2.c:
+UNIT TESTS FOR scoreFor() FUNCTION:
+PASS: Correct value from hand. (10)
+PASS: Correct value for Province. (6)
+PASS: Correct value for Duchy. (3)
+PASS: Correct value for Estate. (1)
+PASS: Correct value for Curse. (-1)
+PASS: Correct value for Great Hall. (1)
+PASS: Correct value from discard. (-2)
+PASS: Correct value from deck. (11)
+PASS: Correct value from gardens. (2)
+
+File 'dominion.c'
+No executable lines
+dominion.c:creating 'dominion.c.gcov'
+
+unittest3.c:
+UNIT TEST FOR getWinners() function:
+PASS: Player 1 wins.
+PASS: Player 2 wins
+PASS: Player 1 loses in tie where game ends on Player 1's turn.
+PASS: Tie when Player 2's turn and both players have same score in deck.
+PASS: Player 3 wins with highest score.
+PASS: Player 4 wins with highest score.
+PASS: 4 way tie when scores equal and Player 4's turn.
+
+File 'dominion.c'
+No executable lines
+dominion.c:creating 'dominion.c.gcov'
+
+unittest4.c:
+UNIT TESTS FOR drawCard() FUNCTION:
+PASS: Correct card in hand. (curse).
+PASS: Correct card in hand. (duchy).
+PASS: Correct drawn card after deck exhausted (copper|silver|gold).
+PASS: Correct deckCount. (2)
+PASS: Correct handCount. (6)
+PASS: Correct discardCount. (0)
+
+File 'dominion.c'
+No executable lines
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest1.c:
+UNIT TEST FOR outpostEffect() FUNCTION:
+PASS: Successfully remove card from user's hand.
+PASS: Successful addition of outpost to discard pile on use.
+PASS: outpostPlayed variable succesfully adjusted.
+PASS: Successfully registered as played card.
+File 'dominion.c'
+No executable lines
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest2.c
+UNIT TEST FOR adventurerEffect() FUNCTION:
+PASS: Succesfully discarded adventurer card and removal of treasure card.
+PASS: Succesfully stop drawing at 2 treasure cards.
+PASS: Successful addition of adventurer to discard pile on use.
+PASS: All cards in hand are treasure cards.
+File 'dominion.c'
+No executable lines
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest3.c
+UNIT TEST FOR salvagererEffect() FUNCTION:
+PASS: Succesfully gained coins from salvaged card.
+PASS: Succesfully removed salvager and village card from hand.
+PASS: No coins added when no card is targeted.
+
+File 'dominion.c'
+No executable lines
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest4.c
+UNIT TEST FOR smithyEffect() FUNCTION:
+PASS: Succesfully drew 3 cards and played/discarded smithy card.
+
+File 'dominion.c'
+No executable lines
+dominion.c:creating 'dominion.c.gcov'
+

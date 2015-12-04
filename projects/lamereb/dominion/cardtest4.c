@@ -14,7 +14,10 @@ int testAdventure(int player) {
   struct gameState g;
 
   int i, advPos = -1;
-  int handSize, deckSize, discardSize;
+  int handSize;
+#if VERBOSE
+  int deckSize, discardSize;
+#endif
   int coinCountPrev = 0;
   int coinCountPost = 0;
 
@@ -34,8 +37,10 @@ int testAdventure(int player) {
 
   // store count of cards in player's hand, deck & discard piles
   handSize = g.handCount[player];
+#if VERBOSE
   deckSize = g.deckCount[player];
   discardSize = g.discardCount[player];
+#endif
 
   // store count of coin cards in player's hand
   for (i = 0; i < g.handCount[player]; ++i) {

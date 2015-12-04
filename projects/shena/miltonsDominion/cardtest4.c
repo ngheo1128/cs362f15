@@ -12,7 +12,7 @@
 //=================
 int main(int argc, char **argv){
 	
-	printf("\n\nVillage Card Test \n\n");
+	printf("\n\nGreat Hall Card Test \n\n");
 	printf("Creating new gameState... \n");
 	struct gameState *s = newGame();
 	int numCards;
@@ -58,7 +58,7 @@ int main(int argc, char **argv){
 		printf("s->handCount[s->whoseTurn] == numCards... Fail!\n");
 	}
 	printf("\nGame initialized\n\n");
-	int r = cardEffect(village, 0, 0, 0, s, 0, 0);
+	int r = cardEffect(great_hall, 0, 0, 0, s, 0, 0);
 	printf("Checking if card count correctly adjusted...");
 	if(s->handCount[s->whoseTurn] == (numCards + 1)){
 		printf(" Success!\n");

@@ -1,0 +1,138 @@
+        -:    0:Source:unittest4.c
+        -:    0:Graph:unittest4.gcno
+        -:    0:Data:unittest4.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/*
+        -:    2: * Jason Gourley
+        -:    3: * gourleja@oregonstate.edu
+        -:    4: * CS362-400
+        -:    5: * Assignment 3 - unittest4.c
+        -:    6: * Description : Unit tests for endTurn method
+        -:    7: */
+        -:    8:
+        -:    9:#include <stdio.h>
+        -:   10:#include <stdlib.h>
+        -:   11:#include "dominion.h"
+        -:   12:#include "rngs.h"
+        -:   13:
+        -:   14:#define METHODNAME  "endTurn"
+        -:   15:#define BASESEED    10
+        -:   16:
+        -:   17:/*
+        -:   18: * Description:     Test the return values of the endTurn method
+        -:   19: * Preconditions:   The games state has been initialized, the seed and method name to test are passed
+        -:   20: * Postconditions:  The general messages and any failed test messages are displayed
+        -:   21: */
+        1:   22:int testMethod(char* currentTest, int seed, struct gameState *state)
+        -:   23:{
+        -:   24:    int i;
+        1:   25:    int testsPassed = 0;
+        1:   26:    int testsFailed = 0;
+        1:   27:    int expectedValue = 0;
+        1:   28:    int expectedState = 0;
+        -:   29:
+        1:   30:    printf ("\n\n-------------------------------------------------------------------------------\n");
+        1:   31:    printf ("-------------------------------------------------------------------------------\n");
+        1:   32:    printf ("Testing Method  : %s()\n", currentTest);
+        1:   33:    printf ("Seed            : %i\n", seed);
+        -:   34:
+        -:   35:    //check that the current players hand count is reset after method call
+        1:   36:    expectedValue = 0;
+        1:   37:    state->whoseTurn = 0;
+        1:   38:    endTurn(state);
+        1:   39:    if(state->handCount[0] != expectedValue) {
+    #####:   40:        printf("TEST FAIL    : Current player hand count reset failed\n");
+    #####:   41:        testsFailed++;
+        1:   42:    } else {testsPassed++;}
+        -:   43:
+        -:   44:    //check that the outposts played is reset after method call
+        1:   45:    expectedValue = 0;
+        1:   46:    endTurn(state);
+        1:   47:    if(state->outpostPlayed != expectedValue) {
+    #####:   48:        printf("TEST FAIL    : Outpost's Played reset failed\n");
+    #####:   49:        testsFailed++;
+        1:   50:    } else {testsPassed++;}
+        -:   51:
+        -:   52:    //check that the phase value is reset after method call
+        1:   53:    expectedValue = 0;
+        1:   54:    endTurn(state);
+        1:   55:    if(state->phase != expectedValue) {
+    #####:   56:        printf("TEST FAIL    : Phase reset failed\n");
+    #####:   57:        testsFailed++;
+        1:   58:    } else {testsPassed++;}
+        -:   59:
+        -:   60:    //check that the number of actions is reset after method call
+        1:   61:    expectedValue = 1;
+        1:   62:    endTurn(state);
+        1:   63:    if(state->numActions != expectedValue) {
+    #####:   64:        printf("TEST FAIL    : Number of Actions reset failed\n");
+    #####:   65:        testsFailed++;
+        1:   66:    } else {testsPassed++;}
+        -:   67:
+        -:   68:    //check that the number of buys available is reset after method call
+        1:   69:    expectedValue = 1;
+        1:   70:    endTurn(state);
+        1:   71:    if(state->numBuys != expectedValue) {
+    #####:   72:        printf("TEST FAIL    : Number of Buys value reset failed\n");
+    #####:   73:        testsFailed++;
+        1:   74:    } else {testsPassed++;}
+        -:   75:
+        -:   76:    //check that the current players card count is reset after method call
+        1:   77:    expectedValue = 0;
+        1:   78:    endTurn(state);
+        1:   79:    if(state->playedCardCount != expectedValue) {
+    #####:   80:        printf("TEST FAIL    : Played card count value reset failed\n");
+    #####:   81:        testsFailed++;
+        1:   82:    } else {testsPassed++;}
+        -:   83:
+        -:   84:    //check that the next player is correctly given control after method call, using first player
+        1:   85:    state->whoseTurn = 0;
+        1:   86:    expectedValue = 1;
+        1:   87:    endTurn(state);
+        1:   88:    if(state->whoseTurn != expectedValue) {
+    #####:   89:        printf("TEST FAIL    : Next player value reset failed\n");
+    #####:   90:        testsFailed++;
+        1:   91:    } else {testsPassed++;}
+        -:   92:
+        -:   93:    //check that the next player is correctly given control after method call, using last player
+        1:   94:    state->whoseTurn = 1;
+        1:   95:    expectedValue = 0;
+        1:   96:    endTurn(state);
+        1:   97:    if(state->whoseTurn != expectedValue) {
+    #####:   98:        printf("TEST FAIL    : Next player value reset failed\n");
+    #####:   99:        testsFailed++;
+        1:  100:    } else {testsPassed++;}
+        -:  101:
+        1:  102:    printf ("    Tests Passed    : %i\n", testsPassed);
+        1:  103:    printf ("    Tests Failed    : %i\n", testsFailed);
+        1:  104:    printf ("-------------------------------------------------------------------------------\n\n");
+        -:  105:
+        1:  106:    return 0;
+        -:  107:}
+        -:  108:
+        -:  109:
+        -:  110:/*
+        -:  111: * Preconditions:   The user can pass a seed value for testing or it defaults to a set value
+        -:  112: * Postconditions:  Exit the test program normally
+        -:  113: */
+        1:  114:int main (int argc, char** argv)
+        -:  115:{
+        -:  116:
+        -:  117:    // Setup Game Seed
+        -:  118:    int seed;
+        1:  119:    char* currentTest = METHODNAME;
+        1:  120:    if(argv[1]) {
+    #####:  121:        seed = atoi(argv[1]);
+        -:  122:    } else {
+        1:  123:        seed = BASESEED;
+        -:  124:    }
+        -:  125:
+        -:  126:    // Initialize Game State
+        -:  127:    struct gameState G;
+        1:  128:    int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
+        1:  129:    initializeGame(2, k, seed, &G);
+        -:  130:
+        1:  131:    testMethod(currentTest,seed, &G);
+        1:  132:    return 0;
+        -:  133:}

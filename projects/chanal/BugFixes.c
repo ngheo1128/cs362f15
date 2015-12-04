@@ -57,7 +57,17 @@ Fix 4: Teammates did not catch this bug due to their cardtests not testing salva
     properly increments numBuys instead of numActions for the card effect. 
 
 
+Fix 5: Fixed a bug in isGameOver
+  int isGameOver(struct gameState *state) {
 
+    ...
+    for (i = 0; i < 26; i++)
+      {
+        if (state->supplyCount[i] == 0)
+    { ...
+
+  Since my teammate reported that the index of treasure_map(enum of 26) wasn't checked
+  for the supplyCount, I changed the for loop from i<25 to i<26 to check for treasure_map
 
 
 

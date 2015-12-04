@@ -232,6 +232,7 @@ int playCard(int handPos, int choice1, int choice2, int choice3, struct gameStat
 {
   int card;
   int coin_bonus = 0;       //tracks coins gain from actions
+  int currentCoins = state->coins;
 
   //check if it is the right phase
   if (state->phase != 0)
@@ -262,6 +263,8 @@ int playCard(int handPos, int choice1, int choice2, int choice3, struct gameStat
 
   //reduce number of actions
   state->numActions--;
+  coin_bonus = state->coins - currentCoins;
+  if (coin_bonus < 0) {coin_bonus = 0;}
 
   //update coins (Treasure cards may be added with card draws)
   updateCoins(state->whoseTurn, state, coin_bonus);
@@ -1230,7 +1233,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
 void cardSmithy(int handPos, int player, struct gameState *state) {
     int i;
-    for (i = 0; i <= 3; i++)
+    for (i = 0; i < 3; i++)
     {
         drawCard(player, state);
     }
@@ -1241,9 +1244,12 @@ void cardSmithy(int handPos, int player, struct gameState *state) {
 }
 
 void cardAdventurer(int temphand[], int z, int cardDrawn, int drawntreasure, int handPos, int currentPlayer, struct gameState *state) {
-    while(drawntreasure<2){
-        if (state->deckCount[currentPlayer] <= 1){//if the deck is empty we need to shuffle discard and add to deck
+    int timesShuffled = 0;
+
+    while(drawntreasure < 2 && timesShuffled < 2){
+        if (state->deckCount[currentPlayer] < 1){//if the deck is empty we need to shuffle discard and add to deck
             shuffle(currentPlayer, state);
+            timesShuffled++;
         }
         drawCard(currentPlayer, state);
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
@@ -1252,13 +1258,17 @@ void cardAdventurer(int temphand[], int z, int cardDrawn, int drawntreasure, int
         else{
             temphand[z]=cardDrawn;
             state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-            ++z;
+            z++;
         }
     }
     while(z-1>=0){
         state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
     }
+
+    //discard card from hand
+    discardCard(handPos, currentPlayer, state, 0);
+
     return;
 }
 
@@ -1301,6 +1311,7 @@ void cardBaron(int choice1, int handPos, int currentPlayer, struct gameState *st
     else {
         if (supplyCount(estate, state) > 0){
             gainCard(estate, state, 0, currentPlayer);//Gain an estate
+            state->supplyCount[estate]--;//Decrement Estates
             if (supplyCount(estate, state) == 0){
                 isGameOver(state);
             }
@@ -1311,7 +1322,7 @@ void cardBaron(int choice1, int handPos, int currentPlayer, struct gameState *st
 
 void cardSalvager(int choice1, int handPos, int currentPlayer, struct gameState *state) {
 
-    state->numActions++;
+    state->numBuys++;
 
     if (choice1)
     {

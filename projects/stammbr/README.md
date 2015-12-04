@@ -20,3 +20,6 @@ Final Part A - Located in hansejod's directory.
 Quiz 2 - All files needed for quiz 2 are in the folder named "Quiz2".  There is no makefile for 
 it, but can be easily compiled with gcc testme.c -o briansawesomeprogram.  Remember, it has to
 be "briansawesomeprogram" to run correctly.  If not, I cannot be responsible for any issues.
+
+Final Project Part B - For my team (Jody Hansen, Wisam Thalij and myself), all needed files 
+are located in my repo in the URLValidator repo.  More specific details located in that README.md.

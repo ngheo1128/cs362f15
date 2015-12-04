@@ -1231,6 +1231,8 @@ int updateCoins(int player, struct gameState *state, int bonus)
 //end of dominion.c
 
 int adventurerCard(int drawntreasure, int currentPlayer, struct gameState *state, int cardDrawn, int temphand[], int z) {
+  z = 0;
+
   while(drawntreasure<2){
   if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
     shuffle(currentPlayer, state);

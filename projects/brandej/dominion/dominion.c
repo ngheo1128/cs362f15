@@ -433,11 +433,13 @@ int scoreFor (int player, struct gameState *state) {
       if (state->hand[player][i] == great_hall) { score = score + 1; };
       if (state->hand[player][i] == gardens) {
         for(x = 0; x < 26; ++x) {
-            tempScore += fullDeckCount(player, x, state);
+            tempScore = tempScore + fullDeckCount(player, x, state);
         }
         score = score + ( tempScore / 10 );
+        tempScore = 0;
       }
     }
+
 
   //score from discard
   for (i = 0; i < state->discardCount[player]; i++)
@@ -447,11 +449,12 @@ int scoreFor (int player, struct gameState *state) {
       if (state->discard[player][i] == duchy) { score = score + 3; };
       if (state->discard[player][i] == province) { score = score + 6; };
       if (state->discard[player][i] == great_hall) { score = score + 1; };
-            if (state->hand[player][i] == gardens) {
+      if (state->hand[player][i] == gardens) {
         for(x = 0; x < 26; ++x) {
             tempScore += fullDeckCount(player, x, state);
         }
         score = score + ( tempScore / 10 );
+        tempScore = 0;
       }
     }
 
@@ -463,11 +466,12 @@ int scoreFor (int player, struct gameState *state) {
       if (state->deck[player][i] == duchy) { score = score + 3; };
       if (state->deck[player][i] == province) { score = score + 6; };
       if (state->deck[player][i] == great_hall) { score = score + 1; };
-           if (state->hand[player][i] == gardens) {
+      if (state->hand[player][i] == gardens) {
         for(x = 0; x < 26; ++x) {
             tempScore += fullDeckCount(player, x, state);
         }
         score = score + ( tempScore / 10 );
+        tempScore = 0;
       }
     }
 
@@ -1271,7 +1275,7 @@ int playAdventurer(struct gameState *state) {
         }
       }
       while(z - 1 >= 0){
-        state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z+1]; // discard all cards in play that have been drawn
+        state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z-1]; // discard all cards in play that have been drawn
         z = z - 1;
       }
       return 0;

@@ -1,6 +1,18 @@
 CFLAGS = -Wall -fpic -coverage -lm
 
-default: unittestresults.out
+default: randomtestadventurer.out randomtestcard.out
+
+randomtestadventurer.out: randomtestadventurer.c
+	echo "Results for random testing of adventurer card" >> randomtestadventurer.out
+	gcc -o randomtestadventurer randomtestadventurer.c $(CFLAGS)
+	randomtestadventurer >> randomtestadventurer.out
+	gcov -b randomtestadventurer >> randomtestadventurer.out
+
+randomtestcard.out: randomtestcard.c
+	echo "Results for random testing of Council Room card" >> randomtestcard.out
+	gcc -o randomtestcard randomtestcard.c $(CFLAGS)
+	randomtestcard >> randomtestcard.out
+	gcov -b randomtestcard >> randomtestcard.out
 
 unittestresults.out: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c
 	echo "Results for all unit and card tests" > unittestresults.out
@@ -81,7 +93,7 @@ player: player.c interface.o
 all: playdom player testDrawCard testBuyCard badTestDrawCard
 
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so unittestresults.out
+	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so
 
 cleanall:
-	rm unittestresults.out unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 *.gcda *.gcno *.gcov
+	rm unittestresults.out unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestcard randomtestadventurer *.gcda *.gcno *.gcov

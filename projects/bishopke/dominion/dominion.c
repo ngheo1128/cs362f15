@@ -1267,9 +1267,9 @@ int great_hallCard(int currentPlayer, int handPos, struct gameState *state)
       //+1 Actions
       state->numActions++;
 	
-	//BUG: Doesn't discard card from hand			
-      //discard card from hand
-      //discardCard(handPos, currentPlayer, state, 0);
+	//BUG: Doesn't discard card from hand FIXED
+      //discard card from hand 
+      discardCard(handPos, currentPlayer, state, 0);
 
       return 0;
 }
@@ -1289,8 +1289,8 @@ int smithyCard(int currentPlayer, int handPos, struct gameState *state)
 {
       //+3 Cards
       int i = 0;
-	//BUG = +2 cards!
-	for (i = 0; i < 2; i++)
+	//BUG = +2 cards! FIXED
+	for (i = 0; i < 3; i++)
 	{
 		drawCard(currentPlayer, state);
 	}
@@ -1306,12 +1306,12 @@ int villageCard(int currentPlayer, int handPos, struct gameState *state)
       //+1 Card
       drawCard(currentPlayer, state);
 
-	//BUG: +3 Actions
+      //BUG: +3 Actions FIXED
       //+2 Actions
-      state->numActions = state->numActions + 3;
+      state->numActions = state->numActions + 2;
 			
       //discard played card from hand
-      //discardCard(handPos, currentPlayer, state, 0);
+      discardCard(handPos, currentPlayer, state, 0);
 
       return 0;
 }

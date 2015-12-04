@@ -1,0 +1,204 @@
+CS362- Software Engineering II
+Fall 2015
+Final Project - Part B
+Team Members: Jody Hansen, Brian Stamm, and Wisam Thalij
+
+Overview:
+
+This report will be divided into 3 distinct parts – an Overview, Testing Details & 
+Methodology, and Bug Reports.  The Overview section will discuss our work this semester 
+and how we approached this assignment.  The Testing Details & Methodology section will 
+provide information about our tests.  Finally, the Bug Reports section will simulate an 
+actual report like those we saw as examples in class and on the Apache Commons website.
+ 
+Working toward this final report was an accumulation of effort from our team over the 
+entire semester.  Prior to working on Part B and finding bugs within the URLValidator, 
+we had already worked as a team with Part A and Assignment 5.  We had met as a team to 
+discuss these assignments, and had spent some time together to work on Part A to ensure 
+we understood Java, Eclipse, the URLValidator code, and the assignment requirements.  With 
+each assignment, we communicated when we saw a need and were able to set up meetings easily 
+to discuss these assignments.  Because of our teamwork, it made completing these tasks easier 
+than it would have been to do on our own.
+ 
+Writing specifically about this final project (Final Project Part B), we mainly communicated 
+via email, and this was due to it being close to the end of the semester and the holidays.  
+We did also have a brief Google HangOuts meeting to divide up the assignment.  We decided it 
+would be easiest for each person to fall within their own strengths – Wisam was responsible for 
+the unit tests, Jody completed the manual tests and partition tests, and Brian provided feedback 
+on the tests and completed the documentation. 
+ 
+Throughout this class, both Professor Groce and Professor Christi have been focusing their efforts 
+toward teaching us about how to think about debugging rather than a simple “paint by numbers” 
+methodology to follow.  This is captured very well in Prof. Groce’s Lesson 19 lecture where he succinctly 
+describes David Agans principles of debugging.  When working on this final project, we first were able 
+to learn about and gained an understanding of the system through Professor Christi’s lectures and working 
+together on Part A. 
+ 
+Going through each of the other 8 points will be explored indirectly throughout this report.  Yet, 
+each team member was communicating their results, both successes and failures (“Keep an Audit Trail”).  
+We also provided a comments marks to mark which parts we are providing is True and which are False as well 
+as separating the valid input from invalid input to make ease of finding and locating where the bugs are.  
+We did ensure that the program, in fact, did fail (“Make It Fail”) by providing an invalid input to test it 
+if the URLValidator will fail..  We even set up this project to review our initial tests and question our 
+assumptions by having each member review our code and tests (“Check the Plug”).  Throughout this assignment, 
+we attempted to follow each of the 9 lessons that we learned during this semester, which helped us become 
+better debuggers.  
+
+
+-------------------------------------------------------------------------------------------------------------
+
+Testing Details & Methodology:
+	
+Manual testing:
+
+For this manual testing, we inserted several permutations of the four parts of a url, which included the scheme,
+ authority, port, path, and query. The intent was to mimic an end user who might accidentally either delete or 
+ add an additional character. The end result is manual testing that resembles an exploratory testing rather than 
+ a rigorous protocol. Included in the testing were urls known to fail and urls that are valid. Several patterns 
+ emerged, such as:
+
+	1.  Invalid urls passing that had shorten schemes, ex. “ttp” and “htt”.
+	2.  Invalid urls passing that had missing query characters, ex. “action=view” versus “?action=view”
+	3.  Valid urls not passing that excluded the scheme, ex. “www.amazon.com”.
+	4.  Valid urls not passing with port numbers four to five characters in length.
+
+
+Partitioning:
+
+Input partitioning was based off of the manual testing results, and it focused on two categories of failures: 
+valid urls not passing with a missing scheme and various lengths of port numbers. The first input partitioning 
+tested urls as c#.c#.c#, with c being an alphanumeric character and # representing string of various lengths. 
+Each segment was created as a random string containing only alphanumeric characters. The first and third segment 
+was one to three characters in length while the second segment was 1 to 10 characters. The objective of this test 
+was to determine if all valid urls excluding the scheme failed and it appears that in all cases this type of url 
+fails. 
+
+The second input partitioning testing targets the port length numbers. It randomly chooses one to six numbers to 
+append that number to one of eleven valid scheme and authorities. The results are that port numbers that are one 
+to three in length pass, while ports number four or higher fail even when those numbers are valid.
+
+
+Programing based testing:
+
+For  our program based testing, we wrote several test units and used a set of either fixed Valid or Invalid inputs.  
+We then created two arrays for each of the URL’s five parts {Scheme, Authority, Port, Path and Query}, where one 
+array contained valid data and the other invalid. Then we created a URLValidator object to run the unit test on, 
+called the isValid() on each one of the inputs using a loop to go through the giving array, and then check the 
+results of the isValid() function.  We checked the results in two ways: first by providing print statements to 
+check against the marked URLs, and second by providing assert statement when valid and invalid was expected.
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+Bug Reports:
+
+Bug ID:		01
+Title: 		URLs with five digits port numbers marked Invalid, while ones with three digits marked valid.
+File: 		UrlValidator.java
+Line: 		158	
+Class:  	Serious bug
+Reproducible:  Yes
+
+Description:
+
+What is the failure?
+	The URLvalidator accepts port numbers of 3 digits as valid ports and declare ports of 5 digits as Invalid.
+
+How did you find it?
+	We ran a test unit that tested all the valid port carteria and the 5 digits port numbers failed the test, 
+	on the other hand the 3 digit port number passed.
+
+What is the cause of that failure? Explain what part of the code is causing it?
+	Line 158 assigning the PORT_REGEX to accept 3 digits max, like so:
+		private static final String PORT_REGEX = "^:(\\d{1,3})$";
+
+	Whereas, It should be:  
+		private static final String PORT_REGEX = "^:(\\d{1,5})$";
+
+Steps to Produce the bug:
+
+	In the main function, create a new UrlValidotor object:
+		public static void main(String [] argv){
+			UrlValidator urlValidator = new UrlValidator();  ….
+	
+	Pass the “isValid” function a url string with a valid 5 digit port number:
+		System.out.println(urlValidator.isValid(“http://www.google.com:12345”));
+
+Expected Result:
+	Test should return true.
+
+Actual Result:
+	Test returned invalid and failed the assert.
+
+---------------------------------------------------------------------------------------------------------------------
+Bug ID:		02
+Title: 		URLs with valid queries are returned as Invalid and vice a versa
+File: 		UrlValidator.java
+Line:		446		
+Class:  	Serious bug
+Reproducible:   Yes
+
+Description:
+
+What is the failure?
+	The URLvalidator accepts Invalid queries as valid and vice a versa.
+
+How did you find it?
+	We ran a test unit that tested some valid queries and some invalid queries, all the valid queries made the 
+	test fail the assets.
+
+What is the cause of that failure? Explain what part of the code is causing it?
+	The returned value of the QUERY_PATTERN in line 466, which is this code:
+		return !QUERY_PATTERN.matcher(query).matches();
+	The “!” returning the opposite or the desired correct value.
+
+Steps to Produce the bug:
+	In the main function, creat a new UrlValidator object:
+		public static void main(String [] argv){
+		UrlValidaotr urlValidator = new UrlValidator();
+	Pass the “isValid” function a url string with a valid/invalid query.
+		System.out.println(urlValidator.isValid(“http://www.google.com?action=view”));
+		System.out.println(urlValidator.isValid(“http://www.google.com?action=view”)); 
+
+Expected Result:
+	Executing statement #1 above should return valid, while the second should return invalid.
+
+Actual Result:
+	Executing statement #1 returning invalid URL, and second returns a valid URL.
+
+-----------------------------------------------------------------------------------------------------------------------
+Bug ID:		03
+Title: 		The URLValidator is marking “localhost” and “hostname” Authorities as invalid.
+File: 		DomainValidator.java
+Line:		139		
+Class:  	Serious bug
+Reproducible:  Yes
+
+Description:
+
+What is the failure?
+	The URLvalidator do not accept localhost and hostname as a valid Authorities.
+
+How did you find it?
+	We used Eclipse as a debugger, we stepped through the execution statements and found the results of the 
+	isvalid() 	function on line 134 is producing the opposite results than expected, after further inspection 
+	we found that when we allow local hosts we check if valid in line 139 and there is a “!” that gives the 
+	opposite wanted results.
+
+What is the cause of that failure? Explain what part of the code is causing it?
+	The line 139:   
+		if (!hostnameRegex.isValid(domain))
+	The “!” is making the result of a valid domain returning false and visa versa.
+
+Steps to Produce the bug:
+	In the main function, create a new UrlValidator object:
+		public static void main(String [] argv){
+		UrlValidaotr urlValidator = new UrlValidator();
+	Pass the “isValid” function a url string with “localhost”:
+		System.out.println(urlValidator.isValid(“http://localhost:8080”));
+
+Expected Result:
+	Executing statement #1 above should return valid.
+
+Actual Result:
+	Executing statement #1 returning invalid URL.

@@ -6,17 +6,13 @@
 #include "rngs.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
+#define NOISY_TEST 0
 
 int main() {
-    int i, j, m;
-    int deckCounter;
+    int i, m;
     int seed = 1000;
-    int count;
     int numPlayer = 2;
     int p = 0, r, deckC;
-    int shuffled = 0;
-    int originalDeck[100];
     int k[10] = {adventurer, council_room, feast, gardens, mine
                , remodel, smithy, village, baron, great_hall};
     struct gameState G;

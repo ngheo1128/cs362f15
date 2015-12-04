@@ -59,13 +59,13 @@ int main() {
 
 
 #if (NOISY_TEST == 1)
-        //printf("Testing numActions. Expected: %d Actual: %d \n", numActionsPrev + 2, G.numActions);
+        printf("Testing numActions. Expected: %d Actual: %d \n", numActionsPrev + 2, G.numActions);
 #endif
         //see bug 6 
-        //assert(numActionsPrev + 2 == G.numActions);
+        assert(numActionsPrev + 2 == G.numActions);
 
 #if (NOISY_TEST == 1)
-     //   printf("Testing if player turn is correct. Expected: %d Actual: %d \n", p, G.whoseTurn);
+        printf("Testing if player turn is correct. Expected: %d Actual: %d \n", p, G.whoseTurn);
 #endif  
 
             assert(G.whoseTurn == p);
