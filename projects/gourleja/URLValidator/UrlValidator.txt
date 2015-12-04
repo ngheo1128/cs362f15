@@ -1,0 +1,55 @@
+CS362-400 - Final Project Part B
+Jason Gourley
+James Riccelli
+Michael Walker
+-------------------------------------------------------------------------------
+
+Testing Methodology:
+
+
+-------------------------------------------------------------------------------
+
+Manual Testing
+
+
+
+-------------------------------------------------------------------------------
+
+Partitioning
+
+
+-------------------------------------------------------------------------------
+
+Unit Tests
+
+
+-------------------------------------------------------------------------------
+
+Working As A Team
+
+
+-------------------------------------------------------------------------------
+Bug Reports
+
+	Description: Fails to validate correct TLD ".TV"
+		Test Method:		testManualTest()
+		Test Input:		"http://test.tv"
+		Failure:		Returns false, this is a valid URL structure
+					and valid Top Level Domain. 
+		Cause of the Failure:
+		Reference:		Current List of IANA TLD's 
+					http://data.iana.org/TLD/tlds-alpha-by-domain.txt
+
+	Description:
+		Test Method:		testYourFirstPartition()
+		Test Input:		""
+		Failure:		
+		Cause of the Failure:
+		Reference:		
+
+	Description:
+		Test Method:		testYourSecondPartition()
+		Test Input:		""
+		Failure:		
+		Cause of the Failure:
+		Reference:							
