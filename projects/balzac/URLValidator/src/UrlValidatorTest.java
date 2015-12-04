@@ -17,6 +17,10 @@
 
 
 import junit.framework.TestCase;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 
@@ -86,10 +90,556 @@ public class UrlValidatorTest extends TestCase {
 	   
    }
    
-   public void testYourFirstPartition()
+// url parts pools
+   final List<String> validProtocols = Arrays.asList("http://", "https://", "oid://", "proxy://", "ni://", "cvs://", "dict://", "data://", "content://", "appdata://");
+   final List<String> invalidProtocols = Arrays.asList("9224://", "18yolo://", "abc124://", "destination://", "fake124fake://");
+   final List<String> validSub_domain = Arrays.asList("www."/*, "test.", "weblog.", "websurveys.", "web0.", "mysql.", "direct.", "www2.", "homedir."*/);
+   final List<String> invalidSub_domain = Arrays.asList("-test.", "www$.", "w#2.", "@!#$*()+=.", "###.", "");
+   final List<String> validDomain_name = Arrays.asList("google", "youtube", "cinemassacre", "24hourcars"/*, "new-url", "wsj"*/);
+   final List<String> invalidDomain_name = Arrays.asList("9&asobn", "-qwoba", "$(*@%obnoawe", "asjobi#(@*#", "goo@gle");
+   final List<String> validTop_level_domain = Arrays.asList(".com"/*, ".org", ".net", ".int", ".edu", ".gov", ".mil", ".arpa", ".cn", ".eu", ".mr", ".tv", ".adult", ".beer", ".foo", ".pizza", ".wang"*/);
+   final List<String> invalidTop_level_domain = Arrays.asList(".-ja", ".%noa", ".n()se", "com#", ".los%e");
+   final List<String> validPath = Arrays.asList("/student/j/hello", "/public/final/docs");
+   final List<String> invalidPath = Arrays.asList("/fake//dir", "/end/", "/invalid/chars/h$*k");
+   final List<String> validExtension = Arrays.asList(".html", ".jpg", ".txt", ".doc", ".mp4", ".gif");
+   final List<String> invalidExtension = Arrays.asList(".jpe*g", ".d@c", ".--j");
+   final List<String> validQuery = Arrays.asList("?animal=dog", "?name=nick&age=25");
+   final List<String> invalidQuery = Arrays.asList("?novalue", "?=novariable","?varialble#=ivalid", "?value=inva@lid");
+   final List<String> validAnchor = Arrays.asList("#MYANCHOR", "#newAnchor", "#fake=2&parameters=3");
+   final List<String> invalidAnchor = Arrays.asList("#soin*^eogb", "#-(asionb", "#wjoie.bioue");
+   ArrayList<List<String>> validParts = new ArrayList<List<String>> (Arrays.asList(validProtocols, validSub_domain, validDomain_name, validTop_level_domain, validPath, validExtension, validQuery, validAnchor));
+   ArrayList<List<String>> invalidParts = new ArrayList<List<String>> (Arrays.asList(invalidProtocols, invalidSub_domain, invalidDomain_name, invalidTop_level_domain, invalidPath, invalidExtension, invalidQuery, invalidAnchor));
+   int validtests = 0;
+   int validfails = 0;
+   
+   
+   public String buildPartURL(String[] parts, Boolean[] valid){
+	   
+	   String returnUrl = "";
+	   
+	   Random randomValue = new Random();
+	   
+	   for (int i = 0; i < 8; i++){//cycle through parts
+		   
+		   if (parts[i] != "-1"){//check if part is used
+			   
+			   if (valid[i]){//check if part should use valid example
+				   
+				   parts[i] = validParts.get(i).get(randomValue.nextInt(validParts.get(i).size()));//add random valid part
+				   
+			   }
+			   
+			   else{
+				   
+				   parts[i] = invalidParts.get(i).get(randomValue.nextInt(invalidParts.get(i).size()));//add invalid random part
+				   
+			   }
+			   
+			   returnUrl+=parts[i];//add part to return url
+			   
+		   }
+		   
+		   
+	   }
+	   return returnUrl;//return formed url
+   }
+	 
+   public void singlePartitionTest(String[] parts, int tests){
+	   
+	   Boolean[] valid = new Boolean[8];
+	   
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   assertTrue(urlVal.isValid("http://www.google.com"));
+	   
+	   Random randomValue = new Random();
+	   
+	   String url;
+	   
+	   Boolean testIsValid = true;
+	   
+	   Arrays.fill(valid, true);
+	   
+	   url = buildPartURL(parts, valid);//all valid test
+	   
+	   validtests++;
+	   
+	   if(urlVal.isValid(url)){
+		   
+		   System.out.println("Valid test for passed");
+		   
+	   }
+	   
+	   else{
+		   
+		   System.out.println("Valid test for failed");
+		   System.out.printf("Url used in test: %s\n", url);
+		   validfails++;
+		   
+	   }
+	   
+	   for (int i = 1; i < tests; i++){
+		   
+		   testIsValid = true;
+		   
+		   for (int j = 0; j < 8; j++){
+			   
+			   valid[j] = (randomValue.nextInt(7) != 0);
+			   
+			   if (!valid[j]){
+				   testIsValid = false;   
+			   }
+		   }
+		   
+		   url = buildPartURL(parts, valid);
+		   
+		   if(urlVal.isValid(url) == testIsValid){
+			   
+			   System.out.println("Test # " + i + " PASSED.");
+			   if(testIsValid){
+				   validtests++;
+				   System.out.println("Test value: " + url);
+			   }
+		   }
+		   
+		   else{
+			   
+			   System.out.println("Test # " + i + " FAILED.<========");
+			   if (testIsValid){
+				   
+				   System.out.println("Expected value: true");
+				   System.out.println("Returned value: false");
+				   System.out.println("Test value: " + url);
+				   validtests++;
+				   validfails++;
+				   
+			   }
+			   
+			   else{
+				   
+				   System.out.println("Expected value: false");
+				   System.out.println("Returned value: true");
+				   System.out.println("Test value: " + url);
+				   System.out.println("Invalid parts: ");
+				   for (int k = 0; k < 8; k++){   
+					   if (!valid[k]){
+						   
+						   System.out.println("              " + parts[k]);
+						   
+					   }
+					   
+				   }
+				   
+			   }
+			   
+		   }
+	   
+	   }
+   }
+   
+   public void partitionTest(int tests)
    {
 	   
-   }
+	   String[] parts = new String[8];
+	  
+	   Arrays.fill(parts, "-1"); 
+	   
+	   //partition 1:
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   
+	   System.out.println("Testing Partition 1:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 2:
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   
+	   System.out.println("Testing Partition 2:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 3:
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   
+	   System.out.println("Testing Partition 3:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 4:
+	   parts[0] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   
+	  // System.out.println("Testing Partition 4:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 5:
+	   parts[0] = "fill";
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   
+	   System.out.println("Testing Partition 5:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 6:
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   
+	   System.out.println("Testing Partition 6:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 7:
+	   parts[0] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   
+	   System.out.println("Testing Partition 7:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 8:
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   
+	   System.out.println("Testing Partition 8:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 9:
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   parts[6] = "fill";
+	   
+	   System.out.println("Testing Partition 9:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 10:
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 10:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 11:
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   
+	   System.out.println("Testing Partition 11:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 12:
+	   parts[0] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   
+	   System.out.println("Testing Partition 12:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 13:
+	   parts[0] = "fill";
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   
+	   System.out.println("Testing Partition 13:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 14:
+	   parts[0] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[6] = "fill";
+	   
+	   System.out.println("Testing Partition 14:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 15:
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[6] = "fill";
+	   
+	   System.out.println("Testing Partition 15:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 16:
+	   parts[0] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 16:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 17:
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 17:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 18:
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[6] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 18:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 19:
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   parts[6] = "fill";
+	   
+	   System.out.println("Testing Partition 19:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 20:
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 20:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 21:
+	   parts[0] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[6] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 21:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 22:
+	   parts[0] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   parts[6] = "fill";
+	   
+	   System.out.println("Testing Partition 22:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 23:
+	   parts[0] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 23:");
+	   
+	   //singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 24:
+	   parts[0] = "fill";
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   
+	   System.out.println("Testing Partition 24:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 25:
+	   parts[0] = "fill";
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[6] = "fill";
+	   
+	   System.out.println("Testing Partition 25:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 26:
+	   parts[0] = "fill";
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 26:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 27:
+	   parts[0] = "fill";
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[6] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 27:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 28:
+	   parts[0] = "fill";
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   parts[6] = "fill";
+	   
+	   System.out.println("Testing Partition 28:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 29:
+	   parts[0] = "fill";
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 29:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   Arrays.fill(parts, "-1");
+	   
+	   //partition 30:
+	   parts[0] = "fill";
+	   parts[1] = "fill";
+	   parts[2] = "fill";
+	   parts[3] = "fill";
+	   parts[4] = "fill";
+	   parts[5] = "fill";
+	   parts[6] = "fill";
+	   parts[7] = "fill";
+	   
+	   System.out.println("Testing Partition 30:");
+	   
+	   singlePartitionTest(parts, tests);
+	   
+	   System.out.printf("Valid tests ran: %d\n", validtests);
+	   System.out.printf("Valid tests failed: %d", validfails);
+		   
+	}
    
    public void testYourSecondPartition(){
 	   
