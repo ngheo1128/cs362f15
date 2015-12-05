@@ -40,6 +40,9 @@ public class UrlValidatorTest extends TestCase {
    
    public void testManualTest()
    {
+	   String message = "\nBegginning testManualTest()";
+	   System.out.println(message);  
+	   
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 
        ResultPair[] testAuthority = {
@@ -66,17 +69,22 @@ public class UrlValidatorTest extends TestCase {
            boolean result = urlVal.isValid(newUrl);
            
            if(result == expected){
-        	   System.out.println(newUrl);  
+        	   System.out.println("\t" + newUrl);  
            } else { 
         	   //assertEquals(newUrl, expected, result);
-        	   System.err.println(newUrl);  
+        	   System.err.println("\t" + newUrl);  
         	   errors++;
            }
        }
-       if (errors > 0) {
-    	   String message = "Errors = " + errors; 
-    	   assertEquals(message, 0, errors);
-       }		   
+       if (errors == 0) {
+		   message = "End testManualTest(): Errors = " + errors + "\n"; 
+		   System.out.println(message);  
+	   }
+	   else {
+		   message = "End testManualTest(): Errors = " + errors + "\n"; 
+		   System.err.println(message);  
+		   assertEquals(message, 0, errors);
+	   }	   
 	   
    }
    
@@ -87,6 +95,9 @@ public class UrlValidatorTest extends TestCase {
     * */
    public void testYourFirstPartition()
    {
+	   String message = "\nBegginning testYourFirstPartition()";
+	   System.out.println(message); 
+	   
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
        
        ResultPair[] testScheme = {
@@ -210,17 +221,22 @@ public class UrlValidatorTest extends TestCase {
            boolean result = urlVal.isValid(newUrl);
            
            if(result == expected){
-        	   System.out.println(newUrl);  
+        	   System.out.println("\t" + newUrl);  
            } else { 
         	   //assertEquals(newUrl, expected, result);
-        	   System.err.println(newUrl);  
+        	   System.err.println("\t" + newUrl);  
         	   errors++;
            }
        }
-       if (errors > 0) {
-    	   String message = "Errors = " + errors; 
-    	   assertEquals(message, 0, errors);
-       }
+       if (errors == 0) {
+		   message = "End testYourFirstPartition(): Errors = " + errors + "\n"; 
+		   System.out.println(message);  
+	   }
+	   else {
+		   message = "End testYourFirstPartition(): Errors = " + errors + "\n"; 
+		   System.err.println(message);  
+		   assertEquals(message, 0, errors);
+	   }
    }
    
    /*
@@ -228,6 +244,9 @@ public class UrlValidatorTest extends TestCase {
     * 
     * */   
    public void testYourSecondPartition(){
+	   String message = "\nBegginning testYourSecondPartition()";
+	   System.out.println(message); 
+	   
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
        
        ResultPair[] testAuthority = {
@@ -314,17 +333,22 @@ public class UrlValidatorTest extends TestCase {
            boolean result = urlVal.isValid(newUrl);
            
            if(result == expected){
-        	   System.out.println(newUrl);  
+        	   System.out.println("\t" + newUrl);  
            } else { 
         	   //assertEquals(newUrl, expected, result);
-        	   System.err.println(newUrl);  
+        	   System.err.println("\t" + newUrl);  
         	   errors++;
            }
        }
-       if (errors > 0) {
-    	   String message = "Errors = " + errors; 
-    	   assertEquals(message, 0, errors);
-       }	   
+       if (errors == 0) {
+		   message = "End testYourSecondPartition(): Errors = " + errors + "\n"; 
+		   System.out.println(message);  
+	   }
+	   else {
+		   message = "End testYourSecondPartition(): Errors = " + errors + "\n"; 
+		   System.err.println(message);  
+		   assertEquals(message, 0, errors);
+	   }	   
    }
    
    
@@ -338,6 +362,113 @@ public class UrlValidatorTest extends TestCase {
    
    public void testAnyOtherUnitTest()
    {
+	   String message = "\nBegginning testAnyOtherUnitTest()";
+	   System.out.println(message);  
+	   
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   
+	   ResultPair[] testUrlScheme = {
+			   new ResultPair("http://", true),
+			   new ResultPair("ftp://", true),
+               new ResultPair("h3t://", true),
+               new ResultPair("3ht://", false),
+               new ResultPair("http:/", false),
+               new ResultPair("http:", false),
+               new ResultPair("http/", false),
+               new ResultPair("://", false),
+               new ResultPair("", true)
+	   };
+
+	   ResultPair[] testUrlAuthority = {
+			   new ResultPair("www.google.com", true),
+			   new ResultPair("go.com", true),
+			   new ResultPair("go.au", true),
+			   new ResultPair("0.0.0.0", true),
+			   new ResultPair("255.255.255.255", true),
+			   new ResultPair("256.256.256.256", false),
+			   new ResultPair("255.com", true),
+			   new ResultPair("1.2.3.4.5", false),
+			   new ResultPair("1.2.3.4.", false),
+			   new ResultPair("1.2.3", false),
+			   new ResultPair(".1.2.3.4", false),
+			   new ResultPair("go.a", false),
+			   new ResultPair("go.a1a", false),
+			   new ResultPair("go.cc", true),
+			   new ResultPair("go.1aa", false),
+			   new ResultPair("aaa.", false),
+			   new ResultPair(".aaa", false),
+			   new ResultPair("aaa", false),
+			   new ResultPair("", false)
+	   };
+	   
+	   ResultPair[] testUrlPort = {
+			   new ResultPair(":80", true),
+			   new ResultPair(":65535", true),
+			   new ResultPair(":0", true),
+			   new ResultPair("", true),
+			   new ResultPair(":-1", false),
+			   new ResultPair(":65636", true),
+			   new ResultPair(":65a", false)
+	   };
+	   
+	   ResultPair[] testPath = {
+			   new ResultPair("/test1", true),
+			   new ResultPair("/t123", true),
+			   new ResultPair("/$23", true),
+			   new ResultPair("/..", false),
+			   new ResultPair("/../", false),
+			   new ResultPair("/test1/", true),
+			   new ResultPair("", true),
+			   new ResultPair("/test1/file", true),
+			   new ResultPair("/..//file", false),
+			   new ResultPair("/test1//file", false)
+	   };
+	   
+	   int errors = 0;
+	   
+	   // iterate through all testUrlXXX arrays
+	   for (int i = 0; i < testUrlScheme.length; i++) 
+       {
+		   for (int ii = 0; ii < testUrlAuthority.length; ii++) 
+	       {
+			   for (int iii = 0; iii < testUrlPort.length; iii++) 
+		       {
+				   for (int iiii = 0; iiii < testPath.length; iiii++) 
+			       {
+					   // create current permutation of testUrlXXX arrays
+					   String newUrl = testUrlScheme[i].item + testUrlAuthority[ii].item + testUrlPort[iii].item + testPath[iiii].item;
+					   
+					   // check if any parts of current test URL are invalid
+					   boolean expected = true;
+					   if (!testUrlScheme[i].valid || !testUrlAuthority[ii].valid || !testUrlPort[iii].valid || !testPath[iiii].valid) {
+						   expected = false;
+					   }
+					   
+					   // run current permutation of testUrlXXX arrays through URL validator
+					   boolean result = urlVal.isValid(newUrl);
+				       
+					   // check if actual results equal expected results
+				       if(result != expected){
+				    	   System.err.println("\t" + newUrl);  
+				    	   errors++;
+				       }
+				       else {
+				    	   //System.out.println("\t" + newUrl);  
+				       }
+			       }
+		       }
+	       }
+       }
+	   
+	   if (errors == 0) {
+		   message = "End testAnyOtherUnitTest(): Errors = " + errors + "\n"; 
+		   System.out.println(message);  
+	   }
+	   else {
+		   message = "End testAnyOtherUnitTest(): Errors = " + errors + "\n"; 
+		   System.err.println(message);  
+		   assertEquals(message, 0, errors);
+	   }
 	   
    }
    /**
