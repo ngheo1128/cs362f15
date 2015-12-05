@@ -184,6 +184,12 @@ public class UrlValidatorTest extends TestCase {
     		   new ResultPair("z39.50s://", true),
     		   new ResultPair("123://", false),
     		   new ResultPair("a://", true),
+    		   new ResultPair("a+://", true),
+    		   new ResultPair("a+b://", true),
+    		   new ResultPair("a-://", true),
+    		   new ResultPair("a-b://", true),
+    		   new ResultPair("a.://", true),
+    		   new ResultPair("a.b://", true),
     		   new ResultPair("http:///", false),
     		   new ResultPair("http:/", false),
                new ResultPair("http:", false),
@@ -191,7 +197,7 @@ public class UrlValidatorTest extends TestCase {
                new ResultPair("http:\\", false),
                new ResultPair("http:\\\\", false),
                new ResultPair("://", false),
-               new ResultPair("", true)};
+       };
        
        final String testServer = "oregonstate";
        final String testTld = ".edu";
@@ -244,6 +250,16 @@ public class UrlValidatorTest extends TestCase {
                new ResultPair("a_b_c_d.com", false),
                new ResultPair("a_b_c_.com", false),
                new ResultPair("_a_b_c.com", false),
+               new ResultPair("a?.com", false),
+               new ResultPair("a!.com", false),
+               new ResultPair("a#.com", false),
+               new ResultPair("a$.com", false),
+               new ResultPair("a%.com", false),
+               new ResultPair("a^.com", false),
+               new ResultPair("a&.com", false),
+               new ResultPair("a*.com", false),
+               new ResultPair("a(.com", false),
+               new ResultPair("a).com", false),
                new ResultPair("192.168.1.1", true),
                new ResultPair("192.168.1", false),
                new ResultPair("192.168", false),
@@ -261,6 +277,12 @@ public class UrlValidatorTest extends TestCase {
                new ResultPair("255.255.255.255.", false),
                new ResultPair("255.com", true),               
                new ResultPair(".com", false),
+               new ResultPair("TEST.com", true),
+               new ResultPair("test.COM", true),
+               new ResultPair("TEST.COM", true),
+               new ResultPair("TEST.CoM", true),
+               new ResultPair("TEST.cOm", true),
+               new ResultPair("tEsT.cOm", true),
                new ResultPair("test.aa", false),
                new ResultPair("test.a", false),
                new ResultPair("test.123", false),
@@ -271,12 +293,15 @@ public class UrlValidatorTest extends TestCase {
                new ResultPair("abc1.com", true),
                new ResultPair("1abc.us", true),
                new ResultPair("abc1.us", true),
+               new ResultPair("abc.us", true),
                new ResultPair("aaa.", false),
                new ResultPair(".aaa", false),
                new ResultPair("aaa", false),
                new ResultPair("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk.com", true),
                new ResultPair("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk.abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk.com", true),
-               new ResultPair("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijkl.com", false)};
+               new ResultPair("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcde1abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk2abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk3abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopq.com", true),
+               new ResultPair("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcde1abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk2abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk3abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv.com", false),
+       };
 
        final String testScheme = "http://";
        
