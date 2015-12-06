@@ -41,9 +41,28 @@ public class UrlValidatorTest extends TestCase {
    public void testManualTest()
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-	   System.out.println(urlVal.isValid("http://www.amazon.com"));
+	   System.out.println("Valid URL, expected true, returned " + urlVal.isValid("http://www.amazon.com"));
 	   
+	   System.out.println("Valid URL, expected true, returned " + urlVal.isValid("http://www.facebook.com"));
 	   
+	   System.out.println("Invalid scheme, expected false, returned " + urlVal.isValid("hppt://www.facebook.com")); // invalid scheme
+	   
+	   System.out.println("Invalid authority, expected false, returned " + urlVal.isValid("http://www..facebook.com")); // invalid authority
+	   
+	   System.out.println("Invalid authority, expected false, returned " + urlVal.isValid("http://www.facebook./com")); // invalid authority
+	   
+	   System.out.println("Valid port, expected true, returned " + urlVal.isValid("http://www.facebook.com:80")); // valid port
+	   
+	   System.out.println("Invalid port, expected false, returned " + urlVal.isValid("http://www.facebook.com::80")); // invalid port
+	   
+	   System.out.println("Valid path, expected true, returned " + urlVal.isValid("http://www.facebook.com/validPath.html"));
+	   
+	   System.out.println("Invalid path, expected false, returned " + urlVal.isValid("http://www.facebook.com///invalidPath.html"));
+
+	   System.out.println("Valid query, expected true, returned " + urlVal.isValid("http://www.facebook.com?validquery=true"));
+	   
+	   System.out.println("Invalid query, expected false, returned " + urlVal.isValid("http://www.facebook.com?validquery==false"));	   
+
    }
    
    
