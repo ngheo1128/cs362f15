@@ -1,0 +1,89 @@
+CS362-400 - Final Project Part B
+Jason Gourley
+James Riccelli
+Michael Walker
+-------------------------------------------------------------------------------
+
+Testing Methodology:
+
+We applied the testing methodologies that we have been utilizing through the course to research and identify test cases to show the effectiveness of the program to meet the requirements for the software under test.
+
+The first step for all testing was to research the structure of valid URIs.  In order to verify the software under test’s validity we needed a good understanding of how to construct test cases which would prove to be reliable for finding bugs.  We first sought out the RFCs which establish the rules for URIs, IPv4, and IPv6 addresses.  Looking these documents over gave us rules to follow when constructing test cases and how to identify edge cases.  Secondly we took a look at other elements which are governed by organisations such as the IANA.  These would include elements such as URI schemes as well as top level domain names.  Reviewing these lists gave us practical cases which can be verified beyond just structure data in the RFCs.  Utilizing these lists we could begin targeting specific areas that could present issues, such as valid TLDs which do not appear in the array used by the software to verify if it is valid or not.
+
+With basic structure knowledge along with ideas to move forward on specific test cases we began to break down test cases into the three outlined areas.  First manual tests, where we could test some of the basic edge cases and provide a set of tests that were straightforward and might catch errors in more widely used URIs.  Second we created a set of partition tests to isolate the URI scheme and then the combination of host names and TLDs.  Last we created a set of unit tests to close out our test suite.
+
+
+-------------------------------------------------------------------------------
+
+Manual Testing
+
+
+
+-------------------------------------------------------------------------------
+
+Partitioning
+
+For partitioning it was important for our test suite that we looked at the basic necessary building blocks of a URI to verify the software under test prior to moving forward with any other unit tests.  After reviewing the corresponding RFCs we identified the two most important areas to do partitioning upon was the scheme and then the authority, combination of host name and TLD.  These are the two most important parts of URI for testing as the other elements of a URI are dependent upon reliable testing of these parts.  A failure in either of these two areas would cause any other tests of the other structural elements to be brought into question.
+
+In the first partition test, URI schemes, it was important to understand the structure, but also the URIs that are approved.  A list of tests were created based upon first the RFC reference testing the boundaries for cases involved with the makeup of a valid scheme.  In RFC 3986 this is listed as being : scheme = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." ). A set of tests was built around these requirements after brainstorming ideas on what edge cases could exist from this structure.  The next step was to search out the list of approved URI schemes that are live and need to be verified.  For the purposes of this round of testing the included schemes were limited to schemes that have been moved to a permanent status.
+
+For the second set of partition tests regarding the authority structure we needed to take special care to look into valid host names, label structure, TLD structure, approved TLDs, IPv4 and IPv6 addresses.  There are a number of elements that are combined at this level which require care to understand the structure and validity of the tests created.  In creating the test cases we approached individual elements as possible to test edge cases and basic structure.  The first tests that made sense were to ensure that IP addresses were being validated correctly since they are not connected in the way host names and TLDs are.  Next to cover the hostnames the basic structure rules were taken into account for the valid lengths, characters, format.  Edge cases for the hostnames were created using consistent TLDs where an error at the TLD level could be easily identified.  For the TLDs the basic structure was first taken into account and then various basic domains were selected as a basic starting point.  
+
+-------------------------------------------------------------------------------
+
+Unit Tests
+
+
+-------------------------------------------------------------------------------
+
+Working As A Team
+
+For team collaboration we chose to communicate through email, google hangouts, and google drive as necessary to plan for the individual project parts, allowing for the flexibility needed to match all team members schedules.  Together as a team we looked at the project requirements for the deliverables for both part A and B.  Then we broke each major requirement down into atomic parts,  which were grouped together by similarly logical parts allowing each team member to focus on an individual area of the software under test.  
+
+-------------------------------------------------------------------------------
+Bug Reports
+
+
+
+
+1	Description: IPv4 Address Out of Valid range returns True
+		Test Method:		
+			testYourSecondPartition()
+		Test Input:
+			"http://256.256.256.256"
+		Failure:
+			Validates an IP that is out of range of a valid IPv4 address
+		Cause of the Failure:	
+			InetAddressValidator.java : Line 96 , IP address segment greater than 255 returns true, however should return false			
+		Reference:		
+			RFC 1918, IPv4 Specifications
+
+
+2	Description: Host name exceeding valid range is validated
+		Test Method:		
+			testYourSecondPartition()
+		Test Input:
+			"http://abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcde1abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk2abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk3abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv.com"
+		Failure:
+			Validates URI with host name that is longer than 255 characters in length
+		Cause of the Failure:	
+			DomainValidator.java : Line 136 , group length is tested for a minimum length but not a maximum length
+		Reference:		
+			RFC 3986, Section 3.2.2 Host
+
+
+3	Description: Unable to validate certain country code TLDs
+		Test Method:		
+			testYourSecondPartition()
+		Test Input:
+			"http://1abc.us"
+			"http://abc1.us"
+			"http://abc.us"
+			"http://test.tv"
+		Failure:
+			Unable to validate all correct top level domains
+		Cause of the Failure:	
+			DomainValidator.java : Line 248 COUNTRY_CODE_TLDS, missing “us” for United States from the country code array
+		Reference:		
+			http://data.iana.org/TLD/tlds-alpha-by-domain.txt
+			Latest top level domains provided by IANA
