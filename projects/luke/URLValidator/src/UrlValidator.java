@@ -150,7 +150,7 @@ public class UrlValidator implements Serializable {
     
     private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);
     
-    private static final String QUERY_REGEX = "^(.)$";
+    private static final String QUERY_REGEX = "^(.*)$";
     
     private static final Pattern QUERY_PATTERN = Pattern.compile(QUERY_REGEX);
 
