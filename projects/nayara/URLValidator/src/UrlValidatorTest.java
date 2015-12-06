@@ -32,11 +32,13 @@ public class UrlValidatorTest extends TestCase {
       super(testName);
    }
 
+   // Manual testing
    public void testManualTest()
    {
 	   String url;
 	   String schemes[] = {"http", "https"};
 	   UrlValidator urlVal = new UrlValidator(schemes);
+	  
 	   // GOOD URLS
 	   System.out.println("*** Valid URLs ***");
 	   url  = "http://www.google.com";
@@ -50,7 +52,7 @@ public class UrlValidatorTest extends TestCase {
 
 	   url = "http://test.google.com";
 	   assertTrue(urlVal.isValid(url));
-
+	   
 	   url = "http://test.google.com/testing";
 	   assertTrue(urlVal.isValid(url));
 
@@ -217,15 +219,8 @@ public class UrlValidatorTest extends TestCase {
 	   
 
    }
-   
-   // test ports
-   // test args and inputs
-   // test ips
-   // test odd characters
-   // test numbers
-   // test domains
-   // 
-   
+
+   // Test ports 0-65535
    public void testPorts()
    {
 	   String url;
@@ -243,6 +238,7 @@ public class UrlValidatorTest extends TestCase {
 	   }
    }
    
+   // Test queries by assembling different variations of query parameters
    public void testParams()
    {
 	   String param_list[] = {"action=true", "data=somedata", "username=nayara",""};
@@ -252,72 +248,73 @@ public class UrlValidatorTest extends TestCase {
 	   String subdir[] = {"test",null};
 	   String url;
 	   UrlValidator urlVal = new UrlValidator(schemes);
-//	   
-//	   String scheme,domain, suffix, dir, param;
-//	   
-//	   for(int a=0; a<2; a++)
-//	   {
-//		   scheme = schemes[a];
-//		   for(int b=0; b<3; b++)
-//		   {
-//			   domain = domains[b];
-//			   for(int c=0; c<3;c++)
-//			   {
-//				   suffix = suffixes[c];
-//				   for(int d=0; d<2;d++)
-//				   {
-//					   
-//					   for(int e=0; e<4;e++)
-//					   {
-//						   param = param_list[e];
-//						   if(subdir[d] != null)
-//						   {
-//							   url = scheme+"://"+domain+suffix+"/"+subdir[d]+"?"+param;
-//						   }
-//						   else
-//						   {
-//							   url = scheme+"://"+domain+suffix+"?"+param;
-//						   }
-//						   if (!urlVal.isValid(url))
-//						   {
-//							   System.out.println("TEST Failed: "+url);							   
-//						   }	   
-//					   }
-//				   }
-//			   }
-//		   }   
-//	   }
-//	   
-//	   for(int a=0; a<2; a++)
-//	   {
-//		   scheme = schemes[a];
-//		   for(int b=0; b<3; b++)
-//		   {
-//			   domain = domains[b];
-//			   for(int c=0; c<3;c++)
-//			   {
-//				   suffix = suffixes[c];
-//				   for(int d=0; d<2;d++)
-//				   {
-//					   if(subdir[d] != null)
-//					   {
-//						   url = scheme+"://"+domain+suffix+"/"+subdir[d]+"?";
-//					   }
-//					   else
-//					   {
-//						   url = scheme+"://"+domain+suffix+"?";
-//					   }
-//					   url = url + param_list[0]+"&"+param_list[1]+"&"+param_list[2];
-//					   if (!urlVal.isValid(url))
-//					   {
-//						   System.out.println("TEST Failed: "+url);							   
-//					   }	   
-//
-//				   }
-//			   }
-//		   }
-//	   }
-//	   
+	   
+	   String scheme,domain, suffix, dir, param;
+	   
+	   for(int a=0; a<2; a++)
+	   {
+		   scheme = schemes[a];
+		   for(int b=0; b<3; b++)
+		   {
+			   domain = domains[b];
+			   for(int c=0; c<3;c++)
+			   {
+				   suffix = suffixes[c];
+				   for(int d=0; d<2;d++)
+				   {
+					   
+					   for(int e=0; e<4;e++)
+					   {
+						   param = param_list[e];
+						   if(subdir[d] != null)
+						   {
+							   url = scheme+"://"+domain+suffix+"/"+subdir[d]+"?"+param;
+						   }
+						   else
+						   {
+							   url = scheme+"://"+domain+suffix+"?"+param;
+						   }
+						   if (!urlVal.isValid(url))
+						   {
+							   System.out.println("TEST Failed: "+url);							   
+						   }	   
+					   }
+				   }
+			   }
+		   }   
+	   }
+	   
+	   for(int a=0; a<2; a++)
+	   {
+		   scheme = schemes[a];
+		   for(int b=0; b<3; b++)
+		   {
+			   domain = domains[b];
+			   for(int c=0; c<3;c++)
+			   {
+				   suffix = suffixes[c];
+				   for(int d=0; d<2;d++)
+				   {
+					   if(subdir[d] != null)
+					   {
+						   url = scheme+"://"+domain+suffix+"/"+subdir[d]+"?";
+					   }
+					   else
+					   {
+						   url = scheme+"://"+domain+suffix+"?";
+					   }
+					   url = url + param_list[0]+"&"+param_list[1]+"&"+param_list[2];
+					   if (!urlVal.isValid(url))
+					   {
+						   System.out.println("TEST Failed: "+url);							   
+					   }	   
+
+				   }
+			   }
+		   }
+	   }
+	   
+	   // Perform a few more manual tests
 	   url = "http://www.a.com?action=true";
 	   if (!urlVal.isValid(url))
 	   {
@@ -344,16 +341,17 @@ public class UrlValidatorTest extends TestCase {
 	   
     }
    
+   // Check URLs by IP. Check URLs of 
+   // one, two, three, four, and five octets
    public void testIPs()
    {
-	   // check 0-1024
-	   // any ip with a section greater than 255 should fail
-	   // any ip with less than 4 or greater than for octets should fail
+
 	   String url;
 	   String schemes[] = {"http", "https"};
 	   UrlValidator urlVal = new UrlValidator(schemes);
 
 	   int max_num = 300;
+	   
 	   System.out.println("Testing one octet...");
 	   for(int a=0; a < max_num; a++)
 	   {
@@ -448,7 +446,7 @@ public class UrlValidatorTest extends TestCase {
    }
    
 
-   
+   // Test URLs made of only numbers
    public void testNumbers()
    {
 	   String schemes[] = {"http", "https"};
@@ -470,6 +468,8 @@ public class UrlValidatorTest extends TestCase {
 		   
 	   }	   
    }
+   
+   // Test URLs made of only letters
    public void testLetters()
    {
 	   String schemes[] = {"http", "https"};
@@ -491,6 +491,8 @@ public class UrlValidatorTest extends TestCase {
 		   
 	   }
    }
+   
+   // Test URLs made of numbers and letters
    public void testNumbersAndLetters()
    {
 	   String schemes[] = {"http", "https"};
@@ -513,6 +515,7 @@ public class UrlValidatorTest extends TestCase {
 	   }	   
    }
    
+   // Test URLs made of strange characters
    public void testOddities()
    {
 	   String schemes[] = {"http", "https"};
@@ -533,6 +536,7 @@ public class UrlValidatorTest extends TestCase {
 	   }
 	   
    }
+  
    public void testYourFirstPartition()
    {
 	   	String[] schemes = {"action1=true","action2=false", "action1=true&action2=false"};
