@@ -38,13 +38,20 @@ public class UrlValidatorTest extends TestCase {
    }
 
    
-   
+   /*
+    * Method: testManualTest
+    * Preconditions: None
+    * Postconditions: Assert fails if a URL is not valid.
+    * Parameters: None
+    * Description: testManualTest passes a small number of valid and invalid URLs to the isValid
+    * function. URLs are asserted true if they are valid and false if they are invalid.
+    * 
+    */
    public void testManualTest()
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 	   
 	   //Testing invalid URLs
-
 	   //assertFalse(urlVal.isValid("ht://www.google.com"));
 	   assertFalse(urlVal.isValid("http://ww.amazon.com:"));
 	   assertFalse(urlVal.isValid("ttp://www.amazon.com:"));
@@ -57,7 +64,6 @@ public class UrlValidatorTest extends TestCase {
 	   assertFalse(urlVal.isValid("http://www.amazon.com:808080"));
 	   
 	   //Testing valid URLs
-
 	   assertTrue(urlVal.isValid("http://www.google.com"));
 	   assertTrue(urlVal.isValid("http://www.google.com/test"));
 	   assertTrue(urlVal.isValid("http://www.oregonstate.edu"));
@@ -66,7 +72,8 @@ public class UrlValidatorTest extends TestCase {
 	   assertTrue(urlVal.isValid("http://www.amazon.com:0"));
 	   assertTrue(urlVal.isValid("http://www.amazon.com:88"));
 	   assertTrue(urlVal.isValid("http://www.amazon.com:888"));
-	   //The following two should be true but return false - Bug #1
+	   // The following two should be true but return false
+	   // BUG #1: Ports with 4 or more digits fail
 	   assertTrue(urlVal.isValid("http://www.amazon.com:8080"));
 	   assertTrue(urlVal.isValid("http://www.amazon.com:80808"));
 	   
@@ -74,36 +81,51 @@ public class UrlValidatorTest extends TestCase {
 	   assertTrue(urlVal.isValid("http://www.amazon.com/test1/"));
 	   assertTrue(urlVal.isValid("http://www.amazon.com/test1/test2"));
 	   
-	   //The following two should be true but return false - Bug #2
+	   // The following two should be true but return false
+	   // Bug #2: URLs with a query are failing
 	   assertTrue(urlVal.isValid("http://www.amazon.com/test1/?action=view"));
 	   assertTrue(urlVal.isValid("http://www.amazon.com/test1/?action=edit&mode=up"));
 	   
 	   
    }
    
+   /*
+    * Method: testManualTest2
+    * Preconditions: None
+    * Postconditions: Prints out invalid URLs
+    * Parameters: None
+    * Description: testManualTest2 reads from a file containing many URLs. Each
+    * URL is passed to the isValid function and URLs that do not return the expected result are 
+    * output to the screen
+    * 
+    */
    public void testManualTest2() 
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   // Contains URLs to test
 	   String urlFile="src/UrlsToVerify.txt";
 	   
 	   try{
+		   // Open the file containing URLs for testing
 		   FileReader txtFile = new FileReader(urlFile);
 		   BufferedReader fbuffer = new BufferedReader(txtFile);
 
 		   String line;
-
+		   // For each line in UrlsToVerify.txt, pass the URL into the isValid function
 		   while ((line = fbuffer.readLine()) != null){
 			   String[] tokens = line.split("[ ]");
 			   String url = tokens[0];
 			   boolean bool = Boolean.parseBoolean(tokens[1]);
-   
+			   
+			   //If the expected result is not returned, print out the URL
 			   if(bool != urlVal.isValid(url)){
 				   System.out.println(url);
 			   }
            }
 
+		   // Close the buffer
 		   fbuffer.close();
-      
+      // If an error occurs and the file cannot be opened
 	   }catch(Exception err){
 		   System.out.println(err.getMessage());                      
 	   }
