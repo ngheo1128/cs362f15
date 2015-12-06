@@ -158,7 +158,7 @@ public class UrlValidatorTest extends TestCase {
 	   for (int i=0; i < 100000; i++) {
 		   int StringLength = new Random().nextInt(10 - 1 + 1);
 		   String testString = randString(StringLength);
-		   System.out.println(testString);
+		   //System.out.println(testString);
 		   if(testString.equals("http") || testString.equals("https") || testString.equals("ftp")) {
 			   assertTrue(urlVal.isValidScheme(testString));
 		   } else {
@@ -850,28 +850,50 @@ public class UrlValidatorTest extends TestCase {
 		 new ResultPair("?yeupa=yes&newstuff=true?", false),
    };
    
+
    public void testIsValid()
    {
+	   UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES + UrlValidator.ALLOW_LOCAL_URLS);
 
-	   for (ResultPair urlPair: pairScheme) {
-		   //Run through all scheme combinations
+	   StringBuilder URI = new StringBuilder();
+	   for (int i = 0; i < 100000; i++) {
+		 //Reset the string builder
+		   URI.setLength(0);
 		   boolean isValid = true;
-		   String URI = urlPair.item;
-		   if(!urlPair.valid)
+		   //Brute force testing using random number generator
+		   //Randomly pick items and run for a long time
+		   int number = new Random().nextInt(pairScheme.length-1);
+		   URI.append(pairScheme[number].item);
+		   if(!pairScheme[number].valid)
 			   isValid = false;
+		   //Randomly select authority
+		   number = new Random().nextInt(pairAuthority.length-1);
+		   URI.append(pairAuthority[number].item);
+		   if(!pairAuthority[number].valid)
+			   isValid = false;
+		   //Randomly select path
+		   number = new Random().nextInt(pairPath.length-1);
+		   URI.append(pairPath[number].item);
+		   if(!pairPath[number].valid)
+			   isValid = false;
+		   //Randomly select query
+		   number = new Random().nextInt(pairQuery.length-1);
+		   URI.append(pairQuery[number].item);
+		   if(!pairQuery[number].valid)
+			   isValid = false;
+		   
+		   boolean testIsValid = urlVal.isValid(URI.toString());
+		   System.out.println(URI.toString());
+		   assertEquals(testIsValid, isValid);
 	   }
+	   
    }
    
    public void testAnyOtherUnitTest()
    {
 	   
    }
-   /**
-    * Create set of tests by taking the testUrlXXX arrays and
-    * running through all possible permutations of their combinations.
-    *
-    * @param testObjects Used to create a url.
-    */
+
    
 
 }
