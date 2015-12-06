@@ -17,6 +17,7 @@
 
 
 import junit.framework.TestCase;
+import java.util.Random;
 
 
 /**
@@ -41,74 +42,73 @@ public class UrlValidatorTest extends TestCase {
    public void testManualTest()
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-	   //System.out.println(urlVal.isValid("http://www.amazon.com"));
-	   
-	   // .com
+
+	   //.com
 	   System.out.println("Manual testing Valid Urls:");
-	   System.out.println(String.format( "http://www.amazon.com") + "  				    \t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.amazon.com"));
-	   System.out.println(String.format( "http://www.google.com") + "   				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.google.com"));
-	   System.out.println(String.format( "http://www.facebook.com") + " 				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://facebook.com"));
-	   System.out.println(String.format( "http://www.nhl.com") + "      				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.nhl.com"));
+	   System.out.println(String.format( "http://www.amazon.com") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.amazon.com"));
+	   System.out.println(String.format( "http://www.google.com") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.google.com"));
+	   System.out.println(String.format( "http://www.facebook.com") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://facebook.com"));
+	   System.out.println(String.format( "http://www.nhl.com") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.nhl.com"));
+	   //.org
+	   System.out.println(String.format( "http://www.wikipedia.org") + "\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.wikipedia.org"));
+	   System.out.println(String.format( "http://www.craigslist.org/") + "\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.craigslist.org/"));
+	   System.out.println(String.format( "https://wordpress.org/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://wordpress.org/"));
+	   System.out.println(String.format( "https://www.mozilla.org") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://www.mozilla.org"));
 	   
-	   // .org
-	   System.out.println(String.format( "http://www.wikipedia.org") + " 				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.wikipedia.org"));
-	   System.out.println(String.format( "http://www.craigslist.org/") + "				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.craigslist.org/"));
-	   System.out.println(String.format( "https://wordpress.org/") + "  				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://wordpress.org/"));
-	   System.out.println(String.format( "https://www.mozilla.org") + " 				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://www.mozilla.org"));
+	   //.mil
+	   System.out.println(String.format( "http://www.uscg.mil") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.uscg.mil"));
+	   System.out.println(String.format( "www.navy.mil/") + "\t\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.navy.mil"));
+	   System.out.println(String.format( "www.army.mil") + "\t\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.army.mil"));
+	   System.out.println(String.format( "www.af.mil/") + "\t\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.af.mil/"));
 	   
-	   // .mil
-	   System.out.println(String.format( "http://www.uscg.mil") + "     				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.uscg.mil"));
-	   System.out.println(String.format( "www.navy.mil/") + "           				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.navy.mil"));
-	   System.out.println(String.format( "www.army.mil") + "           					\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.army.mil"));
-	   System.out.println(String.format( "www.af.mil/") + "             				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.af.mil/"));
+	   //.io
+	   System.out.println(String.format( "http://socket.io/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://socket.io/"));
+	   System.out.println(String.format( "http://getyarn.io/yarn-popular") + "\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://getyarn.io/yarn-popular"));
+	   System.out.println(String.format( "http://getyarn.io") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://getyarn.io"));
+	   System.out.println(String.format( "http://mean.io/#!/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://mean.io/#!/"));
 	   
-	   // .io
-	   System.out.println(String.format( "http://socket.io/") + "						\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://socket.io/"));
-	   System.out.println(String.format( "http://getyarn.io/yarn-popular") + "			\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://getyarn.io/yarn-popular"));
-	   System.out.println(String.format( "http://getyarn.io") + "						\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://getyarn.io"));
-	   System.out.println(String.format( "http://mean.io/#!/") + "						\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://mean.io/#!/"));
+	   //.edu
+	   System.out.println(String.format( "http://oregonstate.edu/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://oregonstate.edu/"));
+	   System.out.println(String.format( "http://www.berkeley.edu/") + "\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.berkeley.edu/"));
+	   System.out.println(String.format( "http://www2.howard.edu/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www2.howard.edu/"));
+	   System.out.println(String.format( "http://www.farmingdale.edu/") + "\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.farmingdale.edu/"));
 	   
-	   // .edu
-	   System.out.println(String.format( "http://oregonstate.edu/") + "					\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://oregonstate.edu/"));
-	   System.out.println(String.format( "http://www.berkeley.edu/") + "				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.berkeley.edu/"));
-	   System.out.println(String.format( "http://www2.howard.edu/") + "					\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www2.howard.edu/"));
-	   System.out.println(String.format( "http://www.farmingdale.edu/") + "				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.farmingdale.edu/"));
+	   //.int
+	   System.out.println(String.format( "http://www.itu.int/en/Pages/default.aspx") + "\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.itu.int/en/Pages/default.aspx"));
+	   System.out.println(String.format( "http://www.who.int/en/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.who.int/en/"));
+	   System.out.println(String.format( "http://www.oie.int/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.oie.int/"));
+	   System.out.println(String.format( "http://boards.4chan.org/int/") + "\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://boards.4chan.org/int/"));
 	   
-	   // .int
-	   System.out.println(String.format( "http://www.itu.int/en/Pages/default.aspx") + "\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.itu.int/en/Pages/default.aspx"));
-	   System.out.println(String.format( "http://www.who.int/en/") + "					\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.who.int/en/"));
-	   System.out.println(String.format( "http://www.oie.int/") + "						\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.oie.int/"));
-	   System.out.println(String.format( "http://boards.4chan.org/int/") + "			\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://boards.4chan.org/int/"));
-	   
-	   // .tv
-	   System.out.println(String.format( "http://www.maker.tv/") + "					\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.maker.tv/"));
-	   System.out.println(String.format( "http://www.twitch.tv") + "					\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.twitch.tv"));
-	   System.out.println(String.format( "http://wordpress.tv/") + "					\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://wordpress.tv/"));
-	   System.out.println(String.format( "http://i.tv/") + "							\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://i.tv/"));
+	   //.tv
+	   System.out.println(String.format( "http://www.maker.tv/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.maker.tv/"));
+	   System.out.println(String.format( "http://www.twitch.tv") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.twitch.tv"));
+	   System.out.println(String.format( "http://wordpress.tv/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://wordpress.tv/"));
+	   System.out.println(String.format( "http://i.tv/") + "\t\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://i.tv/"));
 	   
 	   // .country
-	   System.out.println(String.format( "https://cira.ca/") + "						\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://cira.ca/"));
-	   System.out.println(String.format( "http://www.tsn.ca/") + "						\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.tsn.ca/"));
-	   System.out.println(String.format( "http://www.watchfree.to/") + "				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.watchfree.to/"));
-	   System.out.println(String.format( "https://www.denic.de/en/homepage.html") + "	\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://www.denic.de/en/homepage.html"));
+	   System.out.println(String.format( "https://cira.ca/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://cira.ca/"));
+	   System.out.println(String.format( "http://www.tsn.ca/") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.tsn.ca/"));
+	   System.out.println(String.format( "http://www.watchfree.to/") + "\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("http://www.watchfree.to/"));
+	   System.out.println(String.format( "https://www.denic.de/en/homepage.html") + "\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://www.denic.de/en/homepage.html"));
 	  
 	   //invalid tests *******************************************************************************************************
 	   System.out.println("\nManual testing invalid Urls:");
-	   System.out.println(String.format("http://www.amazon") + "\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://www.amazon"));
-	   System.out.println(String.format( "http://ww.google.com") + "   				\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://ww.google.com"));
-	   System.out.println(String.format( "http://www.facebook.om") + " 				\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://www.facebook.om"));
-	   System.out.println(String.format( "http://www.nhl.c") + "      				\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://www.nhl.c"));
-	   // .org
-	   System.out.println(String.format( "htp://www.wikipedia.org") + " 				\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("htp://www.wikipedia.org"));
-	   System.out.println(String.format( "h:///www.craigslist.org/") + "				\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("h:///www.craigslist.org/"));
-	   System.out.println(String.format( "https:///wordpress.org/") + "  				\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("https:///wordpress.org/"));
-	   System.out.println(String.format( "https://wwwmozilla.org") + " 				\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://wwwmozilla.org"));
+	   System.out.println(String.format("http://www.amazon") + "\t\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://www.amazon"));
+	   System.out.println(String.format( "http://ww.google.com") + "\t\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://ww.google.com"));
+	   System.out.println(String.format( "http://www.facebook.om") + "\t\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://www.facebook.om"));
+	   System.out.println(String.format( "http://www.nhl.c") + "\t\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://www.nhl.c"));
+	   //.org
+	   System.out.println(String.format( "htp://www.wikipedia.org") + "\t\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("htp://www.wikipedia.org"));
+	   System.out.println(String.format( "h:///www.craigslist.org/") + "\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("h:///www.craigslist.org/"));
+	   System.out.println(String.format( "https:///wordpress.org/") + "\t\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("https:///wordpress.org/"));
+	   System.out.println(String.format( "https://wwwmozilla.org") + "\t\t\t\t" + "Expected: true\t\tActual: " + urlVal.isValid("https://wwwmozilla.org"));
 	   
-	   // .io
-	   System.out.println(String.format( "http://socketio/") + "						\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://socketio/"));
-	   System.out.println(String.format( "htt://getyarn.io/yarn-popular") + "			\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("htt://getyarn.io/yarn-popular"));
-	   System.out.println(String.format( "http//getyarn.io") + "						\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http//getyarn.io"));
-	   System.out.println(String.format( "http://.io/#!/") + "						\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://.io/#!/"));
+	   //.io
+	   System.out.println(String.format( "http://socketio/") + "\t\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://socketio/"));
+	   System.out.println(String.format( "htt://getyarn.io/yarn-popular") + "\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("htt://getyarn.io/yarn-popular"));
+	   System.out.println(String.format( "http//getyarn.io") + "\t\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http//getyarn.io"));
+	   System.out.println(String.format( "http://.io/#!/") + "\t\t\t\t\t" + "Expected: false\t\tActual: " + urlVal.isValid("http://.io/#!/"));	   
+	   
    }
    
 
@@ -506,9 +506,151 @@ public class UrlValidatorTest extends TestCase {
    }
    
    
-   public void testAnyOtherUnitTest()
+   public void testRandom()
    {
+	   String message = "\nBegginning testRandom()";
+	   System.out.println(message);  
+	   
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   
+	   // create variables for rnadom num generation
+	   Random random = new Random();
+	   int randInt;
+	   int stringLength;
+	   
+	   // currently set to 999 due to found bug which rejects urls with port numbers with more than 3 digits
+	   int maxPortValue = 999;
+	   String tempString;
+	   
+	   // ascii range A-Z
+	   int max = 122;
+	   int min = 97;
+	   
+	   // set min and max string length
+	   int maxString = 20;
+	   int minString = 1;
+	   
+	   // create random scheme
+	   ResultPair[] testUrlScheme = new ResultPair[10];
+	   for (int i = 0; i < 10; i++) {
+		   tempString = "";
+		   stringLength = random.nextInt((maxString - minString) + 1) + minString;
+		   for (int ii = 0; ii < 20; ii++) {
+			   randInt = random.nextInt((max - min) + 1) + min;
+			   tempString += (char)randInt;
+		   }
+		   tempString += "://";
+		   testUrlScheme[i] = new ResultPair(tempString, true);
+	   }
 
+	   // create random string of max length: maxString
+	   ResultPair[] testUrlSubdomain = new ResultPair[10]; 
+	   for (int i = 0; i < 10; i++) {
+		   tempString = "";
+		   stringLength = random.nextInt((maxString - minString) + 1) + minString;
+		   for (int ii = 0; ii < 20; ii++) {
+			   randInt = random.nextInt((max - min) + 1) + min;
+			   tempString += (char)randInt;
+		   }
+		   tempString += ".";
+		   testUrlSubdomain[i] = new ResultPair(tempString, true);
+	   }
+	   
+	   // create random string of max length: maxString
+	   ResultPair[] testUrlDomain = new ResultPair[10]; 
+	   for (int i = 0; i < 10; i++) {
+		   tempString = "";
+		   stringLength = random.nextInt((maxString - minString) + 1) + minString;
+		   for (int ii = 0; ii < 20; ii++) {
+			   randInt = random.nextInt((max - min) + 1) + min;
+			   tempString += (char)randInt;
+		   }
+		   tempString += ".com";
+		   testUrlDomain[i] = new ResultPair(tempString, true);
+	   }
+	   
+	   // create random int of max value: maxPortValue
+	   ResultPair[] testUrlPort = new ResultPair[10]; 
+	   for (int i = 0; i < 10; i++) {
+		   testUrlPort[i] = new ResultPair(":" + Integer.toString(random.nextInt(maxPortValue)), true);
+	   }
+	   
+	   // create random string of max length: maxString
+	   ResultPair[] testPath = new ResultPair[10];
+	   for (int i = 0; i < 10; i++) {
+		   tempString = "/";
+		   stringLength = random.nextInt((maxString - minString) + 1) + minString;
+		   for (int ii = 0; ii < 20; ii++) {
+			   randInt = random.nextInt((max - min) + 1) + min;
+			   tempString += (char)randInt;
+		   }
+		   testPath[i] = new ResultPair(tempString, true);
+	   }
+	   
+	   int errors = 0;
+	   int numURLsTested = 0;
+	   String expectedString;
+	   String actualString;
+	   boolean expected;
+	   
+	   // iterate through all testUrlXXX arrays
+	   for (int i = 0; i < testUrlScheme.length; i++) 
+       {
+		   for (int ii = 0; ii < testUrlSubdomain.length; ii++) 
+	       {
+			   for (int iii = 0; iii < testUrlDomain.length; iii++) 
+		       {
+				   for (int iiii = 0; iiii < testUrlPort.length; iiii++) 
+			       {
+					   for (int iiiii = 0; iiiii < testPath.length; iiiii++) 
+				       {
+						   // create current permutation of testUrlXXX arrays
+						   String newUrl = testUrlScheme[i].item + testUrlSubdomain[ii].item + testUrlDomain[iii].item + testUrlPort[iiii].item + testPath[iiiii].item;
+						   
+						   // check if any parts of current test URL are invalid
+						   expected = true;
+						   if (!testUrlScheme[i].valid || !testUrlSubdomain[ii].valid || !testUrlDomain[iii].valid || !testUrlPort[iiii].valid || !testPath[iiiii].valid) {
+							   expected = false;
+						   }
+						   
+						   // run current permutation of testUrlXXX arrays through URL validator
+						   boolean result = urlVal.isValid(newUrl);
+					       
+						   // check if actual results equal expected results
+					       if(result != expected){
+					    	   if (expected == true) {
+					    		   expectedString = "True";
+					    		   actualString = "False";
+					    	   }
+					    	   else {
+					    		   expectedString = "False";
+					    		   actualString = "True";
+					    	   }
+					    	   
+					    	   
+					    	   System.err.println("\t" + newUrl);
+					    	   System.err.println("\tExpected: " + expectedString + "  Actual: " + actualString + "\n");
+					    	   errors++;
+					       }
+					       else {
+					    	   //System.out.println("\t" + newUrl);  
+					       }
+					       numURLsTested++;
+				       }
+			       }
+		       }
+	       }
+       }
+	   
+	   if (errors == 0) {
+		   message = "End testRandom(): Number of URLs Tested: " + numURLsTested + "  Errors = " + errors + "\n"; 
+		   System.out.println(message);  
+	   }
+	   else {
+		   message = "End testRandom(): Number of URLs Tested: " + numURLsTested + "  Errors = " + errors + "\n"; 
+		   System.err.println(message);  
+		   assertEquals(message, 0, errors);
+	   }
    }
 
 }
