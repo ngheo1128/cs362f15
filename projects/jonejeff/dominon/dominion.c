@@ -1133,8 +1133,8 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
   if (trashFlag < 1)
     {
       //add card to played pile
-      state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos];
-      state->playedCardCount++;
+      state->discard[state->discardCount] = state->hand[currentPlayer][handPos];
+      state->discardCount++;
     }
 
   //set played card to -1
@@ -1242,19 +1242,26 @@ int adventurerCardPlayed(struct gameState *state)
 
     while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
-	  shuffle(currentPlayer, state);
+	    //Step 1 Shuffle the discard pile back into a deck
+	    int i;
+	    //Move discard to deck
+	    for (i = 0; i < state->discardCount[player];i++){
+	      state->deck[player][i] = state->discard[player][i];
+	      state->discard[player][i] = -1;
+	    }
+
+	    state->deckCount[player] = state->discardCount[player];
+	    state->discardCount[player] = 0;//Reset discard
+
+	    //Shufffle the deck
+	    shuffle(player, state);//Shuffle the deck up and make it so that we can draw
 	}
 	drawCard(currentPlayer, state);
-	//drawCard(currentPlayer, state);
 	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 	  drawntreasure++;
 	else{
 	  temphand[z]=cardDrawn;
-	  if (currentPlayer < 0 || currentPlayer > 3){ // Found bug here This is a check to keep tester running.
-	     return -1;
-	  }
-
 	  state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
 	  z++;
 	}
@@ -1271,11 +1278,10 @@ int smithyCardPlayed(struct gameState *state, int handPos)
     //+3 Cards
     int i;
     int currentPlayer = whoseTurn(state);
-      for (i = 0; i < 4; i++)
+      for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
-	  if(i == 2)
-	  discardCard(state->handCount[currentPlayer]-1,currentPlayer,state,0);
+
 	}
 
       //discard card from hand
@@ -1307,7 +1313,7 @@ int remodelCardPlayed(int choice1, int choice2, struct gameState *state, int han
 	{
 	  if (state->hand[currentPlayer][i] == j)
 	    {
-	      discardCard(i, currentPlayer, state, 1);
+	      discardCard(i, currentPlayer, state, 0);
 	      break;
 	    }
 	}
@@ -1340,12 +1346,12 @@ int minionCardPlayed(int choice1, int choice2, struct gameState *state, int hand
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
 
-      if (choice2)		//+2 coins
+      if (choice1)		//+2 coins
 	{
 	  state->coins = state->coins + 2;
 	}
 
-      else if (choice1)		//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4
+      else if (choice2)		//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4
 	{
 	  //discard hand
 	  while(numHandCards(state) > 0)

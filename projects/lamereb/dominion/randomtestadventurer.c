@@ -8,7 +8,7 @@
 #include "rngs.h"
 
 #define VERBOSE 0 
-#define VERBOSE_ERRORS 0
+#define VERBOSE_ERRORS 1
 
 // function to quickly print the values of the relevant gameState vars
 int printRelevantGameState(struct gameState* gs, int player) {
@@ -95,7 +95,10 @@ int randomTestAdventurer(int playerCount, int playerTested) {
 
   int errorCount = 0;
   int seed = rand();
-  int i/*, savedCount, gCount*/;
+  int i;
+#if VERBOSE_ERRORS
+  int savedCount, gCount;
+#endif 
   int savedCoinCount = 0, currentCoinCount = 0;
 
   int actionCards[10] = { adventurer, council_room, feast, gardens, mine, remodel,

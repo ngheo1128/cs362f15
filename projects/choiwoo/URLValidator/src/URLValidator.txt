@@ -1,0 +1,78 @@
+﻿URLValidator.txt
+Final Project Part B
+Woo Choi
+Allan Chan
+Joshua Brande
+
+
+Manual Testing:
+//Should be True
+System.out.println(urlVal.isValid("255.255.255.255"));         //false***
+System.out.println(urlVal.isValid("http://www.amazon.com:80")); //true          
+//Should be False
+System.out.println(urlVal.isValid("http://*.amazon.com")); //false
+System.out.println(urlVal.isValid("htp://w.amazon.com")); //true***
+Test  Partitioning:
+We partitioned the tests into 3 input domains further subdivided into groups of tests that should pass and tests that should fail for that specific input domain. 
+We kept the portions of the input domain not under test in each partition identical and known to pass so that we can focus on the specific portion under consideration. 
+Our three input domains of testing were: Domain Name, Top Level Domain, & Protocol. By partitioning in this way we can figure out if the validator is giving errors on either of these 3 domains on correct or incorrect input. 
+This will allow us to better pinpoint bugs.
+Unit Tests:
+We wrote 4 tests to cover the 4 major aspects of the URL : ipAddrTest(), portTest(), queryTest(), and testScheme(). 
+IpAddr uses random testing to probe numbers within the real world range of possibilities, 0-256. portTest(), queryTest(), and testScheme() have predefined urls that should be correct/incorrect and then test of the output is correct.
+
+
+Debugging:
+Please check URLValidatorTest.java file for specific tests.
+The first bug we found was in the InetAddressValidator.java file on line 96. The bug was that in 
+if(iIpSegment > 255){ return true; }, it should return false. More information about the bug can be found in Bug Report Validator-001.
+        The second bug we found was in URLValidator.java file on line 158 that is: 
+private static final String PORT_REGEX = "^:(\\d{1,3})$";. The bug is that {1,3} should be {1,5} where it should cover the correct range of port numbers. More information about the bug can be found in Bug Report Validator-002.
+        The third bug we found was on line 446 of URLValidatgor.Java, where If query exists, the isValidQuery() returns the inverse of the correct value. More information about the bug can be found in Bug Report Validator-003.
+We have used a few of Agan’s debugging rules when debugging URLValidator. In part A of the project, we analyzed the code in how isValid() and the other URLValidator files worked by debugging with eclipse. 
+This falls under rule #1 of understanding the system. For rule #2, we accomplished making the program fail by testing invalid inputs in our manual testing and unit tests where we tested different domains, protocols, ports, queries and schemes. 
+Other Agan’s rules that we followed were #3 (quit thinking and look), #4 (divide and conquer), #5 (change one thing at a time), #7 (check the plug), #8 get a fresh view). 
+We did not keep an audit trail (#6) since we collaborated though the C9 code sharing website where all group members were able to contribute and run the code together. 
+We also did not follow rule #9 in fixing the bug since we do not need to fix the bugs, but rather find and report it to the developers. 
+
+
+Collaboration:
+        how did you work in the team? How did you divide your work? How did you collaborate? 
+
+        We collaborated by using www.c9.com. It’s a code sharing website where anyone who has access can contribute. 
+We worked together to come up with inputs to test. Once we ran the initial manual testing, we divided up the work by writing unit tests separately while continuing to communicate via web chat. 
+Finally, we finished up by writing different sections of the final report.
+
+
+Bug Reports
+Bug Report VALIDATOR-001
+File name: InetAddressValidator.java
+Details
+Type: Bug
+Status: Pending
+Description: method isValidInet4Address(String inet4Address) fails to confirm invalid for Ip segments that are greater than 255. 
+In file InetAddressValidator line 96 returns true. This is a bug and it should be returning false. Bug is captured via ipAddrTest(). 
+
+Bug Report VALIDATOR-002
+File name: URLValidator.java
+Details
+Type: Bug
+Status: Pending
+Description: Port numbers that are greater than 999 that are valid range of port numbers(1000~ 65536) return as invalid port numbers. B
+ug is captured via test method portTest().
+In line 158 of URLValidator,
+ private static final String PORT_REGEX = “%:(\\d{1,3})$”;
+causes the bug. Correction should be:
+ private static final String PORT_REGEX = “%:(\\d{1,5})$”;
+
+
+Bug Report VALIDATOR-003
+File name: URLValidator.java
+Details
+Type: Bug
+Status: Pending
+Description: If query exists, the isValidQuery() returns the inverse of the correct value. Bug is captured in the queryTest() function.
+on line 446 of URLValidatgor.Java,
+return !QUERY_PATTERN.matcher(query).matches();
+causes the bug. Correction should be:
+return QUERY_PATTERN.matcher(query).matches();

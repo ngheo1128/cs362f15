@@ -1,4 +1,4 @@
-/* Card Test 4 - Great Hall Card
+/* Card Test 4 - Council Room Card
 
 */
 
@@ -9,7 +9,7 @@
 #include "rngs.h"
 #include "interface.h"
 
-void greatHallTest()
+void councilRoomTest()
 {
 	int seed = 1000;
 	int numPlayer = 3;
@@ -62,7 +62,7 @@ void greatHallTest()
 	if(G.deckCount[player] == 1){
 		printf ("PASS - Player 1: 1 cards in deck\n");
 	} else {
-		printf ("FAIL - Player 1: %d cards in deck\n", G.handCount[player]);
+		printf ("FAIL - Player 1: %d cards in deck\n", G.deckCount[player]);
 	}
 	
 	if (G.discardCount[player] == 1){
@@ -121,6 +121,6 @@ void greatHallTest()
 }
 
 int main(){
-	greatHallTest();
+	councilRoomTest();
 	return 0;
 }

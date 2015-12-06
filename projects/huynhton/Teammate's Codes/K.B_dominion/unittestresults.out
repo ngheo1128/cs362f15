@@ -1,0 +1,104 @@
+Result for running Dominion unit/card tests:
+unittest1.c:
+TESTING gainCard():
+TEST RESULT: PASSED- gainCard successful
+File 'dominion.c'
+Lines executed:17.62% of 579
+Branches executed:17.27% of 417
+Taken at least once:13.67% of 417
+Calls executed:8.60% of 93
+dominion.c:creating 'dominion.c.gcov'
+
+unittest2.c:
+TESTING discardCard():
+TEST RESULT: PASSED- discardCard successful
+File 'dominion.c'
+Lines executed:17.62% of 579
+Branches executed:17.27% of 417
+Taken at least once:13.91% of 417
+Calls executed:7.53% of 93
+dominion.c:creating 'dominion.c.gcov'
+
+unittest3.c:
+TESTING ScoreFor():
+TEST RESULT #1: PASSED- ScoreFor scored correctly.
+	Player 1:  Expected: 11	Actual: 11
+TEST RESULT #2: PASSED- ScoreFor scored correctly.
+	Player 2:  Expected: 38	Actual: 38
+File 'dominion.c'
+Lines executed:19.69% of 579
+Branches executed:21.58% of 417
+Taken at least once:16.79% of 417
+Calls executed:8.60% of 93
+dominion.c:creating 'dominion.c.gcov'
+
+unittest4.c:
+TESTING getCost():
+TEST RESULT #1: PASSED- cost of cards is correct.
+	First cost test:  Calculated: 19	Actual: 19
+TEST RESULT #2: PASSED- Cost remained correct from random test.
+Second cost test:  Calculated: 41	Actual: 41
+File 'dominion.c'
+Lines executed:18.31% of 579
+Branches executed:22.54% of 417
+Taken at least once:15.83% of 417
+Calls executed:7.53% of 93
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest1.c:
+TESTING Smithy():
+TEST RESULT: FAILED- Smithy did not provide three cards.
+	Expected cardNum: 8
+	Actual cardNum: 7
+File 'dominion.c'
+Lines executed:24.70% of 579
+Branches executed:27.10% of 417
+Taken at least once:16.55% of 417
+Calls executed:18.28% of 93
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest2.c:
+TESTING adventurer():
+TEST RESULT: FAILED- Adventurer did not provide two cards.
+	Expected cardNum: 7
+	Actual cardNum: 8
+File 'dominion.c'
+Lines executed:23.83% of 579
+Branches executed:27.10% of 417
+Taken at least once:16.55% of 417
+Calls executed:17.20% of 93
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest3.c:
+TESTING Village():
+TEST RESULT #1: FAILED- Village did not provide one card.
+	Expected cardNum: 6
+	Actual cardNum: 7
+TEST RESULT #2: FAILED- Village did not provide two extra turns.
+	Expected actionNum: 2
+	Actual actionNum: 3
+File 'dominion.c'
+Lines executed:22.45% of 579
+Branches executed:25.18% of 417
+Taken at least once:15.35% of 417
+Calls executed:17.20% of 93
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest4.c:
+TESTING Council_Room():
+TEST RESULT #1: PASSED- CouncilR provided four cards.
+	Expected cardNum: 9
+	Actual cardNum: 9
+TEST RESULT #2: PASSED- CouncilR provided four cards.
+	Expected buys: 2
+	Actual buys: 2
+TEST RESULT #3: PASSED- CouncilR provided one card for other player.
+	Expected cardNum: 1
+	Actual cardNum: 1
+File 'dominion.c'
+Lines executed:24.87% of 579
+Branches executed:28.06% of 417
+Taken at least once:17.51% of 417
+Calls executed:18.28% of 93
+dominion.c:creating 'dominion.c.gcov'
+

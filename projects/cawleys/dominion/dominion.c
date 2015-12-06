@@ -1296,8 +1296,19 @@ int adventurer_effect(struct gameState *state, int currentPlayer)
   int cardDrawn;
   int temphand[MAX_HAND];
   int z = 0;
+  int i = 0;
+  int handPos = 0;
 
-  while(drawntreasure<3){
+  //find hand position of adventurer
+  for(i=0; i<5; ++i)
+  {
+    if(state->hand[i] == adventurer)
+    {
+      handPos = i;
+    }
+  }
+
+  while(drawntreasure<2){
     if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
@@ -1316,6 +1327,10 @@ int adventurer_effect(struct gameState *state, int currentPlayer)
     state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
     z=z-1;
   }
+
+   //discard card from hand
+  discardCard(handPos, currentPlayer, state, 0);
+
   return 0; 
 
 }
@@ -1331,7 +1346,7 @@ int smithy_effect(struct gameState *state, int currentPlayer, int handPos)
     }
                     
   //discard card from hand
-  //discardCard(handPos, currentPlayer, state, 0);
+  discardCard(handPos, currentPlayer, state, 0);
   return 0;
 }
 
@@ -1341,7 +1356,7 @@ int village_effect(struct gameState *state, int currentPlayer, int handPos)
   drawCard(currentPlayer, state);
                     
   //+2 Actions
-  state->numActions = state->numActions + 4;
+  state->numActions = state->numActions + 2;
                     
   //discard played card from hand
   discardCard(handPos, currentPlayer, state, 0);
@@ -1354,7 +1369,7 @@ int great_hall_effect(struct gameState *state, int currentPlayer, int handPos)
   drawCard(currentPlayer, state);
                     
   //+1 Actions
-  state->numActions--;
+  state->numActions ++;
                     
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
@@ -1373,4 +1388,3 @@ int outpost_effect(struct gameState *state, int currentPlayer, int handPos)
 
 
 //end of dominion.c
-

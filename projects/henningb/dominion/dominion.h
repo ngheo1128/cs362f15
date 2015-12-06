@@ -74,12 +74,12 @@ struct gameState {
 };
 
 /* NEW INDIVIDUAL CARD EFFECT FUNCTIONS TO REPLACE CODE IN cardEffect() SWITCH STATEMENT*/
-void adventurerCardEffect(int currentPlayer, struct gameState *state);
+void adventurerCardEffect(int currentPlayer, struct gameState *state, int handPos);
 void smithyCardEffect(int handPos, int currentPlayer, struct gameState *state);
 void stewardCardEffect(int handPos, int currentPlayer, struct gameState *state,
                        int choice1, int choice2, int choice3);
 void villageCardEffect(int handPos, int currentPlayer, struct gameState *state);
-void seaHagCardEffect(int currentPlayer, struct gameState *state);
+void seaHagCardEffect(int currentPlayer, struct gameState *state, int handPos);
 
 /* All functions return -1 on failure, and DO NOT CHANGE GAME STATE;
    unless specified for other return, return 0 on success */

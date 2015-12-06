@@ -1,0 +1,37 @@
+Results:
+randomtestadventurer.c
+
+
+--------------------------------------
+randomtestadventurer.c -- Tests Begin
+--------------------------------------
+
+-- FAIL: Adventurer card not discarded.
+-- FAIL: Too FEW cards drawn.
+---- Target: 2 cards. Actual: -1 cards.
+-- FAIL: Too FEW treasure cards.
+---- Target: 2 cards. Actual: 0 cards.
+^^^^^^^ Test Number 1 out of 2 ^^^^^^^
+
+-- FAIL: Adventurer card not discarded.
+-- FAIL: Too FEW cards drawn.
+---- Target: 2 cards. Actual: -1 cards.
+-- FAIL: Too FEW treasure cards.
+---- Target: 2 cards. Actual: 0 cards.
+^^^^^^^ Test Number 2 out of 2 ^^^^^^^
+
+
+****************************************
+  ---- TEST FAILURE STATUS REPORT ----
+  ----       Adventurer Card      ----
+****************************************
+Total Test Failures:      2/2
+Discard Card Errors:      2
+Draw Card Errors:         2
+Treasure Card Errors:     2
+****************************************
+
+File 'dominion.c'
+Lines executed:20.99% of 586
+dominion.c:creating 'dominion.c.gcov'
+

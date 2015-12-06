@@ -8,10 +8,10 @@
 #include "rngs.h"
 
 // set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
+#define NOISY_TEST 0
 
 int main() {
-    int i, m, j = 0;
+    int i;
     int seed = 1000;
     int success = 1;
     int count = 0, preCount = 0;
@@ -22,28 +22,25 @@ int main() {
     struct gameState G;
 	int randVal;
 	srand(time(NULL));
-	
+	randVal = rand() % 15;
     printf ("TESTING smithyCard():\n");
     for (i = 0; i < 10; i++) {
         memset(&G, 23, sizeof(struct gameState));   // clear the game state
         r = initializeGame(numPlayer, k, seed, &G); // initialize a new game
-        randVal = rand() % 15;
         preCount = G.handCount[p];
         #if (NOISY_TEST == 1)
-            printf("Card in players hand before random smithy calls: %d\n", preCount);
-        #endif
-        for (m = 0; m < randVal; m++) {
-            smithyCard(p, &G, count, j);
-        }    
+        printf("Card in players hand before random smithy calls: %d\n", preCount);
+    	#endif
+        smithyCard(p, &G, count);
         count = G.handCount[p];
         #if (NOISY_TEST == 1)
-            printf("Card in players hand after random smithy calls: %d\n", count);
-            printf("Should be %d\n", preCount +2);
+        printf("Card in players hand after smithy calls: %d\n", count);
+        printf("Should be %d\n", preCount + 2);
         #endif
-        if (preCount + 2 * randVal != count) {
+        if (preCount + 2 != count) {
             printf("TEST FAILED\n");
             success = 0;
-        }
+        }    
     }
 	if (success) {
         printf("All tests passed!\n");

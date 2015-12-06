@@ -30,8 +30,24 @@ void scoreForTest()
 	cardsInHand[2] = duchy;
 	cardsInHand[3] = village;
 	cardsInHand[4] = gardens;
-	
 	memcpy(G.hand[player], cardsInHand, sizeof(int) * cardCount);
+	
+	//set deck to copper cards
+	cardsInDeck[0] = copper;
+	cardsInDeck[1] = copper;
+	cardsInDeck[2] = copper;
+	cardsInDeck[3] = copper;
+	cardsInDeck[4] = copper;
+	memcpy(G.deck[player], cardsInDeck, sizeof(int) * cardCount);
+	
+	//set discard to copper cards
+	cardsInDiscard[0] = copper;
+	cardsInDiscard[1] = copper;
+	cardsInDiscard[2] = copper;
+	cardsInDiscard[3] = copper;
+	cardsInDiscard[4] = copper;
+	memcpy(G.discard[player], cardsInDiscard, sizeof(int) * cardCount);
+	
 	victoryPoints = scoreFor(player, &G);
 	
 	if (victoryPoints == 10){

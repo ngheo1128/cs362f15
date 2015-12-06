@@ -86,7 +86,7 @@ int checkSeaHag(struct gameState *state, int player, int opponent){
 	printf("  --Testing oracle against call to cardEffect(sea_hag) for player number %d, opponent number %d--\n",player,opponent);
 
 	int bonus=0;
-	cardEffect(sea_hag,0,0,0,state,state->hand[player][sea_hag],&bonus);
+	cardEffect(sea_hag,0,0,0,state,0,&bonus);
 
 	/* TEST ORACLE: replicate expected sea_hag action and compare against actual game state*/
 	

@@ -399,7 +399,7 @@ int isGameOver(struct gameState *state) {
 
   //if three supply pile are at 0, the game ends
   j = 0;
-  for (i = 0; i < 25; i++)
+  for (i = 0; i <= 27; i++)
     {
       if (state->supplyCount[i] == 0)
 	{
@@ -668,7 +668,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-	return useAdventurer(currentPlayer, state);
+	return useAdventurer(handPos, currentPlayer, state);
 			
     case council_room:
       //+4 Cards
@@ -1299,7 +1299,7 @@ int useSmithy (int handPos, int currentPlayer, struct gameState *state) {
  * Postconditions:	Two more treasure cards are added to the player's hand.
  * Returns:		Returns 0 upon success.
 */
-int useAdventurer(int currentPlayer, struct gameState *state) {
+int useAdventurer(int handPos, int currentPlayer, struct gameState *state) {
  	int drawntreasure=0;
   	int cardDrawn;
  	int z = 0;// this is the counter for the temp hand
@@ -1321,9 +1321,13 @@ int useAdventurer(int currentPlayer, struct gameState *state) {
      	 }
  	while(z-1>=0){
 		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-		z=z-2;
+		z=z-1;
      	 }
-      return 0;
+
+
+      //discard card from hand
+      discardCard(handPos, currentPlayer, state, 0);
+	return 0;
 }
 
 
@@ -1336,7 +1340,7 @@ int useAdventurer(int currentPlayer, struct gameState *state) {
 */
 int useSteward(int handPos, int currentPlayer, struct gameState *state, int choice1, int choice2, int choice3) {
 
-      if (choice1 == 2)
+      if (choice1 == 1)
 	{
 	  //+2 cards
 	  drawCard(currentPlayer, state);
@@ -1375,7 +1379,7 @@ int useVillage (int handPos, int currentPlayer, struct gameState *state) {
       state->numActions = state->numActions + 2;
 			
       //discard played card from hand
-      discardCard(handPos, currentPlayer++, state, 0);
+      discardCard(handPos, currentPlayer, state, 0);
       return 0;
 }
 
@@ -1391,7 +1395,7 @@ int useGreat_hall (int handPos, int currentPlayer, struct gameState *state) {
       drawCard(currentPlayer, state);
 			
       //+1 Actions
-      state->numActions--;
+      state->numActions++;
 			
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);

@@ -51,7 +51,7 @@ int checkAdventurerEffect(struct gameState *post, int player, int opponent) {
 		}
 	}
 	
-	int r = adventurerEffect2(post,player);
+	int r = adventurerEffect2(post,player,0);
 		
 	if(r != 0){
 		printf("  FAIL, return value=%d, expected=%d\n", r, 0);
@@ -79,7 +79,7 @@ int checkAdventurerEffect(struct gameState *post, int player, int opponent) {
 	}
 
 	actualHandCount = post->handCount[player];
-	oracleHandCount = oracle.handCount[player]+2;
+	oracleHandCount = oracle.handCount[player]+1;
 	if(actualHandCount != oracleHandCount){
 		printf("  FAIL, hand count=%d, expected=%d\n", actualHandCount, oracleHandCount);
 		errCount++;

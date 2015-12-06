@@ -1,0 +1,250 @@
+Results for running Dominion Unit Tests:
+unittest1.c:
+Test updateCoins() function:
+Test 1 starting:
+TEST PASSED:
+Player's Coins: 0
+Expected Result of Coins: 0
+Test 2 starting:
+TEST PASSED:
+Player's Coins: 3
+Expected Result of Coins: 3
+Test 3 starting:
+TEST PASSED:
+Player's Coins: 6
+Expected Result of Coins: 6
+Test 4 starting:
+TEST PASSED:
+Player's Coins: 13
+Expected Result of Coins: 13
+Test 5 starting:
+TEST PASSED:
+Player's Coins: 20
+Expected Result of Coins: 20
+File 'dominion.c'
+Lines executed:17.08% of 650
+dominion.c:creating 'dominion.c.gcov'
+
+unittest2.c:
+Test gainCard() function:
+****************************************************
+Test player's hand count:
+****************************************************
+TEST PASSED:
+Hand Count before gainCard: 5
+Hand Count after gainCard: 6
+****************************************************
+Test player's deck count:
+****************************************************
+TEST PASSED:
+Deck Count before gainCard: 5
+Deck Count after gainCard: 6
+****************************************************
+Test player's discard count:****************************************************
+TEST PASSED:
+Discard Count before gainCard: 0
+Discard Count after gainCard: 1
+****************************************************
+Test supply count:
+****************************************************
+TEST PASSED
+****************************************************
+Test that the supply count reaches 0, correct action occurs:
+****************************************************
+TEST PASSED
+File 'dominion.c'
+Lines executed:19.54% of 650
+dominion.c:creating 'dominion.c.gcov'
+
+unittest3.c:
+Test shuffle() function:
+****************************************************
+Test if deck as been shuffled
+****************************************************
+OLD DECK 1
+OLD DECK 4
+OLD DECK 4
+OLD DECK 4
+OLD DECK 4
+NEW DECK 1
+NEW DECK 4
+NEW DECK 4
+NEW DECK 4
+NEW DECK 4
+TEST FAILED
+File 'dominion.c'
+Lines executed:19.54% of 650
+dominion.c:creating 'dominion.c.gcov'
+
+unittest4.c
+Test isGameOver() function:
+****************************************************
+Test case where province deck isn't empty:
+****************************************************
+TEST PASS
+TEST PASS
+TEST PASS
+TEST PASS
+TEST PASS
+TEST PASS
+TEST PASS
+TEST PASS
+****************************************************
+Test case where province deck is now empty:
+****************************************************
+TEST PASSED: GAME ENDED
+****************************************************
+Test decreasing supply piles
+****************************************************
+Test 1 (one supply pile down)
+TEST PASSED
+Test 2 (two supply pile down)
+TEST PASSED
+Test 3 (three supply pile down and the game should be over
+TEST PASSED: GAME ENDED SUCCESSFULLY
+****************************************************
+Overall test result:
+****************************************************
+ALL TESTS PASS
+File 'dominion.c'
+Lines executed:21.38% of 650
+dominion.c:creating 'dominion.c.gcov'
+
+unittest5.c
+Test buyCard() function:
+****************************************************
+Test: Test when numBuys runs out with while loop:
+****************************************************
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+****************************************************
+Test: Test when numBuys is equal to 0:
+****************************************************
+TEST PASSED
+****************************************************
+Test when chosen card to buy still exists:
+****************************************************
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+****************************************************
+Test when chosen card to buy's supply count is 0:
+****************************************************
+TEST PASSED
+****************************************************
+Test case where player has enough coins to buy a card:
+****************************************************
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+TEST PASSED
+****************************************************
+Test case where player has a lack of coins for a card:
+****************************************************
+TEST PASSED
+File 'dominion.c'
+Lines executed:23.85% of 650
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest1.c
+Test smithy card:
+****************************************************
+Test case: expect newHand to be 2 more cards than the original
+hand because 3 are drawn from the smithy card and
+and also the smithy card was played.
+****************************************************
+TEST FAILED:
+Old hand has 5 cards
+New hand has 6 cards
+File 'dominion.c'
+Lines executed:26.31% of 650
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest2.c
+Test adventurer card:
+************************************************************
+Test case 1: Test that 2 cards (1 card gained in hand because of this one played)
+are accumulated in hand and all other cards are discarded.
+************************************************************
+Test that cards are discarded...
+Discard test successful.
+Test that player has right amount of cards in hand...
+Hand count test failed:
+OLD HAND COUNT: 5
+NEW HAND COUNT: 8
+*********************************************************
+Major Test case 2: Check to see if the last added cards in the hand are indeed treasures
+*********************************************************
+Newest card in hand is 4
+Second newest card is 4
+TEST PASSED: Both cards obtained are both treasures
+File 'dominion.c'
+Lines executed:27.54% of 650
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest3.c
+Test village card:
+************************************************************
+Test case: Make sure the right amount of actions are added:
+************************************************************
+TEST PASSED.
+**************************************************************************
+Test case: Make sure an extra card is in hand after playing village card (old hand and new hand should be equal):
+**************************************************************************
+TEST FAILED:
+Old hand count: 5
+New hand count: 6
+File 'dominion.c'
+Lines executed:28.31% of 650
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest4.c
+Test steward card:
+****************************************************
+Test that +2 card option picked is successful
+****************************************************
+TEST PASSED
+****************************************************
+Test that +2 coins option picked is successful
+****************************************************
+TEST PASSED
+***********************************************************
+Test that the trash 2 cards option picked is successful
+***********************************************************
+Original hand count: 5
+Remove cards in handPos 1 and 2...
+Card at handPos 0 before Steward Card: 4
+Card at handPos 1 before Steward Card: 4
+Card at handPos 2 before Steward Card: 1
+Card at handPos 3 before Steward Card: 4
+Card at handPos 4 before Steward Card: 1
+NEW HAND COUNT: 2
+TEST 1: Remove correct number of cards PASS
+Card at handPos 0 after Steward Card: 1
+Card at handPos 1 after Steward Card: 4
+TEST 2: Removed the wrong cards... FAIL
+File 'dominion.c'
+Lines executed:30.00% of 650
+dominion.c:creating 'dominion.c.gcov'
+

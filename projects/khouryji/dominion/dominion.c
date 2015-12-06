@@ -647,10 +647,10 @@ int getCost(int cardNumber)
 int caseOutpost(int currentPlayer, int handPos, struct gameState *state)
 {
       //set outpost flag
-      state->outpostPlayed;
+      state->outpostPlayed++;
       
       //discard card
-      discardCard(handPos--, currentPlayer, state, 0);
+      discardCard(handPos, currentPlayer, state, 0);
       return 0;
 }
 
@@ -660,10 +660,10 @@ int caseVillage(int currentPlayer, int handPos, struct gameState *state)
       drawCard(currentPlayer, state);
       
       //+2 Actions
-      state->numActions = state->playedCardCount++ + 2;
+      state->numActions = state->playedCardCount + 2;
       
       //discard played card from hand
-      discardCard(handPos--, currentPlayer, state, 0);
+      discardCard(handPos, currentPlayer, state, 0);
       return 0;
 }
 /*
@@ -727,7 +727,7 @@ int caseSteward(int choice1, int choice2, int choice3, int currentPlayer, int ha
   {
     //+2 cards
     drawCard(currentPlayer, state);
-    drawCard(0, state);
+    drawCard(currentPlayer, state);
   }
       else if (choice1 == 2)
   {

@@ -2,8 +2,8 @@
 // *****************************************************************************
 // 
 // Author:    Erik Ratcliffe
-// Date:      November 22, 2015
-// Project:   Assignment 5 - Unit Tests (teammates)
+// Date:      October 25, 2015
+// Project:   Assignment 3 - Unit Tests
 // Filename:  cardtest3.c
 // Class:     CS 362 (Fall 2015)
 //
@@ -14,6 +14,7 @@
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "unittest_helpers.h"
+#include "randomtest_helpers.h"
 
 
 // Test the treasure map card
@@ -45,8 +46,13 @@ int testTreasureMapCard(struct gameState *state, int handPos, int currentPlayer)
     //
     origState = copyState(state);
 
+    // Set the current player
+    //
+    state->whoseTurn = currentPlayer;
+
     // Run the treasure map card function
     //
+    //treasureMapCard(state, handPos);
     cardEffect(treasure_map, 0, 0, 0, state, handPos, 0);
 
     // Determine original number of treasure map cards in hand
@@ -83,7 +89,7 @@ int testTreasureMapCard(struct gameState *state, int handPos, int currentPlayer)
 
     // See if golds were added correctly
     //
-    if(origNumTreasureMap >= 2)
+    if(origNumTreasureMap == 2)
     {
         // We started with two treasure map cards. See how many were
         // discarded.
@@ -101,15 +107,18 @@ int testTreasureMapCard(struct gameState *state, int handPos, int currentPlayer)
                 printf("treasureMapCard: FAIL two TMs discarded, four golds not added to top of deck\n");
             }
         }
-        // We did not discard two treasure map cards. Check golds.
-        //
-        if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+        else
         {
-            printf("treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck\n");
-        }
-        else 
-        {
-            printf("treasureMapCard: PASS did not discard two TMs, golds not added to top of deck\n");
+            // We did not discard two treasure map cards. Check golds.
+            //
+            if(newTopGolds == 4 && newTopGolds - origTopGolds == 4)
+            {
+                printf("treasureMapCard: FAIL did not discard two TMs, four golds added to top of deck\n");
+            }
+            else 
+            {
+                printf("treasureMapCard: PASS did not discard two TMs, golds not added to top of deck\n");
+            }
         }
     }
     else 
@@ -141,8 +150,10 @@ int main(int argc, char *argv[])
 {
     int numPlayers = 2;      // default number of players
     int randomSeed = 100;    // random seed for the game
+    int card       = 0;      // for card assignment loops
     int handPos;             // card in play
     int currentPlayer;       // self explanatory
+    int idx;                 // loop iterator
     struct gameState *state; // holds the new game state
     int kingdomCards[10] = {adventurer, gardens, embargo, village, minion, treasure_map, cutpurse, sea_hag, tribute, smithy};
 
@@ -157,8 +168,27 @@ int main(int argc, char *argv[])
     //
     printf(">>> TESTING: one treasure map card...\n");
     currentPlayer = 0;
+
+    // Fill the deck with random non-treasure-map cards. 27
+    // cards total, so get a number from 0 to 26
+    //
+    for(idx = 0; idx < state->deckCount[idx]; idx++)
+    {
+        while(card == treasure_map)
+        {
+            card = randomByRange(0, treasure_map);
+        }
+        state->deck[currentPlayer][idx] = card;
+    }
+
+    // Add one treasure map card
+    //
     gainCard(treasure_map, state, 2, currentPlayer);
-    handPos = state->hand[currentPlayer][0];
+
+    // Grab the position of the last TM card
+    //
+    handPos = state->handCount[currentPlayer]-1;
+
     testTreasureMapCard(state, handPos, currentPlayer);
 
     // New game
@@ -169,9 +199,27 @@ int main(int argc, char *argv[])
     // Test for two treasure map cards
     //
     printf(">>> TESTING: two treasure map cards...\n");
+
+    // Fill the deck with random non-treasure-map cards. 27
+    // cards total, so get a number from 0 to 26
+    //
+    for(idx = 0; idx < state->deckCount[idx]; idx++)
+    {
+        while(card == treasure_map)
+        {
+            card = randomByRange(0, treasure_map);
+        }
+        state->deck[currentPlayer][idx] = card;
+    }
+    // Add two treasure map cards
+    //
     gainCard(treasure_map, state, 2, currentPlayer);
     gainCard(treasure_map, state, 2, currentPlayer);
-    handPos = state->hand[currentPlayer][0];
+
+    // Grab the position of the last TM card
+    //
+    handPos = state->handCount[currentPlayer]-1;
+
     testTreasureMapCard(state, handPos, currentPlayer);
 
     return 0;
