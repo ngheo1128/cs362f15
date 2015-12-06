@@ -1,0 +1,1590 @@
+Manual testing Valid Urls:
+http://www.amazon.com						Expected: true		Actual: true
+http://www.google.com						Expected: true		Actual: true
+http://www.facebook.com						Expected: true		Actual: true
+http://www.nhl.com						Expected: true		Actual: true
+http://www.wikipedia.org					Expected: true		Actual: true
+http://www.craigslist.org/					Expected: true		Actual: true
+https://wordpress.org/						Expected: true		Actual: true
+https://www.mozilla.org						Expected: true		Actual: true
+http://www.uscg.mil						Expected: true		Actual: true
+www.navy.mil/							Expected: true		Actual: true
+www.army.mil							Expected: true		Actual: true
+www.af.mil/							Expected: true		Actual: true
+http://socket.io/						Expected: true		Actual: true
+http://getyarn.io/yarn-popular					Expected: true		Actual: true
+http://getyarn.io						Expected: true		Actual: true
+http://mean.io/#!/						Expected: true		Actual: true
+http://oregonstate.edu/						Expected: true		Actual: true
+http://www.berkeley.edu/					Expected: true		Actual: true
+http://www2.howard.edu/						Expected: true		Actual: true
+http://www.farmingdale.edu/					Expected: true		Actual: true
+http://www.itu.int/en/Pages/default.aspx			Expected: true		Actual: true
+http://www.who.int/en/						Expected: true		Actual: true
+http://www.oie.int/						Expected: true		Actual: true
+http://boards.4chan.org/int/					Expected: true		Actual: true
+http://www.maker.tv/						Expected: true		Actual: false
+http://www.twitch.tv						Expected: true		Actual: false
+http://wordpress.tv/						Expected: true		Actual: false
+http://i.tv/							Expected: true		Actual: false
+https://cira.ca/						Expected: true		Actual: true
+http://www.tsn.ca/						Expected: true		Actual: true
+http://www.watchfree.to/					Expected: true		Actual: false
+https://www.denic.de/en/homepage.html				Expected: true		Actual: true
+
+Manual testing invalid Urls:
+http://www.amazon						Expected: false		Actual: false
+http://ww.google.com						Expected: false		Actual: true
+http://www.facebook.om						Expected: false		Actual: false
+http://www.nhl.c						Expected: false		Actual: false
+htp://www.wikipedia.org						Expected: false		Actual: true
+h:///www.craigslist.org/					Expected: false		Actual: false
+https:///wordpress.org/						Expected: false		Actual: false
+https://wwwmozilla.org						Expected: true		Actual: true
+http://socketio/						Expected: false		Actual: false
+htt://getyarn.io/yarn-popular					Expected: false		Actual: true
+http//getyarn.io						Expected: false		Actual: false
+http://.io/#!/							Expected: false		Actual: false
+
+Begginning testYourSecondPartition()
+	http://
+	http://a
+	http://a.b
+	http://a.b.c
+	http://a.b.c.d
+	http://a.b.c.d.com
+	http://a.b.c.com
+	http://a.b.com
+	http://a.com
+	http://-a.com
+	http://a-.com
+	http://a-b.com
+	http://a-b-.com
+	http://a-b-c.com
+	http://a-b-c-.com
+	http://a-b-c-d.com
+	http://a_b_c_d.com
+	http://a_b_c_.com
+	http://_a_b_c.com
+	http://a?.com
+	http://a!.com
+	http://a#.com
+	http://a$.com
+	http://a%.com
+	http://a^.com
+	http://a&.com
+	http://a*.com
+	http://a(.com
+	http://a).com
+	http://192.168.1.1
+	http://192.168.1
+	http://192.168
+	http://192
+	http://0
+	http://0.
+	http://0.0
+	http://0.0.
+	http://0.0.0
+	http://0.0.0.
+	http://0.0.0.0
+	http://255.255.255.255
+	http://256.256.256.256
+	http://255.255.255.255.255
+	http://255.255.255.255.
+	http://255.com
+	http://.com
+	http://TEST.com
+	http://test.COM
+	http://TEST.COM
+	http://TEST.CoM
+	http://TEST.cOm
+	http://tEsT.cOm
+	http://test.aa
+	http://test.a
+	http://test.123
+	http://test.1
+	http://1.com
+	http://1.us
+	http://1abc.com
+	http://abc1.com
+	http://1abc.us
+	http://abc1.us
+	http://abc.us
+	http://aaa.
+	http://.aaa
+	http://aaa
+	http://abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk.com
+	http://abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk.abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk.com
+	http://abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcde1abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk2abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk3abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopq.com
+	http://abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcde1abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk2abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk3abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv.com
+End testYourSecondPartition(): Errors = 5
+
+
+Begginning testYourFirstPartition()
+	http://oregonstate.edu
+	HTTP://oregonstate.edu
+	https://oregonstate.edu
+	HTTPS://oregonstate.edu
+	aaa://oregonstate.edu
+	aaas://oregonstate.edu
+	about://oregonstate.edu
+	acap://oregonstate.edu
+	acct://oregonstate.edu
+	cap://oregonstate.edu
+	cid://oregonstate.edu
+	coap://oregonstate.edu
+	coaps://oregonstate.edu
+	chrome-extension://oregonstate.edu
+	crid://oregonstate.edu
+	data://oregonstate.edu
+	dav://oregonstate.edu
+	dict://oregonstate.edu
+	dns://oregonstate.edu
+	example://oregonstate.edu
+	file://oregonstate.edu
+	ftp://oregonstate.edu
+	geo://oregonstate.edu
+	go://oregonstate.edu
+	gopher://oregonstate.edu
+	h323://oregonstate.edu
+	iax://oregonstate.edu
+	icap://oregonstate.edu
+	im://oregonstate.edu
+	imap://oregonstate.edu
+	info://oregonstate.edu
+	ipp://oregonstate.edu
+	ipps://oregonstate.edu
+	iris://oregonstate.edu
+	iris.beep://oregonstate.edu
+	iris.lwz://oregonstate.edu
+	iris.xpc://oregonstate.edu
+	iris.xpcs://oregonstate.edu
+	jabber://oregonstate.edu
+	ldap://oregonstate.edu
+	mailto://oregonstate.edu
+	mid://oregonstate.edu
+	ms-secondary-screen-controller://oregonstate.edu
+	msrp://oregonstate.edu
+	mtqp://oregonstate.edu
+	mupdate://oregonstate.edu
+	news://oregonstate.edu
+	nfs://oregonstate.edu
+	ni://oregonstate.edu
+	nih://oregonstate.edu
+	nntp://oregonstate.edu
+	opaquelocktoken://oregonstate.edu
+	pkcs11://oregonstate.edu
+	pop://oregonstate.edu
+	pres://oregonstate.edu
+	reload://oregonstate.edu
+	rtsp://oregonstate.edu
+	rtsps://oregonstate.edu
+	rtspu://oregonstate.edu
+	service://oregonstate.edu
+	session://oregonstate.edu
+	shttp://oregonstate.edu
+	sieve://oregonstate.edu
+	sip://oregonstate.edu
+	sips://oregonstate.edu
+	sms://oregonstate.edu
+	snmp://oregonstate.edu
+	soap.beep://oregonstate.edu
+	soap.beeps://oregonstate.edu
+	stun://oregonstate.edu
+	stuns://oregonstate.edu
+	tag://oregonstate.edu
+	tel://oregonstate.edu
+	telnet://oregonstate.edu
+	tftp://oregonstate.edu
+	thismessage://oregonstate.edu
+	tip://oregonstate.edu
+	tn3270://oregonstate.edu
+	turn://oregonstate.edu
+	turns://oregonstate.edu
+	tv://oregonstate.edu
+	urn://oregonstate.edu
+	vemmi://oregonstate.edu
+	ws://oregonstate.edu
+	wss://oregonstate.edu
+	xcon://oregonstate.edu
+	xcon-userid://oregonstate.edu
+	xmlrpc.beep://oregonstate.edu
+	xmlrpc.beeps://oregonstate.edu
+	xmpp://oregonstate.edu
+	z39.50r://oregonstate.edu
+	z39.50s://oregonstate.edu
+	123://oregonstate.edu
+	a://oregonstate.edu
+	a+://oregonstate.edu
+	a+b://oregonstate.edu
+	a-://oregonstate.edu
+	a-b://oregonstate.edu
+	a.://oregonstate.edu
+	a.b://oregonstate.edu
+	http:///oregonstate.edu
+	http:/oregonstate.edu
+	http:oregonstate.edu
+	http/oregonstate.edu
+	http:\oregonstate.edu
+	http:\\oregonstate.edu
+	://oregonstate.edu
+End testYourFirstPartition(): Errors = 0
+
+
+Begginning testIsValid()
+	google.com
+	Expected: True  Actual: False
+
+	google.com/
+	Expected: True  Actual: False
+
+	google.com/test
+	Expected: True  Actual: False
+
+	google.com:0
+	Expected: True  Actual: False
+
+	google.com:0/
+	Expected: True  Actual: False
+
+	google.com:0/test
+	Expected: True  Actual: False
+
+	google.com:10
+	Expected: True  Actual: False
+
+	google.com:10/
+	Expected: True  Actual: False
+
+	google.com:10/test
+	Expected: True  Actual: False
+
+	google.com:100
+	Expected: True  Actual: False
+
+	google.com:100/
+	Expected: True  Actual: False
+
+	google.com:100/test
+	Expected: True  Actual: False
+
+	google.com:999
+	Expected: True  Actual: False
+
+	google.com:999/
+	Expected: True  Actual: False
+
+	google.com:999/test
+	Expected: True  Actual: False
+
+	google.com:1000
+	Expected: True  Actual: False
+
+	google.com:1000/
+	Expected: True  Actual: False
+
+	google.com:1000/test
+	Expected: True  Actual: False
+
+	google.com:10000
+	Expected: True  Actual: False
+
+	google.com:10000/
+	Expected: True  Actual: False
+
+	google.com:10000/test
+	Expected: True  Actual: False
+
+	google.net
+	Expected: True  Actual: False
+
+	google.net/
+	Expected: True  Actual: False
+
+	google.net/test
+	Expected: True  Actual: False
+
+	google.net:0
+	Expected: True  Actual: False
+
+	google.net:0/
+	Expected: True  Actual: False
+
+	google.net:0/test
+	Expected: True  Actual: False
+
+	google.net:10
+	Expected: True  Actual: False
+
+	google.net:10/
+	Expected: True  Actual: False
+
+	google.net:10/test
+	Expected: True  Actual: False
+
+	google.net:100
+	Expected: True  Actual: False
+
+	google.net:100/
+	Expected: True  Actual: False
+
+	google.net:100/test
+	Expected: True  Actual: False
+
+	google.net:999
+	Expected: True  Actual: False
+
+	google.net:999/
+	Expected: True  Actual: False
+
+	google.net:999/test
+	Expected: True  Actual: False
+
+	google.net:1000
+	Expected: True  Actual: False
+
+	google.net:1000/
+	Expected: True  Actual: False
+
+	google.net:1000/test
+	Expected: True  Actual: False
+
+	google.net:10000
+	Expected: True  Actual: False
+
+	google.net:10000/
+	Expected: True  Actual: False
+
+	google.net:10000/test
+	Expected: True  Actual: False
+
+	www.google.com
+	Expected: True  Actual: False
+
+	www.google.com/
+	Expected: True  Actual: False
+
+	www.google.com/test
+	Expected: True  Actual: False
+
+	www.google.com:0
+	Expected: True  Actual: False
+
+	www.google.com:0/
+	Expected: True  Actual: False
+
+	www.google.com:0/test
+	Expected: True  Actual: False
+
+	www.google.com:10
+	Expected: True  Actual: False
+
+	www.google.com:10/
+	Expected: True  Actual: False
+
+	www.google.com:10/test
+	Expected: True  Actual: False
+
+	www.google.com:100
+	Expected: True  Actual: False
+
+	www.google.com:100/
+	Expected: True  Actual: False
+
+	www.google.com:100/test
+	Expected: True  Actual: False
+
+	www.google.com:999
+	Expected: True  Actual: False
+
+	www.google.com:999/
+	Expected: True  Actual: False
+
+	www.google.com:999/test
+	Expected: True  Actual: False
+
+	www.google.com:1000
+	Expected: True  Actual: False
+
+	www.google.com:1000/
+	Expected: True  Actual: False
+
+	www.google.com:1000/test
+	Expected: True  Actual: False
+
+	www.google.com:10000
+	Expected: True  Actual: False
+
+	www.google.com:10000/
+	Expected: True  Actual: False
+
+	www.google.com:10000/test
+	Expected: True  Actual: False
+
+	www.google.net
+	Expected: True  Actual: False
+
+	www.google.net/
+	Expected: True  Actual: False
+
+	www.google.net/test
+	Expected: True  Actual: False
+
+	www.google.net:0
+	Expected: True  Actual: False
+
+	www.google.net:0/
+	Expected: True  Actual: False
+
+	www.google.net:0/test
+	Expected: True  Actual: False
+
+	www.google.net:10
+	Expected: True  Actual: False
+
+	www.google.net:10/
+	Expected: True  Actual: False
+
+	www.google.net:10/test
+	Expected: True  Actual: False
+
+	www.google.net:100
+	Expected: True  Actual: False
+
+	www.google.net:100/
+	Expected: True  Actual: False
+
+	www.google.net:100/test
+	Expected: True  Actual: False
+
+	www.google.net:999
+	Expected: True  Actual: False
+
+	www.google.net:999/
+	Expected: True  Actual: False
+
+	www.google.net:999/test
+	Expected: True  Actual: False
+
+	www.google.net:1000
+	Expected: True  Actual: False
+
+	www.google.net:1000/
+	Expected: True  Actual: False
+
+	www.google.net:1000/test
+	Expected: True  Actual: False
+
+	www.google.net:10000
+	Expected: True  Actual: False
+
+	www.google.net:10000/
+	Expected: True  Actual: False
+
+	www.google.net:10000/test
+	Expected: True  Actual: False
+
+	video.google.com
+	Expected: True  Actual: False
+
+	video.google.com/
+	Expected: True  Actual: False
+
+	video.google.com/test
+	Expected: True  Actual: False
+
+	video.google.com:0
+	Expected: True  Actual: False
+
+	video.google.com:0/
+	Expected: True  Actual: False
+
+	video.google.com:0/test
+	Expected: True  Actual: False
+
+	video.google.com:10
+	Expected: True  Actual: False
+
+	video.google.com:10/
+	Expected: True  Actual: False
+
+	video.google.com:10/test
+	Expected: True  Actual: False
+
+	video.google.com:100
+	Expected: True  Actual: False
+
+	video.google.com:100/
+	Expected: True  Actual: False
+
+	video.google.com:100/test
+	Expected: True  Actual: False
+
+	video.google.com:999
+	Expected: True  Actual: False
+
+	video.google.com:999/
+	Expected: True  Actual: False
+
+	video.google.com:999/test
+	Expected: True  Actual: False
+
+	video.google.com:1000
+	Expected: True  Actual: False
+
+	video.google.com:1000/
+	Expected: True  Actual: False
+
+	video.google.com:1000/test
+	Expected: True  Actual: False
+
+	video.google.com:10000
+	Expected: True  Actual: False
+
+	video.google.com:10000/
+	Expected: True  Actual: False
+
+	video.google.com:10000/test
+	Expected: True  Actual: False
+
+	video.google.net
+	Expected: True  Actual: False
+
+	video.google.net/
+	Expected: True  Actual: False
+
+	video.google.net/test
+	Expected: True  Actual: False
+
+	video.google.net:0
+	Expected: True  Actual: False
+
+	video.google.net:0/
+	Expected: True  Actual: False
+
+	video.google.net:0/test
+	Expected: True  Actual: False
+
+	video.google.net:10
+	Expected: True  Actual: False
+
+	video.google.net:10/
+	Expected: True  Actual: False
+
+	video.google.net:10/test
+	Expected: True  Actual: False
+
+	video.google.net:100
+	Expected: True  Actual: False
+
+	video.google.net:100/
+	Expected: True  Actual: False
+
+	video.google.net:100/test
+	Expected: True  Actual: False
+
+	video.google.net:999
+	Expected: True  Actual: False
+
+	video.google.net:999/
+	Expected: True  Actual: False
+
+	video.google.net:999/test
+	Expected: True  Actual: False
+
+	video.google.net:1000
+	Expected: True  Actual: False
+
+	video.google.net:1000/
+	Expected: True  Actual: False
+
+	video.google.net:1000/test
+	Expected: True  Actual: False
+
+	video.google.net:10000
+	Expected: True  Actual: False
+
+	video.google.net:10000/
+	Expected: True  Actual: False
+
+	video.google.net:10000/test
+	Expected: True  Actual: False
+
+	http://google.com:1000
+	Expected: True  Actual: False
+
+	http://google.com:1000/
+	Expected: True  Actual: False
+
+	http://google.com:1000/test
+	Expected: True  Actual: False
+
+	http://google.com:10000
+	Expected: True  Actual: False
+
+	http://google.com:10000/
+	Expected: True  Actual: False
+
+	http://google.com:10000/test
+	Expected: True  Actual: False
+
+	http://google.com:002
+	Expected: False  Actual: True
+
+	http://google.com:002/
+	Expected: False  Actual: True
+
+	http://google.com:002/test
+	Expected: False  Actual: True
+
+	http://google.net:1000
+	Expected: True  Actual: False
+
+	http://google.net:1000/
+	Expected: True  Actual: False
+
+	http://google.net:1000/test
+	Expected: True  Actual: False
+
+	http://google.net:10000
+	Expected: True  Actual: False
+
+	http://google.net:10000/
+	Expected: True  Actual: False
+
+	http://google.net:10000/test
+	Expected: True  Actual: False
+
+	http://google.net:002
+	Expected: False  Actual: True
+
+	http://google.net:002/
+	Expected: False  Actual: True
+
+	http://google.net:002/test
+	Expected: False  Actual: True
+
+	http://www.google.com:1000
+	Expected: True  Actual: False
+
+	http://www.google.com:1000/
+	Expected: True  Actual: False
+
+	http://www.google.com:1000/test
+	Expected: True  Actual: False
+
+	http://www.google.com:10000
+	Expected: True  Actual: False
+
+	http://www.google.com:10000/
+	Expected: True  Actual: False
+
+	http://www.google.com:10000/test
+	Expected: True  Actual: False
+
+	http://www.google.com:002
+	Expected: False  Actual: True
+
+	http://www.google.com:002/
+	Expected: False  Actual: True
+
+	http://www.google.com:002/test
+	Expected: False  Actual: True
+
+	http://www.google.net:1000
+	Expected: True  Actual: False
+
+	http://www.google.net:1000/
+	Expected: True  Actual: False
+
+	http://www.google.net:1000/test
+	Expected: True  Actual: False
+
+	http://www.google.net:10000
+	Expected: True  Actual: False
+
+	http://www.google.net:10000/
+	Expected: True  Actual: False
+
+	http://www.google.net:10000/test
+	Expected: True  Actual: False
+
+	http://www.google.net:002
+	Expected: False  Actual: True
+
+	http://www.google.net:002/
+	Expected: False  Actual: True
+
+	http://www.google.net:002/test
+	Expected: False  Actual: True
+
+	http://video.google.com:1000
+	Expected: True  Actual: False
+
+	http://video.google.com:1000/
+	Expected: True  Actual: False
+
+	http://video.google.com:1000/test
+	Expected: True  Actual: False
+
+	http://video.google.com:10000
+	Expected: True  Actual: False
+
+	http://video.google.com:10000/
+	Expected: True  Actual: False
+
+	http://video.google.com:10000/test
+	Expected: True  Actual: False
+
+	http://video.google.com:002
+	Expected: False  Actual: True
+
+	http://video.google.com:002/
+	Expected: False  Actual: True
+
+	http://video.google.com:002/test
+	Expected: False  Actual: True
+
+	http://video.google.net:1000
+	Expected: True  Actual: False
+
+	http://video.google.net:1000/
+	Expected: True  Actual: False
+
+	http://video.google.net:1000/test
+	Expected: True  Actual: False
+
+	http://video.google.net:10000
+	Expected: True  Actual: False
+
+	http://video.google.net:10000/
+	Expected: True  Actual: False
+
+	http://video.google.net:10000/test
+	Expected: True  Actual: False
+
+	http://video.google.net:002
+	Expected: False  Actual: True
+
+	http://video.google.net:002/
+	Expected: False  Actual: True
+
+	http://video.google.net:002/test
+	Expected: False  Actual: True
+
+	https://google.com:1000
+	Expected: True  Actual: False
+
+	https://google.com:1000/
+	Expected: True  Actual: False
+
+	https://google.com:1000/test
+	Expected: True  Actual: False
+
+	https://google.com:10000
+	Expected: True  Actual: False
+
+	https://google.com:10000/
+	Expected: True  Actual: False
+
+	https://google.com:10000/test
+	Expected: True  Actual: False
+
+	https://google.com:002
+	Expected: False  Actual: True
+
+	https://google.com:002/
+	Expected: False  Actual: True
+
+	https://google.com:002/test
+	Expected: False  Actual: True
+
+	https://google.net:1000
+	Expected: True  Actual: False
+
+	https://google.net:1000/
+	Expected: True  Actual: False
+
+	https://google.net:1000/test
+	Expected: True  Actual: False
+
+	https://google.net:10000
+	Expected: True  Actual: False
+
+	https://google.net:10000/
+	Expected: True  Actual: False
+
+	https://google.net:10000/test
+	Expected: True  Actual: False
+
+	https://google.net:002
+	Expected: False  Actual: True
+
+	https://google.net:002/
+	Expected: False  Actual: True
+
+	https://google.net:002/test
+	Expected: False  Actual: True
+
+	https://www.google.com:1000
+	Expected: True  Actual: False
+
+	https://www.google.com:1000/
+	Expected: True  Actual: False
+
+	https://www.google.com:1000/test
+	Expected: True  Actual: False
+
+	https://www.google.com:10000
+	Expected: True  Actual: False
+
+	https://www.google.com:10000/
+	Expected: True  Actual: False
+
+	https://www.google.com:10000/test
+	Expected: True  Actual: False
+
+	https://www.google.com:002
+	Expected: False  Actual: True
+
+	https://www.google.com:002/
+	Expected: False  Actual: True
+
+	https://www.google.com:002/test
+	Expected: False  Actual: True
+
+	https://www.google.net:1000
+	Expected: True  Actual: False
+
+	https://www.google.net:1000/
+	Expected: True  Actual: False
+
+	https://www.google.net:1000/test
+	Expected: True  Actual: False
+
+	https://www.google.net:10000
+	Expected: True  Actual: False
+
+	https://www.google.net:10000/
+	Expected: True  Actual: False
+
+	https://www.google.net:10000/test
+	Expected: True  Actual: False
+
+	https://www.google.net:002
+	Expected: False  Actual: True
+
+	https://www.google.net:002/
+	Expected: False  Actual: True
+
+	https://www.google.net:002/test
+	Expected: False  Actual: True
+
+	https://video.google.com:1000
+	Expected: True  Actual: False
+
+	https://video.google.com:1000/
+	Expected: True  Actual: False
+
+	https://video.google.com:1000/test
+	Expected: True  Actual: False
+
+	https://video.google.com:10000
+	Expected: True  Actual: False
+
+	https://video.google.com:10000/
+	Expected: True  Actual: False
+
+	https://video.google.com:10000/test
+	Expected: True  Actual: False
+
+	https://video.google.com:002
+	Expected: False  Actual: True
+
+	https://video.google.com:002/
+	Expected: False  Actual: True
+
+	https://video.google.com:002/test
+	Expected: False  Actual: True
+
+	https://video.google.net:1000
+	Expected: True  Actual: False
+
+	https://video.google.net:1000/
+	Expected: True  Actual: False
+
+	https://video.google.net:1000/test
+	Expected: True  Actual: False
+
+	https://video.google.net:10000
+	Expected: True  Actual: False
+
+	https://video.google.net:10000/
+	Expected: True  Actual: False
+
+	https://video.google.net:10000/test
+	Expected: True  Actual: False
+
+	https://video.google.net:002
+	Expected: False  Actual: True
+
+	https://video.google.net:002/
+	Expected: False  Actual: True
+
+	https://video.google.net:002/test
+	Expected: False  Actual: True
+
+	ftp://google.com:1000
+	Expected: True  Actual: False
+
+	ftp://google.com:1000/
+	Expected: True  Actual: False
+
+	ftp://google.com:1000/test
+	Expected: True  Actual: False
+
+	ftp://google.com:10000
+	Expected: True  Actual: False
+
+	ftp://google.com:10000/
+	Expected: True  Actual: False
+
+	ftp://google.com:10000/test
+	Expected: True  Actual: False
+
+	ftp://google.com:002
+	Expected: False  Actual: True
+
+	ftp://google.com:002/
+	Expected: False  Actual: True
+
+	ftp://google.com:002/test
+	Expected: False  Actual: True
+
+	ftp://google.net:1000
+	Expected: True  Actual: False
+
+	ftp://google.net:1000/
+	Expected: True  Actual: False
+
+	ftp://google.net:1000/test
+	Expected: True  Actual: False
+
+	ftp://google.net:10000
+	Expected: True  Actual: False
+
+	ftp://google.net:10000/
+	Expected: True  Actual: False
+
+	ftp://google.net:10000/test
+	Expected: True  Actual: False
+
+	ftp://google.net:002
+	Expected: False  Actual: True
+
+	ftp://google.net:002/
+	Expected: False  Actual: True
+
+	ftp://google.net:002/test
+	Expected: False  Actual: True
+
+	ftp://www.google.com:1000
+	Expected: True  Actual: False
+
+	ftp://www.google.com:1000/
+	Expected: True  Actual: False
+
+	ftp://www.google.com:1000/test
+	Expected: True  Actual: False
+
+	ftp://www.google.com:10000
+	Expected: True  Actual: False
+
+	ftp://www.google.com:10000/
+	Expected: True  Actual: False
+
+	ftp://www.google.com:10000/test
+	Expected: True  Actual: False
+
+	ftp://www.google.com:002
+	Expected: False  Actual: True
+
+	ftp://www.google.com:002/
+	Expected: False  Actual: True
+
+	ftp://www.google.com:002/test
+	Expected: False  Actual: True
+
+	ftp://www.google.net:1000
+	Expected: True  Actual: False
+
+	ftp://www.google.net:1000/
+	Expected: True  Actual: False
+
+	ftp://www.google.net:1000/test
+	Expected: True  Actual: False
+
+	ftp://www.google.net:10000
+	Expected: True  Actual: False
+
+	ftp://www.google.net:10000/
+	Expected: True  Actual: False
+
+	ftp://www.google.net:10000/test
+	Expected: True  Actual: False
+
+	ftp://www.google.net:002
+	Expected: False  Actual: True
+
+	ftp://www.google.net:002/
+	Expected: False  Actual: True
+
+	ftp://www.google.net:002/test
+	Expected: False  Actual: True
+
+	ftp://video.google.com:1000
+	Expected: True  Actual: False
+
+	ftp://video.google.com:1000/
+	Expected: True  Actual: False
+
+	ftp://video.google.com:1000/test
+	Expected: True  Actual: False
+
+	ftp://video.google.com:10000
+	Expected: True  Actual: False
+
+	ftp://video.google.com:10000/
+	Expected: True  Actual: False
+
+	ftp://video.google.com:10000/test
+	Expected: True  Actual: False
+
+	ftp://video.google.com:002
+	Expected: False  Actual: True
+
+	ftp://video.google.com:002/
+	Expected: False  Actual: True
+
+	ftp://video.google.com:002/test
+	Expected: False  Actual: True
+
+	ftp://video.google.net:1000
+	Expected: True  Actual: False
+
+	ftp://video.google.net:1000/
+	Expected: True  Actual: False
+
+	ftp://video.google.net:1000/test
+	Expected: True  Actual: False
+
+	ftp://video.google.net:10000
+	Expected: True  Actual: False
+
+	ftp://video.google.net:10000/
+	Expected: True  Actual: False
+
+	ftp://video.google.net:10000/test
+	Expected: True  Actual: False
+
+	ftp://video.google.net:002
+	Expected: False  Actual: True
+
+	ftp://video.google.net:002/
+	Expected: False  Actual: True
+
+	ftp://video.google.net:002/test
+	Expected: False  Actual: True
+
+	pop://google.com:1000
+	Expected: True  Actual: False
+
+	pop://google.com:1000/
+	Expected: True  Actual: False
+
+	pop://google.com:1000/test
+	Expected: True  Actual: False
+
+	pop://google.com:10000
+	Expected: True  Actual: False
+
+	pop://google.com:10000/
+	Expected: True  Actual: False
+
+	pop://google.com:10000/test
+	Expected: True  Actual: False
+
+	pop://google.com:002
+	Expected: False  Actual: True
+
+	pop://google.com:002/
+	Expected: False  Actual: True
+
+	pop://google.com:002/test
+	Expected: False  Actual: True
+
+	pop://google.net:1000
+	Expected: True  Actual: False
+
+	pop://google.net:1000/
+	Expected: True  Actual: False
+
+	pop://google.net:1000/test
+	Expected: True  Actual: False
+
+	pop://google.net:10000
+	Expected: True  Actual: False
+
+	pop://google.net:10000/
+	Expected: True  Actual: False
+
+	pop://google.net:10000/test
+	Expected: True  Actual: False
+
+	pop://google.net:002
+	Expected: False  Actual: True
+
+	pop://google.net:002/
+	Expected: False  Actual: True
+
+	pop://google.net:002/test
+	Expected: False  Actual: True
+
+	pop://www.google.com:1000
+	Expected: True  Actual: False
+
+	pop://www.google.com:1000/
+	Expected: True  Actual: False
+
+	pop://www.google.com:1000/test
+	Expected: True  Actual: False
+
+	pop://www.google.com:10000
+	Expected: True  Actual: False
+
+	pop://www.google.com:10000/
+	Expected: True  Actual: False
+
+	pop://www.google.com:10000/test
+	Expected: True  Actual: False
+
+	pop://www.google.com:002
+	Expected: False  Actual: True
+
+	pop://www.google.com:002/
+	Expected: False  Actual: True
+
+	pop://www.google.com:002/test
+	Expected: False  Actual: True
+
+	pop://www.google.net:1000
+	Expected: True  Actual: False
+
+	pop://www.google.net:1000/
+	Expected: True  Actual: False
+
+	pop://www.google.net:1000/test
+	Expected: True  Actual: False
+
+	pop://www.google.net:10000
+	Expected: True  Actual: False
+
+	pop://www.google.net:10000/
+	Expected: True  Actual: False
+
+	pop://www.google.net:10000/test
+	Expected: True  Actual: False
+
+	pop://www.google.net:002
+	Expected: False  Actual: True
+
+	pop://www.google.net:002/
+	Expected: False  Actual: True
+
+	pop://www.google.net:002/test
+	Expected: False  Actual: True
+
+	pop://video.google.com:1000
+	Expected: True  Actual: False
+
+	pop://video.google.com:1000/
+	Expected: True  Actual: False
+
+	pop://video.google.com:1000/test
+	Expected: True  Actual: False
+
+	pop://video.google.com:10000
+	Expected: True  Actual: False
+
+	pop://video.google.com:10000/
+	Expected: True  Actual: False
+
+	pop://video.google.com:10000/test
+	Expected: True  Actual: False
+
+	pop://video.google.com:002
+	Expected: False  Actual: True
+
+	pop://video.google.com:002/
+	Expected: False  Actual: True
+
+	pop://video.google.com:002/test
+	Expected: False  Actual: True
+
+	pop://video.google.net:1000
+	Expected: True  Actual: False
+
+	pop://video.google.net:1000/
+	Expected: True  Actual: False
+
+	pop://video.google.net:1000/test
+	Expected: True  Actual: False
+
+	pop://video.google.net:10000
+	Expected: True  Actual: False
+
+	pop://video.google.net:10000/
+	Expected: True  Actual: False
+
+	pop://video.google.net:10000/test
+	Expected: True  Actual: False
+
+	pop://video.google.net:002
+	Expected: False  Actual: True
+
+	pop://video.google.net:002/
+	Expected: False  Actual: True
+
+	pop://video.google.net:002/test
+	Expected: False  Actual: True
+
+	smtp://google.com:1000
+	Expected: True  Actual: False
+
+	smtp://google.com:1000/
+	Expected: True  Actual: False
+
+	smtp://google.com:1000/test
+	Expected: True  Actual: False
+
+	smtp://google.com:10000
+	Expected: True  Actual: False
+
+	smtp://google.com:10000/
+	Expected: True  Actual: False
+
+	smtp://google.com:10000/test
+	Expected: True  Actual: False
+
+	smtp://google.com:002
+	Expected: False  Actual: True
+
+	smtp://google.com:002/
+	Expected: False  Actual: True
+
+	smtp://google.com:002/test
+	Expected: False  Actual: True
+
+	smtp://google.net:1000
+	Expected: True  Actual: False
+
+	smtp://google.net:1000/
+	Expected: True  Actual: False
+
+	smtp://google.net:1000/test
+	Expected: True  Actual: False
+
+	smtp://google.net:10000
+	Expected: True  Actual: False
+
+	smtp://google.net:10000/
+	Expected: True  Actual: False
+
+	smtp://google.net:10000/test
+	Expected: True  Actual: False
+
+	smtp://google.net:002
+	Expected: False  Actual: True
+
+	smtp://google.net:002/
+	Expected: False  Actual: True
+
+	smtp://google.net:002/test
+	Expected: False  Actual: True
+
+	smtp://www.google.com:1000
+	Expected: True  Actual: False
+
+	smtp://www.google.com:1000/
+	Expected: True  Actual: False
+
+	smtp://www.google.com:1000/test
+	Expected: True  Actual: False
+
+	smtp://www.google.com:10000
+	Expected: True  Actual: False
+
+	smtp://www.google.com:10000/
+	Expected: True  Actual: False
+
+	smtp://www.google.com:10000/test
+	Expected: True  Actual: False
+
+	smtp://www.google.com:002
+	Expected: False  Actual: True
+
+	smtp://www.google.com:002/
+	Expected: False  Actual: True
+
+	smtp://www.google.com:002/test
+	Expected: False  Actual: True
+
+	smtp://www.google.net:1000
+	Expected: True  Actual: False
+
+	smtp://www.google.net:1000/
+	Expected: True  Actual: False
+
+	smtp://www.google.net:1000/test
+	Expected: True  Actual: False
+
+	smtp://www.google.net:10000
+	Expected: True  Actual: False
+
+	smtp://www.google.net:10000/
+	Expected: True  Actual: False
+
+	smtp://www.google.net:10000/test
+	Expected: True  Actual: False
+
+	smtp://www.google.net:002
+	Expected: False  Actual: True
+
+	smtp://www.google.net:002/
+	Expected: False  Actual: True
+
+	smtp://www.google.net:002/test
+	Expected: False  Actual: True
+
+	smtp://video.google.com:1000
+	Expected: True  Actual: False
+
+	smtp://video.google.com:1000/
+	Expected: True  Actual: False
+
+	smtp://video.google.com:1000/test
+	Expected: True  Actual: False
+
+	smtp://video.google.com:10000
+	Expected: True  Actual: False
+
+	smtp://video.google.com:10000/
+	Expected: True  Actual: False
+
+	smtp://video.google.com:10000/test
+	Expected: True  Actual: False
+
+	smtp://video.google.com:002
+	Expected: False  Actual: True
+
+	smtp://video.google.com:002/
+	Expected: False  Actual: True
+
+	smtp://video.google.com:002/test
+	Expected: False  Actual: True
+
+	smtp://video.google.net:1000
+	Expected: True  Actual: False
+
+	smtp://video.google.net:1000/
+	Expected: True  Actual: False
+
+	smtp://video.google.net:1000/test
+	Expected: True  Actual: False
+
+	smtp://video.google.net:10000
+	Expected: True  Actual: False
+
+	smtp://video.google.net:10000/
+	Expected: True  Actual: False
+
+	smtp://video.google.net:10000/test
+	Expected: True  Actual: False
+
+	smtp://video.google.net:002
+	Expected: False  Actual: True
+
+	smtp://video.google.net:002/
+	Expected: False  Actual: True
+
+	smtp://video.google.net:002/test
+	Expected: False  Actual: True
+
+	imap://google.com:1000
+	Expected: True  Actual: False
+
+	imap://google.com:1000/
+	Expected: True  Actual: False
+
+	imap://google.com:1000/test
+	Expected: True  Actual: False
+
+	imap://google.com:10000
+	Expected: True  Actual: False
+
+	imap://google.com:10000/
+	Expected: True  Actual: False
+
+	imap://google.com:10000/test
+	Expected: True  Actual: False
+
+	imap://google.com:002
+	Expected: False  Actual: True
+
+	imap://google.com:002/
+	Expected: False  Actual: True
+
+	imap://google.com:002/test
+	Expected: False  Actual: True
+
+	imap://google.net:1000
+	Expected: True  Actual: False
+
+	imap://google.net:1000/
+	Expected: True  Actual: False
+
+	imap://google.net:1000/test
+	Expected: True  Actual: False
+
+	imap://google.net:10000
+	Expected: True  Actual: False
+
+	imap://google.net:10000/
+	Expected: True  Actual: False
+
+	imap://google.net:10000/test
+	Expected: True  Actual: False
+
+	imap://google.net:002
+	Expected: False  Actual: True
+
+	imap://google.net:002/
+	Expected: False  Actual: True
+
+	imap://google.net:002/test
+	Expected: False  Actual: True
+
+	imap://www.google.com:1000
+	Expected: True  Actual: False
+
+	imap://www.google.com:1000/
+	Expected: True  Actual: False
+
+	imap://www.google.com:1000/test
+	Expected: True  Actual: False
+
+	imap://www.google.com:10000
+	Expected: True  Actual: False
+
+	imap://www.google.com:10000/
+	Expected: True  Actual: False
+
+	imap://www.google.com:10000/test
+	Expected: True  Actual: False
+
+	imap://www.google.com:002
+	Expected: False  Actual: True
+
+	imap://www.google.com:002/
+	Expected: False  Actual: True
+
+	imap://www.google.com:002/test
+	Expected: False  Actual: True
+
+	imap://www.google.net:1000
+	Expected: True  Actual: False
+
+	imap://www.google.net:1000/
+	Expected: True  Actual: False
+
+	imap://www.google.net:1000/test
+	Expected: True  Actual: False
+
+	imap://www.google.net:10000
+	Expected: True  Actual: False
+
+	imap://www.google.net:10000/
+	Expected: True  Actual: False
+
+	imap://www.google.net:10000/test
+	Expected: True  Actual: False
+
+	imap://www.google.net:002
+	Expected: False  Actual: True
+
+	imap://www.google.net:002/
+	Expected: False  Actual: True
+
+	imap://www.google.net:002/test
+	Expected: False  Actual: True
+
+	imap://video.google.com:1000
+	Expected: True  Actual: False
+
+	imap://video.google.com:1000/
+	Expected: True  Actual: False
+
+	imap://video.google.com:1000/test
+	Expected: True  Actual: False
+
+	imap://video.google.com:10000
+	Expected: True  Actual: False
+
+	imap://video.google.com:10000/
+	Expected: True  Actual: False
+
+	imap://video.google.com:10000/test
+	Expected: True  Actual: False
+
+	imap://video.google.com:002
+	Expected: False  Actual: True
+
+	imap://video.google.com:002/
+	Expected: False  Actual: True
+
+	imap://video.google.com:002/test
+	Expected: False  Actual: True
+
+	imap://video.google.net:1000
+	Expected: True  Actual: False
+
+	imap://video.google.net:1000/
+	Expected: True  Actual: False
+
+	imap://video.google.net:1000/test
+	Expected: True  Actual: False
+
+	imap://video.google.net:10000
+	Expected: True  Actual: False
+
+	imap://video.google.net:10000/
+	Expected: True  Actual: False
+
+	imap://video.google.net:10000/test
+	Expected: True  Actual: False
+
+	imap://video.google.net:002
+	Expected: False  Actual: True
+
+	imap://video.google.net:002/
+	Expected: False  Actual: True
+
+	imap://video.google.net:002/test
+	Expected: False  Actual: True
+
+End testIsValid(): Number of URLs Tested: 28800  Errors = 450
+
+// 80000 due to port values > 999 fail due to bug in code
+// results not listed due to length (80,000)
+Begginning testRandom()
+End testRandom(): Number of URLs Tested: 100000  Errors = 80000
