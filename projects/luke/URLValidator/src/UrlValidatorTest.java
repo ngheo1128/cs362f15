@@ -100,12 +100,12 @@ public class UrlValidatorTest extends TestCase {
    
    public void testPorts() {
 	   
-//	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 	   
 //		Un-comment section below to enable test:
 	   
-//	   System.out.println("Testing Valid Ports (0-65535)");
-//	   System.out.println("Should all be true:");
+	   System.out.println("Testing Valid Ports (0-65535)");
+	   System.out.println("Should all be true:");
 	   	   
 	   
 //	   for(int i = 0; i<=2000; i++)
@@ -119,6 +119,8 @@ public class UrlValidatorTest extends TestCase {
 //		   System.out.println(urlVal.isValid(str));
 //		   
 //	   }
+	   
+	   System.out.println(urlVal.isValid("http://www.amazon.com:20000"));
 	   
 	   //BUG FOUND: Ports 1000 and above fail.
    }
@@ -219,6 +221,9 @@ public class UrlValidatorTest extends TestCase {
 		   //BUG FOUND: The question mark in the path causes errors
 		   
 		   System.out.println("Testing Signs in Path:");
+		   
+		   System.out.println(urlVal.isValid("https://www.google.com/?query"));
+		   
 		   System.out.println(urlVal.isValid("http://google.com/query=23444"));
 		   System.out.println(urlVal.isValid("http://google.com/?q"));
 		   System.out.println(urlVal.isValid("http://google.com/?"));

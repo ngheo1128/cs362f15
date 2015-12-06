@@ -106,7 +106,6 @@ public class UrlValidator implements Serializable {
      */
     private static final String URL_REGEX =
             "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?";
-    
     //                                                                      12            3  4          5       6   7        8 9
     private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
 
@@ -147,7 +146,6 @@ public class UrlValidator implements Serializable {
     private static final int PARSE_AUTHORITY_EXTRA = 3;
 
     private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$";
-    
     private static final Pattern PATH_PATTERN = Pattern.compile(PATH_REGEX);
     
     private static final String QUERY_REGEX = "^(.*)$";
@@ -157,7 +155,7 @@ public class UrlValidator implements Serializable {
     private static final String LEGAL_ASCII_REGEX = "^\\p{ASCII}+$";
     private static final Pattern ASCII_PATTERN = Pattern.compile(LEGAL_ASCII_REGEX);
 
-    private static final String PORT_REGEX = "^:(\\d{1,3})$";
+    private static final String PORT_REGEX = "^:(\\d{1,5})$";
     private static final Pattern PORT_PATTERN = Pattern.compile(PORT_REGEX);
 
     /**
@@ -395,6 +393,10 @@ public class UrlValidator implements Serializable {
             if (!PORT_PATTERN.matcher(port).matches()) {
                 return false;
             }
+            int portNumber = Integer.parseInt(port.split(":")[1]);
+            if (portNumber >= 0x10000) {
+            	return false;
+            }
         }
 
         String extra = authorityMatcher.group(PARSE_AUTHORITY_EXTRA);
@@ -441,12 +443,11 @@ public class UrlValidator implements Serializable {
      * @return true if query is valid.
      */
     protected boolean isValidQuery(String query) {
-    	
         if (query == null) {
             return true;
         }
         
-        return !QUERY_PATTERN.matcher(query).matches();
+        return QUERY_PATTERN.matcher(query).matches();
     }
 
     /**
