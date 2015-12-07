@@ -84,8 +84,8 @@ public class UrlValidatorTest extends TestCase {
 		   }
 		   //System.out.println("'" + testURLsValid[i] + "' || result=" + urlVal.isValid(testURLsValid[i]));
 	   }
-	   System.out.println("=======================");
-	   System.out.println("Manual Testing Complete");
+	   System.out.println("========================");
+	   System.out.println("Manual Testing Completed");
    }
 
    // Test ports 0-65535
