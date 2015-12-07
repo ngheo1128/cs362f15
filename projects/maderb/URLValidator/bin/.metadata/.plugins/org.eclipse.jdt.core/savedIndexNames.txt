@@ -1,0 +1,4 @@
+INDEX VERSION 1.127+C:\Users\bradley\Documents\CS362\cs362f15\projects\maderb\URLValidator\.metadata\.plugins\org.eclipse.jdt.core
+3405960704.index
+2385159157.index
+4126797049.index

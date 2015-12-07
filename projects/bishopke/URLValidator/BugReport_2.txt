@@ -1,0 +1,55 @@
+================================================================================================================================================
+Bug Report 2 - CS362 Final project
+================================================================================================================================================
+
+Title: Authority is allowed to be too large  
+
+Class: Incorrect validation
+
+Date: 12/1/2015           
+Reported By: Sarah Cawley  
+Email: cawleys@oregonstate.edu
+
+
+Product: UrlValidator           Version:
+Platform:  Eclipse IDE          Version:
+Browser: N/A                    Version:
+URL: N/A       
+
+Is it reproducible: Yes 
+
+Description
+===========
+When using an IP address as the authority only numbers from 0 to 255 may be used. The URL Validator allows for numbers larger than 255 to pass
+
+
+Steps to Produce/Reproduce
+--------------------------
+Test a URL with numbers larger than 255, example http://256.256.256.256/$2$3
+
+
+Expected Results
+----------------
+Fail
+
+
+Actual Results
+--------------
+Pass
+
+
+Workarounds
+-----------
+Create a test within URL validator that checks for IP addresses that are too large
+
+
+Attachments
+-----------
+TestPart.java UnitTestOther.java (found in project directory)
+
+
+Other Information
+-----------------
+This bug was found using programming based testing. I created a matrix of true and false url parts then cycled though them looking for tests that passed when they should have failed etc. (please see runTestUrl.txt for full output). The error is in the authorityValidator portion of the UrlValidator.java
+
+TODO:: add line number after the other's code has been added to the file
