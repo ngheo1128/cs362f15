@@ -68,14 +68,107 @@ public class UrlValidatorTest extends TestCase {
                                new ResultPair("", true)};
     */
    
-   public void testYourFirstPartition()
-   {
-	   
+     public void testYourFirstPartition()  // manual input testing. finding 
+     {
+        // initialize some variables
+        int i1, i2, i3, i4 , i5, i6;
+        
+        UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+        
+        System.out.println("FIRST PARTITION TEST\n");
+        
+        
+     // loop variable
+        int i;
+        
+        // creating strings to partition 
+        
+        // create a valid, "control" string to test against
+        String firstHalfUrl = "ftp://255.255.255.255";
+        String secondHalfUrl = ":65/$23";
+        String validUrl = firstHalfUrl + secondHalfUrl;        
+        
+        String firstHalfSet[] = {"http://0.0.0.0", "h3t://1.1.1.1", "ftp://www.amazon.com","h3t://go.au"};
+        String secondHalfSet[] = {"",":6",":667/test1/?action=edit&mode=up",":0/test1/file"};
+        String firstHalfBad[] = {"http://1.2.3.4.", "http:/www.google.com", "go.a", "://aaa."};
+        String secondHalfBad[] = {"/../$23?action=view", ":-1/#", "/#/file", "/test1//file"};
+        String testURLstr; 
+        
+        System.out.printf("Base Case: %s",validUrl);
+        System.out.printf("\n  Result: %s\n\n",urlVal.isValid(validUrl));
+        
+        System.out.println("Expected Valid URLs\n----------");
+        for(i = 0; i < 4; i++)
+        {
+             testURLstr = firstHalfUrl + secondHalfSet[i];
+             System.out.printf("URL: %s\n", testURLstr);
+             System.out.printf("  Result: %s\n", urlVal.isValid(testURLstr));
+        
+             testURLstr = firstHalfSet[i] + secondHalfUrl;
+             System.out.printf("URL: %s\n", testURLstr);
+             System.out.printf("  Result: %s\n", urlVal.isValid(testURLstr));
+        }
+        
+        System.out.println("\nExpected Invalid URLs\n----------");
+        for(i = 0; i < 4; i++)
+        {
+             testURLstr = firstHalfUrl + secondHalfBad[i];
+             System.out.printf("URL: %s\n", testURLstr);
+             System.out.printf("  Result: %s\n", urlVal.isValid(testURLstr));
+        
+             testURLstr = firstHalfBad[i] + secondHalfUrl;
+             System.out.printf("URL: %s\n", testURLstr);
+             System.out.printf("  Result: %s\n", urlVal.isValid(testURLstr));
+        }   
    }
    
-   public void testYourSecondPartition()
+public void testYourSecondPartition()
    {
-	   
+        UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+        System.out.println("\n\nSECOND PARTITION TEST\n");
+        
+        // loop variable
+        int i;
+        
+        // creating strings to partition 
+        
+        // create a valid, "control" string to test against
+        String firstHalfUrl = "http://www.google.com";
+        String secondHalfUrl = ":80/test1";
+        String validUrl = firstHalfUrl + secondHalfUrl;        
+        
+        String firstHalfSet[] = {"http://255.com", "ftp://go.cc", "http://0.0.0.0","h3t://go.cc"};
+        String secondHalfSet[] = {":80/$23/t123",":65535",":958",":0/test1/file"};
+        String firstHalfBad[] = {"http://1.2.3.4.", "http:/www.google.com", "go.a", "://aaa."};
+        String secondHalfBad[] = {"/../$23?action=view", ":-1/#", "/test1/$23/file?action=edit&mode=up", ":65a?action=view"};
+        String testURLstr; 
+        
+        System.out.printf("Base Case: %s",validUrl);
+        System.out.printf("\n  Result: %s\n\n",urlVal.isValid(validUrl));
+        
+        System.out.println("Expected Valid URLs\n----------");
+        for(i = 0; i < 4; i++)
+        {
+             testURLstr = firstHalfUrl + secondHalfSet[i];
+             System.out.printf("URL: %s\n", testURLstr);
+             System.out.printf("  Result: %s\n", urlVal.isValid(testURLstr));
+        
+             testURLstr = firstHalfSet[i] + secondHalfUrl;
+             System.out.printf("URL: %s\n", testURLstr);
+             System.out.printf("  Result: %s\n", urlVal.isValid(testURLstr));
+        }
+        
+        System.out.println("\nExpected Invalid URLs\n----------");
+        for(i = 0; i < 4; i++)
+        {
+             testURLstr = firstHalfUrl + secondHalfBad[i];
+             System.out.printf("URL: %s\n", testURLstr);
+             System.out.printf("  Result: %s\n", urlVal.isValid(testURLstr));
+        
+             testURLstr = firstHalfBad[i] + secondHalfUrl;
+             System.out.printf("URL: %s\n", testURLstr);
+             System.out.printf("  Result: %s\n", urlVal.isValid(testURLstr));
+        }    
    }
    
    
