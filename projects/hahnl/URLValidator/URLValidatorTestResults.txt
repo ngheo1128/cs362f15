@@ -1,0 +1,64 @@
+Begin Manual Testing
+
+Testing Invalid Links
+No errors found...
+
+Testing Valid Links
+No errors found...
+
+Testing Invalid Authorities
+Error: 256.256.256.256 is valid when it should be invalid.
+Error: 123.123.456.123 is valid when it should be invalid.
+Error: 123.123.0.456 is valid when it should be invalid.
+Error: 1.444.1.1 is valid when it should be invalid.
+Error: 0.999.0.999 is valid when it should be invalid.
+
+Testing valid authorities...
+No errors found...
+
+Testing Complete... Total number of errors found is: 5
+****************************************************************************************
+Testing port numbers...
+
+Range of port numbers with errors: 
+Error when port is: 1000, Error when port is: 65535
+
+Testing Complete...
+****************************************************************************************
+Testing TLD for countries........
+
+The following links are valid, but the test is saying they are invalid:
+http://www.google.kr
+http://www.google.lr
+http://www.google.mx
+http://www.google.nz
+http://www.google.om
+http://www.google.pl
+http://www.google.qa
+http://www.google.ru
+http://www.google.se
+http://www.google.th
+http://www.google.uk
+http://www.google.vn
+http://www.google.wf
+http://www.google.ye
+http://www.google.zw
+
+Testing Complete...
+****************************************************************************************
+Testing combinations of URLs and IP/port number combinations
+
+Testing combinations of valid URLs:
+The number of errors in this section is: 0
+
+Testing combinations of invalid URLs:
+The number of errors in this section is: 0
+
+Testing combinations of valid IP and Port number combinations:
+The number of errors in this section is: 35
+
+Testing combinations of invalid IP and Port number combinations:
+The number of errors in this section is: 0
+
+Testing Complete... Total number of errors found is: 35
+****************************************************************************************
