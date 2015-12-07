@@ -311,3 +311,11 @@ Contact Information :
 - Jason Gourley – jpgourley@gmail.com
 - James Riccelli – jrriccelli@gmail.com
 - Michael Walker – mwalker.uw@gmail.com
+
+
+-------------------------------------------------------------------------------
+
+EXTRA CREDIT :
+
+Our group created a random tester for the isValid() method. The random tester creates URL
+segments, as described in the section above titled: “Unit Tests: testIsValid(),” each (other than the port segment) of a random length between two variables titles minString and maxString (set to 1 and 20 respectively at the time of testing) consisting of characters [az].  Each segment has a total of 10 unique strings created for the complete URL string, in total generating 100,000 unique URLs consisting of randomly generated strings. (Note: The port segment was artificially capped at 999 due to a bug in the code improperly rejecting any URL with a port with more than 3 digits.) The code for the random tester can be found at URLValidator/src/UrlValidatorTest.java and the method is called testRandom().

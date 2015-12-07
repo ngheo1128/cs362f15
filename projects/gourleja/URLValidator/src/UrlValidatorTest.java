@@ -24,6 +24,8 @@
  * Performs Validation Test for URI validations.
  */
 
+import java.util.Random;
+
 import junit.framework.TestCase;
 
 public class UrlValidatorTest extends TestCase {
@@ -504,7 +506,150 @@ public class UrlValidatorTest extends TestCase {
    
    public void testAnyOtherUnitTest()
    {
+	   String message = "\nBegginning testRandom()";
+	   System.out.println(message);  
+	   
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   
+	   // create variables for random num generation
+	   Random random = new Random();
+	   int randInt;
+	   int stringLength;
+	   
+	   // currently set to 999 due to found bug which rejects urls with port numbers with more than 3 digits
+	   int maxPortValue = 999;
+	   String tempString;
+	   
+	   // ascii range A-Z
+	   int max = 122;
+	   int min = 97;
+	   
+	   // set min and max string length
+	   int maxString = 20;
+	   int minString = 1;
+	   
+	   // create random scheme
+	   ResultPair[] testUrlScheme = new ResultPair[10];
+	   for (int i = 0; i < 10; i++) {
+		   tempString = "";
+		   stringLength = random.nextInt((maxString - minString) + 1) + minString;
+		   for (int ii = 0; ii < 20; ii++) {
+			   randInt = random.nextInt((max - min) + 1) + min;
+			   tempString += (char)randInt;
+		   }
+		   tempString += "://";
+		   testUrlScheme[i] = new ResultPair(tempString, true);
+	   }
 
+	   // create random string of max length: maxString
+	   ResultPair[] testUrlSubdomain = new ResultPair[10]; 
+	   for (int i = 0; i < 10; i++) {
+		   tempString = "";
+		   stringLength = random.nextInt((maxString - minString) + 1) + minString;
+		   for (int ii = 0; ii < 20; ii++) {
+			   randInt = random.nextInt((max - min) + 1) + min;
+			   tempString += (char)randInt;
+		   }
+		   tempString += ".";
+		   testUrlSubdomain[i] = new ResultPair(tempString, true);
+	   }
+	   
+	   // create random string of max length: maxString
+	   ResultPair[] testUrlDomain = new ResultPair[10]; 
+	   for (int i = 0; i < 10; i++) {
+		   tempString = "";
+		   stringLength = random.nextInt((maxString - minString) + 1) + minString;
+		   for (int ii = 0; ii < 20; ii++) {
+			   randInt = random.nextInt((max - min) + 1) + min;
+			   tempString += (char)randInt;
+		   }
+		   tempString += ".com";
+		   testUrlDomain[i] = new ResultPair(tempString, true);
+	   }
+	   
+	   // create random int of max value: maxPortValue
+	   ResultPair[] testUrlPort = new ResultPair[10]; 
+	   for (int i = 0; i < 10; i++) {
+		   testUrlPort[i] = new ResultPair(":" + Integer.toString(random.nextInt(maxPortValue)), true);
+	   }
+	   
+	   // create random string of max length: maxString
+	   ResultPair[] testPath = new ResultPair[10];
+	   for (int i = 0; i < 10; i++) {
+		   tempString = "/";
+		   stringLength = random.nextInt((maxString - minString) + 1) + minString;
+		   for (int ii = 0; ii < 20; ii++) {
+			   randInt = random.nextInt((max - min) + 1) + min;
+			   tempString += (char)randInt;
+		   }
+		   testPath[i] = new ResultPair(tempString, true);
+	   }
+	   
+	   int errors = 0;
+	   int numURLsTested = 0;
+	   String expectedString;
+	   String actualString;
+	   boolean expected;
+	   
+	   // iterate through all testUrlXXX arrays
+	   for (int i = 0; i < testUrlScheme.length; i++) 
+       {
+		   for (int ii = 0; ii < testUrlSubdomain.length; ii++) 
+	       {
+			   for (int iii = 0; iii < testUrlDomain.length; iii++) 
+		       {
+				   for (int iiii = 0; iiii < testUrlPort.length; iiii++) 
+			       {
+					   for (int iiiii = 0; iiiii < testPath.length; iiiii++) 
+				       {
+						   // create current permutation of testUrlXXX arrays
+						   String newUrl = testUrlScheme[i].item + testUrlSubdomain[ii].item + testUrlDomain[iii].item + testUrlPort[iiii].item + testPath[iiiii].item;
+						   
+						   // check if any parts of current test URL are invalid
+						   expected = true;
+						   if (!testUrlScheme[i].valid || !testUrlSubdomain[ii].valid || !testUrlDomain[iii].valid || !testUrlPort[iiii].valid || !testPath[iiiii].valid) {
+							   expected = false;
+						   }
+						   
+						   // run current permutation of testUrlXXX arrays through URL validator
+						   boolean result = urlVal.isValid(newUrl);
+					       
+						   // check if actual results equal expected results
+					       if(result != expected){
+					    	   if (expected == true) {
+					    		   expectedString = "True";
+					    		   actualString = "False";
+					    	   }
+					    	   else {
+					    		   expectedString = "False";
+					    		   actualString = "True";
+					    	   }
+					    	   
+					    	   
+					    	   System.err.println("\t" + newUrl);
+					    	   System.err.println("\tExpected: " + expectedString + "  Actual: " + actualString + "\n");
+					    	   errors++;
+					       }
+					       else {
+					    	   //System.out.println("\t" + newUrl);  
+					       }
+					       numURLsTested++;
+				       }
+			       }
+		       }
+	       }
+       }
+	   
+	   if (errors == 0) {
+		   message = "End testRandom(): Number of URLs Tested: " + numURLsTested + "  Errors = " + errors + "\n"; 
+		   System.out.println(message);  
+	   }
+	   else {
+		   message = "End testRandom(): Number of URLs Tested: " + numURLsTested + "  Errors = " + errors + "\n"; 
+		   System.err.println(message);  
+		   assertEquals(message, 0, errors);
+	   }
    }
-
 }
+
+
