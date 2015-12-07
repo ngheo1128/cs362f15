@@ -5,10 +5,7 @@ Sarah Cawley
 Tony Huynh
 Keenan Bishop	 
 
-***WHAT THIS REPORT NEEDS TO CONTAIN***
- Clearly mention your methodology of testing. For manual testing, provide some of your (not all) urls. For partitioning, mention your partitions with reasons. For unit tests/random tests, submit your unit tests using svn under URLValidator folder. In report files mention the name of your tests. Also mention, how did you work in the team? How did you divide your work? How did you collaborate?
-
-We decided to divide the project into 4 pieces, and each take a portion of the testing. We colaborated by using google hangouts for video conferencing, and email. We checked in with eachother, asked questions, and helped one another with issues they may be having.
+We decided to divide the project into 4 pieces, and each take a portion of the testing. We collaborated by using google hangouts for video conferencing, and email. We checked in with each other, asked questions, and helped one another with issues they may be having.
 
 Below is how we partitioned the tests:
 	1) Manual Testing. Week 1, we all ran our own manual tests, then came together and talked about results
@@ -28,10 +25,13 @@ Below is how we partitioned the tests:
 	   		System.out.println(urlVal.isValid(""));
 	
 	2) Input Partitionaing. Tony Huynh
+		My first and second input partitioning have a similar method to tackle this problem.  I created two valid URLs, one for each partition unit tests.  The valid URLs are made up of half sections.Then I created a short array of URL sections.  One array contains a variety of the valid first half, and the other array contained a variety of the valid second half.  I also created two other arrays for invalid half sections.  I then iterated through my base case section with the other half section (both valid and invalid).  This is a test that helped me confirm the issue that I had from manual testing the port number bug for the code.  Upon inspection of my test code, there are a few invalid cases for tests that should produce expected valid results.  In all of those cases, the port number, which was supposed to be valid, is likely the culprit.
 	
 	3) Random Testing. Keenan Bishop
+		To random test this, I tried several version of random URL generation.  I have a function that returns a randomly generated string.  As arguments, it takes a max length and a string that contains the desired set of characters.  I used this to generate both valid and invalid URLS.  In order to focus my testing, I also used a lists of known valid parts, such as the TLD and scheme.  The test randomly switches between IP and string based domain name, and randomly has a chance of adding a port.  It also randomly adds a path of random length and depth to the URL.  By displaying the output in small batches, and alternating between showing only valid and invalid tests, I was able to catch a couple bugs.  By finding what was and what wasn't in common with URLS, I caught both the port number bug (more than 3 digits) and the missing TLD bug.  I also experimented with just doing a large number of random strings that contain all the characters needed to make a random URL.  This mostly produced failures, but occasionally could produce some very strange valid URLs.  The paths in particular could be extremely confusing to the human eye and still be counted valid.  My final test is named testIsValid() and has two main parts: Valid URL generation and Invalid URL generation.  The Valid URL generation currently produces a lot of output, as its currently targeted towards the missing TLD bug.
 	
-	4) Programming based testing. Sarah Cawley. Created a matrix of url parts much like what were in the original UrlValidatorTest.java. Using for loops each combination was tested, then compared against the expected value. A report was generated the showed the validity of each test URL (runTestUrl.txt ) . If the expected value, and the returned value were different the test FAILED. Looking at the output from the test for patterns in failed tests reveled a few bugs. My method is UnitTestOther.
+	4) Programming based testing. Sarah Cawley. 
+		I Created a matrix of url parts much like what were in the original UrlValidatorTest.java. Using for loops each combination was tested, then compared against the expected value. A report was generated the showed the validity of each test URL (runTestUrl.txt ) . If the expected value, and the returned value were different the test FAILED. Looking at the output from the test for patterns in failed tests revealed a few bugs. My method is UnitTestOther.
 
 
 
@@ -202,5 +202,6 @@ DomainValidator.java
 Other Information
 -----------------
 In source code: the Country TLD list (in DomainValidator.java: Line 249) ends abruptly at "it" for Italy.  Assuming its fully sorted alphabetically, this means any TLD that comes after "it" is missing and will be counted as invalid.  This includes some of the most commonly used TLDs, such as "uk", "jp" "us" or "ru".
+
 
 
