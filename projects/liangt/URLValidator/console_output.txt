@@ -1,0 +1,131 @@
+General Manual Tests:
+
+URLs that should return true:
+
+true: http://www.amazon.com
+true: ftp://www.amazon.com
+true: h3t://www.amazon.com
+true: http://255.255.255.255
+true: http://amazon.au
+true: http://www.amazon.com:80
+false: http://www.amazon.com:65535
+true: http://www.amazon.com/test1
+true: http://go.cc
+false: http://www.amazon.com?action=view
+false: http://www.amazon.com?action=edit&mode=up
+
+URLs that should return false:
+
+false: www.amazon.com
+false: 3ht://www.amazon.com
+false: http:/www.amazon.com
+false: http/www.amazon.com
+false: ://www.amazon.com
+true: htp://www.amazon.com
+true: stupidscheme://www.amazon.com
+false: http://1.2.3
+false: http://www.amazon.com:-1
+false: http://www.amazon.com:65a
+false: http:www.amazon.com
+false: http/www.amazon.com
+
+IPv4 Address Tests:
+
+IPs that should return true:
+
+true: http://192.168.0.1
+true: http://0.0.0.0
+true: http://255.255.255.255
+
+IPs that should return false:
+
+false: http://192.168.0.-1
+true: http://0.0.0.256
+true: http://256.256.256.256
+false: http://0.0.a.0
+
+End of Manual Tests
+
+Query Tests:
+
+Queries that should return true:
+
+false: /?action=view
+false: ?action=view
+false: ?action=edit&mode=up
+
+Queries that should return false:
+
+false: &action=view
+false: =action
+false: $action=view
+false: *action=view
+false: ?action=view
+
+Port Tests:
+
+Ports that should return true:
+
+true: 0
+true: 69
+true: 999
+false: 1000
+false: 9000
+false: 11111
+false: 65535
+
+Ports that should return false:
+
+false: -1
+false: -10
+false: a2
+false: 35e
+false: 65536
+false: 1000000
+
+Random Port Tests:
+Proportion of failed port tests: 9849/10000
+
+Scheme Tests:
+
+Schemes that should return true:
+
+true: http://
+true: ftp://
+true: h3t://
+
+Schemes that should return false:
+
+false: 3ht://
+false: http:/
+false: http:
+false: ://
+false: 
+true: htp://
+true: stupidscheme://
+
+Authority Tests:
+
+Authorities that should return true:
+
+true: go.com
+false: bbc.co.uk
+false: www.parliament.uk
+true: 9jumpin.com.au
+true: YeahNah.au
+true: bogan.co.au
+true: news.cn
+true: mail.google.com
+false: smile.amazon.co.uk
+true: eh.ca
+
+Authorities that should return false:
+
+false: aaa
+false: aaa.
+false: .aaa
+false: go.a1a
+false: go.a
+false: go.1up
+false: dude,wheres.my.ca
+
