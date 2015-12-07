@@ -1,0 +1,96 @@
+
+Bug Report 3 - CS362 Final Project
+==================================
+
+Title:	URLValidator - Missing TLDs
+
+Class:	Incorrect invalidation
+
+
+
+Date:          12/1/2015 
+
+Reported By:   Keenan Bishop
+
+Email:      bishopke@oregonstate.edu
+
+
+
+
+Product:   UrlValidator         Version:
+
+Platform:  Eclipse IDE          Version: 4.5.1
+
+Browser:   N/A                  Version:
+
+URL:       "http://www.google.uk"
+
+
+
+Is it reproducible: Yes
+
+
+
+
+Description
+
+===========
+
+Certain Valid TLDs are marked as invalid.
+
+
+
+
+
+Steps to Produce/Reproduce
+
+--------------------------
+
+Testing the URL "http://www.google.com" returns valid, as expected.  Changing the TLD to uk: "http://www.google.uk" returns invalid.
+
+
+
+
+Expected Results
+
+----------------
+
+"http://www.google.uk" should pass, as well as any valid country TLDs.
+
+
+
+
+Actual Results
+
+--------------
+
+Invalid: about 50% of randomly generated URLs with valid country TLDs are marked as invalid.
+
+
+
+
+Workarounds
+
+-----------
+
+Avoid using country specific TLDs.
+
+
+
+
+Attachments
+
+-----------
+
+UrlValidatorTest.java
+
+DomainValidator.java
+
+
+
+
+Other Information
+
+-----------------
+
+In source code: the Country TLD list (in DomainValidator.java: Line 249) ends abruptly at "it" for Italy.  Assuming its fully sorted alphabetically, this means any TLD that comes after "it" is missing and will be counted as invalid.  This includes some of the most commonly used TLDs, such as "uk", "jp" "us" or "ru".
