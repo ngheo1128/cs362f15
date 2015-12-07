@@ -116,7 +116,7 @@ Affects Version: 1.4
 Reporter: Khiem Nguyen
 Description:
 
-If an IP address contains one or more segments of 255 or above,
+If an IP address contains one or more segments of 256 or above,
 that incorrectly yields a validation from UrlValidator.isValid().
 
 For, example, "1.1.256.1" incorrectly validates.
@@ -125,7 +125,8 @@ Our testManualTest() method in UrlValidatorTest.java, as part of general testing
 caught this error.
 
 Through code inspection, we looked at InetAddressValidator.java and found the bug
-in line 95. The code allows IP address segments of 256 or greater to be validated, which causes isValidInet4Address() to incorrectly return true if such a segment
+in line 95. The code allows IP address segments of 256 or greater to be validated,
+which causes isValidInet4Address() to incorrectly return true if such a segment
 where in the IP address.
 
 Note that the code only applies to IPv4 addresses.
@@ -149,7 +150,8 @@ Affects Version: 1.4
 Reporter: Tony Liang
 Description:
 
-If a URL's authority were a hostname/domain ending with a country code top-level domain alphabetically greater than "it" for Italy, the URL is incorrectly
+If a URL's authority were a hostname/domain ending with a country code top-level
+domain alphabetically greater than "it" for Italy, the URL is incorrectly
 invalidated in UrlValidator.isValid().
 
 For example, "http://www.bbc.co.uk" and
@@ -166,7 +168,8 @@ assertTrue("www.parliament.uk should validate",
 ...at the end of testAuthority(). This predictably failed but did not produce
 any useful information, even from the trace.
 
-So we used code inspection yet again. UrlValidator references the DomainValidator class to validate non-IP address authorities. So we looked at that, specifically the isValid() function in the .java file.
+So we used code inspection yet again. UrlValidator references the DomainValidator
+class to validate non-IP address authorities. So we looked at that, specifically the isValid() function in the .java file.
 
 Eventually, with regards to country-code based TLDs, it refers to an array
 containing all country codes called COUNTRY_CODE_TLDS. It incorrectly stops at
