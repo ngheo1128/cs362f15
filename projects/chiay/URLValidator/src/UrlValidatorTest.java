@@ -222,6 +222,79 @@ public class UrlValidatorTest extends TestCase {
    public void testAnyOtherUnitTest()
    {
 	   
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   ResultPair[] scheme_t = (ResultPair[]) testUrlPartsTrue[0];
+	   ResultPair[] authority_t = (ResultPair[]) testUrlPartsTrue[1];
+	   ResultPair[] port_t = (ResultPair[]) testUrlPartsTrue[2];
+	   ResultPair[] path_t = (ResultPair[]) testUrlPartsTrue[3];
+	   ResultPair[] query_t = (ResultPair[]) testUrlPartsTrue[4];
+	   
+	   ResultPair[] scheme_f = (ResultPair[]) testUrlPartsFalse[0];
+	   ResultPair[] authority_f = (ResultPair[]) testUrlPartsFalse[1];
+	   ResultPair[] port_f = (ResultPair[]) testUrlPartsFalse[2];
+	   ResultPair[] path_f = (ResultPair[]) testUrlPartsFalse[3];
+	   //ResultPair[] query_f = (ResultPair[]) testUrlPartsFalse[4];
+	   
+	   StringBuffer buffer = new StringBuffer();
+	   
+	   int i, j, k, l, m;
+	   
+	   boolean expectedResult;
+	   
+	   for(i = 0; i < (scheme_t.length + scheme_f.length); i++)  {
+		   for(j = 0; j < ( authority_t.length + authority_f.length); j++)  {
+			   for (k = 0; k < (port_t.length + port_f.length); k++)  {
+				   for (l = 0; l < (path_t.length + path_f.length); l++)  {
+					   for (m = 0; m < query_t.length; m++)  {
+						   expectedResult = true; // 
+						   try{  
+						   if(i >= scheme_t.length || j >= authority_t.length ||  k >= port_t.length || l >= path_t.length ||  m >= query_t.length)  {
+							   expectedResult = false; //If we are using an invaild piece the URL will be invaild
+						   }
+						   
+						   if (i < scheme_t.length) {
+							   buffer.append(scheme_t[i].item); // add vaild piece
+						   } else  {
+							   buffer.append(scheme_f[i-scheme_t.length].item); // add invaild piece
+						   }
+						   
+						   if (j < authority_t.length)  {
+							   buffer.append(authority_t[j].item);
+						   } else  {
+							   buffer.append(authority_f[j-authority_t.length].item);
+						   }
+						   
+						   if(k < port_t.length)  {
+							   buffer.append(port_t[k].item);
+						   } else  {
+							   buffer.append(port_f[k-port_t.length].item);
+						   }
+						   
+						   if(l < path_t.length)  {
+							   buffer.append(path_t[l].item);
+						   } else  {
+							   buffer.append(path_f[l-path_t.length].item);
+						   }
+						   
+						   if(m < query_t.length)  {
+							   buffer.append(query_t[m].item);
+						   } //else  {
+							 //  buffer.append(query_f[m].item);
+						   //}
+							  
+						   System.out.println("URL: " + buffer);
+						   System.out.println("Test Result: " + urlVal.isValid(buffer.toString()) + "\t\tExpected: " + expectedResult + "\n");
+							} catch(Throwable e){System.out.println(e); }
+						   
+						   buffer.delete(0, buffer.length());
+						   
+					   }
+				   }
+			   }
+		   }
+	   }
+	   
+	   
    }
    /**
     * Create set of tests by taking the testUrlXXX arrays and

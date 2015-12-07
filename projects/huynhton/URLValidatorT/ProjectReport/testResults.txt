@@ -1,0 +1,86 @@
+FIRST PARTITION TEST
+
+Base Case: ftp://255.255.255.255:65/$23
+  Result: true
+
+Expected Valid URLs
+----------
+URL: ftp://255.255.255.255
+  Result: true
+URL: http://0.0.0.0:65/$23
+  Result: true
+URL: ftp://255.255.255.255:6
+  Result: true
+URL: h3t://1.1.1.1:65/$23
+  Result: true
+URL: ftp://255.255.255.255:667/test1/?action=edit&mode=up
+  Result: false
+URL: ftp://www.amazon.com:65/$23
+  Result: true
+URL: ftp://255.255.255.255:0/test1/file
+  Result: true
+URL: h3t://go.au:65/$23
+  Result: true
+
+Expected Invalid URLs
+----------
+URL: ftp://255.255.255.255/../$23?action=view
+  Result: false
+URL: http://1.2.3.4.:65/$23
+  Result: false
+URL: ftp://255.255.255.255:-1/#
+  Result: false
+URL: http:/www.google.com:65/$23
+  Result: false
+URL: ftp://255.255.255.255/#/file
+  Result: true
+URL: go.a:65/$23
+  Result: false
+URL: ftp://255.255.255.255/test1//file
+  Result: false
+URL: ://aaa.:65/$23
+  Result: false
+
+
+SECOND PARTITION TEST
+
+Base Case: http://www.google.com:80/test1
+  Result: true
+
+Expected Valid URLs
+----------
+URL: http://www.google.com:80/$23/t123
+  Result: true
+URL: http://255.com:80/test1
+  Result: true
+URL: http://www.google.com:65535
+  Result: false
+URL: ftp://go.cc:80/test1
+  Result: true
+URL: http://www.google.com:958
+  Result: true
+URL: http://0.0.0.0:80/test1
+  Result: true
+URL: http://www.google.com:0/test1/file
+  Result: true
+URL: h3t://go.cc:80/test1
+  Result: true
+
+Expected Invalid URLs
+----------
+URL: http://www.google.com/../$23?action=view
+  Result: false
+URL: http://1.2.3.4.:80/test1
+  Result: false
+URL: http://www.google.com:-1/#
+  Result: false
+URL: http:/www.google.com:80/test1
+  Result: false
+URL: http://www.google.com/test1/$23/file?action=edit&mode=up
+  Result: false
+URL: go.a:80/test1
+  Result: false
+URL: http://www.google.com:65a?action=view
+  Result: false
+URL: ://aaa.:80/test1
+  Result: false
