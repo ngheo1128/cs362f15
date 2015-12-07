@@ -1,0 +1,92 @@
+URLValidator.txt
+Final Project Part B
+YiXuan Chia
+Jeffrey Jones
+
+****************************
+     Methodology of Testing
+****************************
+
+Manual Testing
+-------------------
+In the manual testing, we provided 30 examples of URL with combinations of scheme, authory, port, path, and query.
+The following were a few examples tested, and we discovered some bugs during the test.
+1. http://www.manualtest.com (return true)
+2. ftp://www.manualtest.a (return false)
+3. http:www.manualtest.com (return false)
+4. http://.aa:60abc/test1/file1 (return false)
+5. http://www.manualtest.com:80/test1/?action=view (return false, but valid URL)
+6. http://www.255.255.256.255.com (return true, but invalid URL)
+
+Partition Testing
+----------------------------
+First Partition Test:-
+We declared a few arrays which hold the variables of scheme, authority, port, path, and query. The first partitioning test 1 is to test 
+all the valid parts of the URL with different combinations in a for-loop of 200. Each parts were randomized regarding the arrays to
+form a string to test in the isValid() method. We were expecting the method will return true. Similarly, the first partitioning test 2
+is to test all invalid parts of the URL in a for-loop of 100. With the same way, we were expecting the method will return false for all 
+URLs.
+
+Second Partition Test:-
+For this part of testing, we were testing the URLs that combined with port first, and then path later. We were making sure that the 
+URL scheme and authority were correct before appending other parts. Then, by appending randomized ports less than 500 behind URL 
+authority, the strings were tested with the isValid() method. Next, the URLs were tested again with paths appending but without ports. 
+Finally, we combined ports and paths to test again. We were expecting all test will return true.
+
+Unit Test
+-----------
+File       : UrlValidatorTest.java
+Method: testAnyOtherUnitTest()
+Desc     : The unit test is using the existing arrays used in the first partition test to set up the URLs, but the URLs were set up with valid and
+invalid parts. There are 5 for-loops to loop over 5 arrays to set up a standard URL. The unit test first tested for valid URLs, then invalid 
+URLs. We used the Try-Catch method to display the failed test results. 
+
+Team Collaboration
+------------------------
+We collaborated by using emails and the class repository to get codes and files. One of us just started to test the code manually
+and test partitioning to find bugs, and then another teammate revised the tests. After revision, a unit test was coded followed with
+debugging. Finally, we wrote this report and finalized it together.
+
+********************
+        Bug Report
+********************
+
+Bug 1: VALIDATOR-001
+-----------------------------
+File              : UrlValidator.java
+Line             : 446: return !QUERY_PATTERN.matcher(query).matches(); :returning false debug does not step in father
+Type            : Bug
+Prority        : Major
+Status         : Open
+Resolution  : Unresolved
+Description: - isValidQuery() method failed to identify that "?action=view" is valid for URLs
+                      - Used "http://www.manualtest.com?action=view" as a valid URL to test
+	    - Expecting to return true, but method returned false
+
+Bug 2: VALIDATOR-002
+-----------------------------
+File              :UrlValidator.java
+Line             : 393: if (!PORT_PATTERN.matcher(port).matches()) { return false} :returning false debug does not step in father
+Type            : Bug
+Prority        : Major
+Status         : Open
+Resolution  : Unresolved
+Description: - isValidAuthority() method failed to match port with authority
+	    - Used "http://www.manualtest.com:9999/a123" as a valid URL to test
+	    - Expecting to return true, but method returned false
+	    - Specific range of ports (0 - ~500) will return true; greater ports return false
+
+Bug 3: VALIDATOR-003
+-----------------------------
+File              : InetAddressValidator.java
+Line	  : 75: String[] groups = ipv4Validator.match(inet4Address); :The match function is returning a null so no group is there 
+	    and it returns false
+Type            : Bug
+Prority        : Major
+Status         : Open
+Resolution  : Unresolved
+Description: - The authority part is valid, but country code is not included in the list of COUNTRY_CODE_TLDS (DomainValidator.java)
+	    - Used "http://www.manualtest.jp" as a valid URL to test
+	    - Checked COUNTRY_CODE_TLDS list, but "jp" (Japan) not found in list.
+	    - Expecting to return true, but returned false
+	    - Add country code to COUNTRY_CODE_TLDS list will fix bug.
