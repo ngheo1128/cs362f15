@@ -1,0 +1,206 @@
+//Report of Final Project.
+
+Team:
+Sarah Cawley
+Tony Huynh
+Keenan Bishop	 
+
+***WHAT THIS REPORT NEEDS TO CONTAIN***
+ Clearly mention your methodology of testing. For manual testing, provide some of your (not all) urls. For partitioning, mention your partitions with reasons. For unit tests/random tests, submit your unit tests using svn under URLValidator folder. In report files mention the name of your tests. Also mention, how did you work in the team? How did you divide your work? How did you collaborate?
+
+We decided to divide the project into 4 pieces, and each take a portion of the testing. We colaborated by using google hangouts for video conferencing, and email. We checked in with eachother, asked questions, and helped one another with issues they may be having.
+
+Below is how we partitioned the tests:
+	1) Manual Testing. Week 1, we all ran our own manual tests, then came together and talked about results
+		A few examples:
+			System.out.println("http://www.google.uk");
+	   		System.out.println(urlVal.isValid("http://www.google.uk"));
+	   		
+	   		System.out.println("http://www.google.it");
+	   		System.out.println(urlVal.isValid("http://www.google.it"));
+	   		System.out.println(urlVal.isValid("ftp://www.amazon.com"));
+	   		System.out.println(urlVal.isValid("h3t://www.amazon.com"));
+	   		System.out.println(urlVal.isValid("3ht://www.amazon.com"));
+	   		System.out.println(urlVal.isValid("http:/www.amazon.com"));
+	   		System.out.println(urlVal.isValid("http:www.amazon.com"));
+	   		System.out.println(urlVal.isValid("http:/www.amazon.com"));
+			System.out.println(urlVal.isValid("://www.amazon.com"));
+	   		System.out.println(urlVal.isValid(""));
+	
+	2) Input Partitionaing. Tony Huynh
+	
+	3) Random Testing. Keenan Bishop
+	
+	4) Programming based testing. Sarah Cawley. Created a matrix of url parts much like what were in the original UrlValidatorTest.java. Using for loops each combination was tested, then compared against the expected value. A report was generated the showed the validity of each test URL (runTestUrl.txt ) . If the expected value, and the returned value were different the test FAILED. Looking at the output from the test for patterns in failed tests reveled a few bugs. My method is UnitTestOther.
+
+
+
+
+================================================================================================================================================
+Bug Report  1- CS362 Final Project
+================================================================================================================================================
+
+Title:    URL_Validator - faulty port no. check
+
+Class:	Incorrect validation
+
+Date:          12/1/2015 
+Reported By:   Tony Huynh
+Email:      huynhton@oregonstate.edu
+
+
+Product:   UrlValidator         Version:
+Platform:  Eclipse IDE          Version:
+Browser:   N/A                  Version:
+URL:       N/A 
+
+Is it reproducible: Yes
+
+Description
+===========
+When testing the URL Validator with a variety of valid inputs, it was discovered that the maximum port integer of 65535 returned an invalid URL.  
+
+
+Steps to Produce/Reproduce
+--------------------------
+Inputting any positive integer that is at least 4 digits long will cause URL Port No. Validator to fail.  For example, the following digits, which should be valid, will not pass the validation: 1000, 1234, 5000, 0101, 0090
+
+
+Expected Results
+----------------
+PASS - Any positive integer that is 65535 or below should pass the validation
+
+
+Actual Results
+--------------
+FAIL - Inputting a port no. with more than 3 digits will fail the URL validation.
+
+
+Workarounds
+-----------
+Port numbers with a maximum of 3 digits will have to be used until the bug is fixed.
+
+
+Attachments
+-----------
+UrlValidatorTest.java
+
+
+Other Information
+-----------------
+In trying to localize the cause of the bug, I found that the UrlValidatorTest first goes off to UrlValidator.java when testing to see if a URL is valid. In the UrlValidator, it then jumps to DomainValidator.java, and operates mostly on lines 135-143.  RegexValidator.java then gets opened during some of DomainValidator's run. RegexValidator has lines 149-163 called upon.  As another part of UrlValidator, it calls upon InetAddressValidator, where lines 75 and 80-94 are used.  I suspect that in one of the four files I just discussed, that is where the error occurred, but I will keep an open mind on different possibilities for the bug. 
+From debugging, I naturally used some of Agan's principle. Primarily, I followed rule 2, which was to make the code fail.  A few other things that helped me make the code fail was the idea of divide and conquer, change one thing at a time, and keeping an audit trail.  I was tasked with making the code fail, so I when I found a URL that should have passed but didn't, I tried to localize in the string where the error occurred.  I had to change one thing at a time to determine the problem, and once I did, I kept note of where I found the bug, how I found it, and kept track of how to reproduce the bug.
+To reiterate, I believe I have localized the bug to be in either one of these files:
+UrlValidator.java
+DomainValidator.java	135-143
+RegexValidator.java	149-163
+InetAddressValidator	75, 80-94
+
+
+================================================================================================================================================
+Bug Report 2 - CS362 Final project
+================================================================================================================================================
+
+Title: Authority is allowed to be too large  
+
+Class: Incorrect validation
+
+Date: 12/1/2015           
+Reported By: Sarah Cawley  
+Email: cawleys@oregonstate.edu
+
+
+Product: UrlValidator           Version:
+Platform:  Eclipse IDE          Version:
+Browser: N/A                    Version:
+URL: N/A       
+
+Is it reproducible: Yes 
+
+Description
+===========
+When using an IP address as the authority only numbers from 0 to 255 may be used. The URL Validator allows for numbers larger than 255 to pass
+
+
+Steps to Produce/Reproduce
+--------------------------
+Test a URL with numbers larger than 255, example http://256.256.256.256/$2$3
+
+
+Expected Results
+----------------
+Fail
+
+
+Actual Results
+--------------
+Pass
+
+
+Workarounds
+-----------
+Create a test within URL validator that checks for IP addresses that are too large
+
+
+Attachments
+-----------
+TestPart.java UnitTestOther.java (found in project directory)
+
+
+Other Information
+-----------------
+This bug was found using programming based testing. I created a matrix of true and false url parts then cycled though them looking for tests that passed when they should have failed etc. (please see runTestUrl.txt for full output). The error is in the authorityValidator portion of the UrlValidator.java
+
+
+
+================================================================================================================================================
+Bug Report 3 - CS362 Final Project
+================================================================================================================================================
+
+Title:	URLValidator - Missing TLDs
+
+Class:	Incorrect invalidation
+
+Date:          12/1/2015 
+Reported By:   Keenan Bishop
+Email:      bishopke@oregonstate.edu
+
+
+Product:   UrlValidator         Version:
+Platform:  Eclipse IDE          Version: 4.5.1
+Browser:   N/A                  Version:
+URL:       "http://www.google.uk"
+
+Is it reproducible: Yes
+
+Description
+===========
+Certain Valid TLDs are marked as invalid.
+
+
+Steps to Produce/Reproduce
+--------------------------
+Testing the URL "http://www.google.com" returns valid, as expected.  Changing the TLD to uk: "http://www.google.uk" returns invalid.
+
+Expected Results
+----------------
+"http://www.google.uk" should pass, as well as any valid country TLDs.
+
+Actual Results
+--------------
+Invalid: about 50% of randomly generated URLs with valid country TLDs are marked as invalid.
+
+Workarounds
+-----------
+Avoid using country specific TLDs.
+
+Attachments
+-----------
+UrlValidatorTest.java
+DomainValidator.java
+
+Other Information
+-----------------
+In source code: the Country TLD list (in DomainValidator.java: Line 249) ends abruptly at "it" for Italy.  Assuming its fully sorted alphabetically, this means any TLD that comes after "it" is missing and will be counted as invalid.  This includes some of the most commonly used TLDs, such as "uk", "jp" "us" or "ru".
+
+
