@@ -94,9 +94,6 @@ public class UrlValidatorTest extends TestCase {
 	   String url;
 	   String schemes[] = {"http", "https"};
 	   UrlValidator urlVal = new UrlValidator(schemes);
-	   
-	   for(int i=0; i<65536; i++)
-	   {
 		   url = "http://www.google.com:"+Integer.toString(i);
 		   if(!urlVal.isValid(url))
 		   {
