@@ -390,19 +390,35 @@ Code Causing Bug:
 isValidAuthority line 337.
 
 
-DEBUGGING DETAILS:
-In order to localize the fault we began with the organization of our scheme. Our testing scheme was intended to divide and conquer, further localizing the area the fault would could be located in. At the narrowest point of localization, we could determine which portion of the URL was passing a validity check incorrectly.
 
-Based on this information, we began our bug search in the indicated portion of code that handled the validity check for the partition. From there, we set up break points and watches with the Eclipse debugger to further isolate the line number.
+DEBUGGING DETAILS:
+In order to localize the fault we began with the organization of our scheme. Our testing scheme was intended to divide and conquer, 
+further localizing the area the fault would could be located in. At the narrowest point of localization, we could determine which 
+portion of the URL was passing a validity check incorrectly.
+
+Based on this information, we began our bug search in the indicated portion of code that handled the validity check for the partition.
+From there, we set up break points and watches with the Eclipse debugger to further isolate the line number.
 Individual bug detail information is as follows:
 
-Validator flags ports with 4 or 5 as invalid: After determining that there was a bug in the length of ports being recognized, we decided to look at the isValidAuthority() function. In this function, we examined the port matcher, and looked at the variables involved at this point in the function. We traced the issue back through PORT_PATTERN, utilizing watches and breakpoints, which resulted from PORT_REGEX. We saw that PORT_REGEX only allowed ports of length 1-3, which resulted in the bug we observed.
+Validator flags ports with 4 or 5 as invalid: After determining that there was a bug in the length of ports being recognized, we 
+decided to look at the isValidAuthority() function. In this function, we examined the port matcher, and looked at the variables 
+involved at this point in the function. We traced the issue back through PORT_PATTERN, utilizing watches and breakpoints, which 
+resulted from PORT_REGEX. We saw that PORT_REGEX only allowed ports of length 1-3, which resulted in the bug we observed.
 
-Whitespace in passing URLs in UrlValidator: Initial organization and secondary testing of the first partition indicated that the isValidSchceme() function was likely to contain the error. From there code was traced with the debugger, noting an incorrect validity on line 336.
+Whitespace in passing URLs in UrlValidator: Initial organization and secondary testing of the first partition indicated that the 
+isValidSchceme() function was likely to contain the error. From there code was traced with the debugger, noting an incorrect validity 
+on line 336.
 
-Acceptable queries fail validation in UrlValidator: Initial test organization and secondary testing of the query partition indicated that the isValidQuery() function was likely to contain the error. From there code was traced and variables were examined. It was noted that the question mark was missing from declaration on line 314. Break points were then sent and the we tested the hypothesis while uses watches.
+Acceptable queries fail validation in UrlValidator: Initial test organization and secondary testing of the query partition indicated 
+that the isValidQuery() function was likely to contain the error. From there code was traced and variables were examined. It was noted
+that the question mark was missing from declaration on line 314. Break points were then sent and the we tested the hypothesis while 
+uses watches.
 
-Whitespace in passing URLs in UrlValidator: Initial test organization and secondary testing of the authority partition indicated the isValidAuthority() function was likely to contain the error. Break points were sent and we stepped through, line by line, with the debugger. It was noted that at line 377, all trailing whitespace following the authority is removed as a means of separating the port. This is the likely cause of allowing non-valid URLs to pass validation.
+Whitespace in passing URLs in UrlValidator: Initial test organization and secondary testing of the authority partition indicated the 
+isValidAuthority() function was likely to contain the error. Break points were sent and we stepped through, line by line, with the 
+debugger. It was noted that at line 377, all trailing whitespace following the authority is removed as a means of separating the port.
+This is the likely cause of allowing non-valid URLs to pass validation.
+
 
 
 FULL URLS TESTED:
