@@ -1,0 +1,97 @@
+Final project part B
+
+----------------------
+Manual testing
+----------------------
+For this section the group created a list of what should be valid and invalid urls. 
+The testing was then performed by simple calling the isValid function and printing out the return value. 
+Some example of some should be valid urls:
+	“http://www.google.com”
+	“http://www.google.com:9”
+	“http://www.google.com:9999”
+	“http://google.com”
+	“http://google.com/page?test=hello”
+	“https://www.google.com”
+	“https://www.google.se”
+Some example of should be invalid urls
+	“http://www.google.com:test”
+	“httttttttp://www.google.com”
+
+
+----------------------
+Partitioning
+----------------------
+This kind of test involves testing a chunk of the url inserted into a known valid url. 
+For this section the group tested two different errors discovered during manual testing. 
+1. Tested known valid ports. This test was run because a known valid url with a large port value was rejected
+	Examples of urls tested
+		“http://www.google.com:9”
+		“http://www.google.com:99”
+		“http://www.google.com:999”
+		“http://www.google.com:9999”
+
+2. Tested known valid domains. During manual testing the valid domain .se was returned as invalid. Further testing on known valid domains was tested.
+	Examples of urls tested	
+		“https://www.google.com”
+		“https://www.google.org”
+		“https://www.google.se”
+----------------------
+Unit test
+----------------------
+For unit testing the group created nested for loops to go through every url that can be created from the different partitions built into the program. See file for code.
+
+----------------------
+BUG 1:
+----------------------
+1. What is failure?
+Valid url with query returns as invalid 
+
+2. How did you find it?
+Found in manual testing and unit testing. Both types of testing had a url with a query
+Sample url: http://www.google.com/page?test=hello
+
+3. What is the cause? Explain the failure?
+Method isValidQuery on line 441 of UrlValidator.
+The method returns true only if the query is empty. If there is a query the functions inverts a true return value on line 446. This also means that an invalid query would return as valid.
+
+----------------------
+BUG 2
+----------------------
+1. What is the failure?
+Valid url with a valid country codes are said to be invalid.
+
+2. How did you find this?
+This problem was tested in all 3 types of testing: manual, partitioning, and unit testing.
+The problem was originally discovered in manual testing.
+Sample url: http://www.google.se
+(swedish domain)
+
+3. What is the cause? Explain the failure?
+The cause is an incomplete country code list. The list starts on page 248 of DomainValidator.
+It seems domains of countries that are after Italy in alphabetical order have been omitted.
+
+----------------------
+BUG 3
+----------------------
+1. What is the failure?
+Valid url with a port higher than 999 are said to be invalid.
+
+2.  How did you find this?
+Manual testing with a url that included ports was used. The bug was then narrowed down in the partitioning testing that was later done.
+Sample url: http://www.google.com:9999
+
+3. What is the cause? Explain the failure?
+On line 158 and 159 of UrlValidator the program is set to reject any port that isn’t 1 to 3 digits.
+
+
+----------------------
+Teamwork
+----------------------
+The group broke the this part of the project up into three sections. 
+One person did extensive  manual testing, one did extensive partitioning testing, and the third person took care of the unit testing. 
+Each person compiled a report of what they had found along with an outline of the bug report.
+Once all this information was collected one person compiled the final document so that formatting matched and it flowed better.
+
+Som cross work was done during this project. In order to better understand each part some testing of each of the different types was done by each person. 
+For example the person assigned to unit testing also did some manual testing to better understand what needed to be done and tested. 
+
