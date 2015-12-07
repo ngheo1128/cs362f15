@@ -169,7 +169,8 @@ assertTrue("www.parliament.uk should validate",
 any useful information, even from the trace.
 
 So we used code inspection yet again. UrlValidator references the DomainValidator
-class to validate non-IP address authorities. So we looked at that, specifically the isValid() function in the .java file.
+class to validate non-IP address authorities. So we looked at that, specifically
+the isValid() function in the .java file.
 
 Eventually, with regards to country-code based TLDs, it refers to an array
 containing all country codes called COUNTRY_CODE_TLDS. It incorrectly stops at
