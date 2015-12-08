@@ -47,7 +47,7 @@ public class UrlValidatorTest extends TestCase {
 
 		String[] path = {"/page1",
                           	"/..",
-                          	"/../", false
+                          	"/../",
                           	"/..//page"};
 
 		String[] query = {"?test=hello",
