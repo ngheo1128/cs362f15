@@ -188,6 +188,15 @@ public class UrlValidatorTest extends TestCase {
 
    }
    
+   /*
+   we split the input domain to the URL scheme, authority, port, and query. Then
+we split it even further with valid and invalid input for each part of the url,
+this will minimize the area of bug that will occur. For example if the test for set of
+valid scheme input pass, which means that the program validate the valid scheme
+input properly. On the other hand, if the test for set of invalid scheme inputs
+fail, this indicate that the program have bug in the area where the program check
+for invalid scheme input.
+*/
    public void testYourFirstPartition()
    {
 	   
