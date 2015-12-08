@@ -57,7 +57,7 @@ public class UrlValidatorTest extends TestCase {
 		UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 		assertTrue(validator.isValid("http://www.google.com"));
 
-		for(int a = 0 ; i < scheme.length ; a++){
+		for(int a = 0 ; a < scheme.length ; a++){
 			for(int b = 0 ; b < authority.length ; b++){
 				for(int c = 0 ; c < port.length ; c++){
 					for(int d = 0 ; d < path.length ; d++){
